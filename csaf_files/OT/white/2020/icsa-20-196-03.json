@@ -1,0 +1,1302 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "summary": "Siemens thanks the following parties for their efforts:"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "This CSAF advisory was extracted from unstructured data and may contain inaccuracies. If you notice any errors, please reach out to the designated contact at CISA CSAF: central@cisa.dhs.gov",
+        "title": "CISA Disclaimer"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of these vulnerabilities could allow an attacker to affect the availability, read sensitive data, and gain remote code execution on the affected devices.",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Chemical, Energy, Food and Agriculture, Water and Wastewater Systems",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Germany",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.\nCISA also provides a section for control systems security recommended practices on the ICS webpage onus-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.\nOrganizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also recommends users take the following measures to protect themselves from social engineering attacks:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "For further inquiries on security vulnerabilities in Siemens products and \nsolutions, please contact the Siemens ProductCERT:\n\nhttps://www.siemens.com/cert/advisories",
+        "title": "Additional Resources"
+      },
+      {
+        "category": "general",
+        "text": "For further inquiries on security vulnerabilities in Siemens products and  solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
+        "title": "Additional Resources"
+      },
+      {
+        "category": "other",
+        "text": "No known public exploits specifically target these vulnerabilities.",
+        "title": "Exploitability"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "Email: CISAservicedesk@cisa.dhs.gov;\n Toll Free: 1-888-282-0870",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-20-196-03 JSON",
+        "url": "https://www.github.com/cisagov/CSAF/csaf_files/OT/white/2020/icsa-20-196-03.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-20-196-03 Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-20-196-03"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.us-cert.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.us-cert.gov/ics/tips/ICS-TIP-12-146-01B"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.us-cert.gov/ncas/tips/ST04-014"
+      },
+      {
+        "category": "external",
+        "summary": "SSA-496604: SSA-305120: Vulnerabilities in SICAM MMU, SICAM T and SICAM SGU - TXT Version",
+        "url": "https://cert-portal.siemens.com/productcert/txt/SSA-305120.txt"
+      }
+    ],
+    "title": "Siemens SICAM MMU, SICAM T, and SICAM SGU",
+    "tracking": {
+      "current_release_date": "2022-10-10T21:50:51.799600Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-20-196-03",
+      "initial_release_date": "2020-07-14T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2022-10-10T21:50:51.799600Z",
+          "legacy_version": "Update A",
+          "number": "1",
+          "summary": "Publication Date"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "All versions < V2.05",
+                "product": {
+                  "name": "SICAM MMU: All versions < V2.05",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SICAM MMU"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "All versions",
+                "product": {
+                  "name": "SICAM SGU: All versions",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SICAM SGU"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "All versions < V2.18",
+                "product": {
+                  "name": "SICAM T: All versions < V2.18",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SICAM T"
+          }
+        ],
+        "category": "vendor",
+        "name": "Siemens"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2020-10037",
+      "cwe": {
+        "id": "CWE-125",
+        "name": "Out-of-bounds Read"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "By performing a flooding attack against the web server, an attacker might be able to gain read access to the device's memory, possibly revealing confidential information.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0",
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-10037"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The firmware updates to SICAM T and SICAM MMU introduce authentication\nto the web application and remove some unnecessary functionality. The\nweb authentication functionality reduces the risk of access to the\ndevice's web application for executing administrative commands by\nunauthenticated users.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Due to hardware constraints, encryption is not possible on the devices.\nConfidential data such as passwords handled by the devices need to be\nprotected on the network by other means, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "The risk for remote code execution and unauthenticated firmware\ninstallation can be mitigated by ensuring encryption and authentication\nbetween the user and the device, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Using a modern and up to date browser while accessing the web\napplication might reduce the risk of Cross-Site-Scripting attacks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.05 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For RTU applications, Siemens recommends to upgrade the discontinued SICAM SGU devices to SICAM A8000 RTUs. ",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.18 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "mitigation",
+          "details": "Operators of critical power systems (e.g. TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can thus be minimized by virtue of the grid design. Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment. As a general security measure Siemens strongly recommends to protect network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised to configure the environment according to our operational guidelines in order to run the devices in a protected IT environment. Recommended security guidelines to Digital Grid Products can be found at: https://www.siemens.com/gridsecurity",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.9,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N/E:P/RL:T/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-10038",
+      "cwe": {
+        "id": "CWE-306",
+        "name": "Missing Authentication for Critical Function"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An attacker with access to the device's web server might be able to execute administrative commands without authentication.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0",
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-10038"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The firmware updates to SICAM T and SICAM MMU introduce authentication\nto the web application and remove some unnecessary functionality. The\nweb authentication functionality reduces the risk of access to the\ndevice's web application for executing administrative commands by\nunauthenticated users.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Due to hardware constraints, encryption is not possible on the devices.\nConfidential data such as passwords handled by the devices need to be\nprotected on the network by other means, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "The risk for remote code execution and unauthenticated firmware\ninstallation can be mitigated by ensuring encryption and authentication\nbetween the user and the device, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Using a modern and up to date browser while accessing the web\napplication might reduce the risk of Cross-Site-Scripting attacks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.05 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For RTU applications, Siemens recommends to upgrade the discontinued SICAM SGU devices to SICAM A8000 RTUs. ",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.18 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "mitigation",
+          "details": "Operators of critical power systems (e.g. TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can thus be minimized by virtue of the grid design. Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment. As a general security measure Siemens strongly recommends to protect network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised to configure the environment according to our operational guidelines in order to run the devices in a protected IT environment. Recommended security guidelines to Digital Grid Products can be found at: https://www.siemens.com/gridsecurity",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RL:T/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-10039",
+      "cwe": {
+        "id": "CWE-311",
+        "name": "Missing Encryption of Sensitive Data"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An attacker in a privileged network position between a legitimate user and the web server might be able to conduct a Man-in-the-middle attack and gain read and write access to the transmitted data.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0",
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-10039"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The firmware updates to SICAM T and SICAM MMU introduce authentication\nto the web application and remove some unnecessary functionality. The\nweb authentication functionality reduces the risk of access to the\ndevice's web application for executing administrative commands by\nunauthenticated users.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Due to hardware constraints, encryption is not possible on the devices.\nConfidential data such as passwords handled by the devices need to be\nprotected on the network by other means, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "The risk for remote code execution and unauthenticated firmware\ninstallation can be mitigated by ensuring encryption and authentication\nbetween the user and the device, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Using a modern and up to date browser while accessing the web\napplication might reduce the risk of Cross-Site-Scripting attacks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.05 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For RTU applications, Siemens recommends to upgrade the discontinued SICAM SGU devices to SICAM A8000 RTUs. ",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.18 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "mitigation",
+          "details": "Operators of critical power systems (e.g. TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can thus be minimized by virtue of the grid design. Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment. As a general security measure Siemens strongly recommends to protect network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised to configure the environment according to our operational guidelines in order to run the devices in a protected IT environment. Recommended security guidelines to Digital Grid Products can be found at: https://www.siemens.com/gridsecurity",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H/E:P/RL:T/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-10040",
+      "cwe": {
+        "id": "CWE-916",
+        "name": "Use of Password Hash With Insufficient Computational Effort"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An attacker with local access to the device might be able to retrieve some passwords in clear text.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0",
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-10040"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The firmware updates to SICAM T and SICAM MMU introduce authentication\nto the web application and remove some unnecessary functionality. The\nweb authentication functionality reduces the risk of access to the\ndevice's web application for executing administrative commands by\nunauthenticated users.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Due to hardware constraints, encryption is not possible on the devices.\nConfidential data such as passwords handled by the devices need to be\nprotected on the network by other means, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "The risk for remote code execution and unauthenticated firmware\ninstallation can be mitigated by ensuring encryption and authentication\nbetween the user and the device, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Using a modern and up to date browser while accessing the web\napplication might reduce the risk of Cross-Site-Scripting attacks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.05 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For RTU applications, Siemens recommends to upgrade the discontinued SICAM SGU devices to SICAM A8000 RTUs. ",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.18 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "mitigation",
+          "details": "Operators of critical power systems (e.g. TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can thus be minimized by virtue of the grid design. Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment. As a general security measure Siemens strongly recommends to protect network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised to configure the environment according to our operational guidelines in order to run the devices in a protected IT environment. Recommended security guidelines to Digital Grid Products can be found at: https://www.siemens.com/gridsecurity",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.2,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N/E:P/RL:T/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-10041",
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A stored Cross-Site-Scripting (XSS) vulnerability is present in different locations of the web application. An attacker might be able to take over a session of a legitimate user.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0",
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-10041"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The firmware updates to SICAM T and SICAM MMU introduce authentication\nto the web application and remove some unnecessary functionality. The\nweb authentication functionality reduces the risk of access to the\ndevice's web application for executing administrative commands by\nunauthenticated users.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Due to hardware constraints, encryption is not possible on the devices.\nConfidential data such as passwords handled by the devices need to be\nprotected on the network by other means, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "The risk for remote code execution and unauthenticated firmware\ninstallation can be mitigated by ensuring encryption and authentication\nbetween the user and the device, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Using a modern and up to date browser while accessing the web\napplication might reduce the risk of Cross-Site-Scripting attacks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.05 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For RTU applications, Siemens recommends to upgrade the discontinued SICAM SGU devices to SICAM A8000 RTUs. ",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.18 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "mitigation",
+          "details": "Operators of critical power systems (e.g. TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can thus be minimized by virtue of the grid design. Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment. As a general security measure Siemens strongly recommends to protect network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised to configure the environment according to our operational guidelines in order to run the devices in a protected IT environment. Recommended security guidelines to Digital Grid Products can be found at: https://www.siemens.com/gridsecurity",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.6,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H/E:P/RL:T/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-10042",
+      "cwe": {
+        "id": "CWE-120",
+        "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A buffer overflow in various positions of the web application might enable an attacker with access to the web application to execute arbitrary code over the network.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0",
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-10042"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The firmware updates to SICAM T and SICAM MMU introduce authentication\nto the web application and remove some unnecessary functionality. The\nweb authentication functionality reduces the risk of access to the\ndevice's web application for executing administrative commands by\nunauthenticated users.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Due to hardware constraints, encryption is not possible on the devices.\nConfidential data such as passwords handled by the devices need to be\nprotected on the network by other means, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "The risk for remote code execution and unauthenticated firmware\ninstallation can be mitigated by ensuring encryption and authentication\nbetween the user and the device, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Using a modern and up to date browser while accessing the web\napplication might reduce the risk of Cross-Site-Scripting attacks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.05 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For RTU applications, Siemens recommends to upgrade the discontinued SICAM SGU devices to SICAM A8000 RTUs. ",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.18 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "mitigation",
+          "details": "Operators of critical power systems (e.g. TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can thus be minimized by virtue of the grid design. Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment. As a general security measure Siemens strongly recommends to protect network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised to configure the environment according to our operational guidelines in order to run the devices in a protected IT environment. Recommended security guidelines to Digital Grid Products can be found at: https://www.siemens.com/gridsecurity",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RL:T/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-10043",
+      "cwe": {
+        "id": "CWE-80",
+        "name": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The web server could allow Cross-Site Scripting (XSS) attacks if unsuspecting users are tricked into accessing a malicious link.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0",
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-10043"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:H/A:L"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The firmware updates to SICAM T and SICAM MMU introduce authentication\nto the web application and remove some unnecessary functionality. The\nweb authentication functionality reduces the risk of access to the\ndevice's web application for executing administrative commands by\nunauthenticated users.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Due to hardware constraints, encryption is not possible on the devices.\nConfidential data such as passwords handled by the devices need to be\nprotected on the network by other means, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "The risk for remote code execution and unauthenticated firmware\ninstallation can be mitigated by ensuring encryption and authentication\nbetween the user and the device, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Using a modern and up to date browser while accessing the web\napplication might reduce the risk of Cross-Site-Scripting attacks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.05 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For RTU applications, Siemens recommends to upgrade the discontinued SICAM SGU devices to SICAM A8000 RTUs. ",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.18 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "mitigation",
+          "details": "Operators of critical power systems (e.g. TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can thus be minimized by virtue of the grid design. Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment. As a general security measure Siemens strongly recommends to protect network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised to configure the environment according to our operational guidelines in order to run the devices in a protected IT environment. Recommended security guidelines to Digital Grid Products can be found at: https://www.siemens.com/gridsecurity",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:H/A:L/E:P/RL:T/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-10044",
+      "cwe": {
+        "id": "CWE-306",
+        "name": "Missing Authentication for Critical Function"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An attacker with access to the network could be able to install specially crafted firmware to the device.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0",
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-10044"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The firmware updates to SICAM T and SICAM MMU introduce authentication\nto the web application and remove some unnecessary functionality. The\nweb authentication functionality reduces the risk of access to the\ndevice's web application for executing administrative commands by\nunauthenticated users.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Due to hardware constraints, encryption is not possible on the devices.\nConfidential data such as passwords handled by the devices need to be\nprotected on the network by other means, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "The risk for remote code execution and unauthenticated firmware\ninstallation can be mitigated by ensuring encryption and authentication\nbetween the user and the device, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Using a modern and up to date browser while accessing the web\napplication might reduce the risk of Cross-Site-Scripting attacks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.05 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For RTU applications, Siemens recommends to upgrade the discontinued SICAM SGU devices to SICAM A8000 RTUs. ",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.18 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "mitigation",
+          "details": "Operators of critical power systems (e.g. TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can thus be minimized by virtue of the grid design. Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment. As a general security measure Siemens strongly recommends to protect network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised to configure the environment according to our operational guidelines in order to run the devices in a protected IT environment. Recommended security guidelines to Digital Grid Products can be found at: https://www.siemens.com/gridsecurity",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RL:T/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-10045",
+      "cwe": {
+        "id": "CWE-294",
+        "name": "Authentication Bypass by Capture-replay"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An error in the challenge-response procedure could allow an attacker to replay authentication traffic and gain access to protected areas of the web application.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0",
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-10045"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The firmware updates to SICAM T and SICAM MMU introduce authentication\nto the web application and remove some unnecessary functionality. The\nweb authentication functionality reduces the risk of access to the\ndevice's web application for executing administrative commands by\nunauthenticated users.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Due to hardware constraints, encryption is not possible on the devices.\nConfidential data such as passwords handled by the devices need to be\nprotected on the network by other means, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "The risk for remote code execution and unauthenticated firmware\ninstallation can be mitigated by ensuring encryption and authentication\nbetween the user and the device, e.g. by VPN.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Using a modern and up to date browser while accessing the web\napplication might reduce the risk of Cross-Site-Scripting attacks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.05 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9663-1AA00-1AA0"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For RTU applications, Siemens recommends to upgrade the discontinued SICAM SGU devices to SICAM A8000 RTUs. ",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.18 to introduce authentication in the web application to mitigate some web application issues. - Download: https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0 ",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/7KG9661-1AA00-1AA0"
+        },
+        {
+          "category": "mitigation",
+          "details": "Operators of critical power systems (e.g. TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can thus be minimized by virtue of the grid design. Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment. As a general security measure Siemens strongly recommends to protect network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised to configure the environment according to our operational guidelines in order to run the devices in a protected IT environment. Recommended security guidelines to Digital Grid Products can be found at: https://www.siemens.com/gridsecurity",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.3,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:H/E:P/RL:T/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    }
+  ]
+}

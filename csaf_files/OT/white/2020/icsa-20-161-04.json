@@ -1,0 +1,934 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "summary": "Ander Martinez of Titanium Industrial Security and INCIBE reported this vulnerability to Siemens."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "This CSAF advisory was extracted from unstructured data and may contain inaccuracies. If you notice any errors, please reach out to the designated contact at CISA CSAF: central@cisa.dhs.gov",
+        "title": "CISA Disclaimer"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of this vulnerability could allow authorized local users with administrative privileges to execute custom code with SYSTEM level privileges.",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Chemical, Energy, Food and Agriculture, Water and Wastewater Systems",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Germany",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.\nCISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
+        "title": "Additional Resources"
+      },
+      {
+        "category": "other",
+        "text": "This vulnerability is not exploitable remotely. No known public exploits specifically target this vulnerability.",
+        "title": "Exploitability"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "Email: CISAservicedesk@cisa.dhs.gov;\n Toll Free: 1-888-282-0870",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "external",
+        "summary": "SSA-312271: Unquoted Search Path Vulnerability in Windows-based Industrial Software Applications - CSAF Version",
+        "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-312271.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-20-161-04 JSON",
+        "url": "https://www.github.com/cisagov/CSAF/csaf_files/OT/white/2020/icsa-20-161-04.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-20-161-04 Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-20-161-04"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-20-161-04"
+      },
+      {
+        "category": "external",
+        "summary": "SSA-312271: Unquoted Search Path Vulnerability in Windows-based Industrial Software Applications - PDF Version",
+        "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-312271.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "SSA-312271: Unquoted Search Path Vulnerability in Windows-based Industrial Software Applications - TXT Version",
+        "url": "https://cert-portal.siemens.com/productcert/txt/ssa-312271.txt"
+      }
+    ],
+    "title": "Siemens SIMATIC, SINAMICS, SINEC, SINEMA, SINUMERIK (Update J)",
+    "tracking": {
+      "current_release_date": "2022-10-10T21:50:44.391723Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-20-161-04",
+      "initial_release_date": "2022-04-14T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2022-10-10T21:50:44.391723Z",
+          "legacy_version": "Update A",
+          "number": "1",
+          "summary": "Publication Date"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4 SP2",
+                "product": {
+                  "name": "SIMATIC Automation Tool",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC Automation Tool"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V14 SP1 Update 14",
+                "product": {
+                  "name": "SIMATIC NET PC Software V14",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC NET PC Software V14"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC NET PC Software V15",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC NET PC Software V15"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V16 Upd3",
+                "product": {
+                  "name": "SIMATIC NET PC Software V16",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC NET PC Software V16"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V3.0 SP1",
+                "product": {
+                  "name": "SIMATIC PCS neo",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC PCS neo"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V17",
+                "product": {
+                  "name": "SIMATIC ProSave",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ProSave"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V21.8",
+                "product": {
+                  "name": "SIMATIC S7-1500 Software Controller",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC S7-1500 Software Controller"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V13 SP2 Update 4",
+                "product": {
+                  "name": "SIMATIC STEP 7 (TIA Portal) V13",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC STEP 7 (TIA Portal) V13"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V14 SP1 Update 10",
+                "product": {
+                  "name": "SIMATIC STEP 7 (TIA Portal) V14",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC STEP 7 (TIA Portal) V14"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V15.1 Update 5",
+                "product": {
+                  "name": "SIMATIC STEP 7 (TIA Portal) V15",
+                  "product_id": "CSAFPID-00010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC STEP 7 (TIA Portal) V15"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V16 Update 2",
+                "product": {
+                  "name": "SIMATIC STEP 7 (TIA Portal) V16",
+                  "product_id": "CSAFPID-00011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC STEP 7 (TIA Portal) V16"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V5.6 SP2 HF3",
+                "product": {
+                  "name": "SIMATIC STEP 7 V5",
+                  "product_id": "CSAFPID-00012"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC STEP 7 V5"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V3.16 P018",
+                "product": {
+                  "name": "SIMATIC WinCC OA V3.16",
+                  "product_id": "CSAFPID-00013"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinCC OA V3.16"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V3.17 P003",
+                "product": {
+                  "name": "SIMATIC WinCC OA V3.17",
+                  "product_id": "CSAFPID-00014"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinCC OA V3.17"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V16 Update 2",
+                "product": {
+                  "name": "SIMATIC WinCC Runtime Advanced",
+                  "product_id": "CSAFPID-00015"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinCC Runtime Advanced"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V13 SP2 Update 4",
+                "product": {
+                  "name": "SIMATIC WinCC Runtime Professional V13",
+                  "product_id": "CSAFPID-00016"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinCC Runtime Professional V13"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V14 SP1 Update 10",
+                "product": {
+                  "name": "SIMATIC WinCC Runtime Professional V14",
+                  "product_id": "CSAFPID-00017"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinCC Runtime Professional V14"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V15.1 Update 5",
+                "product": {
+                  "name": "SIMATIC WinCC Runtime Professional V15",
+                  "product_id": "CSAFPID-00018"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinCC Runtime Professional V15"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V16 Update 2",
+                "product": {
+                  "name": "SIMATIC WinCC Runtime Professional V16",
+                  "product_id": "CSAFPID-00019"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinCC Runtime Professional V16"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V7.4 SP1 Update 14",
+                "product": {
+                  "name": "SIMATIC WinCC V7.4",
+                  "product_id": "CSAFPID-00020"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinCC V7.4"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V7.5 SP1 Update 3",
+                "product": {
+                  "name": "SIMATIC WinCC V7.5",
+                  "product_id": "CSAFPID-00021"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinCC V7.5"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "All Versions < V16 Update 3",
+                "product": {
+                  "name": "SINAMICS Startdrive",
+                  "product_id": "CSAFPID-00022"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS Startdrive"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "All Versions < V5.4 HF2",
+                "product": {
+                  "name": "SINAMICS STARTER",
+                  "product_id": "CSAFPID-00023"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS STARTER"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V1.0 SP2",
+                "product": {
+                  "name": "SINEC NMS",
+                  "product_id": "CSAFPID-00024"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINEC NMS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V14 SP3",
+                "product": {
+                  "name": "SINEMA Server",
+                  "product_id": "CSAFPID-00025"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINEMA Server"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "All Versions < V6.14",
+                "product": {
+                  "name": "SINUMERIK ONE virtual",
+                  "product_id": "CSAFPID-00026"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINUMERIK ONE virtual"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "All Versions < V6.14",
+                "product": {
+                  "name": "SINUMERIK Operate",
+                  "product_id": "CSAFPID-00027"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINUMERIK Operate"
+          }
+        ],
+        "category": "vendor",
+        "name": "Siemens"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2020-7580",
+      "cwe": {
+        "id": "CWE-428",
+        "name": "Unquoted Search Path or Element"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A common component used by the affected applications regularly calls a helper binary with SYSTEM privileges while the call path is not quoted.\r\n\r\nThis could allow a local attacker to execute arbitrary code with SYTEM privileges.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-00010",
+          "CSAFPID-00011",
+          "CSAFPID-00012",
+          "CSAFPID-00013",
+          "CSAFPID-00014",
+          "CSAFPID-00015",
+          "CSAFPID-00016",
+          "CSAFPID-00017",
+          "CSAFPID-00018",
+          "CSAFPID-00019",
+          "CSAFPID-00020",
+          "CSAFPID-00021",
+          "CSAFPID-00022",
+          "CSAFPID-00023",
+          "CSAFPID-00024",
+          "CSAFPID-00025",
+          "CSAFPID-00026",
+          "CSAFPID-00027"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-7580"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Make sure that there is no executable at the following locations:\n\n- C:\\\\Program.exe, \n- C:\\\\Program\\ Files\\\\Common.exe, or \n- C:\\\\Program\\ Files\\\\Common\\ Files\\\\Siemens\\\\Automation\\\\Simatic.exe",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Deactivate the Windows service called \nTraceConceptX. This leads to loss of tracing functionality and should only be considered as a temporary workaround.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027"
+          ]
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Currently no fix is planned",
+          "product_ids": [
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V13 SP2 Update 4 or later version",
+          "product_ids": [
+            "CSAFPID-0008"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109759753/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V14 SP1 Update 10 or later version",
+          "product_ids": [
+            "CSAFPID-0009"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747387"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V15.1 Update 5 or later version",
+          "product_ids": [
+            "CSAFPID-00010"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109763890/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V16 Update 2 or later version",
+          "product_ids": [
+            "CSAFPID-00011"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109775861/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.6 SP2 HF3 or later version",
+          "product_ids": [
+            "CSAFPID-00012"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109779992/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to version V1.0 SP2 or later version",
+          "product_ids": [
+            "CSAFPID-00024"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109797645/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V14 SP3 or later version",
+          "product_ids": [
+            "CSAFPID-00025"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109801374/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.14 or later version\nThe update can be obtained from Siemens representative or via Siemens customer service",
+          "product_ids": [
+            "CSAFPID-00026",
+            "CSAFPID-00027"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V16 Update 3 or later version",
+          "product_ids": [
+            "CSAFPID-00022"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109781202/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.0 SP1 or later version\nTo obtain SIMATIC PCS neo V3.0 SP1 contact your local support.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.16 P018 or later version",
+          "product_ids": [
+            "CSAFPID-00013"
+          ],
+          "url": "https://www.winccoa.com/downloads/category/versions-patches.html"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.17 P003 or later version",
+          "product_ids": [
+            "CSAFPID-00014"
+          ],
+          "url": "https://www.winccoa.com/downloads/category/versions-patches.html"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V7.4 SP1 Update 14 or later version",
+          "product_ids": [
+            "CSAFPID-00020"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109779373/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V7.5 SP1 Update 3 or later version",
+          "product_ids": [
+            "CSAFPID-00021"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109773812/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V13 SP2 Update 4 or later version",
+          "product_ids": [
+            "CSAFPID-00016"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109759782/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V14 SP1 Update 10 or later version",
+          "product_ids": [
+            "CSAFPID-00017"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747394/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V15.1 Update 5 or later version",
+          "product_ids": [
+            "CSAFPID-00018"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109763892/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V16 Update 2 or later version",
+          "product_ids": [
+            "CSAFPID-00019"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109776017/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V21.8 or later version",
+          "product_ids": [
+            "CSAFPID-0007"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109478528/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V17 or later version\n<https://support.industry.siemens.com/cs/ww/en/view/10347815/>\r\n\r\nNote: Some versions of SIMATIC ProSave are not available as separate download (e.g. V17). In this case, use the version of SIMATIC ProSave as bundled with the corresponding version of SIMATIC WinCC (TIA Portal).",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V16 Update 2 or later version",
+          "product_ids": [
+            "CSAFPID-00015"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109776018/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4 SP2 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/98161300/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.4 HF2 or later version",
+          "product_ids": [
+            "CSAFPID-00023"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109782792/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V16 Upd3 or later version",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109780209/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V14 SP1 Update 14 or later version",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109807351/"
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for Industrial Security (Download: \nhttps://www.siemens.com/cert/operational-guidelines-industrial-security), and to follow the recommendations in the product manuals.\nAdditional information on Industrial Security by Siemens can be found at: \nhttps://www.siemens.com/industrialsecurity",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027"
+          ]
+        }
+      ],
+      "title": "CVE-2020-7580"
+    }
+  ]
+}

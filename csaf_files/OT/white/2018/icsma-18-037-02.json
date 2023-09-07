@@ -1,0 +1,2112 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "names": [
+          "Scott Erven"
+        ],
+        "summary": "reporting these vulnerabilities to GE Healthcare"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "This CSAF advisory was extracted from unstructured data and may contain inaccuracies. If you notice any errors, please reach out to the designated contact at CISA CSAF: central@cisa.dhs.gov",
+        "title": "CISA Disclaimer"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of this vulnerability may allow a remote attacker to bypass authentication and gain access to the affected devices.",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Healthcare and Public Health",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "United States",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of this (these) vulnerability(ies), such as:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolating them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also recommends users take the following measures to protect themselves from social engineering attacks:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Do not click web links or open attachments in unsolicited email messages.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSMA-18-037-02 JSON",
+        "url": "https://www.github.com/cisagov/CSAF/csaf_files/OT/white/2018/icsma-18-037-02.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICSA Advisory ICSMA-18-037-02 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-18-037-02"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/sites/default/files/publications/emailscams0905.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ncas/tips/ST04-014"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "GE Medical Devices Vulnerability",
+    "tracking": {
+      "current_release_date": "2018-03-13T06:00:00.000000Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSMA-18-037-02",
+      "initial_release_date": "2018-03-13T06:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2018-03-13T06:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial Publication"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Optima 520: *",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima 520"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Optima 540: *",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima 540"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Optima 640: *",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima 640"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Optima 680: *",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima 680"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< 1.003",
+                "product": {
+                  "name": "Discovery NM530c: < 1.003",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery NM530c"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< 2.003",
+                "product": {
+                  "name": "Discovery NM750b: < 2.003",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery NM750b"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Discovery XR656: *",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery XR656"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Discovery XR656 Plus: *",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery XR656 Plus"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Revolution XQ/i: *",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Revolution XQ/i"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "THUNIS-800+: *",
+                  "product_id": "CSAFPID-0010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "THUNIS-800+"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Centricity PACS Server: *",
+                  "product_id": "CSAFPID-0011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Centricity PACS Server"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Centricity PACS RA1000: *",
+                  "product_id": "CSAFPID-0012"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Centricity PACS RA1000"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Centricity PACS-IW: *",
+                  "product_id": "CSAFPID-0013"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Centricity PACS-IW"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Centricity DMS: *",
+                  "product_id": "CSAFPID-0014"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Centricity DMS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Discovery VH: *",
+                  "product_id": "CSAFPID-0015"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery VH"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Millenium VG: *",
+                  "product_id": "CSAFPID-0016"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Millenium VG"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "eNTEGRA 2.0/2.5 Processing and Review Workstation: *",
+                  "product_id": "CSAFPID-0017"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "eNTEGRA 2.0/2.5 Processing and Review Workstation"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "CADstream: *",
+                  "product_id": "CSAFPID-0018"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "CADstream"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Optima MR360: *",
+                  "product_id": "CSAFPID-0019"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima MR360"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "GEMNet License server (EchoServer): *",
+                  "product_id": "CSAFPID-0020"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "GEMNet License server (EchoServer)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Image Vault 3.x medical imaging software: *",
+                  "product_id": "CSAFPID-0021"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Image Vault 3.x medical imaging software"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Infinia: *",
+                  "product_id": "CSAFPID-0022"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Infinia"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Infinia with Hawkeye 4 / 1: *",
+                  "product_id": "CSAFPID-0023"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Infinia with Hawkeye 4 / 1"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Millenium MG: *",
+                  "product_id": "CSAFPID-0024"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Millenium MG"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Millenium NC: *",
+                  "product_id": "CSAFPID-0025"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Millenium NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Millenium MyoSIGHT: *",
+                  "product_id": "CSAFPID-0026"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Millenium MyoSIGHT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Precision MP/i: *",
+                  "product_id": "CSAFPID-0027"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Precision MP/i"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Xeleris 1.0: *",
+                  "product_id": "CSAFPID-0028"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Xeleris 1.0"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Xeleris 1.1: *",
+                  "product_id": "CSAFPID-0029"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Xeleris 1.1"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Xeleris 2.1: *",
+                  "product_id": "CSAFPID-0030"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Xeleris 2.1"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Xeleris 3.0: *",
+                  "product_id": "CSAFPID-0031"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Xeleris 3.0"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Xeleris 3.1: *",
+                  "product_id": "CSAFPID-0032"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Xeleris 3.1"
+          }
+        ],
+        "category": "vendor",
+        "name": "GE Healthcare"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2010-5306",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Optima CT680, CT540, CT640, and CT520 has a default password of #bigguy for the root user, which has unspecified impact and attack vectors.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2010-5306"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0004"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2009-5143",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Discovery 530C has a password of #bigguy1 for the (1) acqservice user and (2) wsservice user of the Xeleris System, which has unspecified impact and attack vectors. NOTE: it is not clear whether this password is default, hardcoded, or dependent on another system or product that requires a fixed value. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2009-5143"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0005"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2013-7404",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Discovery NM 750b has a password of 2getin for the insite account for (1) Telnet and (2) FTP, which has unspecified impact and attack vectors. NOTE: it is not clear whether this password is default, hardcoded, or dependent on another system or product that requires a fixed value.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2013-7404"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0006"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2014-7232",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Discovery XR656 and XR656 G2 has a password of (1) 2getin for the insite user, (2) 4$xray for the xruser user, and (3) #superxr for the root user, which has unspecified impact and attack vectors. NOTE: it is not clear whether these passwords are default, hardcoded, or dependent on another system or product that requires a fixed value.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0007",
+          "CSAFPID-0008"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2014-7232"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2010-5310",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The Acquisition Workstation for the GE Healthcare Revolution XQ/i has a password of adw3.1 for the sdc user, which has unspecified impact and attack vectors. NOTE: it is not clear whether this password is default, hardcoded, or dependent on another system or product that requires a fixed value.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0009"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2010-5310"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0009"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0009"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0009"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2014-7233",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Precision THUNIS-800+ has a default password of (1) 1973 for the factory default System Utilities menu, (2) TH8740 for installation using TH8740_122_Setup.exe, (3) hrml for \"Setup and Activation\" using DSASetup, and (4) an empty string for Shutter Configuration, which has unspecified impact and attack vectors. NOTE: since these passwords appear to be used to access functionality during installation, this issue might not cross privilege boundaries and might not be a vulnerability.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0010"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2014-7233"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0010"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0010"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0010"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2012-6693",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Centricity PACS 4.0 Server has a default password of (1) nasro for the nasro (ReadOnly) user and (2) nasrw for the nasrw (Read/Write) user, which has unspecified impact and attack vectors.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0011"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2012-6693"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0011"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0011"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2012-6694",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Centricity PACS Workstation 4.0 and 4.0.1, and Server 4.0, has a password of 2charGE for the geservice account, which has unspecified impact and attack vectors related to TimbuktuPro. NOTE: it is not clear whether this password is default, hardcoded, or dependent on another system or product that requires it.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0011"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2012-6694"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0011"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0011"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2012-6695",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Centricity PACS Workstation 4.0 and 4.0.1 has a password of ddpadmin for the ddpadmin user, which has unspecified impact and attack vectors. NOTE: it is not clear whether this password is default, hardcoded, or dependent on another system or product that requires a fixed value.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0011"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2012-6695"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0011"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0011"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2013-7442",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Centricity PACS Workstation 4.0 and 4.0.1 has a password of (1) CANal1 for the Administrator user and (2) iis for the IIS user, which has unspecified impact and attack vectors related to TimbuktuPro. NOTE: it is not clear whether this password is default, hardcoded, or dependent on another system or product that requires it.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0011"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2013-7442"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0011"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0011"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2017-14008",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Centricity PACS RA1000, diagnostic image analysis, all current versions are affected these devices use default or hard-coded credentials. Successful exploitation of this vulnerability may allow a remote attacker to bypass authentication and gain access to the affected devices.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0012"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2017-14008"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0012"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0012"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0012"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2011-5322",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Centricity Analytics Server 1.1 has a default password of (1) V0yag3r for the SQL Server sa user, (2) G3car3s for the analyst user, (3) G3car3s for the ccg user, (4) V0yag3r for the viewer user, and (5) geservice for the geservice user in the Webmin interface, which has unspecified impact and attack vectors.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0013"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2011-5322"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0013"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0013"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0013"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2007-6757",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Centricity DMS 4.2, 4.1, and 4.0 has a password of Muse!Admin for the Museadmin user, which has unspecified impact and attack vectors. NOTE: it is not clear whether this password is default, hardcoded, or dependent on another system or product that requires a fixed value.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0014"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2007-6757"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0014"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0014"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0014"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2003-1603",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Discovery VH has a default password of (1) interfile for the ftpclient user of the Interfile server or (2) \"2\" for the LOCAL user of the FTP server for the Codonics printer, which has unspecified impact and attack vectors.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0015",
+          "CSAFPID-0016"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2003-1603"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0015",
+            "CSAFPID-0016"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0015",
+            "CSAFPID-0016"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0015",
+            "CSAFPID-0016"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2001-1594",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare eNTEGRA P&R has a password of (1) entegra for the entegra user, (2) passme for the super user of the Polestar/Polestar-i Starlink 4 upgrade, (3) 0 for the entegra user of the Codonics printer FTP service, (4) eNTEGRA for the eNTEGRA P&R user account, (5) insite for the WinVNC Login, and possibly other accounts, which has unspecified impact and attack vectors. NOTE: it is not clear whether this password is default, hardcoded, or dependent on another system or product that requires a fixed value.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0017"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2001-1594"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0017"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0017"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0017"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2010-5309",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare CADStream Server has a default password of confirma for the admin user, which has unspecified impact and attack vectors.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0018"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2010-5309"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0018"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0018"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0018"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2010-5307",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The HIPAA configuration interface in GE Healthcare Optima MR360 has a password of (1) operator for the root account, (2) adw2.0 for the admin account, and (3) adw2.0 for the sdc account, which has unspecified impact and attack vectors. NOTE: it is not clear whether these passwords are default, hardcoded, or dependent on another system or product that requires a fixed value.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0019"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2010-5307"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0019"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0019"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0019"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2017-14004",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE GEMNet License server (EchoServer) all current versions are affected these devices use default or hard-coded credentials. Successful exploitation of this vulnerability may allow a remote attacker to bypass authentication and gain access to the affected devices..",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0020"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2017-14004"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0020"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0020"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0020"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2004-2777",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Centricity Image Vault 3.x has a password of (1) gemnet for the administrator account, (2) webadmin for the webadmin administrator account of the ASACA DVD library, (3) an empty value for the gemsservice account of the Ultrasound Database, and possibly (4) gemnet2002 for the gemnet2002 account of the GEMNet license server, which has unspecified impact and attack vectors. NOTE: it is not clear whether this password is default, hardcoded, or dependent on another system or product that requires a fixed value.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0021"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2004-2777"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0021"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0021"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0021"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2017-14002",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Infinia/Infinia with Hawkeye 4 medical imaging systems all current versions are affected these devices use default or hard-coded credentials. Successful exploitation of this vulnerability may allow a remote attacker to bypass authentication and gain access to the affected devices.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0022",
+          "CSAFPID-0023"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2017-14002"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2002-2446",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Millennium MG, NC, and MyoSIGHT has a password of insite.genieacq for the insite account that cannot be changed without disabling product functionality for remote InSite support, which has unspecified impact and attack vectors.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0024",
+          "CSAFPID-0025",
+          "CSAFPID-0026"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2002-2446"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2012-6660",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Healthcare Precision MPi has a password of (1) orion for the serviceapp user, (2) orion for the clinical operator user, and (3) PlatinumOne for the administrator user, which has unspecified impact and attack vectors. NOTE: it is not clear whether these passwords are default, hardcoded, or dependent on another system or product that requires a fixed value.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0027"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2012-6660"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0027"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0027"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0027"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2017-14006",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "GE Xeleris versions 1.0,1.1,2.1,3.0,3.1, medical imaging systems, all current versions are affected, these devices use default or hard-coded credentials. Successful exploitation of this vulnerability may allow a remote attacker to bypass authentication and gain access to the affected devices.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0028",
+          "CSAFPID-0029",
+          "CSAFPID-0030",
+          "CSAFPID-0031",
+          "CSAFPID-0032"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/vuln/detail?vulnId=CVE-2017-14006"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE's product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.",
+          "product_ids": [
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "GE Healthcare provides updates on vulnerability management and other security information at the following URL: http://www3.gehealthcare.com/en/support/security",
+          "product_ids": [
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032"
+          ],
+          "url": "http://www3.gehealthcare.com/en/support/security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032"
+          ]
+        }
+      ]
+    }
+  ]
+}

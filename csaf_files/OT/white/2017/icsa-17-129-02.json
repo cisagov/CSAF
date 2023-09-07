@@ -1,0 +1,4979 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "summary": "Duan JinTong, Ma ShaoShuai, and Cheng Lei from the NSFOCUS Security Team reported these vulnerabilities to Siemens."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "This CSAF advisory was extracted from unstructured data and may contain inaccuracies. If you notice any errors, please reach out to the designated contact at CISA CSAF: central@cisa.dhs.gov",
+        "title": "CISA Disclaimer"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of these vulnerabilities could cause the targeted device to enter a denial-of-service condition, which may require human interaction to recover the system.",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Germany",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.\nCISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.\nOrganizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
+        "title": "Additional Resources"
+      },
+      {
+        "category": "other",
+        "text": "No known public exploits specifically target these vulnerabilities.",
+        "title": "Exploitability"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "Email: CISAservicedesk@cisa.dhs.gov;\n Toll Free: 1-888-282-0870",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "external",
+        "summary": "SSA-293562: Denial of Service Vulnerabilities in PROFINET DCP Implementation of Industrial Products - CSAF Version",
+        "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-293562.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-17-129-02 JSON",
+        "url": "https://www.github.com/cisagov/CSAF/csaf_files/OT/white/2017/icsa-17-129-02.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-17-129-02 Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-17-129-02"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      },
+      {
+        "category": "external",
+        "summary": "SSA-293562: Denial of Service Vulnerabilities in PROFINET DCP Implementation of Industrial Products - PDF Version",
+        "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-293562.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "SSA-293562: Denial of Service Vulnerabilities in PROFINET DCP Implementation of Industrial Products - TXT Version",
+        "url": "https://cert-portal.siemens.com/productcert/txt/ssa-293562.txt"
+      }
+    ],
+    "title": "Siemens PROFINET DCP (Update V)",
+    "tracking": {
+      "current_release_date": "2022-10-10T21:49:55.017293Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-17-129-02",
+      "initial_release_date": "2022-02-10T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2022-10-10T21:49:55.017293Z",
+          "legacy_version": "Update A",
+          "number": "1",
+          "summary": "Publication Date"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.1.1 Patch04",
+                "product": {
+                  "name": "Development/Evaluation Kits for PROFINET IO: DK Standard Ethernet Controller",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Development/Evaluation Kits for PROFINET IO: DK Standard Ethernet Controller"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.2.1 Patch03",
+                "product": {
+                  "name": "Development/Evaluation Kits for PROFINET IO: EK-ERTEC 200",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Development/Evaluation Kits for PROFINET IO: EK-ERTEC 200"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.4.0 Patch01",
+                "product": {
+                  "name": "Development/Evaluation Kits for PROFINET IO: EK-ERTEC 200P",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Development/Evaluation Kits for PROFINET IO: EK-ERTEC 200P"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "IE/AS-i Link PN IO",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "IE/AS-i Link PN IO"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V3.0",
+                "product": {
+                  "name": "IE/PB-Link (incl. SIPLUS NET variants)",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "IE/PB-Link (incl. SIPLUS NET variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.03",
+                "product": {
+                  "name": "SCALANCE M-800 / S615",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCALANCE M-800 / S615"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V6.1",
+                "product": {
+                  "name": "SCALANCE W700",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCALANCE W700"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.1.0",
+                "product": {
+                  "name": "SCALANCE X408",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCALANCE X408"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V3.10.2",
+                "product": {
+                  "name": "SCALANCE X414",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCALANCE X414"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V5.2.2",
+                "product": {
+                  "name": "SCALANCE X-200 switch family (incl. SIPLUS NET variants)",
+                  "product_id": "CSAFPID-00010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCALANCE X-200 switch family (incl. SIPLUS NET variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V5.4.0",
+                "product": {
+                  "name": "SCALANCE X-200IRT switch family (incl. SIPLUS NET variants)",
+                  "product_id": "CSAFPID-00011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCALANCE X-200IRT switch family (incl. SIPLUS NET variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.1.0",
+                "product": {
+                  "name": "SCALANCE X-300 switch family (incl. SIPLUS NET variants)",
+                  "product_id": "CSAFPID-00012"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCALANCE X-300 switch family (incl. SIPLUS NET variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V6.1",
+                "product": {
+                  "name": "SCALANCE XM-400 Family",
+                  "product_id": "CSAFPID-00013"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCALANCE XM-400 Family"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V6.1",
+                "product": {
+                  "name": "SCALANCE XR-500 Family",
+                  "product_id": "CSAFPID-00014"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCALANCE XR-500 Family"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V2.0",
+                "product": {
+                  "name": "SIMATIC CM 1542-1",
+                  "product_id": "CSAFPID-00015"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CM 1542-1"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V1.0.15",
+                "product": {
+                  "name": "SIMATIC CM 1542SP-1",
+                  "product_id": "CSAFPID-00016"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CM 1542SP-1"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V3.1.3",
+                "product": {
+                  "name": "SIMATIC CP 343-1 (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00017"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 343-1 (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC CP 343-1 Advanced (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00018"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 343-1 Advanced (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V3.1.3",
+                "product": {
+                  "name": "SIMATIC CP 343-1 Lean (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00019"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 343-1 Lean (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V3.2.17",
+                "product": {
+                  "name": "SIMATIC CP 443-1 (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00020"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 443-1 (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V3.2.17",
+                "product": {
+                  "name": "SIMATIC CP 443-1 Advanced (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00021"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 443-1 Advanced (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC CP 443-1 OPC UA",
+                  "product_id": "CSAFPID-00022"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 443-1 OPC UA"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V2.1.82",
+                "product": {
+                  "name": "SIMATIC CP 1243-1 (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00023"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 1243-1 (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC CP 1243-1 DNP3 (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00024"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 1243-1 DNP3 (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC CP 1243-1 IEC (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00025"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 1243-1 IEC (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V2.1.82",
+                "product": {
+                  "name": "SIMATIC CP 1243-1 IRC (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00026"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 1243-1 IRC (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V1.0.15",
+                "product": {
+                  "name": "SIMATIC CP 1542SP-1 IRC (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00027"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 1542SP-1 IRC (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V2.1",
+                "product": {
+                  "name": "SIMATIC CP 1543-1 (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00028"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 1543-1 (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V1.0.15",
+                "product": {
+                  "name": "SIMATIC CP 1543SP-1 (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00029"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 1543SP-1 (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V2.7",
+                "product": {
+                  "name": "SIMATIC CP 1604",
+                  "product_id": "CSAFPID-00030"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 1604"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V2.7",
+                "product": {
+                  "name": "SIMATIC CP 1616",
+                  "product_id": "CSAFPID-00031"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC CP 1616"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V2.7",
+                "product": {
+                  "name": "SIMATIC DK-16xx PN IO",
+                  "product_id": "CSAFPID-00032"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC DK-16xx PN IO"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V1.0.2",
+                "product": {
+                  "name": "SIMATIC ET200AL",
+                  "product_id": "CSAFPID-00033"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200AL"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200ecoPN, 4AO U/I 4xM12 (6ES7145-6HD00-0AB0)",
+                  "product_id": "CSAFPID-00034",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7145-6HD00-0AB0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200ecoPN, 4AO U/I 4xM12"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200ecoPN, 8 DIO, DC24V/1,3A, 8xM12 (6ES7147-6BG00-0AB0)",
+                  "product_id": "CSAFPID-00035",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7147-6BG00-0AB0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200ecoPN, 8 DIO, DC24V/1,3A, 8xM12"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200ecoPN, 8 DO, DC24V/2A, 8xM12 (6ES7142-6BR00-0AB0)",
+                  "product_id": "CSAFPID-00036",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7142-6BR00-0AB0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200ecoPN, 8 DO, DC24V/2A, 8xM12"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200ecoPN, 8AI RTD/TC 8xM12 (6ES7144-6KD50-0AB0)",
+                  "product_id": "CSAFPID-00037",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7144-6KD50-0AB0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200ecoPN, 8AI RTD/TC 8xM12"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200ecoPN, 8AI; 4 U/I; 4 RTD/TC 8xM12 (6ES7144-6KD00-0AB0)",
+                  "product_id": "CSAFPID-00038",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7144-6KD00-0AB0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200ecoPN, 8AI; 4 U/I; 4 RTD/TC 8xM12"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200ecoPN, 8DI, DC24V, 4xM12 (6ES7141-6BF00-0AB0)",
+                  "product_id": "CSAFPID-00039",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7141-6BF00-0AB0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200ecoPN, 8DI, DC24V, 4xM12"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200ecoPN, 8DI, DC24V, 8xM12 (6ES7141-6BG00-0AB0)",
+                  "product_id": "CSAFPID-00040",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7141-6BG00-0AB0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200ecoPN, 8DI, DC24V, 8xM12"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200ecoPN, 8DO, DC24V/0,5A, 4xM12 (6ES7142-6BF50-0AB0)",
+                  "product_id": "CSAFPID-00041",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7142-6BF50-0AB0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200ecoPN, 8DO, DC24V/0,5A, 4xM12"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200ecoPN, 8DO, DC24V/1,3A, 4xM12 (6ES7142-6BF00-0AB0)",
+                  "product_id": "CSAFPID-00042",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7142-6BF00-0AB0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200ecoPN, 8DO, DC24V/1,3A, 4xM12"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200ecoPN, 8DO, DC24V/1,3A, 8xM12 (6ES7142-6BG00-0AB0)",
+                  "product_id": "CSAFPID-00043",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7142-6BG00-0AB0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200ecoPN, 8DO, DC24V/1,3A, 8xM12"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200ecoPN, 16DI, DC24V, 8xM12 (6ES7141-6BH00-0AB0)",
+                  "product_id": "CSAFPID-00044",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7141-6BH00-0AB0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200ecoPN, 16DI, DC24V, 8xM12"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200ecoPN, 16DO DC24V/1,3A, 8xM12 (6ES7142-6BH00-0AB0)",
+                  "product_id": "CSAFPID-00045",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7142-6BH00-0AB0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200ecoPN, 16DO DC24V/1,3A, 8xM12"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200ecoPN: IO-Link Master (6ES7148-6JA00-0AB0)",
+                  "product_id": "CSAFPID-00046",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7148-6JA00-0AB0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200ecoPN: IO-Link Master"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200M (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00047"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200M (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.0.1",
+                "product": {
+                  "name": "SIMATIC ET200MP IM155-5 PN BA (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00048"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200MP IM155-5 PN BA (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.2",
+                "product": {
+                  "name": "SIMATIC ET200MP IM155-5 PN HF (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00049"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200MP IM155-5 PN HF (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.1",
+                "product": {
+                  "name": "SIMATIC ET200MP IM155-5 PN ST (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00050"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200MP IM155-5 PN ST (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200pro",
+                  "product_id": "CSAFPID-00051"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200pro"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200S (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00052"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200S (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC ET200SP (incl. SIPLUS variants, except IM155-6 PN ST and IM155-6 PN HF)",
+                  "product_id": "CSAFPID-00053"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200SP (incl. SIPLUS variants, except IM155-6 PN ST and IM155-6 PN HF)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< 4.2.0",
+                "product": {
+                  "name": "SIMATIC ET200SP IM155-6 PN HF (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00054"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200SP IM155-6 PN HF (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.0.1",
+                "product": {
+                  "name": "SIMATIC ET200SP IM155-6 PN HS (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00055"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200SP IM155-6 PN HS (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.1.0",
+                "product": {
+                  "name": "SIMATIC ET200SP IM155-6 PN ST (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00056"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC ET200SP IM155-6 PN ST (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V15.1",
+                "product": {
+                  "name": "SIMATIC HMI Comfort Panels, HMI Multi Panels, HMI Mobile Panels (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00057"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI Comfort Panels, HMI Multi Panels, HMI Mobile Panels (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "All Versions < V7.0.6",
+                "product": {
+                  "name": "SIMATIC MV400 family",
+                  "product_id": "CSAFPID-00058"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC MV400 family"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.0",
+                "product": {
+                  "name": "SIMATIC PN/PN Coupler (incl. SIPLUS NET variants)",
+                  "product_id": "CSAFPID-00059"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC PN/PN Coupler (incl. SIPLUS NET variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V3.0",
+                "product": {
+                  "name": "SIMATIC RF650R",
+                  "product_id": "CSAFPID-00060"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC RF650R"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V3.0",
+                "product": {
+                  "name": "SIMATIC RF680R",
+                  "product_id": "CSAFPID-00061"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC RF680R"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V3.0",
+                "product": {
+                  "name": "SIMATIC RF685R",
+                  "product_id": "CSAFPID-00062"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC RF685R"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V2.3",
+                "product": {
+                  "name": "SIMATIC S7-200 SMART",
+                  "product_id": "CSAFPID-00063"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC S7-200 SMART"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V3.X.14",
+                "product": {
+                  "name": "SIMATIC S7-300 CPU family (incl. related ET200 CPUs and SIPLUS variants)",
+                  "product_id": "CSAFPID-00064"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC S7-300 CPU family (incl. related ET200 CPUs and SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V6.0.7",
+                "product": {
+                  "name": "SIMATIC S7-400 H V6 CPU family (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00065"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC S7-400 H V6 CPU family (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V6.0.6",
+                "product": {
+                  "name": "SIMATIC S7-400 PN/DP V6 CPU family (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00066"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC S7-400 PN/DP V6 CPU family (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V7.0.2",
+                "product": {
+                  "name": "SIMATIC S7-400 PN/DP V7 CPU family (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00067"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC S7-400 PN/DP V7 CPU family (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V8.2",
+                "product": {
+                  "name": "SIMATIC S7-410 CPU family (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00068"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC S7-410 CPU family (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.2.1",
+                "product": {
+                  "name": "SIMATIC S7-1200 CPU family (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00069"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC S7-1200 CPU family (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V2.1",
+                "product": {
+                  "name": "SIMATIC S7-1500 CPU family (incl. related ET200 CPUs and SIPLUS variants)",
+                  "product_id": "CSAFPID-00070"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC S7-1500 CPU family (incl. related ET200 CPUs and SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V2.1",
+                "product": {
+                  "name": "SIMATIC S7-1500 Software Controller (incl. F)",
+                  "product_id": "CSAFPID-00071"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC S7-1500 Software Controller (incl. F)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V1.1.8",
+                "product": {
+                  "name": "SIMATIC TDC CP51M1",
+                  "product_id": "CSAFPID-00072"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC TDC CP51M1"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V1.1.1",
+                "product": {
+                  "name": "SIMATIC TDC CPU555",
+                  "product_id": "CSAFPID-00073"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC TDC CPU555"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC Teleservice Adapter IE Advanced",
+                  "product_id": "CSAFPID-00074"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC Teleservice Adapter IE Advanced"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC Teleservice Adapter IE Basic",
+                  "product_id": "CSAFPID-00075"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC Teleservice Adapter IE Basic"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC Teleservice Adapter IE Standard",
+                  "product_id": "CSAFPID-00076"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC Teleservice Adapter IE Standard"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< SIMATIC WinAC RTX 2010 SP3",
+                "product": {
+                  "name": "SIMATIC WinAC RTX (F) 2010",
+                  "product_id": "CSAFPID-00077"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinAC RTX (F) 2010"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V2.0.0",
+                "product": {
+                  "name": "SIMOCODE pro V PN (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00078"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMOCODE pro V PN (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.5 HF1",
+                "product": {
+                  "name": "SIMOTION (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00079"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMOTION (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V1.4 SP1 HF5",
+                "product": {
+                  "name": "SINAMICS DCM w. PN",
+                  "product_id": "CSAFPID-00080"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS DCM w. PN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V1.2 HF1",
+                "product": {
+                  "name": "SINAMICS DCP w. PN",
+                  "product_id": "CSAFPID-00081"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS DCP w. PN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.7 SP6 HF3",
+                "product": {
+                  "name": "SINAMICS G110M w. PN",
+                  "product_id": "CSAFPID-00082"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS G110M w. PN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.7 SP6 HF3",
+                "product": {
+                  "name": "SINAMICS G120(C/P/D) w. PN (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00083"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS G120(C/P/D) w. PN (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.7 HF27",
+                "product": {
+                  "name": "SINAMICS G130 V4.7 w. PN",
+                  "product_id": "CSAFPID-00084"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS G130 V4.7 w. PN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.8 HF4",
+                "product": {
+                  "name": "SINAMICS G130 V4.8 w. PN",
+                  "product_id": "CSAFPID-00085"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS G130 V4.8 w. PN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "V4.7: < V4.7 HF27",
+                "product": {
+                  "name": "SINAMICS G150 V4.7 w. PN",
+                  "product_id": "CSAFPID-00086"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS G150 V4.7 w. PN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.8 HF4",
+                "product": {
+                  "name": "SINAMICS G150 V4.8 w. PN",
+                  "product_id": "CSAFPID-00087"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS G150 V4.8 w. PN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.4 SP3 HF5",
+                "product": {
+                  "name": "SINAMICS S110 w. PN",
+                  "product_id": "CSAFPID-00088"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS S110 w. PN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.7",
+                "product": {
+                  "name": "SINAMICS S120 prior to V4.7 w. PN (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00089"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS S120 prior to V4.7 w. PN (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SINAMICS S120 V4.7 SP1 w. PN (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00090"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS S120 V4.7 SP1 w. PN (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.7 HF27",
+                "product": {
+                  "name": "SINAMICS S120 V4.7 w. PN (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00091"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS S120 V4.7 w. PN (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.8 HF4",
+                "product": {
+                  "name": "SINAMICS S120 V4.8 w. PN (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-00092"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS S120 V4.8 w. PN (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.7 HF27",
+                "product": {
+                  "name": "SINAMICS S150 V4.7 w. PN",
+                  "product_id": "CSAFPID-00093"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS S150 V4.7 w. PN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.8 HF4",
+                "product": {
+                  "name": "SINAMICS S150 V4.8 w. PN",
+                  "product_id": "CSAFPID-00094"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS S150 V4.8 w. PN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V1.01",
+                "product": {
+                  "name": "SINAMICS V90 w. PN",
+                  "product_id": "CSAFPID-00095"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS V90 w. PN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.5 SP6 HF2",
+                "product": {
+                  "name": "SINUMERIK 828D V4.5 and prior",
+                  "product_id": "CSAFPID-00096"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINUMERIK 828D V4.5 and prior"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.7 SP4 HF1",
+                "product": {
+                  "name": "SINUMERIK 828D V4.7",
+                  "product_id": "CSAFPID-00097"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINUMERIK 828D V4.7"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.5 SP6 HF2",
+                "product": {
+                  "name": "SINUMERIK 840D sl V4.5 and prior",
+                  "product_id": "CSAFPID-00098"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINUMERIK 840D sl V4.5 and prior"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V4.7 SP4 HF1",
+                "product": {
+                  "name": "SINUMERIK 840D sl V4.7",
+                  "product_id": "CSAFPID-00099"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINUMERIK 840D sl V4.7"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V1.1.0",
+                "product": {
+                  "name": "SIRIUS ACT 3SU1 interface module PROFINET",
+                  "product_id": "CSAFPID-000100"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIRIUS ACT 3SU1 interface module PROFINET"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIRIUS Motor Starter M200D PROFINET",
+                  "product_id": "CSAFPID-000101"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIRIUS Motor Starter M200D PROFINET"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIRIUS Soft Starter 3RW44 PN",
+                  "product_id": "CSAFPID-000102"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIRIUS Soft Starter 3RW44 PN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V1.2.0",
+                "product": {
+                  "name": "SITOP PSU8600 PROFINET",
+                  "product_id": "CSAFPID-000103"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SITOP PSU8600 PROFINET"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V2.2.0",
+                "product": {
+                  "name": "SITOP UPS1600 PROFINET (incl. SIPLUS variants)",
+                  "product_id": "CSAFPID-000104"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SITOP UPS1600 PROFINET (incl. SIPLUS variants)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V14 SP1",
+                "product": {
+                  "name": "Softnet PROFINET IO for PC-based Windows systems",
+                  "product_id": "CSAFPID-000105"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Softnet PROFINET IO for PC-based Windows systems"
+          }
+        ],
+        "category": "vendor",
+        "name": "Siemens"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2017-2680",
+      "cwe": {
+        "id": "CWE-400",
+        "name": "Uncontrolled Resource Consumption"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Specially crafted PROFINET DCP broadcast packets could cause a denial of service condition of affected products on a local Ethernet segment (Layer 2). Human interaction is required to recover the systems. PROFIBUS interfaces are not affected.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-00010",
+          "CSAFPID-00011",
+          "CSAFPID-00012",
+          "CSAFPID-00013",
+          "CSAFPID-00014",
+          "CSAFPID-00015",
+          "CSAFPID-00016",
+          "CSAFPID-00017",
+          "CSAFPID-00018",
+          "CSAFPID-00019",
+          "CSAFPID-00020",
+          "CSAFPID-00021",
+          "CSAFPID-00022",
+          "CSAFPID-00023",
+          "CSAFPID-00024",
+          "CSAFPID-00025",
+          "CSAFPID-00026",
+          "CSAFPID-00027",
+          "CSAFPID-00028",
+          "CSAFPID-00029",
+          "CSAFPID-00030",
+          "CSAFPID-00031",
+          "CSAFPID-00032",
+          "CSAFPID-00033",
+          "CSAFPID-00034",
+          "CSAFPID-00035",
+          "CSAFPID-00036",
+          "CSAFPID-00037",
+          "CSAFPID-00038",
+          "CSAFPID-00039",
+          "CSAFPID-00040",
+          "CSAFPID-00041",
+          "CSAFPID-00042",
+          "CSAFPID-00043",
+          "CSAFPID-00044",
+          "CSAFPID-00045",
+          "CSAFPID-00046",
+          "CSAFPID-00047",
+          "CSAFPID-00048",
+          "CSAFPID-00049",
+          "CSAFPID-00050",
+          "CSAFPID-00051",
+          "CSAFPID-00052",
+          "CSAFPID-00053",
+          "CSAFPID-00054",
+          "CSAFPID-00055",
+          "CSAFPID-00056",
+          "CSAFPID-00057",
+          "CSAFPID-00058",
+          "CSAFPID-00059",
+          "CSAFPID-00060",
+          "CSAFPID-00061",
+          "CSAFPID-00062",
+          "CSAFPID-00063",
+          "CSAFPID-00064",
+          "CSAFPID-00065",
+          "CSAFPID-00066",
+          "CSAFPID-00067",
+          "CSAFPID-00068",
+          "CSAFPID-00069",
+          "CSAFPID-00070",
+          "CSAFPID-00071",
+          "CSAFPID-00072",
+          "CSAFPID-00073",
+          "CSAFPID-00074",
+          "CSAFPID-00075",
+          "CSAFPID-00076",
+          "CSAFPID-00077",
+          "CSAFPID-00078",
+          "CSAFPID-00079",
+          "CSAFPID-00080",
+          "CSAFPID-00081",
+          "CSAFPID-00082",
+          "CSAFPID-00083",
+          "CSAFPID-00084",
+          "CSAFPID-00085",
+          "CSAFPID-00086",
+          "CSAFPID-00087",
+          "CSAFPID-00088",
+          "CSAFPID-00089",
+          "CSAFPID-00090",
+          "CSAFPID-00091",
+          "CSAFPID-00092",
+          "CSAFPID-00093",
+          "CSAFPID-00094",
+          "CSAFPID-00095",
+          "CSAFPID-00096",
+          "CSAFPID-00097",
+          "CSAFPID-00098",
+          "CSAFPID-00099",
+          "CSAFPID-000100",
+          "CSAFPID-000101",
+          "CSAFPID-000102",
+          "CSAFPID-000103",
+          "CSAFPID-000104",
+          "CSAFPID-000105"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2017-2680 - Development/Evaluation Kits for PROFINET IO: DK Standard Ethernet Controller",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109755160/"
+        },
+        {
+          "summary": "CVE-2017-2680 - Development/Evaluation Kits for PROFINET IO: EK-ERTEC 200",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109755151/"
+        },
+        {
+          "summary": "CVE-2017-2680 - Development/Evaluation Kits for PROFINET IO: EK-ERTEC 200P",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109750012/"
+        },
+        {
+          "summary": "CVE-2017-2680 - IE/PB-Link (incl. SIPLUS NET variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109744504/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SCALANCE M-800 / S615",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109757544/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SCALANCE W700",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109760470/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SCALANCE X408",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109753720/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SCALANCE X414",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747276/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SCALANCE X-200 switch family (incl. SIPLUS NET variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109752018/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SCALANCE X-200IRT switch family (incl. SIPLUS NET variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109755950/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SCALANCE X-300 switch family (incl. SIPLUS NET variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109753720/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SCALANCE XM-400 Family",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109761424/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SCALANCE XR-500 Family",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109761425/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC CM 1542-1",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109744924/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC CM 1542SP-1",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749255/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC CP 343-1 (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109756088/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC CP 343-1 Lean (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109756088/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC CP 443-1 (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109745387/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC CP 443-1 Advanced (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109745388/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC CP 1243-1 (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109757489/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC CP 1243-1 IRC (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109757489/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC CP 1542SP-1 IRC (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749255/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC CP 1543-1 (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747253/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC CP 1543SP-1 (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749255/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC CP 1604",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109762689/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC CP 1616",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109762689/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC DK-16xx PN IO",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109762689/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC ET200AL",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109479281/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC ET200MP IM155-5 PN BA (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109754281/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC ET200MP IM155-5 PN HF (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/93012181/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC ET200MP IM155-5 PN ST (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/78647504/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC ET200SP IM155-6 PN HF (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/85624387/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC ET200SP IM155-6 PN HS (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109795369/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC ET200SP IM155-6 PN ST (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/de/de/view/78648144/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC HMI Comfort Panels, HMI Multi Panels, HMI Mobile Panels (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109761576/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC MV400 family",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109793481/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC PN/PN Coupler (incl. SIPLUS NET variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749637/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC RF650R",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109743740/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC RF680R",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109743740/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC RF685R",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109743740/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC S7-300 CPU family (incl. related ET200 CPUs and SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/13752/dl"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC S7-400 H V6 CPU family (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474550/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC S7-400 PN/DP V6 CPU family (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474874/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC S7-400 PN/DP V7 CPU family (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109752685/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC S7-410 CPU family (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109476571/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC S7-1200 CPU family (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109741461/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC S7-1500 CPU family (incl. related ET200 CPUs and SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109478459/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC S7-1500 Software Controller (incl. F)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109478528/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC TDC CP51M1",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/27049282/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC TDC CPU555",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109740119/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMATIC WinAC RTX (F) 2010",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109765109/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMOCODE pro V PN (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749989/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIMOTION (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109742328/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS DCM w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/44029688/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS DCP w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474935/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS G110M w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109482659/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS G120(C/P/D) w. PN (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109482659/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS G130 V4.7 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/103433117/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS G130 V4.8 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109742040/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS G150 V4.7 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/103433117/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS G150 V4.8 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109742040/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS S110 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474320/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS S120 prior to V4.7 w. PN (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109758423/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS S120 V4.7 SP1 w. PN (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109758423/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS S120 V4.7 w. PN (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/92522512/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS S120 V4.8 w. PN (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109740193/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS S150 V4.7 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/103433117/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS S150 V4.8 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109742040/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SINAMICS V90 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109746210/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SIRIUS ACT 3SU1 interface module PROFINET",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109753683/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SITOP PSU8600 PROFINET",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/102295547/"
+        },
+        {
+          "summary": "CVE-2017-2680 - SITOP UPS1600 PROFINET (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/79207181/"
+        },
+        {
+          "summary": "CVE-2017-2680 - Softnet PROFINET IO for PC-based Windows systems",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747482/"
+        },
+        {
+          "summary": "CVE-2017-2680 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2017-2680.json"
+        },
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-2680"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.1.1 Patch04 or newer",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109755160/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.2.1 Patch03 or newer",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109755151/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.4.0 Patch01 or newer",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109750012/"
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no remediation is available",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-00018",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-000101",
+            "CSAFPID-000102"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Upgrade to V3.0",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109744504/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.00",
+          "product_ids": [
+            "CSAFPID-0006"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109757544/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.3.1",
+          "product_ids": [
+            "CSAFPID-0007"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109760470/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.1.2",
+          "product_ids": [
+            "CSAFPID-0008",
+            "CSAFPID-00012"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109753720/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.10.2",
+          "product_ids": [
+            "CSAFPID-0009"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747276/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.2.2",
+          "product_ids": [
+            "CSAFPID-00010"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109752018/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.4.0",
+          "product_ids": [
+            "CSAFPID-00011"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109755950/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.2 or later version",
+          "product_ids": [
+            "CSAFPID-00013"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109761424/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.2 or later version",
+          "product_ids": [
+            "CSAFPID-00014"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109761425/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.0",
+          "product_ids": [
+            "CSAFPID-00015"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109744924/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.0.15",
+          "product_ids": [
+            "CSAFPID-00016",
+            "CSAFPID-00027",
+            "CSAFPID-00029"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749255/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.1.3",
+          "product_ids": [
+            "CSAFPID-00017",
+            "CSAFPID-00019"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109756088/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.2.17",
+          "product_ids": [
+            "CSAFPID-00020"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109745387/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.2.17",
+          "product_ids": [
+            "CSAFPID-00021"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109745388/"
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Currently no remediation is planned",
+          "product_ids": [
+            "CSAFPID-00022",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.1",
+          "product_ids": [
+            "CSAFPID-00023",
+            "CSAFPID-00026"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109757489/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.1",
+          "product_ids": [
+            "CSAFPID-00028"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747253/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.8.0",
+          "product_ids": [
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109762689/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.0.2",
+          "product_ids": [
+            "CSAFPID-00033"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109479281/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.0.1 or newer",
+          "product_ids": [
+            "CSAFPID-00048"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109754281/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.2",
+          "product_ids": [
+            "CSAFPID-00049"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/93012181/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.1",
+          "product_ids": [
+            "CSAFPID-00050"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/78647504/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.2.0",
+          "product_ids": [
+            "CSAFPID-00054"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/85624387/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.0.1",
+          "product_ids": [
+            "CSAFPID-00055"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109795369/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.1.0",
+          "product_ids": [
+            "CSAFPID-00056"
+          ],
+          "url": "https://support.industry.siemens.com/cs/de/de/view/78648144/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V15.1",
+          "product_ids": [
+            "CSAFPID-00057"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109761576/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V7.0.6",
+          "product_ids": [
+            "CSAFPID-00058"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109793481/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Upgrade to V4.0",
+          "product_ids": [
+            "CSAFPID-00059"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749637/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.0",
+          "product_ids": [
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109743740/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Contact your local Siemens representative or the Siemens customer support at https://w3.siemens.com/aspa_app/ to receive firmware version 2.3. Update to V2.3",
+          "product_ids": [
+            "CSAFPID-00063"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.X.14",
+          "product_ids": [
+            "CSAFPID-00064"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/13752/dl"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.0.7",
+          "product_ids": [
+            "CSAFPID-00065"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474550/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.0.6",
+          "product_ids": [
+            "CSAFPID-00066"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474874/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V7.0.2",
+          "product_ids": [
+            "CSAFPID-00067"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109752685/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V8.2",
+          "product_ids": [
+            "CSAFPID-00068"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109476571/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.2.1",
+          "product_ids": [
+            "CSAFPID-00069"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109741461/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.1",
+          "product_ids": [
+            "CSAFPID-00070"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109478459/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.1",
+          "product_ids": [
+            "CSAFPID-00071"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109478528/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.1.8",
+          "product_ids": [
+            "CSAFPID-00072"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/27049282/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.1.1",
+          "product_ids": [
+            "CSAFPID-00073"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109740119/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to SIMATIC WinAC RTX 2010 SP3 and apply BIOS and Microsoft Windows updates",
+          "product_ids": [
+            "CSAFPID-00077"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109765109/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.0.0",
+          "product_ids": [
+            "CSAFPID-00078"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749989/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.5 HF1",
+          "product_ids": [
+            "CSAFPID-00079"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109742328/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.4 SP1 HF5",
+          "product_ids": [
+            "CSAFPID-00080"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/44029688/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.2 HF1",
+          "product_ids": [
+            "CSAFPID-00081"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474935/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.7 SP6 HF3",
+          "product_ids": [
+            "CSAFPID-00082",
+            "CSAFPID-00083"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109482659/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.7 HF27",
+          "product_ids": [
+            "CSAFPID-00084",
+            "CSAFPID-00086",
+            "CSAFPID-00093"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/103433117/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.8 HF4",
+          "product_ids": [
+            "CSAFPID-00085",
+            "CSAFPID-00087",
+            "CSAFPID-00094"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109742040/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update V4.4 SP3 HF5",
+          "product_ids": [
+            "CSAFPID-00088"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474320/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to latest version of V5.1 SP1",
+          "product_ids": [
+            "CSAFPID-00089",
+            "CSAFPID-00090"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109758423/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.7 HF27",
+          "product_ids": [
+            "CSAFPID-00091"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/92522512/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.8 HF4",
+          "product_ids": [
+            "CSAFPID-00092"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109740193/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.01",
+          "product_ids": [
+            "CSAFPID-00095"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109746210/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.5 SP6 HF2",
+          "product_ids": [
+            "CSAFPID-00096",
+            "CSAFPID-00098"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.7 SP4 HF1.",
+          "product_ids": [
+            "CSAFPID-00097"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.7 SP4 HF1",
+          "product_ids": [
+            "CSAFPID-00099"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.1.0",
+          "product_ids": [
+            "CSAFPID-000100"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109753683/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.2.0",
+          "product_ids": [
+            "CSAFPID-000103"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/102295547/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.2.0",
+          "product_ids": [
+            "CSAFPID-000104"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/79207181/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Upgrade to V14 SP1",
+          "product_ids": [
+            "CSAFPID-000105"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747482/"
+        },
+        {
+          "category": "mitigation",
+          "details": "Apply cell protection concept: https://www.siemens.com/cert/operational-guidelines-industrial-security.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use VPN for protecting network communication between cells.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Apply Defense-in-Depth: https://www.siemens.com/cert/operational-guidelines-industrial-security.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For SIMATIC Teleservice Adapters (IE Basic, IE Standard, IE Advanced): migrate to a successor product within the SCALANCE M-800 family. For details refer to the notice of discontinuation.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for Industrial Security (Download: https://www.siemens.com/cert/operational-guidelines-industrial-security), and to follow the recommendations in the product manuals.\n\nAdditional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105"
+          ]
+        }
+      ],
+      "title": "CVE-2017-2680"
+    },
+    {
+      "cve": "CVE-2017-2681",
+      "cwe": {
+        "id": "CWE-400",
+        "name": "Uncontrolled Resource Consumption"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Specially crafted PROFINET DCP packets sent on a local Ethernet segment (Layer 2) to an affected product could cause a denial of service condition of that product. Human interaction is required to recover the system. PROFIBUS interfaces are not affected. This vulnerability affects only SIMATIC HMI Multi Panels and HMI Mobile Panels, and S7-300/S7-400 devices.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-00010",
+          "CSAFPID-00011",
+          "CSAFPID-00012",
+          "CSAFPID-00013",
+          "CSAFPID-00014",
+          "CSAFPID-00015",
+          "CSAFPID-00016",
+          "CSAFPID-00017",
+          "CSAFPID-00018",
+          "CSAFPID-00019",
+          "CSAFPID-00020",
+          "CSAFPID-00021",
+          "CSAFPID-00022",
+          "CSAFPID-00023",
+          "CSAFPID-00024",
+          "CSAFPID-00025",
+          "CSAFPID-00026",
+          "CSAFPID-00027",
+          "CSAFPID-00028",
+          "CSAFPID-00029",
+          "CSAFPID-00030",
+          "CSAFPID-00031",
+          "CSAFPID-00032",
+          "CSAFPID-00033",
+          "CSAFPID-00034",
+          "CSAFPID-00035",
+          "CSAFPID-00036",
+          "CSAFPID-00037",
+          "CSAFPID-00038",
+          "CSAFPID-00039",
+          "CSAFPID-00040",
+          "CSAFPID-00041",
+          "CSAFPID-00042",
+          "CSAFPID-00043",
+          "CSAFPID-00044",
+          "CSAFPID-00045",
+          "CSAFPID-00046",
+          "CSAFPID-00047",
+          "CSAFPID-00048",
+          "CSAFPID-00049",
+          "CSAFPID-00050",
+          "CSAFPID-00051",
+          "CSAFPID-00052",
+          "CSAFPID-00053",
+          "CSAFPID-00054",
+          "CSAFPID-00055",
+          "CSAFPID-00056",
+          "CSAFPID-00057",
+          "CSAFPID-00058",
+          "CSAFPID-00059",
+          "CSAFPID-00060",
+          "CSAFPID-00061",
+          "CSAFPID-00062",
+          "CSAFPID-00063",
+          "CSAFPID-00064",
+          "CSAFPID-00065",
+          "CSAFPID-00066",
+          "CSAFPID-00067",
+          "CSAFPID-00068",
+          "CSAFPID-00069",
+          "CSAFPID-00070",
+          "CSAFPID-00071",
+          "CSAFPID-00072",
+          "CSAFPID-00073",
+          "CSAFPID-00074",
+          "CSAFPID-00075",
+          "CSAFPID-00076",
+          "CSAFPID-00077",
+          "CSAFPID-00078",
+          "CSAFPID-00079",
+          "CSAFPID-00080",
+          "CSAFPID-00081",
+          "CSAFPID-00082",
+          "CSAFPID-00083",
+          "CSAFPID-00084",
+          "CSAFPID-00085",
+          "CSAFPID-00086",
+          "CSAFPID-00087",
+          "CSAFPID-00088",
+          "CSAFPID-00089",
+          "CSAFPID-00090",
+          "CSAFPID-00091",
+          "CSAFPID-00092",
+          "CSAFPID-00093",
+          "CSAFPID-00094",
+          "CSAFPID-00095",
+          "CSAFPID-00096",
+          "CSAFPID-00097",
+          "CSAFPID-00098",
+          "CSAFPID-00099",
+          "CSAFPID-000100",
+          "CSAFPID-000101",
+          "CSAFPID-000102",
+          "CSAFPID-000103",
+          "CSAFPID-000104",
+          "CSAFPID-000105"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2017-2681 - Development/Evaluation Kits for PROFINET IO: DK Standard Ethernet Controller",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109755160/"
+        },
+        {
+          "summary": "CVE-2017-2681 - Development/Evaluation Kits for PROFINET IO: EK-ERTEC 200",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109755151/"
+        },
+        {
+          "summary": "CVE-2017-2681 - Development/Evaluation Kits for PROFINET IO: EK-ERTEC 200P",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109750012/"
+        },
+        {
+          "summary": "CVE-2017-2681 - IE/PB-Link (incl. SIPLUS NET variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109744504/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SCALANCE M-800 / S615",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109757544/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SCALANCE W700",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109760470/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SCALANCE X408",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109753720/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SCALANCE X414",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747276/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SCALANCE X-200 switch family (incl. SIPLUS NET variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109752018/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SCALANCE X-200IRT switch family (incl. SIPLUS NET variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109755950/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SCALANCE X-300 switch family (incl. SIPLUS NET variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109753720/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SCALANCE XM-400 Family",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109761424/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SCALANCE XR-500 Family",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109761425/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC CM 1542-1",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109744924/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC CM 1542SP-1",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749255/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC CP 343-1 (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109756088/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC CP 343-1 Lean (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109756088/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC CP 443-1 (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109745387/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC CP 443-1 Advanced (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109745388/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC CP 1243-1 (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109757489/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC CP 1243-1 IRC (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109757489/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC CP 1542SP-1 IRC (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749255/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC CP 1543-1 (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747253/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC CP 1543SP-1 (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749255/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC CP 1604",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109762689/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC CP 1616",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109762689/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC DK-16xx PN IO",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109762689/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC ET200AL",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109479281/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC ET200MP IM155-5 PN BA (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109754281/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC ET200MP IM155-5 PN HF (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/93012181/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC ET200MP IM155-5 PN ST (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/78647504/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC ET200SP IM155-6 PN HF (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/85624387/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC ET200SP IM155-6 PN HS (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109795369/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC ET200SP IM155-6 PN ST (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/de/de/view/78648144/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC HMI Comfort Panels, HMI Multi Panels, HMI Mobile Panels (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109761576/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC MV400 family",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109793481/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC PN/PN Coupler (incl. SIPLUS NET variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749637/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC RF650R",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109743740/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC RF680R",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109743740/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC RF685R",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109743740/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC S7-300 CPU family (incl. related ET200 CPUs and SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/13752/dl"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC S7-400 H V6 CPU family (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474550/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC S7-400 PN/DP V6 CPU family (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474874/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC S7-400 PN/DP V7 CPU family (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109752685/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC S7-410 CPU family (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109476571/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC S7-1200 CPU family (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109741461/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC S7-1500 CPU family (incl. related ET200 CPUs and SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109478459/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC S7-1500 Software Controller (incl. F)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109478528/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC TDC CP51M1",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/27049282/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC TDC CPU555",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109740119/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMATIC WinAC RTX (F) 2010",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109765109/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMOCODE pro V PN (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749989/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIMOTION (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109742328/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS DCM w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/44029688/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS DCP w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474935/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS G110M w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109482659/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS G120(C/P/D) w. PN (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109482659/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS G130 V4.7 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/103433117/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS G130 V4.8 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109742040/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS G150 V4.7 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/103433117/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS G150 V4.8 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109742040/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS S110 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474320/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS S120 prior to V4.7 w. PN (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109758423/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS S120 V4.7 SP1 w. PN (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109758423/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS S120 V4.7 w. PN (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/92522512/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS S120 V4.8 w. PN (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109740193/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS S150 V4.7 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/103433117/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS S150 V4.8 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109742040/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SINAMICS V90 w. PN",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109746210/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SIRIUS ACT 3SU1 interface module PROFINET",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109753683/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SITOP PSU8600 PROFINET",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/102295547/"
+        },
+        {
+          "summary": "CVE-2017-2681 - SITOP UPS1600 PROFINET (incl. SIPLUS variants)",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/79207181/"
+        },
+        {
+          "summary": "CVE-2017-2681 - Softnet PROFINET IO for PC-based Windows systems",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747482/"
+        },
+        {
+          "summary": "CVE-2017-2681 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2017-2681.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.1.1 Patch04 or newer",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109755160/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.2.1 Patch03 or newer",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109755151/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.4.0 Patch01 or newer",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109750012/"
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no remediation is available",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-00018",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-000101",
+            "CSAFPID-000102"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Upgrade to V3.0",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109744504/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.00",
+          "product_ids": [
+            "CSAFPID-0006"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109757544/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.3.1",
+          "product_ids": [
+            "CSAFPID-0007"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109760470/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.1.2",
+          "product_ids": [
+            "CSAFPID-0008",
+            "CSAFPID-00012"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109753720/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.10.2",
+          "product_ids": [
+            "CSAFPID-0009"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747276/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.2.2",
+          "product_ids": [
+            "CSAFPID-00010"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109752018/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.4.0",
+          "product_ids": [
+            "CSAFPID-00011"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109755950/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.2 or later version",
+          "product_ids": [
+            "CSAFPID-00013"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109761424/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.2 or later version",
+          "product_ids": [
+            "CSAFPID-00014"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109761425/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.0",
+          "product_ids": [
+            "CSAFPID-00015"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109744924/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.0.15",
+          "product_ids": [
+            "CSAFPID-00016",
+            "CSAFPID-00027",
+            "CSAFPID-00029"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749255/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.1.3",
+          "product_ids": [
+            "CSAFPID-00017",
+            "CSAFPID-00019"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109756088/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.2.17",
+          "product_ids": [
+            "CSAFPID-00020"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109745387/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.2.17",
+          "product_ids": [
+            "CSAFPID-00021"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109745388/"
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Currently no remediation is planned",
+          "product_ids": [
+            "CSAFPID-00022",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.1",
+          "product_ids": [
+            "CSAFPID-00023",
+            "CSAFPID-00026"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109757489/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.1",
+          "product_ids": [
+            "CSAFPID-00028"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747253/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.8.0",
+          "product_ids": [
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109762689/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.0.2",
+          "product_ids": [
+            "CSAFPID-00033"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109479281/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.0.1 or newer",
+          "product_ids": [
+            "CSAFPID-00048"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109754281/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.2",
+          "product_ids": [
+            "CSAFPID-00049"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/93012181/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.1",
+          "product_ids": [
+            "CSAFPID-00050"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/78647504/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.2.0",
+          "product_ids": [
+            "CSAFPID-00054"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/85624387/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.0.1",
+          "product_ids": [
+            "CSAFPID-00055"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109795369/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.1.0",
+          "product_ids": [
+            "CSAFPID-00056"
+          ],
+          "url": "https://support.industry.siemens.com/cs/de/de/view/78648144/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V15.1",
+          "product_ids": [
+            "CSAFPID-00057"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109761576/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V7.0.6",
+          "product_ids": [
+            "CSAFPID-00058"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109793481/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Upgrade to V4.0",
+          "product_ids": [
+            "CSAFPID-00059"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749637/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.0",
+          "product_ids": [
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109743740/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Contact your local Siemens representative or the Siemens customer support at https://w3.siemens.com/aspa_app/ to receive firmware version 2.3. Update to V2.3",
+          "product_ids": [
+            "CSAFPID-00063"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.X.14",
+          "product_ids": [
+            "CSAFPID-00064"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/ps/13752/dl"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.0.7",
+          "product_ids": [
+            "CSAFPID-00065"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474550/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.0.6",
+          "product_ids": [
+            "CSAFPID-00066"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474874/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V7.0.2",
+          "product_ids": [
+            "CSAFPID-00067"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109752685/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V8.2",
+          "product_ids": [
+            "CSAFPID-00068"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109476571/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.2.1",
+          "product_ids": [
+            "CSAFPID-00069"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109741461/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.1",
+          "product_ids": [
+            "CSAFPID-00070"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109478459/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.1",
+          "product_ids": [
+            "CSAFPID-00071"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109478528/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.1.8",
+          "product_ids": [
+            "CSAFPID-00072"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/27049282/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.1.1",
+          "product_ids": [
+            "CSAFPID-00073"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109740119/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to SIMATIC WinAC RTX 2010 SP3 and apply BIOS and Microsoft Windows updates",
+          "product_ids": [
+            "CSAFPID-00077"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109765109/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.0.0",
+          "product_ids": [
+            "CSAFPID-00078"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109749989/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.5 HF1",
+          "product_ids": [
+            "CSAFPID-00079"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109742328/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.4 SP1 HF5",
+          "product_ids": [
+            "CSAFPID-00080"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/44029688/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.2 HF1",
+          "product_ids": [
+            "CSAFPID-00081"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474935/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.7 SP6 HF3",
+          "product_ids": [
+            "CSAFPID-00082",
+            "CSAFPID-00083"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109482659/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.7 HF27",
+          "product_ids": [
+            "CSAFPID-00084",
+            "CSAFPID-00086",
+            "CSAFPID-00093"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/103433117/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.8 HF4",
+          "product_ids": [
+            "CSAFPID-00085",
+            "CSAFPID-00087",
+            "CSAFPID-00094"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109742040/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update V4.4 SP3 HF5",
+          "product_ids": [
+            "CSAFPID-00088"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109474320/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to latest version of V5.1 SP1",
+          "product_ids": [
+            "CSAFPID-00089",
+            "CSAFPID-00090"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109758423/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.7 HF27",
+          "product_ids": [
+            "CSAFPID-00091"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/92522512/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.8 HF4",
+          "product_ids": [
+            "CSAFPID-00092"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109740193/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.01",
+          "product_ids": [
+            "CSAFPID-00095"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109746210/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.5 SP6 HF2",
+          "product_ids": [
+            "CSAFPID-00096",
+            "CSAFPID-00098"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.7 SP4 HF1.",
+          "product_ids": [
+            "CSAFPID-00097"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.7 SP4 HF1",
+          "product_ids": [
+            "CSAFPID-00099"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.1.0",
+          "product_ids": [
+            "CSAFPID-000100"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109753683/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.2.0",
+          "product_ids": [
+            "CSAFPID-000103"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/102295547/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.2.0",
+          "product_ids": [
+            "CSAFPID-000104"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/79207181/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Upgrade to V14 SP1",
+          "product_ids": [
+            "CSAFPID-000105"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109747482/"
+        },
+        {
+          "category": "mitigation",
+          "details": "Apply cell protection concept: https://www.siemens.com/cert/operational-guidelines-industrial-security.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use VPN for protecting network communication between cells.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Apply Defense-in-Depth: https://www.siemens.com/cert/operational-guidelines-industrial-security.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For SIMATIC Teleservice Adapters (IE Basic, IE Standard, IE Advanced): migrate to a successor product within the SCALANCE M-800 family. For details refer to the notice of discontinuation.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for Industrial Security (Download: https://www.siemens.com/cert/operational-guidelines-industrial-security), and to follow the recommendations in the product manuals.\n\nAdditional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105"
+          ]
+        }
+      ],
+      "title": "CVE-2017-2681"
+    }
+  ]
+}

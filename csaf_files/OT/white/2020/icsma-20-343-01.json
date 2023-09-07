@@ -1,0 +1,2596 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "summary": "Lior Bar Yosef and Elad Luz of CyberMDX reported these vulnerabilities to GE Healthcare."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "This CSAF advisory was extracted from unstructured data and may contain inaccuracies. If you notice any errors, please reach out to the designated contact at CISA CSAF: central@cisa.dhs.gov",
+        "title": "CISA Disclaimer"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of these vulnerabilities could occur if an attacker gains access to the healthcare delivery organization 's (HDO) network. If exploited, these vulnerabilities could allow an attacker to gain access to affected devices in a way that is comparable with GE (remote) service user privileges. A successful exploitation could expose sensitive data such as a limited set of patient health information (PHI) or could allow the attacker to run arbitrary code, which might impact the availability of the system and allow manipulation of PHI.",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Healthcare and Public Health",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "United States",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.\nCISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.\nOrganizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "No known public exploits specifically target these vulnerabilities.",
+        "title": "Exploitability"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "Email: CISAservicedesk@cisa.dhs.gov;\n Toll Free: 1-888-282-0870",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSMA-20-343-01 JSON",
+        "url": "https://www.github.com/cisagov/CSAF/csaf_files/OT/white/2020/icsma-20-343-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSMA-20-343-01 Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-20-343-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "GE Healthcare Imaging and Ultrasound Products",
+    "tracking": {
+      "current_release_date": "2022-10-10T21:50:26.692849Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSMA-20-343-01",
+      "initial_release_date": "2020-12-08T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2022-10-10T21:50:26.692849Z",
+          "legacy_version": "Update A",
+          "number": "1",
+          "summary": "Publication Date"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "HD 16 | HD23",
+                "product": {
+                  "name": "3.0T Signa Hdxt: HD 16 | HD23",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "3.0T Signa Hdxt"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "HD 16 | HD23",
+                "product": {
+                  "name": "3.0T Signa HDXx: HD 16 | HD23",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "3.0T Signa HDXx"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "SV20.1 | SV23.0",
+                "product": {
+                  "name": "1.5T Brivo MR355: SV20.1 | SV23.0",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "1.5T Brivo MR355"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "SV20.1 | SV23.0",
+                "product": {
+                  "name": "Optima MR360: SV20.1 | SV23.0",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima MR360"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "HD 16 | HD23",
+                "product": {
+                  "name": "1.5T Signa Hdx: HD 16 | HD23",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "1.5T Signa Hdx"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "HD 16 | HD23",
+                "product": {
+                  "name": "1.5T Signa Hdx: HD 16 | HD23",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "1.5T Signa Hdx"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "HD 16 | HD23",
+                "product": {
+                  "name": "Signa Hdi: HD 16 | HD23",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Signa Hdi"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "HD 16 | HD23",
+                "product": {
+                  "name": "Signa VIBRANT: HD 16 | HD23",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Signa VIBRANT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "BT03",
+                "product": {
+                  "name": "LOGIQ 5: BT03",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LOGIQ 5"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "BT03 | BT04 | BT06",
+                "product": {
+                  "name": "LOGIQ 7: BT03 | BT04 | BT06",
+                  "product_id": "CSAFPID-00010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LOGIQ 7"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "BT02 | BT03 | BT04 | BT06",
+                "product": {
+                  "name": "LOGIQ 9: BT02 | BT03 | BT04 | BT06",
+                  "product_id": "CSAFPID-00011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LOGIQ 9"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "BT06",
+                "product": {
+                  "name": "Vivid I: BT06",
+                  "product_id": "CSAFPID-00012"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Vivid I"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">=BT02 | <= BT06",
+                "product": {
+                  "name": "Vivid 7: >=BT02 | <= BT06",
+                  "product_id": "CSAFPID-00013"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Vivid 7"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "BT06",
+                "product": {
+                  "name": "EchoPAC (Turnkey): BT06",
+                  "product_id": "CSAFPID-00014"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EchoPAC (Turnkey)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "4.3",
+                "product": {
+                  "name": "Image Vault (Turnkey): 4.3",
+                  "product_id": "CSAFPID-00015"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Image Vault (Turnkey)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "BT05 | BT08",
+                "product": {
+                  "name": "Voluson 730: BT05 | BT08",
+                  "product_id": "CSAFPID-00016"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Voluson 730"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">= 4.0 | <= 4.6",
+                "product": {
+                  "name": "AW: >= 4.0 | <= 4.6",
+                  "product_id": "CSAFPID-00017"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "AW"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">= 2.0 | <= 3.0",
+                "product": {
+                  "name": "AWS: >= 2.0 | <= 3.0",
+                  "product_id": "CSAFPID-00018"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "AWS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Innova 2000: *",
+                  "product_id": "CSAFPID-00019"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Innova 2000"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Innova 3100: *",
+                  "product_id": "CSAFPID-00020"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Innova 3100"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Innova 4100: *",
+                  "product_id": "CSAFPID-00021"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Innova 4100"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Innova 2100-IQ: *",
+                  "product_id": "CSAFPID-00022"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Innova 2100-IQ"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Innova 3100-IQ: *",
+                  "product_id": "CSAFPID-00023"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Innova 3100-IQ"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Innova 4100-IQ: *",
+                  "product_id": "CSAFPID-00024"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Innova 4100-IQ"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Innova 212-IQ: *",
+                  "product_id": "CSAFPID-00025"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Innova 212-IQ"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Innova 313-IQ: *",
+                  "product_id": "CSAFPID-00026"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Innova 313-IQ"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima 320: *",
+                  "product_id": "CSAFPID-00027"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima 320"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima CL320i: *",
+                  "product_id": "CSAFPID-00028"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima CL320i"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima CL323i: *",
+                  "product_id": "CSAFPID-00029"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima CL323i"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima CL320: *",
+                  "product_id": "CSAFPID-00030"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima CL320"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima 3100: *",
+                  "product_id": "CSAFPID-00031"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima 3100"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima IGS 320: *",
+                  "product_id": "CSAFPID-00032"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima IGS 320"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima IGS 330: *",
+                  "product_id": "CSAFPID-00033"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima IGS 330"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Innova IGS 5x0: *",
+                  "product_id": "CSAFPID-00034"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Innova IGS 5x0"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Innova IGS 6x0: *",
+                  "product_id": "CSAFPID-00035"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Innova IGS 6x0"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Innova IGS 7x0: *",
+                  "product_id": "CSAFPID-00036"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Innova IGS 7x0"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Brivo XR118: *",
+                  "product_id": "CSAFPID-00037"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Brivo XR118"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Brivo XR383: *",
+                  "product_id": "CSAFPID-00038"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Brivo XR383"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Brivo XR515: *",
+                  "product_id": "CSAFPID-00039"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Brivo XR515"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Brivo XR575: *",
+                  "product_id": "CSAFPID-00040"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Brivo XR575"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Definium 5000: *",
+                  "product_id": "CSAFPID-00041"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Definium 5000"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Definium 6000: *",
+                  "product_id": "CSAFPID-00042"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Definium 6000"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Definium 8000: *",
+                  "product_id": "CSAFPID-00043"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Definium 8000"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "AMX 700: *",
+                  "product_id": "CSAFPID-00044"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "AMX 700"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery Xr650: *",
+                  "product_id": "CSAFPID-00045"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery Xr650"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery XR656: *",
+                  "product_id": "CSAFPID-00046"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery XR656"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery XR656+: *",
+                  "product_id": "CSAFPID-00047"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery XR656+"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima XR640: *",
+                  "product_id": "CSAFPID-00048"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima XR640"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima XR646: *",
+                  "product_id": "CSAFPID-00049"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima XR646"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima XR220amx: *",
+                  "product_id": "CSAFPID-00050"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima XR220amx"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima XR200amx: *",
+                  "product_id": "CSAFPID-00051"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima XR200amx"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Precision 500D: *",
+                  "product_id": "CSAFPID-00052"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Precision 500D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Precision WDR1: *",
+                  "product_id": "CSAFPID-00053"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Precision WDR1"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Seno 200D: *",
+                  "product_id": "CSAFPID-00054"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Seno 200D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Seno DS: *",
+                  "product_id": "CSAFPID-00055"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Seno DS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Essential: *",
+                  "product_id": "CSAFPID-00056"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Essential"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Senographe Pristina: *",
+                  "product_id": "CSAFPID-00057"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Senographe Pristina"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "BrightSpeed Elite: *",
+                  "product_id": "CSAFPID-00058"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "BrightSpeed Elite"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "BrightSpeed Elite Select: *",
+                  "product_id": "CSAFPID-00059"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "BrightSpeed Elite Select"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "BrightSpeed Edge: *",
+                  "product_id": "CSAFPID-00060"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "BrightSpeed Edge"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "BrightSpeed Edge Select: *",
+                  "product_id": "CSAFPID-00061"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "BrightSpeed Edge Select"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Brivo CT385: *",
+                  "product_id": "CSAFPID-00062"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Brivo CT385"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery CT590RT: *",
+                  "product_id": "CSAFPID-00063"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery CT590RT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery CT750HD: *",
+                  "product_id": "CSAFPID-00064"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery CT750HD"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "LightSpeed VCT: *",
+                  "product_id": "CSAFPID-00065"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LightSpeed VCT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "LightSpeed Pro16: *",
+                  "product_id": "CSAFPID-00066"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LightSpeed Pro16"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "LightSpeed RT16: *",
+                  "product_id": "CSAFPID-00067"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LightSpeed RT16"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima Advance: *",
+                  "product_id": "CSAFPID-00068"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima Advance"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima CT520: *",
+                  "product_id": "CSAFPID-00069"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima CT520"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima CT540: *",
+                  "product_id": "CSAFPID-00070"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima CT540"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima CT660: *",
+                  "product_id": "CSAFPID-00071"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima CT660"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima CT580: *",
+                  "product_id": "CSAFPID-00072"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima CT580"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima CT580RT: *",
+                  "product_id": "CSAFPID-00073"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima CT580RT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima CT580W: *",
+                  "product_id": "CSAFPID-00074"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima CT580W"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima CT670: *",
+                  "product_id": "CSAFPID-00075"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima CT670"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima CT680 Quantum: *",
+                  "product_id": "CSAFPID-00076"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima CT680 Quantum"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima CT680 Expert: *",
+                  "product_id": "CSAFPID-00077"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima CT680 Expert"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima CT680 Professional: *",
+                  "product_id": "CSAFPID-00078"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima CT680 Professional"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Revolution EVO: *",
+                  "product_id": "CSAFPID-00079"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Revolution EVO"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Revolution HD: *",
+                  "product_id": "CSAFPID-00080"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Revolution HD"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Revolution HACT: *",
+                  "product_id": "CSAFPID-00081"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Revolution HACT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Revolution ACTs: *",
+                  "product_id": "CSAFPID-00082"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Revolution ACTs"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Revolution CT: *",
+                  "product_id": "CSAFPID-00083"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Revolution CT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Revolution Discover CT: *",
+                  "product_id": "CSAFPID-00084"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Revolution Discover CT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Revolution Frontier: *",
+                  "product_id": "CSAFPID-00085"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Revolution Frontier"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Revolution Frontier ES: *",
+                  "product_id": "CSAFPID-00086"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Revolution Frontier ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Brivio NM 615: *",
+                  "product_id": "CSAFPID-00087"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Brivio NM 615"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery NM 630: *",
+                  "product_id": "CSAFPID-00088"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery NM 630"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery NM 750b: *",
+                  "product_id": "CSAFPID-00089"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery NM 750b"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery NM D530c: *",
+                  "product_id": "CSAFPID-00090"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery NM D530c"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery NM/CT D570c: *",
+                  "product_id": "CSAFPID-00091"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery NM/CT D570c"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery NM/CT 670: *",
+                  "product_id": "CSAFPID-00092"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery NM/CT 670"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Infinia: *",
+                  "product_id": "CSAFPID-00093"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Infinia"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery NM830: *",
+                  "product_id": "CSAFPID-00094"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery NM830"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery NM/CT 860: *",
+                  "product_id": "CSAFPID-00095"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery NM/CT 860"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery NM/CT 850: *",
+                  "product_id": "CSAFPID-00096"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery NM/CT 850"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery NM/CT 870: *",
+                  "product_id": "CSAFPID-00097"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery NM/CT 870"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery MI MI DR: *",
+                  "product_id": "CSAFPID-00098"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery MI MI DR"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Discovery IQ: *",
+                  "product_id": "CSAFPID-00099"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Discovery IQ"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Optima NM/CT640: *",
+                  "product_id": "CSAFPID-000100"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Optima NM/CT640"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Ventri: *",
+                  "product_id": "CSAFPID-000101"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Ventri"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Xeleris: *",
+                  "product_id": "CSAFPID-000102"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Xeleris"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "PET Discovery IQ: *",
+                  "product_id": "CSAFPID-000103"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PET Discovery IQ"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "PET Discovery IQ upgrade: *",
+                  "product_id": "CSAFPID-000104"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PET Discovery IQ upgrade"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "PETrace 800: *",
+                  "product_id": "CSAFPID-000105"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PETrace 800"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "GE Imaging and Ultrasound Products: *",
+                  "product_id": "CSAFPID-000106"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "GE Imaging and Ultrasound Products"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "*",
+                "product": {
+                  "name": "Alaris PC Unit: *",
+                  "product_id": "CSAFPID-000107"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Alaris PC Unit"
+          }
+        ],
+        "category": "vendor",
+        "name": "GE Healthcare"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2020-25175",
+      "cwe": {
+        "id": "CWE-523",
+        "name": "Unprotected Transport of Credentials"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The affected products may allow specific credentials to be exposed during transport over the network.CVE-2020-25175 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-00010",
+          "CSAFPID-00011",
+          "CSAFPID-00012",
+          "CSAFPID-00013",
+          "CSAFPID-00014",
+          "CSAFPID-00015",
+          "CSAFPID-00016",
+          "CSAFPID-00017",
+          "CSAFPID-00018",
+          "CSAFPID-00019",
+          "CSAFPID-00020",
+          "CSAFPID-00021",
+          "CSAFPID-00022",
+          "CSAFPID-00023",
+          "CSAFPID-00024",
+          "CSAFPID-00025",
+          "CSAFPID-00026",
+          "CSAFPID-00027",
+          "CSAFPID-00028",
+          "CSAFPID-00029",
+          "CSAFPID-00030",
+          "CSAFPID-00031",
+          "CSAFPID-00032",
+          "CSAFPID-00033",
+          "CSAFPID-00034",
+          "CSAFPID-00035",
+          "CSAFPID-00036",
+          "CSAFPID-00037",
+          "CSAFPID-00038",
+          "CSAFPID-00039",
+          "CSAFPID-00040",
+          "CSAFPID-00041",
+          "CSAFPID-00042",
+          "CSAFPID-00043",
+          "CSAFPID-00044",
+          "CSAFPID-00045",
+          "CSAFPID-00046",
+          "CSAFPID-00047",
+          "CSAFPID-00048",
+          "CSAFPID-00049",
+          "CSAFPID-00050",
+          "CSAFPID-00051",
+          "CSAFPID-00052",
+          "CSAFPID-00053",
+          "CSAFPID-00054",
+          "CSAFPID-00055",
+          "CSAFPID-00056",
+          "CSAFPID-00057",
+          "CSAFPID-00058",
+          "CSAFPID-00059",
+          "CSAFPID-00060",
+          "CSAFPID-00061",
+          "CSAFPID-00062",
+          "CSAFPID-00063",
+          "CSAFPID-00064",
+          "CSAFPID-00065",
+          "CSAFPID-00066",
+          "CSAFPID-00067",
+          "CSAFPID-00068",
+          "CSAFPID-00069",
+          "CSAFPID-00070",
+          "CSAFPID-00071",
+          "CSAFPID-00072",
+          "CSAFPID-00073",
+          "CSAFPID-00074",
+          "CSAFPID-00075",
+          "CSAFPID-00076",
+          "CSAFPID-00077",
+          "CSAFPID-00078",
+          "CSAFPID-00079",
+          "CSAFPID-00080",
+          "CSAFPID-00081",
+          "CSAFPID-00082",
+          "CSAFPID-00083",
+          "CSAFPID-00084",
+          "CSAFPID-00085",
+          "CSAFPID-00086",
+          "CSAFPID-00087",
+          "CSAFPID-00088",
+          "CSAFPID-00089",
+          "CSAFPID-00090",
+          "CSAFPID-00091",
+          "CSAFPID-00092",
+          "CSAFPID-00093",
+          "CSAFPID-00094",
+          "CSAFPID-00095",
+          "CSAFPID-00096",
+          "CSAFPID-00097",
+          "CSAFPID-00098",
+          "CSAFPID-00099",
+          "CSAFPID-000100",
+          "CSAFPID-000101",
+          "CSAFPID-000102",
+          "CSAFPID-000103",
+          "CSAFPID-000104",
+          "CSAFPID-000105",
+          "CSAFPID-000106",
+          "CSAFPID-000107"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-25175"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "GE has identified mitigations for specific products and releases and will take proactive measures to ensure proper configuration of the product firewall protection and change default passwords on impacted devices where possible. GE recommends users refer to the GE Healthcare Product Security Portal for more details on mitigations and how proactive actions may apply to affected devices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105",
+            "CSAFPID-000106",
+            "CSAFPID-000107"
+          ],
+          "url": "https://www.gehealthcare.com/en-US/security"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "In addition to the product specific recommendations, GE recommends utilizing clinical network security best practices. Suggested clinical best practices include:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105",
+            "CSAFPID-000106",
+            "CSAFPID-000107"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105",
+            "CSAFPID-000106",
+            "CSAFPID-000107"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-25179",
+      "cwe": {
+        "id": "CWE-497",
+        "name": "Exposure of Sensitive System Information to an Unauthorized Control Sphere"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The affected products may allow exposed/default credentials to be utilized to access or modify sensitive information.CVE-2020-25179 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-00010",
+          "CSAFPID-00011",
+          "CSAFPID-00012",
+          "CSAFPID-00013",
+          "CSAFPID-00014",
+          "CSAFPID-00015",
+          "CSAFPID-00016",
+          "CSAFPID-00017",
+          "CSAFPID-00018",
+          "CSAFPID-00019",
+          "CSAFPID-00020",
+          "CSAFPID-00021",
+          "CSAFPID-00022",
+          "CSAFPID-00023",
+          "CSAFPID-00024",
+          "CSAFPID-00025",
+          "CSAFPID-00026",
+          "CSAFPID-00027",
+          "CSAFPID-00028",
+          "CSAFPID-00029",
+          "CSAFPID-00030",
+          "CSAFPID-00031",
+          "CSAFPID-00032",
+          "CSAFPID-00033",
+          "CSAFPID-00034",
+          "CSAFPID-00035",
+          "CSAFPID-00036",
+          "CSAFPID-00037",
+          "CSAFPID-00038",
+          "CSAFPID-00039",
+          "CSAFPID-00040",
+          "CSAFPID-00041",
+          "CSAFPID-00042",
+          "CSAFPID-00043",
+          "CSAFPID-00044",
+          "CSAFPID-00045",
+          "CSAFPID-00046",
+          "CSAFPID-00047",
+          "CSAFPID-00048",
+          "CSAFPID-00049",
+          "CSAFPID-00050",
+          "CSAFPID-00051",
+          "CSAFPID-00052",
+          "CSAFPID-00053",
+          "CSAFPID-00054",
+          "CSAFPID-00055",
+          "CSAFPID-00056",
+          "CSAFPID-00057",
+          "CSAFPID-00058",
+          "CSAFPID-00059",
+          "CSAFPID-00060",
+          "CSAFPID-00061",
+          "CSAFPID-00062",
+          "CSAFPID-00063",
+          "CSAFPID-00064",
+          "CSAFPID-00065",
+          "CSAFPID-00066",
+          "CSAFPID-00067",
+          "CSAFPID-00068",
+          "CSAFPID-00069",
+          "CSAFPID-00070",
+          "CSAFPID-00071",
+          "CSAFPID-00072",
+          "CSAFPID-00073",
+          "CSAFPID-00074",
+          "CSAFPID-00075",
+          "CSAFPID-00076",
+          "CSAFPID-00077",
+          "CSAFPID-00078",
+          "CSAFPID-00079",
+          "CSAFPID-00080",
+          "CSAFPID-00081",
+          "CSAFPID-00082",
+          "CSAFPID-00083",
+          "CSAFPID-00084",
+          "CSAFPID-00085",
+          "CSAFPID-00086",
+          "CSAFPID-00087",
+          "CSAFPID-00088",
+          "CSAFPID-00089",
+          "CSAFPID-00090",
+          "CSAFPID-00091",
+          "CSAFPID-00092",
+          "CSAFPID-00093",
+          "CSAFPID-00094",
+          "CSAFPID-00095",
+          "CSAFPID-00096",
+          "CSAFPID-00097",
+          "CSAFPID-00098",
+          "CSAFPID-00099",
+          "CSAFPID-000100",
+          "CSAFPID-000101",
+          "CSAFPID-000102",
+          "CSAFPID-000103",
+          "CSAFPID-000104",
+          "CSAFPID-000105",
+          "CSAFPID-000106",
+          "CSAFPID-000107"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-25179"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "GE has identified mitigations for specific products and releases and will take proactive measures to ensure proper configuration of the product firewall protection and change default passwords on impacted devices where possible. GE recommends users refer to the GE Healthcare Product Security Portal for more details on mitigations and how proactive actions may apply to affected devices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105",
+            "CSAFPID-000106",
+            "CSAFPID-000107"
+          ],
+          "url": "https://www.gehealthcare.com/en-US/security"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "In addition to the product specific recommendations, GE recommends utilizing clinical network security best practices. Suggested clinical best practices include:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105",
+            "CSAFPID-000106",
+            "CSAFPID-000107"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-00010",
+            "CSAFPID-00011",
+            "CSAFPID-00012",
+            "CSAFPID-00013",
+            "CSAFPID-00014",
+            "CSAFPID-00015",
+            "CSAFPID-00016",
+            "CSAFPID-00017",
+            "CSAFPID-00018",
+            "CSAFPID-00019",
+            "CSAFPID-00020",
+            "CSAFPID-00021",
+            "CSAFPID-00022",
+            "CSAFPID-00023",
+            "CSAFPID-00024",
+            "CSAFPID-00025",
+            "CSAFPID-00026",
+            "CSAFPID-00027",
+            "CSAFPID-00028",
+            "CSAFPID-00029",
+            "CSAFPID-00030",
+            "CSAFPID-00031",
+            "CSAFPID-00032",
+            "CSAFPID-00033",
+            "CSAFPID-00034",
+            "CSAFPID-00035",
+            "CSAFPID-00036",
+            "CSAFPID-00037",
+            "CSAFPID-00038",
+            "CSAFPID-00039",
+            "CSAFPID-00040",
+            "CSAFPID-00041",
+            "CSAFPID-00042",
+            "CSAFPID-00043",
+            "CSAFPID-00044",
+            "CSAFPID-00045",
+            "CSAFPID-00046",
+            "CSAFPID-00047",
+            "CSAFPID-00048",
+            "CSAFPID-00049",
+            "CSAFPID-00050",
+            "CSAFPID-00051",
+            "CSAFPID-00052",
+            "CSAFPID-00053",
+            "CSAFPID-00054",
+            "CSAFPID-00055",
+            "CSAFPID-00056",
+            "CSAFPID-00057",
+            "CSAFPID-00058",
+            "CSAFPID-00059",
+            "CSAFPID-00060",
+            "CSAFPID-00061",
+            "CSAFPID-00062",
+            "CSAFPID-00063",
+            "CSAFPID-00064",
+            "CSAFPID-00065",
+            "CSAFPID-00066",
+            "CSAFPID-00067",
+            "CSAFPID-00068",
+            "CSAFPID-00069",
+            "CSAFPID-00070",
+            "CSAFPID-00071",
+            "CSAFPID-00072",
+            "CSAFPID-00073",
+            "CSAFPID-00074",
+            "CSAFPID-00075",
+            "CSAFPID-00076",
+            "CSAFPID-00077",
+            "CSAFPID-00078",
+            "CSAFPID-00079",
+            "CSAFPID-00080",
+            "CSAFPID-00081",
+            "CSAFPID-00082",
+            "CSAFPID-00083",
+            "CSAFPID-00084",
+            "CSAFPID-00085",
+            "CSAFPID-00086",
+            "CSAFPID-00087",
+            "CSAFPID-00088",
+            "CSAFPID-00089",
+            "CSAFPID-00090",
+            "CSAFPID-00091",
+            "CSAFPID-00092",
+            "CSAFPID-00093",
+            "CSAFPID-00094",
+            "CSAFPID-00095",
+            "CSAFPID-00096",
+            "CSAFPID-00097",
+            "CSAFPID-00098",
+            "CSAFPID-00099",
+            "CSAFPID-000100",
+            "CSAFPID-000101",
+            "CSAFPID-000102",
+            "CSAFPID-000103",
+            "CSAFPID-000104",
+            "CSAFPID-000105",
+            "CSAFPID-000106",
+            "CSAFPID-000107"
+          ]
+        }
+      ]
+    }
+  ]
+}

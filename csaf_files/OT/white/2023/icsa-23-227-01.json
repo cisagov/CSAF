@@ -1,0 +1,609 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "names": [
+          "Jos Wetzels",
+          "Daniel dos Santos"
+        ],
+        "organization": "Forescout Technologies",
+        "summary": "reporting these vulnerabilities to Schneider Electric"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of this vulnerability could allow an attacker to execute unauthorized Modbus functions on the controller when hijacking an authenticated Modbus session.",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing, Energy, Commercial Facilities",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "France",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolating them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-23-227-01 JSON",
+        "url": "https://www.github.com/cisagov/CSAF/csaf_files/OT/white/2023/icsa-23-227-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICSA Advisory ICSA-23-227-01 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-23-227-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Schneider Electric EcoStruxure Control Expert, Process Expert, Modicon M340, M580 and M580 CPU",
+    "tracking": {
+      "current_release_date": "2023-08-15T06:00:00.000000Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-23-227-01",
+      "initial_release_date": "2023-08-15T06:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2023-08-15T06:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial Publication"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "EcoStruxure Control Expert: *",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Control Expert"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<= 2020",
+                "product": {
+                  "name": "EcoStruxure Process Expert: <= 2020",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Process Expert"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Modicon M340 CPU (part numbers BMXP34*): *",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M340 CPU (part numbers BMXP34*)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Modicon M580 CPU (part numbers BMEP* and BMEH*): *",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M580 CPU (part numbers BMEP* and BMEH*)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Modicon M580 CPU Safety (part numbers BMEP58*S and BMEH58*S): *",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M580 CPU Safety (part numbers BMEP58*S and BMEH58*S)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Modicon Momentum Unity M1E Processor (171CBU*): *",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Momentum Unity M1E Processor (171CBU*)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "*",
+                "product": {
+                  "name": "Modicon MC80 (BMKC80): *",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon MC80 (BMKC80)"
+          }
+        ],
+        "category": "vendor",
+        "name": "Schneider Electric "
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2022-45789",
+      "cwe": {
+        "id": "CWE-294",
+        "name": "Authentication Bypass by Capture-replay"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An authentication bypass by capture-replay vulnerability exists that could execute unauthorized Modbus functions on the controller when hijacking an authenticated Modbus session. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45789"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric has released the following remediations and mitigations for users to implement:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "EcoStruxure Process Expert: Version [V2021](https://www.se.com/ww/en/product-range/65406- ecostruxure-process-expert/#software-and-firmware) is available for download and is not impacted by this vulnerability as the affected component has been removed from this version.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "url": "https://www.se.com/ww/en/product-range/65406-"
+        },
+        {
+          "category": "mitigation",
+          "details": "EcoStruxure Control Expert: Set up a VPN between the Modicon PLC controllers and the engineering workstation containing EcoStruxureTM Control.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "EcoStruxure Control Expert: Harden the workstation running EcoStruxure Control Expert.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "EcoStruxure Process Expert: Set up a VPN between the Modicon PLC controllers and the engineering workstation containing EcoStruxureTM Control.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "EcoStruxure Process Expert: Harden the workstation running EcoStruxure Process Expert.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Modicon M340 CPU (part numbers BMXP34*): Set up an application password in the project properties.",
+          "product_ids": [
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Modicon M340 CPU (part numbers BMXP34*): Set up network segmentation and implement a firewall to block all unauthorized access to port 502/TCP.",
+          "product_ids": [
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Modicon M340 CPU (part numbers BMXP34*): Set up a secure communication according to the following guideline \"Modicon Controllers Platform Cyber Security Reference Manual,\" in chapter \"Set up secured communications\".",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/ww/en/download/document/EIO0000001999/"
+        },
+        {
+          "category": "mitigation",
+          "details": "Modicon M340 CPU (part numbers BMXP34*): Configure the access control list following the recommendations of the user manuals: Modicon M340 for Ethernet Communications Modules and Processors user manual in chapter \"Messaging Configuration Parameters\".",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/ww/en/download/document/31007131K01000/"
+        },
+        {
+          "category": "mitigation",
+          "details": "Modicon M340 CPU (part numbers BMXP34*): Consider the use of external firewall devices such as EAGLE40-07 from Belden to establish VPN connections for M340 & M580 architectures. For more details refer to Modicon Controllers Platform - Cyber Security, Reference Manual chapter \"How to protect M580 and M340 architectures with EAGLE40 using VPN\".",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/ww/en/download/document/EIO0000001999/"
+        },
+        {
+          "category": "mitigation",
+          "details": "Modicon M580 CPU (part numbers BMEP* and BMEH*): Set up an application password in the project properties.",
+          "product_ids": [
+            "CSAFPID-0004"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Modicon M580 CPU (part numbers BMEP* and BMEH*): Set up network segmentation and implement a firewall to block all unauthorized access to port 502/TCP.",
+          "product_ids": [
+            "CSAFPID-0004"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Modicon M580 CPU (part numbers BMEP* and BMEH*): Configure the access control list following the recommendations of the user manuals: Modicon M580, Hardware, Reference Manual.",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "url": "https://www.se.com/ww/en/download/document/EIO0000001578/"
+        },
+        {
+          "category": "mitigation",
+          "details": "Modicon M580 CPU (part numbers BMEP* and BMEH*): Setup a secure communication following recommended guidelines in Modicon Controllers Platform - Cyber Security Reference Manual chapter \"Setup secured communications\".",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "url": "https://www.se.com/ww/en/download/document/EIO0000001999/"
+        },
+        {
+          "category": "mitigation",
+          "details": "Modicon M580 CPU (part numbers BMEP* and BMEH*): Use a BMENUA0100 module and follow the instructions to configure IPSEC feature as described in M580 - BMENUA0100 OPC UA Embedded Module, Installation and Configuration Guide chapter \"Configuring the BMENUA0100 Cybersecurity Settings\".",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "url": "https://www.se.com/ww/en/download/document/PHA83350"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information, see Schneider Electric's security advisory SEVD-2023-010-06.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ],
+          "url": "https://www.se.com/ww/en/download/document/SEVD-2023-010-06/"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric strongly recommends the following industry cybersecurity best practices:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place all controllers in locked cabinets and never leave them in the \"Program\" mode.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Never connect programming software to any network other than the network intended for that device.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc., before use in the terminals or any node connected to these networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the Internet.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as virtual private networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ],
+          "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        }
+      ]
+    }
+  ]
+}

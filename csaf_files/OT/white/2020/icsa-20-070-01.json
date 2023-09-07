@@ -1,0 +1,1204 @@
+{
+  "document": {
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "This CSAF advisory was extracted from unstructured data and may contain inaccuracies. If you notice any errors, please reach out to the designated contact at CISA CSAF: central@cisa.dhs.gov",
+        "title": "CISA Disclaimer"
+      },
+      {
+        "category": "summary",
+        "text": "Siemens reported these vulnerabilities to CISA.",
+        "title": "Summary"
+      },
+      {
+        "category": "general",
+        "text": "For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
+        "title": "Additional Resources"
+      },
+      {
+        "category": "other",
+        "text": "No known public exploits specifically target these vulnerabilities.",
+        "title": "Exploitability"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "CISAservicedesk@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "external",
+        "summary": "SSA-761844: Multiple Vulnerabilities in Control Center Server (CCS) - CSAF Version",
+        "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-761844.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-20-070-01 JSON",
+        "url": "https://www.github.com/cisagov/CSAF/csaf_files/OT/white/2020/icsa-20-070-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-20-070-01 Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-20-070-01"
+      },
+      {
+        "category": "external",
+        "summary": "SSA-761844: Multiple Vulnerabilities in Control Center Server (CCS) - PDF Version",
+        "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-761844.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "SSA-761844: Multiple Vulnerabilities in Control Center Server (CCS) - TXT Version",
+        "url": "https://cert-portal.siemens.com/productcert/txt/ssa-761844.txt"
+      }
+    ],
+    "title": "ICSA-20-070-01_Siemens and PKE SiNVR/SiVMS Video Server (Update B)",
+    "tracking": {
+      "current_release_date": "2022-08-08T20:29:19.723135Z",
+      "generator": {
+        "engine": {
+          "name": "CISA USCert CSAF Generator",
+          "version": "1"
+        }
+      },
+      "id": "ICSA-20-070-01",
+      "initial_release_date": "2021-08-10T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2022-08-08T20:29:19.723135Z",
+          "legacy_version": "Update A",
+          "number": "1.0.0",
+          "summary": "Publication Date"
+        }
+      ],
+      "status": "final",
+      "version": "1.0.0"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< V1.5.0",
+                "product": {
+                  "name": "Control Center Server (CCS)",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Control Center Server (CCS)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">= V1.5.0",
+                "product": {
+                  "name": "Control Center Server (CCS)",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Control Center Server (CCS)"
+          }
+        ],
+        "category": "vendor",
+        "name": "Siemens"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2019-13947",
+      "cwe": {
+        "id": "CWE-317",
+        "name": "Cleartext Storage of Sensitive Information in GUI"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The user configuration menu in the web interface of the Control Center Server (CCS) transfers user passwords in clear to the client (browser).\n\nAn attacker with administrative privileges for the web interface could be able to read (and not only reset) passwords of other CCS users.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2019-13947 - Control Center Server (CCS)",
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "summary": "CVE-2019-13947 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2019-13947.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.5.0 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "category": "mitigation",
+          "details": "General (applies to all vulnerabilities listed in this advisory) - Apply ACL/firewall configuration on the CCS server to ensure that only legitimate systems are able to access the configured CCS server ports. Harden the CCS server accordingly to prevent unauthorized access. Consider to apply encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-18340 - Harden the CCS server to prevent local access by unauthorized users",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19290, CVE-2019-19293, CVE-2019-19294 - Disable the web interface of CCS if not used. Alternatively, restrict access from localhost only, or only to trusted hosts of CCS administrators. Enable TLS for the web interface of CCS.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19291 - Disable the FTP service of the CCS",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure Siemens strongly recommends to protect network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.9,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N/E:F/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2019-13947"
+    },
+    {
+      "cve": "CVE-2019-18337",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The Control Center Server (CCS) contains an authentication bypass vulnerability in its XML-based communication protocol as provided by default on ports 5444/tcp and 5440/tcp.\n\nA remote attacker with network access to the CCS server could exploit this vulnerability to read the CCS users database, including the passwords of all users in obfuscated cleartext.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2019-18337 - Control Center Server (CCS)",
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "summary": "CVE-2019-18337 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2019-18337.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.5.0 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "category": "mitigation",
+          "details": "General (applies to all vulnerabilities listed in this advisory) - Apply ACL/firewall configuration on the CCS server to ensure that only legitimate systems are able to access the configured CCS server ports. Harden the CCS server accordingly to prevent unauthorized access. Consider to apply encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-18340 - Harden the CCS server to prevent local access by unauthorized users",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19290, CVE-2019-19293, CVE-2019-19294 - Disable the web interface of CCS if not used. Alternatively, restrict access from localhost only, or only to trusted hosts of CCS administrators. Enable TLS for the web interface of CCS.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19291 - Disable the FTP service of the CCS",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure Siemens strongly recommends to protect network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:F/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2019-18337"
+    },
+    {
+      "cve": "CVE-2019-18338",
+      "cwe": {
+        "id": "CWE-23",
+        "name": "Relative Path Traversal"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The Control Center Server (CCS) contains a directory traversal vulnerability in its XML-based communication protocol as provided by default on ports 5444/tcp and 5440/tcp.\n\nAn authenticated remote attacker with network access to the CCS server could exploit this vulnerability to list arbitrary directories or read files outside of the CCS application context.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2019-18338 - Control Center Server (CCS)",
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "summary": "CVE-2019-18338 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2019-18338.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.5.0 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "category": "mitigation",
+          "details": "General (applies to all vulnerabilities listed in this advisory) - Apply ACL/firewall configuration on the CCS server to ensure that only legitimate systems are able to access the configured CCS server ports. Harden the CCS server accordingly to prevent unauthorized access. Consider to apply encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-18340 - Harden the CCS server to prevent local access by unauthorized users",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19290, CVE-2019-19293, CVE-2019-19294 - Disable the web interface of CCS if not used. Alternatively, restrict access from localhost only, or only to trusted hosts of CCS administrators. Enable TLS for the web interface of CCS.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19291 - Disable the FTP service of the CCS",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure Siemens strongly recommends to protect network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.7,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N/E:F/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2019-18338"
+    },
+    {
+      "cve": "CVE-2019-18340",
+      "cwe": {
+        "id": "CWE-327",
+        "name": "Use of a Broken or Risky Cryptographic Algorithm"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Both the SiVMS/SiNVR Video Server and the Control Center Server (CCS) store user and device passwords by applying weak cryptography.\n\nA local attacker could exploit this vulnerability to extract the passwords from the user database and/or the device configuration files to conduct further attacks.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2019-18340 - Control Center Server (CCS)",
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "summary": "CVE-2019-18340 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2019-18340.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.5.0 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no remediation is available",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "General (applies to all vulnerabilities listed in this advisory) - Apply ACL/firewall configuration on the CCS server to ensure that only legitimate systems are able to access the configured CCS server ports. Harden the CCS server accordingly to prevent unauthorized access. Consider to apply encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-18340 - Harden the CCS server to prevent local access by unauthorized users",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19290, CVE-2019-19293, CVE-2019-19294 - Disable the web interface of CCS if not used. Alternatively, restrict access from localhost only, or only to trusted hosts of CCS administrators. Enable TLS for the web interface of CCS.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19291 - Disable the FTP service of the CCS",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure Siemens strongly recommends to protect network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N/E:F/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "title": "CVE-2019-18340"
+    },
+    {
+      "cve": "CVE-2019-18341",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The SFTP service (default port 22/tcp) of the Control Center Server (CCS) contains an authentication bypass vulnerability.\n\nA remote attacker with network access to the CCS server could exploit this vulnerability to read data from the EDIR directory (for example, the list of all configured stations).",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2019-18341 - Control Center Server (CCS)",
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "summary": "CVE-2019-18341 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2019-18341.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.5.0 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "category": "mitigation",
+          "details": "General (applies to all vulnerabilities listed in this advisory) - Apply ACL/firewall configuration on the CCS server to ensure that only legitimate systems are able to access the configured CCS server ports. Harden the CCS server accordingly to prevent unauthorized access. Consider to apply encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-18340 - Harden the CCS server to prevent local access by unauthorized users",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19290, CVE-2019-19293, CVE-2019-19294 - Disable the web interface of CCS if not used. Alternatively, restrict access from localhost only, or only to trusted hosts of CCS administrators. Enable TLS for the web interface of CCS.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19291 - Disable the FTP service of the CCS",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure Siemens strongly recommends to protect network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N/E:F/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2019-18341"
+    },
+    {
+      "cve": "CVE-2019-18342",
+      "cwe": {
+        "id": "CWE-749",
+        "name": "Exposed Dangerous Method or Function"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The SFTP service (default port 22/tcp) of the Control Center Server (CCS) does not properly limit its capabilities to the specified purpose.\n\nIn conjunction with CVE-2019-18341, an unauthenticated remote attacker with network access to the CCS server could exploit this vulnerability to read or delete arbitrary files, or access other resources on the same server.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2019-18342 - Control Center Server (CCS)",
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "summary": "CVE-2019-18342 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2019-18342.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.5.0 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "category": "mitigation",
+          "details": "General (applies to all vulnerabilities listed in this advisory) - Apply ACL/firewall configuration on the CCS server to ensure that only legitimate systems are able to access the configured CCS server ports. Harden the CCS server accordingly to prevent unauthorized access. Consider to apply encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-18340 - Harden the CCS server to prevent local access by unauthorized users",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19290, CVE-2019-19293, CVE-2019-19294 - Disable the web interface of CCS if not used. Alternatively, restrict access from localhost only, or only to trusted hosts of CCS administrators. Enable TLS for the web interface of CCS.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19291 - Disable the FTP service of the CCS",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure Siemens strongly recommends to protect network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.9,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H/E:F/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2019-18342"
+    },
+    {
+      "cve": "CVE-2019-19290",
+      "cwe": {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The DOWNLOADS section in the web interface of the Control Center Server (CCS) contains a path traversal vulnerability that could allow an authenticated remote attacker to access and download arbitrary files from the server where CCS is installed.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2019-19290 - Control Center Server (CCS)",
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "summary": "CVE-2019-19290 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2019-19290.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.5.0 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "category": "mitigation",
+          "details": "General (applies to all vulnerabilities listed in this advisory) - Apply ACL/firewall configuration on the CCS server to ensure that only legitimate systems are able to access the configured CCS server ports. Harden the CCS server accordingly to prevent unauthorized access. Consider to apply encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-18340 - Harden the CCS server to prevent local access by unauthorized users",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19290, CVE-2019-19293, CVE-2019-19294 - Disable the web interface of CCS if not used. Alternatively, restrict access from localhost only, or only to trusted hosts of CCS administrators. Enable TLS for the web interface of CCS.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19291 - Disable the FTP service of the CCS",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure Siemens strongly recommends to protect network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N/E:P/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2019-19290"
+    },
+    {
+      "cve": "CVE-2019-19291",
+      "cwe": {
+        "id": "CWE-313",
+        "name": "Cleartext Storage in a File or on Disk"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The FTP services of the SiVMS/SiNVR Video Server and the Control Center Server (CCS) maintain log files that store login credentials in cleartext. In configurations where the FTP service is enabled, authenticated remote attackers could extract login credentials of other users of the service.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2019-19291 - Control Center Server (CCS)",
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "summary": "CVE-2019-19291 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2019-19291.json"
+        },
+        {
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.5.0 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "category": "mitigation",
+          "details": "General (applies to all vulnerabilities listed in this advisory) - Apply ACL/firewall configuration on the CCS server to ensure that only legitimate systems are able to access the configured CCS server ports. Harden the CCS server accordingly to prevent unauthorized access. Consider to apply encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-18340 - Harden the CCS server to prevent local access by unauthorized users",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19290, CVE-2019-19293, CVE-2019-19294 - Disable the web interface of CCS if not used. Alternatively, restrict access from localhost only, or only to trusted hosts of CCS administrators. Enable TLS for the web interface of CCS.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19291 - Disable the FTP service of the CCS",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure Siemens strongly recommends to protect network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N/E:P/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2019-19291"
+    },
+    {
+      "cve": "CVE-2019-19292",
+      "cwe": {
+        "id": "CWE-89",
+        "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The Control Center Server (CCS) contains an SQL injection vulnerability in its XML-based communication protocol as provided by default on ports 5444/tcp and 5440/tcp. An authenticated remote attacker could exploit this vulnerability to read or modify the CCS database and potentially execute administrative database operations or operating system commands.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2019-19292 - Control Center Server (CCS)",
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "summary": "CVE-2019-19292 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2019-19292.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.5.0 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "category": "mitigation",
+          "details": "General (applies to all vulnerabilities listed in this advisory) - Apply ACL/firewall configuration on the CCS server to ensure that only legitimate systems are able to access the configured CCS server ports. Harden the CCS server accordingly to prevent unauthorized access. Consider to apply encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-18340 - Harden the CCS server to prevent local access by unauthorized users",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19290, CVE-2019-19293, CVE-2019-19294 - Disable the web interface of CCS if not used. Alternatively, restrict access from localhost only, or only to trusted hosts of CCS administrators. Enable TLS for the web interface of CCS.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19291 - Disable the FTP service of the CCS",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure Siemens strongly recommends to protect network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H/E:P/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2019-19292"
+    },
+    {
+      "cve": "CVE-2019-19293",
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The web interface of the Control Center Server (CCS) contains a reflected Cross-site Scripting (XSS) vulnerability that could allow an unauthenticated remote attacker to steal sensitive data or execute administrative actions on behalf of a legitimate administrator of the CCS web interface.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2019-19293 - Control Center Server (CCS)",
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "summary": "CVE-2019-19293 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2019-19293.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.5.0 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "category": "mitigation",
+          "details": "General (applies to all vulnerabilities listed in this advisory) - Apply ACL/firewall configuration on the CCS server to ensure that only legitimate systems are able to access the configured CCS server ports. Harden the CCS server accordingly to prevent unauthorized access. Consider to apply encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-18340 - Harden the CCS server to prevent local access by unauthorized users",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19290, CVE-2019-19293, CVE-2019-19294 - Disable the web interface of CCS if not used. Alternatively, restrict access from localhost only, or only to trusted hosts of CCS administrators. Enable TLS for the web interface of CCS.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19291 - Disable the FTP service of the CCS",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure Siemens strongly recommends to protect network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.1,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:N/I:H/A:N/E:P/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2019-19293"
+    },
+    {
+      "cve": "CVE-2019-19294",
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The web interface of the Control Center Server (CCS) contains multiple stored Cross-site Scripting (XSS) vulnerabilities in several input fields. This could allow an authenticated remote attacker to inject malicious JavaScript code into the CCS web application that is later executed in the browser context of any other user who views the relevant CCS web content.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2019-19294 - Control Center Server (CCS)",
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "summary": "CVE-2019-19294 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2019-19294.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.5.0 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "category": "mitigation",
+          "details": "General (applies to all vulnerabilities listed in this advisory) - Apply ACL/firewall configuration on the CCS server to ensure that only legitimate systems are able to access the configured CCS server ports. Harden the CCS server accordingly to prevent unauthorized access. Consider to apply encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-18340 - Harden the CCS server to prevent local access by unauthorized users",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19290, CVE-2019-19293, CVE-2019-19294 - Disable the web interface of CCS if not used. Alternatively, restrict access from localhost only, or only to trusted hosts of CCS administrators. Enable TLS for the web interface of CCS.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19291 - Disable the FTP service of the CCS",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure Siemens strongly recommends to protect network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:N/I:H/A:N/E:P/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2019-19294"
+    },
+    {
+      "cve": "CVE-2019-19295",
+      "cwe": {
+        "id": "CWE-778",
+        "name": "Insufficient Logging"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The Control Center Server (CCS) does not enforce logging of security-relevant activities in its XML-based communication protocol as provided by default on ports 5444/tcp and 5440/tcp. An authenticated remote attacker could exploit this vulnerability to perform covert actions that are not visible in the application log.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2019-19295 - Control Center Server (CCS)",
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "summary": "CVE-2019-19295 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2019-19295.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.5.0 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://sivms.cloud/control-center-server-ccs/"
+        },
+        {
+          "category": "mitigation",
+          "details": "General (applies to all vulnerabilities listed in this advisory) - Apply ACL/firewall configuration on the CCS server to ensure that only legitimate systems are able to access the configured CCS server ports. Harden the CCS server accordingly to prevent unauthorized access. Consider to apply encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-18340 - Harden the CCS server to prevent local access by unauthorized users",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19290, CVE-2019-19293, CVE-2019-19294 - Disable the web interface of CCS if not used. Alternatively, restrict access from localhost only, or only to trusted hosts of CCS administrators. Enable TLS for the web interface of CCS.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2019-19291 - Disable the FTP service of the CCS",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "As a general security measure Siemens strongly recommends to protect network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N/E:P/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2019-19295"
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "document": {
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "This CSAF advisory was extracted from unstructured data and may contain inaccuracies. If you notice any errors, please reach out to the designated contact at CISA CSAF: central@cisa.dhs.gov",
+        "title": "CISA Disclaimer"
+      },
+      {
+        "category": "summary",
+        "text": "Yehuda Anikster and Amir Preminger of Claroty reported this vulnerability to CISA.",
+        "title": "Summary"
+      },
+      {
+        "category": "other",
+        "text": "No known public exploits specifically target this vulnerability.",
+        "title": "Exploitability"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "CISAservicedesk@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-20-051-01 JSON",
+        "url": "https://www.github.com/cisagov/CSAF/csaf_files/OT/white/2020/icsa-20-051-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-20-051-01 Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-20-051-01"
+      }
+    ],
+    "title": "ICSA-20-051-01_B&R Automation Studio and Automation Runtime",
+    "tracking": {
+      "current_release_date": "2022-08-08T20:30:28.267546Z",
+      "generator": {
+        "engine": {
+          "name": "CISA USCert CSAF Generator",
+          "version": "1"
+        }
+      },
+      "id": "ICSA-20-051-01",
+      "initial_release_date": "2020-02-20T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2022-08-08T20:30:28.267546Z",
+          "legacy_version": "Update A",
+          "number": "1.0.0",
+          "summary": "Publication Date"
+        }
+      ],
+      "status": "final",
+      "version": "1.0.0"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "2.7 | 3.0.71 | 3.0.80 | 3.0.81 | 3.0.90 | >= 4.0.x | <= 4.6.4 | 4.7.2",
+                "product": {
+                  "name": "Automation Studio: Versions 2.7 3.0.71 3.0.80 3.0.81 3.0.90 4.0.x to 4.6.4 and 4.7.2",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Automation Studio"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "2.96 | 3.00 | 3.01 | 3.06 | 3.07 | >= 3.08 | <= 3.10 | >= 4.00 | <= 4.03 | >= 4.03 | <= 4.04 | >= 4.04 | <= 4.63 | >= 4.72",
+                "product": {
+                  "name": "Automation Runtime: Versions 2.96 3.00 3.01 3.06 3.07 3.08 to 3.10 4.00 to 4.03 4.04 to 4.03 4.04 to 4.63 4.72 and above",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Automation Runtime"
+          }
+        ],
+        "category": "vendor",
+        "name": "B&R Industrial Automation"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2019-19108",
+      "cwe": {
+        "id": "CWE-285",
+        "name": "Improper Authorization"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The affected products are vulnerable to a weakness in SNMP service, which allows unauthenticated users to modify the configuration via the service.CVE-2019-19108 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H).",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "B&R reports product-technical reasons disallow the changing of SNMP credentials. To reduce risk from this vulnerability, the following Automation Studio versions disable the SNMP service by default in newly created AS projects:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "AS 4.6.5 (Planned release date: 2020-03-27) and higher",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "AS 4.7.3 (Planned release date: 2020-04-10) and higher",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "AS 4.8.2 (Planned release date: 2020-06-11) and higher",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "B&R reports the above-mentioned dates denoted as planned are preliminary and may be subject to change. Registered users may approach their local B&R service organization in case of questions. B&R recommends that affected users evaluate their need for the SNMP service and disable it if possible. For more information related to this vulnerability please refer to the B&R advisory. For additional information and support, please contact B&R service.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "url": "https://www.br-automation.com/en-us/service/cyber-security/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.4,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "title": "CVE-2019-19108"
+    }
+  ]
+}

@@ -1,0 +1,1153 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Hitachi Energy",
+        "summary": "reporting these vulnerabilities to CISA"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "This CSAF advisory was extracted from unstructured data and may contain inaccuracies. If you notice any errors, please reach out to the designated contact at CISA CSAF: central@cisa.dhs.gov",
+        "title": "CISA Disclaimer"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of these vulnerabilities could allow an attacker to obtain user access credentials of the MSM web interface or cause a denial-of-service condition. ",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "No known public exploits specifically target this vulnerability.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "Email: CISAservicedesk@cisa.dhs.gov;\n Toll Free: 1-888-282-0870",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-23-129-02 JSON",
+        "url": "https://www.github.com/cisagov/CSAF/csaf_files/OT/white/2023/icsa-23-129-02.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-23-129-02 Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-23-129-02"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/ics/Recommended-Practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://cisa.gov/ics"
+      }
+    ],
+    "title": "Hitachi Energy MSM",
+    "tracking": {
+      "current_release_date": "2023-05-10T21:13:09.601070Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-23-129-02",
+      "initial_release_date": "2023-05-10T21:13:09.601070Z",
+      "revision_history": [
+        {
+          "date": "2023-05-10T21:13:09.601070Z",
+          "legacy_version": "1",
+          "number": "1",
+          "summary": "CSAF Creation Date"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "2.2.5",
+                "product": {
+                  "name": "MSM: <= 2.2.5",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MSM"
+          }
+        ],
+        "category": "vendor",
+        "name": "Hitachi Energy"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2021-43298",
+      "cwe": {
+        "id": "CWE-307",
+        "name": "Improper Restriction of Excessive Authentication Attempts"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The code that performs password matching when using 'basic' HTTP authentication does not use a constant-time memcmp and has no rate-limiting. An unauthenticated network attacker could brute-force the HTTP basic password byte-by-byte, by recording the webserver's response time until the unauthorized (401) response. CVE-2021-43298 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-43298"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "MSM is not intrinsically designed nor intended to be directly connected to the internet. Users should disconnect the device from any internet-facing network.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi Energy suggests adopting user access management and antivirus protection software equipped with the latest signature rules on hosts with the Manufacturing Message Specification (MMS) Client application installed. Users can implement the operating system user access management functionality, if supported, to limit the probability of unauthorized access followed by rogue commands at the operating system level via MMS client application.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Also, Hitachi Energy recommends following the hardening guidelines published by “The Center for Internet Security (CIS)” to protect the host operating system of machines connecting with MSM. These guidelines help prevent the lateral movement of the attack vector into MSM via these connected devices. Some examples for Windows based computers include:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.cisecurity.org/about-us/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Desktop Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Server Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "According to Hitachi Energy, users should follow recommended security practices and firewall configurations to help protect a network from outside attacks, including:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Physically protecting systems from direct access by unauthorized personnel.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensuring monitoring systems have no direct connections to the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Separating monitoring system networks from other networks using a firewall system with a minimal number of ports exposed.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi advises that monitoring systems should not be used for internet surfing, instant messaging, or receiving emails. Portable computers and removable storage media should be carefully scanned for malware prior to connection to monitoring systems.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Hitachi Energy advisory 8DBD000154.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://search.abb.com/library/Download.aspx?DocumentID=8DBD000154"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-15688",
+      "cwe": {
+        "id": "CWE-294",
+        "name": "Authentication Bypass by Capture-replay"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The HTTP digest authentication in the GoAhead web server before 5.1.2 does not completely protect against replay attacks. An unauthenticated remote attacker could bypass authentication via capture-replay if TLS is not used to protect the underlying communication channel. CVE-2020-15688 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-15688"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "MSM is not intrinsically designed nor intended to be directly connected to the internet. Users should disconnect the device from any internet-facing network.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi Energy suggests adopting user access management and antivirus protection software equipped with the latest signature rules on hosts with the Manufacturing Message Specification (MMS) Client application installed. Users can implement the operating system user access management functionality, if supported, to limit the probability of unauthorized access followed by rogue commands at the operating system level via MMS client application.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Also, Hitachi Energy recommends following the hardening guidelines published by “The Center for Internet Security (CIS)” to protect the host operating system of machines connecting with MSM. These guidelines help prevent the lateral movement of the attack vector into MSM via these connected devices. Some examples for Windows based computers include:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.cisecurity.org/about-us/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Desktop Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Server Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "According to Hitachi Energy, users should follow recommended security practices and firewall configurations to help protect a network from outside attacks, including:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Physically protecting systems from direct access by unauthorized personnel.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensuring monitoring systems have no direct connections to the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Separating monitoring system networks from other networks using a firewall system with a minimal number of ports exposed.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi advises that monitoring systems should not be used for internet surfing, instant messaging, or receiving emails. Portable computers and removable storage media should be carefully scanned for malware prior to connection to monitoring systems.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Hitachi Energy advisory 8DBD000154.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://search.abb.com/library/Download.aspx?DocumentID=8DBD000154"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-16645",
+      "cwe": {
+        "id": "CWE-94",
+        "name": "Improper Control of Generation of Code ('Code Injection')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An issue was discovered in Embedthis GoAhead 2.5.0. Certain pages (ex: goform/login and config/log_off_page.htm) create links containing a hostname obtained from an arbitrary HTTP host header sent by an attacker. This could potentially be used in a phishing attack. CVE-2019-16645 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2019-16645"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "MSM is not intrinsically designed nor intended to be directly connected to the internet. Users should disconnect the device from any internet-facing network.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi Energy suggests adopting user access management and antivirus protection software equipped with the latest signature rules on hosts with the Manufacturing Message Specification (MMS) Client application installed. Users can implement the operating system user access management functionality, if supported, to limit the probability of unauthorized access followed by rogue commands at the operating system level via MMS client application.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Also, Hitachi Energy recommends following the hardening guidelines published by “The Center for Internet Security (CIS)” to protect the host operating system of machines connecting with MSM. These guidelines help prevent the lateral movement of the attack vector into MSM via these connected devices. Some examples for Windows based computers include:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.cisecurity.org/about-us/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Desktop Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Server Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "According to Hitachi Energy, users should follow recommended security practices and firewall configurations to help protect a network from outside attacks, including:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Physically protecting systems from direct access by unauthorized personnel.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensuring monitoring systems have no direct connections to the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Separating monitoring system networks from other networks using a firewall system with a minimal number of ports exposed.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi advises that monitoring systems should not be used for internet surfing, instant messaging, or receiving emails. Portable computers and removable storage media should be carefully scanned for malware prior to connection to monitoring systems.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Hitachi Energy advisory 8DBD000154.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://search.abb.com/library/Download.aspx?DocumentID=8DBD000154"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.6,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-12822",
+      "cwe": {
+        "id": "CWE-119",
+        "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In http.c in Embedthis GoAhead before 4.1.1 and 5.x before 5.0.1, a header parsing vulnerability causes a memory assertion, out-of-bounds memory reference, and a potential denial-of-service condition, as demonstrated by a single colon on a line. CVE-2019-12822 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2019-12822"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "MSM is not intrinsically designed nor intended to be directly connected to the internet. Users should disconnect the device from any internet-facing network.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi Energy suggests adopting user access management and antivirus protection software equipped with the latest signature rules on hosts with the Manufacturing Message Specification (MMS) Client application installed. Users can implement the operating system user access management functionality, if supported, to limit the probability of unauthorized access followed by rogue commands at the operating system level via MMS client application.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Also, Hitachi Energy recommends following the hardening guidelines published by “The Center for Internet Security (CIS)” to protect the host operating system of machines connecting with MSM. These guidelines help prevent the lateral movement of the attack vector into MSM via these connected devices. Some examples for Windows based computers include:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.cisecurity.org/about-us/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Desktop Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Server Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "According to Hitachi Energy, users should follow recommended security practices and firewall configurations to help protect a network from outside attacks, including:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Physically protecting systems from direct access by unauthorized personnel.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensuring monitoring systems have no direct connections to the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Separating monitoring system networks from other networks using a firewall system with a minimal number of ports exposed.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi advises that monitoring systems should not be used for internet surfing, instant messaging, or receiving emails. Portable computers and removable storage media should be carefully scanned for malware prior to connection to monitoring systems.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Hitachi Energy advisory 8DBD000154.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://search.abb.com/library/Download.aspx?DocumentID=8DBD000154"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2018-15504",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An issue was discovered in Embedthis GoAhead before 4.0.1 and Appweb before 7.0.2. The server mishandles HTTP request fields associated with time, which results in a NULL pointer dereference, as demonstrated by If-Modified-Since or If-Unmodified-Since with a month greater than 11. CVE-2018-15504 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2018-15504"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "MSM is not intrinsically designed nor intended to be directly connected to the internet. Users should disconnect the device from any internet-facing network.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi Energy suggests adopting user access management and antivirus protection software equipped with the latest signature rules on hosts with the Manufacturing Message Specification (MMS) Client application installed. Users can implement the operating system user access management functionality, if supported, to limit the probability of unauthorized access followed by rogue commands at the operating system level via MMS client application.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Also, Hitachi Energy recommends following the hardening guidelines published by “The Center for Internet Security (CIS)” to protect the host operating system of machines connecting with MSM. These guidelines help prevent the lateral movement of the attack vector into MSM via these connected devices. Some examples for Windows based computers include:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.cisecurity.org/about-us/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Desktop Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Server Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "According to Hitachi Energy, users should follow recommended security practices and firewall configurations to help protect a network from outside attacks, including:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Physically protecting systems from direct access by unauthorized personnel.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensuring monitoring systems have no direct connections to the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Separating monitoring system networks from other networks using a firewall system with a minimal number of ports exposed.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi advises that monitoring systems should not be used for internet surfing, instant messaging, or receiving emails. Portable computers and removable storage media should be carefully scanned for malware prior to connection to monitoring systems.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Hitachi Energy advisory 8DBD000154.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://search.abb.com/library/Download.aspx?DocumentID=8DBD000154"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2018-15505",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An issue was discovered in Embedthis GoAhead before 4.0.1 and Appweb before 7.0.2. An HTTP POST request with a specially crafted \"host\" header field may cause a NULL pointer dereference resulting in a denial-of-service condition, as demonstrated by the lack of a trailing ']' character in an IPv6 address. CVE-2018-15505 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2018-15505"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "MSM is not intrinsically designed nor intended to be directly connected to the internet. Users should disconnect the device from any internet-facing network.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi Energy suggests adopting user access management and antivirus protection software equipped with the latest signature rules on hosts with the Manufacturing Message Specification (MMS) Client application installed. Users can implement the operating system user access management functionality, if supported, to limit the probability of unauthorized access followed by rogue commands at the operating system level via MMS client application.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Also, Hitachi Energy recommends following the hardening guidelines published by “The Center for Internet Security (CIS)” to protect the host operating system of machines connecting with MSM. These guidelines help prevent the lateral movement of the attack vector into MSM via these connected devices. Some examples for Windows based computers include:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.cisecurity.org/about-us/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Desktop Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Server Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "According to Hitachi Energy, users should follow recommended security practices and firewall configurations to help protect a network from outside attacks, including:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Physically protecting systems from direct access by unauthorized personnel.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensuring monitoring systems have no direct connections to the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Separating monitoring system networks from other networks using a firewall system with a minimal number of ports exposed.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi advises that monitoring systems should not be used for internet surfing, instant messaging, or receiving emails. Portable computers and removable storage media should be carefully scanned for malware prior to connection to monitoring systems.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Hitachi Energy advisory 8DBD000154.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://search.abb.com/library/Download.aspx?DocumentID=8DBD000154"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2021-41615",
+      "cwe": {
+        "id": "CWE-331",
+        "name": "Insufficient Entropy"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Websda.c in GoAhead WebServer 2.1.8 has insufficient nonce entropy due to the nonce calculation relying on the hardcoded onceuponatimeinparadise value, which does not follow the secret-data guideline for HTTP digest access authentication in RFC 7616 section 3.3 (or RFC 2617 section 3.2.1).Note: 2.1.8 is a version from 2003; however, the affected websda.c code appears in derivative works that may be used in 2021. Recent GoAhead software is unaffected. CVE-2021-41615 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41615"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "MSM is not intrinsically designed nor intended to be directly connected to the internet. Users should disconnect the device from any internet-facing network.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi Energy suggests adopting user access management and antivirus protection software equipped with the latest signature rules on hosts with the Manufacturing Message Specification (MMS) Client application installed. Users can implement the operating system user access management functionality, if supported, to limit the probability of unauthorized access followed by rogue commands at the operating system level via MMS client application.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Also, Hitachi Energy recommends following the hardening guidelines published by “The Center for Internet Security (CIS)” to protect the host operating system of machines connecting with MSM. These guidelines help prevent the lateral movement of the attack vector into MSM via these connected devices. Some examples for Windows based computers include:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.cisecurity.org/about-us/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Desktop Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Server Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "According to Hitachi Energy, users should follow recommended security practices and firewall configurations to help protect a network from outside attacks, including:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Physically protecting systems from direct access by unauthorized personnel.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensuring monitoring systems have no direct connections to the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Separating monitoring system networks from other networks using a firewall system with a minimal number of ports exposed.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi advises that monitoring systems should not be used for internet surfing, instant messaging, or receiving emails. Portable computers and removable storage media should be carefully scanned for malware prior to connection to monitoring systems.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Hitachi Energy advisory 8DBD000154.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://search.abb.com/library/Download.aspx?DocumentID=8DBD000154"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2023-23916",
+      "cwe": {
+        "id": "CWE-331",
+        "name": "Insufficient Entropy"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An allocation of resources without limits or throttling vulnerability exists in curl <v7.88.0 based on the \"chained\" HTTP compression algorithms; a server response can be compressed multiple times and potentially with different algorithms. The number of acceptable \"links\" in this \"decompression chain\" was capped, but the cap was implemented on a per-header basis, allowing a malicious server to insert a virtually unlimited number of compression steps by using many headers. CVE-2023-23916 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-23916"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "MSM is not intrinsically designed nor intended to be directly connected to the internet. Users should disconnect the device from any internet-facing network.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi Energy suggests adopting user access management and antivirus protection software equipped with the latest signature rules on hosts with the Manufacturing Message Specification (MMS) Client application installed. Users can implement the operating system user access management functionality, if supported, to limit the probability of unauthorized access followed by rogue commands at the operating system level via MMS client application.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Also, Hitachi Energy recommends following the hardening guidelines published by “The Center for Internet Security (CIS)” to protect the host operating system of machines connecting with MSM. These guidelines help prevent the lateral movement of the attack vector into MSM via these connected devices. Some examples for Windows based computers include:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.cisecurity.org/about-us/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Desktop Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CIS Microsoft Windows Server Benchmarks (cisecurity.org)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "According to Hitachi Energy, users should follow recommended security practices and firewall configurations to help protect a network from outside attacks, including:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Physically protecting systems from direct access by unauthorized personnel.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensuring monitoring systems have no direct connections to the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Separating monitoring system networks from other networks using a firewall system with a minimal number of ports exposed.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Hitachi advises that monitoring systems should not be used for internet surfing, instant messaging, or receiving emails. Portable computers and removable storage media should be carefully scanned for malware prior to connection to monitoring systems.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Hitachi Energy advisory 8DBD000154.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://search.abb.com/library/Download.aspx?DocumentID=8DBD000154"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    }
+  ]
+}

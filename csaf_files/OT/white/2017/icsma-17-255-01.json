@@ -1,0 +1,199 @@
+{
+  "document": {
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "This CSAF advisory was extracted from unstructured data and may contain inaccuracies. If you notice any errors, please reach out to the designated contact at CISA CSAF: central@cisa.dhs.gov",
+        "title": "CISA Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "No known public exploits specifically target these vulnerabilities.",
+        "title": "Exploitability"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "CISAservicedesk@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSMA-17-255-01 JSON",
+        "url": "https://www.github.com/cisagov/CSAF/csaf_files/OT/white/2017/icsma-17-255-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSMA-17-255-01 Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-17-255-01"
+      }
+    ],
+    "title": "ICSMA-17-255-01_Philips' IntelliView MX40 Patient Worn Monitor (WLAN) Vulnerabilities",
+    "tracking": {
+      "current_release_date": "2022-06-07T16:47:23.041269Z",
+      "generator": {
+        "engine": {
+          "name": "CISA USCert CSAF Generator",
+          "version": "1"
+        }
+      },
+      "id": "ICSMA-17-255-01",
+      "initial_release_date": "2017-09-12T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2022-06-07T16:47:23.041269Z",
+          "legacy_version": "Update A",
+          "number": "1.0.0",
+          "summary": "Publication Date"
+        }
+      ],
+      "status": "final",
+      "version": "1.0.0"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "< B.06.18",
+                "product": {
+                  "name": "IntelliVue MX40 Patient Worn Monitor (WLAN only): all versions prior to Version B.06.18",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "IntelliVue MX40 Patient Worn Monitor (WLAN only)"
+          }
+        ],
+        "category": "vendor",
+        "name": "Philips"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2017-9657",
+      "cwe": {
+        "id": "CWE-460",
+        "name": "Improper Cleanup on Thrown Exception"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Under specific 802.11 network conditions, a partial re-association of the MX40 WLAN monitor to the central monitoring station is possible. In this state, the central monitoring station can indicate the MX40 is not connected or associated to the central monitor, and thus should be operating in local monitoring mode (local audio-on, screen-on), but the MX40 WLAN itself can instead still be operating in telemetry mode (local audio-off, screen-off). If a patient experiences an alarm event and clinical staff expects the MX40 to provide local alarming when it is not available from the local device, a delay of treatment can occur.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-9657"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Philips is planning to release an additional MX40 software update in 2017 to address the improper handling of exceptional conditions vulnerability.  Please see the Philips product security web site for latest information for this and other Philips products:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.usa.philips.com/healthcare/about/customer-support/product-security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2017-9658",
+      "cwe": {
+        "id": "CWE-755",
+        "name": "Improper Handling of Exceptional Conditions"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Certain 802.11 network management messages have been determined to invoke wireless access point blacklisting security defenses when not required, which can necessitate intervention by hospital staff to reset the device and reestablish a network connection to the Wi-Fi access point. During this state, the MX40 can either connect to an alternative access point within signal range for association to a central monitoring station, or it can remain in local monitoring mode until the device is reset by hospital staff.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-9658"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Philips is planning to release an additional MX40 software update in 2017 to address the improper handling of exceptional conditions vulnerability.  Please see the Philips product security web site for latest information for this and other Philips products:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.usa.philips.com/healthcare/about/customer-support/product-security"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    }
+  ]
+}

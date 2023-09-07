@@ -1,0 +1,549 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "summary": "Sharon Brizinov of Claroty Research reported these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "This CSAF advisory was extracted from unstructured data and may contain inaccuracies. If you notice any errors, please reach out to the designated contact at CISA CSAF: central@cisa.dhs.gov",
+        "title": "CISA Disclaimer"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of these vulnerabilities could allow for remote hidden code execution on the connected programmable logic controller (PLC) and for malicious files to be uploaded from the PLC to connected workstations.",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Commercial Facilities, Critical Manufacturing, Dams, Defense Industrial Base, Energy, Food and Agriculture, Government Facilities, Information Technology, Transportation Systems, Water and Wastewater Systems",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "United States",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also recommends users take the following measures to protect themselves from social engineering attacks:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "No known public exploits specifically target these vulnerabilities.",
+        "title": "Exploitability"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "Email: CISAservicedesk@cisa.dhs.gov;\n Toll Free: 1-888-282-0870",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-22-228-06 JSON",
+        "url": "https://www.github.com/cisagov/CSAF/csaf_files/OT/white/2022/icsa-22-228-06.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-22-228-06 Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-22-228-06"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ncas/tips/ST04-014"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      }
+    ],
+    "title": "Emerson Proficy Machine Edition",
+    "tracking": {
+      "current_release_date": "2022-12-09T21:00:38.869743Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-22-228-06",
+      "initial_release_date": "2022-08-16T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2022-12-09T21:00:38.869743Z",
+          "legacy_version": "Update A",
+          "number": "1",
+          "summary": "Publication Date"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<= 9.80",
+                "product": {
+                  "name": "Proficy Machine Edition: Version 9.80 and prior",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Proficy Machine Edition"
+          }
+        ],
+        "category": "vendor",
+        "name": "Emerson"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2022-2793",
+      "cwe": {
+        "id": "CWE-353",
+        "name": "Missing Support for Integrity Check"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Proficy Machine Edition Version 9.00 and prior has no authentication or authorization of data packets after establishing a connection for the SRTP protocol.CVE-2022-2793 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:P/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-2793"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:P/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "CVE-2022-2793: SRTP and SNP protocols support cryptographically secure authentication using the SRP-6a protocol, a feature which Emerson recommends users employ. Affected devices currently support encrypted authentication for session establishment and when escalating privileges; additional encryption features will be added over time.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For additional details on any of these recommendations, see Emerson's security advisory.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.emerson.com/en-us/support/security-notifications"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.9,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.0/AV:P/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2022-2792",
+      "cwe": {
+        "id": "CWE-284",
+        "name": "Improper Access Control"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Proficy Machine Edition Version 9.00 and prior stores project data in a directory with improper access control lists.CVE-2022-2792 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-2792"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "CVE-2022-2792: Emerson plans to fix this vulnerability in a future version. Emerson recommends users ensure they are using the latest version of PAC Machine Edition and employ good physical security of devices and transmission paths.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For additional details on any of these recommendations, see Emerson's security advisory.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.emerson.com/en-us/support/security-notifications"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.6,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2022-2791",
+      "cwe": {
+        "id": "CWE-434",
+        "name": "Unrestricted Upload of File with Dangerous Type"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Proficy Machine Edition Version 9.00 and prior will upload any file written into the PLC logic folder to the connected PLC.CVE-2022-2791 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:C/C:N/I:H/A:N).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-2791"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:C/C:N/I:H/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "CVE-2022-2791: Emerson recommends operators of the affected devices be well verified and restrict which users can upload files. The affected devices do not have any file verification systems for checking the files that have been uploaded.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2022-2790: See recommendations for CVE-2022-2791.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "CVE-2022-2789: See recommendations for CVE-2022-2791.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "CVE-2022-2788: See recommendations for CVE-2022-2791. Emerson recommends Proficy Machine Edition be installed as an administrator, but run as a non-administrator, unless necessary for specific functions. Users should ensure PLCs are not programmed using an untrusted network; PLCs should be programmed using a flat/bridged network. Users should also enable authentication on the PLCs.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For additional details on any of these recommendations, see Emerson's security advisory.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.emerson.com/en-us/support/security-notifications"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.9,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:C/C:N/I:H/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2022-2790",
+      "cwe": {
+        "id": "CWE-347",
+        "name": "Improper Verification of Cryptographic Signature"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Proficy Machine Edition Version 9.00 and prior does not properly verify compiled logic (PDT files) and data blocks data (BLD/BLK files).CVE-2022-2790 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:C/C:N/I:H/A:N).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-2790"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:C/C:N/I:H/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "CVE-2022-2790: See recommendations for CVE-2022-2791.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For additional details on any of these recommendations, see Emerson's security advisory.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.emerson.com/en-us/support/security-notifications"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.9,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:C/C:N/I:H/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2022-2789",
+      "cwe": {
+        "id": "CWE-345",
+        "name": "Insufficient Verification of Data Authenticity"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Proficy Machine Edition Version 9.00 and prior can display logic that is different than the compiled logic.CVE-2022-2789 has been assigned to this vulnerability. A CVSS v3 base score of 4.7 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-CVE-2022-2789"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "CVE-2022-2789: See recommendations for CVE-2022-2791.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For additional details on any of these recommendations, see Emerson's security advisory.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.emerson.com/en-us/support/security-notifications"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.7,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.0/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2022-2788",
+      "cwe": {
+        "id": "CWE-29",
+        "name": "Path Traversal: '\\..\\filename'"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Proficy Machine Edition Version 9.80 and prior is vulnerable to a ZipSlip attack through an upload procedure which enables attackers to implant a malicious .BLZ file on the PLC. The file can transfer through the engineering station onto Windows in a way that executes the malicious code.CVE-2022-2788 has been assigned to this vulnerability. A CVSS v3 base score of 3.9 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:L).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-2788"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:L"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "CVE-2022-2788: See recommendations for CVE-2022-2791. Emerson recommends Proficy Machine Edition be installed as an administrator, but run as a non-administrator, unless necessary for specific functions. Users should ensure PLCs are not programmed using an untrusted network; PLCs should be programmed using a flat/bridged network. Users should also enable authentication on the PLCs.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For additional details on any of these recommendations, see Emerson's security advisory.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.emerson.com/en-us/support/security-notifications"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 3.9,
+            "baseSeverity": "LOW",
+            "vectorString": "CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:L",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    }
+  ]
+}

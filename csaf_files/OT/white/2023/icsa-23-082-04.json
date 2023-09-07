@@ -1,0 +1,1849 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "summary": "kimiya, working with Trend Micro Zero Day Initiative, reported these vulnerabilities to Schneider Electric."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "This CSAF advisory was extracted from unstructured data and may contain inaccuracies. If you notice any errors, please reach out to the designated contact at CISA CSAF: central@cisa.dhs.gov",
+        "title": "CISA Disclaimer"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of these vulnerabilities could result in a denial-of-service condition, as well as the loss, addition, or modification of dashboards or report files in the IGSS Report folder. Successful exploitation of these vulnerabilities could also allow remote code execution, potentially resulting in loss of control of the supervisory control and data acquisition (SCADA) System with IGSS running in production mode.",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Commercial Facilities, Critical Manufacturing, Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "France",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have low attack complexity.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "Email: CISAservicedesk@cisa.dhs.gov;\n Toll Free: 1-888-282-0870",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-23-082-04 JSON",
+        "url": "https://www.github.com/cisagov/CSAF/csaf_files/OT/white/2023/icsa-23-082-04.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-23-082-04 Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-23-082-04"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/ics/Recommended-Practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://cisa.gov/ics"
+      }
+    ],
+    "title": "Schneider Electric IGSS",
+    "tracking": {
+      "current_release_date": "2023-04-03T19:38:42.642957Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-23-082-04",
+      "initial_release_date": "2023-04-03T19:38:42.642957Z",
+      "revision_history": [
+        {
+          "date": "2023-04-03T19:38:42.642957Z",
+          "legacy_version": "1",
+          "number": "1",
+          "summary": "CSAF Creation Date"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<= 16.0.0.23040",
+                "product": {
+                  "name": "IGSS Data Server (IGSSdataServer.exe): V16.0.0.23040 and prior",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "IGSS Data Server (IGSSdataServer.exe)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<= 16.0.0.23040",
+                "product": {
+                  "name": "IGSS Dashboard (DashBoard.exe): V16.0.0.23040 and prior",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "IGSS Dashboard (DashBoard.exe)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<= 16.0.0.23040",
+                "product": {
+                  "name": "Custom Reports (RMS16.dll): V16.0.0.23040 and prior",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Custom Reports (RMS16.dll)"
+          }
+        ],
+        "category": "vendor",
+        "name": "Schneider Electric"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2023-27980",
+      "cwe": {
+        "id": "CWE-306",
+        "name": "Missing Authentication for Critical Function"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A vulnerability in Schneider Electric Data Server TCP interface could allow the creation of a malicious report file in the IGSS project report directory, and this could lead to remote code execution when an unsuspecting user opens the malicious report.  CVE-2023-27980 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27980"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Version 16.0.0.23041 of IGSS Data Server, Dashboard and Custom Reports (RMS) includes corrections and mitigations for these vulnerabilities and is available for download through IGSS Master > Update IGSS Software; the update is also available directly from Schneider Electric.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://igss.schneiderelectric.com/igss/igssupdates/v160/IGSSUPDATE.ZIP"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Schneider Electric recommends that users use appropriate patching methodologies when applying these patches to their systems. Schneider Electric recommends the use of back-ups and impact evaluating these patches in a test, development, or offline infrastructure environment, is strongly recommended. Users can contact Schneider Electric’s Customer Care Center for additional assistance.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Additionally, if patching is not feasible, Schneider Electric recommends the following mitigations to reduce the risk of vulnerability exploitation:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Read the Security Guideline for IGSS on securing an IGSS SCADA-installation.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensure that the System Configuration module under Files, automatic backup is enabled for file backup.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Strip report output from Excel output. In the System Configuration module under Reports, stripping of macros for the output engine can be enabled, reducing the risk of distributing an unsafe report.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Verify that devices are isolated on a private network and that firewalls are configured with strict boundaries for devices that require remote access.Schneider Electric strongly recommends the following industry cybersecurity best practices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Locate control and safety system networks and remote devices behind firewalls, and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Install physical controls to help prevent unauthorized users from accessing industrial control and safety systems, components, peripheral equipment, and networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Place all controllers in locked cabinets, and do not leave them in the “Program” mode.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Only connect programming software to the network intended for that device.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Scan all methods of mobile data exchange with the isolated network before use in the terminals or nodes connected to these networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Properly sanitize mobile devices that have connected to another network before connecting to the intended network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "When remote access is required, use secure methods, such as virtual private networks (VPNs).",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Schneider Electric security notification SEVD-2023-073-04.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2023-073-04&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2023-073-04.pdf"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2023-27982",
+      "cwe": {
+        "id": "CWE-345",
+        "name": "Insufficient Verification of Data Authenticity"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A vulnerability in Schneider Electric Data Server could cause manipulation of dashboard files in the IGSS project report directory when an attacker sends specific crafted messages to the Data Server TCP port. This could lead to remote code execution if an unsuspecting user opens the malicious dashboard file. CVE-2023-27982 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27982"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Version 16.0.0.23041 of IGSS Data Server, Dashboard and Custom Reports (RMS) includes corrections and mitigations for these vulnerabilities and is available for download through IGSS Master > Update IGSS Software; the update is also available directly from Schneider Electric.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://igss.schneiderelectric.com/igss/igssupdates/v160/IGSSUPDATE.ZIP"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Schneider Electric recommends that users use appropriate patching methodologies when applying these patches to their systems. Schneider Electric recommends the use of back-ups and impact evaluating these patches in a test, development, or offline infrastructure environment, is strongly recommended. Users can contact Schneider Electric’s Customer Care Center for additional assistance.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Additionally, if patching is not feasible, Schneider Electric recommends the following mitigations to reduce the risk of vulnerability exploitation:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Read the Security Guideline for IGSS on securing an IGSS SCADA-installation.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensure that the System Configuration module under Files, automatic backup is enabled for file backup.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Strip report output from Excel output. In the System Configuration module under Reports, stripping of macros for the output engine can be enabled, reducing the risk of distributing an unsafe report.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Verify that devices are isolated on a private network and that firewalls are configured with strict boundaries for devices that require remote access.Schneider Electric strongly recommends the following industry cybersecurity best practices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Locate control and safety system networks and remote devices behind firewalls, and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Install physical controls to help prevent unauthorized users from accessing industrial control and safety systems, components, peripheral equipment, and networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Place all controllers in locked cabinets, and do not leave them in the “Program” mode.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Only connect programming software to the network intended for that device.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Scan all methods of mobile data exchange with the isolated network before use in the terminals or nodes connected to these networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Properly sanitize mobile devices that have connected to another network before connecting to the intended network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "When remote access is required, use secure methods, such as virtual private networks (VPNs).",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Schneider Electric security notification SEVD-2023-073-04.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2023-073-04&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2023-073-04.pdf"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2023-27978",
+      "cwe": {
+        "id": "CWE-502",
+        "name": "Deserialization of Untrusted Data"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A vulnerability in Schneider Electric Dashboard module could cause an interpretation of malicious payload data if a malicious file is opened by an unsuspecting user. This could lead to remote code execution. CVE-2023-27978 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27978"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Version 16.0.0.23041 of IGSS Data Server, Dashboard and Custom Reports (RMS) includes corrections and mitigations for these vulnerabilities and is available for download through IGSS Master > Update IGSS Software; the update is also available directly from Schneider Electric.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://igss.schneiderelectric.com/igss/igssupdates/v160/IGSSUPDATE.ZIP"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Schneider Electric recommends that users use appropriate patching methodologies when applying these patches to their systems. Schneider Electric recommends the use of back-ups and impact evaluating these patches in a test, development, or offline infrastructure environment, is strongly recommended. Users can contact Schneider Electric’s Customer Care Center for additional assistance.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Additionally, if patching is not feasible, Schneider Electric recommends the following mitigations to reduce the risk of vulnerability exploitation:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Read the Security Guideline for IGSS on securing an IGSS SCADA-installation.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensure that the System Configuration module under Files, automatic backup is enabled for file backup.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Strip report output from Excel output. In the System Configuration module under Reports, stripping of macros for the output engine can be enabled, reducing the risk of distributing an unsafe report.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Verify that devices are isolated on a private network and that firewalls are configured with strict boundaries for devices that require remote access.Schneider Electric strongly recommends the following industry cybersecurity best practices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Locate control and safety system networks and remote devices behind firewalls, and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Install physical controls to help prevent unauthorized users from accessing industrial control and safety systems, components, peripheral equipment, and networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Place all controllers in locked cabinets, and do not leave them in the “Program” mode.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Only connect programming software to the network intended for that device.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Scan all methods of mobile data exchange with the isolated network before use in the terminals or nodes connected to these networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Properly sanitize mobile devices that have connected to another network before connecting to the intended network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "When remote access is required, use secure methods, such as virtual private networks (VPNs).",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Schneider Electric security notification SEVD-2023-073-04.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2023-073-04&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2023-073-04.pdf"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2023-27981",
+      "cwe": {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A vulnerability in Schneider Electric Custom Reports could cause remote code execution if an unsuspecting user opens a malicious report. CVE-2023-27981 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27981"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Version 16.0.0.23041 of IGSS Data Server, Dashboard and Custom Reports (RMS) includes corrections and mitigations for these vulnerabilities and is available for download through IGSS Master > Update IGSS Software; the update is also available directly from Schneider Electric.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://igss.schneiderelectric.com/igss/igssupdates/v160/IGSSUPDATE.ZIP"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Schneider Electric recommends that users use appropriate patching methodologies when applying these patches to their systems. Schneider Electric recommends the use of back-ups and impact evaluating these patches in a test, development, or offline infrastructure environment, is strongly recommended. Users can contact Schneider Electric’s Customer Care Center for additional assistance.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Additionally, if patching is not feasible, Schneider Electric recommends the following mitigations to reduce the risk of vulnerability exploitation:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Read the Security Guideline for IGSS on securing an IGSS SCADA-installation.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensure that the System Configuration module under Files, automatic backup is enabled for file backup.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Strip report output from Excel output. In the System Configuration module under Reports, stripping of macros for the output engine can be enabled, reducing the risk of distributing an unsafe report.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Verify that devices are isolated on a private network and that firewalls are configured with strict boundaries for devices that require remote access.Schneider Electric strongly recommends the following industry cybersecurity best practices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Locate control and safety system networks and remote devices behind firewalls, and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Install physical controls to help prevent unauthorized users from accessing industrial control and safety systems, components, peripheral equipment, and networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Place all controllers in locked cabinets, and do not leave them in the “Program” mode.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Only connect programming software to the network intended for that device.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Scan all methods of mobile data exchange with the isolated network before use in the terminals or nodes connected to these networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Properly sanitize mobile devices that have connected to another network before connecting to the intended network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "When remote access is required, use secure methods, such as virtual private networks (VPNs).",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Schneider Electric security notification SEVD-2023-073-04.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2023-073-04&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2023-073-04.pdf"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2023-27984",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A vulnerability in Schneider Electric Custom Reports could result in macro execution if a malicious report file is opened by an unsuspecting user, potentially leading to remote code execution. CVE-2023-27984 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27984"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Version 16.0.0.23041 of IGSS Data Server, Dashboard and Custom Reports (RMS) includes corrections and mitigations for these vulnerabilities and is available for download through IGSS Master > Update IGSS Software; the update is also available directly from Schneider Electric.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://igss.schneiderelectric.com/igss/igssupdates/v160/IGSSUPDATE.ZIP"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Schneider Electric recommends that users use appropriate patching methodologies when applying these patches to their systems. Schneider Electric recommends the use of back-ups and impact evaluating these patches in a test, development, or offline infrastructure environment, is strongly recommended. Users can contact Schneider Electric’s Customer Care Center for additional assistance.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Additionally, if patching is not feasible, Schneider Electric recommends the following mitigations to reduce the risk of vulnerability exploitation:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Read the Security Guideline for IGSS on securing an IGSS SCADA-installation.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensure that the System Configuration module under Files, automatic backup is enabled for file backup.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Strip report output from Excel output. In the System Configuration module under Reports, stripping of macros for the output engine can be enabled, reducing the risk of distributing an unsafe report.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Verify that devices are isolated on a private network and that firewalls are configured with strict boundaries for devices that require remote access.Schneider Electric strongly recommends the following industry cybersecurity best practices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Locate control and safety system networks and remote devices behind firewalls, and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Install physical controls to help prevent unauthorized users from accessing industrial control and safety systems, components, peripheral equipment, and networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Place all controllers in locked cabinets, and do not leave them in the “Program” mode.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Only connect programming software to the network intended for that device.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Scan all methods of mobile data exchange with the isolated network before use in the terminals or nodes connected to these networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Properly sanitize mobile devices that have connected to another network before connecting to the intended network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "When remote access is required, use secure methods, such as virtual private networks (VPNs).",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Schneider Electric security notification SEVD-2023-073-04.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2023-073-04&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2023-073-04.pdf"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2023-27977",
+      "cwe": {
+        "id": "CWE-345",
+        "name": "Insufficient Verification of Data Authenticity"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A vulnerability in Schneider Electric Data Server could grant an unauthorized user access to delete files in the IGSS project report directory if specific crafted messages are sent to the Data Server TCP port. CVE-2023-27977 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27977"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Version 16.0.0.23041 of IGSS Data Server, Dashboard and Custom Reports (RMS) includes corrections and mitigations for these vulnerabilities and is available for download through IGSS Master > Update IGSS Software; the update is also available directly from Schneider Electric.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://igss.schneiderelectric.com/igss/igssupdates/v160/IGSSUPDATE.ZIP"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Schneider Electric recommends that users use appropriate patching methodologies when applying these patches to their systems. Schneider Electric recommends the use of back-ups and impact evaluating these patches in a test, development, or offline infrastructure environment, is strongly recommended. Users can contact Schneider Electric’s Customer Care Center for additional assistance.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Additionally, if patching is not feasible, Schneider Electric recommends the following mitigations to reduce the risk of vulnerability exploitation:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Read the Security Guideline for IGSS on securing an IGSS SCADA-installation.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensure that the System Configuration module under Files, automatic backup is enabled for file backup.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Strip report output from Excel output. In the System Configuration module under Reports, stripping of macros for the output engine can be enabled, reducing the risk of distributing an unsafe report.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Verify that devices are isolated on a private network and that firewalls are configured with strict boundaries for devices that require remote access.Schneider Electric strongly recommends the following industry cybersecurity best practices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Locate control and safety system networks and remote devices behind firewalls, and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Install physical controls to help prevent unauthorized users from accessing industrial control and safety systems, components, peripheral equipment, and networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Place all controllers in locked cabinets, and do not leave them in the “Program” mode.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Only connect programming software to the network intended for that device.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Scan all methods of mobile data exchange with the isolated network before use in the terminals or nodes connected to these networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Properly sanitize mobile devices that have connected to another network before connecting to the intended network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "When remote access is required, use secure methods, such as virtual private networks (VPNs).",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Schneider Electric security notification SEVD-2023-073-04.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2023-073-04&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2023-073-04.pdf"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2023-27979",
+      "cwe": {
+        "id": "CWE-345",
+        "name": "Insufficient Verification of Data Authenticity"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A vulnerability in Schneider Electric Data Server could allow an unauthorized user to rename files in the IGSS project report directory. This could lead to a denial-of-service condition if an attacker sends specific crafted messages to the Data Server TCP port. CVE-2023-27979 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27979"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Version 16.0.0.23041 of IGSS Data Server, Dashboard and Custom Reports (RMS) includes corrections and mitigations for these vulnerabilities and is available for download through IGSS Master > Update IGSS Software; the update is also available directly from Schneider Electric.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://igss.schneiderelectric.com/igss/igssupdates/v160/IGSSUPDATE.ZIP"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Schneider Electric recommends that users use appropriate patching methodologies when applying these patches to their systems. Schneider Electric recommends the use of back-ups and impact evaluating these patches in a test, development, or offline infrastructure environment, is strongly recommended. Users can contact Schneider Electric’s Customer Care Center for additional assistance.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Additionally, if patching is not feasible, Schneider Electric recommends the following mitigations to reduce the risk of vulnerability exploitation:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Read the Security Guideline for IGSS on securing an IGSS SCADA-installation.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensure that the System Configuration module under Files, automatic backup is enabled for file backup.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Strip report output from Excel output. In the System Configuration module under Reports, stripping of macros for the output engine can be enabled, reducing the risk of distributing an unsafe report.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Verify that devices are isolated on a private network and that firewalls are configured with strict boundaries for devices that require remote access.Schneider Electric strongly recommends the following industry cybersecurity best practices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Locate control and safety system networks and remote devices behind firewalls, and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Install physical controls to help prevent unauthorized users from accessing industrial control and safety systems, components, peripheral equipment, and networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Place all controllers in locked cabinets, and do not leave them in the “Program” mode.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Only connect programming software to the network intended for that device.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Scan all methods of mobile data exchange with the isolated network before use in the terminals or nodes connected to these networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Properly sanitize mobile devices that have connected to another network before connecting to the intended network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "When remote access is required, use secure methods, such as virtual private networks (VPNs).",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Schneider Electric security notification SEVD-2023-073-04.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2023-073-04&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2023-073-04.pdf"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2023-27983",
+      "cwe": {
+        "id": "CWE-306",
+        "name": "Missing Authentication for Critical Function"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A vulnerability in Schneider Electric Data Server TCP interface could allow deletion of reports from the IGSS project report directory. CVE-2023-27983 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27983"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Version 16.0.0.23041 of IGSS Data Server, Dashboard and Custom Reports (RMS) includes corrections and mitigations for these vulnerabilities and is available for download through IGSS Master > Update IGSS Software; the update is also available directly from Schneider Electric.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://igss.schneiderelectric.com/igss/igssupdates/v160/IGSSUPDATE.ZIP"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Schneider Electric recommends that users use appropriate patching methodologies when applying these patches to their systems. Schneider Electric recommends the use of back-ups and impact evaluating these patches in a test, development, or offline infrastructure environment, is strongly recommended. Users can contact Schneider Electric’s Customer Care Center for additional assistance.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Additionally, if patching is not feasible, Schneider Electric recommends the following mitigations to reduce the risk of vulnerability exploitation:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Read the Security Guideline for IGSS on securing an IGSS SCADA-installation.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/work/support/contacts.jsp"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Ensure that the System Configuration module under Files, automatic backup is enabled for file backup.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Strip report output from Excel output. In the System Configuration module under Reports, stripping of macros for the output engine can be enabled, reducing the risk of distributing an unsafe report.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Verify that devices are isolated on a private network and that firewalls are configured with strict boundaries for devices that require remote access.Schneider Electric strongly recommends the following industry cybersecurity best practices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Locate control and safety system networks and remote devices behind firewalls, and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Install physical controls to help prevent unauthorized users from accessing industrial control and safety systems, components, peripheral equipment, and networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Place all controllers in locked cabinets, and do not leave them in the “Program” mode.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Only connect programming software to the network intended for that device.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Scan all methods of mobile data exchange with the isolated network before use in the terminals or nodes connected to these networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Properly sanitize mobile devices that have connected to another network before connecting to the intended network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "When remote access is required, use secure methods, such as virtual private networks (VPNs).",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information, see Schneider Electric security notification SEVD-2023-073-04.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2023-073-04&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2023-073-04.pdf"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1779 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Siemens ProductCERT",
+        "summary": "reporting these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "general",
+        "text": "This CSAF advisory was extracted from unstructured data and may contain inaccuracies. If you notice any errors, please reach out to the designated contact at CISA CSAF: central@cisa.dhs.gov",
+        "title": "CISA Disclaimer"
+      },
+      {
+        "category": "summary",
+        "text": "Several SINAMICS MV (medium voltage) products are affected by multiple vulnerabilities in the integrated SCALANCE S615 device, as documented in SSA-419740 (\nhttps://cert-portal.siemens.com/productcert/html/ssa-419740.html).\nSiemens recommends to update the firmware of the integrated SCALANCE S615 device to the latest version. Siemens recommends specific countermeasures for products where the firmware update is not, or not yet applied.\n\nAdditional considerations regarding the specific impact of the vulnerabilities to SINAMICS MV products can be found in the chapter \"Additional Information\".",
+        "title": "Summary"
+      },
+      {
+        "category": "general",
+        "text": "As a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for Industrial Security (Download: \nhttps://www.siemens.com/cert/operational-guidelines-industrial-security), and to follow the recommendations in the product manuals.\nAdditional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity",
+        "title": "General Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
+        "title": "Additional Resources"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "Siemens Security Advisories are subject to the terms and conditions contained in Siemens' underlying license terms or other applicable agreements previously agreed to with Siemens (hereinafter \"License Terms\"). To the extent applicable to information, software or documentation made available in or through a Siemens Security Advisory, the Terms of Use of Siemens' Global Website (https://www.siemens.com/terms_of_use, hereinafter \"Terms of Use\"), in particular Sections 8-10 of the Terms of Use, shall apply additionally. In case of conflicts, the License Terms shall prevail over the Terms of Use.",
+        "title": "Terms of Use"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "other",
+        "text": "This CISA CSAF advisory was converted from Siemens ProductCERT's CSAF advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Multiple",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Germany",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimizing network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locating control system networks and remote devices behind firewalls and isolating them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, using more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "​No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have low attack complexity.",
+        "title": "Exploitability"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "Email: CISAservicedesk@cisa.dhs.gov;\n Toll Free: 1-888-282-0870",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "SSA-942865: Multiple Vulnerabilities in the Integrated SCALANCE S615 of SINAMICS Medium Voltage Products - CSAF Version",
+        "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-942865.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-23-166-12 JSON",
+        "url": "https://www.github.com/cisagov/CSAF/csaf_files/OT/white/2023/icsa-23-166-12.json"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-942865: Multiple Vulnerabilities in the Integrated SCALANCE S615 of SINAMICS Medium Voltage Products - HTML Version",
+        "url": "https://cert-portal.siemens.com/productcert/html/ssa-942865.html"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-942865: Multiple Vulnerabilities in the Integrated SCALANCE S615 of SINAMICS Medium Voltage Products - PDF Version",
+        "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-942865.pdf"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-942865: Multiple Vulnerabilities in the Integrated SCALANCE S615 of SINAMICS Medium Voltage Products - TXT Version",
+        "url": "https://cert-portal.siemens.com/productcert/txt/ssa-942865.txt"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-23-166-12 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-23-166-12"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Siemens SINAMICS Medium Voltage Products",
+    "tracking": {
+      "current_release_date": "2023-06-13T00:00:00.000000Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1"
+        }
+      },
+      "id": "ICSA-23-166-12",
+      "initial_release_date": "2023-06-13T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2023-06-13T00:00:00.000000Z",
+          "legacy_version": "1.0",
+          "number": "1",
+          "summary": "Publication Date"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SINAMICS GL150",
+                  "product_id": "1"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS GL150"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SINAMICS PERFECT HARMONY GH180 6SR5",
+                  "product_id": "2"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS PERFECT HARMONY GH180 6SR5"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SINAMICS SL150",
+                  "product_id": "3"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS SL150"
+          }
+        ],
+        "category": "vendor",
+        "name": "Siemens"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2018-25032",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "zlib before 1.2.12 allows memory corruption when deflating (i.e., when compressing) if the input has many distant matches.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2018-25032"
+    },
+    {
+      "cve": "CVE-2021-42374",
+      "cwe": {
+        "id": "CWE-125",
+        "name": "Out-of-bounds Read"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An out-of-bounds heap read in Busybox's unlzma applet leads to information leak and denial of service when crafted LZMA-compressed input is decompressed. This can be triggered by any applet/format that internally supports LZMA compression.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2021-42374"
+    },
+    {
+      "cve": "CVE-2021-42378",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the getvar_i function.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.6,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2021-42378"
+    },
+    {
+      "cve": "CVE-2021-42379",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the next_input_file function.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.6,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2021-42379"
+    },
+    {
+      "cve": "CVE-2021-42380",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the clrvar function.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.6,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2021-42380"
+    },
+    {
+      "cve": "CVE-2021-42381",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the hash_init function.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.6,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2021-42381"
+    },
+    {
+      "cve": "CVE-2021-42382",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the getvar_s function.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.6,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2021-42382"
+    },
+    {
+      "cve": "CVE-2021-42383",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the evaluate function.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.6,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2021-42383"
+    },
+    {
+      "cve": "CVE-2021-42384",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the handle_special function.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.6,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2021-42384"
+    },
+    {
+      "cve": "CVE-2021-42385",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the evaluate function.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.6,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2021-42385"
+    },
+    {
+      "cve": "CVE-2021-42386",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the nvalloc function.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.6,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2021-42386"
+    },
+    {
+      "cve": "CVE-2022-0547",
+      "cwe": {
+        "id": "CWE-287",
+        "name": "Improper Authentication"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "OpenVPN 2.1 until v2.4.12 and v2.5.6 may enable authentication bypass in external authentication plug-ins when more than one of them makes use of deferred authentication replies, which allows an external user to be granted access with only partially correct credentials.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2022-0547"
+    },
+    {
+      "cve": "CVE-2022-1199",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A flaw was found in the Linux kernel. This flaw allows an attacker to crash the Linux kernel by simulating amateur radio from the user space, resulting in a null-ptr-deref vulnerability and a use-after-free vulnerability.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2022-1199"
+    },
+    {
+      "cve": "CVE-2022-1292",
+      "cwe": {
+        "id": "CWE-78",
+        "name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The c_rehash script does not properly sanitise shell metacharacters to prevent command injection.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2022-1292"
+    },
+    {
+      "cve": "CVE-2022-1343",
+      "cwe": {
+        "id": "CWE-295",
+        "name": "Improper Certificate Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Under certain circumstances, the command line OCSP verify function reports successful verification when the verification in fact failed. In this case the incorrect successful response will also be accompanied by error messages showing the failure and contradicting the apparently successful result.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2022-1343"
+    },
+    {
+      "cve": "CVE-2022-1473",
+      "cwe": {
+        "id": "CWE-404",
+        "name": "Improper Resource Shutdown or Release"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The used OpenSSL version improperly reuses memory when decoding certificates or keys. This can lead to a process termination and Denial of Service for long lived processes.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2022-1473"
+    },
+    {
+      "cve": "CVE-2022-23308",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "valid.c in libxml2 before 2.9.13 has a use-after-free of ID and IDREF attributes.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2022-23308"
+    },
+    {
+      "cve": "CVE-2022-32205",
+      "cwe": {
+        "id": "CWE-770",
+        "name": "Allocation of Resources Without Limits or Throttling"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A malicious server can serve excessive amounts of \"Set-Cookie:\" headers in a HTTP response to curl and curl < 7.84.0 stores all of them. A sufficiently large amount of (big) cookies make subsequent HTTP requests to this, or other servers to which the cookies match, create requests that become larger than the threshold that curl uses internally to avoid sending crazy large requests (1048576 bytes) and instead returns an error.This denial state might remain for as long as the same cookies are kept, match and haven't expired. Due to cookie matching rules, a server on \"foo.example.com\" can set cookies that also would match for \"bar.example.com\", making it it possible for a \"sister server\" to effectively cause a denial of service for a sibling site on the same second level domain using this method.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2022-32205"
+    },
+    {
+      "cve": "CVE-2022-32206",
+      "cwe": {
+        "id": "CWE-770",
+        "name": "Allocation of Resources Without Limits or Throttling"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "curl < 7.84.0 supports \"chained\" HTTP compression algorithms, meaning that a serverresponse can be compressed multiple times and potentially with different algorithms. The number of acceptable \"links\" in this \"decompression chain\" was unbounded, allowing a malicious server to insert a virtually unlimited number of compression steps.The use of such a decompression chain could result in a \"malloc bomb\", makingcurl end up spending enormous amounts of allocated heap memory, or trying toand returning out of memory errors.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2022-32206"
+    },
+    {
+      "cve": "CVE-2022-32207",
+      "cwe": {
+        "id": "CWE-276",
+        "name": "Incorrect Default Permissions"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "When curl < 7.84.0 saves cookies, alt-svc and hsts data to local files, it makes the operation atomic by finalizing the operation with a rename from a temporary name to the final target file name.In that rename operation, it might accidentally *widen* the permissions for the target file, leaving the updated file accessible to more users than intended.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2022-32207"
+    },
+    {
+      "cve": "CVE-2022-32208",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "When curl < 7.84.0 does FTP transfers secured by krb5, it handles message verification failures wrongly. This flaw makes it possible for a Man-In-The-Middle attack to go unnoticed and even allows it to inject data to the client.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.9,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2022-32208"
+    },
+    {
+      "cve": "CVE-2022-35252",
+      "cwe": {
+        "id": "CWE-1286",
+        "name": "Improper Validation of Syntactic Correctness of Input"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "When curl is used to retrieve and parse cookies from a HTTP(S) server, itaccepts cookies using control codes that when later are sent back to a HTTPserver might make the server return 400 responses. Effectively allowing a\"sister site\" to deny service to all siblings.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2022-35252"
+    },
+    {
+      "cve": "CVE-2022-36946",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "nfqnl_mangle in net/netfilter/nfnetlink_queue.c in the Linux kernel through 5.18.14 allows remote attackers to cause a denial of service (panic) because, in the case of an nf_queue verdict with a one-byte nfta_payload attribute, an skb_pull can encounter a negative skb->len.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Disconnect any direct network connection to the integrated SCALANCE S615 device",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version",
+          "product_ids": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ],
+      "title": "CVE-2022-36946"
+    }
+  ]
+}
