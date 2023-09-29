@@ -165,18 +165,20 @@
     {
       "cve": "CVE-2020-5801",
       "cwe": {
-        "id": "CWE-703",
-        "name": "Improper Check or Handling of Exceptional Conditions"
+        "id": "CWE-755",
+        "name": "Improper Handling of Exceptional Conditions"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "Unhandled exception vulnerabilities exist within a .dll in FactoryTalk Linx. These vulnerabilities could allow a remote, unauthenticated attacker to send a malicious packet resulting in the termination of RSLinxNG.exe, causing a denial-of-service condition.CVE-2020-5801 and CVE-2020-5802 have been assigned to these vulnerabilities. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).",
+          "text": "An attacker can craft and send an OpenNamespace message to port 4241 with valid session-id that triggers an unhandled exception in CFTLDManager::HandleRequest function in RnaDaSvr.dll, resulting in process termination. Observed in FactoryTalk Linx 6.11. All versions of FactoryTalk Linx are affected.",
           "title": "Vulnerability Summary"
         }
       ],
       "product_status": {
-        "known_affected": []
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
       },
       "references": [
         {
@@ -184,6 +186,149 @@
           "summary": "web.nvd.nist.gov",
           "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-5801"
         },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Rockwell Automation published PN1540 to inform users of the risk of these vulnerabilities and instruct users on the proper use of patches. ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1129496/redirect"
+        },
+        {
+          "category": "mitigation",
+          "details": "Utilize proper network infrastructure controls, such as firewalls, to help ensure traffic from unauthorized sources is blocked.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Consult the product documentation for specific features, such as a hardware keyswitch setting, which may be used to block unauthorized changes, etc.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Block all traffic to EtherNet/IP or other CIP protocol-based devices from outside the manufacturing zone by blocking or restricting access to TCP and UDP Port 2222 and Port 44818 using proper network infrastructure controls, such as firewalls, UTM devices, or other security appliances. For more information on TCP/UDP ports used by Rockwell Automation products, see Knowledgebase Article ID BF7490.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/0"
+        },
+        {
+          "category": "mitigation",
+          "details": "Run all software as a User, not as an Administrator, to minimize the impact of malicious code on the infected system.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use Microsoft AppLocker or other similar allow list applications to help mitigate risk. Information on using AppLocker with Rockwell Automation products is available at Knowledgebase Article ID QA17329.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/0"
+        },
+        {
+          "category": "mitigation",
+          "details": "Confirm the least-privilege user principle is followed and the user/service account access to shared resources (such as a database) is only granted with a minimum number of rights as needed.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Do not open untrusted .ftd files with FactoryTalk Services Platform.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Do not click on or open URL links from untrusted sources.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Employ training and awareness programs to educate users on the warning signs of a phishing or social engineering attack.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use trusted software, software patches, antivirus/antimalware programs and interact only with trusted websites and attachments.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure for all control system devices and/or systems and ensure they are not accessible from the Internet. For further information about the risks of unprotected Internet accessible control systems, please see Knowledgebase Article ID PN715.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/0494865"
+        },
+        {
+          "category": "mitigation",
+          "details": "Locate control system networks and devices behind firewalls and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as virtual private networks (VPNs), and recognize VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize a VPN is only as secure as the connected devices.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-5802",
+      "cwe": {
+        "id": "CWE-770",
+        "name": "Allocation of Resources Without Limits or Throttling"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An attacker-controlled memory allocation size can be passed to the C++ new operator in RnaDaSvr.dll by sending a specially crafted ConfigureItems message to TCP port 4241. This will cause an unhandled exception, resulting in termination of RSLinxNG.exe. Observed in FactoryTalk 6.11. All versions of FactoryTalk Linx are affected.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
         {
           "category": "external",
           "summary": "web.nvd.nist.gov",
@@ -307,164 +452,22 @@
             "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
             "version": "3.0"
           },
-          "products": []
-        }
-      ]
-    },
-    {
-      "cve": "CVE-2020-5802",
-      "cwe": {
-        "id": "CWE-120",
-        "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
-      },
-      "notes": [
-        {
-          "category": "summary",
-          "text": "A buffer overflow vulnerability exists within a .dll in FactoryTalk Linx. This vulnerability could allow a local, unauthenticated attacker to send a malicious packet resulting in the termination of RSLinxNG.exe, causing a denial-of-service condition.CVE-2020-5806 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).",
-          "title": "Vulnerability Summary"
-        }
-      ],
-      "product_status": {
-        "known_affected": []
-      },
-      "references": [
-        {
-          "category": "external",
-          "summary": "web.nvd.nist.gov",
-          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-5806"
-        },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
-        }
-      ],
-      "remediations": [
-        {
-          "category": "mitigation",
-          "details": "Rockwell Automation published PN1540 to inform users of the risk of these vulnerabilities and instruct users on the proper use of patches. ",
-          "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1129496/redirect"
-        },
-        {
-          "category": "mitigation",
-          "details": "Utilize proper network infrastructure controls, such as firewalls, to help ensure traffic from unauthorized sources is blocked.",
-          "product_ids": [
+          "products": [
             "CSAFPID-0001"
           ]
-        },
-        {
-          "category": "mitigation",
-          "details": "Consult the product documentation for specific features, such as a hardware keyswitch setting, which may be used to block unauthorized changes, etc.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "Block all traffic to EtherNet/IP or other CIP protocol-based devices from outside the manufacturing zone by blocking or restricting access to TCP and UDP Port 2222 and Port 44818 using proper network infrastructure controls, such as firewalls, UTM devices, or other security appliances. For more information on TCP/UDP ports used by Rockwell Automation products, see Knowledgebase Article ID BF7490.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/0"
-        },
-        {
-          "category": "mitigation",
-          "details": "Run all software as a User, not as an Administrator, to minimize the impact of malicious code on the infected system.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "Use Microsoft AppLocker or other similar allow list applications to help mitigate risk. Information on using AppLocker with Rockwell Automation products is available at Knowledgebase Article ID QA17329.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/0"
-        },
-        {
-          "category": "mitigation",
-          "details": "Confirm the least-privilege user principle is followed and the user/service account access to shared resources (such as a database) is only granted with a minimum number of rights as needed.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "Do not open untrusted .ftd files with FactoryTalk Services Platform.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "Do not click on or open URL links from untrusted sources.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "Employ training and awareness programs to educate users on the warning signs of a phishing or social engineering attack.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "Use trusted software, software patches, antivirus/antimalware programs and interact only with trusted websites and attachments.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "Minimize network exposure for all control system devices and/or systems and ensure they are not accessible from the Internet. For further information about the risks of unprotected Internet accessible control systems, please see Knowledgebase Article ID PN715.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/0494865"
-        },
-        {
-          "category": "mitigation",
-          "details": "Locate control system networks and devices behind firewalls and isolate them from the business network.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "When remote access is required, use secure methods, such as virtual private networks (VPNs), and recognize VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize a VPN is only as secure as the connected devices.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        }
-      ],
-      "scores": [
-        {
-          "cvss_v3": {
-            "baseScore": 6.2,
-            "baseSeverity": "MEDIUM",
-            "vectorString": "CVSS:3.0/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-            "version": "3.0"
-          },
-          "products": []
         }
       ]
     },
     {
       "cve": "CVE-2020-5806",
       "cwe": {
-        "id": "CWE-120",
-        "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+        "id": "CWE-770",
+        "name": "Allocation of Resources Without Limits or Throttling"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "A buffer overflow vulnerability exists within a .dll in FactoryTalk Services Platform. This vulnerability could be exploited via a phishing attack where an attacker sends a specially crafted log file to a local user. When the malicious log file is opened by a local user, it can cause a buffer overflow in the FactoryTalk Services Platform resulting in temporary denial-of-service conditions. Users can recover from the condition by reopening the impacted software.CVE-2020-5806 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L).",
+          "text": "An attacker-controlled memory allocation size can be passed to the C++ new operator in the CServerManager::HandleBrowseLoadIconStreamRequest in messaging.dll. This can be done by sending a specially crafted message to 127.0.0.1:7153. Observed in FactoryTalk Linx 6.11. All versions of FactoryTalk Linx are affected.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -482,7 +485,7 @@
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L"
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
         }
       ],
       "remediations": [
@@ -592,13 +595,177 @@
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 4.3,
+            "baseScore": 5.5,
             "baseSeverity": "MEDIUM",
-            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L",
+            "vectorString": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
             "version": "3.0"
           },
           "products": [
             "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-5807",
+      "cwe": {
+        "id": "CWE-755",
+        "name": "Improper Handling of Exceptional Conditions"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An unauthenticated remote attacker can send data to RsvcHost.exe listening on TCP port 5241 to add entries in the FactoryTalk Diagnostics event log. The attacker can specify long fields in the log entry, which can cause an unhandled exception in wcscpy_s() if a local user opens FactoryTalk Diagnostics Viewer (FTDiagViewer.exe) to view the log entry. Observed in FactoryTalk Diagnostics 6.11. All versions of FactoryTalk Diagnostics are affected.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-5807"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Rockwell Automation published PN1540 to inform users of the risk of these vulnerabilities and instruct users on the proper use of patches. ",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1129496/redirect"
+        },
+        {
+          "category": "mitigation",
+          "details": "Utilize proper network infrastructure controls, such as firewalls, to help ensure traffic from unauthorized sources is blocked.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Consult the product documentation for specific features, such as a hardware keyswitch setting, which may be used to block unauthorized changes, etc.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Block all traffic to EtherNet/IP or other CIP protocol-based devices from outside the manufacturing zone by blocking or restricting access to TCP and UDP Port 2222 and Port 44818 using proper network infrastructure controls, such as firewalls, UTM devices, or other security appliances. For more information on TCP/UDP ports used by Rockwell Automation products, see Knowledgebase Article ID BF7490.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/0"
+        },
+        {
+          "category": "mitigation",
+          "details": "Run all software as a User, not as an Administrator, to minimize the impact of malicious code on the infected system.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use Microsoft AppLocker or other similar allow list applications to help mitigate risk. Information on using AppLocker with Rockwell Automation products is available at Knowledgebase Article ID QA17329.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/0"
+        },
+        {
+          "category": "mitigation",
+          "details": "Confirm the least-privilege user principle is followed and the user/service account access to shared resources (such as a database) is only granted with a minimum number of rights as needed.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Do not open untrusted .ftd files with FactoryTalk Services Platform.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Do not click on or open URL links from untrusted sources.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Employ training and awareness programs to educate users on the warning signs of a phishing or social engineering attack.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use trusted software, software patches, antivirus/antimalware programs and interact only with trusted websites and attachments.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure for all control system devices and/or systems and ensure they are not accessible from the Internet. For further information about the risks of unprotected Internet accessible control systems, please see Knowledgebase Article ID PN715.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/0494865"
+        },
+        {
+          "category": "mitigation",
+          "details": "Locate control system networks and devices behind firewalls and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as virtual private networks (VPNs), and recognize VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize a VPN is only as secure as the connected devices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ]
         }
       ]
