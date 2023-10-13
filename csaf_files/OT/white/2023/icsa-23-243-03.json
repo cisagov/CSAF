@@ -174,9 +174,9 @@
         "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
       }
     ],
-    "title": "PTC Kepware KepServerEX",
+    "title": "PTC Kepware KepServerEX (Update A)",
     "tracking": {
-      "current_release_date": "2023-08-31T06:00:00.000000Z",
+      "current_release_date": "2023-10-12T06:00:00.000000Z",
       "generator": {
         "engine": {
           "name": "CISA CSAF Generator",
@@ -191,10 +191,16 @@
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
+        },
+        {
+          "date": "2023-10-12T06:00:00.000000Z",
+          "legacy_version": "Update A",
+          "number": "2",
+          "summary": "Update A - Fixed ThingWorx Kepware Server affected version and added Thingworx Industrial Connectivity to Affected Products"
         }
       ],
       "status": "final",
-      "version": "1"
+      "version": "2"
     }
   },
   "product_tree": {
@@ -205,9 +211,9 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": ">= 6.0.2107.0 | <= 6.14",
+                "name": "<=6.14.263.0",
                 "product": {
-                  "name": "Kepware KepServerEX: >= 6.0.2107.0 | <= 6.14",
+                  "name": "Kepware KepServerEX: <=6.14.263.0",
                   "product_id": "CSAFPID-0001"
                 }
               }
@@ -219,15 +225,29 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": ">= 8.0 | <= 6.14",
+                "name": "<=6.14.263.0",
                 "product": {
-                  "name": "ThingWorx Kepware Server: >= 8.0 | <= 6.14",
+                  "name": "ThingWorx Kepware Server: <=6.14.263.0",
                   "product_id": "CSAFPID-0002"
                 }
               }
             ],
             "category": "product_name",
             "name": "ThingWorx Kepware Server"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">=8.0|=<8.5",
+                "product": {
+                  "name": "ThingWorx Industrial Connectivity: >=8.0|<8.5",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "ThingWorx Industrial Connectivity"
           }
         ],
         "category": "vendor",
@@ -245,14 +265,15 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The affected product is vulnerable to a stack-based buffer overflow, which may allow an attacker to remotely execute arbitrary code.",
+          "text": "The installer application of KEPServerEX is vulnerable to DLL search order hijacking. This could allow an adversary to repackage the installer with a malicious DLL and trick users into installing the trojanized software. Successful exploitation could lead to code execution with administrator privileges.",
           "title": "Vulnerability Summary"
         }
       ],
       "product_status": {
         "known_affected": [
           "CSAFPID-0001",
-          "CSAFPID-0002"
+          "CSAFPID-0002",
+          "CSAFPID-0003"
         ]
       },
       "references": [
@@ -273,7 +294,8 @@
           "details": "PTC is aware of these vulnerabilities and is developing patches to address them. PTC expects these issues to be addressed by November 2023. This advisory will be updated when these patches are ready.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ]
         },
         {
@@ -281,16 +303,18 @@
           "details": "PTC recommends users follow the directions in the secure configuration documentation.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ],
           "url": "https://www.ptc.com/support/-/media/support/refdocs/KEPServerEX/6,-d-,13/secure_deployment_guide_kse.pdf?sc_lang=en"
         },
         {
           "category": "mitigation",
-          "details": "Please refer to PTC's security advisory on these vulnerabilities for more information.",
+          "details": "Users are encouraged to refer to PTC's security advisory on these vulnerabilities for more information.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ],
           "url": "https://www.ptc.com/en/support/article/cs399528"
         }
@@ -305,7 +329,8 @@
           },
           "products": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ]
         }
       ]
@@ -319,14 +344,15 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The affected product is vulnerable to a stack-based buffer overflow, which may allow an attacker to remotely execute arbitrary code.",
+          "text": "KEPServerEX binary is vulnerable to DLL search order hijacking. A locally authenticated adversary could escalate privileges to administrator by planting a malicious DLL in a specific directory.",
           "title": "Vulnerability Summary"
         }
       ],
       "product_status": {
         "known_affected": [
           "CSAFPID-0001",
-          "CSAFPID-0002"
+          "CSAFPID-0002",
+          "CSAFPID-0003"
         ]
       },
       "references": [
@@ -347,7 +373,8 @@
           "details": "PTC is aware of these vulnerabilities and is developing patches to address them. PTC expects these issues to be addressed by November 2023. This advisory will be updated when these patches are ready.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ]
         },
         {
@@ -355,16 +382,18 @@
           "details": "PTC recommends users follow the directions in the secure configuration documentation.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ],
           "url": "https://www.ptc.com/support/-/media/support/refdocs/KEPServerEX/6,-d-,13/secure_deployment_guide_kse.pdf?sc_lang=en"
         },
         {
           "category": "mitigation",
-          "details": "Please refer to PTC's security advisory on these vulnerabilities for more information.",
+          "details": "Users are encouraged to refer to PTC's security advisory on these vulnerabilities for more information.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ],
           "url": "https://www.ptc.com/en/support/article/cs399528"
         }
@@ -379,7 +408,8 @@
           },
           "products": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ]
         }
       ]
@@ -393,14 +423,15 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The affected product is vulnerable to a stack-based buffer overflow, which may allow an attacker to remotely execute arbitrary code.",
+          "text": "KEPServerEx is vulnerable to UNC path injection via a malicious project file. By tricking a user into loading a project file and clicking a specific button in the GUI, an adversary could obtain Windows user NTLMv2 hashes, and crack them offline.",
           "title": "Vulnerability Summary"
         }
       ],
       "product_status": {
         "known_affected": [
           "CSAFPID-0001",
-          "CSAFPID-0002"
+          "CSAFPID-0002",
+          "CSAFPID-0003"
         ]
       },
       "references": [
@@ -421,7 +452,8 @@
           "details": "PTC is aware of these vulnerabilities and is developing patches to address them. PTC expects these issues to be addressed by November 2023. This advisory will be updated when these patches are ready.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ]
         },
         {
@@ -429,16 +461,18 @@
           "details": "PTC recommends users follow the directions in the secure configuration documentation.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ],
           "url": "https://www.ptc.com/support/-/media/support/refdocs/KEPServerEX/6,-d-,13/secure_deployment_guide_kse.pdf?sc_lang=en"
         },
         {
           "category": "mitigation",
-          "details": "Please refer to PTC's security advisory on these vulnerabilities for more information.",
+          "details": "Users are encouraged to refer to PTC's security advisory on these vulnerabilities for more information.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ],
           "url": "https://www.ptc.com/en/support/article/cs399528"
         }
@@ -453,7 +487,8 @@
           },
           "products": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ]
         }
       ]
@@ -467,14 +502,15 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The affected product is vulnerable to a stack-based buffer overflow, which may allow an attacker to remotely execute arbitrary code.",
+          "text": "The KEPServerEX Configuration web server uses basic authentication to protect user credentials. An adversary could perform a man-in-the-middle (MitM) attack via ARP spoofing to obtain the web server's plaintext credentials.",
           "title": "Vulnerability Summary"
         }
       ],
       "product_status": {
         "known_affected": [
           "CSAFPID-0001",
-          "CSAFPID-0002"
+          "CSAFPID-0002",
+          "CSAFPID-0003"
         ]
       },
       "references": [
@@ -495,7 +531,8 @@
           "details": "PTC is aware of these vulnerabilities and is developing patches to address them. PTC expects these issues to be addressed by November 2023. This advisory will be updated when these patches are ready.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ]
         },
         {
@@ -503,16 +540,18 @@
           "details": "PTC recommends users follow the directions in the secure configuration documentation.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ],
           "url": "https://www.ptc.com/support/-/media/support/refdocs/KEPServerEX/6,-d-,13/secure_deployment_guide_kse.pdf?sc_lang=en"
         },
         {
           "category": "mitigation",
-          "details": "Please refer to PTC's security advisory on these vulnerabilities for more information.",
+          "details": "Users are encouraged to refer to PTC's security advisory on these vulnerabilities for more information.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ],
           "url": "https://www.ptc.com/en/support/article/cs399528"
         }
@@ -527,7 +566,8 @@
           },
           "products": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ]
         }
       ]
