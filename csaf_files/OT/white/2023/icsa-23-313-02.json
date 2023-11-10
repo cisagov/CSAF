@@ -3,7 +3,7 @@
     "acknowledgments": [
       {
         "organization": "Hitachi Energy",
-        "summary": "reporting this vulnerability to CISA"
+        "summary": "reporting these vulnerabilities to CISA"
       }
     ],
     "category": "csaf_security_advisory",
@@ -24,7 +24,7 @@
       },
       {
         "category": "summary",
-        "text": "Successful exploitation of this vulnerability could allow an unauthorized user to execute administrator level scripts. ",
+        "text": "Successful exploitation of these vulnerabilities could allow an attacker to disclose sensitive information related to eSOMS application configuration.",
         "title": "Risk evaluation"
       },
       {
@@ -44,7 +44,7 @@
       },
       {
         "category": "general",
-        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of this these vulnerabilities, such as:",
         "title": "Recommended Practices"
       },
       {
@@ -89,7 +89,7 @@
       },
       {
         "category": "general",
-        "text": "No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.",
+        "text": "No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.",
         "title": "Recommended Practices"
       }
     ],
@@ -102,13 +102,13 @@
     "references": [
       {
         "category": "self",
-        "summary": "ICS Advisory ICSA-22-333-03 JSON",
-        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2022/icsa-22-333-03.json"
+        "summary": "ICS Advisory ICSA-23-313-02 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2023/icsa-23-313-02.json"
       },
       {
         "category": "self",
-        "summary": "ICSA Advisory ICSA-22-333-03 - Web Version",
-        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-22-333-03"
+        "summary": "ICSA Advisory ICSA-23-313-02 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-23-313-02"
       },
       {
         "category": "external",
@@ -141,7 +141,7 @@
         "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
       }
     ],
-    "title": "Hitachi Energy MicroSCADA Pro/X SYS600 Products (Update A)",
+    "title": "Hitachi Energy eSOMS",
     "tracking": {
       "current_release_date": "2023-11-09T07:00:00.000000Z",
       "generator": {
@@ -150,24 +150,18 @@
           "version": "1.0.0"
         }
       },
-      "id": "ICSA-22-333-03",
-      "initial_release_date": "2022-11-29T07:00:00.000000Z",
+      "id": "ICSA-23-313-02",
+      "initial_release_date": "2023-11-09T07:00:00.000000Z",
       "revision_history": [
         {
-          "date": "2022-11-29T07:00:00.000000Z",
+          "date": "2023-11-09T07:00:00.000000Z",
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
-        },
-        {
-          "date": "2023-11-09T07:00:00.000000Z",
-          "legacy_version": "Update A",
-          "number": "2",
-          "summary": "Update A - Update to Affected Product Versions, CWE, & Recommended Immediate Actions"
         }
       ],
       "status": "final",
-      "version": "2"
+      "version": "1"
     }
   },
   "product_tree": {
@@ -178,112 +172,202 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "<=10.4",
+                "name": "<=6.3.13",
                 "product": {
-                  "name": "SYS600 10.x: <=10.4",
+                  "name": "eSOMS: <=6.3.13",
                   "product_id": "CSAFPID-0001"
                 }
               }
             ],
             "category": "product_name",
-            "name": "SYS600 10.x"
-          },
-          {
-            "branches": [
-              {
-                "category": "product_version_range",
-                "name": "<=9.4_FP2_Hotfix_4",
-                "product": {
-                  "name": "SYS600 9.x: <=9.4_FP2_Hotfix_4",
-                  "product_id": "CSAFPID-0002"
-                }
-              }
-            ],
-            "category": "product_name",
-            "name": "SYS600 9.x"
+            "name": "eSOMS"
           }
         ],
         "category": "vendor",
-        "name": "Hitachi Energy "
+        "name": "Hitachi Energy"
       }
     ]
   },
   "vulnerabilities": [
     {
-      "cve": "CVE-2022-3388",
+      "cve": "CVE-2023-5514",
       "cwe": {
-        "id": "CWE-1173",
-        "name": "Improper Use of Validation Framework"
+        "id": "CWE-209",
+        "name": "Generation of Error Message Containing Sensitive Information"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "An input validation vulnerability exists in the Monitor Pro interface of MicroSCADA Pro and MicroSCADA X SYS600. An authenticated user could launch an administrator level remote code execution regardless of the authenticated user's role.",
+          "text": "The response messages received from the eSOMS report generation using certain parameter queries with full file path can be abused for enumerating the local file system structure.",
           "title": "Vulnerability Summary"
         }
       ],
       "product_status": {
         "known_affected": [
-          "CSAFPID-0001",
-          "CSAFPID-0002"
+          "CSAFPID-0001"
         ]
       },
       "references": [
         {
           "category": "external",
           "summary": "web.nvd.nist.gov",
-          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-3388"
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-5514"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
         }
       ],
       "remediations": [
         {
           "category": "mitigation",
-          "details": "Hitachi Energy released the following recommended immediate actions:",
-          "product_ids": [
-            "CSAFPID-0001",
-            "CSAFPID-0002"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "For SYS600 9.x:   Update to version SYS600 9.4 FP2 Hotfix 5 or up-grade to at least SYS600 version 10.4.1.   A requirement to install SYS600 9.4 FP2 Hotfix 5 is to have at least the SYS600 9.4 FP2 Hotfix 4 installed.",
-          "product_ids": [
-            "CSAFPID-0002"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "For SYS600 10.x:   Update to at least SYS600 version 10.4.1 Or apply general mitigation factors from Hitachi Energy.",
+          "details": "Hitachi Energy recommends updating eSOMS to a fixed version when available.",
           "product_ids": [
             "CSAFPID-0001"
           ]
         },
         {
           "category": "mitigation",
-          "details": "For more information, see Hitachi Energy's Cybersecurity Advisory.",
+          "details": "For more information on this issue, see the Hitachi Energy eSOMS Security Advisory 8DBD000175.",
           "product_ids": [
-            "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0001"
           ],
-          "url": "https://publisher.hitachienergy.com/preview?DocumentId=8DBD000123&languageCode=en&Preview=true"
+          "url": "https://publisher.hitachienergy.com/preview?DocumentId=8DBD000175&languageCode=en&Preview=true"
         }
       ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 8.8,
-            "baseSeverity": "HIGH",
-            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
             "version": "3.1"
           },
           "products": [
-            "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2023-5515",
+      "cwe": {
+        "id": "CWE-497",
+        "name": "Exposure of Sensitive System Information to an Unauthorized Control Sphere"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The responses for web queries with certain parameters disclose internal path of resources. This information can be used to learn internal structure of the application and to further plot attacks against web servers and deployed web applications.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-5515"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Hitachi Energy recommends updating eSOMS to a fixed version when available.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information on this issue, see the Hitachi Energy eSOMS Security Advisory 8DBD000175.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://publisher.hitachienergy.com/preview?DocumentId=8DBD000175&languageCode=en&Preview=true"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2023-5516",
+      "cwe": {
+        "id": "CWE-497",
+        "name": "Exposure of Sensitive System Information to an Unauthorized Control Sphere"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Poorly constructed webap requests and URI components with special characters trigger unhandled errors and exceptions, disclosing information about the underlying technology and other sensitive information details. The website unintentionally reveals sensitive information including technical details like version Info, endpoints, backend server, Internal IP. etc., which could expose additional attack surface containing other vulnerabilities.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-5516"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Hitachi Energy recommends updating eSOMS to a fixed version when available.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information on this issue, see the Hitachi Energy eSOMS Security Advisory 8DBD000175.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://publisher.hitachienergy.com/preview?DocumentId=8DBD000175&languageCode=en&Preview=true"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
           ]
         }
       ]
