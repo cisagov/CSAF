@@ -24,7 +24,7 @@
       },
       {
         "category": "summary",
-        "text": "Successful exploitation of this vulnerability could allow an attacker to take administrative control of the affected device.",
+        "text": "Successful exploitation of this vulnerability could allow an unauthenticated attacker to take administrative control of Unitronics Vision and Samba series systems and use a default administrative password.",
         "title": "Risk evaluation"
       },
       {
@@ -84,7 +84,7 @@
       },
       {
         "category": "general",
-        "text": "Known public exploitations specifically targeting this vulnerability have been reported to CISA at this time.",
+        "text": "Known public exploitations specifically targeting this vulnerability have been reported to CISA.",
         "title": "Recommended Practices"
       }
     ],
@@ -136,9 +136,9 @@
         "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
       }
     ],
-    "title": "Unitronics Vision Series",
+    "title": "Unitronics Vision and Samba Series (Update A)",
     "tracking": {
-      "current_release_date": "2023-12-14T07:00:00.000000Z",
+      "current_release_date": "2024-01-04T07:00:00.000000Z",
       "generator": {
         "engine": {
           "name": "CISA CSAF Generator",
@@ -153,10 +153,16 @@
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
+        },
+        {
+          "date": "2024-01-04T07:00:00.000000Z",
+          "legacy_version": "Update A",
+          "number": "2",
+          "summary": "Update A - Added additional equipment, product, mitigations, and a link to the Unitronics advisory. Adjusted risk evaluation statement."
         }
       ],
       "status": "final",
-      "version": "1"
+      "version": "2"
     }
   },
   "product_tree": {
@@ -176,6 +182,20 @@
             ],
             "category": "product_name",
             "name": "VisiLogic"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<12.38",
+                "product": {
+                  "name": "Unitronics OS: <12.38",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "OS"
           }
         ],
         "category": "vendor",
@@ -199,7 +219,8 @@
       ],
       "product_status": {
         "known_affected": [
-          "CSAFPID-0001"
+          "CSAFPID-0001",
+          "CSAFPID-0002"
         ]
       },
       "references": [
@@ -227,63 +248,104 @@
           "category": "mitigation",
           "details": "For users who cannot update to the latest version, CISA urges organizations to:",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ]
         },
         {
           "category": "mitigation",
           "details": "Change all default passwords on PLCs and HMIs and use a strong password. Ensure the Unitronics PLC default password \"1111\" is not in use.",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Set a password on PCOM-enabled sockets.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Control remote enabled PCOM operations using SDW10 roles.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ]
         },
         {
           "category": "mitigation",
           "details": "Disconnect the PLC from the open internet. If remote access is necessary, control network access to the PLC.",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ]
         },
         {
           "category": "mitigation",
           "details": "Implement a Firewall/VPN in front of the PLC to control network access to the remote PLC. A VPN or gateway device can enable multifactor authentication for remote access even if the PLC does not support multifactor authentication. Unitronics also has a secure cellular based longhaul transport device that is secure to their cloud services.",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ]
         },
         {
           "category": "mitigation",
           "details": "Use an allowlist of IPs for access.",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ]
         },
         {
           "category": "mitigation",
           "details": "Back up the logic and configurations on any Unitronics PLCs to enable fast recovery. Become familiar with the process for factory resetting and deploying configurations to a device in the event of being hit by ransomware.",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ]
         },
         {
           "category": "mitigation",
-          "details": "If possible, utilize a TCP port that is different than the default port TCP 20256. Cyber actors are actively targeting TCP 20256 after identifying it through network probing as a port associated to Unitronics PLC. Once identified, they leverage scripts specific to PCOM/TCP to query and validate the system, allowing for further probing and connection. If available, use PCOM/TCP filters to parse out the packets. Keep Unitronics and other PLC devices updated with the latest versions by the manufacturer. Confirm third-party vendors are applying the above recommended countermeasures to mitigate exposure of these devices and all installed equipment.",
+          "details": "If possible, utilize a TCP port that is different than the default port TCP 20256. Cyber actors are actively targeting TCP 20256 after identifying it through network probing as a port associated to Unitronics PLC. Once identified, they leverage scripts specific to PCOM/TCP to query and validate the system, allowing for further probing and connection. If available, use PCOM/TCP filters to parse out the packets.",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Keep Unitronics and other PLC devices updated with the latest versions by the manufacturer.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Confirm third-party vendors are applying the above recommended countermeasures to mitigate exposure of these devices and all installed equipment.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ]
         },
         {
           "category": "mitigation",
           "details": "CISA and WWS Sector partners have developed numerous tools and resources that water utilities can use to increase their cybersecurity. Please visit:",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ]
         },
         {
           "category": "mitigation",
           "details": "CISA: Water and Wastewater Cybersecurity",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ],
           "url": "https://www.cisa.gov/water"
         },
@@ -291,7 +353,8 @@
           "category": "mitigation",
           "details": "EPA: Cybersecurity for the Water Sector",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ],
           "url": "https://www.epa.gov/waterriskassessment/epa-cybersecurity-water-sector"
         },
@@ -299,7 +362,8 @@
           "category": "mitigation",
           "details": "WaterISAC: Resource Center",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ],
           "url": "https://www.waterisac.org/resources"
         },
@@ -307,15 +371,26 @@
           "category": "mitigation",
           "details": "American Water Works Association: Cybersecurity and Guidance",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ],
           "url": "https://www.awwa.org/Resources-Tools/Resource-Topics/Risk-Resilience/Cybersecurity-Guidance"
         },
         {
           "category": "mitigation",
+          "details": "More information can be found by viewing the Unitronics advisory.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "url": "https://downloads.unitronicsplc.com/Sites/plc/Technical_Library/Unitronics-Cybersecurity-Advisory-2023-001-CVE-2023-6448.pdf"
+        },
+        {
+          "category": "mitigation",
           "details": "CISA has also provided further guidance in the following CSA.",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ],
           "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a"
         }
@@ -329,7 +404,8 @@
             "version": "3.1"
           },
           "products": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ]
         }
       ]
