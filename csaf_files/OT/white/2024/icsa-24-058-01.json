@@ -1,0 +1,1646 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Mitsubishi Electric Corporation",
+        "summary": "reporting this vulnerability to CISA"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of this vulnerability could allow a remote attacker to cause a temporary denial-of-service (DoS) condition for a certain period of time in the product's Ethernet communication by performing a TCP SYN Flood attack.",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Japan",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolating them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-24-058-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2024/icsa-24-058-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICSA Advisory ICSA-24-058-01 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-24-058-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Mitsubishi Electric Multiple Factory Automation Products",
+    "tracking": {
+      "current_release_date": "2024-02-27T07:00:00.000000Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-24-058-01",
+      "initial_release_date": "2024-02-27T07:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2024-02-27T07:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial Publication"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-32MT/ES: vers:all/*",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-32MT/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-32MT/DS: vers:all/*",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-32MT/DS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-32MT/ESS: vers:all/*",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-32MT/ESS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-32MT/DSS: vers:all/*",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-32MT/DSS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-32MR/ES: vers:all/*",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-32MR/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-32MR/DS: vers:all/*",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-32MR/DS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-64MT/ES: vers:all/*",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-64MT/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-64MT/ESS: vers:all/*",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-64MT/ESS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-64MT/DS: vers:all/*",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-64MT/DS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-64MT/DSS: vers:all/*",
+                  "product_id": "CSAFPID-0010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-64MT/DSS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-64MR/ES: vers:all/*",
+                  "product_id": "CSAFPID-0011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-64MR/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-64MR/DS: vers:all/*",
+                  "product_id": "CSAFPID-0012"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-64MR/DS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-80MT/ES: vers:all/*",
+                  "product_id": "CSAFPID-0013"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-80MT/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-80MT/DS: vers:all/*",
+                  "product_id": "CSAFPID-0014"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-80MT/DS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-80MT/ESS: vers:all/*",
+                  "product_id": "CSAFPID-0015"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-80MT/ESS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-80MT/DSS: vers:all/*",
+                  "product_id": "CSAFPID-0016"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-80MT/DSS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-80MR/ES: vers:all/*",
+                  "product_id": "CSAFPID-0017"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-80MR/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5U-80MR/DS: vers:all/*",
+                  "product_id": "CSAFPID-0018"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5U-80MR/DS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UC-32MT/D: vers:all/*",
+                  "product_id": "CSAFPID-0019"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UC-32MT/D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UC-32MT/DSS: vers:all/*",
+                  "product_id": "CSAFPID-0020"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UC-32MT/DSS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UC-64MT/D: vers:all/*",
+                  "product_id": "CSAFPID-0021"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UC-64MT/D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UC-64MT/DSS: vers:all/*",
+                  "product_id": "CSAFPID-0022"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UC-64MT/DSS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UC-96MT/D: vers:all/*",
+                  "product_id": "CSAFPID-0023"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UC-96MT/D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UC-96MT/DSS: vers:all/*",
+                  "product_id": "CSAFPID-0024"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UC-96MT/DSS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UC-32MT/DS-TS: vers:all/*",
+                  "product_id": "CSAFPID-0025"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UC-32MT/DS-TS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UC-32MT/DSS-TS: vers:all/*",
+                  "product_id": "CSAFPID-0026"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UC-32MT/DSS-TS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UC-32MR/DS-TS: vers:all/*",
+                  "product_id": "CSAFPID-0027"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UC-32MR/DS-TS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-24MT/ES: vers:all/*",
+                  "product_id": "CSAFPID-0028"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-24MT/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-24MT/DS: vers:all/*",
+                  "product_id": "CSAFPID-0029"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-24MT/DS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-24MT/ESS: vers:all/*",
+                  "product_id": "CSAFPID-0030"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-24MT/ESS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-24MT/DSS: vers:all/*",
+                  "product_id": "CSAFPID-0031"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-24MT/DSS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-24MR/ES: vers:all/*",
+                  "product_id": "CSAFPID-0032"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-24MR/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-24MR/DS: vers:all/*",
+                  "product_id": "CSAFPID-0033"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-24MR/DS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-40MT/ES: vers:all/*",
+                  "product_id": "CSAFPID-0034"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-40MT/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-40MT/DS: vers:all/*",
+                  "product_id": "CSAFPID-0035"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-40MT/DS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-40MT/ESS: vers:all/*",
+                  "product_id": "CSAFPID-0036"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-40MT/ESS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-40MT/DSS: vers:all/*",
+                  "product_id": "CSAFPID-0037"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-40MT/DSS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-40MR/ES: vers:all/*",
+                  "product_id": "CSAFPID-0038"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-40MR/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-40MR/DS: vers:all/*",
+                  "product_id": "CSAFPID-0039"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-40MR/DS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-60MT/ES: vers:all/*",
+                  "product_id": "CSAFPID-0040"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-60MT/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-60MT/DS: vers:all/*",
+                  "product_id": "CSAFPID-0041"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-60MT/DS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-60MT/ESS: vers:all/*",
+                  "product_id": "CSAFPID-0042"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-60MT/ESS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-60MT/DSS: vers:all/*",
+                  "product_id": "CSAFPID-0043"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-60MT/DSS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-60MR/ES: vers:all/*",
+                  "product_id": "CSAFPID-0044"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-60MR/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-60MR/DS: vers:all/*",
+                  "product_id": "CSAFPID-0045"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-60MR/DS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-24MT/ES-A*: vers:all/*",
+                  "product_id": "CSAFPID-0046"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-24MT/ES-A*"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-24MR/ES-A*: vers:all/*",
+                  "product_id": "CSAFPID-0047"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-24MR/ES-A*"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-40MT/ES-A*: vers:all/*",
+                  "product_id": "CSAFPID-0048"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-40MT/ES-A*"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-40MR/ES-A*: vers:all/*",
+                  "product_id": "CSAFPID-0049"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-40MR/ES-A*"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-60MT/ES-A*: vers:all/*",
+                  "product_id": "CSAFPID-0050"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-60MT/ES-A*"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5UJ-60MR/ES-A*: vers:all/*",
+                  "product_id": "CSAFPID-0051"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5UJ-60MR/ES-A*"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5S-30MT/ES: vers:all/*",
+                  "product_id": "CSAFPID-0052"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5S-30MT/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5S-30MT/ESS: vers:all/*",
+                  "product_id": "CSAFPID-0053"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5S-30MT/ESS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5S-30MR/ES: vers:all/*",
+                  "product_id": "CSAFPID-0054"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5S-30MR/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5S-40MT/ES: vers:all/*",
+                  "product_id": "CSAFPID-0055"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5S-40MT/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5S-40MT/ESS: vers:all/*",
+                  "product_id": "CSAFPID-0056"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5S-40MT/ESS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5S-40MR/ES: vers:all/*",
+                  "product_id": "CSAFPID-0057"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5S-40MR/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5S-60MT/ES: vers:all/*",
+                  "product_id": "CSAFPID-0058"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5S-60MT/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5S-60MT/ESS: vers:all/*",
+                  "product_id": "CSAFPID-0059"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5S-60MT/ESS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5S-60MR/ES: vers:all/*",
+                  "product_id": "CSAFPID-0060"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5S-60MR/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5S-80*MT/ES: vers:all/*",
+                  "product_id": "CSAFPID-0061"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5S-80*MT/ES"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5S-80*MT/ESS: vers:all/*",
+                  "product_id": "CSAFPID-0062"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5S-80*MT/ESS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Corporation MELSEC iQ-F FX5S-80*MR/ES: vers:all/*",
+                  "product_id": "CSAFPID-0063"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MELSEC iQ-F FX5S-80*MR/ES"
+          }
+        ],
+        "category": "vendor",
+        "name": "Mitsubishi Electric Corporation"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2023-7033",
+      "cwe": {
+        "id": "CWE-410",
+        "name": "Insufficient Resource Pool"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In Mitsubishi Electric multiple FA products there is a denial-of-service (DoS) vulnerability that exists in the Ethernet function. A remote attacker could cause a temporary denial-of-service (DoS) condition for a certain period of time in the product's Ethernet communication by performing a TCP SYN Flood attack.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0013",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0016",
+          "CSAFPID-0017",
+          "CSAFPID-0018",
+          "CSAFPID-0019",
+          "CSAFPID-0020",
+          "CSAFPID-0021",
+          "CSAFPID-0022",
+          "CSAFPID-0023",
+          "CSAFPID-0024",
+          "CSAFPID-0025",
+          "CSAFPID-0026",
+          "CSAFPID-0027",
+          "CSAFPID-0028",
+          "CSAFPID-0029",
+          "CSAFPID-0030",
+          "CSAFPID-0031",
+          "CSAFPID-0032",
+          "CSAFPID-0033",
+          "CSAFPID-0034",
+          "CSAFPID-0035",
+          "CSAFPID-0036",
+          "CSAFPID-0037",
+          "CSAFPID-0038",
+          "CSAFPID-0039",
+          "CSAFPID-0040",
+          "CSAFPID-0041",
+          "CSAFPID-0042",
+          "CSAFPID-0043",
+          "CSAFPID-0044",
+          "CSAFPID-0045",
+          "CSAFPID-0046",
+          "CSAFPID-0047",
+          "CSAFPID-0048",
+          "CSAFPID-0049",
+          "CSAFPID-0050",
+          "CSAFPID-0051",
+          "CSAFPID-0052",
+          "CSAFPID-0053",
+          "CSAFPID-0054",
+          "CSAFPID-0055",
+          "CSAFPID-0056",
+          "CSAFPID-0057",
+          "CSAFPID-0058",
+          "CSAFPID-0059",
+          "CSAFPID-0060",
+          "CSAFPID-0061",
+          "CSAFPID-0062",
+          "CSAFPID-0063"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-7033"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Mitsubishi Electric recommends that users take the following mitigation measures to minimize the risk of exploiting this vulnerability:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use a firewall, virtual private network (VPN) etc., to prevent unauthorized access when Internet access is required.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use within a LAN and block access from untrusted networks and hosts through firewalls.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use IP filter function to block access from untrusted hosts. For details on the IP filter function, please refer to the following manual for each product:\"13.1 IP Filter Function\" in the MELSEC iQ-F FX5 User's Manual (Communication)",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Restrict physical access to the affected products and the LAN to which they are connected.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For specific update instructions and additional details refer to Mitsubishi Electric advisory 2023-023",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063"
+          ],
+          "url": "https://www.mitsubishielectric.com/en/psirt/vulnerability/pdf/2023-023_en.pdf"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063"
+          ]
+        }
+      ]
+    }
+  ]
+}
