@@ -1,0 +1,1515 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "names": [
+          "Gjoko Krstic"
+        ],
+        "organization": "Zero Science Lab",
+        "summary": "reporting these vulnerabilities to CISA"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of these vulnerabilities could allow a remote attacker to gain full system access.",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Commercial Facilities",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Italy",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-24-065-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2024/icsa-24-065-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICSA Advisory ICSA-24-065-01 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-24-065-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Nice Linear eMerge E3-Series",
+    "tracking": {
+      "current_release_date": "2024-03-05T07:00:00.000000Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-24-065-01",
+      "initial_release_date": "2024-03-05T07:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2024-03-05T07:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial Publication"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=1.00-06",
+                "product": {
+                  "name": "Nice Linear eMerge E3-Series: <=1.00-06",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Linear eMerge E3-Series"
+          }
+        ],
+        "category": "vendor",
+        "name": "Nice"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2019-7253",
+      "cwe": {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Nice Linear eMerge E3-Series versions 1.00-06 and prior are vulnerable to path traversal. This could allow an attacker to gain unauthorized access to the system and sensitive data. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "nvd.nist.gov",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-7253"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Nice/Nortek encourages users to upgrade to the latest firmware to mitigate the risk of these vulnerabilities. Please see Nice's E3-Bulletin for more information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/E3-Bulletin-06-27-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Nice also recommends the following defensive measures to minimize the risk of exploitation of these vulnerabilities:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure of devices, ensuring they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place the devices behind firewalls and isolate them from other networks.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Keep your VPNs as updated as possible.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change default credentials on the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change the default IP address of the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "See Nice's Telephone Entry Bulletin for additional information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/Service-Bulletin-for-Telephone-Entry-Products-04-12-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Users should contact Nice with any questions.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://na.niceforyou.com/about/contact/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-7254",
+      "cwe": {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Versions of Nice Linear eMerge E3-Series firmware 1.00-06 and prior are vulnerable to a file inclusion through path traversal, which could give the attacker access to sensitive information. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2019-7254"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Nice/Nortek encourages users to upgrade to the latest firmware to mitigate the risk of these vulnerabilities. Please see Nice's E3-Bulletin for more information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/E3-Bulletin-06-27-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Nice also recommends the following defensive measures to minimize the risk of exploitation of these vulnerabilities:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure of devices, ensuring they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place the devices behind firewalls and isolate them from other networks.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Keep your VPNs as updated as possible.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change default credentials on the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change the default IP address of the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "See Nice's Telephone Entry Bulletin for additional information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/Service-Bulletin-for-Telephone-Entry-Products-04-12-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Users should contact Nice with any questions.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://na.niceforyou.com/about/contact/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-7255",
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Nice Linear eMerge E3-Series versions 1.00-06 and prior are vulnerable to cross-site scripting, which could allow an attacker to obtain and alter some information on the system. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2019-7255"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Nice/Nortek encourages users to upgrade to the latest firmware to mitigate the risk of these vulnerabilities. Please see Nice's E3-Bulletin for more information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/E3-Bulletin-06-27-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Nice also recommends the following defensive measures to minimize the risk of exploitation of these vulnerabilities:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure of devices, ensuring they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place the devices behind firewalls and isolate them from other networks.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Keep your VPNs as updated as possible.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change default credentials on the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change the default IP address of the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "See Nice's Telephone Entry Bulletin for additional information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/Service-Bulletin-for-Telephone-Entry-Products-04-12-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Users should contact Nice with any questions.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://na.niceforyou.com/about/contact/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.1,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-7256",
+      "cwe": {
+        "id": "CWE-78",
+        "name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Nice Linear eMerge E3-Series versions 1.00-06 and prior are vulnerable to OS command injection, which could allow an attacker to cause remote code execution. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2019-7256"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Nice/Nortek encourages users to upgrade to the latest firmware to mitigate the risk of these vulnerabilities. Please see Nice's E3-Bulletin for more information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/E3-Bulletin-06-27-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Nice also recommends the following defensive measures to minimize the risk of exploitation of these vulnerabilities:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure of devices, ensuring they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place the devices behind firewalls and isolate them from other networks.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Keep your VPNs as updated as possible.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change default credentials on the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change the default IP address of the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "See Nice's Telephone Entry Bulletin for additional information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/Service-Bulletin-for-Telephone-Entry-Products-04-12-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Users should contact Nice with any questions.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://na.niceforyou.com/about/contact/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 10.0,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-7257",
+      "cwe": {
+        "id": "CWE-434",
+        "name": "Unrestricted Upload of File with Dangerous Type"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Nice Linear eMerge E3-Series versions 1.00-06 and prior are vulnerable to unrestricted upload of malicious files, which could allow an attacker to execute arbitrary code. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2019-7257"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Nice/Nortek encourages users to upgrade to the latest firmware to mitigate the risk of these vulnerabilities. Please see Nice's E3-Bulletin for more information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/E3-Bulletin-06-27-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Nice also recommends the following defensive measures to minimize the risk of exploitation of these vulnerabilities:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure of devices, ensuring they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place the devices behind firewalls and isolate them from other networks.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Keep your VPNs as updated as possible.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change default credentials on the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change the default IP address of the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "See Nice's Telephone Entry Bulletin for additional information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/Service-Bulletin-for-Telephone-Entry-Products-04-12-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Users should contact Nice with any questions.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://na.niceforyou.com/about/contact/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 10.0,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-7258",
+      "cwe": {
+        "id": "CWE-863",
+        "name": "Incorrect Authorization"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Nice Linear eMerge E3-Series versions 1.00-06 and prior suffer from an authorization mechanism vulnerability. This could allow an attacker to escalate privileges and gain full control of the system. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2019-7258"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Nice/Nortek encourages users to upgrade to the latest firmware to mitigate the risk of these vulnerabilities. Please see Nice's E3-Bulletin for more information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/E3-Bulletin-06-27-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Nice also recommends the following defensive measures to minimize the risk of exploitation of these vulnerabilities:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure of devices, ensuring they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place the devices behind firewalls and isolate them from other networks.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Keep your VPNs as updated as possible.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change default credentials on the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change the default IP address of the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "See Nice's Telephone Entry Bulletin for additional information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/Service-Bulletin-for-Telephone-Entry-Products-04-12-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Users should contact Nice with any questions.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://na.niceforyou.com/about/contact/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-7259",
+      "cwe": {
+        "id": "CWE-200",
+        "name": "Exposure of Sensitive Information to an Unauthorized Actor"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An authorization bypass occurs in Nice Linear eMerge E3-Series versions 1.00-06 and prior when an authenticated attacker visits a specific GET request against the target, resulting in disclosure of administrative credentials in clear-text. This allows the attacker to re-login with admin privileges and have full access to the control interface. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2019-7259"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Nice/Nortek encourages users to upgrade to the latest firmware to mitigate the risk of these vulnerabilities. Please see Nice's E3-Bulletin for more information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/E3-Bulletin-06-27-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Nice also recommends the following defensive measures to minimize the risk of exploitation of these vulnerabilities:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure of devices, ensuring they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place the devices behind firewalls and isolate them from other networks.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Keep your VPNs as updated as possible.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change default credentials on the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change the default IP address of the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "See Nice's Telephone Entry Bulletin for additional information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/Service-Bulletin-for-Telephone-Entry-Products-04-12-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Users should contact Nice with any questions.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://na.niceforyou.com/about/contact/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-7260",
+      "cwe": {
+        "id": "CWE-522",
+        "name": "Insufficiently Protected Credentials"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The application of Nice Linear eMerge E3-Series versions 1.00-06 and prior stores passwords in clear-text in its DBMS system. Storing a password in plaintext may result in a system compromise. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2019-7260"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Nice/Nortek encourages users to upgrade to the latest firmware to mitigate the risk of these vulnerabilities. Please see Nice's E3-Bulletin for more information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/E3-Bulletin-06-27-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Nice also recommends the following defensive measures to minimize the risk of exploitation of these vulnerabilities:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure of devices, ensuring they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place the devices behind firewalls and isolate them from other networks.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Keep your VPNs as updated as possible.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change default credentials on the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change the default IP address of the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "See Nice's Telephone Entry Bulletin for additional information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/Service-Bulletin-for-Telephone-Entry-Products-04-12-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Users should contact Nice with any questions.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://na.niceforyou.com/about/contact/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-7261",
+      "cwe": {
+        "id": "CWE-798",
+        "name": "Use of Hard-coded Credentials"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Hard-coded credentials are present in multiple binaries  bundled in the Nice Linear eMerge E3-Series versions 1.00-06 and prior firmware OS. These hard-coded credentials typically create a significant hole that could allow an attacker to bypass the authentication configured by the software administrator. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "nvd.nist.gov",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-7261"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Nice/Nortek encourages users to upgrade to the latest firmware to mitigate the risk of these vulnerabilities. Please see Nice's E3-Bulletin for more information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/E3-Bulletin-06-27-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Nice also recommends the following defensive measures to minimize the risk of exploitation of these vulnerabilities:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure of devices, ensuring they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place the devices behind firewalls and isolate them from other networks.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Keep your VPNs as updated as possible.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change default credentials on the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change the default IP address of the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "See Nice's Telephone Entry Bulletin for additional information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/Service-Bulletin-for-Telephone-Entry-Products-04-12-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Users should contact Nice with any questions.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://na.niceforyou.com/about/contact/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-7265",
+      "cwe": {
+        "id": "CWE-798",
+        "name": "Use of Hard-coded Credentials"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The Nice Linear eMerge E3-Series versions 1.00-06 and prior access control platform has SSH enabled with hardcoded credentials for the root account. This could allow an unauthenticated attacker to initiate a secure connection with highest privileges (root) and gain full system access. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2019-7265"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Nice/Nortek encourages users to upgrade to the latest firmware to mitigate the risk of these vulnerabilities. Please see Nice's E3-Bulletin for more information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/E3-Bulletin-06-27-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Nice also recommends the following defensive measures to minimize the risk of exploitation of these vulnerabilities:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure of devices, ensuring they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place the devices behind firewalls and isolate them from other networks.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Keep your VPNs as updated as possible.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change default credentials on the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change the default IP address of the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "See Nice's Telephone Entry Bulletin for additional information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/Service-Bulletin-for-Telephone-Entry-Products-04-12-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Users should contact Nice with any questions.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://na.niceforyou.com/about/contact/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-7262",
+      "cwe": {
+        "id": "CWE-352",
+        "name": "Cross-Site Request Forgery (CSRF)"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The application of Nice Linear eMerge E3-Series versions 1.00-06 and prior allows users to perform certain actions via HTTP requests without performing any validity checks to verify the requests. An attacker could exploit this to perform certain actions with administrative privileges if a logged-in user visits a malicious web site. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "nvd.nist.gov",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-7262"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Nice/Nortek encourages users to upgrade to the latest firmware to mitigate the risk of these vulnerabilities. Please see Nice's E3-Bulletin for more information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/E3-Bulletin-06-27-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Nice also recommends the following defensive measures to minimize the risk of exploitation of these vulnerabilities:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure of devices, ensuring they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place the devices behind firewalls and isolate them from other networks.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Keep your VPNs as updated as possible.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change default credentials on the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change the default IP address of the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "See Nice's Telephone Entry Bulletin for additional information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/Service-Bulletin-for-Telephone-Entry-Products-04-12-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Users should contact Nice with any questions.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://na.niceforyou.com/about/contact/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-7264",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A stack-based buffer overflow exists, affecting several CGI binaries of Nice Linear eMerge E3-Series versions 1.00-06 and prior. The vulnerability is caused due to a boundary error in the processing of a user input, which an attacker could exploit to cause a buffer overflow. Successful exploitation could allow execution of arbitrary code on the affected device. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2019-7264"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Nice/Nortek encourages users to upgrade to the latest firmware to mitigate the risk of these vulnerabilities. Please see Nice's E3-Bulletin for more information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/E3-Bulletin-06-27-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Nice also recommends the following defensive measures to minimize the risk of exploitation of these vulnerabilities:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure of devices, ensuring they are not accessible from the internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place the devices behind firewalls and isolate them from other networks.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Keep your VPNs as updated as possible.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change default credentials on the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Change the default IP address of the device.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "See Nice's Telephone Entry Bulletin for additional information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://linear-solutions.com/wp-content/uploads/Service-Bulletin-for-Telephone-Entry-Products-04-12-2023.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Users should contact Nice with any questions.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://na.niceforyou.com/about/contact/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    }
+  ]
+}
