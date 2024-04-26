@@ -26,7 +26,7 @@
       },
       {
         "category": "summary",
-        "text": "Successful exploitation of this vulnerability could allow an attacker to take control and gain unrestricted physical access to systems using the affected product.",
+        "text": "Successful exploitation of this vulnerability could allow an attacker to adjust Beacon configuration settings and disable the Bluetooth functionality of the system it is integrated on.",
         "title": "Risk evaluation"
       },
       {
@@ -46,7 +46,7 @@
       },
       {
         "category": "general",
-        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
         "title": "Recommended Practices"
       },
       {
@@ -123,9 +123,9 @@
         "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
       }
     ],
-    "title": "Chirp Systems Chirp Access (Update A)",
+    "title": "Chirp Systems Chirp Access (Update B)",
     "tracking": {
-      "current_release_date": "2024-04-23T06:00:00.000000Z",
+      "current_release_date": "2024-04-25T06:00:00.000000Z",
       "generator": {
         "engine": {
           "name": "CISA CSAF Generator",
@@ -146,10 +146,16 @@
           "legacy_version": "Update A",
           "number": "2",
           "summary": "Update A - Mitigations updated"
+        },
+        {
+          "date": "2024-04-25T06:00:00.000000Z",
+          "legacy_version": "Update B",
+          "number": "3",
+          "summary": "Update B - Feedback from Chirp Systems has been integrated into the following sections, Executive summary, Risk Evaluation, Vulnerability Overview, and Mitigations"
         }
       ],
       "status": "final",
-      "version": "2"
+      "version": "3"
     }
   },
   "product_tree": {
@@ -162,13 +168,13 @@
                 "category": "product_version_range",
                 "name": "vers:all/*",
                 "product": {
-                  "name": "Chirp Systems Chirp Access: vers:all/*",
+                  "name": "Chirp Systems Chirp Access app (Android and iOS): vers:all/*",
                   "product_id": "CSAFPID-0001"
                 }
               }
             ],
             "category": "product_name",
-            "name": "Chirp Access"
+            "name": "Chirp Access app (Android and iOS)"
           }
         ],
         "category": "vendor",
@@ -180,13 +186,13 @@
     {
       "cve": "CVE-2024-2197",
       "cwe": {
-        "id": "CWE-798",
-        "name": "Use of Hard-coded Credentials"
+        "id": "CWE-259",
+        "name": "Use of Hard-coded Password"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "Chirp Access improperly stores credentials within its source code, potentially exposing sensitive information to unauthorized access. ",
+          "text": "The Chirp Access app contains a hard-coded password, BEACON_PASSWORD. An attacker within Bluetooth range could change configuration settings within the Bluetooth beacon, effectively removing Bluetooth visibility from the device. This does not affect the device's ability to lock or unlock access points, and access points can still be operated remotely by authorized users via other means.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -204,32 +210,30 @@
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:A/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
         }
       ],
       "remediations": [
         {
           "category": "mitigation",
-          "details": "Chirp Systems has been made aware of the reported vulnerability. CISA is working with Chirp Systems and Matt Brown to address the vulnerability, and an advisory update will be forthcoming.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "Chirp systems has released a statement.",
+          "details": "For additional information, please contact RealPage (Chirp Systems' parent company) via their support page.",
           "product_ids": [
             "CSAFPID-0001"
           ],
-          "url": "https://statement.chirpsystems.com/chirp-systems-icsa-24-067-01-response.html"
+          "url": "https://www.realpage.com/support/"
         }
       ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 9.1,
-            "baseSeverity": "CRITICAL",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+            "baseScore": 4.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
             "version": "3.1"
           },
           "products": [
