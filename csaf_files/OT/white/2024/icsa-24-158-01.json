@@ -1,0 +1,1813 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "names": [
+          "Daniel dos Santos",
+          "Jos Wetzels"
+        ],
+        "organization": "Forescout Technologies",
+        "summary": "reporting these vulnerabilities to CISA"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of these vulnerabilities could allow remote code execution, loss of sensitive information, or a denial-of-service condition.",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "United States",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolating them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also recommends users take the following measures to protect themselves from social engineering attacks:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Do not click web links or open attachments in unsolicited email messages.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-24-158-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2024/icsa-24-158-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICSA Advisory ICSA-24-158-01 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-24-158-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/sites/default/files/publications/emailscams0905.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ncas/tips/ST04-014"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Emerson PACSystem and Fanuc",
+    "tracking": {
+      "current_release_date": "2024-06-06T06:00:00.000000Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-24-158-01",
+      "initial_release_date": "2024-06-06T06:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2024-06-06T06:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial Publication"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Emerson PAC Machine Edition: vers:all/*",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PAC Machine Edition"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Emerson PACSystem RXi: vers:all/*",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PACSystem RXi"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Emerson PACSystem RX3i: vers:all/*",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PACSystem RX3i"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Emerson PACSystem RSTi-EP: vers:all/*",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PACSystem RSTi-EP"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Emerson PACSystem VersaMax: vers:all/*",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PACSystem VersaMax"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Emerson Fanuc VersaMax: vers:all/*",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Fanuc VersaMax"
+          }
+        ],
+        "category": "vendor",
+        "name": "Emerson"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2022-30263",
+      "cwe": {
+        "id": "CWE-319",
+        "name": "Cleartext Transmission of Sensitive Information"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The affected product utilizes a protocol that allows cleartext transmission of credentials. This could allow an attacker to retrieve these over the network and gain control of the PLC, but cryptographically secure authentication using the SRP-6a protocol is supported and recommended. Enabling authentication on the PLC prevents replay attacks, and requires the attacker to intercept and modify an active connection. Implementation of a non-routing control network also requires compromise of the network topology before SRTP packets can be intercepted.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30263"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:P/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:P/AC:L/AT:P/PR:N/UI:A/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Emerson recommends the following:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For CVE-2022-30263, see the following sections of PACSystems RXi, RX3i and RSTi-EP Secure Deployment Guide (GFK-2830Y):  2.4 General Recommendations 4.3.3 Secure Login 4.3.4 Recommendations, Paragraph 2 If SRP6-a is not being used to secure authentication, see Section 2.4 General Recommendations and Section 6.1 Reference Architecture 5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://emerson-mas.my.site.com/communities/en_US/Documentation/PACSystems-RXi-RX3i-and-RSTi-EP-Controller-Secure-Deployment-Guide-GFK-2830?Type=Article__kav"
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.3 Secure Login",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 2",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "If SRP6-a is not being used to secure authentication, see Section 2.4 General Recommendations and Section 6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3 Authentication",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 3",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For CVE-2022-30263, see the following sections of PACSystems RXi, RX3i and RSTi-EP Secure Deployment Guide (GFK-2830Y):",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://emerson-mas.my.site.com/communities/en_US/Documentation/PACSystems-RXi-RX3i-and-RSTi-EP-Controller-Secure-Deployment-Guide-GFK-2830?Type=Article__kav"
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.3 Secure Login",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 2",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "If SRP6-a is not being used to secure authentication, see Section 2.4 General Recommendations and Section 6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3 Authentication",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 3",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.9,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:P/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2022-30268",
+      "cwe": {
+        "id": "CWE-345",
+        "name": "Insufficient Verification of Data Authenticity"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The affected products use the Winloader utility to manage firmware updates by serial port or a serial-over-Ethernet link that were found to not use authentication. This could allow an attacker to push malicious firmware images to the controller and cause a denial-of-service condition or allow remote code execution. This vulnerability only effects version of the CPE302, 205, and 310 that were produced before the \"-Bxxx\" hardware revisions.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30268"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:P/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:P/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Emerson recommends the following:",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.3 Secure Login",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 2",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "If SRP6-a is not being used to secure authentication, see Section 2.4 General Recommendations and Section 6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For CVE-2022-30268, see the following sections of PACSystems RXi, RX3i and RSTi-EP Secure Deployment Guide (GFK-2830Y):  4.3 Authentication 4.3.4 Recommendations, Paragraph 3 4.3.4.1 Personnel Security Protection 4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ],
+          "url": "https://emerson-mas.my.site.com/communities/en_US/Documentation/PACSystems-RXi-RX3i-and-RSTi-EP-Controller-Secure-Deployment-Guide-GFK-2830?Type=Article__kav"
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3 Authentication",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 3",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.3 Secure Login",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 2",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "If SRP6-a is not being used to secure authentication, see Section 2.4 General Recommendations and Section 6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For CVE-2022-30268, see the following sections of PACSystems RXi, RX3i and RSTi-EP Secure Deployment Guide (GFK-2830Y):",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ],
+          "url": "https://emerson-mas.my.site.com/communities/en_US/Documentation/PACSystems-RXi-RX3i-and-RSTi-EP-Controller-Secure-Deployment-Guide-GFK-2830?Type=Article__kav"
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3 Authentication",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 3",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Emerson has updated the Fanuc VersaMax Secure Deployment Guide (GFK-2955D) to include the above recommendations for CVE-2022-30268.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.9,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:P/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2022-30266",
+      "cwe": {
+        "id": "CWE-522",
+        "name": "Insufficiently Protected Credentials"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The affected product uses a simple hashing scheme by client-side JavaScript. This could allow an attacker to intercept the hashes and strip the hashing scheme to obtain the credentials in plaintext. These credentials are only valid for 5 minutes due to the TLS protocol used, and also requires physical presence to press a button on the device, limiting this attack to being physically present and in a very short window. If this is accomplished, this only allows the attacker to upgrade or downgrade the firmware version. Due to this threat of Man-in-the-Middle attack, documentation recommends limiting physical access to networking equipment, and disabling IP routing on control networks. This vulnerability does not apply to older PLCs without a network-based update process.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0002",
+          "CSAFPID-0004",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30266"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:P/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:P/AC:H/AT:N/PR:N/UI:A/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Emerson recommends the following:",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.3 Secure Login",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 2",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "If SRP6-a is not being used to secure authentication, see Section 2.4 General Recommendations and Section 6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3 Authentication",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 3",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.3 Secure Login",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 2",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "If SRP6-a is not being used to secure authentication, see Section 2.4 General Recommendations and Section 6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3 Authentication",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 3",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For CVE-2022-30266, see the following sections of PACSystems RXi, RX3i and RSTi-EP Secure Deployment Guide (GFK-2830Y):  2.4 General Recommendations 5.2.1.1 Disabling Ethernet Services 6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ],
+          "url": "https://emerson-mas.my.site.com/communities/en_US/Documentation/PACSystems-RXi-RX3i-and-RSTi-EP-Controller-Secure-Deployment-Guide-GFK-2830?Type=Article__kav"
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For CVE-2022-30266, see the following sections of PACSystems RXi, RX3i and RSTi-EP Secure Deployment Guide (GFK-2830Y):",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ],
+          "url": "https://emerson-mas.my.site.com/communities/en_US/Documentation/PACSystems-RXi-RX3i-and-RSTi-EP-Controller-Secure-Deployment-Guide-GFK-2830?Type=Article__kav"
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.0,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:P/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2022-30265",
+      "cwe": {
+        "id": "CWE-494",
+        "name": "Download of Code Without Integrity Check"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Control logic downloaded to the PLC, which can be either written in one of the IEC 61131-3 languages or written in C and supplied as an ELF binary block, is not cryptographically authenticated.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "web.nvd.nist.gov",
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30265"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:L/AC:L/AT:P/PR:H/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Emerson recommends the following:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.3 Secure Login",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 2",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "If SRP6-a is not being used to secure authentication, see Section 2.4 General Recommendations and Section 6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3 Authentication",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 3",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.3 Secure Login",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 2",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "If SRP6-a is not being used to secure authentication, see Section 2.4 General Recommendations and Section 6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3 Authentication",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4 Recommendations, Paragraph 3",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For CVE-2022-30265, see the following sections of the PACSystems RXi, RX3i and RSTi-EP Secure Deployment Guide (GFK-2830Y):  4.3.4.1 Personnel Security Protection 4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ],
+          "url": "https://emerson-mas.my.site.com/communities/en_US/Documentation/PACSystems-RXi-RX3i-and-RSTi-EP-Controller-Secure-Deployment-Guide-GFK-2830?Type=Article__kav"
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "2.4 General Recommendations",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "5.2.1.1 Disabling Ethernet Services",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "6.1 Reference Architecture",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For CVE-2022-30265, see the following sections of the PACSystems RXi, RX3i and RSTi-EP Secure Deployment Guide (GFK-2830Y):",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ],
+          "url": "https://emerson-mas.my.site.com/communities/en_US/Documentation/PACSystems-RXi-RX3i-and-RSTi-EP-Controller-Secure-Deployment-Guide-GFK-2830?Type=Article__kav"
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.1 Personnel Security Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "4.3.4.2 Physical Security Perimeter Protection",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.4,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ]
+    }
+  ]
+}
