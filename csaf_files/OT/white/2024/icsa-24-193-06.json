@@ -1,0 +1,3087 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "names": [
+          "Stephen Craven"
+        ],
+        "summary": "reporting these vulnerabilities to Siemens."
+      },
+      {
+        "names": [
+          "Thomas Riedmaier"
+        ],
+        "organization": "Siemens Energy",
+        "summary": "reporting these vulnerabilities to Siemens."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "Multiple vulnerabilities affect the RUGGEDCOM Operating System (ROS). The common denominator to all vulnerabilities is the leak of confidential information.\n\nSiemens is preparing fix versions and recommends countermeasures for products where fixes are not, or not yet available.",
+        "title": "Summary"
+      },
+      {
+        "category": "general",
+        "text": "As a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for Industrial Security (Download: \nhttps://www.siemens.com/cert/operational-guidelines-industrial-security), and to follow the recommendations in the product manuals.\nAdditional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity",
+        "title": "General Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
+        "title": "Additional Resources"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "Siemens Security Advisories are subject to the terms and conditions contained in Siemens' underlying license terms or other applicable agreements previously agreed to with Siemens (hereinafter \"License Terms\"). To the extent applicable to information, software or documentation made available in or through a Siemens Security Advisory, the Terms of Use of Siemens' Global Website (https://www.siemens.com/terms_of_use, hereinafter \"Terms of Use\"), in particular Sections 8-10 of the Terms of Use, shall apply additionally. In case of conflicts, the License Terms shall prevail over the Terms of Use.",
+        "title": "Terms of Use"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "other",
+        "text": "This CISA CSAF advisory was converted from Siemens ProductCERT's CSAF advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Multiple",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Germany",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "SSA-170375: Multiple Vulnerabilities in RUGGEDCOM ROS before V5.9 - CSAF Version",
+        "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-170375.json"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-170375: Multiple Vulnerabilities in RUGGEDCOM ROS before V5.9 - HTML Version",
+        "url": "https://cert-portal.siemens.com/productcert/html/ssa-170375.html"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-170375: Multiple Vulnerabilities in RUGGEDCOM ROS before V5.9 - PDF Version",
+        "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-170375.pdf"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-170375: Multiple Vulnerabilities in RUGGEDCOM ROS before V5.9 - TXT Version",
+        "url": "https://cert-portal.siemens.com/productcert/txt/ssa-170375.txt"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-24-193-06 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2024/icsa-24-193-06.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-24-193-06 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-24-193-06"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Siemens RUGGEDCOM",
+    "tracking": {
+      "current_release_date": "2024-07-09T00:00:00.000000Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1"
+        }
+      },
+      "id": "ICSA-24-193-06",
+      "initial_release_date": "2024-07-09T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2024-07-09T00:00:00.000000Z",
+          "legacy_version": "1.0",
+          "number": "1",
+          "summary": "Publication Date"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM i800",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM i800"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM i800NC",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM i800NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM i801",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM i801"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM i801NC",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM i801NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM i802",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM i802"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM i802NC",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM i802NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM i803",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM i803"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM i803NC",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM i803NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM M969",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM M969"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM M969NC",
+                  "product_id": "CSAFPID-0010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM M969NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM M2100",
+                  "product_id": "CSAFPID-0011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM M2100"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM M2100NC",
+                  "product_id": "CSAFPID-0012"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM M2100NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM M2200",
+                  "product_id": "CSAFPID-0013"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM M2200"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM M2200NC",
+                  "product_id": "CSAFPID-0014"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM M2200NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RMC30",
+                  "product_id": "CSAFPID-0015"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RMC30"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RMC30NC",
+                  "product_id": "CSAFPID-0016"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RMC30NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RMC8388 V4.X",
+                  "product_id": "CSAFPID-0017"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RMC8388 V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RMC8388 V5.X",
+                  "product_id": "CSAFPID-0018"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RMC8388 V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RMC8388NC V4.X",
+                  "product_id": "CSAFPID-0019"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RMC8388NC V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RMC8388NC V5.X",
+                  "product_id": "CSAFPID-0020"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RMC8388NC V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RP110",
+                  "product_id": "CSAFPID-0021"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RP110"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RP110NC",
+                  "product_id": "CSAFPID-0022"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RP110NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS400",
+                  "product_id": "CSAFPID-0023"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS400"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS400NC",
+                  "product_id": "CSAFPID-0024"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS400NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS401",
+                  "product_id": "CSAFPID-0025"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS401"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS401NC",
+                  "product_id": "CSAFPID-0026"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS401NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS416",
+                  "product_id": "CSAFPID-0027"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS416"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS416NC",
+                  "product_id": "CSAFPID-0028"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS416NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS416NCv2 V4.X",
+                  "product_id": "CSAFPID-0029"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS416NCv2 V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RS416NCv2 V5.X",
+                  "product_id": "CSAFPID-0030"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS416NCv2 V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS416P",
+                  "product_id": "CSAFPID-0031"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS416P"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS416PNC",
+                  "product_id": "CSAFPID-0032"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS416PNC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS416PNCv2 V4.X",
+                  "product_id": "CSAFPID-0033"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS416PNCv2 V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RS416PNCv2 V5.X",
+                  "product_id": "CSAFPID-0034"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS416PNCv2 V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS416Pv2 V4.X",
+                  "product_id": "CSAFPID-0035"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS416Pv2 V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RS416Pv2 V5.X",
+                  "product_id": "CSAFPID-0036"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS416Pv2 V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS416v2 V4.X",
+                  "product_id": "CSAFPID-0037"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS416v2 V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RS416v2 V5.X",
+                  "product_id": "CSAFPID-0038"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS416v2 V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900",
+                  "product_id": "CSAFPID-0039"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900 (32M) V4.X",
+                  "product_id": "CSAFPID-0040"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900 (32M) V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RS900 (32M) V5.X",
+                  "product_id": "CSAFPID-0041"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900 (32M) V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900G",
+                  "product_id": "CSAFPID-0042"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900G"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900G (32M) V4.X",
+                  "product_id": "CSAFPID-0043"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900G (32M) V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RS900G (32M) V5.X",
+                  "product_id": "CSAFPID-0044"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900G (32M) V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900GNC",
+                  "product_id": "CSAFPID-0045"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900GNC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900GNC(32M) V4.X",
+                  "product_id": "CSAFPID-0046"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900GNC(32M) V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RS900GNC(32M) V5.X",
+                  "product_id": "CSAFPID-0047"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900GNC(32M) V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900GP",
+                  "product_id": "CSAFPID-0048"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900GP"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900GPNC",
+                  "product_id": "CSAFPID-0049"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900GPNC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "RUGGEDCOM RS900L",
+                  "product_id": "CSAFPID-0050"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900L"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "RUGGEDCOM RS900LNC",
+                  "product_id": "CSAFPID-0051"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900LNC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900M-GETS-C01",
+                  "product_id": "CSAFPID-0052"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900M-GETS-C01"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900M-GETS-XX",
+                  "product_id": "CSAFPID-0053"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900M-GETS-XX"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900M-STND-C01",
+                  "product_id": "CSAFPID-0054"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900M-STND-C01"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900M-STND-XX",
+                  "product_id": "CSAFPID-0055"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900M-STND-XX"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900MNC-GETS-C01",
+                  "product_id": "CSAFPID-0056"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900MNC-GETS-C01"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900MNC-GETS-XX",
+                  "product_id": "CSAFPID-0057"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900MNC-GETS-XX"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900MNC-STND-XX",
+                  "product_id": "CSAFPID-0058"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900MNC-STND-XX"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900MNC-STND-XX-C01",
+                  "product_id": "CSAFPID-0059"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900MNC-STND-XX-C01"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900NC",
+                  "product_id": "CSAFPID-0060"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900NC(32M) V4.X",
+                  "product_id": "CSAFPID-0061"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900NC(32M) V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RS900NC(32M) V5.X",
+                  "product_id": "CSAFPID-0062"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900NC(32M) V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS900W",
+                  "product_id": "CSAFPID-0063"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS900W"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS910",
+                  "product_id": "CSAFPID-0064"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS910"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "RUGGEDCOM RS910L",
+                  "product_id": "CSAFPID-0065"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS910L"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "RUGGEDCOM RS910LNC",
+                  "product_id": "CSAFPID-0066"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS910LNC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS910NC",
+                  "product_id": "CSAFPID-0067"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS910NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS910W",
+                  "product_id": "CSAFPID-0068"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS910W"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "RUGGEDCOM RS920L",
+                  "product_id": "CSAFPID-0069"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS920L"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "RUGGEDCOM RS920LNC",
+                  "product_id": "CSAFPID-0070"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS920LNC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "RUGGEDCOM RS920W",
+                  "product_id": "CSAFPID-0071"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS920W"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "RUGGEDCOM RS930L",
+                  "product_id": "CSAFPID-0072"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS930L"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "RUGGEDCOM RS930LNC",
+                  "product_id": "CSAFPID-0073"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS930LNC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "RUGGEDCOM RS930W",
+                  "product_id": "CSAFPID-0074"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS930W"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS940G",
+                  "product_id": "CSAFPID-0075"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS940G"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS940GNC",
+                  "product_id": "CSAFPID-0076"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS940GNC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "RUGGEDCOM RS969",
+                  "product_id": "CSAFPID-0077"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS969"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "RUGGEDCOM RS969NC",
+                  "product_id": "CSAFPID-0078"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS969NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS1600",
+                  "product_id": "CSAFPID-0079"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS1600"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS1600F",
+                  "product_id": "CSAFPID-0080"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS1600F"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS1600FNC",
+                  "product_id": "CSAFPID-0081"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS1600FNC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS1600NC",
+                  "product_id": "CSAFPID-0082"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS1600NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS1600T",
+                  "product_id": "CSAFPID-0083"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS1600T"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS1600TNC",
+                  "product_id": "CSAFPID-0084"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS1600TNC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS8000",
+                  "product_id": "CSAFPID-0085"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS8000"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS8000A",
+                  "product_id": "CSAFPID-0086"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS8000A"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS8000ANC",
+                  "product_id": "CSAFPID-0087"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS8000ANC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS8000H",
+                  "product_id": "CSAFPID-0088"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS8000H"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS8000HNC",
+                  "product_id": "CSAFPID-0089"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS8000HNC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS8000NC",
+                  "product_id": "CSAFPID-0090"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS8000NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS8000T",
+                  "product_id": "CSAFPID-0091"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS8000T"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RS8000TNC",
+                  "product_id": "CSAFPID-0092"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RS8000TNC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG907R",
+                  "product_id": "CSAFPID-0093"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG907R"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG908C",
+                  "product_id": "CSAFPID-0094"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG908C"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG909R",
+                  "product_id": "CSAFPID-0095"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG909R"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG910C",
+                  "product_id": "CSAFPID-0096"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG910C"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG920P V4.X",
+                  "product_id": "CSAFPID-0097"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG920P V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG920P V5.X",
+                  "product_id": "CSAFPID-0098"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG920P V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG920PNC V4.X",
+                  "product_id": "CSAFPID-0099"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG920PNC V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG920PNC V5.X",
+                  "product_id": "CSAFPID-0100"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG920PNC V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2100",
+                  "product_id": "CSAFPID-0101"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2100"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2100 (32M) V4.X",
+                  "product_id": "CSAFPID-0102"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2100 (32M) V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG2100 (32M) V5.X",
+                  "product_id": "CSAFPID-0103"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2100 (32M) V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2100NC",
+                  "product_id": "CSAFPID-0104"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2100NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2100NC(32M) V4.X",
+                  "product_id": "CSAFPID-0105"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2100NC(32M) V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG2100NC(32M) V5.X",
+                  "product_id": "CSAFPID-0106"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2100NC(32M) V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2100P",
+                  "product_id": "CSAFPID-0107"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2100P"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2100PNC",
+                  "product_id": "CSAFPID-0108"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2100PNC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2200",
+                  "product_id": "CSAFPID-0109"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2200"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2200NC",
+                  "product_id": "CSAFPID-0110"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2200NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2288 V4.X",
+                  "product_id": "CSAFPID-0111"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2288 V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG2288 V5.X",
+                  "product_id": "CSAFPID-0112"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2288 V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2288NC V4.X",
+                  "product_id": "CSAFPID-0113"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2288NC V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG2288NC V5.X",
+                  "product_id": "CSAFPID-0114"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2288NC V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2300 V4.X",
+                  "product_id": "CSAFPID-0115"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2300 V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG2300 V5.X",
+                  "product_id": "CSAFPID-0116"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2300 V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2300NC V4.X",
+                  "product_id": "CSAFPID-0117"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2300NC V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG2300NC V5.X",
+                  "product_id": "CSAFPID-0118"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2300NC V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2300P V4.X",
+                  "product_id": "CSAFPID-0119"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2300P V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG2300P V5.X",
+                  "product_id": "CSAFPID-0120"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2300P V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2300PNC V4.X",
+                  "product_id": "CSAFPID-0121"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2300PNC V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG2300PNC V5.X",
+                  "product_id": "CSAFPID-0122"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2300PNC V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2488 V4.X",
+                  "product_id": "CSAFPID-0123"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2488 V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG2488 V5.X",
+                  "product_id": "CSAFPID-0124"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2488 V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.3.10",
+                "product": {
+                  "name": "RUGGEDCOM RSG2488NC V4.X",
+                  "product_id": "CSAFPID-0125"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2488NC V4.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSG2488NC V5.X",
+                  "product_id": "CSAFPID-0126"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSG2488NC V5.X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSL910",
+                  "product_id": "CSAFPID-0127"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSL910"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RSL910NC",
+                  "product_id": "CSAFPID-0128"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RSL910NC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RST916C",
+                  "product_id": "CSAFPID-0129"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RST916C"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RST916P",
+                  "product_id": "CSAFPID-0130"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RST916P"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RST2228",
+                  "product_id": "CSAFPID-0131"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RST2228"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.9.0",
+                "product": {
+                  "name": "RUGGEDCOM RST2228P",
+                  "product_id": "CSAFPID-0132"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "RUGGEDCOM RST2228P"
+          }
+        ],
+        "category": "vendor",
+        "name": "Siemens"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2023-52237",
+      "cwe": {
+        "id": "CWE-200",
+        "name": "Exposure of Sensitive Information to an Unauthorized Actor"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The web server of the affected devices allow a low privileged user to access hashes and password salts of all system's users, including admin users. An attacker could use the obtained information to brute force the passwords offline.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0013",
+          "CSAFPID-0014",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0015",
+          "CSAFPID-0016",
+          "CSAFPID-0017",
+          "CSAFPID-0018",
+          "CSAFPID-0019",
+          "CSAFPID-0020",
+          "CSAFPID-0021",
+          "CSAFPID-0022",
+          "CSAFPID-0079",
+          "CSAFPID-0080",
+          "CSAFPID-0081",
+          "CSAFPID-0082",
+          "CSAFPID-0083",
+          "CSAFPID-0084",
+          "CSAFPID-0023",
+          "CSAFPID-0024",
+          "CSAFPID-0025",
+          "CSAFPID-0026",
+          "CSAFPID-0027",
+          "CSAFPID-0028",
+          "CSAFPID-0029",
+          "CSAFPID-0030",
+          "CSAFPID-0031",
+          "CSAFPID-0032",
+          "CSAFPID-0033",
+          "CSAFPID-0034",
+          "CSAFPID-0035",
+          "CSAFPID-0036",
+          "CSAFPID-0037",
+          "CSAFPID-0038",
+          "CSAFPID-0085",
+          "CSAFPID-0086",
+          "CSAFPID-0087",
+          "CSAFPID-0088",
+          "CSAFPID-0089",
+          "CSAFPID-0090",
+          "CSAFPID-0091",
+          "CSAFPID-0092",
+          "CSAFPID-0039",
+          "CSAFPID-0040",
+          "CSAFPID-0041",
+          "CSAFPID-0042",
+          "CSAFPID-0043",
+          "CSAFPID-0044",
+          "CSAFPID-0045",
+          "CSAFPID-0046",
+          "CSAFPID-0047",
+          "CSAFPID-0048",
+          "CSAFPID-0049",
+          "CSAFPID-0050",
+          "CSAFPID-0051",
+          "CSAFPID-0052",
+          "CSAFPID-0053",
+          "CSAFPID-0054",
+          "CSAFPID-0055",
+          "CSAFPID-0056",
+          "CSAFPID-0057",
+          "CSAFPID-0058",
+          "CSAFPID-0059",
+          "CSAFPID-0060",
+          "CSAFPID-0061",
+          "CSAFPID-0062",
+          "CSAFPID-0063",
+          "CSAFPID-0064",
+          "CSAFPID-0065",
+          "CSAFPID-0066",
+          "CSAFPID-0067",
+          "CSAFPID-0068",
+          "CSAFPID-0069",
+          "CSAFPID-0070",
+          "CSAFPID-0071",
+          "CSAFPID-0072",
+          "CSAFPID-0073",
+          "CSAFPID-0074",
+          "CSAFPID-0075",
+          "CSAFPID-0076",
+          "CSAFPID-0077",
+          "CSAFPID-0078",
+          "CSAFPID-0101",
+          "CSAFPID-0102",
+          "CSAFPID-0103",
+          "CSAFPID-0104",
+          "CSAFPID-0105",
+          "CSAFPID-0106",
+          "CSAFPID-0107",
+          "CSAFPID-0108",
+          "CSAFPID-0109",
+          "CSAFPID-0110",
+          "CSAFPID-0111",
+          "CSAFPID-0112",
+          "CSAFPID-0113",
+          "CSAFPID-0114",
+          "CSAFPID-0115",
+          "CSAFPID-0116",
+          "CSAFPID-0117",
+          "CSAFPID-0118",
+          "CSAFPID-0119",
+          "CSAFPID-0120",
+          "CSAFPID-0121",
+          "CSAFPID-0122",
+          "CSAFPID-0123",
+          "CSAFPID-0124",
+          "CSAFPID-0125",
+          "CSAFPID-0126",
+          "CSAFPID-0093",
+          "CSAFPID-0094",
+          "CSAFPID-0095",
+          "CSAFPID-0096",
+          "CSAFPID-0097",
+          "CSAFPID-0098",
+          "CSAFPID-0099",
+          "CSAFPID-0100",
+          "CSAFPID-0127",
+          "CSAFPID-0128",
+          "CSAFPID-0131",
+          "CSAFPID-0132",
+          "CSAFPID-0129",
+          "CSAFPID-0130"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "no_fix_planned",
+          "details": "Currently no fix is planned",
+          "product_ids": [
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0065",
+            "CSAFPID-0066",
+            "CSAFPID-0069",
+            "CSAFPID-0070",
+            "CSAFPID-0071",
+            "CSAFPID-0072",
+            "CSAFPID-0073",
+            "CSAFPID-0074",
+            "CSAFPID-0077",
+            "CSAFPID-0078"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.3.10 or later version",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0005",
+            "CSAFPID-0007",
+            "CSAFPID-0011",
+            "CSAFPID-0013",
+            "CSAFPID-0009",
+            "CSAFPID-0015",
+            "CSAFPID-0017",
+            "CSAFPID-0021",
+            "CSAFPID-0079",
+            "CSAFPID-0080",
+            "CSAFPID-0083",
+            "CSAFPID-0023",
+            "CSAFPID-0025",
+            "CSAFPID-0027",
+            "CSAFPID-0035",
+            "CSAFPID-0037",
+            "CSAFPID-0085",
+            "CSAFPID-0086",
+            "CSAFPID-0088",
+            "CSAFPID-0091",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0048",
+            "CSAFPID-0063",
+            "CSAFPID-0064",
+            "CSAFPID-0068",
+            "CSAFPID-0075",
+            "CSAFPID-0101",
+            "CSAFPID-0102",
+            "CSAFPID-0107",
+            "CSAFPID-0109",
+            "CSAFPID-0111",
+            "CSAFPID-0115",
+            "CSAFPID-0119",
+            "CSAFPID-0123",
+            "CSAFPID-0097"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109972218/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.3.10 or later version",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0010",
+            "CSAFPID-0016",
+            "CSAFPID-0019",
+            "CSAFPID-0022",
+            "CSAFPID-0081",
+            "CSAFPID-0082",
+            "CSAFPID-0084",
+            "CSAFPID-0024",
+            "CSAFPID-0026",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0087",
+            "CSAFPID-0089",
+            "CSAFPID-0090",
+            "CSAFPID-0092",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0049",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0067",
+            "CSAFPID-0076",
+            "CSAFPID-0104",
+            "CSAFPID-0105",
+            "CSAFPID-0108",
+            "CSAFPID-0110",
+            "CSAFPID-0113",
+            "CSAFPID-0117",
+            "CSAFPID-0121",
+            "CSAFPID-0125",
+            "CSAFPID-0099"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109972218/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.9.0 or later version",
+          "product_ids": [
+            "CSAFPID-0018",
+            "CSAFPID-0036",
+            "CSAFPID-0038",
+            "CSAFPID-0041",
+            "CSAFPID-0044",
+            "CSAFPID-0103",
+            "CSAFPID-0112",
+            "CSAFPID-0116",
+            "CSAFPID-0120",
+            "CSAFPID-0124",
+            "CSAFPID-0093",
+            "CSAFPID-0094",
+            "CSAFPID-0095",
+            "CSAFPID-0096",
+            "CSAFPID-0098",
+            "CSAFPID-0127",
+            "CSAFPID-0131",
+            "CSAFPID-0132",
+            "CSAFPID-0129",
+            "CSAFPID-0130"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109972217/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.9.0 or later version",
+          "product_ids": [
+            "CSAFPID-0020",
+            "CSAFPID-0030",
+            "CSAFPID-0034",
+            "CSAFPID-0047",
+            "CSAFPID-0062",
+            "CSAFPID-0106",
+            "CSAFPID-0114",
+            "CSAFPID-0118",
+            "CSAFPID-0122",
+            "CSAFPID-0126",
+            "CSAFPID-0100",
+            "CSAFPID-0128"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109972217/"
+        },
+        {
+          "category": "workaround",
+          "details": "For CVE-2023-52237, CVE-2023-52238: Disable the webserver if not required on the affected systems. Restrict the access to Port 80/tcp and 443/tcp to trusted IP address only",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0079",
+            "CSAFPID-0080",
+            "CSAFPID-0081",
+            "CSAFPID-0082",
+            "CSAFPID-0083",
+            "CSAFPID-0084",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0085",
+            "CSAFPID-0086",
+            "CSAFPID-0087",
+            "CSAFPID-0088",
+            "CSAFPID-0089",
+            "CSAFPID-0090",
+            "CSAFPID-0091",
+            "CSAFPID-0092",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063",
+            "CSAFPID-0064",
+            "CSAFPID-0065",
+            "CSAFPID-0066",
+            "CSAFPID-0067",
+            "CSAFPID-0068",
+            "CSAFPID-0069",
+            "CSAFPID-0070",
+            "CSAFPID-0071",
+            "CSAFPID-0072",
+            "CSAFPID-0073",
+            "CSAFPID-0074",
+            "CSAFPID-0075",
+            "CSAFPID-0076",
+            "CSAFPID-0077",
+            "CSAFPID-0078",
+            "CSAFPID-0101",
+            "CSAFPID-0102",
+            "CSAFPID-0103",
+            "CSAFPID-0104",
+            "CSAFPID-0105",
+            "CSAFPID-0106",
+            "CSAFPID-0107",
+            "CSAFPID-0108",
+            "CSAFPID-0109",
+            "CSAFPID-0110",
+            "CSAFPID-0111",
+            "CSAFPID-0112",
+            "CSAFPID-0113",
+            "CSAFPID-0114",
+            "CSAFPID-0115",
+            "CSAFPID-0116",
+            "CSAFPID-0117",
+            "CSAFPID-0118",
+            "CSAFPID-0119",
+            "CSAFPID-0120",
+            "CSAFPID-0121",
+            "CSAFPID-0122",
+            "CSAFPID-0123",
+            "CSAFPID-0124",
+            "CSAFPID-0125",
+            "CSAFPID-0126",
+            "CSAFPID-0093",
+            "CSAFPID-0094",
+            "CSAFPID-0095",
+            "CSAFPID-0096",
+            "CSAFPID-0097",
+            "CSAFPID-0098",
+            "CSAFPID-0099",
+            "CSAFPID-0100",
+            "CSAFPID-0127",
+            "CSAFPID-0128",
+            "CSAFPID-0131",
+            "CSAFPID-0132",
+            "CSAFPID-0129",
+            "CSAFPID-0130"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0079",
+            "CSAFPID-0080",
+            "CSAFPID-0081",
+            "CSAFPID-0082",
+            "CSAFPID-0083",
+            "CSAFPID-0084",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0085",
+            "CSAFPID-0086",
+            "CSAFPID-0087",
+            "CSAFPID-0088",
+            "CSAFPID-0089",
+            "CSAFPID-0090",
+            "CSAFPID-0091",
+            "CSAFPID-0092",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063",
+            "CSAFPID-0064",
+            "CSAFPID-0065",
+            "CSAFPID-0066",
+            "CSAFPID-0067",
+            "CSAFPID-0068",
+            "CSAFPID-0069",
+            "CSAFPID-0070",
+            "CSAFPID-0071",
+            "CSAFPID-0072",
+            "CSAFPID-0073",
+            "CSAFPID-0074",
+            "CSAFPID-0075",
+            "CSAFPID-0076",
+            "CSAFPID-0077",
+            "CSAFPID-0078",
+            "CSAFPID-0101",
+            "CSAFPID-0102",
+            "CSAFPID-0103",
+            "CSAFPID-0104",
+            "CSAFPID-0105",
+            "CSAFPID-0106",
+            "CSAFPID-0107",
+            "CSAFPID-0108",
+            "CSAFPID-0109",
+            "CSAFPID-0110",
+            "CSAFPID-0111",
+            "CSAFPID-0112",
+            "CSAFPID-0113",
+            "CSAFPID-0114",
+            "CSAFPID-0115",
+            "CSAFPID-0116",
+            "CSAFPID-0117",
+            "CSAFPID-0118",
+            "CSAFPID-0119",
+            "CSAFPID-0120",
+            "CSAFPID-0121",
+            "CSAFPID-0122",
+            "CSAFPID-0123",
+            "CSAFPID-0124",
+            "CSAFPID-0125",
+            "CSAFPID-0126",
+            "CSAFPID-0093",
+            "CSAFPID-0094",
+            "CSAFPID-0095",
+            "CSAFPID-0096",
+            "CSAFPID-0097",
+            "CSAFPID-0098",
+            "CSAFPID-0099",
+            "CSAFPID-0100",
+            "CSAFPID-0127",
+            "CSAFPID-0128",
+            "CSAFPID-0131",
+            "CSAFPID-0132",
+            "CSAFPID-0129",
+            "CSAFPID-0130"
+          ]
+        }
+      ],
+      "title": "CVE-2023-52237"
+    },
+    {
+      "cve": "CVE-2023-52238",
+      "cwe": {
+        "id": "CWE-200",
+        "name": "Exposure of Sensitive Information to an Unauthorized Actor"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The web server of the affected systems leaks the MACSEC key in clear text to a logged in user. An attacker with the credentials of a low privileged user could retrieve the MACSEC key and access (decrypt) the ethernet frames sent by authorized recipients.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0131",
+          "CSAFPID-0132"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.9.0 or later version",
+          "product_ids": [
+            "CSAFPID-0131",
+            "CSAFPID-0132"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109972217/"
+        },
+        {
+          "category": "workaround",
+          "details": "For CVE-2023-52237, CVE-2023-52238: Disable the webserver if not required on the affected systems. Restrict the access to Port 80/tcp and 443/tcp to trusted IP address only",
+          "product_ids": [
+            "CSAFPID-0131",
+            "CSAFPID-0132"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0131",
+            "CSAFPID-0132"
+          ]
+        }
+      ],
+      "title": "CVE-2023-52238"
+    },
+    {
+      "cve": "CVE-2024-38278",
+      "cwe": {
+        "id": "CWE-266",
+        "name": "Incorrect Privilege Assignment"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The affected products with IP forwarding enabled wrongly make available certain remote services in non-managed VLANs, even if these services are not intentionally activated. An attacker could leverage this vulnerability to create a remote shell to the affected system.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0018",
+          "CSAFPID-0020",
+          "CSAFPID-0030",
+          "CSAFPID-0034",
+          "CSAFPID-0036",
+          "CSAFPID-0038",
+          "CSAFPID-0041",
+          "CSAFPID-0044",
+          "CSAFPID-0047",
+          "CSAFPID-0062",
+          "CSAFPID-0103",
+          "CSAFPID-0106",
+          "CSAFPID-0112",
+          "CSAFPID-0114",
+          "CSAFPID-0116",
+          "CSAFPID-0118",
+          "CSAFPID-0120",
+          "CSAFPID-0122",
+          "CSAFPID-0124",
+          "CSAFPID-0126",
+          "CSAFPID-0093",
+          "CSAFPID-0094",
+          "CSAFPID-0095",
+          "CSAFPID-0096",
+          "CSAFPID-0098",
+          "CSAFPID-0100",
+          "CSAFPID-0127",
+          "CSAFPID-0128",
+          "CSAFPID-0131",
+          "CSAFPID-0132",
+          "CSAFPID-0129",
+          "CSAFPID-0130"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.9.0 or later version",
+          "product_ids": [
+            "CSAFPID-0018",
+            "CSAFPID-0036",
+            "CSAFPID-0038",
+            "CSAFPID-0041",
+            "CSAFPID-0044",
+            "CSAFPID-0103",
+            "CSAFPID-0112",
+            "CSAFPID-0116",
+            "CSAFPID-0120",
+            "CSAFPID-0124",
+            "CSAFPID-0093",
+            "CSAFPID-0094",
+            "CSAFPID-0095",
+            "CSAFPID-0096",
+            "CSAFPID-0098",
+            "CSAFPID-0127",
+            "CSAFPID-0131",
+            "CSAFPID-0132",
+            "CSAFPID-0129",
+            "CSAFPID-0130"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109972217/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.9.0 or later version",
+          "product_ids": [
+            "CSAFPID-0020",
+            "CSAFPID-0030",
+            "CSAFPID-0034",
+            "CSAFPID-0047",
+            "CSAFPID-0062",
+            "CSAFPID-0106",
+            "CSAFPID-0114",
+            "CSAFPID-0118",
+            "CSAFPID-0122",
+            "CSAFPID-0126",
+            "CSAFPID-0100",
+            "CSAFPID-0128"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109972217/"
+        },
+        {
+          "category": "workaround",
+          "details": "For CVE-2024-38278: Disable the IP Forwarding if not required on the affected system. Also note, the IP forwarding is disabled by default",
+          "product_ids": [
+            "CSAFPID-0018",
+            "CSAFPID-0020",
+            "CSAFPID-0030",
+            "CSAFPID-0034",
+            "CSAFPID-0036",
+            "CSAFPID-0038",
+            "CSAFPID-0041",
+            "CSAFPID-0044",
+            "CSAFPID-0047",
+            "CSAFPID-0062",
+            "CSAFPID-0103",
+            "CSAFPID-0106",
+            "CSAFPID-0112",
+            "CSAFPID-0114",
+            "CSAFPID-0116",
+            "CSAFPID-0118",
+            "CSAFPID-0120",
+            "CSAFPID-0122",
+            "CSAFPID-0124",
+            "CSAFPID-0126",
+            "CSAFPID-0093",
+            "CSAFPID-0094",
+            "CSAFPID-0095",
+            "CSAFPID-0096",
+            "CSAFPID-0098",
+            "CSAFPID-0100",
+            "CSAFPID-0127",
+            "CSAFPID-0128",
+            "CSAFPID-0131",
+            "CSAFPID-0132",
+            "CSAFPID-0129",
+            "CSAFPID-0130"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.6,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0018",
+            "CSAFPID-0020",
+            "CSAFPID-0030",
+            "CSAFPID-0034",
+            "CSAFPID-0036",
+            "CSAFPID-0038",
+            "CSAFPID-0041",
+            "CSAFPID-0044",
+            "CSAFPID-0047",
+            "CSAFPID-0062",
+            "CSAFPID-0103",
+            "CSAFPID-0106",
+            "CSAFPID-0112",
+            "CSAFPID-0114",
+            "CSAFPID-0116",
+            "CSAFPID-0118",
+            "CSAFPID-0120",
+            "CSAFPID-0122",
+            "CSAFPID-0124",
+            "CSAFPID-0126",
+            "CSAFPID-0093",
+            "CSAFPID-0094",
+            "CSAFPID-0095",
+            "CSAFPID-0096",
+            "CSAFPID-0098",
+            "CSAFPID-0100",
+            "CSAFPID-0127",
+            "CSAFPID-0128",
+            "CSAFPID-0131",
+            "CSAFPID-0132",
+            "CSAFPID-0129",
+            "CSAFPID-0130"
+          ]
+        }
+      ],
+      "title": "CVE-2024-38278"
+    },
+    {
+      "cve": "CVE-2024-39675",
+      "cwe": {
+        "id": "CWE-497",
+        "name": "Exposure of Sensitive System Information to an Unauthorized Control Sphere"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In some configurations the affected products wrongly enable the Modbus service in non-managed VLANS. Only serial devices are affected by this vulnerability.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0015",
+          "CSAFPID-0016",
+          "CSAFPID-0021",
+          "CSAFPID-0022",
+          "CSAFPID-0023",
+          "CSAFPID-0024",
+          "CSAFPID-0025",
+          "CSAFPID-0026",
+          "CSAFPID-0027",
+          "CSAFPID-0028",
+          "CSAFPID-0029",
+          "CSAFPID-0030",
+          "CSAFPID-0031",
+          "CSAFPID-0032",
+          "CSAFPID-0033",
+          "CSAFPID-0034",
+          "CSAFPID-0035",
+          "CSAFPID-0036",
+          "CSAFPID-0037",
+          "CSAFPID-0038",
+          "CSAFPID-0064",
+          "CSAFPID-0065",
+          "CSAFPID-0066",
+          "CSAFPID-0067",
+          "CSAFPID-0068",
+          "CSAFPID-0069",
+          "CSAFPID-0070",
+          "CSAFPID-0071"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "no_fix_planned",
+          "details": "Currently no fix is planned",
+          "product_ids": [
+            "CSAFPID-0065",
+            "CSAFPID-0066",
+            "CSAFPID-0069",
+            "CSAFPID-0070",
+            "CSAFPID-0071"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.3.10 or later version",
+          "product_ids": [
+            "CSAFPID-0015",
+            "CSAFPID-0021",
+            "CSAFPID-0023",
+            "CSAFPID-0025",
+            "CSAFPID-0027",
+            "CSAFPID-0035",
+            "CSAFPID-0037",
+            "CSAFPID-0064",
+            "CSAFPID-0068"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109972218/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.3.10 or later version",
+          "product_ids": [
+            "CSAFPID-0016",
+            "CSAFPID-0022",
+            "CSAFPID-0024",
+            "CSAFPID-0026",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0067"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109972218/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.9.0 or later version",
+          "product_ids": [
+            "CSAFPID-0036",
+            "CSAFPID-0038"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109972217/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.9.0 or later version",
+          "product_ids": [
+            "CSAFPID-0030",
+            "CSAFPID-0034"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109972217/"
+        },
+        {
+          "category": "workaround",
+          "details": "For CVE-2024-39675: Disable the Modbus Server if not required on the affected system. Restrict the access to Port 502/tcp to trusted IP address only. Also note, Modbus is disabled by default",
+          "product_ids": [
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0064",
+            "CSAFPID-0065",
+            "CSAFPID-0066",
+            "CSAFPID-0067",
+            "CSAFPID-0068",
+            "CSAFPID-0069",
+            "CSAFPID-0070",
+            "CSAFPID-0071"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0064",
+            "CSAFPID-0065",
+            "CSAFPID-0066",
+            "CSAFPID-0067",
+            "CSAFPID-0068",
+            "CSAFPID-0069",
+            "CSAFPID-0070",
+            "CSAFPID-0071"
+          ]
+        }
+      ],
+      "title": "CVE-2024-39675"
+    }
+  ]
+}
