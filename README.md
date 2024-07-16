@@ -2,7 +2,7 @@
 In the pursuit to [“transform the vulnerability management landscape,”](https://www.cisa.gov/news-events/news/transforming-vulnerability-management-landscape) CISA provides machine readable security advisories using the [OASIS Common Security Advisory Framework (CSAF) Version 2.0 standard](https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html) for Information Technology (IT), Operational Technology (OT), Industrial Control Systems (ICS), and Medical Devices. By providing machine-readable advisories using CSAF v2.0, vendors and providers of software and hardware can join [CISA and many other leading organizations](https://www.oasis-open.org/committees/membership.php?wg_abbrev=csaf) in taking proactive steps to enable automation and help to reduce the time required for enterprises to understand organizational impact and drive timely remediation.
 
 ### Description
-The purpose of this repository is to provide CSAF security advisories for IT, OT, ICS, and Medical Devices. CSAF advisories are provided alongside every [new Advisory](https://www.cisa.gov/news-events/cybersecurity-advisories), including those dating back to 2017.
+The purpose of this repository is to provide CSAF security advisories for IT, OT, ICS, and Medical Devices.
 
 ### OASIS CSAF 2.0 Standard
 CSAF is a standard for machine-readable security advisories developed by the [OASIS CSAF Technical Committee](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=csaf). 
