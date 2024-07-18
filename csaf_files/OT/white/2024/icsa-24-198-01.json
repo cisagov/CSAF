@@ -2,11 +2,8 @@
   "document": {
     "acknowledgments": [
       {
-        "names": [
-          "Reid Wightman"
-        ],
-        "organization": "Dragos",
-        "summary": "reporting this vulnerability to Johnson Controls, Inc"
+        "organization": "Rockwell Automation",
+        "summary": "reporting this vulnerability to CISA"
       }
     ],
     "category": "csaf_security_advisory",
@@ -27,12 +24,12 @@
       },
       {
         "category": "summary",
-        "text": "Successful exploitation of this vulnerability may allow an attacker to access credentials used for access to the application.",
+        "text": "Successful exploitation of this vulnerability could allow an attacker to create new users and view sensitive data.",
         "title": "Risk evaluation"
       },
       {
         "category": "other",
-        "text": "Critical Manufacturing, Commercial Facilities, Government Facilities, Transportation Systems, Energy",
+        "text": "Critical Manufacturing",
         "title": "Critical infrastructure sectors"
       },
       {
@@ -42,7 +39,7 @@
       },
       {
         "category": "other",
-        "text": "Ireland",
+        "text": "United States",
         "title": "Company headquarters location"
       },
       {
@@ -105,13 +102,13 @@
     "references": [
       {
         "category": "self",
-        "summary": "ICS Advisory ICSA-24-191-05 JSON",
-        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2024/icsa-24-191-05.json"
+        "summary": "ICS Advisory ICSA-24-198-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2024/icsa-24-198-01.json"
       },
       {
         "category": "self",
-        "summary": "ICSA Advisory ICSA-24-191-05 - Web Version",
-        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-24-191-05"
+        "summary": "ICSA Advisory ICSA-24-198-01 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-24-198-01"
       },
       {
         "category": "external",
@@ -154,20 +151,20 @@
         "url": "https://www.cisa.gov/uscert/ncas/tips/ST04-014"
       }
     ],
-    "title": "Johnson Controls Inc. Software House C●CURE 9000",
+    "title": "Rockwell Automation Pavilion 8",
     "tracking": {
-      "current_release_date": "2024-07-09T06:00:00.000000Z",
+      "current_release_date": "2024-07-16T06:00:00.000000Z",
       "generator": {
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
         }
       },
-      "id": "ICSA-24-191-05",
-      "initial_release_date": "2024-07-09T06:00:00.000000Z",
+      "id": "ICSA-24-198-01",
+      "initial_release_date": "2024-07-16T06:00:00.000000Z",
       "revision_history": [
         {
-          "date": "2024-07-09T06:00:00.000000Z",
+          "date": "2024-07-16T06:00:00.000000Z",
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
@@ -185,33 +182,33 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "<=3.00.3",
+                "name": ">=5.15.00|<=5.20.00",
                 "product": {
-                  "name": "Johnson Controls Inc. Software House C●CURE 9000 Site Server: <=3.00.3",
+                  "name": "Rockwell Automation Pavilion 8: >=5.15.00|<=5.20.00",
                   "product_id": "CSAFPID-0001"
                 }
               }
             ],
             "category": "product_name",
-            "name": "Software House C●CURE 9000 Site Server"
+            "name": "Pavilion 8"
           }
         ],
         "category": "vendor",
-        "name": "Johnson Controls Inc."
+        "name": "Rockwell Automation"
       }
     ]
   },
   "vulnerabilities": [
     {
-      "cve": "CVE-2024-32861",
+      "cve": "CVE-2024-6435",
       "cwe": {
-        "id": "CWE-276",
-        "name": "Incorrect Default Permissions"
+        "id": "CWE-732",
+        "name": "Incorrect Permission Assignment for Critical Resource"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "Under certain circumstances the Software House C●CURE 9000 Site Server provides insufficient protection of directories containing executables.",
+          "text": "A privilege escalation vulnerability exists in the affected products which could allow a malicious user with basic privileges to access functions which should only be available to users with administrative level privileges. If exploited, an attacker could read sensitive data and create users. For example, a malicious user with basic privileges could perform critical functions such as creating a user with elevated privileges, or reading sensitive information in the \"views\" section. ",
           "title": "Vulnerability Summary"
         }
       ],
@@ -224,56 +221,64 @@
         {
           "category": "external",
           "summary": "web.nvd.nist.gov",
-          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2024-32861"
+          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2024-6435"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
         }
       ],
       "remediations": [
         {
           "category": "mitigation",
-          "details": "Johnson Controls, Inc. recommends the following:",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Remove write permissions from C:\\CouchDB\\bin folder within Software House C●CURE 9000 Site Server for non-administrators.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "For more detailed mitigation instructions, please see Johnson Controls Product Security Advisory JCI-PSA-2024-11 v1 at the following location: https://www.johnsoncontrols.com/cyber-solutions/security-advisories",
+          "details": "Rockwell Automation recommends users update to Pavilion8 version 6.0 or greater.",
           "product_ids": [
             "CSAFPID-0001"
           ],
-          "url": "https://www.johnsoncontrols.com/cyber-solutions/security-advisories"
+          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1085012"
         },
         {
           "category": "mitigation",
-          "details": "Aligning with CISA recommendations, Johnson Controls recommends taking steps to minimize risks to all building automation systems.",
+          "details": "Users using the affected software and who are not able to upgrade to one of the corrected versions are encouraged to apply security best practices, where possible.",
           "product_ids": [
             "CSAFPID-0001"
           ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Limit access to only users who need it.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Periodically review user access and privileges to confirm accuracy.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Security Best Practices",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1085012/loc/en_US#__highlight"
         }
       ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 7.8,
+            "baseScore": 8.8,
             "baseSeverity": "HIGH",
-            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
             "version": "3.1"
           },
           "products": [
