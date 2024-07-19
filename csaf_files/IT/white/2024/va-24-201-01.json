@@ -1,0 +1,446 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "publisher": {
+      "category": "coordinator",
+      "issuing_authority": "CISA\n",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/",
+      "contact_details": "https://www.cisa.gov/report"
+    },
+    "title": "Adminer and AdminerEvo Multiple Vulnerabilities",
+    "tracking": {
+      "current_release_date": "2024-07-19T16:00:00.000Z",
+      "generator": {
+        "engine": {
+          "name": "Secvisogram",
+          "version": "2.5.8"
+        },
+        "date": "2024-07-19T03:32:02.700Z"
+      },
+      "id": "VA-24-201-01",
+      "initial_release_date": "2024-07-19T16:00:00.000Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "initial publication",
+          "date": "2024-07-19T18:37:00.000Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "Adminer and AdminerEvo contain multiple vulnerabilities. Successful exploitation of these vulnerabilities could allow a remote, unauthenticated attacker to deny service, enumerate and access systems indirectly, upload arbitrary files, and execute arbitrary code. Adminer is no longer maintained. All of these vulnerabilities are fixed in AdminerEvo 4.8.4.",
+        "title": "Risk Evaluation"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Disclaimer"
+      },
+      {
+        "title": "Countries/areas deployed",
+        "category": "other",
+        "text": "Worldwide"
+      },
+      {
+        "category": "general",
+        "title": "Recommended Practices",
+        "text": "Upgrade to AdminerEvo 4.8.4: https://github.com/adminerevo/adminerevo/releases/tag/v4.8.4"
+      },
+      {
+        "category": "other",
+        "title": "Company headquarters location",
+        "text": "Unknown"
+      },
+      {
+        "title": "Critical infrastructure sectors",
+        "text": "Unknown",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "summary": "Vulnerability Advisory VA-24-201-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2024/va-24-201-01.json",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "Adminer",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "Adminer",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "all versions",
+                "product": {
+                  "name": "Adminer (all versions)",
+                  "product_id": "CSAFPID-0006"
+                }
+              },
+              {
+                "category": "product_family",
+                "name": "Adminer",
+                "product": {
+                  "name": "Adminer",
+                  "product_id": "CSAFPID-0013"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "vendor",
+        "name": "AdminerEvo",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "AdminerEvo",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "4.8.2",
+                "product": {
+                  "name": "AdminerEvo 4.8.2",
+                  "product_id": "CSAFPID-0077"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "4.8.3",
+                "product": {
+                  "name": "AdminerEvo 4.8.3",
+                  "product_id": "CSAFPID-0007"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "4.8.4",
+                "product": {
+                  "name": "AdminerEvo 4.8.4",
+                  "product_id": "CSAFPID-0009"
+                }
+              },
+              {
+                "category": "product_family",
+                "name": "AdminerEvo",
+                "product": {
+                  "name": "AdminerEvo",
+                  "product_id": "CSAFPID-0004"
+                }
+              },
+              {
+                "product": {
+                  "name": "AdminerEvo (all versions)",
+                  "product_id": "CSAFPID-0078"
+                },
+                "category": "product_version_range",
+                "name": "all versions"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "category": "external_component_of",
+        "product_reference": "CSAFPID-0013",
+        "relates_to_product_reference": "CSAFPID-0004",
+        "full_product_name": {
+          "product_id": "CSAFPID-0005",
+          "name": "Adminer contained in AdminerEvo"
+        }
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2023-45195",
+      "cwe": {
+        "id": "CWE-918",
+        "name": "Server-Side Request Forgery (SSRF)"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Adminer and AdminerEvo are vulnerable to SSRF via database connection fields. This could allow an unauthenticated remote attacker to enumerate or access systems the attacker would not otherwise have access to. Adminer is no longer supported, but this issue was fixed in AdminerEvo version 4.8.4.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:Y/T:P/2024-07-11T21:26:33Z/"
+        }
+      ],
+      "title": "Adminer and AdminerEvo SSRF",
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0009"
+        ],
+        "known_affected": [
+          "CSAFPID-0077",
+          "CSAFPID-0007",
+          "CSAFPID-0006"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Adminer is no longer maintained. Fixed in AdminerEvo 4.8.4.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in AdminerEvo 4.8.4.",
+          "product_ids": [
+            "CSAFPID-0077",
+            "CSAFPID-0007"
+          ],
+          "date": "2024-01-25T14:58:00.000Z",
+          "url": "https://github.com/adminerevo/adminerevo/releases/tag/v4.8.4"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "names": [
+            "Matthew Galligan, CISA Rapid Action Force"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "version": "3.1",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "temporalScore": 5.3,
+            "temporalSeverity": "MEDIUM",
+            "environmentalScore": 5.3,
+            "environmentalSeverity": "MEDIUM",
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "LOW",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "NONE"
+          },
+          "products": [
+            "CSAFPID-0006",
+            "CSAFPID-0077",
+            "CSAFPID-0007"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "category": "external",
+          "summary": "AdminerEvo git commit 18f3167\n",
+          "url": "https://github.com/adminerevo/adminerevo/pull/102/commits/18f3167bbcbec3bc746f62db72e016aa99144efc"
+        }
+      ]
+    },
+    {
+      "cwe": {
+        "id": "CWE-400",
+        "name": "Uncontrolled Resource Consumption"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Adminer and AdminerEvo allow an unauthenticated remote attacker to cause a denial of service by connecting to an attacker-controlled service that responds with HTTP redirects. The denial of service is subject to PHP configuration limits. Adminer is no longer supported, but this issue was fixed in AdminerEvo version 4.8.4.",
+          "title": "Description"
+        },
+        {
+          "text": "SSVCv2/E:N/A:Y/T:P/2024-07-12T16:08:02Z/",
+          "title": "SSVC",
+          "category": "details"
+        }
+      ],
+      "title": "Adminer and AdminerEvo denial of service via HTTP redirect",
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0009"
+        ],
+        "known_affected": [
+          "CSAFPID-0006",
+          "CSAFPID-0077",
+          "CSAFPID-0007"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Adminer is no longer maintained. Fixed in AdminerEvo 4.8.4.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in AdminerEvo 4.8.4.",
+          "product_ids": [
+            "CSAFPID-0007",
+            "CSAFPID-0077"
+          ],
+          "url": "https://github.com/adminerevo/adminerevo/releases/tag/v4.8.4",
+          "date": "2024-01-25T14:58:00.000Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "names": [
+            "Matthew Galligan, CISA Rapid Action Force"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "version": "3.1",
+            "attackVector": "NETWORK",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "temporalScore": 5.3,
+            "temporalSeverity": "MEDIUM",
+            "environmentalScore": 5.3,
+            "environmentalSeverity": "MEDIUM",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "LOW"
+          },
+          "products": [
+            "CSAFPID-0006",
+            "CSAFPID-0077",
+            "CSAFPID-0007"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "category": "external",
+          "summary": "AdminerEvo git commit 23e7cdc",
+          "url": "https://github.com/adminerevo/adminerevo/pull/102/commits/23e7cdc0a32b3739e13d19ae504be0fe215142b6"
+        }
+      ],
+      "cve": "CVE-2023-45196"
+    },
+    {
+      "cve": "CVE-2023-45197",
+      "cwe": {
+        "id": "CWE-434",
+        "name": "Unrestricted Upload of File with Dangerous Type"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The file upload plugin in Adminer and AdminerEvo allows an attacker to upload a file with a table name of “..” to the root of the Adminer directory. The attacker can effectively guess the name of the uploaded file and execute it. Adminer is no longer supported, but this issue was fixed in AdminerEvo version 4.8.3.",
+          "title": "Description"
+        },
+        {
+          "title": "SSVC",
+          "category": "details",
+          "text": "SSVCv2/E:N/A:Y/T:T/2024-07-12T16:11:44Z/ "
+        }
+      ],
+      "title": "Adminer and AdminerEvo vulnerable to directory traversal and file upload",
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in AdminerEvo 4.8.3",
+          "product_ids": [
+            "CSAFPID-0077"
+          ],
+          "url": "https://github.com/adminerevo/adminerevo/releases/tag/v4.8.3",
+          "date": "2023-10-17T21:19:00.000Z"
+        },
+        {
+          "category": "none_available",
+          "details": "Adminer is no longer supported. Fixed in AdminerEvo 4.8.3.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0077",
+          "CSAFPID-0006"
+        ],
+        "fixed": [
+          "CSAFPID-0007"
+        ]
+      },
+      "acknowledgments": [
+        {
+          "names": [
+            "Matthew Galligan, CISA Rapid Action Force"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "version": "3.1",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H/RL:O/RC:C",
+            "baseScore": 9,
+            "baseSeverity": "CRITICAL",
+            "temporalScore": 8.6,
+            "temporalSeverity": "HIGH",
+            "environmentalScore": 8.7,
+            "environmentalSeverity": "HIGH",
+            "attackVector": "NETWORK",
+            "attackComplexity": "HIGH",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "CHANGED",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "HIGH",
+            "remediationLevel": "OFFICIAL_FIX",
+            "reportConfidence": "CONFIRMED"
+          },
+          "products": [
+            "CSAFPID-0006",
+            "CSAFPID-0077"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "category": "external",
+          "summary": "AdminerEvo git commit 1cc06d6",
+          "url": "https://github.com/adminerevo/adminerevo/commit/1cc06d6a1005fd833fa009701badd5641627a1d4"
+        }
+      ]
+    }
+  ]
+}
