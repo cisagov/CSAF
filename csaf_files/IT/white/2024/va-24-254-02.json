@@ -1,0 +1,239 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "TopBraid EDG Insecure Passwords and XXE Vulnerabilities",
+    "tracking": {
+      "current_release_date": "2024-08-14T16:03:43.960785Z",
+      "generator": {
+        "engine": {
+          "name": "Secvisogram",
+          "version": "2.5.11"
+        },
+        "date": "2024-09-10T01:53:44.646Z"
+      },
+      "id": "VA-24-253-01",
+      "initial_release_date": "2024-08-14T16:03:43.960782Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Draft1",
+          "date": "2024-08-14T16:03:43.938289Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "TopQuadrant TopBraid EDG contains insecure password storage and XXE vulnerabilities.",
+        "title": "Overview",
+        "category": "description"
+      },
+      {
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \\\\\\\"as is\\\\\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Disclaimer",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries/areas deployed",
+        "category": "other"
+      },
+      {
+        "text": "Raleigh, North Carolina",
+        "title": "Company headquarters location",
+        "category": "other"
+      },
+      {
+        "text": "Unknown",
+        "title": "Critical infrastructure sectors",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2024/va-24-254-02.json",
+        "category": "self",
+        "summary": "Vulnerability Advisory VA-24-254-02 CSAF"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "TopQuadrant",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "TopBraid EDG",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "7.1.3",
+                "product": {
+                  "name": "TopQuadrant TopBraid EDG 7.1.3",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "7.8.1",
+                "product": {
+                  "name": "TopQuadrant TopBraid EDG 7.8.1",
+                  "product_id": "CSAFPID-0002"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "8.0.1",
+                "product": {
+                  "name": "TopQuadrant TopBraid EDG 8.0.1",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2024-45744",
+      "cwe": {
+        "id": "CWE-257",
+        "name": "Storing Passwords in a Recoverable Format"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The TopBraid EDG platform version 7.1.3 contains a \"Password Manager\" tool which stores encrypted passwords which the application uses to authenticate to various internal and external services. By default these encrypted passwords are stored on the web server and can be decrypted by users with appropriate file read access. This could lead to privilege escalation, or compromise of other internal services.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:P/2024-08-14T16:11:17.866325+00:00/"
+        }
+      ],
+      "title": "TopBraid EDG Insecure Storage of Passwords",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Fix not yet announced.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "names": [
+            "Donald Macary"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2024-45745",
+      "cwe": {
+        "id": "CWE-611",
+        "name": "Improper Restriction of XML External Entity Reference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "TopBraid EDG platform versions 7.1.3 and 7.8.1 contain a JavaScript editor console which allows users with the proper permissions to execute arbitrary JavaScript code. This feature is accompanied by a file upload tool and an API which allows an attacker to upload files such as a XML Document Type Definition (DTD). This can be used to define XML entities which can provide powerful functions such as reading files and performing HTTP requests.",
+          "title": "Description"
+        }
+      ],
+      "title": "TopBraid EDG XML External Entity Injection",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002"
+        ],
+        "fixed": [
+          "CSAFPID-0003"
+        ]
+      },
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 8.0.1.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 8.0.1.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 8.0.1.",
+          "product_ids": [
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "names": [
+            "Donald Macary",
+            "Grant Hume"
+          ]
+        }
+      ]
+    }
+  ]
+}
