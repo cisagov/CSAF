@@ -9,25 +9,25 @@
       "name": "CISA",
       "namespace": "https://www.cisa.gov/"
     },
-    "title": "Multiple vulnerabilities in IBM webMethods Integration",
+    "title": "IBM webMethods Integration Multiple Vulnerabilities",
     "tracking": {
-      "current_release_date": "2024-09-10T16:00:00Z",
+      "current_release_date": "2024-09-10T20:00:00.000Z",
       "generator": {
         "engine": {
           "name": "Secvisogram",
           "version": "2.5.11"
         },
-        "date": "2024-09-10T16:00:00Z"
+        "date": "2024-09-10T18:03:24.676Z"
       },
       "id": "VA-24-254-01",
-      "initial_release_date": "2024-09-10T16:00:00Z",
+      "initial_release_date": "2024-09-10T20:00:00.000Z",
       "status": "final",
       "version": "1.0.0",
       "revision_history": [
         {
           "number": "1.0.0",
-          "summary": "Initial Publication",
-          "date": "2024-09-10T16:00:00Z"
+          "summary": "Initial Release",
+          "date": "2024-09-09T20:08:29Z"
         }
       ]
     },
@@ -38,7 +38,7 @@
     },
     "notes": [
       {
-        "text": "An authenticated developer user can utilize webMethods Integration Server to create a user through the scheduler service and then elevate that user to an administrator using runAsUser. This action provides elevated privileges for the developer user. webMethods Integration Server could potentially allow an authenticated developer user to write an OSCommand.cnf file and then execute arbitrary commands on the server. webMethods Integration Server may also allow an authenticated developer to read /../.. files, even after checkFileRead is set.",
+        "text": "IBM webMethods Integration contains multiple vulnerabilities that could allow an authenticated attacker to escalate privileges within webMethods, execute arbitrary operating system commands, or read arbitrary files.",
         "title": "Risk Evaluation",
         "category": "summary"
       },
@@ -53,12 +53,12 @@
         "category": "other"
       },
       {
-        "text": "Install Corefix 14 of Integration Server using Update Manager:  https://documentation.softwareag.com/a_installer_and_update_manager/Using_SAG_Update_Manager_for_10-5_and_later/#page/sag-update-manager-help%2Fta-checking_for_fixes_on_empower.html%23",
+        "text": "Install webMethods Integration Corefix 14 as described in https://www.ibm.com/support/pages/node/7167245",
         "title": "Recommended Practices",
         "category": "general"
       },
       {
-        "text": "Armonk, N.Y.",
+        "text": "United States",
         "title": "Company headquarters location",
         "category": "other"
       },
@@ -70,8 +70,8 @@
     ],
     "references": [
       {
-        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2024/va-24-254-01.json",
-        "summary": "Vulnerability Advisory VA-24-254-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2024/va-24-253-01.json",
+        "summary": "Vulnerability Advisory VA-24-253-01 CSAF",
         "category": "self"
       }
     ]
@@ -93,6 +93,14 @@
                   "name": "IBM webMethods Integration 10.15",
                   "product_id": "CSAFPID-0001"
                 }
+              },
+              {
+                "category": "product_version",
+                "name": "Corefix 14",
+                "product": {
+                  "name": "IBM webMethods Integration Corefix 14",
+                  "product_id": "CSAFPID-0002"
+                }
               }
             ]
           }
@@ -104,8 +112,8 @@
     {
       "cve": "CVE-2024-45075",
       "cwe": {
-        "id": "CWE-308",
-        "name": "Use of Single-factor Authentication"
+        "id": "CWE-863",
+        "name": "Incorrect Authorization"
       },
       "notes": [
         {
@@ -116,13 +124,16 @@
         {
           "category": "details",
           "title": "SSVC",
-          "text": "SSVCv2/E:N/A:N/T:T/2024-09-04T18:43:11.461268+00:00/"
+          "text": "SSVCv2/E:P/A:N/T:T/2024-09-10T17:02:15.765344+00:00/"
         }
       ],
-      "title": "IBM webMethods Integration privilege escalation",
+      "title": "IBM webMethods Integration allows privilege escalation via scheduled task using runAsUser",
       "product_status": {
         "known_affected": [
           "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
         ]
       },
       "references": [
@@ -148,10 +159,18 @@
       "remediations": [
         {
           "category": "vendor_fix",
-          "details": "Install Corefix 14 of Integration Server using Update Manager",
-          "url": "https://documentation.softwareag.com/a_installer_and_update_manager/Using_SAG_Update_Manager_for_10-5_and_later/#page/sag-update-manager-help%2Fta-checking_for_fixes_on_empower.html%23",
+          "details": "Install Corefix 14",
+          "url": "https://www.ibm.com/support/pages/node/7167245",
           "product_ids": [
             "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Install Corefix 14",
+          "url": "https://www.ibm.com/support/pages/node/7167245",
+          "product_ids": [
+            "CSAFPID-0002"
           ]
         }
       ],
@@ -182,10 +201,13 @@
           "text": "SSVCv2/E:N/A:N/T:T/2024-09-04T18:44:50.608656+00:00/"
         }
       ],
-      "title": "IBM webMethods Integration code execution",
+      "title": "IBM webMethods Integration allows arbitrary file upload and execution",
       "product_status": {
         "known_affected": [
           "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
         ]
       },
       "references": [
@@ -211,10 +233,18 @@
       "remediations": [
         {
           "category": "vendor_fix",
-          "details": "Install Corefix 14 of Integration Server using Update Manager",
-          "url": "https://documentation.softwareag.com/a_installer_and_update_manager/Using_SAG_Update_Manager_for_10-5_and_later/#page/sag-update-manager-help%2Fta-checking_for_fixes_on_empower.html%23",
+          "details": "Install Corefix 14",
+          "url": "https://www.ibm.com/support/pages/node/7167245",
           "product_ids": [
             "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Install Corefix 14",
+          "url": "https://www.ibm.com/support/pages/node/7167245",
+          "product_ids": [
+            "CSAFPID-0002"
           ]
         }
       ],
@@ -230,8 +260,8 @@
     {
       "cve": "CVE-2024-45074",
       "cwe": {
-        "id": "CWE-22",
-        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+        "id": "CWE-863",
+        "name": "Incorrect Authorization"
       },
       "notes": [
         {
@@ -242,13 +272,16 @@
         {
           "category": "details",
           "title": "SSVC",
-          "text": "SSVCv2/E:N/A:N/T:P/2024-09-04T18:41:59.783037+00:00/"
+          "text": "SSVCv2/E:P/A:N/T:P/2024-09-10T17:04:49.167638+00:00/"
         }
       ],
-      "title": "IBM webMethods Integration directory traversal",
+      "title": "IBM webMethods Integration allows arbitrary file read via checkFileRead bypass",
       "product_status": {
         "known_affected": [
           "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
         ]
       },
       "references": [
@@ -274,10 +307,18 @@
       "remediations": [
         {
           "category": "vendor_fix",
-          "details": "Install Corefix 14 of Integration Server using Update Manager",
-          "url": "https://documentation.softwareag.com/a_installer_and_update_manager/Using_SAG_Update_Manager_for_10-5_and_later/#page/sag-update-manager-help%2Fta-checking_for_fixes_on_empower.html%23",
+          "details": "Install Corefix 14",
+          "url": "https://www.ibm.com/support/pages/node/7167245",
           "product_ids": [
             "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Install Corefix 14",
+          "url": "https://www.ibm.com/support/pages/node/7167245",
+          "product_ids": [
+            "CSAFPID-0002"
           ]
         }
       ],

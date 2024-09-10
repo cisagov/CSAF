@@ -9,25 +9,25 @@
       "name": "CISA",
       "namespace": "https://www.cisa.gov/"
     },
-    "title": "TopBraid EDG Insecure Passwords and XXE Vulnerabilities",
+    "title": "TopQuadrant TopBraid EDG Insecure External Password Storage and XXE Vulnerabilities",
     "tracking": {
-      "current_release_date": "2024-08-14T16:03:43.960785Z",
+      "current_release_date": "2024-09-10T20:00:00.000Z",
       "generator": {
         "engine": {
           "name": "Secvisogram",
           "version": "2.5.11"
         },
-        "date": "2024-09-10T01:53:44.646Z"
+        "date": "2024-09-10T17:36:43.742Z"
       },
-      "id": "VA-24-253-01",
-      "initial_release_date": "2024-08-14T16:03:43.960782Z",
+      "id": "VA-24-254-02",
+      "initial_release_date": "2024-09-10T20:00:00.000Z",
       "status": "final",
       "version": "1.0.0",
       "revision_history": [
         {
           "number": "1.0.0",
-          "summary": "Draft1",
-          "date": "2024-08-14T16:03:43.938289Z"
+          "summary": "Initial publication",
+          "date": "2024-09-10T20:00:00.000Z"
         }
       ]
     },
@@ -38,9 +38,9 @@
     },
     "notes": [
       {
-        "text": "TopQuadrant TopBraid EDG contains insecure password storage and XXE vulnerabilities.",
-        "title": "Overview",
-        "category": "description"
+        "text": "TopQuadrant TopBraid EDG stores credentials for external services insecurely and processes untrusted XML entities. An authenticated attacker could obtain credentials for remote services, read local files, or access URLs.",
+        "title": "Risk Evaluation",
+        "category": "summary"
       },
       {
         "text": "All information products included in https://us-cert.cisa.gov/ics are provided \\\\\\\"as is\\\\\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
@@ -53,12 +53,12 @@
         "category": "other"
       },
       {
-        "text": "Raleigh, North Carolina",
+        "text": "United States",
         "title": "Company headquarters location",
         "category": "other"
       },
       {
-        "text": "Unknown",
+        "text": "Information Technology",
         "title": "Critical infrastructure sectors",
         "category": "other"
       }
@@ -66,8 +66,8 @@
     "references": [
       {
         "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2024/va-24-254-02.json",
-        "category": "self",
-        "summary": "Vulnerability Advisory VA-24-254-02 CSAF"
+        "summary": "Vulnerability Advisory VA-24-254-02 CSAF",
+        "category": "self"
       }
     ]
   },
@@ -121,27 +121,49 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The TopBraid EDG platform version 7.1.3 contains a \"Password Manager\" tool which stores encrypted passwords which the application uses to authenticate to various internal and external services. By default these encrypted passwords are stored on the web server and can be decrypted by users with appropriate file read access. This could lead to privilege escalation, or compromise of other internal services.",
+          "text": "TopQuadrant TopBraid EDG stores external credentials insecurely. An authenticated attacker with file system access can read edg-setup.properites and obtain the secret to decrypt external passwords stored in edg-vault.properties. An authenticated attacker could gain file system access using a separate vulnerability such as CVE-2024-45745. \nAt least version 7.1.3 is affected. Version 7.3 adds HashiCorp Vault integration that does not store external passwords locally.",
           "title": "Description"
         },
         {
           "category": "details",
           "title": "SSVC",
-          "text": "SSVCv2/E:P/A:N/T:P/2024-08-14T16:11:17.866325+00:00/"
+          "text": "SSVCv2/E:P/A:N/T:P/2024-09-10T16:16:26.845290+00:00/"
         }
       ],
-      "title": "TopBraid EDG Insecure Storage of Passwords",
+      "title": "TopQuadrant TopBraid EDG password manager stores external credentials insecurely",
       "product_status": {
         "known_affected": [
           "CSAFPID-0001"
         ]
       },
+      "references": [
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2024/va-24-254-02.json"
+        },
+        {
+          "category": "external",
+          "summary": "www.topquadrant.com",
+          "url": "https://www.topquadrant.com/doc/latest/reference/PasswordManagementAdminPage.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.topquadrant.com",
+          "url": "https://www.topquadrant.com/doc/latest/administrator_guide/edg_installation_and_authentication/hashicorp_integration.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.topquadrant.com",
+          "url": "https://www.topquadrant.com/release-note/7-3/"
+        }
+      ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 7,
-            "baseSeverity": "HIGH",
-            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "baseScore": 3,
+            "baseSeverity": "LOW",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:N/A:N",
             "version": "3.1"
           },
           "products": [
@@ -161,10 +183,11 @@
       "acknowledgments": [
         {
           "names": [
-            "Donald Macary"
+            "Donald Macary, CISA Rapid Action Force"
           ]
         }
-      ]
+      ],
+      "release_date": "2024-09-10T20:00:00.000Z"
     },
     {
       "cve": "CVE-2024-45745",
@@ -175,11 +198,16 @@
       "notes": [
         {
           "category": "summary",
-          "text": "TopBraid EDG platform versions 7.1.3 and 7.8.1 contain a JavaScript editor console which allows users with the proper permissions to execute arbitrary JavaScript code. This feature is accompanied by a file upload tool and an API which allows an attacker to upload files such as a XML Document Type Definition (DTD). This can be used to define XML entities which can provide powerful functions such as reading files and performing HTTP requests.",
+          "text": "TopQuadrant TopBraid EDG allows an authenticated attacker to upload an XML DTD file and execute JavaScript to read local files or access URLs (XXE). At least versions 7.1.3 and 7.8.1 are affected, fixed in 8.0.1.",
           "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:P/2024-09-10T15:30:07.300765+00:00/"
         }
       ],
-      "title": "TopBraid EDG XML External Entity Injection",
+      "title": "TopQuadrant TopBraid EDG JavaScript console XXE",
       "product_status": {
         "known_affected": [
           "CSAFPID-0001",
@@ -189,12 +217,19 @@
           "CSAFPID-0003"
         ]
       },
+      "references": [
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2024/va-24-254-02.json"
+        }
+      ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 6.5,
+            "baseScore": 5,
             "baseSeverity": "MEDIUM",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N",
             "version": "3.1"
           },
           "products": [
@@ -229,11 +264,12 @@
       "acknowledgments": [
         {
           "names": [
-            "Donald Macary",
-            "Grant Hume"
+            "Donald Macary, CISA Rapid Action Force",
+            "Grant Hume, CISA Rapid Action Force"
           ]
         }
-      ]
+      ],
+      "release_date": "2024-09-10T20:00:00.000Z"
     }
   ]
 }
