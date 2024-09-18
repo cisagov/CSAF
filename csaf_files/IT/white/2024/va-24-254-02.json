@@ -11,23 +11,23 @@
     },
     "title": "TopQuadrant TopBraid EDG Insecure External Password Storage and XXE Vulnerabilities",
     "tracking": {
-      "current_release_date": "2024-09-10T20:00:00.000Z",
+      "current_release_date": "2024-09-10T16:03:00.000Z",
       "generator": {
         "engine": {
           "name": "Secvisogram",
-          "version": "2.5.11"
+          "version": "2.5.12"
         },
-        "date": "2024-09-10T17:36:43.742Z"
+        "date": "2024-09-18T18:58:40.536Z"
       },
       "id": "VA-24-254-02",
-      "initial_release_date": "2024-09-10T20:00:00.000Z",
+      "initial_release_date": "2024-09-10T16:03:00.000Z",
       "status": "final",
       "version": "1.0.0",
       "revision_history": [
         {
           "number": "1.0.0",
           "summary": "Initial publication",
-          "date": "2024-09-10T20:00:00.000Z"
+          "date": "2024-09-10T16:03:00.000Z"
         }
       ]
     },
@@ -39,12 +39,12 @@
     "notes": [
       {
         "text": "TopQuadrant TopBraid EDG stores credentials for external services insecurely and processes untrusted XML entities. An authenticated attacker could obtain credentials for remote services, read local files, or access URLs.",
-        "title": "Risk Evaluation",
+        "title": "Risk evaluation",
         "category": "summary"
       },
       {
-        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \\\\\\\"as is\\\\\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
-        "title": "Legal Disclaimer",
+        "text": "All information products included in https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal notice",
         "category": "legal_disclaimer"
       },
       {
@@ -90,10 +90,10 @@
                 }
               },
               {
-                "category": "product_version",
-                "name": "7.8.1",
+                "category": "product_version_range",
+                "name": "0 < 8.0.1",
                 "product": {
-                  "name": "TopQuadrant TopBraid EDG 7.8.1",
+                  "name": "TopQuadrant TopBraid EDG 0 < 8.0.1",
                   "product_id": "CSAFPID-0002"
                 }
               },
@@ -121,7 +121,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "TopQuadrant TopBraid EDG stores external credentials insecurely. An authenticated attacker with file system access can read edg-setup.properites and obtain the secret to decrypt external passwords stored in edg-vault.properties. An authenticated attacker could gain file system access using a separate vulnerability such as CVE-2024-45745. \nAt least version 7.1.3 is affected. Version 7.3 adds HashiCorp Vault integration that does not store external passwords locally.",
+          "text": "TopQuadrant TopBraid EDG stores external credentials insecurely. An authenticated attacker with file system access can read edg-setup.properites and obtain the secret to decrypt external passwords stored in edg-vault.properties. An authenticated attacker could gain file system access using a separate vulnerability such as CVE-2024-45745. At least version 7.1.3 is affected. Version 7.3 adds HashiCorp Vault integration that does not store external passwords locally.",
           "title": "Description"
         },
         {
@@ -187,7 +187,7 @@
           ]
         }
       ],
-      "release_date": "2024-09-10T20:00:00.000Z"
+      "release_date": "2024-09-10T16:00:00.000Z"
     },
     {
       "cve": "CVE-2024-45745",
@@ -198,19 +198,23 @@
       "notes": [
         {
           "category": "summary",
-          "text": "TopQuadrant TopBraid EDG allows an authenticated attacker to upload an XML DTD file and execute JavaScript to read local files or access URLs (XXE). At least versions 7.1.3 and 7.8.1 are affected, fixed in 8.0.1.",
+          "text": "TopQuadrant TopBraid EDG before version 8.0.1 allows an authenticated attacker to upload an XML DTD file and execute JavaScript to read local files or access URLs (XXE). Fixed in 8.0.1 (bug fix: TBS-6721).",
           "title": "Description"
         },
         {
           "category": "details",
           "title": "SSVC",
           "text": "SSVCv2/E:P/A:N/T:P/2024-09-10T15:30:07.300765+00:00/"
+        },
+        {
+          "category": "description",
+          "title": "Vendor statement",
+          "text": "EDG 8.0 and earlier are susceptible to XXE injection if a malicious XML DTD is uploaded to the Script Editor. An authenticated user could read arbitrary system files or make web requests as the EDG server. This has been fixed in version 8.0.1 (Bug fix: TBS-6721: Fix a number of XXE vulnerabilities)."
         }
       ],
       "title": "TopQuadrant TopBraid EDG JavaScript console XXE",
       "product_status": {
         "known_affected": [
-          "CSAFPID-0001",
           "CSAFPID-0002"
         ],
         "fixed": [
@@ -222,6 +226,11 @@
           "category": "external",
           "summary": "raw.githubusercontent.com",
           "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2024/va-24-254-02.json"
+        },
+        {
+          "category": "external",
+          "summary": "www.topquadrant.com",
+          "url": "https://www.topquadrant.com/wp-content/uploads/2024/06/changelog-8.0.1.txt"
         }
       ],
       "scores": [
@@ -233,7 +242,6 @@
             "version": "3.1"
           },
           "products": [
-            "CSAFPID-0001",
             "CSAFPID-0002"
           ]
         }
@@ -241,21 +249,16 @@
       "remediations": [
         {
           "category": "vendor_fix",
-          "details": "Fixed in 8.0.1.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Fixed in 8.0.1.",
+          "details": "Fixed in 8.0.1 (bug fix: TBS-6721).",
+          "url": "https://www.topquadrant.com/wp-content/uploads/2024/06/changelog-8.0.1.txt",
           "product_ids": [
             "CSAFPID-0002"
           ]
         },
         {
           "category": "vendor_fix",
-          "details": "Fixed in 8.0.1.",
+          "details": "Fixed in 8.0.1 (bug fix: TBS-6721).",
+          "url": "https://www.topquadrant.com/wp-content/uploads/2024/06/changelog-8.0.1.txt",
           "product_ids": [
             "CSAFPID-0003"
           ]
@@ -269,7 +272,7 @@
           ]
         }
       ],
-      "release_date": "2024-09-10T20:00:00.000Z"
+      "release_date": "2024-09-10T16:00:00.000Z"
     }
   ]
 }
