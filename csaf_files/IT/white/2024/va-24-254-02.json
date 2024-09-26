@@ -1,0 +1,278 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "TopQuadrant TopBraid EDG Insecure External Password Storage and XXE Vulnerabilities",
+    "tracking": {
+      "current_release_date": "2024-09-10T16:03:00.000Z",
+      "generator": {
+        "engine": {
+          "name": "Secvisogram",
+          "version": "2.5.12"
+        },
+        "date": "2024-09-18T18:58:40.536Z"
+      },
+      "id": "VA-24-254-02",
+      "initial_release_date": "2024-09-10T16:03:00.000Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2024-09-10T16:03:00.000Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "TopQuadrant TopBraid EDG stores credentials for external services insecurely and processes untrusted XML entities. An authenticated attacker could obtain credentials for remote services, read local files, or access URLs.",
+        "title": "Risk evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "All information products included in https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries/areas deployed",
+        "category": "other"
+      },
+      {
+        "text": "United States",
+        "title": "Company headquarters location",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical infrastructure sectors",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2024/va-24-254-02.json",
+        "summary": "Vulnerability Advisory VA-24-254-02 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "TopQuadrant",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "TopBraid EDG",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "7.1.3",
+                "product": {
+                  "name": "TopQuadrant TopBraid EDG 7.1.3",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "0 < 8.0.1",
+                "product": {
+                  "name": "TopQuadrant TopBraid EDG 0 < 8.0.1",
+                  "product_id": "CSAFPID-0002"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "8.0.1",
+                "product": {
+                  "name": "TopQuadrant TopBraid EDG 8.0.1",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2024-45744",
+      "cwe": {
+        "id": "CWE-257",
+        "name": "Storing Passwords in a Recoverable Format"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "TopQuadrant TopBraid EDG stores external credentials insecurely. An authenticated attacker with file system access can read edg-setup.properites and obtain the secret to decrypt external passwords stored in edg-vault.properties. An authenticated attacker could gain file system access using a separate vulnerability such as CVE-2024-45745. At least version 7.1.3 is affected. Version 7.3 adds HashiCorp Vault integration that does not store external passwords locally.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:P/2024-09-10T16:16:26.845290+00:00/"
+        }
+      ],
+      "title": "TopQuadrant TopBraid EDG password manager stores external credentials insecurely",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2024/va-24-254-02.json"
+        },
+        {
+          "category": "external",
+          "summary": "www.topquadrant.com",
+          "url": "https://www.topquadrant.com/doc/latest/reference/PasswordManagementAdminPage.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.topquadrant.com",
+          "url": "https://www.topquadrant.com/doc/latest/administrator_guide/edg_installation_and_authentication/hashicorp_integration.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.topquadrant.com",
+          "url": "https://www.topquadrant.com/release-note/7-3/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 3,
+            "baseSeverity": "LOW",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Fix not yet announced.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "names": [
+            "Donald Macary, CISA Rapid Action Force"
+          ]
+        }
+      ],
+      "release_date": "2024-09-10T16:00:00.000Z"
+    },
+    {
+      "cve": "CVE-2024-45745",
+      "cwe": {
+        "id": "CWE-611",
+        "name": "Improper Restriction of XML External Entity Reference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "TopQuadrant TopBraid EDG before version 8.0.1 allows an authenticated attacker to upload an XML DTD file and execute JavaScript to read local files or access URLs (XXE). Fixed in 8.0.1 (bug fix: TBS-6721).",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:P/2024-09-10T15:30:07.300765+00:00/"
+        },
+        {
+          "category": "description",
+          "title": "Vendor statement",
+          "text": "EDG 8.0 and earlier are susceptible to XXE injection if a malicious XML DTD is uploaded to the Script Editor. An authenticated user could read arbitrary system files or make web requests as the EDG server. This has been fixed in version 8.0.1 (Bug fix: TBS-6721: Fix a number of XXE vulnerabilities)."
+        }
+      ],
+      "title": "TopQuadrant TopBraid EDG JavaScript console XXE",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0002"
+        ],
+        "fixed": [
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2024/va-24-254-02.json"
+        },
+        {
+          "category": "external",
+          "summary": "www.topquadrant.com",
+          "url": "https://www.topquadrant.com/wp-content/uploads/2024/06/changelog-8.0.1.txt"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 8.0.1 (bug fix: TBS-6721).",
+          "url": "https://www.topquadrant.com/wp-content/uploads/2024/06/changelog-8.0.1.txt",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 8.0.1 (bug fix: TBS-6721).",
+          "url": "https://www.topquadrant.com/wp-content/uploads/2024/06/changelog-8.0.1.txt",
+          "product_ids": [
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "names": [
+            "Donald Macary, CISA Rapid Action Force",
+            "Grant Hume, CISA Rapid Action Force"
+          ]
+        }
+      ],
+      "release_date": "2024-09-10T16:00:00.000Z"
+    }
+  ]
+}
