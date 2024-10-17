@@ -2,11 +2,15 @@
   "document": {
     "acknowledgments": [
       {
-        "names": [
-          "Erwin Karincic",
-          "Clayton Smith",
-          "Dale Wooden"
-        ],
+        "organization": "Erwin Karincic",
+        "summary": "reporting this these vulnerabilities to CISA"
+      },
+      {
+        "organization": "Clayton Smith",
+        "summary": "reporting this these vulnerabilities to CISA"
+      },
+      {
+        "organization": "Dale Wooden",
         "summary": "reporting this these vulnerabilities to CISA"
       }
     ],
@@ -155,9 +159,9 @@
         "url": "https://www.cisa.gov/uscert/ncas/tips/ST04-014"
       }
     ],
-    "title": "goTenna Pro ATAK Plugin",
+    "title": "goTenna Pro ATAK Plugin (Update A)",
     "tracking": {
-      "current_release_date": "2024-09-26T06:00:00.000000Z",
+      "current_release_date": "2024-10-17T06:00:00.000000Z",
       "generator": {
         "engine": {
           "name": "CISA CSAF Generator",
@@ -172,10 +176,16 @@
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
+        },
+        {
+          "date": "2024-10-17T06:00:00.000000Z",
+          "legacy_version": "Update A",
+          "number": "2",
+          "summary": "Update A - Updates were made to Vulnerability Overview and Mitigations."
         }
       ],
       "status": "final",
-      "version": "1"
+      "version": "2"
     }
   },
   "product_tree": {
@@ -212,7 +222,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna Pro ATAK Plugin uses a weak password for the QR broadcast message. If the QR broadcast message is captured over RF it is possible to decrypt it and use it to decrypt all future and past messages sent via encrypted broadcast.",
+          "text": "The goTenna Pro ATAK plugin uses a weak password for sharing encryption keys via the key broadcast method. If the broadcasted encryption key is captured over RF, and password is cracked via brute force attack, it is possible to decrypt it and use it to decrypt all future and past messages sent via encrypted broadcast with that particular key. This only applies when the key is broadcasted over RF. This is an optional feature, so it is advised to use local QR encryption key sharing for additional security on this and previous versions.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -323,6 +333,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends that users Follow their secure operating best practices.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -348,7 +366,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "In the goTenna Pro ATAK Plugin application, the encryption keys are stored along with a static IV on the device. This allows for complete decryption of keys stored on the device. This allows an attacker to decrypt all encrypted broadcast communications based on broadcast keys stored on the device.",
+          "text": "In the goTenna Pro ATAK Plugin, the encryption keys are stored along with a static IV on the End User Device (EUD). This allows for complete decryption of keys stored on the EUD if physically compromised. This allows an attacker to decrypt all encrypted broadcast communications based on encryption keys stored on the EUD. This requires access to and control of the EUD, so it is recommended to use strong access control measures and layered encryption on the EUD for more secure operation.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -459,6 +477,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends that users Follow their secure operating best practices.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -484,7 +510,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna Pro ATAK Plugin use AES CTR mode for short, encrypted messages without any additional integrity checking mechanisms. This leaves messages malleable to any attacker that can access the message.",
+          "text": "The goTenna Pro ATAK Plugin uses AES CTR type encryption for short, encrypted messages without any additional integrity checking mechanisms. This leaves messages malleable to an attacker that can access the message. It is advised to continue to use encryption in the plugin and update to the current release for enhanced encryption protocols.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -595,6 +621,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends that users Follow their secure operating best practices.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -620,7 +654,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna Pro ATAK Plugin does not encrypt the callsigns of its users. These callsigns reveal information about the users and can also be leveraged for other vulnerabilities.",
+          "text": "The goTenna Pro ATAK Plugin does not encrypt callsigns in messages. It is advised to not use sensitive information in callsigns when using this and previous versions of the plugin. Update to current plugin version which uses AES-256 encryption for callsigns in encrypted operation",
           "title": "Vulnerability Summary"
         }
       ],
@@ -731,6 +765,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends that users Follow their secure operating best practices.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -756,7 +798,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna Pro ATAK Plugin does not use SecureRandom when generating its cryptographic keys. The random function in use is not suitable for cryptographic use.",
+          "text": "The goTenna Pro ATAK Plugin does not use SecureRandom when generating passwords for sharing cryptographic keys. The random function in use makes it easier for attackers to brute force this password if the broadcasted encryption key is captured over RF. This only applies to the optional broadcast of an encryption key, so it is advised to share the key with local QR code for higher security operations.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -867,6 +909,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends that users Follow their secure operating best practices.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -892,7 +942,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "In the goTenna Pro ATAK Plugin there is a vulnerability that makes it possible to inject any custom message with any GID and Callsign using a software defined radio in existing gotenna mesh networks. This vulnerability can be exploited if the device is being used in a unencrypted environment or if the cryptography has already been compromised.",
+          "text": "In the goTenna Pro ATAK Plugin there is a vulnerability that makes it possible to inject any custom message with any GID and Callsign using a software defined radio in existing goTenna mesh networks. This vulnerability can be exploited if the device is being used in an unencrypted environment or if the cryptography has already been compromised. It is advised to use encryption shared with local QR code for higher security operations.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -1003,6 +1053,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends that users Follow their secure operating best practices.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -1028,7 +1086,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna Pro ATAK Plugin broadcast key name is always sent unencrypted and could reveal the location of operation.",
+          "text": "The goTenna Pro ATAK Plugin encryption key name is always sent unencrypted when the key is sent over RF through a broadcast message. It is advised to share the encryption key via local QR for higher security operations.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -1139,6 +1197,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends that users Follow their secure operating best practices.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -1164,7 +1230,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna Pro ATAK Plugin has a payload length vulnerability that makes it possible to tell the length of the payload regardless of the encryption used.",
+          "text": "The goTenna Pro ATAK Plugin does not inject extra characters into broadcasted frames to obfuscate the length of messages. This makes it possible to tell the length of the payload regardless of the encryption used.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -1275,6 +1341,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends that users Follow their secure operating best practices.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -1300,7 +1374,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "goTenna Pro ATAK Plugin by default enables frequent unencrypted Position, Location and Information (PLI) transmission. This transmission is done without user's knowledge, revealing the exact location transmitted in unencrypted form.",
+          "text": "The goTenna Pro ATAK Plugin's default settings are to share Automatic Position, Location, and Information (PLI) updates every 60 seconds once the plugin is active and goTenna is connected. Users that are unaware of their settings and have not activated encryption before a mission may accidentally broadcast their location unencrypted. It is advised to verify PLI settings are the desired rate and activate encryption prior to mission. Update to the latest Plugin to disable this default setting.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -1411,6 +1485,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends that users Follow their secure operating best practices.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
