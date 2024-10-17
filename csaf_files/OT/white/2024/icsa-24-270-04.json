@@ -2,11 +2,15 @@
   "document": {
     "acknowledgments": [
       {
-        "names": [
-          "Erwin Karincic",
-          "Clayton Smith",
-          "Dale Wooden"
-        ],
+        "organization": "Erwin Karincic",
+        "summary": "reporting this these vulnerabilities to CISA"
+      },
+      {
+        "organization": "Clayton Smith",
+        "summary": "reporting this these vulnerabilities to CISA"
+      },
+      {
+        "organization": "Dale Wooden",
         "summary": "reporting this these vulnerabilities to CISA"
       }
     ],
@@ -155,9 +159,9 @@
         "url": "https://www.cisa.gov/uscert/ncas/tips/ST04-014"
       }
     ],
-    "title": "goTenna Pro X and Pro X2",
+    "title": "goTenna Pro X and Pro X2 (Update A)",
     "tracking": {
-      "current_release_date": "2024-09-26T06:00:00.000000Z",
+      "current_release_date": "2024-10-17T06:00:00.000000Z",
       "generator": {
         "engine": {
           "name": "CISA CSAF Generator",
@@ -172,10 +176,16 @@
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
+        },
+        {
+          "date": "2024-10-17T06:00:00.000000Z",
+          "legacy_version": "Update A",
+          "number": "2",
+          "summary": "Update A - Updates were made to Vulnerability Overview, Affected Products, and Mitigations."
         }
       ],
       "status": "final",
-      "version": "1"
+      "version": "2"
     }
   },
   "product_tree": {
@@ -212,7 +222,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna Pro series uses a weak password for the QR broadcast message. If the QR broadcast message is captured over RF it is possible to decrypt it and use it to decrypt all future and past messages sent via encrypted broadcast.",
+          "text": "The goTenna Pro App uses a weak password for sharing encryption keys via the key broadcast method. If the broadcasted encryption key is captured over RF, and password is cracked via brute force attack, it is possible to decrypt it and use it to decrypt all future and past messages sent via encrypted broadcast with that particular key. This only applies when the key is broadcasted over RF. This is an optional feature, so it is recommended to use local QR encryption key sharing for additional security on this and previous versions.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -255,7 +265,7 @@
         },
         {
           "category": "mitigation",
-          "details": "iOS Pro users please contact goTenna so they can push this update directly to users.",
+          "details": "iOS Pro: v2.0.3 or greater",
           "product_ids": [
             "CSAFPID-0001"
           ]
@@ -330,6 +340,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends users follow their secure operating best practices",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -355,7 +373,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "In the goTenna Pro application, the encryption keys are stored along with a static IV on the device. This allows for complete decryption of keys stored on the device. This allows an attacker to decrypt all encrypted communications that include P2P, Group, and broadcast messages that use these keys.",
+          "text": "In the goTenna Pro App, the encryption keys are stored along with a static IV on the End User Device (EUD). This allows for complete decryption of keys stored on the EUD if physically compromised. This allows an attacker to decrypt all encrypted broadcast communications based on encryption keys stored on the EUD. This requires access to and control of the EUD, so it is recommended to use strong access control measures and layered encryption on the EUD for more secure operation.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -398,7 +416,7 @@
         },
         {
           "category": "mitigation",
-          "details": "iOS Pro users please contact goTenna so they can push this update directly to users.",
+          "details": "iOS Pro: v2.0.3 or greater",
           "product_ids": [
             "CSAFPID-0001"
           ]
@@ -473,6 +491,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends users follow their secure operating best practices",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -498,7 +524,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna Pro series use AES CTR mode for short, encrypted messages without any additional integrity checking mechanisms. This leaves messages malleable to any attacker that can access the message.",
+          "text": "The goTenna Pro App uses AES CTR type encryption for short, encrypted messages without any additional integrity checking mechanisms. This leaves messages malleable to an attacker that can access the message. It is recommended to continue to use encryption in the app and update to the current release for more secure operations.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -541,7 +567,7 @@
         },
         {
           "category": "mitigation",
-          "details": "iOS Pro users please contact goTenna so they can push this update directly to users.",
+          "details": "iOS Pro: v2.0.3 or greater",
           "product_ids": [
             "CSAFPID-0001"
           ]
@@ -616,6 +642,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends users follow their secure operating best practices",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -641,7 +675,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna pro series does not encrypt the callsigns of its users. These callsigns reveal information about the users and can also be leveraged for other vulnerabilities.",
+          "text": "The goTenna Pro App does not encrypt callsigns in messages. It is recommended to not use sensitive information in callsigns when using this and previous versions of the app and update your app to the current app version which uses AES-256 encryption for callsigns in encrypted operation.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -684,7 +718,7 @@
         },
         {
           "category": "mitigation",
-          "details": "iOS Pro users please contact goTenna so they can push this update directly to users.",
+          "details": "iOS Pro: v2.0.3 or greater",
           "product_ids": [
             "CSAFPID-0001"
           ]
@@ -759,6 +793,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends users follow their secure operating best practices",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -784,7 +826,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna Pro series does not authenticate public keys which allows an unauthenticated attacker to intercept and manipulate messages. ",
+          "text": "The goTenna Pro App does not authenticate public keys which allows an unauthenticated attacker to manipulate messages. It is advised to update your app to the current release for enhanced encryption protocols. ",
           "title": "Vulnerability Summary"
         }
       ],
@@ -827,7 +869,7 @@
         },
         {
           "category": "mitigation",
-          "details": "iOS Pro users please contact goTenna so they can push this update directly to users.",
+          "details": "iOS Pro: v2.0.3 or greater",
           "product_ids": [
             "CSAFPID-0001"
           ]
@@ -902,6 +944,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends users follow their secure operating best practices",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -927,7 +977,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna Pro series does not use SecureRandom when generating its cryptographic keys. The random function in use is not suitable for cryptographic use.",
+          "text": "The goTenna Pro App does not use SecureRandom when generating passwords for sharing cryptographic keys. The random function in use makes it easier for attackers to brute force this password if the broadcasted encryption key is captured over RF. This only applies to the optional broadcast of an encryption key, so it is advised to share the key with local QR code for higher security operations.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -970,7 +1020,7 @@
         },
         {
           "category": "mitigation",
-          "details": "iOS Pro users please contact goTenna so they can push this update directly to users.",
+          "details": "iOS Pro: v2.0.3 or greater",
           "product_ids": [
             "CSAFPID-0001"
           ]
@@ -1045,6 +1095,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends users follow their secure operating best practices",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -1070,7 +1128,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "In the goTenna Pro there is a vulnerability that makes it possible to inject any custom message with any GID and Callsign using a software defined radio in existing gotenna mesh networks. This vulnerability can be exploited if the device is being used in a unencrypted environment or if the cryptography  has already been compromised.",
+          "text": "In the goTenna Pro App there is a vulnerability that makes it possible to inject any custom message with any GID and Callsign using a software defined radio in existing goTenna mesh networks. This vulnerability can be exploited if the device is being used in an unencrypted environment or if the cryptography has already been compromised. It is advised to share encryption keys via QR scanning for higher security operations and update your app to the current release for enhanced encryption protocols.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -1113,7 +1171,7 @@
         },
         {
           "category": "mitigation",
-          "details": "iOS Pro users please contact goTenna so they can push this update directly to users.",
+          "details": "iOS Pro: v2.0.3 or greater",
           "product_ids": [
             "CSAFPID-0001"
           ]
@@ -1188,6 +1246,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends users follow their secure operating best practices",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -1213,7 +1279,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna Pro broadcast key name is always sent unencrypted and could reveal the location of operation.",
+          "text": "The goTenna Pro App encryption key name is always sent unencrypted when the key is shared over RF through a broadcast message. It is advised to share the encryption key via local QR for higher security operations.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -1256,7 +1322,7 @@
         },
         {
           "category": "mitigation",
-          "details": "iOS Pro users please contact goTenna so they can push this update directly to users.",
+          "details": "iOS Pro: v2.0.3 or greater",
           "product_ids": [
             "CSAFPID-0001"
           ]
@@ -1331,6 +1397,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends users follow their secure operating best practices",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -1356,7 +1430,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna Pro has a payload length vulnerability that makes it possible to tell the length of the payload regardless of the encryption used.",
+          "text": "The goTenna Pro App does not inject extra characters into broadcasted frames to obfuscate the length of messages. This makes it possible to tell the length of the payload regardless of the encryption used.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -1399,7 +1473,7 @@
         },
         {
           "category": "mitigation",
-          "details": "iOS Pro users please contact goTenna so they can push this update directly to users.",
+          "details": "iOS Pro: v2.0.3 or greater",
           "product_ids": [
             "CSAFPID-0001"
           ]
@@ -1474,6 +1548,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends users follow their secure operating best practices",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
@@ -1499,7 +1581,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The goTenna Pro series allows unauthenticated attackers to remotely update the local public keys used for P2P and Group messages.",
+          "text": "The goTenna Pro App allows unauthenticated attackers to remotely update the local public keys used for P2P and group messages. It is advised to update your app to the current release for enhanced encryption protocols.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -1542,7 +1624,7 @@
         },
         {
           "category": "mitigation",
-          "details": "iOS Pro users please contact goTenna so they can push this update directly to users.",
+          "details": "iOS Pro: v2.0.3 or greater",
           "product_ids": [
             "CSAFPID-0001"
           ]
@@ -1617,6 +1699,14 @@
             "CSAFPID-0001"
           ],
           "url": "mailto:prosupport@gotenna.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "goTenna recommends users follow their secure operating best practices",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.gotennapro.com/s/article/Secure-Operating"
         }
       ],
       "scores": [
