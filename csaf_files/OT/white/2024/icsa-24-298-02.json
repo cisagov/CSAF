@@ -2,10 +2,13 @@
   "document": {
     "acknowledgments": [
       {
-        "organization": "Elcazators",
+        "names": [
+          "elcazator"
+        ],
+        "organization": "ELEX FEIGONG RESEARCH INSTITUTE of Elex CyberSecurity, Inc.",
         "summary": "reporting this vulnerability to CISA"
       }
-    ],
+     ],
     "category": "csaf_security_advisory",
     "csaf_version": "2.0",
     "distribution": {
@@ -24,22 +27,22 @@
       },
       {
         "category": "summary",
-        "text": "Successful exploitation of this vulnerability could leak user credentials.",
+        "text": "Successful exploitation of this vulnerability could allow an attacker to gain remote control of the device.",
         "title": "Risk evaluation"
       },
       {
         "category": "other",
-        "text": "Critical Manufacturing, Energy, Water and Wastewater Systems",
+        "text": "Critical Manufacturing",
         "title": "Critical infrastructure sectors"
       },
       {
         "category": "other",
-        "text": "Worldwide",
+        "text": "Europe",
         "title": "Countries/areas deployed"
       },
       {
         "category": "other",
-        "text": "Taiwan",
+        "text": "Switzerland",
         "title": "Company headquarters location"
       },
       {
@@ -102,13 +105,13 @@
     "references": [
       {
         "category": "self",
-        "summary": "ICS Advisory ICSA-23-285-15 JSON",
-        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2023/icsa-23-285-15.json"
+        "summary": "ICS Advisory ICSA-24-298-02 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2024/icsa-24-298-02.json"
       },
       {
         "category": "self",
-        "summary": "ICSA Advisory ICSA-23-285-15 - Web Version",
-        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-23-285-15"
+        "summary": "ICSA Advisory ICSA-24-298-02 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-24-298-02"
       },
       {
         "category": "external",
@@ -151,20 +154,20 @@
         "url": "https://www.cisa.gov/uscert/ncas/tips/ST04-014"
       }
     ],
-    "title": "Advantech WebAccess",
+    "title": "iniNet Solutions SpiderControl SCADA PC HMI Editor",
     "tracking": {
-      "current_release_date": "2023-10-12T06:00:00.000000Z",
+      "current_release_date": "2024-10-24T06:00:00.000000Z",
       "generator": {
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
         }
       },
-      "id": "ICSA-23-285-15",
-      "initial_release_date": "2023-10-12T06:00:00.000000Z",
+      "id": "ICSA-24-298-02",
+      "initial_release_date": "2024-10-24T06:00:00.000000Z",
       "revision_history": [
         {
-          "date": "2023-10-12T06:00:00.000000Z",
+          "date": "2024-10-24T06:00:00.000000Z",
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
@@ -182,33 +185,33 @@
             "branches": [
               {
                 "category": "product_version",
-                "name": "9.1.3",
+                "name": "8.10.00.00",
                 "product": {
-                  "name": "Advantech Advantech WebAccess: 9.1.3",
+                  "name": "iniNet Solutions SpiderControl SCADA PC HMI Editor: 8.10.00.00",
                   "product_id": "CSAFPID-0001"
                 }
               }
             ],
             "category": "product_name",
-            "name": "Advantech WebAccess"
+            "name": "SpiderControl SCADA PC HMI Editor"
           }
         ],
         "category": "vendor",
-        "name": "Advantech"
+        "name": "iniNet Solutions"
       }
     ]
   },
   "vulnerabilities": [
     {
-      "cve": "CVE-2023-4215",
+      "cve": "CVE-2024-10313",
       "cwe": {
-        "id": "CWE-1295",
-        "name": "Debug Messages Revealing Unnecessary Information"
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "Advantech WebAccess Version 9.1.3 could expose user credentials to an unauthorized actor. When configuring or modifying account information on the device, an unauthorized actor can use the Cloud Agent Debug service to capture user credentials.",
+          "text": "iniNet Solutions SpiderControl SCADA PC HMI Editor has a path traversal vulnerability. When the software loads a malicious ‘ems' project template file constructed by an attacker, it can write files to arbitrary directories. This can lead to overwriting system files, causing system paralysis, or writing to startup items, resulting in remote control.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -220,32 +223,37 @@
       "references": [
         {
           "category": "external",
-          "summary": "web.nvd.nist.gov",
-          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-4215"
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2024-10313"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
         }
       ],
       "remediations": [
         {
-          "category": "mitigation",
-          "details": "Advantech recommends users update WebAccess to Version 9.1.4.",
+          "category": "vendor_fix",
+          "details": "iniNet Solutions recommends that users update SpiderControl SCADA PC HMI Editor to version 8.24.00.00 to mitigate this vulnerability.",
           "product_ids": [
             "CSAFPID-0001"
           ],
-          "url": "https://www.advantech.com/en/support/details/installation?id=1-MS9MJV"
+          "url": "https://spidercontrol.net/download/download-area-2/?lang=en#editor"
         }
       ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 6.5,
-            "baseSeverity": "MEDIUM",
-            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
-            "version": "3.0"
+            "baseScore": 8.0,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.1"
           },
           "products": [
             "CSAFPID-0001"
