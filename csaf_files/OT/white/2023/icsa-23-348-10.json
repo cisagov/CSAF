@@ -2,7 +2,7 @@
   "document": {
     "acknowledgments": [
       {
-        "organization": "Siemens",
+        "organization": "Siemens ProductCERT",
         "summary": "reporting these vulnerabilities to CISA."
       }
     ],
@@ -163,7 +163,7 @@
     ],
     "title": "Siemens SIMATIC S7-1500 CPU",
     "tracking": {
-      "current_release_date": "2024-12-10T00:00:00.000000Z",
+      "current_release_date": "2025-01-14T00:00:00.000000Z",
       "generator": {
         "engine": {
           "name": "CISA CSAF Generator",
@@ -244,10 +244,16 @@
           "legacy_version": "2.1",
           "number": "12",
           "summary": "Added CVE-2024-50602, CVE-2024-52533"
+        },
+        {
+          "date": "2025-01-14T00:00:00.000000Z",
+          "legacy_version": "2.2",
+          "number": "13",
+          "summary": "Added CVE-2024-11053"
         }
       ],
       "status": "final",
-      "version": "12"
+      "version": "13"
     }
   },
   "product_tree": {
@@ -28420,9 +28426,9 @@
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 3.7,
-            "baseSeverity": "LOW",
-            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+            "baseScore": 4.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
             "version": "3.1"
           },
           "products": [
@@ -28435,6 +28441,71 @@
         }
       ],
       "title": "CVE-2024-9143"
+    },
+    {
+      "cve": "CVE-2024-11053",
+      "cwe": {
+        "id": "CWE-200",
+        "name": "Exposure of Sensitive Information to an Unauthorized Actor"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "When asked to both use a `.netrc` file for credentials and to follow HTTP redirects, curl could leak the password used for the first host to the followed-to host under certain circumstances. This flaw only manifests itself if the netrc file has an entry that matches the redirect target hostname but the entry either omits just the password or omits both login and password.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 3.7,
+            "baseSeverity": "LOW",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2024-11053"
     },
     {
       "cve": "CVE-2024-28085",

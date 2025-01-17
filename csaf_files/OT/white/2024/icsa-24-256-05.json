@@ -3,10 +3,10 @@
     "acknowledgments": [
       {
         "names": [
-          "Raquel Gálvez",
-          "Julián Menéndez"
-        ],
-        "organization": "Hispasec Sistemas",
+		"Raquel Gálvez",
+		"Julián Menéndez"
+		],
+		"organization": "Hispasec Sistemas",
         "summary": "reporting this vulnerability to Siemens."
       }
     ],
@@ -23,7 +23,7 @@
     "notes": [
       {
         "category": "summary",
-        "text": "Mendix Runtime contains an observable response discrepancy vulnerability when validating usernames during authentication. This could allow unauthenticated remote attackers to distinguish between valid and invalid usernames.\n\nSiemens has released new versions for the affected products and recommends to update to the latest versions. Note that some, Mendix Runtime version lines (main branch or LTS or MTS versions) provide a complete fix, while others still require additional actions after updating to the latest available version.",
+        "text": "Mendix Runtime contains an observable response discrepancy vulnerability when validating usernames during authentication. This could allow unauthenticated remote attackers to distinguish between valid and invalid usernames.\n\nSiemens has released new versions for the affected products and recommends to update to the latest versions.",
         "title": "Summary"
       },
       {
@@ -167,7 +167,7 @@
     ],
     "title": "Siemens Mendix Runtime",
     "tracking": {
-      "current_release_date": "2024-12-10T00:00:00.000000Z",
+      "current_release_date": "2025-01-14T00:00:00.000000Z",
       "generator": {
         "engine": {
           "name": "CISA CSAF Generator",
@@ -218,10 +218,22 @@
           "legacy_version": "1.6",
           "number": "7",
           "summary": "Added complete fix for Mendix Runtime V10 and the note that other versions still require additional actions after updating to the latest available version"
+        },
+        {
+          "date": "2024-12-12T00:00:00.000000Z",
+          "legacy_version": "1.7",
+          "number": "8",
+          "summary": "Added complete fix for Mendix Runtime V9 and V8"
+        },
+        {
+          "date": "2025-01-14T00:00:00.000000Z",
+          "legacy_version": "1.8",
+          "number": "9",
+          "summary": "Added complete fix for Mendix Runtime V10.12 and V10.6; removed hint about additional required actions in former (incomplete) fix versions"
         }
       ],
       "status": "final",
-      "version": "7"
+      "version": "9"
     }
   },
   "product_tree": {
@@ -232,7 +244,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "vers:all/<V8.18.32",
+                "name": "vers:all/<V8.18.33",
                 "product": {
                   "name": "Mendix Runtime V8",
                   "product_id": "CSAFPID-0001"
@@ -246,7 +258,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "vers:all/<V9.24.29",
+                "name": "vers:all/<V9.24.31",
                 "product": {
                   "name": "Mendix Runtime V9",
                   "product_id": "CSAFPID-0002"
@@ -274,7 +286,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "vers:all/<V10.6.16",
+                "name": "vers:all/<V10.6.19",
                 "product": {
                   "name": "Mendix Runtime V10.6",
                   "product_id": "CSAFPID-0004"
@@ -288,7 +300,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "vers:all/<V10.12.7",
+                "name": "vers:all/<V10.12.11",
                 "product": {
                   "name": "Mendix Runtime V10.12",
                   "product_id": "CSAFPID-0005"
@@ -330,13 +342,20 @@
       "remediations": [
         {
           "category": "mitigation",
-          "details": "Do not use basic authentication, but setup an alternative authentication module (e.g. OIDC SSO, Mendix SSO), or your own Identity Provider (IDP).",
+          "details": "Do not use basic authentication, but setup an alternative authentication module (e.g. OIDC SSO, Mendix SSO, or SAML >= V4.0.0), or your own Identity Provider (IDP).",
           "product_ids": [
             "CSAFPID-0003",
             "CSAFPID-0005",
             "CSAFPID-0004",
             "CSAFPID-0001",
             "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V10.12.11 or later version",
+          "product_ids": [
+            "CSAFPID-0005"
           ]
         },
         {
@@ -348,30 +367,23 @@
         },
         {
           "category": "vendor_fix",
-          "details": "Update to V8.18.32 or later version. Note that after installing the fix version, the issue still occurs and is only fully resolved after a first successful login. A successful login is also required after every app restart.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Update to V9.24.29 or later version. Note that after installing the fix version, the issue still occurs and is only fully resolved after a first successful login. A successful login is also required after every app restart.",
-          "product_ids": [
-            "CSAFPID-0002"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Update to V10.6.16 or later version. Note that after installing the fix version, the issue still occurs and is only fully resolved after a first successful login. A successful login is also required after every app restart.",
+          "details": "Update to V10.6.19 or later version",
           "product_ids": [
             "CSAFPID-0004"
           ]
         },
         {
           "category": "vendor_fix",
-          "details": "Update to V10.12.7 or later version. Note that after installing the fix version, the issue still occurs and is only fully resolved after a first successful login. A successful login is also required after every app restart.",
+          "details": "Update to V8.18.33 or later version",
           "product_ids": [
-            "CSAFPID-0005"
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V9.24.31 or later version",
+          "product_ids": [
+            "CSAFPID-0002"
           ]
         }
       ],
