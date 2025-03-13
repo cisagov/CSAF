@@ -2,7 +2,7 @@
   "document": {
     "acknowledgments": [
       {
-        "organization": "Siemens",
+        "organization": "Siemens ProductCERT",
         "summary": "reporting these vulnerabilities to CISA."
       }
     ],
@@ -49,7 +49,7 @@
       },
       {
         "category": "other",
-        "text": "Critical Manufacturing",
+        "text": "Critical Manufacturing, Transportation Systems, Energy, Healthcare and Public Health, Financial Services, Government Services and Facilities",
         "title": "Critical infrastructure sectors"
       },
       {
@@ -163,8 +163,9 @@
     ],
     "title": "Siemens RUGGEDCOM APE1808 Devices",
     "tracking": {
-      "current_release_date": "2025-02-11T00:00:00.000000Z",
+      "current_release_date": "2025-03-11T00:00:00.000000Z",
       "generator": {
+        "date": "2025-03-06T09:06:00.000000Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
@@ -178,10 +179,16 @@
           "legacy_version": "1.0",
           "number": "1",
           "summary": "Publication Date"
+        },
+        {
+          "date": "2025-03-11T00:00:00.000000Z",
+          "legacy_version": "1.1",
+          "number": "2",
+          "summary": "Added newly published upstream vulnerabilities CVE-2024-35279 and CVE-2024-40591"
         }
       ],
       "status": "final",
-      "version": "1"
+      "version": "2"
     }
   },
   "product_tree": {
@@ -209,6 +216,55 @@
     ]
   },
   "vulnerabilities": [
+    {
+      "cve": "CVE-2024-35279",
+      "cwe": {
+        "id": "CWE-121",
+        "name": "Stack-based Buffer Overflow"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A stack-based buffer overflow  vulnerability in Fortinet FortiOS version 7.2.4 through 7.2.8 and version 7.4.0 through 7.4.4 allows a remote unauthenticated attacker to execute arbitrary code or commands via crafted UDP packets through the CAPWAP control, provided the attacker were able to evade FortiOS stack protections and provided the fabric service is running on the exposed interface.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "For each interface, remove the fabric service or block CAPWAP-CONTROL access to port 5246 through a local-in policy (see \nhttps://fortiguard.fortinet.com/psirt/FG-IR-24-160)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Contact customer support to receive patch and update information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-35279"
+    },
     {
       "cve": "CVE-2024-36504",
       "cwe": {
@@ -250,6 +306,48 @@
         }
       ],
       "title": "CVE-2024-36504"
+    },
+    {
+      "cve": "CVE-2024-40591",
+      "cwe": {
+        "id": "CWE-266",
+        "name": "Incorrect Privilege Assignment"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An incorrect privilege assignment vulnerability in Fortinet FortiOS version 7.6.0, 7.4.0 through 7.4.4, 7.2.0 through 7.2.9 and before 7.0.15 allows an authenticated admin whose access profile has the Security Fabric permission to escalate their privileges to super-admin by connecting the targetted FortiGate to a malicious upstream FortiGate they control.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Contact customer support to receive patch and update information.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H/E:P/RC:R",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-40591"
     },
     {
       "cve": "CVE-2024-46665",

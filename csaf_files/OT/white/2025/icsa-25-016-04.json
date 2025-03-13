@@ -2,9 +2,7 @@
   "document": {
     "acknowledgments": [
       {
-        "names": [
-          "Steffen Robertz", "Stefan Viehböck", "Constantin Schieber-Knöbl"
-        ],
+        "names": ["Steffen Robertz", "Stefan Viehböck", "Constantin Schieber-Knöbl"],
         "organization": "SEC Consult Vulnerability Lab",
         "summary": "reporting this vulnerability to Siemens."
       }
@@ -22,7 +20,7 @@
     "notes": [
       {
         "category": "summary",
-        "text": "Affected SIPROTEC 5 devices do not properly limit the access of the web server to the filesystem. This could allow an authenticated remote attacker to read arbitrary files or the entire filesystem of the device.\n\nSiemens has released new versions for several affected products and recommends to update to the latest versions. Siemens is preparing further fix versions and recommends countermeasures for products where fixes are not, or not yet available.",
+        "text": "Affected SIPROTEC 5 devices do not properly limit the access of the web server to the filesystem. This could allow an authenticated remote attacker to read arbitrary files or the entire filesystem of the device.\n\nSiemens has released new versions for several affected products and recommends to update to the latest versions. Siemens is preparing further fix versions and recommends specific countermeasures for products where fixes are not, or not yet available.",
         "title": "Summary"
       },
       {
@@ -164,10 +162,11 @@
         "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
       }
     ],
-    "title": "Siemens SIPROTEC 5 Products",
+    "title": "Siemens SIPROTEC 5",
     "tracking": {
-      "current_release_date": "2025-02-11T00:00:00.000000Z",
+      "current_release_date": "2025-03-11T00:00:00.000000Z",
       "generator": {
+        "date": "2025-03-06T09:03:00.000000Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
@@ -187,10 +186,16 @@
           "legacy_version": "1.1",
           "number": "2",
           "summary": "Added fix version for 6MD89 (CP300)"
+        },
+        {
+          "date": "2025-03-11T00:00:00.000000Z",
+          "legacy_version": "1.2",
+          "number": "3",
+          "summary": "Added fix for SIPROTEC 5 7ST85 (CP300); Changed fix version for SIPROTEC 5 6MD89 (CP300) from V9.90 to V9.68; Added mitigation"
         }
       ],
       "status": "final",
-      "version": "2"
+      "version": "3"
     }
   },
   "product_tree": {
@@ -243,7 +248,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "vers:all/>=V7.80|<V9.90",
+                "name": "vers:all/>=V7.80|<V9.68",
                 "product": {
                   "name": "SIPROTEC 5 6MD89 (CP300)",
                   "product_id": "CSAFPID-0004"
@@ -593,7 +598,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "vers:all/*",
+                "name": "vers:all/<V9.68",
                 "product": {
                   "name": "SIPROTEC 5 7ST85 (CP300)",
                   "product_id": "CSAFPID-0029"
@@ -868,6 +873,55 @@
       },
       "remediations": [
         {
+          "category": "mitigation",
+          "details": "Disable the web server of the affected system",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043"
+          ]
+        },
+        {
           "category": "none_available",
           "details": "Currently no fix is available",
           "product_ids": [
@@ -877,8 +931,15 @@
             "CSAFPID-0017",
             "CSAFPID-0021",
             "CSAFPID-0024",
-            "CSAFPID-0029",
             "CSAFPID-0035"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V9.68 or later version",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0029"
           ]
         },
         {
@@ -931,13 +992,6 @@
             "CSAFPID-0039",
             "CSAFPID-0040",
             "CSAFPID-0041"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Update to V9.90 or later version",
-          "product_ids": [
-            "CSAFPID-0004"
           ]
         }
       ],
