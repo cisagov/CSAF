@@ -1,0 +1,465 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Schneider Electric CPCERT",
+        "summary": "reporting these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "We strongly recommend the following industry cybersecurity best practices.\n\nhttps://www.se.com/us/en/download/document/7EN52-0390/\n* Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.\n* Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.\n* Place all controllers in locked cabinets and never leave them in the \u201cProgram\u201d mode.\n* Never connect programming software to any network other than the network intended for that device.\n* Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc. before use in the terminals or any node connected to these networks.\n* Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.\n* Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the Internet.\n* When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.\nFor more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document. \n",
+        "title": "General Security Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "This document provides an overview of the identified vulnerability or vulnerabilities and actions required to mitigate. For more details and assistance on how to protect your installation, contact your local Schneider Electric representative or Schneider Electric Industrial Cybersecurity Services: https://www.se.com/ww/en/work/solutions/cybersecurity/. These organizations will be fully aware of this situation and can support you through the process.\nFor further information related to cybersecurity in Schneider Electric\u2019s products, visit the company\u2019s cybersecurity support portal page: https://www.se.com/ww/en/work/support/cybersecurity/overview.jsp",
+        "title": "For More Information"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "THIS NOTIFICATION DOCUMENT, THE INFORMATION CONTAINED HEREIN, AND ANY MATERIALS LINKED FROM IT (COLLECTIVELY, THIS \u201cNOTIFICATION\u201d) ARE INTENDED TO HELP PROVIDE AN OVERVIEW OF THE IDENTIFIED SITUATION AND SUGGESTED MITIGATION ACTIONS, REMEDIATION, FIX, AND/OR GENERAL SECURITY RECOMMENDATIONS AND IS PROVIDED ON AN \u201cAS-IS\u201d BASIS WITHOUT WARRANTY OR GUARANTEE OF ANY KIND.  SCHNEIDER ELECTRIC DISCLAIMS ALL WARRANTIES RELATING TO THIS NOTIFICATION, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. SCHNEIDER ELECTRIC MAKES NO WARRANTY THAT THE NOTIFICATION WILL RESOLVE THE IDENTIFIED SITUATION. IN NO EVENT SHALL SCHNEIDER ELECTRIC BE LIABLE FOR ANY DAMAGES OR LOSSES WHATSOEVER IN CONNECTION WITH THIS NOTIFICATION, INCLUDING DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, LOSS OF BUSINESS PROFITS OR SPECIAL DAMAGES, EVEN IF SCHNEIDER ELECTRIC HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. YOUR USE OF THIS NOTIFICATION IS AT YOUR OWN RISK, AND YOU ARE SOLELY LIABLE FOR ANY DAMAGES TO YOUR SYSTEMS OR ASSETS OR OTHER LOSSES THAT MAY RESULT FROM YOUR USE OF THIS NOTIFICATION. SCHNEIDER ELECTRIC RESERVES THE RIGHT TO UPDATE OR CHANGE THIS NOTIFICATION AT ANY TIME AND IN ITS SOLE DISCRETION",
+        "title": "LEGAL DISCLAIMER"
+      },
+      {
+        "category": "general",
+        "text": "Schneider\u2019s purpose is to create Impact by empowering all to make the most of our energy and resources, bridging progress and\r\nsustainability for all. We call this Life Is On.\n\nOur mission is to be the trusted partner in Sustainability and Efficiency.\n\nWe are a global industrial technology leader bringing world-leading expertise in electrification, automation and digitization to smart\r\nindustries, resilient infrastructure, future-proof data centers, intelligent buildings, and intuitive homes. Anchored by our deep\r\ndomain expertise, we provide integrated end-to-end lifecycle AI enabled Industrial IoT solutions with connected products, automation,\r\nsoftware and services, delivering digital twins to enable profitable growth for our customers.\n\nWe are a people company with an ecosystem of 150,000 colleagues and more than a million partners operating in over 100 countries\r\nto ensure proximity to our customers and stakeholders. We embrace diversity and inclusion in everything we do, guided by our\r\nmeaningful purpose of a sustainable future for all. \n\n www.se.com",
+        "title": "About Schneider Electric"
+      },
+      {
+        "category": "summary",
+        "text": "Schneider Electric is aware of multiple vulnerabilities in its ASCO 5310 Remote Annunciator and ASCO 5350 \r\nRemote Annunciator products. \r\nThe ASCO 5310 Remote Annunciator and ASCO 5350 Remote Annunciator products are stand-alone, \r\nindustrial grade interface devices providing transfer switch status indication and transfer/retransfer control. \r\nFailure to apply the mitigations provided below may risk a Denial of Service, loss of availability, or loss of \r\ndevice integrity, which could result in the inability to use the Remote Annunciator to monitor transfer switch \r\nstatus and/or perform transfer/retransfer operations. The base operation of the transfer switch itself is not \r\nimpacted.",
+        "title": "Overview"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "other",
+        "text": "This CISA CSAF advisory was converted from Schneider Electric CPCERT's CSAF advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Commercial Facilities, Critical Manufacturing, Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "France",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ASCO 5310 / 5350 Remote Annunciator - SEVD-2025-042-01 CSAF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2025-042-01&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2025-042-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ASCO 5310 / 5350 Remote Annunciator - SEVD-2025-042-01 PDF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2025-042-01&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2025-042-01.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Cybersecurity Best Practices",
+        "url": "https://www.se.com/us/en/download/document/7EN52-0390"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-077-05 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-077-05.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-077-05 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-077-05"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Schneider Electric ASCO 5310/5350 Remote Annunciator",
+    "tracking": {
+      "current_release_date": "2025-02-11T06:00:00.000000Z",
+      "generator": {
+        "date": "2025-02-11T06:00:00.000000Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-077-05",
+      "initial_release_date": "2025-02-11T06:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-02-11T06:00:00.000000Z",
+          "number": "1.0.0",
+          "summary": "Original Release"
+        }
+      ],
+      "status": "final",
+      "version": "1.0.0"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric ASCO 5310 Single-Channel Remote Annunciator All Versions",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "ASCO 5310 Single-Channel Remote Annunciator"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric ASCO 5350 Eight Channel Remote Annunciator All Versions",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "ASCO 5350 Eight Channel Remote Annunciator"
+          }
+        ],
+        "category": "vendor",
+        "name": "Schneider Electric"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-1058",
+      "cwe": {
+        "id": "CWE-494",
+        "name": "Download of Code Without Integrity Check"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-494: Download of Code Without Integrity Check vulnerability exists that could render the device \r\ninoperable when malicious firmware is downloaded.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric is establishing a remediation plan for all future versions of ASCO\r\n5310 Single-Channel Remote Annunciator and ASCO 5350 Eight Channel Remote \r\nAnnunciator that may include a fix for these vulnerabilities. We will update this \r\ndocument when the remediation is available. Until then, customers should \r\nimmediately apply the following mitigations to reduce the risk of exploit:\n\n\u2022 Use remote annunciator devices only in a protected environment to minimize \r\nnetwork exposure and ensure that they are not accessible from public internet \r\nor untrusted networks.\n\n\u2022 Change default password to help prevent unauthorized access to device \r\nsettings and information.\n\n\u2022 Setup network segmentation and implement a firewall to block all \r\nunauthorized access to the annunciator port 80/HTTP.\n\n\u2022 For more details on the ASCO 5310 refer to \u201cInstallation Manual | ASCO 5310 \r\nATS Remote Annunciator\u201d which can be found here:\r\nhttps://www.se.com/ww/en/product-range/66129-asco-5310-singlechannel\u0002remote-annunciator/-documents\n\n\u2022 For more details on the ASCO 5350 refer to \u201cInstallation Manual | ASCO 5350 \r\nATS Remote Annunciator\u201d which can be found here:\r\nhttps://www.se.com/ww/en/product-range/66130-asco-5350-eight-channel\u0002remote-annunciator/-documents\n\nTo ensure you are informed of all updates, including details on affected products and \r\nremediation plans, subscribe to Schneider Electric\u2019s security notification service here: \r\nhttps://www.se.com/en/work/support/cybersecurity/security-notifications.jsp",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/product-range/66129-asco-5310-singlechannel-remote-annunciator/#documents"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8.1,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "title": "CVE-2025-1058"
+    },
+    {
+      "cve": "CVE-2025-1059",
+      "cwe": {
+        "id": "CWE-770",
+        "name": "Allocation of Resources Without Limits or Throttling"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-770: Allocation of Resources Without Limits or Throttling vulnerability exists that could \r\ncause communications to stop when malicious packets are sent to the webserver of the device.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric is establishing a remediation plan for all future versions of ASCO\r\n5310 Single-Channel Remote Annunciator and ASCO 5350 Eight Channel Remote \r\nAnnunciator that may include a fix for these vulnerabilities. We will update this \r\ndocument when the remediation is available. Until then, customers should \r\nimmediately apply the following mitigations to reduce the risk of exploit:\n\n\u2022 Use remote annunciator devices only in a protected environment to minimize \r\nnetwork exposure and ensure that they are not accessible from public internet \r\nor untrusted networks.\n\n\u2022 Change default password to help prevent unauthorized access to device \r\nsettings and information.\n\n\u2022 Setup network segmentation and implement a firewall to block all \r\nunauthorized access to the annunciator port 80/HTTP.\n\n\u2022 For more details on the ASCO 5310 refer to \u201cInstallation Manual | ASCO 5310 \r\nATS Remote Annunciator\u201d which can be found here:\r\nhttps://www.se.com/ww/en/product-range/66129-asco-5310-singlechannel\u0002remote-annunciator/-documents\n\n\u2022 For more details on the ASCO 5350 refer to \u201cInstallation Manual | ASCO 5350 \r\nATS Remote Annunciator\u201d which can be found here:\r\nhttps://www.se.com/ww/en/product-range/66130-asco-5350-eight-channel\u0002remote-annunciator/-documents\n\nTo ensure you are informed of all updates, including details on affected products and \r\nremediation plans, subscribe to Schneider Electric\u2019s security notification service here: \r\nhttps://www.se.com/en/work/support/cybersecurity/security-notifications.jsp",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/product-range/66129-asco-5310-singlechannel-remote-annunciator/#documents"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "title": "CVE-2025-1059"
+    },
+    {
+      "cve": "CVE-2025-1060",
+      "cwe": {
+        "id": "CWE-319",
+        "name": "Cleartext Transmission of Sensitive Information"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-319: Cleartext Transmission of Sensitive Information vulnerability exists that could result in the exposure \r\nof data when network traffic is being sniffed by an attacker.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric is establishing a remediation plan for all future versions of ASCO\r\n5310 Single-Channel Remote Annunciator and ASCO 5350 Eight Channel Remote \r\nAnnunciator that may include a fix for these vulnerabilities. We will update this \r\ndocument when the remediation is available. Until then, customers should \r\nimmediately apply the following mitigations to reduce the risk of exploit:\n\n\u2022 Use remote annunciator devices only in a protected environment to minimize \r\nnetwork exposure and ensure that they are not accessible from public internet \r\nor untrusted networks.\n\n\u2022 Change default password to help prevent unauthorized access to device \r\nsettings and information.\n\n\u2022 Setup network segmentation and implement a firewall to block all \r\nunauthorized access to the annunciator port 80/HTTP.\n\n\u2022 For more details on the ASCO 5310 refer to \u201cInstallation Manual | ASCO 5310 \r\nATS Remote Annunciator\u201d which can be found here:\r\nhttps://www.se.com/ww/en/product-range/66129-asco-5310-singlechannel\u0002remote-annunciator/-documents\n\n\u2022 For more details on the ASCO 5350 refer to \u201cInstallation Manual | ASCO 5350 \r\nATS Remote Annunciator\u201d which can be found here:\r\nhttps://www.se.com/ww/en/product-range/66130-asco-5350-eight-channel\u0002remote-annunciator/-documents\n\nTo ensure you are informed of all updates, including details on affected products and \r\nremediation plans, subscribe to Schneider Electric\u2019s security notification service here: \r\nhttps://www.se.com/en/work/support/cybersecurity/security-notifications.jsp",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/product-range/66129-asco-5310-singlechannel-remote-annunciator/#documents"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "title": "CVE-2025-1060"
+    },
+    {
+      "cve": "CVE-2025-1070",
+      "cwe": {
+        "id": "CWE-434",
+        "name": "Unrestricted Upload of File with Dangerous Type"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-434: Unrestricted Upload of File with Dangerous Type vulnerability exists that could render the device \r\ninoperable when a malicious file is downloaded.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric is establishing a remediation plan for all future versions of ASCO\r\n5310 Single-Channel Remote Annunciator and ASCO 5350 Eight Channel Remote \r\nAnnunciator that may include a fix for these vulnerabilities. We will update this \r\ndocument when the remediation is available. Until then, customers should \r\nimmediately apply the following mitigations to reduce the risk of exploit:\n\n\u2022 Use remote annunciator devices only in a protected environment to minimize \r\nnetwork exposure and ensure that they are not accessible from public internet \r\nor untrusted networks.\n\n\u2022 Change default password to help prevent unauthorized access to device \r\nsettings and information.\n\n\u2022 Setup network segmentation and implement a firewall to block all \r\nunauthorized access to the annunciator port 80/HTTP.\n\n\u2022 For more details on the ASCO 5310 refer to \u201cInstallation Manual | ASCO 5310 \r\nATS Remote Annunciator\u201d which can be found here:\r\nhttps://www.se.com/ww/en/product-range/66129-asco-5310-singlechannel\u0002remote-annunciator/-documents\n\n\u2022 For more details on the ASCO 5350 refer to \u201cInstallation Manual | ASCO 5350 \r\nATS Remote Annunciator\u201d which can be found here:\r\nhttps://www.se.com/ww/en/product-range/66130-asco-5350-eight-channel\u0002remote-annunciator/-documents\n\nTo ensure you are informed of all updates, including details on affected products and \r\nremediation plans, subscribe to Schneider Electric\u2019s security notification service here: \r\nhttps://www.se.com/en/work/support/cybersecurity/security-notifications.jsp",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/product-range/66129-asco-5310-singlechannel-remote-annunciator/#documents"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8.1,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "title": "CVE-2025-1070"
+    }
+  ]
+}
