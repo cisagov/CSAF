@@ -1,0 +1,692 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Hitachi Energy PSIRT",
+        "summary": "reporting these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "Hitachi Energy is aware of the vulnerabilities, CVE-2024-10037, CVE-2024-11499, CVE-2024-12169, and CVE-2025-1445 in the RTU500 Web server component, the IEC 60870-5-104 controlled station implementation and IEC 61850 implementation, that affects the RTU500 versions that are listed below. An attacker successfully exploiting these vulnerabilities could trigger a restart of a RTU500 CMU. Please refer to the Recom-mended Immediate Actions for information about the available mitigation/remediation strategies.",
+        "title": "Summary"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The information in this document is subject to change without notice and should not be construed as a commitment by Hitachi Energy. Hitachi Energy provides no warranty, express or implied, including warran-ties of merchantability and fitness for a particular purpose, for the information contained in this document, and assumes no responsibility for any errors that may appear in this document. In no event shall Hitachi Energy or any of its suppliers be liable for direct, indirect, special, incidental or consequential damages of any nature or kind arising from the use of this document, or from the use of any hardware or software de-scribed in this document, even if Hitachi Energy or its suppliers have been advised of the possibility of such damages. This document and parts hereof must not be reproduced or copied without written permission from Hitachi Energy and the contents hereof must not be imparted to a third party nor used for any unauthorized purpose. All rights to registrations and trademarks reside with their respective owners.",
+        "title": "Notice"
+      },
+      {
+        "category": "general",
+        "text": "For additional information and support please contact your product provider or Hitachi Energy service organ-ization. For contact information, see https://www.hitachienergy.com/contact-us/ for Hitachi Energy contact-centers.",
+        "title": "Support"
+      },
+      {
+        "category": "general",
+        "text": "Recommended security practices and firewall configurations can help protect a process control network from attacks that originate from outside the network. Such practices include that process control systems are physically protected from direct access by unauthorized personnel, have no direct connections to the Internet, and are separated from other networks by means of a firewall system that has a minimal number of ports exposed, and others that have to be evaluated case by case. Process control systems should not be used for Internet surfing, instant messaging, or receiving e-mails. Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.\n",
+        "title": "General Mitigation Factors"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "other",
+        "text": "This CISA CSAF advisory was converted from Hitachi Energy PSIRT's CSAF advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-093-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-093-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "Cybersecurity Advisory - Multiple Denial-of-Service Vulnerabilities in Hitachi Energy\u2019s RTU500 Series Product",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=8DBD000207&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-093-01 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-093-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Hitachi Energy RTU500 Series",
+    "tracking": {
+      "current_release_date": "2025-03-25T12:30:00.000000Z",
+      "generator": {
+        "date": "2025-03-24T13:48:27.912000Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-093-01",
+      "initial_release_date": "2025-03-25T12:30:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-03-25T12:30:00.000000Z",
+          "number": "1",
+          "summary": "Initial version."
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Hitachi Energy RTU500 series CMU Firmware all versions",
+                  "product_id": "CSAFPID-0001",
+                  "product_identification_helper": {
+                    "cpe": "cpe:2.3:o:hitachienergy:rtu500cmu:0:*:*:*:*:*:*:*"
+                  }
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=12.0.1|<=12.0.14",
+                "product": {
+                  "name": "Hitachi Energy RTU500 series CMU Firmware version 12.0.1 \u2013 12.0.14",
+                  "product_id": "CSAFPID-0002",
+                  "product_identification_helper": {
+                    "cpe": "cpe:2.3:o:hitachienergy:rtu500cmu:12.00.*:*:*:*:*:*:*:*"
+                  }
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=12.2.1|<=12.2.12",
+                "product": {
+                  "name": "Hitachi Energy RTU500 series CMU Firmware version 12.2.1 \u2013 12.2.12",
+                  "product_id": "CSAFPID-0003",
+                  "product_identification_helper": {
+                    "cpe": "cpe:2.3:o:hitachienergy:rtu500cmu:12.02.*:*:*:*:*:*:*:*"
+                  }
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=12.4.1|<=12.4.11",
+                "product": {
+                  "name": "Hitachi Energy RTU500 series CMU Firmware version 12.4.1 \u2013 12.4.11",
+                  "product_id": "CSAFPID-0004",
+                  "product_identification_helper": {
+                    "cpe": "cpe:2.3:o:hitachienergy:rtu500cmu:12.04.*:*:*:*:*:*:*:*"
+                  }
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=12.6.1|<=12.6.10",
+                "product": {
+                  "name": "Hitachi Energy RTU500 series CMU Firmware version 12.6.1 \u2013 12.6.10",
+                  "product_id": "CSAFPID-0005",
+                  "product_identification_helper": {
+                    "cpe": "cpe:2.3:a:hitachienergy:rtu500cmu:12.06.*:*:*:*:*:*:*:*"
+                  }
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=12.7.1|<=12.7.7",
+                "product": {
+                  "name": "Hitachi Energy RTU500 series CMU Firmware version 12.7.1 \u2013 12.7.7",
+                  "product_id": "CSAFPID-0006",
+                  "product_identification_helper": {
+                    "cpe": "cpe:2.3:a:hitachienergy:rtu500cmu:12.07.*:*:*:*:*:*:*:*"
+                  }
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=13.2.1|<=13.2.7",
+                "product": {
+                  "name": "Hitachi Energy RTU500 series CMU Firmware version 13.2.1 \u2013 13.2.7",
+                  "product_id": "CSAFPID-0007",
+                  "product_identification_helper": {
+                    "cpe": "cpe:2.3:a:hitachienergy:rtu500cmu:13.02.*:*:*:*:*:*:*:*"
+                  }
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=13.4.1|<=13.4.4",
+                "product": {
+                  "name": "Hitachi Energy RTU500 series CMU Firmware version 13.4.1 \u2013 13.4.4",
+                  "product_id": "CSAFPID-0008"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=13.5.1|<=13.5.3",
+                "product": {
+                  "name": "Hitachi Energy RTU500 series CMU Firmware version 13.5.1 \u2013 13.5.3",
+                  "product_id": "CSAFPID-0009"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "13.6.1 ",
+                "product": {
+                  "name": "RTU500 series CMU Firmware version 13.6.1",
+                  "product_id": "CSAFPID-0010"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=13.7.1|<=13.7.4",
+                "product": {
+                  "name": "RTU500 series CMU Firmware version 13.7.1 \u2013 13.7.4",
+                  "product_id": "CSAFPID-0011"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "13.5.4",
+                "product": {
+                  "name": "RTU500 series CMU Firmware version 13.5.4",
+                  "product_id": "CSAFPID-0012"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "13.6.2",
+                "product": {
+                  "name": "RTU500 series CMU Firmware version 13.6.2",
+                  "product_id": "CSAFPID-0013"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "13.7.6",
+                "product": {
+                  "name": "RTU500 series CMU Firmware version 13.7.6",
+                  "product_id": "CSAFPID-0014"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "12.7.8",
+                "product": {
+                  "name": "Hitachi Energy RTU500 series CMU Firmware version 12.7.8",
+                  "product_id": "CSAFPID-0015"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "13.7.1",
+                "product": {
+                  "name": "Hitachi Energy RTU500 series CMU Firmware version 13.7.1",
+                  "product_id": "CSAFPID-0016"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "CMU Firmware"
+          }
+        ],
+        "category": "vendor",
+        "name": "Hitachi Energy"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2024-10037",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A vulnerability exists in the RTU500 web server com-ponent that can cause a denial of service to the RTU500 CMU application if a specially crafted message sequence is executed on a WebSocket connection.\nAn attacker must be properly authenticated and the test mode function of RTU500 must be enabled to exploit this vulnerability.\n\nThe affected CMU will automatically recover itself if an attacker successfully exploits this vulnerability.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0015",
+          "CSAFPID-0016"
+        ],
+        "known_affected": [
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2024-10037",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10037"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "For all versions, apply General Mitigation Factors/Workarounds.\n\nUpgrade the system once remediated version in available, or apply general mitigation factors.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to CMU Firmware version 12.7.8",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to CMU Firmware version 13.7.1",
+          "product_ids": [
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "HIGH",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 4.4,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 4.4,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "HIGH",
+            "scope": "UNCHANGED",
+            "temporalScore": 4.4,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2024-11499",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "details",
+          "text": "A vulnerability exists in RTU500 IEC 60870-4-104 controlled station functionality, that allows an authenticated and authorized attacker to perform a CMU re-start. The vulnerability can be triggered if certificates are updated while in use on active connections.\n\nThe affected CMU will automatically recover itself if an attacker successfully exploits this vulnerability. ",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0012",
+          "CSAFPID-0013",
+          "CSAFPID-0014"
+        ],
+        "known_affected": [
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2024-11499",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11499"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "For all versions, apply General Mitigation Factors/Workarounds.\n\nUpgrade the system once remediated version in available, or apply general mitigation factors.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to CMU Firmware version 13.5.4 ",
+          "product_ids": [
+            "CSAFPID-0009"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to CMU Firmware version 13.6.2",
+          "product_ids": [
+            "CSAFPID-0010"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to CMU Firmware version 13.7.6",
+          "product_ids": [
+            "CSAFPID-0011"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 4.9,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 4.9,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "HIGH",
+            "scope": "UNCHANGED",
+            "temporalScore": 4.9,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2024-12169",
+      "cwe": {
+        "id": "CWE-410",
+        "name": "Insufficient Resource Pool"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A vulnerability exists in RTU500 IEC 60870-5-104 controlled station functionality and IEC 61850 functionality, that allows an attacker performing a specific attack sequence to restart the affected CMU. This vulnerability only applies, if secure communication using IEC 62351-3 (TLS) is enabled.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0014"
+        ],
+        "known_affected": [
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2024-12169",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12169"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "For all versions, apply General Mitigation Factors/Workarounds.\n\nUpgrade the system once remediated version in available, or apply general mitigation factors.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to CMU Firmware version 13.7.6",
+          "product_ids": [
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-1445",
+      "cwe": {
+        "id": "CWE-820",
+        "name": "Missing Synchronization"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A vulnerability exists in RTU IEC 61850 client and server functionality that could impact the availability if renegotiation of an open IEC61850 TLS connection takes place in specific timing situations, when IEC61850 communication is active.\n\nPrecondition is that IEC61850 as client or server are configured using TLS on RTU500 device. It affects the CMU the IEC61850 stack is configured on.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0014"
+        ],
+        "known_affected": [
+          "CSAFPID-0011"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2025-1445",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-1445"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "For all versions, apply General Mitigation Factors/Workarounds.\n\nUpgrade the system once remediated version in available, or apply general mitigation factors.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to CMU Firmware version 13.7.6",
+          "product_ids": [
+            "CSAFPID-0011"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 7.5,
+            "environmentalSeverity": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "temporalScore": 7.5,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0011"
+          ]
+        }
+      ]
+    }
+  ]
+}
