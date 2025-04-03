@@ -1,0 +1,1365 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "ABB PSIRT",
+        "summary": "reporting these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "En",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "CODESYS group published several vulnerabilities regarding the CODESYS Runtime System, which is included in the firmware of ABB LV DC drives and power controllers. It is used to implement a selection of features and to provide IEC 611131-3 programming capabilities.\nThese vulnerabilities include memory corruption issues that could lead to out-of-bound memory access. Subsequently, a successful exploit could allow attackers to trigger a denial-of-service condition or execute arbitrary code over the fieldbus interfaces.   Exploiting these vulnerabilities requires an IEC 61131-3 license being present on the memory unit of the drive or power controller. \n",
+        "title": "Summary"
+      },
+      {
+        "category": "general",
+        "text": "The vulnerabilities only pose a threat if an IEC 61131-3 license is provisioned to the memory unit.\nThe exploitation can be triggered via USB on the panel or via fieldbus or Ethernet using a fieldbus connector. If none of these are connected exploitation is not possible. For network based attacks the attacker needs to be able to reach the drive or power controller via the network.\n",
+        "title": "Mitigating factors"
+      },
+      {
+        "category": "other",
+        "text": "For any installation of software-related ABB products we strongly recommend the following (non-exhaustive) list of cyber security practices:\n\u2013\tIsolate special purpose networks (e.g. for automation systems) and remote devices behind firewalls and separate them from any general-purpose network (e.g. office or home networks).\n\u2013\tInstall physical controls so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n\u2013\tMinimize network exposure for all applications and endpoints to ensure that they are not accessible from the Internet unless they are designed for such exposure and the intended use requires such.\n\u2013\tEnsure all nodes are always up to date in terms of installed software, operating system, and firmware patches as well as antivirus and firewall.\n\u2013\tWhen remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Also, understand that VPNs are only as secure as the connected devices.",
+        "title": "General security recommendations"
+      },
+      {
+        "category": "general",
+        "text": "ABB has tested the following workarounds. Although these workarounds will not correct the underlying vulnerability, they can help block known attack vectors. When a workaround reduces functionality, this is identified below as Impact of workaround.\n\nActivate User Lock and disable file upload\n\nTo mitigate the exploitability of the vulnerabilities ABB recommends disabling the upload of firmware, including IEC 61131-3 programs to the drive or power controller. Additionally, it is recommended to close the User Lock and enable the Parameter Lock, so an attacker is not able to unblock the firmware upload over fieldbus.\nThe settings can be applied via the Drive Composer tool. For the user lock to be effective and the parameter lock bound to the user lock, the following steps need to be performed:\nDCS880\n\n\u2022\tEnter the default user pass code 10000000 in 96.07 Pass code\n\u2022\tChange the default user pass code to a random number using 96.100 Change user pass code and 96.101 Confirm user pass code\n\u2022\tIn 96.102 User lock functionality set bits 0, 2, 3 and 6 to 1 (high)\n\u2022\tBit 0: Disable ABB access levels\n\u2022\tBit 2: Disable file download\n\u2022\tBit 3: Disable Fieldbus write to hidden parameters\n\u2022\tBit 6: Protect AP\n\u2022\tEnter any invalid pass code in 96.07 Pass code to close the lock\n\u2022\tTo enable the parameter lock set 96.07 Pass code = 358\n\u2022\tIn 96.04 Access Levels Active Bit 14 (parameter lock) is set\n\u2022\tEnter your user pass code in 96.07 Pass code to open the lock\n\u2022\tIn 96.102 User lock functionality set bit 1 to 1 (high) to freeze the parameter lock state\n\u2022\tEnter any invalid pass code in 96.07 Pass code to close the lock\n\nDCT880\n\n\u2022\tEnter the default user pass code 10000000 in 96.02 Pass code\n\u2022\tChange the default user pass code to a random number using 96.100 Change user pass code and 96.101 Confirm user pass code\n\u2022\tIn 96.102 User lock functionality set bits 0, 2, 3 and 6 to 1 (high)\n\u2022\tBit 0: Disable ABB access levels\n\u2022\tBit 2: Disable file download\n\u2022\tBit 3: Disable Fieldbus write to hidden parameters\n\u2022\tBit 6: Protect AP\n\u2022\tEnter any invalid pass code in 96.02 Pass code to close the lock\n\u2022\tTo enable the parameter lock set 96.02 Pass code = 358\n\u2022\tIn 96.03 Access Levels Active Bit 14 (parameter lock) is set\n\u2022\tEnter your user pass code in 96.02 Pass code to open the lock\n\u2022\tIn 96.102 User lock functionality set bit 1 to 1 (high) to freeze the parameter lock state\n\u2022\tEnter any invalid pass code in 96.02 Pass code to close the lock\n\nVerification\n\nPlease be aware: If those steps are not performed in the correct order, the pass code might be circum-vented. Setting the correct User Lock Functionality bits is not enough to secure the device. Please make sure the lock is closed (parameters 96.100 to 96.102 not visible).\nIf the User Lock is open, warning 1236 is set.\n\nImpact of the workaround\n\nAfter applying the workaround, the IEC 61131-3 programs can be used, but not uploaded to the drive anymore. To upload an IEC program the operator has to unlock the User Lock and disable the File Up-load Lock.\nIf the parameter lock is applied no parameter of the drive can be changed. To change the parameter the operator has to unlock the User Lock and disable the parameter lock.\nThe disablement of the file downloads includes\n\u2022\tFirmware uploads\n\u2022\tSafety functions module FSO-21 configuration\n\u2022\tParameter restore to default values. See parameter 96.15 for details.\n\u2022\tLoading of adaptive programs\n\u2022\tLoading and debugging application programs via Drive application builder\n\u2022\tChanging the home view of the control panel\n\u2022\tEditing drive texts\n\u2022\tEditing the favorite parameters list on the control panel\n\u2022\tConfiguration settings done via control panel (time, date, etc.)\nIt is strongly recommended to only unlock the User Lock in a maintenance scenario, not during normal operation. Enabling upload of files and therefore an update of firmware during operation could lead to undesired behavior. As long as the User Lock is open the vulnerabilities are exploitable.\n",
+        "title": "Workarounds"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The information in this document is subject to change without notice, and should not be construed as a commitment by ABB.\nABB provides no warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, for the information contained in this document, and assumes no responsibility for any errors that may appear in this document. In no event shall ABB or any of its suppliers be liable for direct, indirect, special, incidental or consequential damages of any nature or kind arising from the use of this document, or from the use of any hardware or software described in this document, even if ABB or its suppliers have been advised of the possibility of such damages.\nThis document and parts hereof must not be reproduced or copied without written permission from ABB, and the contents hereof must not be imparted to a third party nor used for any unauthorized purpose.\nAll rights to registrations and trademarks reside with their respective owners.\n",
+        "title": "Notice"
+      },
+      {
+        "category": "other",
+        "text": "For additional instructions and support please contact your local ABB service organization. For contact information, see www.abb.com/contactcenters.\nInformation about ABB\u2019s cyber security program and capabilities can be found at www.abb.com/cybersecurity.\n",
+        "title": "Support"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "other",
+        "text": "This CISA CSAF advisory was converted from ABB PSIRT's CSAF advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-093-04 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-093-04.json"
+      },
+      {
+        "summary": "CDS-85189",
+        "url": "https://customers.codesys.com/index.php?eID=dumpFile&t=f&f=17765&token=04e117e1408fdb8e02b4bc821aa3be819668aef4&download="
+      },
+      {
+        "summary": "ABB CYBERSECURITY ADVISORY - PDF version ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=9AKK108470A9494&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "For more details about the individual vulnerabilities see the following advisories by CODESYS Group:\nCDS-82457",
+        "url": "https://customers.codesys.com/index.php?eID=dumpFile&t=f&f=17764&token=4b2f3cf3a800d076b22f18d49f278bd8883dbd46&download="
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-093-04 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-093-04"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "ABB Low Voltage DC Drives and Power Controllers CODESYS RTS",
+    "tracking": {
+      "current_release_date": "2025-03-26T00:30:00.000000Z",
+      "generator": {
+        "date": "2025-03-27T07:21:21.393000Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-093-04",
+      "initial_release_date": "2025-03-26T00:30:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-03-26T00:30:00.000000Z",
+          "number": "1.0.0",
+          "summary": "Initial version"
+        }
+      ],
+      "status": "final",
+      "version": "1.0.0"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "branches": [
+                  {
+                    "category": "product_name",
+                    "name": "ABB Drive Application Builder license (IEC 61131-3)",
+                    "product": {
+                      "name": "DCS880 memory unit incl. ABB Drive Application Builder license (IEC 61131-3)",
+                      "product_id": "CSAFPID-0001"
+                    }
+                  },
+                  {
+                    "category": "product_name",
+                    "name": "DEMag",
+                    "product": {
+                      "name": "DCS880 memory unit incl. DEMag",
+                      "product_id": "CSAFPID-0002"
+                    }
+                  },
+                  {
+                    "category": "product_name",
+                    "name": "DCC",
+                    "product": {
+                      "name": "DCS880 memory unit incl. DCC",
+                      "product_id": "CSAFPID-0003"
+                    }
+                  }
+                ],
+                "category": "product_name",
+                "name": "DCS880"
+              },
+              {
+                "branches": [
+                  {
+                    "category": "product_name",
+                    "name": "ABB Drive Application Builder license (IEC 61131-3)",
+                    "product": {
+                      "name": "DCT880 memory unit incl. ABB Drive Application Builder license (IEC 61131-3)",
+                      "product_id": "CSAFPID-0004"
+                    }
+                  },
+                  {
+                    "category": "product_name",
+                    "name": "Power Optimizer",
+                    "product": {
+                      "name": "DCT880 memory unit incl. Power Optimizer",
+                      "product_id": "CSAFPID-0005"
+                    }
+                  }
+                ],
+                "category": "product_name",
+                "name": "DCT880"
+              }
+            ],
+            "category": "product_family",
+            "name": "DC drives & power controllers"
+          }
+        ],
+        "category": "vendor",
+        "name": "ABB"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2023-37559",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "After successful authentication as a user in multiple CODESYS products in multiple versions, specific crafted network communication requests with inconsistent content can cause the CmpAppForce component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD- CVE-2023-37559",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37559"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "date": "2025-03-24T06:30:00.000000Z",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37559"
+    },
+    {
+      "cve": "CVE-2023-37558",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "After successful authentication as a user in multiple CODESYS products in multiple versions, specific crafted network communication requests with inconsistent content can cause the CmpAppForce component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37558",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37558"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37558"
+    },
+    {
+      "cve": "CVE-2023-37557",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "After successful authentication as a user in multiple CODESYS products in multiple versions, specific crafted remote communication requests can cause the CmpAppBP component to overwrite a heap-based buffer, which can lead to a denial-of-service condition",
+          "title": "Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD- CVE-2023-37557 ",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37557"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37557"
+    },
+    {
+      "cve": "CVE-2023-37556",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple versions of multiple CODESYS products, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpAppBP component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD -  CVE-2023-37556",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37556"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37556"
+    },
+    {
+      "cve": "CVE-2023-37555",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple versions of multiple CODESYS products, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpAppBP component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37555",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37555"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37555"
+    },
+    {
+      "cve": "CVE-2023-37554",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple versions of multiple CODESYS products, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpAppBP component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37554",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37554"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37554"
+    },
+    {
+      "cve": "CVE-2023-37553",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple versions of multiple CODESYS products, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpAppBP component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37553",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37553"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37553"
+    },
+    {
+      "cve": "CVE-2023-37552",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple versions of multiple CODESYS products, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpAppBP component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37552",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37552"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37552"
+    },
+    {
+      "cve": "CVE-2023-37550",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple CODESYS products in multiple versions, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpApp component to read internally from an invalid address, potentially leading to a denial-of-service condition. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37550",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37550"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37550"
+    },
+    {
+      "cve": "CVE-2023-37549",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple CODESYS products in multiple versions, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpApp component to read internally from an invalid address, potentially leading to a denial-of-service condition. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37549",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37549"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37549"
+    },
+    {
+      "cve": "CVE-2023-37548",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple CODESYS products in multiple versions, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpApp component to read internally from an invalid address, potentially leading to a denial-of-service condition. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37548",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37548"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37548"
+    },
+    {
+      "cve": "CVE-2023-37547",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple CODESYS products in multiple versions, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpApp component to read internally from an invalid address, potentially leading to a denial-of-service condition. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37547",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37547"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37547"
+    },
+    {
+      "cve": "CVE-2023-37546",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple CODESYS products in multiple versions, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpApp component to read internally from an invalid address, potentially leading to a denial-of-service condition. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37546",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37546"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37546"
+    },
+    {
+      "cve": "CVE-2023-37545",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple CODESYS products in multiple versions, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpApp component to read internally from an invalid address, potentially leading to a denial-of-service condition. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37545",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37545"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37545"
+    },
+    {
+      "cve": "CVE-2022-4046",
+      "cwe": {
+        "id": "CWE-119",
+        "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In CODESYS Control in multiple versions a improper restriction of operations within the bounds of a memory buffer allow an remote attacker with user privileges to gain full access of the device.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2022-4046",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-4046"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "If the drive or power controller is in an exploitable configuration, ABB recommends immediately applying the mitigations described in the Workarounds section.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 8.8,
+            "environmentalSeverity": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 8.8,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2022-4046"
+    }
+  ]
+}
