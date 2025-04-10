@@ -1,0 +1,837 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "ABB",
+        "summary": "reporting these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "En",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "ABB is aware of public reports of the vulnerabilities in the product versions listed as affected in this advisory.\nAn attacker who successfully exploited modem module vulnerabilities could run arbitrary code in the wireless modem module of the product. This could lead to denial of service or tampering with unencrypted traffic.\nAn attacker who successfully exploited the OpenSSH vulnerability could run arbitrary code in the product with privileged user permissions. This could cause the product to stop, make the product inaccessible, or the attacker could take control of the product.\nAs part of ABB product lifecycle policy, once a product transitions to Limited state, we discontinue maintenance, security patches, and technical support to focus on current and future technologies. While the product will continue to function, we strongly recommend implementing mitigations defined in this document to mitigate security risks.",
+        "title": "Summary"
+      },
+      {
+        "category": "other",
+        "text": "For additional instructions and support please contact your local ABB service organization. For contact information, see www.abb.com/contactcenters.\nInformation about ABB\u2019s cyber security program and capabilities can be found at www.abb.com/cybersecurity.\n",
+        "title": "Support"
+      },
+      {
+        "category": "other",
+        "text": "For any installation of software-related ABB products we strongly recommend the following (non-exhaustive) list of cyber security practices:\n\u2013\tIsolate special purpose networks (e.g., for automation systems) and remote devices behind fire-walls and separate them from any general-purpose network (e.g., office or home networks).\n\u2013\tInstall physical controls so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n\u2013\tNever connect programming software or computers containing programing software to any network other than the network for the devices that it is intended for.\n\u2013\tScan all data imported into your environment before use to detect potential malware infections.\n\u2013\tMinimize network exposure for all applications and endpoints to ensure that they are not accessible from the Internet unless they are designed for such exposure and the intended use requires such.\n\u2013\tEnsure all nodes are always up to date in terms of installed software, operating system, and firmware patches as well as anti-virus and firewall.\n\u2013\tWhen remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.\n",
+        "title": "General security recommendations"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The information in this document is subject to change without notice, and should not be construed as a commitment by ABB.\nABB provides no warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, for the information contained in this document, and assumes no responsibility for any errors that may appear in this document. In no event shall ABB or any of its suppliers be liable for direct, indirect, special, incidental or consequential damages of any nature or kind arising from the use of this document, or from the use of any hardware or software described in this document, even if ABB or its suppliers have been advised of the possibility of such damages.\nThis document and parts hereof must not be reproduced or copied without written permission from ABB, and the contents hereof must not be imparted to a third party nor used for any unauthorized purpose.\nAll rights to registrations and trademarks reside with their respective owners.\n",
+        "title": "Notice"
+      },
+      {
+        "category": "general",
+        "text": "The following mitigations can be considered\n\u2022\tObtain a private cellular access point to limit impact of any potential exploit. Contact your cellular provider for availability.\n\u2022\tMitigate the cellular module vulnerabilities by contacting the mobile network operator and requesting to disable binary SMS for your mobile subscription.\no\tNote that binary SMS service is often disabled by default based on operator restrictions.\no\tIf SMS services are not used in the solution, consider disabling them completely.\n\u2022\tEstablish remote connections through OpenVPN. If the SSH protocol is used for remote administration of Arctic wireless gateway, it is to be considered logging in to the wireless gateway through an OpenVPN tunnel.\n\u2022\tDo not expose SSH port to public networks. Keep the SSH port closed to public networks and thus limit the number of potential attackers who can attempt to exploit the vulnerability. This way only devices within your private network or those connected through a secure VPN can access the SSH server.\n\n\u2022\tRestrict physical access to the product.\n\nRefer to section General security recommendations for further advice on how to keep your system secure.\n",
+        "title": "Mitigating factors"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "other",
+        "text": "This CISA CSAF advisory was converted from ABB PSIRT's CSAF advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-100-09 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-100-09.json"
+      },
+      {
+        "summary": "1MRS758860, Rev. F Arctic, Cyber Security Deployment Guideline",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=1MRS758860&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "ABB CYBERSECURITY ADVISORY - PDF version ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=2NGA002427&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "Summary: ABB product lifecycle policy",
+        "url": "https://new.abb.com/service/electrification/life-cycle-management?pe_data=D42415F457244415145784545584371%7C29609824"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-100-09 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-100-09"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "ABB Arctic Wireless Gateways",
+    "tracking": {
+      "current_release_date": "2025-04-07T10:30:00.000000Z",
+      "generator": {
+        "date": "2025-04-10T17:11:43.438323Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-100-09",
+      "initial_release_date": "2025-04-07T10:30:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-04-07T10:30:00.000000Z",
+          "number": "1.0.0",
+          "summary": "Initial Version"
+        }
+      ],
+      "status": "final",
+      "version": "1.0.0"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_name",
+                "name": "ARG600",
+                "product": {
+                  "name": "Arctic Wireless Gateway ARG600 with Telit PLS62-W wireless modem module.",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_name",
+                "name": "ARC600",
+                "product": {
+                  "name": "Arctic Wireless Gateway ARC600 with Telit PLS62-W wireless modem module.",
+                  "product_id": "CSAFPID-0002"
+                }
+              },
+              {
+                "category": "product_name",
+                "name": "ARR600",
+                "product": {
+                  "name": "Arctic Wireless Gateway ARR600 with Telit PLS62-W wireless modem module.",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_family",
+            "name": "Arctic Wireless Gateways"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "ARG600",
+                "product": {
+                  "name": "Arctic ARG600 with firmware version>=3.4.10  to <=3.4.13",
+                  "product_id": "CSAFPID-0004"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "ARC600",
+                "product": {
+                  "name": "Arctic ARC600 with firmware version>=3.4.10  to <=3.4.13",
+                  "product_id": "CSAFPID-0005"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "ARR600",
+                "product": {
+                  "name": "Arctic ARR600 with firmware version>=3.4.10  to <=3.4.13",
+                  "product_id": "CSAFPID-0006"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "ARP600",
+                "product": {
+                  "name": "Arctic ARP600 with firmware version>=3.4.10  to <=3.4.13",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_family",
+            "name": "Arctic"
+          }
+        ],
+        "category": "vendor",
+        "name": "ABB"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2023-47610",
+      "cwe": {
+        "id": "CWE-120",
+        "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A buffer overflow vulnerability that could allow a remote unauthenticated attacker to execute arbitrary code on the targeted system by sending a specially crafted Short Message Service (SMS) message.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-47610",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-47610"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "The following mitigations can be considered\n\u2022\tObtain a private cellular access point to limit impact of any potential exploit. Contact your cellular provider for availability.\n\u2022\tMitigate the cellular module vulnerabilities by contacting the mobile network operator and requesting to disable binary SMS for your mobile subscription.\no\tNote that binary SMS service is often disabled by default based on operator restrictions.\no\tIf SMS services are not used in the solution, consider disabling them completely.\n\u2022\tEstablish remote connections through OpenVPN. If the SSH protocol is used for remote administration of Arctic wireless gateway, it is to be considered logging in to the wireless gateway through an OpenVPN tunnel.\n\u2022\tDo not expose SSH port to public networks. Keep the SSH port closed to public networks and thus limit the number of potential attackers who can attempt to exploit the vulnerability. This way only devices within your private network or those connected through a secure VPN can access the SSH server.\n\n\u2022\tRestrict physical access to the product.\n\nRefer to section General security recommendations for further advice on how to keep your system secure.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "HIGH",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8.1,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 7.4,
+            "environmentalSeverity": "HIGH",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "WORKAROUND",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 7.4,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RL:W/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "title": "CVE-2023-47610"
+    },
+    {
+      "cve": "CVE-2023-47611",
+      "cwe": {
+        "id": "CWE-269",
+        "name": "Improper Privilege Management"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "Improper Privilege Management vulnerability that could allow a local that could allow a local, low privileged attacker to elevate privileges to \"manufacturer\" level on the targeted system by sending a specially crafted SMS message.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-47611",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-47611"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "The following mitigations can be considered\n\u2022\tObtain a private cellular access point to limit impact of any potential exploit. Contact your cellular provider for availability.\n\u2022\tMitigate the cellular module vulnerabilities by contacting the mobile network operator and requesting to disable binary SMS for your mobile subscription.\no\tNote that binary SMS service is often disabled by default based on operator restrictions.\no\tIf SMS services are not used in the solution, consider disabling them completely.\n\u2022\tEstablish remote connections through OpenVPN. If the SSH protocol is used for remote administration of Arctic wireless gateway, it is to be considered logging in to the wireless gateway through an OpenVPN tunnel.\n\u2022\tDo not expose SSH port to public networks. Keep the SSH port closed to public networks and thus limit the number of potential attackers who can attempt to exploit the vulnerability. This way only devices within your private network or those connected through a secure VPN can access the SSH server.\n\n\u2022\tRestrict physical access to the product.\n\nRefer to section General security recommendations for further advice on how to keep your system secure.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "PHYSICAL",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.8,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 6,
+            "environmentalSeverity": "MEDIUM",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "WORKAROUND",
+            "reportConfidence": "REASONABLE",
+            "scope": "UNCHANGED",
+            "temporalScore": 6,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RL:W/RC:R",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "title": "CVE-2023-47611"
+    },
+    {
+      "cve": "CVE-2023-47612",
+      "cwe": {
+        "id": "CWE-200",
+        "name": "Exposure of Sensitive Information to an Unauthorized Actor"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "Files or Directories Accessible to External Parties vulnerability that could allow an attacker with physical access to the target system to obtain a read/write access to any files and directories on the wireless modem module, including hidden files and directories.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-47612",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-47612"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "The following mitigations can be considered\n\u2022\tObtain a private cellular access point to limit impact of any potential exploit. Contact your cellular provider for availability.\n\u2022\tMitigate the cellular module vulnerabilities by contacting the mobile network operator and requesting to disable binary SMS for your mobile subscription.\no\tNote that binary SMS service is often disabled by default based on operator restrictions.\no\tIf SMS services are not used in the solution, consider disabling them completely.\n\u2022\tEstablish remote connections through OpenVPN. If the SSH protocol is used for remote administration of Arctic wireless gateway, it is to be considered logging in to the wireless gateway through an OpenVPN tunnel.\n\u2022\tDo not expose SSH port to public networks. Keep the SSH port closed to public networks and thus limit the number of potential attackers who can attempt to exploit the vulnerability. This way only devices within your private network or those connected through a secure VPN can access the SSH server.\n\n\u2022\tRestrict physical access to the product.\n\nRefer to section General security recommendations for further advice on how to keep your system secure.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "PHYSICAL",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.8,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 6,
+            "environmentalSeverity": "MEDIUM",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "WORKAROUND",
+            "reportConfidence": "REASONABLE",
+            "scope": "UNCHANGED",
+            "temporalScore": 6,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RL:W/RC:R",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "title": "CVE-2023-47612"
+    },
+    {
+      "cve": "CVE-2023-47613",
+      "cwe": {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "Relative Path Traversal vulnerability that could allow a local, low privileged attacker to escape from virtual directories and get read/write access to protected files on the wireless modem module.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-47613",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-47613"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "The following mitigations can be considered\n\u2022\tObtain a private cellular access point to limit impact of any potential exploit. Contact your cellular provider for availability.\n\u2022\tMitigate the cellular module vulnerabilities by contacting the mobile network operator and requesting to disable binary SMS for your mobile subscription.\no\tNote that binary SMS service is often disabled by default based on operator restrictions.\no\tIf SMS services are not used in the solution, consider disabling them completely.\n\u2022\tEstablish remote connections through OpenVPN. If the SSH protocol is used for remote administration of Arctic wireless gateway, it is to be considered logging in to the wireless gateway through an OpenVPN tunnel.\n\u2022\tDo not expose SSH port to public networks. Keep the SSH port closed to public networks and thus limit the number of potential attackers who can attempt to exploit the vulnerability. This way only devices within your private network or those connected through a secure VPN can access the SSH server.\n\n\u2022\tRestrict physical access to the product.\n\nRefer to section General security recommendations for further advice on how to keep your system secure.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "PHYSICAL",
+            "availabilityImpact": "NONE",
+            "baseScore": 3.2,
+            "baseSeverity": "LOW",
+            "confidentialityImpact": "LOW",
+            "environmentalScore": 2.9,
+            "environmentalSeverity": "LOW",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "LOW",
+            "privilegesRequired": "LOW",
+            "remediationLevel": "WORKAROUND",
+            "reportConfidence": "REASONABLE",
+            "scope": "UNCHANGED",
+            "temporalScore": 2.9,
+            "temporalSeverity": "LOW",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:P/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N/E:P/RL:W/RC:R",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "title": "CVE-2023-47613"
+    },
+    {
+      "cve": "CVE-2023-47614",
+      "cwe": {
+        "id": "CWE-200",
+        "name": "Exposure of Sensitive Information to an Unauthorized Actor"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "Exposure of Sensitive Information to an unauthorized actor vulnerability that could allow a local, low privileged attacker to disclose hidden virtual paths and file names on the wireless modem module.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-47614",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-47614"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "The following mitigations can be considered\n\u2022\tObtain a private cellular access point to limit impact of any potential exploit. Contact your cellular provider for availability.\n\u2022\tMitigate the cellular module vulnerabilities by contacting the mobile network operator and requesting to disable binary SMS for your mobile subscription.\no\tNote that binary SMS service is often disabled by default based on operator restrictions.\no\tIf SMS services are not used in the solution, consider disabling them completely.\n\u2022\tEstablish remote connections through OpenVPN. If the SSH protocol is used for remote administration of Arctic wireless gateway, it is to be considered logging in to the wireless gateway through an OpenVPN tunnel.\n\u2022\tDo not expose SSH port to public networks. Keep the SSH port closed to public networks and thus limit the number of potential attackers who can attempt to exploit the vulnerability. This way only devices within your private network or those connected through a secure VPN can access the SSH server.\n\n\u2022\tRestrict physical access to the product.\n\nRefer to section General security recommendations for further advice on how to keep your system secure.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "PHYSICAL",
+            "availabilityImpact": "NONE",
+            "baseScore": 3.2,
+            "baseSeverity": "LOW",
+            "confidentialityImpact": "LOW",
+            "environmentalScore": 2.9,
+            "environmentalSeverity": "LOW",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "LOW",
+            "privilegesRequired": "LOW",
+            "remediationLevel": "WORKAROUND",
+            "reportConfidence": "REASONABLE",
+            "scope": "UNCHANGED",
+            "temporalScore": 2.9,
+            "temporalSeverity": "LOW",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:P/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N/E:P/RL:W/RC:R",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "title": "CVE-2023-47614"
+    },
+    {
+      "cve": "CVE-2023-47615",
+      "cwe": {
+        "id": "CWE-200",
+        "name": "Exposure of Sensitive Information to an Unauthorized Actor"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "Exposure of Sensitive Information Through Environmental Variables vulnerability that could allow a local, low privileged attacker to get access to sensitive data on the wireless modem module.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-47615",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-47615"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "The following mitigations can be considered\n\u2022\tObtain a private cellular access point to limit impact of any potential exploit. Contact your cellular provider for availability.\n\u2022\tMitigate the cellular module vulnerabilities by contacting the mobile network operator and requesting to disable binary SMS for your mobile subscription.\no\tNote that binary SMS service is often disabled by default based on operator restrictions.\no\tIf SMS services are not used in the solution, consider disabling them completely.\n\u2022\tEstablish remote connections through OpenVPN. If the SSH protocol is used for remote administration of Arctic wireless gateway, it is to be considered logging in to the wireless gateway through an OpenVPN tunnel.\n\u2022\tDo not expose SSH port to public networks. Keep the SSH port closed to public networks and thus limit the number of potential attackers who can attempt to exploit the vulnerability. This way only devices within your private network or those connected through a secure VPN can access the SSH server.\n\n\u2022\tRestrict physical access to the product.\n\nRefer to section General security recommendations for further advice on how to keep your system secure.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "PHYSICAL",
+            "availabilityImpact": "NONE",
+            "baseScore": 4.3,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 3.8,
+            "environmentalSeverity": "LOW",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "remediationLevel": "WORKAROUND",
+            "reportConfidence": "REASONABLE",
+            "scope": "UNCHANGED",
+            "temporalScore": 3.8,
+            "temporalSeverity": "LOW",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:P/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N/E:P/RL:W/RC:R",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "title": "CVE-2023-47615"
+    },
+    {
+      "cve": "CVE-2023-47616",
+      "cwe": {
+        "id": "CWE-200",
+        "name": "Exposure of Sensitive Information to an Unauthorized Actor"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "Exposure of Sensitive Information to an unauthorized actor vulnerability that could allow an attacker with physical access to the target system to get access to sensitive data on the wireless modem mod-ule.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD- CVE-2023-47616",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-47616"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "The following mitigations can be considered\n\u2022\tObtain a private cellular access point to limit impact of any potential exploit. Contact your cellular provider for availability.\n\u2022\tMitigate the cellular module vulnerabilities by contacting the mobile network operator and requesting to disable binary SMS for your mobile subscription.\no\tNote that binary SMS service is often disabled by default based on operator restrictions.\no\tIf SMS services are not used in the solution, consider disabling them completely.\n\u2022\tEstablish remote connections through OpenVPN. If the SSH protocol is used for remote administration of Arctic wireless gateway, it is to be considered logging in to the wireless gateway through an OpenVPN tunnel.\n\u2022\tDo not expose SSH port to public networks. Keep the SSH port closed to public networks and thus limit the number of potential attackers who can attempt to exploit the vulnerability. This way only devices within your private network or those connected through a secure VPN can access the SSH server.\n\n\u2022\tRestrict physical access to the product.\n\nRefer to section General security recommendations for further advice on how to keep your system secure.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "PHYSICAL",
+            "availabilityImpact": "NONE",
+            "baseScore": 4.6,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 4.1,
+            "environmentalSeverity": "MEDIUM",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "WORKAROUND",
+            "reportConfidence": "REASONABLE",
+            "scope": "UNCHANGED",
+            "temporalScore": 4.1,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N/E:P/RL:W/RC:R",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "title": "CVE-2023-47616"
+    },
+    {
+      "cve": "CVE-2024-6387",
+      "cwe": {
+        "id": "CWE-362",
+        "name": "Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "The vulnerability is a signal handler race condition in OpenSSH\u2019s server (sshd) on glibc-based Linux systems, allowing unauthenticated remote code execution (RCE) as root.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2024-6387",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-6387"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "The following mitigations can be considered\n\u2022\tObtain a private cellular access point to limit impact of any potential exploit. Contact your cellular provider for availability.\n\u2022\tMitigate the cellular module vulnerabilities by contacting the mobile network operator and requesting to disable binary SMS for your mobile subscription.\no\tNote that binary SMS service is often disabled by default based on operator restrictions.\no\tIf SMS services are not used in the solution, consider disabling them completely.\n\u2022\tEstablish remote connections through OpenVPN. If the SSH protocol is used for remote administration of Arctic wireless gateway, it is to be considered logging in to the wireless gateway through an OpenVPN tunnel.\n\u2022\tDo not expose SSH port to public networks. Keep the SSH port closed to public networks and thus limit the number of potential attackers who can attempt to exploit the vulnerability. This way only devices within your private network or those connected through a secure VPN can access the SSH server.\n\n\u2022\tRestrict physical access to the product.\n\nRefer to section General security recommendations for further advice on how to keep your system secure.",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "HIGH",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8.1,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 7.1,
+            "environmentalSeverity": "HIGH",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "WORKAROUND",
+            "reportConfidence": "REASONABLE",
+            "scope": "UNCHANGED",
+            "temporalScore": 7.1,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RL:W/RC:R",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        }
+      ],
+      "title": "CVE-2024-6387"
+    }
+  ]
+}
