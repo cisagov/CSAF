@@ -1,0 +1,2834 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Forescout Technologies",
+        "summary": "reporting these vulnerabilities to CISA"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of these vulnerabilities could allow an attacker to compromise confidentiality, achieve cross-site scripting, or code execution on affected devices. ",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "China",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolating them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also recommends users take the following measures to protect themselves from social engineering attacks:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Do not click web links or open attachments in unsolicited email messages.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-105-04 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-105-04.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICSA Advisory ICSA-25-105-04 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-105-04"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/sites/default/files/publications/emailscams0905.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ncas/tips/ST04-014"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Growatt Cloud Applications",
+    "tracking": {
+      "current_release_date": "2025-04-15T06:00:00.000000Z",
+      "generator": {
+        "date": "2025-04-15T18:52:53.768146Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-105-04",
+      "initial_release_date": "2025-04-15T06:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-04-15T06:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial Publication"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/<=3.6.0",
+                "product": {
+                  "name": "Growatt Growatt cloud portal: vers:all/<=3.6.0",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Growatt cloud portal"
+          }
+        ],
+        "category": "vendor",
+        "name": "Growatt"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-30511",
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An authenticated attacker can achieve stored XSS by exploiting improper sanitization of the plant name value while adding or editing a plant.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-30511"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-31933",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An unauthenticated attacker can check the existence of usernames in the system by querying an API.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-31933"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-31949",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An authenticated attacker can obtain any plant name by knowing the plant ID.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-31949"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-31357",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An unauthenticated attacker can obtain a user's plant list by knowing the username.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-31357"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-31941",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An unauthenticated attacker can obtain a list of smart devices by knowing a valid username.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-31941"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-24487",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An  unauthenticated attacker can infer the existence of usernames in the system by querying an API.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-24487"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-27568",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An unauthenticated attacker can get users' emails by knowing usernames. A password reset email will be sent in response to this unsolicited request.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-27568"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-30254",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An unauthenticated attacker can obtain a serial number of a smart meter(s) using its owner's username. ",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-30254"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-27939",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An attacker can change registered email addresses of other users and take over arbitrary accounts.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-27939"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-27938",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Unauthenticated attackers can obtain restricted information about a user's smart device collections (i.e., \"rooms\").",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-27938"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-30514",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Unauthenticated attackers can obtain restricted information about a user's smart device collections (i.e., \"scenes\").",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-30514"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-31654",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An attacker can get information about the groups of the smart home devices for arbitrary users (i.e., \"rooms\").",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-31654"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-27719",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Unauthenticated attackers can query an API endpoint and get device details.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-27719"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-26857",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Unauthenticated attackers can rename arbitrary devices of arbitrary users (i.e., EV chargers).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-26857"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-31945",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An unauthenticated attacker can obtain other users' charger information.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-31945"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-31950",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An unauthenticated attacker can obtain EV charger energy consumption information of other users.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-31950"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-27575",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An unauthenticated attacker can obtain EV charger version and firmware upgrading history by knowing the charger ID.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-27575"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-27565",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An unauthenticated attacker can delete any user's \"rooms\" by knowing the user's and room IDs.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-27565"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-25276",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An unauthenticated attacker can hijack other users' devices and potentially control them.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-25276"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-24850",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An attacker can export other users' plant information.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-24850"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-30510",
+      "cwe": {
+        "id": "CWE-351",
+        "name": "Insufficient Type Distinction"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An attacker can upload an arbitrary file instead of a plant image.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-30510"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-24297",
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Due to lack of server-side input validation, attackers can inject malicious JavaScript code into users personal spaces of the web portal.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-24297"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-27927",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An unauthenticated attackers can obtain a list of smart devices by knowing a valid username through an unprotected API.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-27927"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-30512",
+      "cwe": {
+        "id": "CWE-15",
+        "name": "External Control of System or Configuration Setting"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Unauthenticated attackers can send configuration settings to device and possible perform physical actions remotely (e.g., on/off).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-30512"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-31360",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Unauthenticated attackers can trigger device actions associated with specific \"scenes\" of arbitrary users.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-31360"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-31147",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Unauthenticated attackers can query information about total energy consumed by EV chargers of arbitrary users.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-31147"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-30257",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Unauthenticated attackers can retrieve serial number of smart meters associated to a specific user account.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-30257"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-27561",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Unauthenticated attackers can rename \"rooms\" of arbitrary users.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-27561"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-24315",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Unauthenticated attackers can add devices of other users to their scenes (or arbitrary scenes of other arbitrary users).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-24315"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-27929",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Unauthenticated attackers can retrieve full list of users associated with arbitrary accounts.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-27929"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Growatt reports the cloud based vulnerabilities were patched and no user action is needed. Additionally, Growatt strongly recommends that their users take proactive steps in securing their devices and take the following actions:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Update all devices to the latest firmware version when available. (Updates are automatic, no user action needed.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Use strong passwords and enable multi-factor authentication where applicable.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Report any security concerns to Service@Growatt.com.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "mailto:Service@Growatt.com"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stay vigilant. Users and installers should regularly review security settings, follow best practices, and report any unusual activity.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    }
+  ]
+}
