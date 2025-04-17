@@ -1,0 +1,912 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "names": [
+          "Marlon Schumacher",
+          "Alex Armstrong"
+        ],
+        "organization": "LLNL",
+        "summary": "reporting these vulnerabilities to Schneider Electric"
+      },
+      {
+        "names": [
+          "Vishal Madipadga"
+        ],
+        "organization": "SNL",
+        "summary": "reporting these vulnerabilities to Schneider Electric"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "We strongly recommend the following industry cybersecurity best practices.\n\nhttps://www.se.com/us/en/download/document/7EN52-0390/\n* Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.\n* Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.\n* Place all controllers in locked cabinets and never leave them in the \u201cProgram\u201d mode.\n* Never connect programming software to any network other than the network intended for that device.\n* Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc. before use in the terminals or any node connected to these networks.\n* Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.\n* Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the Internet.\n* When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.\nFor more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document. \n",
+        "title": "General Security Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "This document provides an overview of the identified vulnerability or vulnerabilities and actions required to mitigate. For more details and assistance on how to protect your installation, contact your local Schneider Electric representative or Schneider Electric Industrial Cybersecurity Services: https://www.se.com/ww/en/work/solutions/cybersecurity/. These organizations will be fully aware of this situation and can support you through the process.\nFor further information related to cybersecurity in Schneider Electric\u2019s products, visit the company\u2019s cybersecurity support portal page: https://www.se.com/ww/en/work/support/cybersecurity/overview.jsp",
+        "title": "For More Information"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "THIS NOTIFICATION DOCUMENT, THE INFORMATION CONTAINED HEREIN, AND ANY MATERIALS LINKED FROM IT (COLLECTIVELY, THIS \u201cNOTIFICATION\u201d) ARE INTENDED TO HELP PROVIDE AN OVERVIEW OF THE IDENTIFIED SITUATION AND SUGGESTED MITIGATION ACTIONS, REMEDIATION, FIX, AND/OR GENERAL SECURITY RECOMMENDATIONS AND IS PROVIDED ON AN \u201cAS-IS\u201d BASIS WITHOUT WARRANTY OR GUARANTEE OF ANY KIND.  SCHNEIDER ELECTRIC DISCLAIMS ALL WARRANTIES RELATING TO THIS NOTIFICATION, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. SCHNEIDER ELECTRIC MAKES NO WARRANTY THAT THE NOTIFICATION WILL RESOLVE THE IDENTIFIED SITUATION. IN NO EVENT SHALL SCHNEIDER ELECTRIC BE LIABLE FOR ANY DAMAGES OR LOSSES WHATSOEVER IN CONNECTION WITH THIS NOTIFICATION, INCLUDING DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, LOSS OF BUSINESS PROFITS OR SPECIAL DAMAGES, EVEN IF SCHNEIDER ELECTRIC HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. YOUR USE OF THIS NOTIFICATION IS AT YOUR OWN RISK, AND YOU ARE SOLELY LIABLE FOR ANY DAMAGES TO YOUR SYSTEMS OR ASSETS OR OTHER LOSSES THAT MAY RESULT FROM YOUR USE OF THIS NOTIFICATION. SCHNEIDER ELECTRIC RESERVES THE RIGHT TO UPDATE OR CHANGE THIS NOTIFICATION AT ANY TIME AND IN ITS SOLE DISCRETION",
+        "title": "LEGAL DISCLAIMER"
+      },
+      {
+        "category": "general",
+        "text": "At Schneider, we believe access to energy and digital is a basic human right. We empower all to do more with less, ensuring Life Is On everywhere, for everyone, at every moment.\n\nWe provide energy and automation digital solutions for efficiency and sustainability. We combine world-leading energy technologies, real-time automation, software and services into integrated solutions for Homes, Buildings, Data Centers, Infrastructure and Industries.\n\nWe are committed to unleash the infinite possibilities of an open, global, innovative community that is passionate with our Meaningful Purpose, Inclusive and Empowered values.\n\nwww.se.com ",
+        "title": "About Schneider Electric"
+      },
+      {
+        "category": "summary",
+        "text": "Schneider Electric is aware of multiple vulnerabilities in its SAGE RTU products.\r\nThe SAGE RTU products are hardware devices that collect utility substation information from\r\ndifferent devices and passes it along to a SCADA software platform.\r\nFailure to apply the remediation provided below may risk total compromise of the impacted\r\ndevice, leading to loss of data, loss of operation, or impacts to the performance of the device.",
+        "title": "Overview"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "other",
+        "text": "This CISA CSAF advisory was converted from Schneider Electric CPCERT's CSAF advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "France",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "SAGE RTU - SEVD-2024-163-05 CSAF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2024-163-05&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2024-163-05.json"
+      },
+      {
+        "category": "self",
+        "summary": "SAGE RTU - SEVD-2024-163-05 PDF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2024-163-05&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2024-163-05.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Cybersecurity Best Practices",
+        "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-107-02 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-107-02.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-107-02 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-107-02"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Schneider Electric Sage Series",
+    "tracking": {
+      "current_release_date": "2024-07-09T00:00:00.000000Z",
+      "generator": {
+        "date": "2025-04-17T20:00:11.972086Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-107-02",
+      "initial_release_date": "2024-06-11T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2024-06-11T00:00:00.000000Z",
+          "number": "1.0.0",
+          "summary": "Original Release"
+        },
+        {
+          "date": "2024-06-11T00:00:00.000000Z",
+          "number": "1.1.0",
+          "summary": "Mitigations were provided to address this vulnerability. Also, there was an update to the affected product version."
+        },
+        {
+          "date": "2024-07-09T00:00:00.000000Z",
+          "number": "2.0.0",
+          "summary": "A direct link is now available to the remediation."
+        }
+      ],
+      "status": "final",
+      "version": "2.0.0"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/<=C3414-500-S02K5_P8",
+                "product": {
+                  "name": "Schneider Electric Sage 1410 Versions C3414-500-S02K5_P8 and prior",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sage 1410"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/<=C3414-500-S02K5_P8",
+                "product": {
+                  "name": "Schneider Electric Sage 1430 Versions C3414-500-S02K5_P8 and prior",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sage 1430"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/<=C3414-500-S02K5_P8",
+                "product": {
+                  "name": "Schneider Electric Sage 1450 Versions C3414-500-S02K5_P8 and prior",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sage 1450"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/<=C3414-500-S02K5_P8",
+                "product": {
+                  "name": "Schneider Electric Sage 2400 Versions C3414-500-S02K5_P8 and prior",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sage 2400"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/<=C3414-500-S02K5_P8",
+                "product": {
+                  "name": "Schneider Electric Sage 3030 Magnum Versions C3414-500-S02K5_P8 and prior",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sage 3030 Magnum"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/<=C3414-500-S02K5_P8",
+                "product": {
+                  "name": "Schneider Electric Sage 4400 Versions C3414-500-S02K5_P8 and prior",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sage 4400"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "C3414-500-S02K5_P9",
+                "product": {
+                  "name": "Schneider Electric Sage 1410 C3414-500-S02K5_P9",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sage 1410"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "C3414-500-S02K5_P9",
+                "product": {
+                  "name": "Schneider Electric Sage 1430 C3414-500-S02K5_P9",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sage 1430"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "C3414-500-S02K5_P9",
+                "product": {
+                  "name": "Schneider Electric Sage 1450 C3414-500-S02K5_P9",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sage 1450"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "C3414-500-S02K5_P9",
+                "product": {
+                  "name": "Schneider Electric Sage 2400 C3414-500-S02K5_P9",
+                  "product_id": "CSAFPID-0010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sage 2400"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "C3414-500-S02K5_P9",
+                "product": {
+                  "name": "Schneider Electric Sage 3030 Magnum C3414-500-S02K5_P9",
+                  "product_id": "CSAFPID-0011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sage 3030 Magnum"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "C3414-500-S02K5_P9",
+                "product": {
+                  "name": "Schneider Electric Sage 4400 C3414-500-S02K5_P9",
+                  "product_id": "CSAFPID-0012"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sage 4400"
+          }
+        ],
+        "category": "vendor",
+        "name": "Schneider Electric"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Alex Armstrong"
+          ],
+          "organization": "LLNL"
+        }
+      ],
+      "cve": "CVE-2024-37036",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-787: Out-of-bounds Write vulnerability exists that could result in an authentication bypass\r\nwhen sending a malformed POST request and particular configuration parameters are set.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Firmware version C3414-500-S02K5_P9 of SAGE RTU includes a fix for these vulnerabilities and is available for download here:https://www.se.com/us/en/download/document/C3414-500-S02K5_P9_Firmware/",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/us/en/download/document/C3414-500-S02K5_P9_Firmware/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "title": "CVE-2024-37036"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Alex Armstrong"
+          ],
+          "organization": "LLNL"
+        }
+      ],
+      "cve": "CVE-2024-37037",
+      "cwe": {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-22: Improper Limitation of a Pathname to a Restricted Directory (\u2018Path\r\nTraversal\u2019) vulnerability exists that could allow an authenticated user with access to the device\u2019s\r\nweb interface to corrupt files and impact device functionality when sending a crafted HTTP\r\nrequest.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Firmware version C3414-500-S02K5_P9 of SAGE RTU includes a fix for these vulnerabilities and is available for download here:https://www.se.com/us/en/download/document/C3414-500-S02K5_P9_Firmware/",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/us/en/download/document/C3414-500-S02K5_P9_Firmware/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8.1,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "title": "CVE-2024-37037"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Vishal Madipadga"
+          ],
+          "organization": "SNL"
+        }
+      ],
+      "cve": "CVE-2024-37038",
+      "cwe": {
+        "id": "CWE-276",
+        "name": "Incorrect Default Permissions"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-276: Incorrect Default Permissions vulnerability exists that could allow an authenticated\r\nuser with access to the device\u2019s web interface to perform unauthorized file and firmware\r\nuploads when crafting custom web requests.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Firmware version C3414-500-S02K5_P9 of SAGE RTU includes a fix for these vulnerabilities and is available for download here:https://www.se.com/us/en/download/document/C3414-500-S02K5_P9_Firmware/",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/us/en/download/document/C3414-500-S02K5_P9_Firmware/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "HIGH",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "title": "CVE-2024-37038"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Alex Armstrong"
+          ],
+          "organization": "LLNL"
+        }
+      ],
+      "cve": "CVE-2024-37039",
+      "cwe": {
+        "id": "CWE-252",
+        "name": "Unchecked Return Value"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-252: Unchecked Return Value vulnerability exists that could cause denial of service of the\r\ndevice when an attacker sends a specially crafted HTTP request.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Firmware version C3414-500-S02K5_P9 of SAGE RTU includes a fix for these vulnerabilities and is available for download here:https://www.se.com/us/en/download/document/C3414-500-S02K5_P9_Firmware/",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/us/en/download/document/C3414-500-S02K5_P9_Firmware/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "HIGH",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 5.9,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "title": "CVE-2024-37039"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Alex Armstrong"
+          ],
+          "organization": "LLNL"
+        }
+      ],
+      "cve": "CVE-2024-37040",
+      "cwe": {
+        "id": "CWE-120",
+        "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-120: Buffer Copy without Checking Size of Input (\u2018Classic Buffer Overflow\u2019) vulnerability\r\nexists that could allow a user with access to the device\u2019s web interface to cause a fault on the\r\ndevice when sending a malformed HTTP request.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Firmware version C3414-500-S02K5_P9 of SAGE RTU includes a fix for these vulnerabilities and is available for download here:https://www.se.com/us/en/download/document/C3414-500-S02K5_P9_Firmware/",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/us/en/download/document/C3414-500-S02K5_P9_Firmware/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "LOW",
+            "baseScore": 5.4,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "LOW",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "title": "CVE-2024-37040"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Vishal Madipadga"
+          ],
+          "organization": "SNL"
+        }
+      ],
+      "cve": "CVE-2024-5560",
+      "cwe": {
+        "id": "CWE-125",
+        "name": "Out-of-bounds Read"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-125: Out-of-bounds Read vulnerability exists that could cause denial of service of the\r\ndevice\u2019s web interface when an attacker sends a specially crafted HTTP request.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Firmware version C3414-500-S02K5_P9 of SAGE RTU includes a fix for these vulnerabilities and is available for download here:https://www.se.com/us/en/download/document/C3414-500-S02K5_P9_Firmware/",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/us/en/download/document/C3414-500-S02K5_P9_Firmware/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "LOW",
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 5.3,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "temporalScore": 5.3,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "title": "CVE-2024-5560"
+    }
+  ]
+}
