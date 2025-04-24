@@ -1,0 +1,3064 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "names": [
+          "Dong Yang"
+        ],
+        "organization": "Dingxiang Dongjian Security Lab",
+        "summary": "reporting these vulnerabilities to Schneider Electric."
+      },
+      {
+        "names": [
+          "Gao Jian"
+        ],
+        "organization": "ns focus",
+        "summary": "reporting these vulnerabilities to Schneider Electric."
+      },
+      {
+        "summary": "reporting these vulnerabilities to Schneider Electric.",
+        "organization": "Kaspersky",
+        "names": [
+          "Pavel Nesterov",
+          "Artem Zinenko"
+        ]
+      },
+      {
+        "summary": "reporting these vulnerabilities to Schneider Electric.",
+        "organization": "Cisco Talos",
+        "names": [
+          "Jared Rittle"
+        ]
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "We strongly recommend the following industry cybersecurity best practices.\n\nhttps://www.se.com/us/en/download/document/7EN52-0390/\n* Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.\n* Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.\n* Place all controllers in locked cabinets and never leave them in the “Program” mode.\n* Never connect programming software to any network other than the network intended for that device.\n* Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc. before use in the terminals or any node connected to these networks.\n* Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.\n* Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the Internet.\n* When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.\nFor more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document. \n",
+        "title": "General Security Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "This document provides an overview of the identified vulnerability or vulnerabilities and actions required to mitigate. For more details and assistance on how to protect your installation, contact your local Schneider Electric representative or Schneider Electric Industrial Cybersecurity Services: https://www.se.com/ww/en/work/solutions/cybersecurity/. These organizations will be fully aware of this situation and can support you through the process.\nFor further information related to cybersecurity in Schneider Electric’s products, visit the company’s cybersecurity support portal page: https://www.se.com/ww/en/work/support/cybersecurity/overview.jsp",
+        "title": "For More Information"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "THIS NOTIFICATION DOCUMENT, THE INFORMATION CONTAINED HEREIN, AND ANY MATERIALS LINKED FROM IT (COLLECTIVELY, THIS “NOTIFICATION”) ARE INTENDED TO HELP PROVIDE AN OVERVIEW OF THE IDENTIFIED SITUATION AND SUGGESTED MITIGATION ACTIONS, REMEDIATION, FIX, AND/OR GENERAL SECURITY RECOMMENDATIONS AND IS PROVIDED ON AN “AS-IS” BASIS WITHOUT WARRANTY OR GUARANTEE OF ANY KIND.  SCHNEIDER ELECTRIC DISCLAIMS ALL WARRANTIES RELATING TO THIS NOTIFICATION, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. SCHNEIDER ELECTRIC MAKES NO WARRANTY THAT THE NOTIFICATION WILL RESOLVE THE IDENTIFIED SITUATION. IN NO EVENT SHALL SCHNEIDER ELECTRIC BE LIABLE FOR ANY DAMAGES OR LOSSES WHATSOEVER IN CONNECTION WITH THIS NOTIFICATION, INCLUDING DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, LOSS OF BUSINESS PROFITS OR SPECIAL DAMAGES, EVEN IF SCHNEIDER ELECTRIC HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. YOUR USE OF THIS NOTIFICATION IS AT YOUR OWN RISK, AND YOU ARE SOLELY LIABLE FOR ANY DAMAGES TO YOUR SYSTEMS OR ASSETS OR OTHER LOSSES THAT MAY RESULT FROM YOUR USE OF THIS NOTIFICATION. SCHNEIDER ELECTRIC RESERVES THE RIGHT TO UPDATE OR CHANGE THIS NOTIFICATION AT ANY TIME AND IN ITS SOLE DISCRETION",
+        "title": "LEGAL DISCLAIMER"
+      },
+      {
+        "category": "general",
+        "text": "Schneider’s purpose is to create Impact by empowering all to make the most of our energy and resources, bridging progress and\r\nsustainability for all. We call this Life Is On.\n\nOur mission is to be the trusted partner in Sustainability and Efficiency.\n\nWe are a global industrial technology leader bringing world-leading expertise in electrification, automation and digitization to smart\r\nindustries, resilient infrastructure, future-proof data centers, intelligent buildings, and intuitive homes. Anchored by our deep\r\ndomain expertise, we provide integrated end-to-end lifecycle AI enabled Industrial IoT solutions with connected products, automation,\r\nsoftware and services, delivering digital twins to enable profitable growth for our customers.\n\nWe are a people company with an ecosystem of 150,000 colleagues and more than a million partners operating in over 100 countries\r\nto ensure proximity to our customers and stakeholders. We embrace diversity and inclusion in everything we do, guided by our\r\nmeaningful purpose of a sustainable future for all. \n\n www.se.com",
+        "title": "About Schneider Electric"
+      },
+      {
+        "category": "summary",
+        "text": "Schneider Electric is aware of multiple vulnerabilities in its Modicon Controller products.\nThe Modicon Programmable Automation controllers are used for complex networked communication, display and control applications\nFailure to apply the mitigations or remediations provided below may risk execution of unsolicited command on the PLC which could result in a loss of availability of the controller\nFebruary 2025 Update: Correction of vulnerabilities impacting Quantum Safety processor.",
+        "title": "Overview"
+      },
+      {
+        "category": "details",
+        "text": "BMEP584040\nhttps://www.se.com/ww/en/download/document/M580_BMEP584040_SV3.10/\nBMEH584040 and C\nhttps://www.se.com/ww/en/download/document/M580_BMEH584040_SV3.10/\nBMEP586040 and C\nhttps://www.se.com/ww/en/download/document/M580_BMEP586040_SV3.10/\nBMEH586040 and C\nhttps://www.se.com/ww/en/download/document/M580_BMEH586040_SV3.10/\nBMEP581020 and H\nhttps://www.se.com/ww/en/download/document/M580_BMEP581020_SV3.10/\nBMEP582020 and H\nhttps://www.se.com/ww/en/download/document/M580_BMEP582020_SV3.10/\nBMEP582040 and H\nhttps://www.se.com/ww/en/download/document/M580_BMEP582040_SV3.10/\nBMEP583020\nhttps://www.se.com/ww/en/download/document/M580_BMEP583020_SV3.10/\nBMEP583040\nhttps://www.se.com/ww/en/download/document/M580_BMEP583040_SV3.10/\nBMEP584020\nhttps://www.se.com/ww/en/download/document/M580_BMEP584020_SV3.10/\nBMEP585040 and C\nhttps://www.se.com/ww/en/download/document/M580_BMEP585040_SV3.10/\nBMEH582040 and C\nhttps://www.se.com/ww/en/download/document/M580_BMEH582040_SV3.10/\nBMEP584040S\nhttps://www.se.com/ww/en/download/document/M580_BMEP584040S_SV3.10/\nBMEH584040S\nhttps://www.se.com/ww/en/download/document/M580_BMEH584040S_SV3.10/\nBMEH586040S\nhttps://www.se.com/ww/en/download/document/M580_BMEH586040S_SV3.10/\nBMEP582040S\nhttps://www.se.com/ww/en/download/document/M580_BMEP582040S_SV3.10/",
+        "title": "M580 V3.10 Firmware Download Links"
+      },
+      {
+        "category": "details",
+        "text": "BMXP3420302 and CL and H\nhttps://www.schneider-electric.com/en/download/document/BMXP3420302_Firmwares/\nBMXP342020 and H\nhttps://www.schneider-electric.com/en/download/document/BMXP342020_Firmwares/\nBMXP342000\nhttps://www.schneider-electric.com/en/download/document/BMXP342000_Firmwares/\nBMXP341000 and H\nhttps://www.schneider-electric.com/en/download/document/BMXP341000_Firmwares/\nBMXP3420102 and CL\nhttps://www.schneider-electric.com/en/download/document/BMXP3420102_Firmwares/\nBMXP3420302\nhttps://www.schneider-electric.com/en/download/document/BMXP3420302_Firmwares/",
+        "title": "M340 V3.30 Firmware Download Links"
+      },
+      {
+        "category": "details",
+        "text": "BMKC8020301\nhttps://www.se.com/ww/en/product-range/62396-modicon-mc80/#software-and-firmware",
+        "title": "MC80 v1.80 Firmware Download Links"
+      },
+      {
+        "category": "details",
+        "text": "TSXP57104M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXP57154M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXP571634M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXP57204M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXP572634M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXP57254M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXP57304M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXP573634M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXP57354M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXP574634M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXP57454M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXP575634M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXP57554M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXP576634M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXH5724M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.\nTSXH5744M [C]\nPlease contact your Schneider Electric customer support to get Premium V3.20 firmware.",
+        "title": "Premium V3.20 firmware Download Links"
+      },
+      {
+        "category": "details",
+        "text": "140CPU65150 [C]\n140CPU65160 [C]\nhttps://www.schneider-electric.com/en/download/document/Quantum_140CPU651X0_SV3.60\n140CPU65260 [C]\nhttps://www.schneider-electric.com/en/download/document/Quantum_140CPU65260_SV3.60\n140CPU67261 [C]\nhttps://www.schneider-electric.com/en/download/document/Quantum_140CPU67261_SV3.60\n140CPU67060 [C]\nhttps://www.schneider-electric.com/en/download/document/Quantum_140CPU67060_SV3.60\n140CPU67160 [C]\nhttps://www.schneider-electric.com/en/download/document/Quantum_140CPU67160_SV3.60\n140CPU67261 [C]\nhttps://www.schneider-electric.com/en/download/document/Quantum_140CPU67261_SV3.60\n140CPU67260 [C]\nhttps://www.schneider-electric.com/en/download/document/Quantum_140CPU67260_SV3.60\n140CPU65860 [C]\nhttps://www.schneider-electric.com/en/download/document/Quantum_140CPU65860_SV3.60\n140CPU67861 [C]\nhttps://www.schneider-electric.com/en/download/document/Quantum_140CPU67861_SV3.60\n140CPU65160S\nPlease contact your Schneider Electric customer support to get Quantum V3.60 firmware\n140CPU67160S\nPlease contact your Schneider Electric customer support to get Quantum V3.60 firmware",
+        "title": "Quantum V3.60 firmware"
+      },
+      {
+        "category": "details",
+        "text": "PLC Simulator for EcoStruxure™ Control Expert \nSchneider Electric has made a fix available via a free download.\nEcoStruxure™ Control Expert v15.1\nhttps://www.se.com/ww/en/product-range/548-ecostruxure-control-expert-unity-pro/#software\u0002and-firmware",
+        "title": "PLC Simulator for EcoStruxure™ Control Expert"
+      },
+      {
+        "category": "general",
+        "text": "Ethernet Programmable Automation Controller for industrial process and infrastructure\nProduct Category - All Categories\nLearn more about Schneider Electric’s product categories here: www.schneider-electric.us/en/all-products\nHow to determine if you are affected \nAffected products listed in this security notification connected to an Ethernet network.",
+        "title": "Product Information"
+      },
+      {
+        "category": "details",
+        "text": "171CBU98090\nhttps://www.se.com/ww/en/download/document/Momentum_FW_update/",
+        "title": "Modicon Momentum CPU SV2.6 Firmware"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "other",
+        "text": "This CISA CSAF advisory was converted from Schneider Electric CPCERT's CSAF advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Commercial Facilities, Critical Manufacturing, Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "France",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "Modicon Controllers - SEVD-2019-134-11_v7 CSAF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2019-134-11&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2019-134-11.json"
+      },
+      {
+        "category": "self",
+        "summary": "Modicon Controllers - SEVD-2019-134-11_v7 PDF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2019-134-11&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2019-134-11_Modicon_Controllers_Security_Notification.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Cybersecurity Best Practices",
+        "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-114-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-114-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-114-01 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-114-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Schneider Electric Modicon Controllers",
+    "tracking": {
+      "current_release_date": "2025-02-11T06:00:00.000000Z",
+      "generator": {
+        "date": "2025-04-24T21:48:43.329Z",
+        "engine": {
+          "name": "Secvisogram",
+          "version": "2.5.24"
+        }
+      },
+      "id": "ICSA-25-114-01",
+      "initial_release_date": "2019-05-14T08:31:22.000000Z",
+      "revision_history": [
+        {
+          "date": "2019-05-14T08:31:22.000000Z",
+          "number": "1.0.0",
+          "summary": "Original Release"
+        },
+        {
+          "date": "2019-07-09T08:31:22.000000Z",
+          "number": "1.1.0",
+          "summary": "Updated to include links to M580 V2.90 Firmware and Control Expert Hot Fix V14.0"
+        },
+        {
+          "date": "2019-07-12T08:31:22.000000Z",
+          "number": "1.2.0",
+          "summary": "Updated mitigations for CVE-2019-6808"
+        },
+        {
+          "date": "2019-07-24T08:31:22.000000Z",
+          "number": "1.3.0",
+          "summary": "Updated links to M580 V2.90 Firmware"
+        },
+        {
+          "date": "2019-08-13T08:31:22.000000Z",
+          "number": "2.0.0",
+          "summary": "Updated:\r\no CVE-2018-7846: added fix available for M340 V3.10\r\no CVE-2018-7849: added fix available for M340 V3.10\r\no CVE-2018-7848: added fix available for M340 V3.10\r\no CVE-2018-7842: added fix available for M340 V3.10\r\no CVE-2018-7847: added fix available for M340 V3.10\r\no CVE-2018-7850: added fix available for M340 V3.10\r\no CVE-2018-7854: added fix available for M340 V3.10\r\no CVE-2018-7852: modified to change M580 release which was erroneous (2.80 instead of 2.90)\r\no CVE-2018-7855: added fix available for M340 V3.10\r\no CVE-2019-6807: added fix available for M340 V3.10\r\no CVE-2019-6808: added fix available for M340 V3.10\r\no CVE-2018-7843: modified to change M340 release which was erroneous (3.01 instead of 3.10)\r\no CVE-2018-7856: added fix on M340 V3.10 (available earlier than expected)\r\nAdded 4 new CVEs:\r\no CVE-2019-6830\r\no CVE-2019-6828\r\no CVE-2019-6829\r\no CVE-2019-6809"
+        },
+        {
+          "date": "2019-12-10T08:31:22.000000Z",
+          "number": "3.0.0",
+          "summary": "Updated:\r\no CVE-2019-6806: Corrected remediation information for Modicon M340\r\no CVE-2018-7845: Fix for Premium & Quantum\r\no CVE-2018-7843: Fix for Premium & Quantum\r\no CVE-2019-6809: Fix for Premium & Quantum\r\no CVE-2019-6807: Fix for Premium & Quantum\r\no CVE-2018-7857: Fix for Premium & Quantum\r\no CVE-2018-7856: Fix for Premium & Quantum\r\no CVE-2018-7852: Fix for Premium & Quantum\r\no CVE-2019-6828: Fix for Premium & Quantum\r\no Update of download links for latest versions of M580 / M340 & Quantum, plus customer support information for Premium."
+        },
+        {
+          "date": "2020-05-12T08:31:22.000000Z",
+          "number": "4.0.0",
+          "summary": "Updated fix version information for CVE-2018-7857"
+        },
+        {
+          "date": "2020-08-11T08:31:22.000000Z",
+          "number": "4.1.0",
+          "summary": "Updated fix version information for CVE-2018-7857:\r\no Additional fixes available for M580 v3.10\r\no Quantum & Premium previous fix is not enough to correct the CVE and requires the additional mitigations proposed"
+        },
+        {
+          "date": "2020-10-12T08:31:22.000000Z",
+          "number": "5.0.0",
+          "summary": "Additional required remediation steps added for M580 and M340 applicable to the following CVEs:\r\n• CVE-2018-7846\r\n• CVE-2018-7849\r\n• CVE-2018-7843\r\n• CVE-2018-7848\r\n• CVE-2018-7842\r\n• CVE-2018-7847\r\n• CVE-2018-7850\r\n• CVE-2018-7845\r\n• CVE-2018-7852\r\n• CVE-2018-7853\r\n• CVE-2018-7854\r\n• CVE-2018-7855\r\n• CVE-2018-7856\r\n• CVE-2018-7857\r\n• CVE-2019-6807\r\n• CVE-2019-6808\r\n• CVE-2019-6830\r\n• CVE-2019-6828\r\n• CVE-2019-6829\r\n• CVE-2019-6809"
+        },
+        {
+          "date": "2020-12-08T08:31:22.000000Z",
+          "number": "6.0.0",
+          "summary": "A fix for additional attack scenario is available on M340 V3.30 for\r\nCVE-2018-7857"
+        },
+        {
+          "date": "2022-09-13T08:31:22.000000Z",
+          "number": "7.0.0",
+          "summary": "Modicon MC80 and PLC Simulator for EcoStruxure™ Control Expert were added as impacted product of CVE-2018-7857 (page 7) and CVE-2019-6807 (page 8) and the remediation is provided on page 10."
+        },
+        {
+          "date": "2023-01-10T06:30:00.000000Z",
+          "number": "8.0.0",
+          "summary": "Modicon M340 and M580 latest firmware versions are affected by CVE-2018-7855 and additional mitigations were added in the mitigation section."
+        },
+        {
+          "date": "2023-03-14T06:30:00.000000Z",
+          "number": "9.0.0",
+          "summary": "A remediation is available for Modicon Momentum Unity M1E Processor part numbers 171CBU* for CVE-2018-7857 and CVE-2019-6807"
+        },
+        {
+          "date": "2024-02-13T00:00:00.000000Z",
+          "number": "10.0.0",
+          "summary": "A remediation is available for Modicon M340 and M580 for CVE-2018-7855. Updated products affected version numbers."
+        },
+        {
+          "date": "2024-07-09T00:00:00.000000Z",
+          "number": "11.0.0",
+          "summary": "Modicon MC80 and Momentum M1E PLCs were added as impacted products of CVE-2018-7855. Mitigations are available for Modicon MC80 and Momentum M1E PLCs for CVE-2018-7855."
+        },
+        {
+          "date": "2025-02-11T06:00:00.000000Z",
+          "number": "12.0.0",
+          "summary": "Correction of CVE list impacting Quantum Safety processor."
+        }
+      ],
+      "status": "final",
+      "version": "12.0.0"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<2.90",
+                "product": {
+                  "name": "Schneider Electric Modicon M580 <2.90",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M580"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "3.10",
+                "product": {
+                  "name": "Schneider Electric Modicon M580 3.10",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M580"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<2.80",
+                "product": {
+                  "name": "Schneider Electric Modicon M580 <2.80",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M580"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">2.80",
+                "product": {
+                  "name": "Schneider Electric Modicon M580 >2.80",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M580"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<3.10",
+                "product": {
+                  "name": "Schneider Electric Modicon M340 <3.10",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M340"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "3.20",
+                "product": {
+                  "name": "Schneider Electric Modicon M340 3.20",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M340"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric Modicon M340 all",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M340"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric Modicon M580 all",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M580"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<1.80",
+                "product": {
+                  "name": "Schneider Electric Modicon MC80 BMKC80* <1.80",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon MC80 BMKC80*"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "1.80",
+                "product": {
+                  "name": "Schneider Electric Modicon MC80 BMKC80* 1.80",
+                  "product_id": "CSAFPID-0010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon MC80 BMKC80*"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric Modicon Momentum CPU (part numbers 171CBU*) all versions",
+                  "product_id": "CSAFPID-0011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Momentum CPU (part numbers 171CBU*)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<3.60",
+                "product": {
+                  "name": "Schneider Electric Modicon Quantum <3.60",
+                  "product_id": "CSAFPID-0012"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Quantum"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "3.60",
+                "product": {
+                  "name": "Schneider Electric Modicon Quantum 3.60",
+                  "product_id": "CSAFPID-0013"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Quantum"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric Modicon Quantum all",
+                  "product_id": "CSAFPID-0014"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Quantum"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric Modicon Premium all",
+                  "product_id": "CSAFPID-0015"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Premium"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<3.60",
+                "product": {
+                  "name": "Schneider Electric Modicon Premium <3.60",
+                  "product_id": "CSAFPID-0016"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Premium"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "3.60",
+                "product": {
+                  "name": "Schneider Electric Modicon Premium 3.60",
+                  "product_id": "CSAFPID-0017"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Premium"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<15.1",
+                "product": {
+                  "name": "Schneider Electric PLC Simulator for EcoStruxure™ Control Expert <15.1",
+                  "product_id": "CSAFPID-0018"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PLC Simulator for EcoStruxure™ Control Expert"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "15.1",
+                "product": {
+                  "name": "Schneider Electric PLC Simulator for EcoStruxure™ Control Expert 15.1",
+                  "product_id": "CSAFPID-0019"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PLC Simulator for EcoStruxure™ Control Expert"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<3.20",
+                "product": {
+                  "name": "Schneider Electric Modicon Premium <3.20",
+                  "product_id": "CSAFPID-0020"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Premium"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "3.20",
+                "product": {
+                  "name": "Schneider Electric Modicon Premium 3.20",
+                  "product_id": "CSAFPID-0021"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Premium"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<SV2.6",
+                "product": {
+                  "name": "Schneider Electric Modicon Premium Modicon Momentum Unity M1E Processor (part numbers 171CBU*) <SV2.6",
+                  "product_id": "CSAFPID-0022"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Momentum Unity M1E Processor (part numbers 171CBU*)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "SV2.6",
+                "product": {
+                  "name": "Schneider Electric Modicon Premium Modicon Momentum Unity M1E Processor (part numbers 171CBU*) Modicon Momentum Unity M1E Processor (part numbers 171CBU*) SV2.6",
+                  "product_id": "CSAFPID-0023"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Momentum Unity M1E Processor (part numbers 171CBU*)SV2.6"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<sv4.20",
+                "product": {
+                  "name": "Schneider Electric Modicon M580 versions prior to sv4.20",
+                  "product_id": "CSAFPID-0024"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M580"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "sv4.20",
+                "product": {
+                  "name": "Schneider Electric Modicon M580 versions prior to sv4.20",
+                  "product_id": "CSAFPID-0025"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M580"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<SV3.60",
+                "product": {
+                  "name": "Schneider Electric Modicon M340 versions prior to SV3.60",
+                  "product_id": "CSAFPID-0026"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M340"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "SV3.60",
+                "product": {
+                  "name": "Schneider Electric Modicon M340 SV3.60",
+                  "product_id": "CSAFPID-0027"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon M340"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Modicon MC80 all versions",
+                  "product_id": "CSAFPID-0028"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon MC80"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Modicon Momentum M1E all versions",
+                  "product_id": "CSAFPID-0029"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Momentum M1E"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Modicon Quantum Safety all versions",
+                  "product_id": "CSAFPID-0030"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Modicon Quantum Safety"
+          }
+        ],
+        "category": "vendor",
+        "name": "Schneider Electric"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Jared Rittle"
+          ],
+          "organization": "Cisco Talos"
+        },
+        {
+          "names": [
+            "Pavel Nesterov",
+            "Artem Zinenko"
+          ],
+          "organization": "Kaspersky ICS CERT"
+        }
+      ],
+      "cve": "CVE-2018-7846",
+      "cwe": {
+        "id": "CWE-501",
+        "name": "Trust Boundary Violation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-501: Trust Boundary Violation vulnerability on connection to the controller exists which could cause unauthorized access by conducting a brute force attack on Modbus protocol to the controller.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0006"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0005",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0030"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "To mitigate the risks associated to Modbus weaknesses, users should immediately:•Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manuals: o    “Momentum for EcoStruxure™ Control Expert - 171 CBU 78090, 171 CBU 98090, 171 CBU 98091 Processors” manual in the chapter “Modbus Messaging and Access Control” https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124•Setup a secure communication according to the following guideline “Modicon Controllers Platform Cyber Security Reference Manual,” in chapter “Setup secured communications”: https://www.se.com/ww/en/download/document/EIO0000001999/•Setup a VPN between the Modicon PLC controllers and the engineering workstation containing EcoStruxure Control Expert or Process Expert. Note: this functionality may be provided by an external IPSEC compatible firewall located close to the controller.",
+          "product_ids": [
+            "CSAFPID-0011"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric's Modicon Quantum and Quantum Safety controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 or M580 Safety ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. \n\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately: \n\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n\n• Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”: https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/33002467K01000/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "LOW",
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0005",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0030"
+          ]
+        }
+      ],
+      "title": "CVE-2018-7846"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Jared Rittle"
+          ],
+          "organization": "Cisco Talos"
+        },
+        {
+          "names": [
+            "Pavel Nesterov",
+            "Artem Zinenko"
+          ],
+          "organization": "Kaspersky ICS CERT"
+        }
+      ],
+      "cve": "CVE-2018-7849",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A  CWE-248: Uncaught Exceptionvulnerability exists which could cause a possible Denial of Service due to improper data integrity check when sending files to the controller over Modbus. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0006"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0005",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0030"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network \nModules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”: https://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0015"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric's Modicon Quantum and Quantum Safety controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 or M580 Safety ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. \n\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately: \n\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n\n• Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”: https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/33002467K01000/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0005",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0030"
+          ]
+        }
+      ],
+      "title": "CVE-2018-7849"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2018-7843",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A  CWE-248: Uncaught Exceptionvulnerability exists which could cause denial of service when reading memory blocks with an invalid data size or with an invalid data offset in the controller over Modbus.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0021",
+          "CSAFPID-0013"
+        ],
+        "known_affected": [
+          "CSAFPID-0003",
+          "CSAFPID-0005",
+          "CSAFPID-0020",
+          "CSAFPID-0012"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V2.80, refer to the Remediation Steps & Download Links note.\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\nSTEP 1: Update software and firmware.\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\nSTEP 2: Update projects in Ecostruxure Control Expert by:\n• Setting up an application password in the project properties\n• Changing the version of the controller firmware to match the new firmware version of the target controller\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\n• Rebuild all current projects\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network Modules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”: https://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0020"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Quantum controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”:https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0012"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0003",
+            "CSAFPID-0005",
+            "CSAFPID-0020",
+            "CSAFPID-0012"
+          ]
+        }
+      ],
+      "title": "CVE-2018-7843"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Jared Rittle"
+          ],
+          "organization": "Cisco Talos"
+        },
+        {
+          "names": [
+            "Pavel Nesterov",
+            "Artem Zinenko"
+          ],
+          "organization": "Kaspersky ICS CERT"
+        }
+      ],
+      "cve": "CVE-2018-7848",
+      "cwe": {
+        "id": "CWE-200",
+        "name": "Exposure of Sensitive Information to an Unauthorized Actor"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-200: Information Exposurevulnerability exists,  which could cause the disclosure of SNMP information when reading files from the controller over Modbus. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0006"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0005",
+          "CSAFPID-0015",
+          "CSAFPID-0014",
+          "CSAFPID-0030"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network Modules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”: https://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0015"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric's Modicon Quantum and Quantum Safety controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 or M580 Safety ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. \n\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately: \n\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n\n• Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”: https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/33002467K01000/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "HIGH",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 5.9,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0005",
+            "CSAFPID-0015",
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ]
+        }
+      ],
+      "title": "CVE-2018-7848"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Jared Rittle"
+          ],
+          "organization": "Cisco Talos"
+        },
+        {
+          "names": [
+            "Pavel Nesterov",
+            "Artem Zinenko"
+          ],
+          "organization": "Kaspersky ICS CERT"
+        }
+      ],
+      "cve": "CVE-2018-7842",
+      "cwe": {
+        "id": "CWE-290",
+        "name": "Authentication Bypass by Spoofing"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-290: Authentication Bypass by Spoofingvulnerability exists which could cause an elevation of privilege by conducting a brute force attack on Modbus parameters sent to the controller. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0006"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0005",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0030"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network Modules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”: https://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0015"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric's Modicon Quantum and Quantum Safety controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 or M580 Safety ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. \n\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately: \n\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n\n• Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”: https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/33002467K01000/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0005",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0030"
+          ]
+        }
+      ],
+      "title": "CVE-2018-7842"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Jared Rittle"
+          ],
+          "organization": "Cisco Talos"
+        },
+        {
+          "names": [
+            "Pavel Nesterov",
+            "Artem Zinenko"
+          ],
+          "organization": "Kaspersky ICS CERT"
+        }
+      ],
+      "cve": "CVE-2018-7847",
+      "cwe": {
+        "id": "CWE-284",
+        "name": "Improper Access Control"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-284: Improper Access Control vulnerability exists which could cause denial of service or potential code execution by overwriting configuration settings of the controller over Modbus.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0006"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0005",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0030"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network Modules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”: https://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0015"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric's Modicon Quantum and Quantum Safety controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 or M580 Safety ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. \n\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately: \n\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n\n• Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”: https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/33002467K01000/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0005",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0030"
+          ]
+        }
+      ],
+      "title": " CVE-2018-7847"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2018-7850",
+      "cwe": {
+        "id": "CWE-807",
+        "name": "Reliance on Untrusted Inputs in a Security Decision"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-807: Reliance on Untrusted Inputs in a Security Decisionvulnerability exists which could cause invalid information displayed in Unity Pro software.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0006"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0005",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0030"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network Modules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”: https://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0015"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric's Modicon Quantum and Quantum Safety controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 or M580 Safety ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. \n\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately: \n\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n\n• Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”: https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/33002467K01000/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0005",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0030"
+          ]
+        }
+      ],
+      "title": "CVE-2018-7850"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2018-7845",
+      "cwe": {
+        "id": "CWE-125",
+        "name": "Out-of-bounds Read"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-125: Out-of-bounds Readvulnerability exists,  which could cause the disclosure of unexpected data from the controller when reading specific memory blocks in the controller over Modbus",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0021",
+          "CSAFPID-0013"
+        ],
+        "known_affected": [
+          "CSAFPID-0003",
+          "CSAFPID-0005",
+          "CSAFPID-0020",
+          "CSAFPID-0012"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon Premium all versions prior to version V3.20 – A fix is available on Modicon Premium V3.20, please contact your Schneider Electric customer support to get the V3.20 firmware.",
+          "product_ids": [
+            "CSAFPID-0020"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon Quantum all versions prior to version V3.60 – A fix is available on Modicon Quantum V3.60, links to fixed version in the Download links notes.",
+          "product_ids": [
+            "CSAFPID-0012"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0003",
+            "CSAFPID-0005",
+            "CSAFPID-0020",
+            "CSAFPID-0012"
+          ]
+        }
+      ],
+      "title": "CVE-2018-7845 "
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2018-7852",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-248: Uncaught Exceptionvulnerability exists which could cause denial o f s  ervice when an invalid private command parameter is sent to the controller over Modbus.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0017",
+          "CSAFPID-0021"
+        ],
+        "known_affected": [
+          "CSAFPID-0003",
+          "CSAFPID-0005",
+          "CSAFPID-0012",
+          "CSAFPID-0016",
+          "CSAFPID-0020",
+          "CSAFPID-0030"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V2.80, refer to the Remediation Steps & Download Links note.\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\nSTEP 1: Update software and firmware.\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\nSTEP 2: Update projects in Ecostruxure Control Expert by:\n• Setting up an application password in the project properties\n• Changing the version of the controller firmware to match the new firmware version of the target controller\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\n• Rebuild all current projects\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network Modules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”: https://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0020"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Quantum controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”:https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0012"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric's Modicon Quantum and Quantum Safety controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 or M580 Safety ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. \n\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately: \n\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n\n• Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”: https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0030"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/33002467K01000/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0003",
+            "CSAFPID-0005",
+            "CSAFPID-0012",
+            "CSAFPID-0016",
+            "CSAFPID-0020",
+            "CSAFPID-0030"
+          ]
+        }
+      ],
+      "title": "CVE-2018-7852"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2018-7853",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-248: Uncaught Exceptionvulnerability exists,  which could cause denial o f s  ervice when  reading invalid physical memory blocks in the controller over Modbus. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002"
+        ],
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2018-7853"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2018-7854",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-248 Uncaught Exceptionvulnerability exists which could cause a denial o f Service when  sending invalid debug parameters to the controller over Modbus.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0006"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0005"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": " CVE-2018-7854 "
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2018-7855",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-248 Uncaught Exceptionvulnerability exists,  which could cause a Denial o f Service when sending invalid breakpoint parameters to the controller over Modbus. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0027",
+          "CSAFPID-0025"
+        ],
+        "known_affected": [
+          "CSAFPID-0024",
+          "CSAFPID-0026",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0028",
+          "CSAFPID-0029",
+          "CSAFPID-0030"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware v4.20. M580 Remediation Steps: Schneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware.• On the engineering workstation, update to EcoStruxure Control Expert v16.0(https://www.se.com/ww/en/product-range/548-ecostruxure-control-expert-unity-pro/-software-and-firmare).• On the Modicon M580 controller, update to firmware SV4.20 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:• Setting up an application password in the project properties• Changing the version of the controller firmware to match the new firmware version of the target controller STEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:• Rebuild all current projects• Transfer them to Modicon controller",
+          "product_ids": [
+            "CSAFPID-0024"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/product-range/62098-modicon-m580-epac/#software-and-firmware"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M340 firmware v3.60. M340 Remediation Steps: Schneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability:STEP 1: Update software and firmware• On the engineering workstation, update to EcoStruxure Control Expert v16.0 or later (https://www.se.com/ww/en/product-range/548-ecostruxure-control-expert-unity-pro/#software-and-firmware).• On the Modicon M340 controller, update to firmware v3.60 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:• Setting up an application password in the project properties• Changing the version of the controller firmware to match the new firmware version of the target controller STEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:• Rebuild all current projects• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0026"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/product-range/1468-modicon-m340/#software-and-firmware"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network Modules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”: https://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0015"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric's Modicon Quantum and Quantum Safety controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 or M580 Safety ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. \n\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately: \n\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n\n• Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”: https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/33002467K01000/"
+        },
+        {
+          "category": "mitigation",
+          "details": "To mitigate the risks associated with CVE-2018-7855, users should immediately apply the following steps:\r\n • Setup an application password in the project properties \r\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP \r\n• Configure the Access Control List following the recommendations of the user manuals: \r\n  o “Modicon MC80 Programmable Logic Controller (PLC) manual” in the chapter “Access Control List (ACL)”: https://www.se.com/ww/en/download/document/EIO0000002071/ \r\n• Setup a secure communication according to the following guideline “Modicon Controller Systems Cybersecurity, User Guide” in chapter “Set Up Encrypted Communication”: \r\nhttps://www.se.com/ww/en/download/document/EIO0000001999/",
+          "product_ids": [
+            "CSAFPID-0028"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/EIO0000002071/"
+        },
+        {
+          "category": "mitigation",
+          "details": "To mitigate the risks associated to Modbus weaknesses, users should immediately: \r\n• Setup an application password in the project properties \r\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP \r\n• Configure the Access Control List following the recommendations of the user manuals: \r\no “Momentum for EcoStruxure™ Control Expert - 171 CBU 78090, 171 CBU 98090, 171 CBU 98091 Processors” manual in the chapter “Modbus Messaging and Access Control” https://download.schneiderelectric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124 \r\n• Setup a secure communication according to the following guideline “Modicon Controller Systems Cybersecurity, User Guide” in chapter “Set Up Encrypted Communication”: https://www.se.com/ww/en/download/document/EIO0000001999/ \r\n• Setup a VPN between the Modicon PLC controllers and the engineering workstation containing EcoStruxure Control Expert or Process Expert. Note: this functionality may be provided by an external IPSEC compatible firewall located close to the controller.",
+          "product_ids": [
+            "CSAFPID-0029"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneiderelectric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0024",
+            "CSAFPID-0026",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030"
+          ]
+        }
+      ],
+      "title": "CVE-2018-7855"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2018-7856",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A  CWE-248: Uncaught Exceptionvulnerability exists which could cause a possible denial of Service when writing invalid memory blocks to the controller over Modbus",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0021",
+          "CSAFPID-0013"
+        ],
+        "known_affected": [
+          "CSAFPID-0003",
+          "CSAFPID-0005",
+          "CSAFPID-0020",
+          "CSAFPID-0012"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon Premium all versions prior to version V3.20 – A fix is available on Modicon Premium V3.20, please contact your Schneider Electric customer support to get the V3.20 firmware.",
+          "product_ids": [
+            "CSAFPID-0020"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon Quantum all versions prior to version V3.60 – A fix is available on Modicon Quantum V3.60, links to fixed version in the Download links notes.",
+          "product_ids": [
+            "CSAFPID-0012"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0003",
+            "CSAFPID-0005",
+            "CSAFPID-0020",
+            "CSAFPID-0012"
+          ]
+        }
+      ],
+      "title": "CVE-2018-7856"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Jared Rittle"
+          ],
+          "organization": "Cisco Talos"
+        },
+        {
+          "names": [
+            "Dong Yang"
+          ],
+          "organization": "Dingxiang Dongjian Security Lab"
+        },
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "NS FOCUS"
+        }
+      ],
+      "cve": "CVE-2018-7857",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A  CWE-248: Uncaught Exceptionvulnerability exists,  which could cause a possible Denial of Service when writing out of bounds variables to the controller over Modbus. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0010",
+          "CSAFPID-0019",
+          "CSAFPID-0023"
+        ],
+        "known_affected": [
+          "CSAFPID-0008",
+          "CSAFPID-0007",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0009",
+          "CSAFPID-0011",
+          "CSAFPID-0018",
+          "CSAFPID-0022",
+          "CSAFPID-0030"
+        ],
+        "recommended": [
+          "CSAFPID-0004",
+          "CSAFPID-0006"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "Modicon M580 all versions – A partial fix is available for this vulnerability on Modicon M580 firmware V2.90 or higher\nFixes for additional attack scenarios are available in V3.10, refer to the Remediation Steps & Download Links section. Users are also encouraged to apply the additional recommendations proposed in the Mitigations section.\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\nSTEP 1: Update software and firmware.\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\nSTEP 2: Update projects in Ecostruxure Control Expert by:\n• Setting up an application password in the project properties\n• Changing the version of the controller firmware to match the new firmware version of the target controller\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\n• Rebuild all current projects\n• Transfer them to Modicon controllers\nTo mitigate the risks associated to Modbus weaknesses, users should immediately:\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP.\nSetup a secure communication according to the following guideline “Modicon Controllers Platform Cyber Security Reference Manual,” in chapter “Setup secured communications”: https://www.se.com/ww/en/download/document/EIO0000001999/\n• Use a BMENOC module and follow the instructions to configure IPSEC feature as described in the guideline “Modicon M580 - BMENOC03.1 Ethernet Communications Module, Installation and Configuration Guide” in the chapter “Configuring IPSEC communications”:\nhttps://www.se.com/ww/en/download/document/HRB62665/",
+          "product_ids": [
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "\n\nModicon M340 all versions – A partial fix is available for this vulnerability on Modicon M340 firmware V3.10 or higher.\no Fixes for additional attack scenarios are available in V3.30, refer to the Remediation Steps & Download Links section. Users are also encouraged to apply the additional recommendations proposed in the Mitigations section.\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability:\nSTEP 1: Update software and firmware\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\n• On the Modicon M340 controller, update to firmware V3.30 or above, download link available below.\nSTEP 2: Update projects in Ecostruxure Control Expert by:\n• Setting up an application password in the project properties\n• Changing the version of the controller firmware to match the new firmware version of the target controller\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\n• Rebuild all current projects\n• Transfer them to Modicon controllers\nTo mitigate the risks associated to Modbus weaknesses, users should immediately:\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n• Configure the Access Control List following the recommendations of the user manual “Modicon M340 for Ethernet Communications Modules and Processors User Manual” in chapter “Messaging Configuration Parameters”:\nhttps://www.se.com/ww/en/download/document/31007131K01000/",
+          "product_ids": [
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric's Modicon Quantum and Quantum Safety controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 or M580 Safety ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. \n\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately: \n\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n\n• Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”: https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/33002467K01000/"
+        },
+        {
+          "category": "workaround",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information.\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately:\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n• Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network\nModules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”:\nhttps://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0015"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon MC80 firmware version prior to v1.80 – A fix is available for this vulnerability on Modicon MC80 (part numbers BMKC80*), refer to the Remediation Steps & Download Links section.\nModicon MC80 Remediation Steps\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability:\nSTEP 1: Update software and firmware.\n• On the engineering workstation, update to EcoStruxure Control Expert V15.1 (available below).\n• On the Modicon MC80 controller, update to firmware V1.80 or above, download link available below.\nSTEP 2: Update projects in Ecostruxure Control Expert by:\n• Setting up an application password in the project properties\n• Changing the version of the controller firmware to match the new firmware version of the target controller\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\n• Rebuild all current projects\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0009"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Modicon Momentum CPU (part numbers 171CBU*) all versions – See recommendations in the Mitigations section\nTo mitigate the risks associated to Modbus weaknesses, users should immediately:\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n• Configure the Access Control List following the recommendations of the user manuals:\no “Momentum for EcoStruxure™ Control Expert - 171 CBU 78090, 171 CBU 98090, 171 CBU 98091 Processors” manual in the chapter “Modbus Messaging and Access Control” https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124\n• Setup a secure communication according to the following guideline “Modicon Controllers Platform Cyber Security Reference Manual,” in chapter “Setup secured communications”: https://www.se.com/ww/en/download/document/EIO0000001999/\n• Setup a VPN between the Modicon PLC controllers and the engineering workstation containing EcoStruxure Control Expert or Process Expert. Note: this functionality may be provided by an external IPSEC compatible firewall located close to the controller.",
+          "product_ids": [
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "PLC Simulator for EcoStruxure™ Control Expert prior to v15.1 – A fix is available for this vulnerability on PLC Simulator, refer to the Remediation Steps & Download Links section.\nPLC Simulator for EcoStruxure™ Control Expert\nSchneider Electric has made a fix available via a free download.\nEcoStruxure™ Control Expert v15.1 https://www.se.com/ww/en/download/document/EcoStruxureControlExpert_V15.1/",
+          "product_ids": [
+            "CSAFPID-0018"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Schneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability:\nSTEP 1: Update software and firmware.\n• On the engineering workstation, update to EcoStruxure Control Expert V15.1 or later (available below).\n• On the Modicon Momentum CPU, update to firmware V2.6, download link available below.\nSTEP 2: Update projects in Ecostruxure Control Expert by:\n• Setting up an application password in the project properties\n• Changing the version of the controller firmware to match the new firmware version of the target controller\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\n• Rebuild all current projects\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0022"
+          ],
+          "url": "https://www.se.com/ww/en/download/document/Momentum_FW_update/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0008",
+            "CSAFPID-0007",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0009",
+            "CSAFPID-0011",
+            "CSAFPID-0018",
+            "CSAFPID-0030"
+          ]
+        }
+      ],
+      "title": "CVE-2018-7857"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Jared Rittle"
+          ],
+          "organization": "Cisco Talos"
+        },
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2019-6806",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-200: Information Exposurevulnerability exists which could cause the disclosure of SNMP information when reading variables in the controller using Modbus. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0008",
+          "CSAFPID-0007",
+          "CSAFPID-0015",
+          "CSAFPID-0014",
+          "CSAFPID-0030"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric's Modicon Quantum and Quantum Safety controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 or M580 Safety ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. \n\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately: \n\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n\n• Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”: https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/33002467K01000/"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric is establishing a remediation plan for all future versions of Modicon M580 controllers that will include a fix for this vulnerability. We will update this document when the remediation is available. Until then, customers should immediately apply the following mitigations to reduce the risk of exploit: •Setup an application password in the project properties•Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manuals: o    “Modicon M580, Hardware, Reference Manual”: https://www.se.com/ww/en/download/document/EIO0000001578/•Setup a secure communication according to the following guideline “Modicon Controllers Platform Cyber Security Reference Manual,” in chapter “Setup secured communications”: https://www.se.com/ww/en/download/document/EIO0000001999/o    use a BMENOC module and follow the instructions to configure IPSEC feature as described in the guideline “Modicon M580 - BMENOC03.1 Ethernet Communications Schneider Electric Security Notification Module, Installation and Configuration Guide” in the chapter “Configuring IPSEC communications”: https://www.se.com/ww/en/download/document/HRB62665/OR•Use a BMENUA0100 module and follow the instructions to configure IPSEC feature as described in the chapter “Configuring the BMENUA0100 Cybersecurity Settings”: https://www.se.com/ww/en/download/document/PHA83350OR•Consider use of external firewall devices such as EAGLE40-07 from Belden to establish VPN connections for M340 & M580 architectures. For more details refer to the chapter “How to protect M580 and M340 architectures with EAGLE40 using VPN”: https://www.se.com/ww/en/download/document/EIO0000001999/•Ensure the M580 CPU is running with the memory protection activated by configuring the input bit to a physical input, for more details refer to the following guideline “Modicon Controllers Platform Cyber Security Reference Manual”, “CPU Memory Protection section”:  https://www.schneider-electric.com/en/download/document/EIO0000001999/o    NOTE: The CPU memory protection cannot be configured with M580 Hot Standby CPUs. In such cases, use IPsec encrypted communication.",
+          "product_ids": [
+            "CSAFPID-0008"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric is establishing a remediation plan for all future versions of M340 Controllers that will include a fix for this vulnerability. We will update this document when the remediation is available. Until then, customers should immediately apply the following mitigations to reduce the risk of exploit: •Setup an application password in the project properties•Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manuals: o    “Modicon M340 for Ethernet Communications Modules and Processors User Manual” in chapter “Messaging Configuration Parameters”: https://www.se.com/ww/en/download/document/31007131K01000/•Setup a secure communication according to the following guideline “Modicon Controllers Platform Cyber Security Reference Manual,” in chapter “Setup secured communications”: https://www.se.com/ww/en/download/document/EIO0000001999/•Consider use of external firewall devices such as EAGLE40-07 from Belden to establish VPN connections for M340 & M580 architectures. For more details refer to the chapter “How to protect M580 and M340 architectures with EAGLE40 using VPN”: https://www.se.com/ww/en/download/document/EIO0000001999/",
+          "product_ids": [
+            "CSAFPID-0007"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information.\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately:\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n• Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network Modules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”:\nhttps://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0008",
+            "CSAFPID-0007",
+            "CSAFPID-0015",
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ]
+        }
+      ],
+      "title": "CVE-2019-6806"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Jared Rittle"
+          ],
+          "organization": "Cisco Talos"
+        },
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2019-6807",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-248: Uncaught Exceptionvulnerability exists which could cause a possible denial of service when writing sensitive application variables to the controller over Modbus. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0017",
+          "CSAFPID-0021",
+          "CSAFPID-0023"
+        ],
+        "known_affected": [
+          "CSAFPID-0003",
+          "CSAFPID-0005",
+          "CSAFPID-0012",
+          "CSAFPID-0016",
+          "CSAFPID-0020",
+          "CSAFPID-0022"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V2.80, refer to the Remediation Steps & Download Links note.\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\nSTEP 1: Update software and firmware.\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\nSTEP 2: Update projects in Ecostruxure Control Expert by:\n• Setting up an application password in the project properties\n• Changing the version of the controller firmware to match the new firmware version of the target controller\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\n• Rebuild all current projects\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network Modules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”: https://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0020"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Quantum controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”:https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0012"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Schneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability:\nSTEP 1: Update software and firmware.\n• On the engineering workstation, update to EcoStruxure Control Expert V15.1 or later (available below).\n• On the Modicon Momentum CPU, update to firmware V2.6, download link available below.\nSTEP 2: Update projects in Ecostruxure Control Expert by:\n• Setting up an application password in the project properties\n• Changing the version of the controller firmware to match the new firmware version of the target controller\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\n• Rebuild all current projects\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0022"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0003",
+            "CSAFPID-0005",
+            "CSAFPID-0012",
+            "CSAFPID-0016",
+            "CSAFPID-0020"
+          ]
+        }
+      ],
+      "title": "CVE-2019-6807"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2019-6808",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-284: Improper Access Control vulnerability exists,  which could cause a remote code execution by overwriting configuration settings of the controller over Modbus",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0006"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0005",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0030"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network Modules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”: https://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0015"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric's Modicon Quantum and Quantum Safety controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 or M580 Safety ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. \n\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately: \n\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n\n• Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”: https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/33002467K01000/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 10,
+            "baseSeverity": "CRITICAL",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "NONE",
+            "scope": "CHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0005",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0030"
+          ]
+        }
+      ],
+      "title": "CVE-2019-6808"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2018-7844",
+      "cwe": {
+        "id": "CWE-200",
+        "name": "Exposure of Sensitive Information to an Unauthorized Actor"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-284: Improper Access Control vulnerability exists,  which could cause a remote code execution by overwriting configuration settings of the controller over Modbus",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0008",
+          "CSAFPID-0007",
+          "CSAFPID-0015",
+          "CSAFPID-0014",
+          "CSAFPID-0030"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric's Modicon Quantum and Quantum Safety controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 or M580 Safety ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. \n\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately: \n\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n\n• Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”: https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/33002467K01000/"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric is establishing a remediation plan for all future versions of Modicon M580 controllers that will include a fix for this vulnerability. We will update this document when the remediation is available. Until then, customers should immediately apply the following mitigations to reduce the risk of exploit: •Setup an application password in the project properties•Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manuals: o    “Modicon M580, Hardware, Reference Manual”: https://www.se.com/ww/en/download/document/EIO0000001578/•Setup a secure communication according to the following guideline “Modicon Controllers Platform Cyber Security Reference Manual,” in chapter “Setup secured communications”: https://www.se.com/ww/en/download/document/EIO0000001999/o    use a BMENOC module and follow the instructions to configure IPSEC feature as described in the guideline “Modicon M580 - BMENOC03.1 Ethernet Communications Schneider Electric Security Notification Module, Installation and Configuration Guide” in the chapter “Configuring IPSEC communications”: https://www.se.com/ww/en/download/document/HRB62665/OR•Use a BMENUA0100 module and follow the instructions to configure IPSEC feature as described in the chapter “Configuring the BMENUA0100 Cybersecurity Settings”: https://www.se.com/ww/en/download/document/PHA83350OR•Consider use of external firewall devices such as EAGLE40-07 from Belden to establish VPN connections for M340 & M580 architectures. For more details refer to the chapter “How to protect M580 and M340 architectures with EAGLE40 using VPN”: https://www.se.com/ww/en/download/document/EIO0000001999/•Ensure the M580 CPU is running with the memory protection activated by configuring the input bit to a physical input, for more details refer to the following guideline “Modicon Controllers Platform Cyber Security Reference Manual”, “CPU Memory Protection section”:  https://www.schneider-electric.com/en/download/document/EIO0000001999/o    NOTE: The CPU memory protection cannot be configured with M580 Hot Standby CPUs. In such cases, use IPsec encrypted communication.",
+          "product_ids": [
+            "CSAFPID-0008"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric is establishing a remediation plan for all future versions of M340 Controllers that will include a fix for this vulnerability. We will update this document when the remediation is available. Until then, customers should immediately apply the following mitigations to reduce the risk of exploit: •Setup an application password in the project properties•Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manuals: o    “Modicon M340 for Ethernet Communications Modules and Processors User Manual” in chapter “Messaging Configuration Parameters”: https://www.se.com/ww/en/download/document/31007131K01000/•Setup a secure communication according to the following guideline “Modicon Controllers Platform Cyber Security Reference Manual,” in chapter “Setup secured communications”: https://www.se.com/ww/en/download/document/EIO0000001999/•Consider use of external firewall devices such as EAGLE40-07 from Belden to establish VPN connections for M340 & M580 architectures. For more details refer to the chapter “How to protect M580 and M340 architectures with EAGLE40 using VPN”: https://www.se.com/ww/en/download/document/EIO0000001999/",
+          "product_ids": [
+            "CSAFPID-0007"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information.\nTo mitigate the risks associated to Modbus/ weaknesses, users should immediately:\n• Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP\n• Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network Modules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”:\nhttps://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0008",
+            "CSAFPID-0007",
+            "CSAFPID-0015",
+            "CSAFPID-0014",
+            "CSAFPID-0030"
+          ]
+        }
+      ],
+      "title": "CVE-2018-7844 "
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2019-6830",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-248: Uncaught Exception vulnerability exists,  which could cause a possible denial of service when sending an appropriately timed HTTP request to the controller. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0004"
+        ],
+        "known_affected": [
+          "CSAFPID-0003"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M580 all versions prior to V2.80 – A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links section in notes. Schneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\nSTEP 1: Update software and firmware.\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\nSTEP 2: Update projects in Ecostruxure Control Expert by:\n• Setting up an application password in the project properties\n• Changing the version of the controller firmware to match the new firmware version of the target controller\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\n• Rebuild all current projects\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "HIGH",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 5.9,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "title": "CVE-2019-6830"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2019-6828",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-248: Uncaught Exception vulnerability exists,  which could cause a possible denial of service when reading specific coils and registers in the controller over Modbus. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0006"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0005",
+          "CSAFPID-0015",
+          "CSAFPID-0014"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network Modules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”: https://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0015"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Quantum controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”:https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0014"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0005",
+            "CSAFPID-0015",
+            "CSAFPID-0014"
+          ]
+        }
+      ],
+      "title": "CVE-2019-6828 "
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2019-6829",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-248: Uncaught Exception vulnerability exists which could cause a possible denial of service when writing to specific memory addresses in the controller over Modbus.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0006"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0005"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2019-6829"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Gao Jian"
+          ],
+          "organization": "ns focus"
+        }
+      ],
+      "cve": "CVE-2019-6809",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A CWE-248: Uncaught Exception vulnerability exists,  which could cause a possible denial of service when reading invalid data from the controller.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0006"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0005",
+          "CSAFPID-0015",
+          "CSAFPID-0014"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "A fix is available for this vulnerability on Modicon M580 firmware V3.10, refer to the Remediation Steps & Download Links note.\r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found in the below, all of the following steps are required to remediate the vulnerability:\r\nSTEP 1: Update software and firmware.\r\n• On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).\r\n• On the Modicon M580 controller, update to firmware V3.10 or above, download link available below.\r\nSTEP 2: Update projects in Ecostruxure Control Expert by:\r\n• Setting up an application password in the project properties\r\n• Changing the version of the controller firmware to match the new firmware version of the target controller\r\nSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:\r\n• Rebuild all current projects\r\n• Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Modicon M340 with firmware version prior to V3.10 – A fix is available for this vulnerability on Modicon M340 firmware V3.20, refer to the Remediation Steps & Download Links notes. \r\nSchneider Electric has made a fix available via a free download. After downloading the fix, found below, all of the following steps are required to remediate the vulnerability: STEP 1: Update software and firmware •On the engineering workstation, update to EcoStruxure Control Expert V14.1 (available below).  •On the Modicon M340 controller, update to firmware V3.30 or above, download link available below. STEP 2: Update projects in Ecostruxure Control Expert by:•Setting up an application password in the project properties•Changing the version of the controller firmware to match the new firmware version of the target controllerSTEP 3: Rebuild and transfer projects in EcoStruxure Control Expert:•Rebuild all current projects•Transfer them to Modicon controllers",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Premium controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List following the recommendations of the user manual “Premium and Atrium using EcoStruxure™ Control Expert - Ethernet Network Modules, User Manual” in chapters “Connection configuration parameters / TCP/IP Services Configuration Parameters / Connection Configuration Parameters”: https://www.se.com/ww/en/download/document/35006192K01000/",
+          "product_ids": [
+            "CSAFPID-0015"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric’s Modicon Quantum controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller, our most current product offer. Customers should strongly consider migrating to the Modicon M580 ePAC. Please contact your local Schneider Electric technical support for more information. To mitigate the risks associated to Modbus/ weaknesses, users should immediately: •Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP•Configure the Access Control List feature as mentioned in “Quantum using EcoStruxure™ Control Expert - TCP/IP Configuration, User Manual” in chapter “Software Settings for Ethernet Communication / Messaging / Quantum NOE Ethernet Messaging Configuration”:https://www.se.com/ww/en/download/document/33002467K01000/",
+          "product_ids": [
+            "CSAFPID-0014"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=HRB44124.08.pdf&p_Doc_Ref=HRB44124"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0005",
+            "CSAFPID-0015",
+            "CSAFPID-0014"
+          ]
+        }
+      ],
+      "title": "CVE-2019-6809"
+    }
+  ]
+}
