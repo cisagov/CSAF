@@ -12,7 +12,7 @@
         },
         "title": "SicommNet multiple vulnerabilities",
         "tracking": {
-            "current_release_date": "2025-04-15T13:49:55Z",
+            "current_release_date": "2025-04-23T00:00:00Z",
             "generator": {
                 "engine": {
                     "name": "VINCE-NT",
@@ -22,8 +22,13 @@
             "id": "VA-25-104-01",
             "initial_release_date": "2025-04-15T13:49:55Z",
             "status": "final",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "revision_history": [
+                {
+                    "number": "2.0.0",
+                    "summary": "Updated status for CVE-2025-22371",
+                    "date": "2025-04-23T00:00:00Z"
+                },
                 {
                     "number": "1.0.0",
                     "summary": "Initial publication",
@@ -53,7 +58,7 @@
                 "category": "other"
             },
             {
-                "text": "SicommNET BASEC is an online eProcurement solution used by governments and other entities. Multiple vulnerabilities have been found in BASEC. These vulnerabilities allow a remote, unauthenticated attacker to gain administrative privileges, read user passwords, and obtain credentials through cross-site scripting. The attacker could take complete control of BASEC and all the user data stored in BASEC.",
+                "text": "SicommNet BASEC is an online eProcurement solution used by governments and other entities. Multiple vulnerabilities have been found in BASEC. These vulnerabilities allow a remote, unauthenticated attacker to gain administrative privileges, read user passwords, and obtain credentials. The attacker could take complete control of BASEC and all of the user data stored in BASEC.",
                 "title": "Risk Evaluation",
                 "category": "summary"
             },
@@ -87,11 +92,27 @@
                         "name": "BASEC",
                         "branches": [
                             {
+                                "category": "product_version_range",
+                                "name": "<2025-04-16",
+                                "product": {
+                                    "name": "SicommNet BASEC <2025-04-16",
+                                    "product_id": "CSAFPID-0001"
+                                }
+                            },
+                            {
+                                "category": "product_version",
+                                "name": "2025-04-16",
+                                "product": {
+                                    "name": "SicommNet BASEC 2025-04-16",
+                                    "product_id": "CSAFPID-0002"
+                                }
+                            },
+                            {
                                 "category": "product_version",
                                 "name": "vers:all/*",
                                 "product": {
                                     "name": "SicommNet BASEC vers:all/*",
-                                    "product_id": "CSAFPID-0001"
+                                    "product_id": "CSAFPID-0003"
                                 }
                             }
                         ]
@@ -110,7 +131,7 @@
             "notes": [
                 {
                     "category": "summary",
-                    "text": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in SicommNet BASEC (SaaS Service) login page allows an unauthenticated remote attacker to Bypass Authentication and execute arbitrary SQL commands. This issue at least affects BASEC for the date of 14 Dec 2021 onwards. It is very likely that this vulnerability has been present in the solution before that.\n\nAs of the date of this CVE record, there has been no patch",
+                    "text": "An Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in the SicommNet BASEC (SaaS) login page allows an unauthenticated remote attacker to bypass authentication and execute arbitrary SQL commands. This issue was discovered on 2021-12-14 and fixed on 2025-04-16.",
                     "title": "Description"
                 },
                 {
@@ -123,13 +144,16 @@
             "product_status": {
                 "known_affected": [
                     "CSAFPID-0001"
+                ],
+                "fixed": [
+                    "CSAFPID-0002"
                 ]
             },
             "references": [
                 {
                     "category": "external",
                     "summary": "basec.sicomm.net",
-                    "url": "https://basec.sicomm.net/login/"
+                    "url": "https://basec.sicomm.net/"
                 },
                 {
                     "category": "external",
@@ -140,6 +164,11 @@
                     "category": "external",
                     "summary": "csirt.divd.nl",
                     "url": "https://csirt.divd.nl/CVE-2025-22371"
+                },
+                {
+                    "category": "external",
+                    "summary": "www.cve.org",
+                    "url": "https://www.cve.org/CVERecord?id=CVE-2025-22371"
                 }
             ],
             "scores": [
@@ -157,12 +186,22 @@
             ],
             "remediations": [
                 {
-                    "category": "none_available",
-                    "details": "Contact SicommNet.",
+                    "category": "vendor_fix",
+                    "details": "Fixed as of 2025-04-16.",
+                    "url": "https://www.cve.org/CVERecord?id=CVE-2025-22371",
                     "product_ids": [
                         "CSAFPID-0001"
                     ],
-                    "date": "2025-04-14T04:00:00Z"
+                    "date": "2025-04-16T04:00:00Z"
+                },
+                {
+                    "category": "vendor_fix",
+                    "details": "Fixed as of 2025-04-16.",
+                    "url": "https://www.cve.org/CVERecord?id=CVE-2025-22371",
+                    "product_ids": [
+                        "CSAFPID-0002"
+                    ],
+                    "date": "2025-04-16T04:00:00Z"
                 }
             ],
             "acknowledgments": [
@@ -190,7 +229,7 @@
             "notes": [
                 {
                     "category": "summary",
-                    "text": "Insufficiently Protected Credentials vulnerability in SicommNet BASEC on SaaS allows Password Recovery. Passwords are either stored in plain text using reversible encryption, allowing an attacker with sufficient privileges to extract plain text passwords easily. This issue affects BASEC: from 14 Dec 2021.",
+                    "text": "An Insufficiently Protected Credentials vulnerability in SicommNet BASEC (SaaS) allows password recovery. Passwords are either stored in plain text or using reversible encryption, allowing an attacker with sufficient privileges to extract plain text passwords easily. This issue was discovered on 2021-12-14.",
                     "title": "Description"
                 },
                 {
@@ -202,7 +241,7 @@
             "title": "Insecure password storage in SicommNet BASEC",
             "product_status": {
                 "known_affected": [
-                    "CSAFPID-0001"
+                    "CSAFPID-0003"
                 ]
             },
             "references": [
@@ -220,6 +259,11 @@
                     "category": "external",
                     "summary": "csirt.divd.nl",
                     "url": "https://csirt.divd.nl/CVE-2025-22372"
+                },
+                {
+                    "category": "external",
+                    "summary": "www.cve.org",
+                    "url": "https://www.cve.org/CVERecord?id=CVE-2025-22372"
                 }
             ],
             "scores": [
@@ -231,7 +275,7 @@
                         "version": "3.1"
                     },
                     "products": [
-                        "CSAFPID-0001"
+                        "CSAFPID-0003"
                     ]
                 }
             ],
@@ -240,7 +284,7 @@
                     "category": "none_available",
                     "details": "Contact SicommNet.",
                     "product_ids": [
-                        "CSAFPID-0001"
+                        "CSAFPID-0003"
                     ],
                     "date": "2025-04-14T04:00:00Z"
                 }
@@ -270,7 +314,7 @@
             "notes": [
                 {
                     "category": "summary",
-                    "text": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in SicommNet BASEC on SaaS allows Reflected XSS, XSS Through HTTP Query Strings, Rendering of Arbitrary HTML and alternation of CSS Styles. This issue affects BASEC: from 14 Dec 2021.",
+                    "text": "An Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in SicommNet BASEC (SaaS) allows reflected XSS, XSS through HTTP query strings, rendering of arbitrary HTML, and alternation of CSS styles. This issue was discovered on 2021-12-14.",
                     "title": "Description"
                 },
                 {
@@ -282,7 +326,7 @@
             "title": "XSS, HTML and Style injection on login page in SicommNet BASEC",
             "product_status": {
                 "known_affected": [
-                    "CSAFPID-0001"
+                    "CSAFPID-0003"
                 ]
             },
             "references": [
@@ -300,6 +344,11 @@
                     "category": "external",
                     "summary": "csirt.divd.nl",
                     "url": "https://csirt.divd.nl/CVE-2025-22373"
+                },
+                {
+                    "category": "external",
+                    "summary": "www.cve.org",
+                    "url": "https://www.cve.org/CVERecord?id=CVE-2025-22373"
                 }
             ],
             "scores": [
@@ -311,16 +360,16 @@
                         "version": "3.1"
                     },
                     "products": [
-                        "CSAFPID-0001"
+                        "CSAFPID-0003"
                     ]
                 }
             ],
             "remediations": [
                 {
-                    "category": "no_fix_planned",
+                    "category": "none_available",
                     "details": "Contact SicommNet.",
                     "product_ids": [
-                        "CSAFPID-0001"
+                        "CSAFPID-0003"
                     ],
                     "date": "2025-04-14T04:00:00Z"
                 }
