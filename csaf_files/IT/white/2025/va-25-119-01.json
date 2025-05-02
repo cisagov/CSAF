@@ -10,29 +10,24 @@
             "name": "CISA",
             "namespace": "https://www.cisa.gov/"
         },
-        "title": "CentralSquare eTRAKiT.Net SQL injection vulnerability",
+        "title": "MSP360 Backup insecure filesystem permissions",
         "tracking": {
-            "current_release_date": "2025-05-02T01:11:43Z",
+            "current_release_date": "2025-04-29T15:59:52Z",
             "generator": {
                 "engine": {
                     "name": "VINCE-NT",
                     "version": "1.8.0"
                 }
             },
-            "id": "VA-25-079-01",
-            "initial_release_date": "2025-03-20T00:00:00Z",
+            "id": "VA-25-119-01",
+            "initial_release_date": "2025-04-29T15:59:52Z",
             "status": "final",
-            "version": "1.0.1",
+            "version": "1.0.0",
             "revision_history": [
-                {
-                    "number": "1.0.1",
-                    "summary": "Remove reference to pull request, standardize \"Initial publication\" revision message",
-                    "date": "2025-05-02T01:11:43Z"
-                },
                 {
                     "number": "1.0.0",
                     "summary": "Initial publication",
-                    "date": "2025-03-20T00:00:00Z"
+                    "date": "2025-04-29T15:59:52Z"
                 }
             ]
         },
@@ -58,12 +53,12 @@
                 "category": "other"
             },
             {
-                "text": "eTRAKiT is a public online portal that provides the public with easily accessible information related to permits, projects, licenses, code compliance, land, and inspections. An SQL injection vulnerability in the CRM feature of eTRAKiT.net release 3.2.1.77 allows a remote, unauthenticated attacker to execute SQL queries and potentially arbitrary operating system commands as the Microsoft SQL Server account. It is recommended that the CRM feature is turned off while on eTRAKiT.net release 3.2.1.77. eTRAKiT.Net is no longer supported, and users are recommended to migrate to the latest version of CentralSquare Community Development (24.1.1.2 as of 2025-03-13).\n",
+                "text": "MSP360 Backup is a data backup and recovery solution. An insecure default permissions vulnerability allows a lower privileged user to execute commands with root level privileges in the 'Online Backup' folder. An attacker could exploit this vulnerability to obtain user credentials, redirect the backup target to download the data being backed up, and execute commands on behalf of other users, including root.",
                 "title": "Risk Evaluation",
                 "category": "summary"
             },
             {
-                "text": "eTRAKiT.net is an older version of Community Development that is no longer supported. Users are recommended to upgrade to the latest version of Community Development.",
+                "text": "Upgrade to MSP360 Backup 4.4 (released on 2025-04-22).",
                 "title": "Recommended Practices",
                 "category": "general"
             },
@@ -75,8 +70,8 @@
         ],
         "references": [
             {
-                "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-079-01.json",
-                "summary": "Vulnerability Advisory VA-25-079-01 CSAF",
+                "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-119-01.json",
+                "summary": "Vulnerability Advisory VA-25-119-01 CSAF",
                 "category": "self"
             }
         ]
@@ -85,18 +80,26 @@
         "branches": [
             {
                 "category": "vendor",
-                "name": "CentralSquare",
+                "name": "MSP360",
                 "branches": [
                     {
                         "category": "product_name",
-                        "name": "eTRAKiT.Net",
+                        "name": "Backup",
                         "branches": [
                             {
                                 "category": "product_version",
-                                "name": "3.2.1.77",
+                                "name": "4.3.1.115",
                                 "product": {
-                                    "name": "CentralSquare eTRAKiT.Net 3.2.1.77",
+                                    "name": "MSP360 Backup 4.3.1.115",
                                     "product_id": "CSAFPID-0001"
+                                }
+                            },
+                            {
+                                "category": "product_version",
+                                "name": "4.4",
+                                "product": {
+                                    "name": "MSP360 Backup 4.4",
+                                    "product_id": "CSAFPID-0002"
                                 }
                             }
                         ]
@@ -107,47 +110,45 @@
     },
     "vulnerabilities": [
         {
-            "cve": "CVE-2025-29980",
+            "cve": "CVE-2025-43595",
             "cwe": {
-                "id": "CWE-89",
-                "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+                "id": "CWE-276",
+                "name": "Incorrect Default Permissions"
             },
             "notes": [
                 {
                     "category": "summary",
-                    "text": "A SQL injection issue has been discovered in eTRAKiT.net release 3.2.1.77. Due to improper input validation, a remote unauthenticated attacker can run arbitrary commands as the current MS SQL server account. It is recommended that the CRM feature is turned off while on eTRAKiT.net release 3.2.1.77. eTRAKiT.Net is no longer supported, and users are recommended to migrate to the latest version of CentralSquare Community Development.",
+                    "text": "An insecure file system permissions vulnerability in MSP360 Backup 4.3.1.115 allows a low privileged user to execute commands with root privileges in the 'Online Backup' folder. Upgrade to MSP360 Backup 4.4 (released on 2025-04-22).",
                     "title": "Description"
                 },
                 {
                     "category": "details",
                     "title": "SSVC",
-                    "text": "SSVCv2/E:P/A:Y/T:T/2025-03-17T19:49:56Z/"
-                },
-                {
-                    "category": "description",
-                    "text": "A SQL injection issue has been discovered in eTRAKiT.net release 3.2.1.77. It is recommended that the CRM feature is turned off while on eTRAKiT.net release 3.2.1.77. CentralSquare has notified all affected customers and is actively working with these customers for a solution to this issue. CentralSquare has also recommended that all affected customers upgrade to the latest version of Community Development. CentralSquare is not aware of any SQL injection issues in current versions of Community Development.",
-                    "title": "Vendor statement from CentralSquare"
+                    "text": "SSVCv2/E:P/A:N/T:T/2025-05-01T20:45:18Z/"
                 }
             ],
-            "title": "Blind SQL Injection vulnerability in eTRAKiT.Net",
+            "title": "MSP360 Backup for Linux insecure filesystem permissions",
             "product_status": {
                 "known_affected": [
                     "CSAFPID-0001"
+                ],
+                "fixed": [
+                    "CSAFPID-0002"
                 ]
             },
             "references": [
                 {
                     "category": "external",
-                    "summary": "raw.githubusercontent.com",
-                    "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-079-01.json"
+                    "summary": "help.msp360.com",
+                    "url": "https://help.msp360.com/cloudberry-backup-mac-linux/whats-new"
                 }
             ],
             "scores": [
                 {
                     "cvss_v3": {
-                        "baseScore": 9.8,
-                        "baseSeverity": "CRITICAL",
-                        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                        "baseScore": 7.8,
+                        "baseSeverity": "HIGH",
+                        "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
                         "version": "3.1"
                     },
                     "products": [
@@ -157,22 +158,32 @@
             ],
             "remediations": [
                 {
-                    "category": "no_fix_planned",
-                    "details": "eTRAKiT.Net is no longer supported. Upgrade to the latest version of Community Development.",
+                    "category": "vendor_fix",
+                    "details": "Upgrade to MSP360 Backup 4.4.",
+                    "url": "https://help.msp360.com/cloudberry-backup-mac-linux/whats-new",
                     "product_ids": [
                         "CSAFPID-0001"
-                    ]
+                    ],
+                    "date": "2025-04-22T04:00:00Z"
+                },
+                {
+                    "category": "vendor_fix",
+                    "details": "Upgrade to MSP360 Backup 4.4.",
+                    "url": "https://help.msp360.com/cloudberry-backup-mac-linux/whats-new",
+                    "product_ids": [
+                        "CSAFPID-0002"
+                    ],
+                    "date": "2025-04-22T04:00:00Z"
                 }
             ],
             "acknowledgments": [
                 {
                     "names": [
-                        "Caleb Lenz"
-                    ],
-                    "organization": "City of Pasco, WA"
+                        "Matthew Galligan"
+                    ]
                 }
             ],
-            "release_date": "2025-03-20T00:00:00Z"
+            "release_date": "2025-04-22T00:00:00Z"
         }
     ]
 }
