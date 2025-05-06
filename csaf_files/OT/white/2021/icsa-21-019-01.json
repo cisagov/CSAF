@@ -1,742 +1,742 @@
 {
-    "document": {
-        "acknowledgments": [
-            {
-                "organization": "Siemens ProductCERT",
-                "summary": "reporting these vulnerabilities to CISA."
-            },
-            {
-                "names": [
-                    "Moshe Kol",
-                    "Shlomi Oberman"
-                ],
-                "organization": "JSOF",
-                "summary": "coordinated disclosure"
-            },
-            {
-                "organization": "CERT Coordination Center (CERT/CC)",
-                "summary": "coordination efforts"
-            },
-            {
-                "organization": "Industrial Control System Cyber Emergency Response Team (ICS-CERT)",
-                "summary": "coordination efforts"
-            }
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Siemens ProductCERT",
+        "summary": "reporting these vulnerabilities to CISA."
+      },
+      {
+        "names": [
+          "Moshe Kol",
+          "Shlomi Oberman"
         ],
-        "category": "Siemens Security Advisory",
-        "csaf_version": "2.0",
-        "distribution": {
-            "text": "Disclosure is not limited",
-            "tlp": {
-                "label": "WHITE",
-                "url": "https://us-cert.cisa.gov/tlp/"
-            }
-        },
-        "notes": [
-            {
-                "category": "summary",
-                "text": "Security researchers discovered and disclosed seven vulnerabilities in the open-source DNS component \"dnsmasq\", also known as \"DNSpooq\" vulnerabilities (CVE-2020-25681 through CVE-2020-25687). Three vulnerabilities (CVE-2020-25684 through CVE-2020-25686) affect the validation of DNS responses and impact several SCALANCE and RUGGEDCOM devices as listed below.\n\nSiemens has released updates for several affected products and recommends to update to the latest versions. Siemens recommends specific countermeasures for products where updates are not available.",
-                "title": "Summary"
-            },
-            {
-                "category": "general",
-                "text": "As a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for Industrial Security (Download: https://www.siemens.com/cert/operational-guidelines-industrial-security), and to follow the recommendations in the product manuals.\n\nAdditional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity",
-                "title": "General Recommendations"
-            },
-            {
-                "category": "general",
-                "text": "For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
-                "title": "Additional Resources"
-            },
-            {
-                "category": "legal_disclaimer",
-                "text": "Siemens Security Advisories are subject to the terms and conditions contained in Siemens' underlying license terms or other applicable agreements previously agreed to with Siemens (hereinafter \"License Terms\"). To the extent applicable to information, software or documentation made available in or through a Siemens Security Advisory, the Terms of Use of Siemens' Global Website (https://www.siemens.com/terms_of_use, hereinafter \"Terms of Use\"), in particular Sections 8-10 of the Terms of Use, shall apply additionally. In case of conflicts, the License Terms shall prevail over the Terms of Use.",
-                "title": "Terms of Use"
-            },
-            {
-                "category": "legal_disclaimer",
-                "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
-                "title": "Legal Notice"
-            },
-            {
-                "category": "other",
-                "text": "This CISA CSAF advisory was converted from Siemens ProductCERT's CSAF advisory.",
-                "title": "Advisory Conversion Disclaimer"
-            },
-            {
-                "category": "other",
-                "text": "Multiple",
-                "title": "Critical infrastructure sectors"
-            },
-            {
-                "category": "other",
-                "text": "Worldwide",
-                "title": "Countries/areas deployed"
-            },
-            {
-                "category": "other",
-                "text": "Germany",
-                "title": "Company headquarters location"
-            },
-            {
-                "category": "general",
-                "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
-                "title": "Recommended Practices"
-            }
-        ],
-        "publisher": {
-            "category": "other",
-            "contact_details": "central@cisa.dhs.gov",
-            "name": "CISA",
-            "namespace": "https://www.cisa.gov/"
-        },
-        "references": [
-            {
-                "category": "self",
-                "summary": "SSA-646763: DNSpooq - Dnsmasq Vulnerabilities in SCALANCE and RUGGEDCOM Devices - CSAF Version",
-                "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-646763.json"
-            },
-            {
-                "category": "self",
-                "summary": "SSA-646763: DNSpooq - Dnsmasq Vulnerabilities in SCALANCE and RUGGEDCOM Devices - TXT Version",
-                "url": "https://cert-portal.siemens.com/productcert/txt/ssa-646763.txt"
-            },
-            {
-                "category": "self",
-                "summary": "SSA-646763: DNSpooq - Dnsmasq Vulnerabilities in SCALANCE and RUGGEDCOM Devices - PDF Version",
-                "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-646763.pdf"
-            },
-            {
-                "category": "self",
-                "summary": "ICS Advisory ICSA-21-019-01 JSON",
-                "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2021/icsa-21-019-01.json"
-            },
-            {
-                "category": "self",
-                "summary": "ICS Advisory ICSA-21-019-01 - Web Version",
-                "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-21-019-01"
-            },
-            {
-                "category": "external",
-                "summary": "Recommended Practices",
-                "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
-            },
-            {
-                "category": "external",
-                "summary": "Recommended Practices",
-                "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
-            },
-            {
-                "category": "external",
-                "summary": "Recommended Practices",
-                "url": "https://www.cisa.gov/topics/industrial-control-systems"
-            },
-            {
-                "category": "external",
-                "summary": "Recommended Practices",
-                "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
-            },
-            {
-                "category": "external",
-                "summary": "Recommended Practices",
-                "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
-            },
-            {
-                "category": "external",
-                "summary": "Recommended Practices",
-                "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
-            }
-        ],
-        "title": "dnsmasq by Simon Kelley (Update A)",
-        "tracking": {
-            "current_release_date": "2021-05-11T00:00:00.000000Z",
-            "generator": {
-                "engine": {
-                    "name": "CISA CSAF Generator",
-                    "version": "1.0.0"
-                }
-            },
-            "id": "ICSA-21-019-01",
-            "initial_release_date": "2021-01-19T00:00:00.000000Z",
-            "revision_history": [
-                {
-                    "date": "2021-01-19T00:00:00.000000Z",
-                    "legacy_version": "1.0",
-                    "number": "1",
-                    "summary": "Publication Date"
-                },
-                {
-                    "date": "2021-03-09T00:00:00.000000Z",
-                    "legacy_version": "1.1",
-                    "number": "2",
-                    "summary": "Added solution for SCALANCE SC-600"
-                },
-                {
-                    "date": "2021-04-13T00:00:00.000000Z",
-                    "legacy_version": "1.2",
-                    "number": "3",
-                    "summary": "Added solution for SCALANCE M-800/S615 and RUGGEDCOM RM1224"
-                },
-                {
-                    "date": "2021-05-11T00:00:00.000000Z",
-                    "legacy_version": "1.3",
-                    "number": "4",
-                    "summary": "Clarified that a solution for SCALANCE W1750D is not expected"
-                }
-            ],
-            "status": "final",
-            "version": "4"
-        }
+        "organization": "JSOF",
+        "summary": "coordinated disclosure"
+      },
+      {
+        "organization": "CERT Coordination Center (CERT/CC)",
+        "summary": "coordination efforts"
+      },
+      {
+        "organization": "Industrial Control System Cyber Emergency Response Team (ICS-CERT)",
+        "summary": "coordination efforts"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
     },
-    "product_tree": {
+    "notes": [
+      {
+        "category": "summary",
+        "text": "Security researchers discovered and disclosed seven vulnerabilities in the open-source DNS component \"dnsmasq\", also known as \"DNSpooq\" vulnerabilities (CVE-2020-25681 through CVE-2020-25687). Three vulnerabilities (CVE-2020-25684 through CVE-2020-25686) affect the validation of DNS responses and impact several SCALANCE and RUGGEDCOM devices as listed below.\n\nSiemens has released updates for several affected products and recommends to update to the latest versions. Siemens recommends specific countermeasures for products where updates are not available.",
+        "title": "Summary"
+      },
+      {
+        "category": "general",
+        "text": "As a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for Industrial Security (Download: https://www.siemens.com/cert/operational-guidelines-industrial-security), and to follow the recommendations in the product manuals.\n\nAdditional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity",
+        "title": "General Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
+        "title": "Additional Resources"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "Siemens Security Advisories are subject to the terms and conditions contained in Siemens' underlying license terms or other applicable agreements previously agreed to with Siemens (hereinafter \"License Terms\"). To the extent applicable to information, software or documentation made available in or through a Siemens Security Advisory, the Terms of Use of Siemens' Global Website (https://www.siemens.com/terms_of_use, hereinafter \"Terms of Use\"), in particular Sections 8-10 of the Terms of Use, shall apply additionally. In case of conflicts, the License Terms shall prevail over the Terms of Use.",
+        "title": "Terms of Use"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "other",
+        "text": "This CISA CSAF advisory was converted from Siemens ProductCERT's CSAF advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Multiple",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Germany",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "SSA-646763: DNSpooq - Dnsmasq Vulnerabilities in SCALANCE and RUGGEDCOM Devices - CSAF Version",
+        "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-646763.json"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-646763: DNSpooq - Dnsmasq Vulnerabilities in SCALANCE and RUGGEDCOM Devices - TXT Version",
+        "url": "https://cert-portal.siemens.com/productcert/txt/ssa-646763.txt"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-646763: DNSpooq - Dnsmasq Vulnerabilities in SCALANCE and RUGGEDCOM Devices - PDF Version",
+        "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-646763.pdf"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-21-019-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2021/icsa-21-019-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-21-019-01 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-21-019-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "dnsmasq by Simon Kelley (Update A)",
+    "tracking": {
+      "current_release_date": "2021-05-11T00:00:00.000000Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-21-019-01",
+      "initial_release_date": "2021-01-19T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2021-01-19T00:00:00.000000Z",
+          "legacy_version": "1.0",
+          "number": "1",
+          "summary": "Publication Date"
+        },
+        {
+          "date": "2021-03-09T00:00:00.000000Z",
+          "legacy_version": "1.1",
+          "number": "2",
+          "summary": "Added solution for SCALANCE SC-600"
+        },
+        {
+          "date": "2021-04-13T00:00:00.000000Z",
+          "legacy_version": "1.2",
+          "number": "3",
+          "summary": "Added solution for SCALANCE M-800/S615 and RUGGEDCOM RM1224"
+        },
+        {
+          "date": "2021-05-11T00:00:00.000000Z",
+          "legacy_version": "1.3",
+          "number": "4",
+          "summary": "Clarified that a solution for SCALANCE W1750D is not expected"
+        }
+      ],
+      "status": "final",
+      "version": "4"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
         "branches": [
-            {
-                "branches": [
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V6.4",
-                                "product": {
-                                    "name": "RUGGEDCOM RM1224",
-                                    "product_id": "CSAFPID-0001"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "RUGGEDCOM RM1224"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V6.4",
-                                "product": {
-                                    "name": "SCALANCE M-800",
-                                    "product_id": "CSAFPID-0002"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "SCALANCE M-800"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V6.4",
-                                "product": {
-                                    "name": "SCALANCE S615",
-                                    "product_id": "CSAFPID-0003"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "SCALANCE S615"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V2.1.3",
-                                "product": {
-                                    "name": "SCALANCE SC-600",
-                                    "product_id": "CSAFPID-0004"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "SCALANCE SC-600"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "vers:all/*",
-                                "product": {
-                                    "name": "SCALANCE W1750D",
-                                    "product_id": "CSAFPID-0005"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "SCALANCE W1750D"
-                    }
-                ],
-                "category": "vendor",
-                "name": "Siemens"
-            }
-        ]
-    },
-    "vulnerabilities": [
-        {
-            "cve": "CVE-2020-25684",
-            "cwe": {
-                "id": "CWE-290",
-                "name": "Authentication Bypass by Spoofing"
-            },
-            "notes": [
-                {
-                    "category": "summary",
-                    "text": "Affected devices lack proper address/port check in the DNS reply_query function of dnsmasq.\n\nThis could make it easier for remote off-path attackers to forge replies.",
-                    "title": "Summary"
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V6.4",
+                "product": {
+                  "name": "RUGGEDCOM RM1224",
+                  "product_id": "CSAFPID-0001"
                 }
+              }
             ],
-            "product_status": {
-                "known_affected": [
-                    "CSAFPID-0001",
-                    "CSAFPID-0002",
-                    "CSAFPID-0003",
-                    "CSAFPID-0004",
-                    "CSAFPID-0005"
-                ]
-            },
-            "references": [
-                {
-                    "summary": "CVE-2020-25684 - RUGGEDCOM RM1224",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
-                },
-                {
-                    "summary": "CVE-2020-25684 - SCALANCE M-800",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
-                },
-                {
-                    "summary": "CVE-2020-25684 - SCALANCE S615",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
-                },
-                {
-                    "summary": "CVE-2020-25684 - SCALANCE SC-600",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109793041/"
-                },
-                {
-                    "summary": "CVE-2020-25684 Mitre 5.0 json",
-                    "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2020-25684.json"
+            "category": "product_name",
+            "name": "RUGGEDCOM RM1224"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V6.4",
+                "product": {
+                  "name": "SCALANCE M-800",
+                  "product_id": "CSAFPID-0002"
                 }
+              }
             ],
-            "remediations": [
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V6.4 or later version",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
-                },
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V2.1.3 or later version",
-                    "product_ids": [
-                        "CSAFPID-0004"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109793041/"
-                },
-                {
-                    "category": "none_available",
-                    "details": "Currently no remediation is available",
-                    "product_ids": [
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "SCALANCE M-800: Disable DNS proxy in the device configuration (System - DNS - DNS Proxy - Disable Checkbox \u201eEnable DNS Proxy\u201c), and configure the connected devices in the internal network to use a different DNS server. Note that the DNS proxy is enabled by default.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "RUGGEDCOM RM1224: Same as for SCALANCE M-800. Note that the DNS proxy is enabled by default.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "SCALANCE S615: Same as for SCALANCE M-800. Note that the DNS proxy is disabled by default.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "SCALANCE SC-600: Same as for SCALANCE M-800. Note that the DNS proxy is disabled by default.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "SCALANCE W1750D: If \u201cOpenDNS\u201d, \u201cCaptive Portal\u201d or \u201cURL redirection\u201d functionality is not used, deploy firewall rules in the device configuration to block incoming access to port 53/UDP",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
+            "category": "product_name",
+            "name": "SCALANCE M-800"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V6.4",
+                "product": {
+                  "name": "SCALANCE S615",
+                  "product_id": "CSAFPID-0003"
                 }
+              }
             ],
-            "scores": [
-                {
-                    "cvss_v3": {
-                        "baseScore": 4.0,
-                        "baseSeverity": "MEDIUM",
-                        "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N/E:P/RL:U/RC:C",
-                        "version": "3.1"
-                    },
-                    "products": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
+            "category": "product_name",
+            "name": "SCALANCE S615"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V2.1.3",
+                "product": {
+                  "name": "SCALANCE SC-600",
+                  "product_id": "CSAFPID-0004"
                 }
+              }
             ],
-            "title": "CVE-2020-25684"
-        },
-        {
-            "cve": "CVE-2020-25685",
-            "cwe": {
-                "id": "CWE-290",
-                "name": "Authentication Bypass by Spoofing"
-            },
-            "notes": [
-                {
-                    "category": "summary",
-                    "text": "Affected devices lack query resource name (RRNAME) checks in the DNS reply_query function of dnsmasq.\n\nThis could allow a remote attacker to spoof DNS traffic that can lead to DNS cache poisoning.",
-                    "title": "Summary"
+            "category": "product_name",
+            "name": "SCALANCE SC-600"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SCALANCE W1750D",
+                  "product_id": "CSAFPID-0005"
                 }
+              }
             ],
-            "product_status": {
-                "known_affected": [
-                    "CSAFPID-0001",
-                    "CSAFPID-0002",
-                    "CSAFPID-0003",
-                    "CSAFPID-0004",
-                    "CSAFPID-0005"
-                ]
-            },
-            "references": [
-                {
-                    "summary": "CVE-2020-25685 - RUGGEDCOM RM1224",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
-                },
-                {
-                    "summary": "CVE-2020-25685 - SCALANCE M-800",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
-                },
-                {
-                    "summary": "CVE-2020-25685 - SCALANCE S615",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
-                },
-                {
-                    "summary": "CVE-2020-25685 - SCALANCE SC-600",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109793041/"
-                },
-                {
-                    "summary": "CVE-2020-25685 Mitre 5.0 json",
-                    "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2020-25685.json"
-                }
-            ],
-            "remediations": [
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V6.4 or later version",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
-                },
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V2.1.3 or later version",
-                    "product_ids": [
-                        "CSAFPID-0004"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109793041/"
-                },
-                {
-                    "category": "none_available",
-                    "details": "Currently no remediation is available",
-                    "product_ids": [
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "SCALANCE M-800: Disable DNS proxy in the device configuration (System - DNS - DNS Proxy - Disable Checkbox \u201eEnable DNS Proxy\u201c), and configure the connected devices in the internal network to use a different DNS server. Note that the DNS proxy is enabled by default.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "RUGGEDCOM RM1224: Same as for SCALANCE M-800. Note that the DNS proxy is enabled by default.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "SCALANCE S615: Same as for SCALANCE M-800. Note that the DNS proxy is disabled by default.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "SCALANCE SC-600: Same as for SCALANCE M-800. Note that the DNS proxy is disabled by default.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "SCALANCE W1750D: If \u201cOpenDNS\u201d, \u201cCaptive Portal\u201d or \u201cURL redirection\u201d functionality is not used, deploy firewall rules in the device configuration to block incoming access to port 53/UDP",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                }
-            ],
-            "scores": [
-                {
-                    "cvss_v3": {
-                        "baseScore": 4.0,
-                        "baseSeverity": "MEDIUM",
-                        "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N/E:P/RL:U/RC:C",
-                        "version": "3.1"
-                    },
-                    "products": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                }
-            ],
-            "title": "CVE-2020-25685"
-        },
-        {
-            "cve": "CVE-2020-25686",
-            "cwe": {
-                "id": "CWE-330",
-                "name": "Use of Insufficiently Random Values"
-            },
-            "notes": [
-                {
-                    "category": "summary",
-                    "text": "Affected devices lack sufficient entropy in dnsmasq to handle multiple DNS query requests from the same resource name (RRNAME).\n\nThis could allow a remote attacker to spoof DNS traffic, using a birthday attack (RFC 5452), than can lead to DNS cache poisoning.",
-                    "title": "Summary"
-                }
-            ],
-            "product_status": {
-                "known_affected": [
-                    "CSAFPID-0001",
-                    "CSAFPID-0002",
-                    "CSAFPID-0003",
-                    "CSAFPID-0004",
-                    "CSAFPID-0005"
-                ]
-            },
-            "references": [
-                {
-                    "summary": "CVE-2020-25686 - RUGGEDCOM RM1224",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
-                },
-                {
-                    "summary": "CVE-2020-25686 - SCALANCE M-800",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
-                },
-                {
-                    "summary": "CVE-2020-25686 - SCALANCE S615",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
-                },
-                {
-                    "summary": "CVE-2020-25686 - SCALANCE SC-600",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109793041/"
-                },
-                {
-                    "summary": "CVE-2020-25686 Mitre 5.0 json",
-                    "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2020-25686.json"
-                }
-            ],
-            "remediations": [
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V6.4 or later version",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
-                },
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V2.1.3 or later version",
-                    "product_ids": [
-                        "CSAFPID-0004"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109793041/"
-                },
-                {
-                    "category": "none_available",
-                    "details": "Currently no remediation is available",
-                    "product_ids": [
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "SCALANCE M-800: Disable DNS proxy in the device configuration (System - DNS - DNS Proxy - Disable Checkbox \u201eEnable DNS Proxy\u201c), and configure the connected devices in the internal network to use a different DNS server. Note that the DNS proxy is enabled by default.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "RUGGEDCOM RM1224: Same as for SCALANCE M-800. Note that the DNS proxy is enabled by default.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "SCALANCE S615: Same as for SCALANCE M-800. Note that the DNS proxy is disabled by default.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "SCALANCE SC-600: Same as for SCALANCE M-800. Note that the DNS proxy is disabled by default.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                },
-                {
-                    "category": "mitigation",
-                    "details": "SCALANCE W1750D: If \u201cOpenDNS\u201d, \u201cCaptive Portal\u201d or \u201cURL redirection\u201d functionality is not used, deploy firewall rules in the device configuration to block incoming access to port 53/UDP",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                }
-            ],
-            "scores": [
-                {
-                    "cvss_v3": {
-                        "baseScore": 4.0,
-                        "baseSeverity": "MEDIUM",
-                        "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N/E:P/RL:U/RC:C",
-                        "version": "3.1"
-                    },
-                    "products": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005"
-                    ]
-                }
-            ],
-            "title": "CVE-2020-25686"
-        }
+            "category": "product_name",
+            "name": "SCALANCE W1750D"
+          }
+        ],
+        "category": "vendor",
+        "name": "Siemens"
+      }
     ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2020-25684",
+      "cwe": {
+        "id": "CWE-290",
+        "name": "Authentication Bypass by Spoofing"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Affected devices lack proper address/port check in the DNS reply_query function of dnsmasq.\n\nThis could make it easier for remote off-path attackers to forge replies.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2020-25684 - RUGGEDCOM RM1224",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
+        },
+        {
+          "summary": "CVE-2020-25684 - SCALANCE M-800",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
+        },
+        {
+          "summary": "CVE-2020-25684 - SCALANCE S615",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
+        },
+        {
+          "summary": "CVE-2020-25684 - SCALANCE SC-600",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109793041/"
+        },
+        {
+          "summary": "CVE-2020-25684 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2020-25684.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.4 or later version",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.1.3 or later version",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109793041/"
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no remediation is available",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "SCALANCE M-800: Disable DNS proxy in the device configuration (System - DNS - DNS Proxy - Disable Checkbox „Enable DNS Proxy“), and configure the connected devices in the internal network to use a different DNS server. Note that the DNS proxy is enabled by default.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "RUGGEDCOM RM1224: Same as for SCALANCE M-800. Note that the DNS proxy is enabled by default.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "SCALANCE S615: Same as for SCALANCE M-800. Note that the DNS proxy is disabled by default.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "SCALANCE SC-600: Same as for SCALANCE M-800. Note that the DNS proxy is disabled by default.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "SCALANCE W1750D: If “OpenDNS”, “Captive Portal” or “URL redirection” functionality is not used, deploy firewall rules in the device configuration to block incoming access to port 53/UDP",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.0,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N/E:P/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2020-25684"
+    },
+    {
+      "cve": "CVE-2020-25685",
+      "cwe": {
+        "id": "CWE-290",
+        "name": "Authentication Bypass by Spoofing"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Affected devices lack query resource name (RRNAME) checks in the DNS reply_query function of dnsmasq.\n\nThis could allow a remote attacker to spoof DNS traffic that can lead to DNS cache poisoning.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2020-25685 - RUGGEDCOM RM1224",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
+        },
+        {
+          "summary": "CVE-2020-25685 - SCALANCE M-800",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
+        },
+        {
+          "summary": "CVE-2020-25685 - SCALANCE S615",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
+        },
+        {
+          "summary": "CVE-2020-25685 - SCALANCE SC-600",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109793041/"
+        },
+        {
+          "summary": "CVE-2020-25685 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2020-25685.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.4 or later version",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.1.3 or later version",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109793041/"
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no remediation is available",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "SCALANCE M-800: Disable DNS proxy in the device configuration (System - DNS - DNS Proxy - Disable Checkbox „Enable DNS Proxy“), and configure the connected devices in the internal network to use a different DNS server. Note that the DNS proxy is enabled by default.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "RUGGEDCOM RM1224: Same as for SCALANCE M-800. Note that the DNS proxy is enabled by default.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "SCALANCE S615: Same as for SCALANCE M-800. Note that the DNS proxy is disabled by default.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "SCALANCE SC-600: Same as for SCALANCE M-800. Note that the DNS proxy is disabled by default.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "SCALANCE W1750D: If “OpenDNS”, “Captive Portal” or “URL redirection” functionality is not used, deploy firewall rules in the device configuration to block incoming access to port 53/UDP",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.0,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N/E:P/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2020-25685"
+    },
+    {
+      "cve": "CVE-2020-25686",
+      "cwe": {
+        "id": "CWE-330",
+        "name": "Use of Insufficiently Random Values"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Affected devices lack sufficient entropy in dnsmasq to handle multiple DNS query requests from the same resource name (RRNAME).\n\nThis could allow a remote attacker to spoof DNS traffic, using a birthday attack (RFC 5452), than can lead to DNS cache poisoning.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2020-25686 - RUGGEDCOM RM1224",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
+        },
+        {
+          "summary": "CVE-2020-25686 - SCALANCE M-800",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
+        },
+        {
+          "summary": "CVE-2020-25686 - SCALANCE S615",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
+        },
+        {
+          "summary": "CVE-2020-25686 - SCALANCE SC-600",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109793041/"
+        },
+        {
+          "summary": "CVE-2020-25686 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2020-25686.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V6.4 or later version",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109794349/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.1.3 or later version",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109793041/"
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no remediation is available",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "SCALANCE M-800: Disable DNS proxy in the device configuration (System - DNS - DNS Proxy - Disable Checkbox „Enable DNS Proxy“), and configure the connected devices in the internal network to use a different DNS server. Note that the DNS proxy is enabled by default.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "RUGGEDCOM RM1224: Same as for SCALANCE M-800. Note that the DNS proxy is enabled by default.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "SCALANCE S615: Same as for SCALANCE M-800. Note that the DNS proxy is disabled by default.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "SCALANCE SC-600: Same as for SCALANCE M-800. Note that the DNS proxy is disabled by default.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "SCALANCE W1750D: If “OpenDNS”, “Captive Portal” or “URL redirection” functionality is not used, deploy firewall rules in the device configuration to block incoming access to port 53/UDP",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.0,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N/E:P/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2020-25686"
+    }
+  ]
 }
