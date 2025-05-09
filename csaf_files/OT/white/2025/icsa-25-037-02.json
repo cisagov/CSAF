@@ -1,0 +1,864 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "names": [
+          "Xavier DANEST"
+        ],
+        "organization": "Trend Micro Zero Day Initiative",
+        "summary": "reporting this vulnerability to Revenera PSIRT"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of this vulnerability allows for local privilege escalation, which could lead to the execution of a malicious DLL.",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Commercial Facilities, Energy, Food and Agriculture, Government Services and Facilities, Transportation Systems, Water and Wastewater Systems",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "France",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolating them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. This vulnerability is not exploitable remotely.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-037-02 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-037-02.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICSA Advisory ICSA-25-037-02 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-037-02"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/sites/default/files/publications/emailscams0905.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ncas/tips/ST04-014"
+      }
+    ],
+    "title": "Schneider Electric EcoStruxure (Update A)",
+    "tracking": {
+      "current_release_date": "2025-03-06T07:00:00.000000Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-037-02",
+      "initial_release_date": "2025-02-06T07:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-02-06T07:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial Publication"
+        },
+        {
+          "date": "2025-03-06T07:00:00.000000Z",
+          "legacy_version": "Update A",
+          "number": "2",
+          "summary": "Update A - A remediation is available for EcoStruxure Process Expert. The EcoStruxure Process Expert for AVEVA System Platform offer is added to the Affected Products."
+        }
+      ],
+      "status": "final",
+      "version": "2"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V16.1",
+                "product": {
+                  "name": "Schneider Electric EcoStruxure Control Expert: <V16.1",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Control Expert"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric EcoStruxure Process Expert: vers:all/*",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Process Expert"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric EcoStruxure OPC UA Server Expert: vers:all/*",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure OPC UA Server Expert"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.0_SP1",
+                "product": {
+                  "name": "Schneider Electric EcoStruxure Control Expert Asset Link: <V4.0_SP1",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Control Expert Asset Link"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric EcoStruxure Machine SCADA Expert Asset Link: vers:all/*",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Machine SCADA Expert Asset Link"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V7.0.18",
+                "product": {
+                  "name": "Schneider Electric EcoStruxure Architecture Builder: <V7.0.18",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Architecture Builder"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric EcoStruxure Operator Terminal Expert: vers:all/*",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Operator Terminal Expert"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V6.3SP1_HF1",
+                "product": {
+                  "name": "Schneider Electric Vijeo Designer: <V6.3SP1_HF1",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Vijeo Designer"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric EcoStruxure Machine Expert including EcoStruxure Machine Expert Safety: vers:all/*",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Machine Expert including EcoStruxure Machine Expert Safety"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric EcoStruxure Machine Expert Twin: vers:all/*",
+                  "product_id": "CSAFPID-0010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Machine Expert Twin"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Schneider Electric Zelio Soft 2: vers:all/*",
+                  "product_id": "CSAFPID-0011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Zelio Soft 2"
+          }
+        ],
+        "category": "vendor",
+        "name": "Schneider Electric"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2024-2658",
+      "cwe": {
+        "id": "CWE-427",
+        "name": "Uncontrolled Search Path Element"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A misconfiguration in lmadmin.exe of FlexNet Publisher versions prior to 2024 R1 (11.19.6.0) allows the OpenSSL configuration file to load from a non-existent directory. An unauthorized, locally authenticated user with low privileges can potentially create the directory and load a specially crafted openssl.conf file leading to the execution of a malicious DLL (Dynamic-Link Library) with elevated privileges.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2024-2658"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric recommends that users of the following products follow these actions:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "EcoStruxure Control Expert: Versions prior to V16.1 - Version V16.1 of EcoStruxure Control Expert includes a fix for this vulnerability and is available for download here. Reboot the computer after installation is completed.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.se.com/ww/en/product-range/548-ecostruxure-control-expert-unity-pro/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "EcoStruxure Architecture Builder: Versions prior to V7.0.18 - Version V7.0.18 of EcoStruxure Architecture Builder includes a fix for this vulnerability and is available for download here.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ],
+          "url": "https://www.se.com/ww/en/product-range/195445393-ecostruxure-architecture-builder/-software-and-firmware"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "EcoStruxure Control Expert Asset Link: Versions prior to V4.0 SP1 - Version V4.0SP1 of EcoStruxure Control Expert Asset Link includes a fix for this vulnerability and is available for download here.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0004"
+          ],
+          "url": "https://www.se.com/ww/en/product-range/548-ecostruxure-control-expert-unity-pro/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Vijeo Designer: Version prior to V6.3SP1 HF1 - Version V6.3SP1 HF1 of Vijeo Designer includes a fix for this vulnerability. Please contact your Schneider Electric Customer Support to get Vijeo Designer version V6.3SP1 HF1 software.",
+          "product_ids": [
+            "CSAFPID-0008"
+          ],
+          "url": "https://www.se.com/ww/en/work/support/country-selector/contact-us.jsp"
+        },
+        {
+          "category": "mitigation",
+          "details": "Customers should use appropriate patching methodologies when applying these patches to their systems. We strongly recommend the use of back-ups and evaluating the impact of these patches in a Test and Development environment or on an offline infrastructure. Contact Schneider Electric's Customer Care Center if you need assistance removing a patch.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ],
+          "url": "https://www.se.com/us/en/work/support/"
+        },
+        {
+          "category": "mitigation",
+          "details": "If customers choose not to apply the remediation provided above, they should immediately apply the followingmitigations to reduce the risk of exploit:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric is establishing a remediation plan for all future versions of the following that will include a fix for this vulnerability:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "EcoStruxure Process Expert",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "EcoStruxure OPC UA Server Expert",
+          "product_ids": [
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "EcoStruxure Machine SCADA Expert - Asset Link",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "EcoStruxure Operator Terminal Expert",
+          "product_ids": [
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "EcoStruxure Machine Expert including",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "EcoStruxure Machine Expert Safety",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "EcoStruxure Machine Expert Twin",
+          "product_ids": [
+            "CSAFPID-0010"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Zelio Soft 2",
+          "product_ids": [
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "We will update this document when the remediation is available. Until then, customers should immediately apply the following mitigations to reduce the risk of exploit:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Limit authenticated user access to the workstation and implement existing User Account Control practices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Follow workstation, network and site-hardening guidelines in the Recommended Cybersecurity Best Practices guide available for download here.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ],
+          "url": "https://www.se.com/ww/en/download/document/7EN52-0390/?ssr=true"
+        },
+        {
+          "category": "mitigation",
+          "details": "To ensure you are informed of all updates, including details on affected products and remediation plans, subscribe to Schneider Electric's security notification service here.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ],
+          "url": "https://www.se.com/en/work/support/cybersecurity/security-notifications.jsp"
+        },
+        {
+          "category": "mitigation",
+          "details": "General Security Recommendations",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric strongly recommends the following industry cybersecurity best practices:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place all controllers in locked cabinets and never leave them in the \"Program\" mode.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Never connect programming software to any network other than the network intended for that device.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc. before use in the terminals or any node connected to these networks.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the Internet.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ],
+          "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011"
+          ]
+        }
+      ]
+    }
+  ]
+}

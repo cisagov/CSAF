@@ -1,0 +1,1835 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "ABB PSIRT",
+        "summary": "reporting these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "En",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "Multiple vulnerabilities regarding the CODESYS Runtime System from CODESYS Group have been publicly reported. CODESYS Runtime System is utilized in the firmware of ABB ACS880 drives to provide IEC 61131-3 programming capabilities.\n\nThese vulnerabilities could lead to out-of-bound memory access. Successful exploit may result in a denial-of-service condition or arbitrary code execution. Firmware updates are available that mitigate the publicly reported vulnerabilities of the product versions listed as affected in this advisory.",
+        "title": "Summary"
+      },
+      {
+        "category": "general",
+        "text": "Network communication between attacker and drives is needed to exploit the vulnerabilities. Thus, network isolation or protection will make the attack difficult and less likely to succeed. Please refer to \u2018General security recommendations for further advise on how to keep your system secure.",
+        "title": "Mitigating factors"
+      },
+      {
+        "category": "other",
+        "text": "For any installation of software-related ABB products we strongly recommend the following (non-exhaustive) list of cyber security practices:\n\n\u2013 Isolate special-purpose networks (e.g., for automation systems) and remote devices behind firewalls, and separate them from any general-purpose network (e.g., office or home networks).\n\n\u2013 Install physical controls so only authorized personnel can access your devices, components, peripheral equipment, and networks.\n\n\u2013 Never connect programming software tools or computers containing programming software to any network other than the network where run the devices that it is intended for.\n\n\u2013 Scan all data imported into your environment before use to detect potential malware infections.\n\n\u2013 Minimize network exposure for all applications and endpoints to ensure that they are not accessible from the Internet unless they are designed for such exposure and the intended use requires it.\n\n\u2013 Ensure all nodes are always up to date in terms of installed software, operating system, and firmware patches as well as anti-virus and firewall.\n\n\u2013 When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.",
+        "title": "General security recommendations"
+      },
+      {
+        "category": "general",
+        "text": "ABB has tested the following workarounds. Although these workarounds will not correct the underlying vulnerability, they can help block known attack vectors. When a workaround reduces functionality, this is identified below as \u201cImpact of workaround\u201d. For situations where firmware update is not feasible, ABB recommends mitigating the threat by setting following parameters:\n\nFor IGBT supply control program devices:\n\nset parameter 196.102 to bit 2 to disable file download (for further bit description, please refer to drive firmware manual )\n\nFor other devices:\n\nset parameter 96.102 to bit 2 to disable file download (for further bit description, please refer to drive firmware manuals)\n\nImpact of workaround:\nThis workaround restricts IEC programs update, but existing IEC programs in Drives can still be used. To update an IEC program, the operator has to unlock the user lock and enable file download in a protected network environment.\nIt is strongly recommended to disable file download. The vulnerabilities are exploitable when file download is enabled.\nWarning! \u2013 The user lock cannot be opened even by ABB if the pass code is lost. \n",
+        "title": "Workarounds"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The information in this document is subject to change without notice, and should not be construed as a commitment by ABB.\nABB provides no warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, for the information contained in this document, and assumes no responsibility for any errors that may appear in this document. In no event shall ABB or any of its suppliers be liable for direct, indirect, special, incidental or consequential damages of any nature or kind arising from the use of this document, or from the use of any hardware or software described in this document, even if ABB or its suppliers have been advised of the possibility of such damages.\nThis document and parts hereof must not be reproduced or copied without written permission from ABB, and the contents hereof must not be imparted to a third party nor used for any unauthorized purpose.\nAll rights to registrations and trademarks reside with their respective owners.\n",
+        "title": "Notice"
+      },
+      {
+        "category": "other",
+        "text": "For additional instructions and support please contact your local ABB service organization. For contact information, see www.abb.com/contactcenters.\nInformation about ABB\u2019s cyber security program and capabilities can be found at www.abb.com/cybersecurity.\n",
+        "title": "Support"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "other",
+        "text": "This CISA CSAF advisory was converted from ABB PSIRT's CSAF advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-093-03 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-093-03.json"
+      },
+      {
+        "summary": "CODESYS Security Advisory 2023-05",
+        "url": "https://customers.codesys.com/index.php?eID=dumpFile&t=f&f=17765&token=04e117e1408fdb8e02b4bc821aa3be819668aef4&download="
+      },
+      {
+        "summary": "ACS880 primary control program (YINLX) Firmware manual ",
+        "url": "https://library.abb.com/d/3AXD50001000998"
+      },
+      {
+        "summary": "ACS880 primary control program (AINLX) Firmware manual",
+        "url": "https://library.abb.com/d/3AUA0000085967"
+      },
+      {
+        "summary": "https://global.abb/group/en/media/resources/glossary",
+        "url": "https://global.abb/group/en/media/resources/glossary"
+      },
+      {
+        "summary": " https://new.abb.com/drives/what-is-a-variable-speed-drive",
+        "url": "https://new.abb.com/drives/what-is-a-variable-speed-drive"
+      },
+      {
+        "summary": "ACS880 IGBT supply control program (YISLX and YLHLX) firmware manual ",
+        "url": "https://library.abb.com/d/3AXD50001019464"
+      },
+      {
+        "summary": "ABB CYBERSECURITY ADVISORY - PDF version ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=9AKK108470A9491&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "CODESYS Security Advisory 2023-04",
+        "url": "https://customers.codesys.com/index.php?eID=dumpFile&t=f&f=17764&token=4b2f3cf3a800d076b22f18d49f278bd8883dbd46&download="
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-093-03 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-093-03"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "ABB ACS880 Drives Containing CODESYS RTS",
+    "tracking": {
+      "current_release_date": "2025-03-26T00:30:00.000000Z",
+      "generator": {
+        "date": "2025-03-27T06:40:04.702000Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-093-03",
+      "initial_release_date": "2025-03-26T00:30:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-03-26T00:30:00.000000Z",
+          "number": "1.0.0",
+          "summary": "Initial version"
+        }
+      ],
+      "status": "final",
+      "version": "1.0.0"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "branches": [
+                  {
+                    "branches": [
+                      {
+                        "category": "product_version_range",
+                        "name": "<AINLX_v3.47",
+                        "product": {
+                          "name": "ACS880 Primary Control Program AINLX < v3.47",
+                          "product_id": "CSAFPID-0001"
+                        }
+                      },
+                      {
+                        "category": "product_version_range",
+                        "name": "<YINLX_v1.30",
+                        "product": {
+                          "name": "ACS880 Primary Control Program YINLX < v1.30",
+                          "product_id": "CSAFPID-0002"
+                        }
+                      },
+                      {
+                        "category": "product_version_range",
+                        "name": ">=AINLX_v3.47",
+                        "product": {
+                          "name": "ACS880 Primary Control Program AINLX  >=v3.47",
+                          "product_id": "CSAFPID-0003"
+                        }
+                      },
+                      {
+                        "category": "product_version_range",
+                        "name": ">=YINLX_v1.30",
+                        "product": {
+                          "name": "ACS880 Primary Control Program YINLX >= v1.30",
+                          "product_id": "CSAFPID-0004"
+                        }
+                      }
+                    ],
+                    "category": "product_name",
+                    "name": "ACS880 Primary Control Program"
+                  },
+                  {
+                    "branches": [
+                      {
+                        "category": "product_version_range",
+                        "name": "<AISLX_v3.43",
+                        "product": {
+                          "name": " ACS880 IGBT Supply Control Program AISLX < v3.43",
+                          "product_id": "CSAFPID-0005"
+                        }
+                      },
+                      {
+                        "category": "product_version_range",
+                        "name": "<ALHLX_v3.43",
+                        "product": {
+                          "name": " ACS880 IGBT Supply Control Program ALHLX < v3.43",
+                          "product_id": "CSAFPID-0006"
+                        }
+                      },
+                      {
+                        "category": "product_version_range",
+                        "name": "<YISLX_v1.30",
+                        "product": {
+                          "name": " ACS880 IGBT Supply Control Program YISLX < v1.30 ",
+                          "product_id": "CSAFPID-0007"
+                        }
+                      },
+                      {
+                        "category": "product_version_range",
+                        "name": "<YLHLX_v1.30",
+                        "product": {
+                          "name": " ACS880 IGBT Supply Control Program YLHLX < v1.30",
+                          "product_id": "CSAFPID-0008"
+                        }
+                      },
+                      {
+                        "category": "product_version_range",
+                        "name": ">=AISLX_v3.43",
+                        "product": {
+                          "name": "ACS880 IGBT Supply Control Program AISLX >= v3.43",
+                          "product_id": "CSAFPID-0009"
+                        }
+                      },
+                      {
+                        "category": "product_version_range",
+                        "name": ">=ALHLX_v3.43",
+                        "product": {
+                          "name": "ACS880 IGBT Supply Control Program ALHLX >= v3.43",
+                          "product_id": "CSAFPID-0010"
+                        }
+                      },
+                      {
+                        "category": "product_version_range",
+                        "name": ">=YISLX_v1.30",
+                        "product": {
+                          "name": "ACS880 IGBT Supply Control Program YISLX >= v1.30 ",
+                          "product_id": "CSAFPID-0011"
+                        }
+                      },
+                      {
+                        "category": "product_version_range",
+                        "name": ">=YLHLX_v1.30",
+                        "product": {
+                          "name": "ACS880 IGBT Supply Control Program YLHLX >= v1.30",
+                          "product_id": "CSAFPID-0012"
+                        }
+                      }
+                    ],
+                    "category": "product_name",
+                    "name": "ACS880 IGBT Supply Control Program"
+                  },
+                  {
+                    "branches": [
+                      {
+                        "category": "product_version_range",
+                        "name": "<=APCLX_v1.04.0.5",
+                        "product": {
+                          "name": "ACS880 Position Control Program APCLX <= v1.04.0.5",
+                          "product_id": "CSAFPID-0013"
+                        }
+                      },
+                      {
+                        "category": "product_version_range",
+                        "name": ">APCLX_v1.04.0.5",
+                        "product": {
+                          "name": "ACS880 Position Control Program APCLX > v1.04.0.5",
+                          "product_id": "CSAFPID-0014"
+                        }
+                      }
+                    ],
+                    "category": "product_name",
+                    "name": "ACS880 Position Control Program"
+                  },
+                  {
+                    "branches": [
+                      {
+                        "category": "product_version_range",
+                        "name": "<=ATBLX_v3.44.0.0",
+                        "product": {
+                          "name": "ACS880 Test Bench Control Program ATBLX <= v3.44.0.0",
+                          "product_id": "CSAFPID-0015"
+                        }
+                      },
+                      {
+                        "category": "product_version_range",
+                        "name": ">ATBLX_v3.44.0.0",
+                        "product": {
+                          "name": "ACS880 Test Bench Control Program ATBLX > v3.44.0.0",
+                          "product_id": "CSAFPID-0016"
+                        }
+                      }
+                    ],
+                    "category": "product_name",
+                    "name": "ACS880 Test Bench Control Program"
+                  }
+                ],
+                "category": "product_family",
+                "name": "ACS880"
+              }
+            ],
+            "category": "product_family",
+            "name": "ACS880 Drives"
+          }
+        ],
+        "category": "vendor",
+        "name": "ABB"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2023-37559",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "After successful authentication as a user in multiple CODESYS products in multiple versions, specific crafted network communication requests with inconsistent content can cause the CmpAppForce component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD- CVE-2023-37559",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37559"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37559"
+    },
+    {
+      "cve": "CVE-2023-37558",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "After successful authentication as a user in multiple CODESYS products in multiple versions, specific crafted network communication requests with inconsistent content can cause the CmpAppForce component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37558",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37558"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37558"
+    },
+    {
+      "cve": "CVE-2023-37557",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "After successful authentication as a user in multiple CODESYS products in multiple versions, specific crafted remote communication requests can cause the CmpAppBP component to overwrite a heap-based buffer, which can lead to a denial-of-service condition",
+          "title": "Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD- CVE-2023-37557 ",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37557"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37557"
+    },
+    {
+      "cve": "CVE-2023-37556",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple versions of multiple CODESYS products, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpAppBP component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD -  CVE-2023-37556",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37556"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37556"
+    },
+    {
+      "cve": "CVE-2023-37555",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple versions of multiple CODESYS products, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpAppBP component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37555",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37555"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37555"
+    },
+    {
+      "cve": "CVE-2023-37554",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple versions of multiple CODESYS products, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpAppBP component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37554",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37554"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37554"
+    },
+    {
+      "cve": "CVE-2023-37553",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple versions of multiple CODESYS products, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpAppBP component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37553",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37553"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37553"
+    },
+    {
+      "cve": "CVE-2023-37552",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple versions of multiple CODESYS products, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpAppBP component to read internally from an invalid address, potentially leading to a denial-of-service condition.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37552",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37552"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37552"
+    },
+    {
+      "cve": "CVE-2023-37550",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple CODESYS products in multiple versions, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpApp component to read internally from an invalid address, potentially leading to a denial-of-service condition. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37550",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37550"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37550"
+    },
+    {
+      "cve": "CVE-2023-37549",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple CODESYS products in multiple versions, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpApp component to read internally from an invalid address, potentially leading to a denial-of-service condition. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37549",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37549"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37549"
+    },
+    {
+      "cve": "CVE-2023-37548",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple CODESYS products in multiple versions, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpApp component to read internally from an invalid address, potentially leading to a denial-of-service condition. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37548",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37548"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37548"
+    },
+    {
+      "cve": "CVE-2023-37547",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple CODESYS products in multiple versions, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpApp component to read internally from an invalid address, potentially leading to a denial-of-service condition. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37547",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37547"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37547"
+    },
+    {
+      "cve": "CVE-2023-37546",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple CODESYS products in multiple versions, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpApp component to read internally from an invalid address, potentially leading to a denial-of-service condition. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37546",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37546"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37546"
+    },
+    {
+      "cve": "CVE-2023-37545",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In multiple CODESYS products in multiple versions, after successful authentication as a user, specific crafted network communication requests with inconsistent content can cause the CmpApp component to read internally from an invalid address, potentially leading to a denial-of-service condition. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-37545",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37545"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2023-37545"
+    },
+    {
+      "cve": "CVE-2022-4046",
+      "cwe": {
+        "id": "CWE-119",
+        "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In CODESYS Control in multiple versions a improper restriction of operations within the bounds of a memory buffer allow an remote attacker with user privileges to gain full access of the device.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2022-4046",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-4046"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "In latest firmware versions for the affected products, ABB has mitigated the CODESYS Runtime System vulnerabilities. IEC online programming communication is disabled by default. As a result, CODESYS tools communication with the drive is disabled.\n\nABB recommends that customers apply the firmware update at earliest convenience.\n\nFor situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "For situations where firmware update is not feasible, please refer to \u2018Workarounds\u2019 section guidance",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 8.8,
+            "environmentalSeverity": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 8.8,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2022-4046"
+    }
+  ]
+}

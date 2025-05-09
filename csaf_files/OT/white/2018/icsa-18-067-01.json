@@ -1,766 +1,772 @@
 {
-    "document": {
-        "acknowledgments": [
-            {
-                "organization": "Siemens ProductCERT",
-                "summary": "reporting these vulnerabilities to CISA."
-            },
-            {
-                "names": [
-                    "Ilya Karpov",
-                    "Dmitry Sklyarov"
-                ],
-                "organization": "Positive Technologies",
-                "summary": "coordinated disclosure"
-            }
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Siemens ProductCERT",
+        "summary": "reporting these vulnerabilities to CISA."
+      },
+      {
+        "names": [
+          "Ilya Karpov",
+          "Dmitry Sklyarov"
         ],
-        "category": "Siemens Security Advisory",
-        "csaf_version": "2.0",
-        "distribution": {
-            "text": "Disclosure is not limited",
-            "tlp": {
-                "label": "WHITE",
-                "url": "https://us-cert.cisa.gov/tlp/"
-            }
-        },
-        "notes": [
-            {
-                "category": "summary",
-                "text": "SIPROTEC 4 and SIPROTEC Compact devices could allow access authorization passwords to be reconstructed or overwritten via engineering mechanisms that involve DIGSI 4 and EN100 Ethernet communication modules.\n\nSiemens has released updates for several affected products, and recommends specific countermeasures for the remaining products.",
-                "title": "Summary"
-            },
-            {
-                "category": "general",
-                "text": "Operators of critical power systems (e.g. TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can thus be minimized by virtue of the grid design.\n\nSiemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment.\n\nAs a general security measure Siemens strongly recommends to protect network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised to configure the environment according to our operational guidelines in order to run the devices in a protected IT environment.\n\nRecommended security guidelines can be found at:\n\nhttps://www.siemens.com/gridsecurity",
-                "title": "General Recommendations"
-            },
-            {
-                "category": "general",
-                "text": "For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
-                "title": "Additional Resources"
-            },
-            {
-                "category": "legal_disclaimer",
-                "text": "Siemens Security Advisories are subject to the terms and conditions contained in Siemens' underlying license terms or other applicable agreements previously agreed to with Siemens (hereinafter \"License Terms\"). To the extent applicable to information, software or documentation made available in or through a Siemens Security Advisory, the Terms of Use of Siemens' Global Website (https://www.siemens.com/terms_of_use, hereinafter \"Terms of Use\"), in particular Sections 8-10 of the Terms of Use, shall apply additionally. In case of conflicts, the License Terms shall prevail over the Terms of Use.",
-                "title": "Terms of Use"
-            },
-            {
-                "category": "legal_disclaimer",
-                "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
-                "title": "Legal Notice"
-            },
-            {
-                "category": "other",
-                "text": "This CISA CSAF advisory was converted from Siemens ProductCERT's CSAF advisory.",
-                "title": "Advisory Conversion Disclaimer"
-            },
-            {
-                "category": "other",
-                "text": "Multiple",
-                "title": "Critical infrastructure sectors"
-            },
-            {
-                "category": "other",
-                "text": "Worldwide",
-                "title": "Countries/areas deployed"
-            },
-            {
-                "category": "other",
-                "text": "Germany",
-                "title": "Company headquarters location"
-            },
-            {
-                "category": "general",
-                "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
-                "title": "Recommended Practices"
-            },
-            {
-                "category": "general",
-                "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
-                "title": "Recommended Practices"
-            }
-        ],
-        "publisher": {
-            "category": "other",
-            "contact_details": "central@cisa.dhs.gov",
-            "name": "CISA",
-            "namespace": "https://www.cisa.gov/"
-        },
-        "references": [
-            {
-                "category": "self",
-                "summary": "SSA-203306: Password Vulnerabilities in SIPROTEC 4 and SIPROTEC Compact Relay Families - CSAF Version",
-                "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-203306.json"
-            },
-            {
-                "category": "self",
-                "summary": "SSA-203306: Password Vulnerabilities in SIPROTEC 4 and SIPROTEC Compact Relay Families - TXT Version",
-                "url": "https://cert-portal.siemens.com/productcert/txt/ssa-203306.txt"
-            },
-            {
-                "category": "self",
-                "summary": "SSA-203306: Password Vulnerabilities in SIPROTEC 4 and SIPROTEC Compact Relay Families - PDF Version",
-                "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-203306.pdf"
-            },
-            {
-                "category": "self",
-                "summary": "ICS Advisory ICSA-18-067-01 JSON",
-                "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2018/icsa-18-067-01.json"
-            },
-            {
-                "category": "self",
-                "summary": "ICS Advisory ICSA-18-067-01 - Web Version",
-                "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-18-067-01"
-            },
-            {
-                "category": "external",
-                "summary": "Recommended Practices",
-                "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
-            },
-            {
-                "category": "external",
-                "summary": "Recommended Practices",
-                "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
-            },
-            {
-                "category": "external",
-                "summary": "Recommended Practices",
-                "url": "https://www.cisa.gov/topics/industrial-control-systems"
-            },
-            {
-                "category": "external",
-                "summary": "Recommended Practices",
-                "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
-            },
-            {
-                "category": "external",
-                "summary": "Recommended Practices",
-                "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
-            },
-            {
-                "category": "external",
-                "summary": "Recommended Practices",
-                "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
-            }
-        ],
-        "title": "Siemens SIPROTEC 4, SIPROTEC Compact, DIGSI 4, and EN100 Ethernet Module (Update D)",
-        "tracking": {
-            "current_release_date": "2021-07-13T00:00:00.000000Z",
-            "generator": {
-                "engine": {
-                    "name": "CISA CSAF Generator",
-                    "version": "1.0.0"
-                }
-            },
-            "id": "ICSA-18-067-01",
-            "initial_release_date": "2018-03-08T00:00:00.000000Z",
-            "revision_history": [
-                {
-                    "date": "2018-03-08T00:00:00.000000Z",
-                    "legacy_version": "1.0",
-                    "number": "1",
-                    "summary": "Publication Date"
-                },
-                {
-                    "date": "2018-03-08T00:00:00.000000Z",
-                    "legacy_version": "1.1",
-                    "number": "2",
-                    "summary": "Corrected product name SIPROTEC 4 7SJ66"
-                },
-                {
-                    "date": "2018-04-17T00:00:00.000000Z",
-                    "legacy_version": "1.2",
-                    "number": "3",
-                    "summary": "Added update for DNP3 TCP"
-                },
-                {
-                    "date": "2018-05-15T00:00:00.000000Z",
-                    "legacy_version": "1.3",
-                    "number": "4",
-                    "summary": "Added update for 7SD80"
-                },
-                {
-                    "date": "2019-03-12T00:00:00.000000Z",
-                    "legacy_version": "1.4",
-                    "number": "5",
-                    "summary": "Added updates for 7SJ61, 7SJ62 and 7SJ64, and recommendation to contact customer care for products without solution"
-                },
-                {
-                    "date": "2021-07-13T00:00:00.000000Z",
-                    "legacy_version": "1.5",
-                    "number": "6",
-                    "summary": "Corrected update version for DNP3"
-                }
-            ],
-            "status": "final",
-            "version": "6"
-        }
+        "organization": "Positive Technologies",
+        "summary": "coordinated disclosure"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
     },
-    "product_tree": {
+    "notes": [
+      {
+        "category": "summary",
+        "text": "SIPROTEC 4 and SIPROTEC Compact devices could allow access authorization passwords to be reconstructed or overwritten via engineering mechanisms that involve DIGSI 4 and EN100 Ethernet communication modules.\n\nSiemens has released updates for several affected products, and recommends specific countermeasures for the remaining products.",
+        "title": "Summary"
+      },
+      {
+        "category": "general",
+        "text": "Operators of critical power systems (e.g. TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can thus be minimized by virtue of the grid design.\n\nSiemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment.\n\nAs a general security measure Siemens strongly recommends to protect network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised to configure the environment according to our operational guidelines in order to run the devices in a protected IT environment.\n\nRecommended security guidelines can be found at:\n\nhttps://www.siemens.com/gridsecurity",
+        "title": "General Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
+        "title": "Additional Resources"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "Siemens Security Advisories are subject to the terms and conditions contained in Siemens' underlying license terms or other applicable agreements previously agreed to with Siemens (hereinafter \"License Terms\"). To the extent applicable to information, software or documentation made available in or through a Siemens Security Advisory, the Terms of Use of Siemens' Global Website (https://www.siemens.com/terms_of_use, hereinafter \"Terms of Use\"), in particular Sections 8-10 of the Terms of Use, shall apply additionally. In case of conflicts, the License Terms shall prevail over the Terms of Use.",
+        "title": "Terms of Use"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "other",
+        "text": "This CISA CSAF advisory was converted from Siemens ProductCERT's CSAF advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Multiple",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Germany",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "SSA-203306: Password Vulnerabilities in SIPROTEC 4 and SIPROTEC Compact Relay Families - CSAF Version",
+        "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-203306.json"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-203306: Password Vulnerabilities in SIPROTEC 4 and SIPROTEC Compact Relay Families - TXT Version",
+        "url": "https://cert-portal.siemens.com/productcert/txt/ssa-203306.txt"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-203306: Password Vulnerabilities in SIPROTEC 4 and SIPROTEC Compact Relay Families - PDF Version",
+        "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-203306.pdf"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-18-067-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2018/icsa-18-067-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-18-067-01 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-18-067-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Siemens SIPROTEC 4, SIPROTEC Compact, DIGSI 4, and EN100 Ethernet Module (Update D)",
+    "tracking": {
+      "current_release_date": "2025-05-06T06:00:00.000000Z",
+      "generator": {
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-18-067-01",
+      "initial_release_date": "2018-03-08T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2018-03-08T00:00:00.000000Z",
+          "legacy_version": "1.0",
+          "number": "1",
+          "summary": "Publication Date"
+        },
+        {
+          "date": "2018-03-08T00:00:00.000000Z",
+          "legacy_version": "1.1",
+          "number": "2",
+          "summary": "Corrected product name SIPROTEC 4 7SJ66"
+        },
+        {
+          "date": "2018-04-17T00:00:00.000000Z",
+          "legacy_version": "1.2",
+          "number": "3",
+          "summary": "Added update for DNP3 TCP"
+        },
+        {
+          "date": "2018-05-15T00:00:00.000000Z",
+          "legacy_version": "1.3",
+          "number": "4",
+          "summary": "Added update for 7SD80"
+        },
+        {
+          "date": "2019-03-12T00:00:00.000000Z",
+          "legacy_version": "1.4",
+          "number": "5",
+          "summary": "Added updates for 7SJ61, 7SJ62 and 7SJ64, and recommendation to contact customer care for products without solution"
+        },
+        {
+          "date": "2021-07-13T00:00:00.000000Z",
+          "legacy_version": "1.5",
+          "number": "6",
+          "summary": "Corrected update version for DNP3"
+        },
+        {
+          "date": "2025-05-06T06:00:00.000000Z",
+          "legacy_version": "Revision",
+          "number": "7",
+          "summary": "Revision - Fixing typos"
+        }
+      ],
+      "status": "final",
+      "version": "7"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
         "branches": [
-            {
-                "branches": [
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V4.92",
-                                "product": {
-                                    "name": "DIGSI 4",
-                                    "product_id": "CSAFPID-0001"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "DIGSI 4"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V1.05.00",
-                                "product": {
-                                    "name": "EN100 Ethernet module DNP3 variant",
-                                    "product_id": "CSAFPID-0002"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "EN100 Ethernet module DNP3 variant"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "vers:all/*",
-                                "product": {
-                                    "name": "EN100 Ethernet module IEC 104 variant",
-                                    "product_id": "CSAFPID-0003"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "EN100 Ethernet module IEC 104 variant"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V4.30",
-                                "product": {
-                                    "name": "EN100 Ethernet module IEC 61850 variant",
-                                    "product_id": "CSAFPID-0004"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "EN100 Ethernet module IEC 61850 variant"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "vers:all/*",
-                                "product": {
-                                    "name": "EN100 Ethernet module Modbus TCP variant",
-                                    "product_id": "CSAFPID-0005"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "EN100 Ethernet module Modbus TCP variant"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "vers:all/*",
-                                "product": {
-                                    "name": "EN100 Ethernet module PROFINET IO variant",
-                                    "product_id": "CSAFPID-0006"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "EN100 Ethernet module PROFINET IO variant"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "vers:all/*",
-                                "product": {
-                                    "name": "Other SIPROTEC 4 relays",
-                                    "product_id": "CSAFPID-0007"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "Other SIPROTEC 4 relays"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "vers:all/*",
-                                "product": {
-                                    "name": "Other SIPROTEC Compact relays",
-                                    "product_id": "CSAFPID-0008"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "Other SIPROTEC Compact relays"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V4.70",
-                                "product": {
-                                    "name": "SIPROTEC 4 7SD80",
-                                    "product_id": "CSAFPID-0009"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "SIPROTEC 4 7SD80"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V4.96",
-                                "product": {
-                                    "name": "SIPROTEC 4 7SJ61",
-                                    "product_id": "CSAFPID-0010"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "SIPROTEC 4 7SJ61"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V4.96",
-                                "product": {
-                                    "name": "SIPROTEC 4 7SJ62",
-                                    "product_id": "CSAFPID-0011"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "SIPROTEC 4 7SJ62"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V4.96",
-                                "product": {
-                                    "name": "SIPROTEC 4 7SJ64",
-                                    "product_id": "CSAFPID-0012"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "SIPROTEC 4 7SJ64"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V4.30",
-                                "product": {
-                                    "name": "SIPROTEC 4 7SJ66",
-                                    "product_id": "CSAFPID-0013"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "SIPROTEC 4 7SJ66"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V4.77",
-                                "product": {
-                                    "name": "SIPROTEC Compact 7SJ80",
-                                    "product_id": "CSAFPID-0014"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "SIPROTEC Compact 7SJ80"
-                    },
-                    {
-                        "branches": [
-                            {
-                                "category": "product_version_range",
-                                "name": "<V4.77",
-                                "product": {
-                                    "name": "SIPROTEC Compact 7SK80",
-                                    "product_id": "CSAFPID-0015"
-                                }
-                            }
-                        ],
-                        "category": "product_name",
-                        "name": "SIPROTEC Compact 7SK80"
-                    }
-                ],
-                "category": "vendor",
-                "name": "Siemens"
-            }
-        ]
-    },
-    "vulnerabilities": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.92",
+                "product": {
+                  "name": "DIGSI 4",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "DIGSI 4"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V1.05.00",
+                "product": {
+                  "name": "EN100 Ethernet module DNP3 variant",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EN100 Ethernet module DNP3 variant"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "EN100 Ethernet module IEC 104 variant",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EN100 Ethernet module IEC 104 variant"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.30",
+                "product": {
+                  "name": "EN100 Ethernet module IEC 61850 variant",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EN100 Ethernet module IEC 61850 variant"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "EN100 Ethernet module Modbus TCP variant",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EN100 Ethernet module Modbus TCP variant"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "EN100 Ethernet module PROFINET IO variant",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EN100 Ethernet module PROFINET IO variant"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Other SIPROTEC 4 relays",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Other SIPROTEC 4 relays"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Other SIPROTEC Compact relays",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Other SIPROTEC Compact relays"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.70",
+                "product": {
+                  "name": "SIPROTEC 4 7SD80",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPROTEC 4 7SD80"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.96",
+                "product": {
+                  "name": "SIPROTEC 4 7SJ61",
+                  "product_id": "CSAFPID-0010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPROTEC 4 7SJ61"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.96",
+                "product": {
+                  "name": "SIPROTEC 4 7SJ62",
+                  "product_id": "CSAFPID-0011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPROTEC 4 7SJ62"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.96",
+                "product": {
+                  "name": "SIPROTEC 4 7SJ64",
+                  "product_id": "CSAFPID-0012"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPROTEC 4 7SJ64"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.30",
+                "product": {
+                  "name": "SIPROTEC 4 7SJ66",
+                  "product_id": "CSAFPID-0013"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPROTEC 4 7SJ66"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.77",
+                "product": {
+                  "name": "SIPROTEC Compact 7SJ80",
+                  "product_id": "CSAFPID-0014"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPROTEC Compact 7SJ80"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V4.77",
+                "product": {
+                  "name": "SIPROTEC Compact 7SK80",
+                  "product_id": "CSAFPID-0015"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPROTEC Compact 7SK80"
+          }
+        ],
+        "category": "vendor",
+        "name": "Siemens"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2018-4839",
+      "cwe": {
+        "id": "CWE-326",
+        "name": "Inadequate Encryption Strength"
+      },
+      "notes": [
         {
-            "cve": "CVE-2018-4839",
-            "cwe": {
-                "id": "CWE-326",
-                "name": "Inadequate Encryption Strength"
-            },
-            "notes": [
-                {
-                    "category": "summary",
-                    "text": "An attacker with local access to the engineering system or in a privileged network position and able to obtain certain network traffic could possibly reconstruct access authorization passwords.",
-                    "title": "Summary"
-                }
-            ],
-            "product_status": {
-                "known_affected": [
-                    "CSAFPID-0001",
-                    "CSAFPID-0002",
-                    "CSAFPID-0003",
-                    "CSAFPID-0004",
-                    "CSAFPID-0005",
-                    "CSAFPID-0006",
-                    "CSAFPID-0007",
-                    "CSAFPID-0008",
-                    "CSAFPID-0009",
-                    "CSAFPID-0010",
-                    "CSAFPID-0011",
-                    "CSAFPID-0012",
-                    "CSAFPID-0013",
-                    "CSAFPID-0014",
-                    "CSAFPID-0015"
-                ]
-            },
-            "references": [
-                {
-                    "summary": "CVE-2018-4839 - DIGSI 4",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109740980"
-                },
-                {
-                    "summary": "CVE-2018-4839 - EN100 Ethernet module DNP3 variant",
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
-                },
-                {
-                    "summary": "CVE-2018-4839 - EN100 Ethernet module IEC 61850 variant",
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
-                },
-                {
-                    "summary": "CVE-2018-4839 - SIPROTEC 4 7SD80",
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109742758"
-                },
-                {
-                    "summary": "CVE-2018-4839 - SIPROTEC 4 7SJ61",
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109743551"
-                },
-                {
-                    "summary": "CVE-2018-4839 - SIPROTEC 4 7SJ62",
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109743551"
-                },
-                {
-                    "summary": "CVE-2018-4839 - SIPROTEC 4 7SJ64",
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109743551"
-                },
-                {
-                    "summary": "CVE-2018-4839 - SIPROTEC 4 7SJ66",
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109743555"
-                },
-                {
-                    "summary": "CVE-2018-4839 - SIPROTEC Compact 7SJ80",
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109742699"
-                },
-                {
-                    "summary": "CVE-2018-4839 - SIPROTEC Compact 7SK80",
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109742712"
-                },
-                {
-                    "summary": "CVE-2018-4839 Mitre 5.0 json",
-                    "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2018-4839.json"
-                }
-            ],
-            "remediations": [
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V4.92",
-                    "product_ids": [
-                        "CSAFPID-0001"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109740980"
-                },
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V1.05.00 and configure DIGSI 4 connection password",
-                    "product_ids": [
-                        "CSAFPID-0002"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
-                },
-                {
-                    "category": "none_available",
-                    "details": "Currently no remediation is available",
-                    "product_ids": [
-                        "CSAFPID-0003",
-                        "CSAFPID-0005",
-                        "CSAFPID-0006",
-                        "CSAFPID-0007",
-                        "CSAFPID-0008"
-                    ]
-                },
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V4.30 and configure DIGSI 4 connection password",
-                    "product_ids": [
-                        "CSAFPID-0004"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
-                },
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V4.70",
-                    "product_ids": [
-                        "CSAFPID-0009"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109742758"
-                },
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V4.96",
-                    "product_ids": [
-                        "CSAFPID-0010",
-                        "CSAFPID-0011",
-                        "CSAFPID-0012"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109743551"
-                },
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V4.30",
-                    "product_ids": [
-                        "CSAFPID-0013"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109743555"
-                },
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V4.77",
-                    "product_ids": [
-                        "CSAFPID-0014"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109742699"
-                },
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V4.77",
-                    "product_ids": [
-                        "CSAFPID-0015"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109742712"
-                },
-                {
-                    "category": "mitigation",
-                    "details": "Apply secure substation concept and Defense-in-Depth (see https://www.siemens.com/gridsecurity) or contact customer care to find specific solutions.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005",
-                        "CSAFPID-0006",
-                        "CSAFPID-0007",
-                        "CSAFPID-0008",
-                        "CSAFPID-0009",
-                        "CSAFPID-0010",
-                        "CSAFPID-0011",
-                        "CSAFPID-0012",
-                        "CSAFPID-0013",
-                        "CSAFPID-0014",
-                        "CSAFPID-0015"
-                    ]
-                }
-            ],
-            "scores": [
-                {
-                    "cvss_v3": {
-                        "baseScore": 4.0,
-                        "baseSeverity": "MEDIUM",
-                        "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N/E:P/RL:O/RC:C",
-                        "version": "3.1"
-                    },
-                    "products": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005",
-                        "CSAFPID-0006",
-                        "CSAFPID-0007",
-                        "CSAFPID-0008",
-                        "CSAFPID-0009",
-                        "CSAFPID-0010",
-                        "CSAFPID-0011",
-                        "CSAFPID-0012",
-                        "CSAFPID-0013",
-                        "CSAFPID-0014",
-                        "CSAFPID-0015"
-                    ]
-                }
-            ],
-            "title": "CVE-2018-4839"
+          "category": "summary",
+          "text": "An attacker with local access to the engineering system or in a privileged network position and able to obtain certain network traffic could possibly reconstruct access authorization passwords.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0013",
+          "CSAFPID-0014",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2018-4839 - DIGSI 4",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109740980"
         },
         {
-            "cve": "CVE-2018-4840",
-            "cwe": {
-                "id": "CWE-306",
-                "name": "Missing Authentication for Critical Function"
-            },
-            "notes": [
-                {
-                    "category": "summary",
-                    "text": "The device engineering mechanism allows an unauthenticated remote user to upload a modified device configuration overwriting access authorization passwords.",
-                    "title": "Summary"
-                }
-            ],
-            "product_status": {
-                "known_affected": [
-                    "CSAFPID-0001",
-                    "CSAFPID-0002",
-                    "CSAFPID-0003",
-                    "CSAFPID-0004",
-                    "CSAFPID-0005",
-                    "CSAFPID-0006"
-                ]
-            },
-            "references": [
-                {
-                    "summary": "CVE-2018-4840 - DIGSI 4",
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109740980"
-                },
-                {
-                    "summary": "CVE-2018-4840 - EN100 Ethernet module DNP3 variant",
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
-                },
-                {
-                    "summary": "CVE-2018-4840 - EN100 Ethernet module IEC 61850 variant",
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
-                },
-                {
-                    "summary": "CVE-2018-4840 Mitre 5.0 json",
-                    "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2018-4840.json"
-                }
-            ],
-            "remediations": [
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V4.92",
-                    "product_ids": [
-                        "CSAFPID-0001"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/ww/en/view/109740980"
-                },
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V1.05.00 and configure DIGSI 4 connection password",
-                    "product_ids": [
-                        "CSAFPID-0002"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
-                },
-                {
-                    "category": "none_available",
-                    "details": "Currently no remediation is available",
-                    "product_ids": [
-                        "CSAFPID-0003",
-                        "CSAFPID-0005",
-                        "CSAFPID-0006"
-                    ]
-                },
-                {
-                    "category": "vendor_fix",
-                    "details": "Update to V4.30 and configure DIGSI 4 connection password",
-                    "product_ids": [
-                        "CSAFPID-0004"
-                    ],
-                    "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
-                },
-                {
-                    "category": "mitigation",
-                    "details": "Apply secure substation concept and Defense-in-Depth (see https://www.siemens.com/gridsecurity) or contact customer care to find specific solutions.",
-                    "product_ids": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005",
-                        "CSAFPID-0006"
-                    ]
-                }
-            ],
-            "scores": [
-                {
-                    "cvss_v3": {
-                        "baseScore": 7.5,
-                        "baseSeverity": "HIGH",
-                        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N/E:P/RL:O/RC:C",
-                        "version": "3.1"
-                    },
-                    "products": [
-                        "CSAFPID-0001",
-                        "CSAFPID-0002",
-                        "CSAFPID-0003",
-                        "CSAFPID-0004",
-                        "CSAFPID-0005",
-                        "CSAFPID-0006"
-                    ]
-                }
-            ],
-            "title": "CVE-2018-4840"
+          "summary": "CVE-2018-4839 - EN100 Ethernet module DNP3 variant",
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
+        },
+        {
+          "summary": "CVE-2018-4839 - EN100 Ethernet module IEC 61850 variant",
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
+        },
+        {
+          "summary": "CVE-2018-4839 - SIPROTEC 4 7SD80",
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109742758"
+        },
+        {
+          "summary": "CVE-2018-4839 - SIPROTEC 4 7SJ61",
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109743551"
+        },
+        {
+          "summary": "CVE-2018-4839 - SIPROTEC 4 7SJ62",
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109743551"
+        },
+        {
+          "summary": "CVE-2018-4839 - SIPROTEC 4 7SJ64",
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109743551"
+        },
+        {
+          "summary": "CVE-2018-4839 - SIPROTEC 4 7SJ66",
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109743555"
+        },
+        {
+          "summary": "CVE-2018-4839 - SIPROTEC Compact 7SJ80",
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109742699"
+        },
+        {
+          "summary": "CVE-2018-4839 - SIPROTEC Compact 7SK80",
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109742712"
+        },
+        {
+          "summary": "CVE-2018-4839 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2018-4839.json"
         }
-    ]
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.92",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109740980"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.05.00 and configure DIGSI 4 connection password",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no remediation is available",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.30 and configure DIGSI 4 connection password",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.70",
+          "product_ids": [
+            "CSAFPID-0009"
+          ],
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109742758"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.96",
+          "product_ids": [
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012"
+          ],
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109743551"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.30",
+          "product_ids": [
+            "CSAFPID-0013"
+          ],
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109743555"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.77",
+          "product_ids": [
+            "CSAFPID-0014"
+          ],
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109742699"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.77",
+          "product_ids": [
+            "CSAFPID-0015"
+          ],
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109742712"
+        },
+        {
+          "category": "mitigation",
+          "details": "Apply secure substation concept and Defense-in-Depth (see https://www.siemens.com/gridsecurity) or contact customer care to find specific solutions.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.0,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2018-4839"
+    },
+    {
+      "cve": "CVE-2018-4840",
+      "cwe": {
+        "id": "CWE-306",
+        "name": "Missing Authentication for Critical Function"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The device engineering mechanism allows an unauthenticated remote user to upload a modified device configuration overwriting access authorization passwords.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "summary": "CVE-2018-4840 - DIGSI 4",
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109740980"
+        },
+        {
+          "summary": "CVE-2018-4840 - EN100 Ethernet module DNP3 variant",
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
+        },
+        {
+          "summary": "CVE-2018-4840 - EN100 Ethernet module IEC 61850 variant",
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
+        },
+        {
+          "summary": "CVE-2018-4840 Mitre 5.0 json",
+          "url": "https://cert-portal.siemens.com/productcert/mitre/CVE-2018-4840.json"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.92",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109740980"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.05.00 and configure DIGSI 4 connection password",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no remediation is available",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V4.30 and configure DIGSI 4 connection password",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "url": "https://support.industry.siemens.com/cs/us/en/view/109745821"
+        },
+        {
+          "category": "mitigation",
+          "details": "Apply secure substation concept and Defense-in-Depth (see https://www.siemens.com/gridsecurity) or contact customer care to find specific solutions.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "title": "CVE-2018-4840"
+    }
+  ]
 }
