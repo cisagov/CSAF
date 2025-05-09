@@ -11,18 +11,18 @@
     },
     "title": "TopQuadrant TopBraid EDG Insecure External Password Storage and XXE Vulnerabilities",
     "tracking": {
-      "current_release_date": "2024-11-28T01:00:00Z",
+      "current_release_date": "2025-02-13T20:00:00Z",
       "generator": {
         "engine": {
           "name": "Secvisogram",
-          "version": "2.5.15"
+          "version": "2.5.18"
         },
-        "date": "2024-11-27T03:30:11Z"
+        "date": "2025-02-13T20:11:59Z"
       },
       "id": "VA-24-254-02",
       "initial_release_date": "2024-09-10T16:03:00Z",
       "status": "final",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "revision_history": [
         {
           "number": "1.0.0",
@@ -43,6 +43,11 @@
           "date": "2024-11-27T17:00:00Z",
           "number": "1.0.3",
           "summary": "Added Hashicorp Vault mitigation, Recommended Practices section, language"
+        },
+        {
+          "number": "1.0.4",
+          "summary": "Added mitigations for CVE-2024-45744",
+          "date": "2025-02-13T20:00:00Z"
         }
       ]
     },
@@ -133,6 +138,38 @@
                   "name": "TopQuadrant TopBraid EDG >= 7.3.0",
                   "product_id": "CSAFPID-0004"
                 }
+              },
+              {
+                "name": "8.3.0",
+                "category": "product_version",
+                "product": {
+                  "product_id": "CSAFPID-0005",
+                  "name": "TopQuadrant TopBraid EDG 8.3.0"
+                }
+              },
+              {
+                "name": "<8.3.0",
+                "category": "product_version_range",
+                "product": {
+                  "name": "TopQuadrant TopBraid EDG < 8.3.0",
+                  "product_id": "CSAFPID-0006"
+                }
+              },
+              {
+                "name": ">=8.3.0",
+                "category": "product_version_range",
+                "product": {
+                  "product_id": "CSAFPID-0007",
+                  "name": "TopQuadrant TopBraid EDG >= 8.3.0"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "TopQuadrant TopBraid EDG",
+                  "product_id": "CSAFPID-0008"
+                }
               }
             ]
           }
@@ -150,7 +187,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "TopQuadrant TopBraid EDG stores external credentials insecurely. An authenticated attacker with file system access can read edg-setup.properites and obtain the secret to decrypt external passwords stored in edg-vault.properties. An authenticated attacker could gain file system access using a separate vulnerability such as CVE-2024-45745. At least version 7.1.3 is affected. Version 7.3 adds HashiCorp Vault integration that does not store external passwords locally.",
+          "text": "TopQuadrant TopBraid EDG stores external credentials insecurely. An authenticated attacker with file system access can read edg-setup.properites and obtain the secret to decrypt external passwords stored in edg-vault.properties. An authenticated attacker could gain file system access using a separate vulnerability such as CVE-2024-45745. At least version 7.1.3 is affected. Version 7.3 adds HashiCorp Vault integration that does not store external passwords locally. Version 8.3.0 warns when using plain text secrets.",
           "title": "Description"
         },
         {
@@ -162,7 +199,8 @@
       "title": "TopQuadrant TopBraid EDG password manager stores external credentials insecurely",
       "product_status": {
         "known_affected": [
-          "CSAFPID-0001"
+          "CSAFPID-0001",
+          "CSAFPID-0008"
         ]
       },
       "references": [
@@ -185,6 +223,11 @@
           "category": "external",
           "summary": "www.topquadrant.com",
           "url": "https://www.topquadrant.com/release-note/7-3/"
+        },
+        {
+          "category": "external",
+          "summary": "www.topquadrant.com",
+          "url": "https://www.topquadrant.com/wp-content/uploads/2025/02/changes-8.3.0.txt"
         }
       ],
       "scores": [
@@ -202,11 +245,15 @@
       ],
       "remediations": [
         {
-          "category": "none_available",
-          "details": "No information available.",
+          "category": "mitigation",
+          "details": "Version 8.3.0 warns when using plain text secrets. (Bug fix: TBS-6854).",
+          "url": "https://www.topquadrant.com/wp-content/uploads/2025/02/changes-8.3.0.txt",
           "product_ids": [
-            "CSAFPID-0001"
-          ]
+            "CSAFPID-0007",
+            "CSAFPID-0001",
+            "CSAFPID-0008"
+          ],
+          "date": "2025-02-10T18:00:00Z"
         },
         {
           "category": "mitigation",
@@ -214,7 +261,9 @@
           "url": "https://www.topquadrant.com/doc/latest/administrator_guide/edg_installation_and_authentication/hashicorp_integration.html",
           "date": "2022-11-15T18:50:00Z",
           "product_ids": [
-            "CSAFPID-0004"
+            "CSAFPID-0004",
+            "CSAFPID-0001",
+            "CSAFPID-0008"
           ]
         }
       ],
