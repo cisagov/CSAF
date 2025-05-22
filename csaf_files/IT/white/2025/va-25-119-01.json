@@ -12,18 +12,23 @@
         },
         "title": "MSP360 Backup insecure filesystem permissions",
         "tracking": {
-            "current_release_date": "2025-04-29T15:59:52Z",
+            "current_release_date": "2025-05-19T00:00:00Z",
             "generator": {
                 "engine": {
                     "name": "VINCE-NT",
-                    "version": "1.8.0"
+                    "version": "1.9.0"
                 }
             },
             "id": "VA-25-119-01",
             "initial_release_date": "2025-04-29T15:59:52Z",
             "status": "final",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "revision_history": [
+                {
+                    "number": "2.0.0",
+                    "summary": "Added CVE-2025-43596",
+                    "date": "2025-05-19T00:00:00Z"
+                },
                 {
                     "number": "1.0.0",
                     "summary": "Initial publication",
@@ -53,12 +58,12 @@
                 "category": "other"
             },
             {
-                "text": "MSP360 Backup is a data backup and recovery solution. An insecure default permissions vulnerability allows a lower privileged user to execute commands with root level privileges in the 'Online Backup' folder. An attacker could exploit this vulnerability to obtain user credentials, redirect the backup target to download the data being backed up, and execute commands on behalf of other users, including root.",
+                "text": "MSP360 Backup is a data backup and recovery solution. Insecure file system permission vulnerabilities in both the Windows and Linux versions allow a lower privileged user to execute commands the privileges of other users, including administrative users. An attacker could exploit these vulnerabilities to obtain user credentials, redirect the backup target to obtain the data being backed up, and execute commands with the privileges of other (possibly administrative) users.",
                 "title": "Risk Evaluation",
                 "category": "summary"
             },
             {
-                "text": "Upgrade to MSP360 Backup 4.4 (released on 2025-04-22).",
+                "text": "Upgrade to MSP360 Backup (for Linux) 4.4 (released on 2025-04-22) or MSP360 Backup (for Windows) 8.1.1.19 (released on 2025-05-15).",
                 "title": "Recommended Practices",
                 "category": "general"
             },
@@ -101,6 +106,22 @@
                                     "name": "MSP360 Backup 4.4",
                                     "product_id": "CSAFPID-0002"
                                 }
+                            },
+                            {
+                                "category": "product_version",
+                                "name": "8.0",
+                                "product": {
+                                    "name": "MSP360 Backup 8.0",
+                                    "product_id": "CSAFPID-0003"
+                                }
+                            },
+                            {
+                                "category": "product_version",
+                                "name": "8.1.1.19",
+                                "product": {
+                                    "name": "MSP360 Backup 8.1.1.19",
+                                    "product_id": "CSAFPID-0004"
+                                }
                             }
                         ]
                     }
@@ -118,7 +139,7 @@
             "notes": [
                 {
                     "category": "summary",
-                    "text": "An insecure file system permissions vulnerability in MSP360 Backup 4.3.1.115 allows a low privileged user to execute commands with root privileges in the 'Online Backup' folder. Upgrade to MSP360 Backup 4.4 (released on 2025-04-22).",
+                    "text": "An insecure file system permissions vulnerability in MSP360 Backup (for Linux) 4.3.1.115 allows a low privileged user to execute commands with root privileges in the 'Online Backup' directory. Upgrade to MSP360 Backup 4.4 (released on 2025-04-22).",
                     "title": "Description"
                 },
                 {
@@ -127,7 +148,7 @@
                     "text": "SSVCv2/E:P/A:N/T:T/2025-05-01T20:45:18Z/"
                 }
             ],
-            "title": "MSP360 Backup for Linux insecure filesystem permissions",
+            "title": "MSP360 Backup (for Linux) insecure filesystem permissions",
             "product_status": {
                 "known_affected": [
                     "CSAFPID-0001"
@@ -141,6 +162,16 @@
                     "category": "external",
                     "summary": "help.msp360.com",
                     "url": "https://help.msp360.com/cloudberry-backup-mac-linux/whats-new"
+                },
+                {
+                    "category": "external",
+                    "summary": "CISA VA-25-119-01 CSAF",
+                    "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-119-01.json"
+                },
+                {
+                    "category": "external",
+                    "summary": "www.cve.org",
+                    "url": "https://www.cve.org/CVERecord?id=CVE-2025-43595"
                 }
             ],
             "scores": [
@@ -164,7 +195,7 @@
                     "product_ids": [
                         "CSAFPID-0001"
                     ],
-                    "date": "2025-04-22T04:00:00Z"
+                    "date": "2025-04-22T00:00:00Z"
                 },
                 {
                     "category": "vendor_fix",
@@ -173,7 +204,7 @@
                     "product_ids": [
                         "CSAFPID-0002"
                     ],
-                    "date": "2025-04-22T04:00:00Z"
+                    "date": "2025-04-22T00:00:00Z"
                 }
             ],
             "acknowledgments": [
@@ -184,6 +215,97 @@
                 }
             ],
             "release_date": "2025-04-22T00:00:00Z"
+        },
+        {
+            "cve": "CVE-2025-43596",
+            "cwe": {
+                "id": "CWE-276",
+                "name": "Incorrect Default Permissions"
+            },
+            "notes": [
+                {
+                    "category": "summary",
+                    "text": "An insecure file system permissions vulnerability in MSP360 Backup (for Windows) 8.0 allows a low privileged user to execute commands with SYSTEM privileges. Upgrade to MSP360 Backup 8.1.1.19 (released on 2025-05-15).",
+                    "title": "Description"
+                },
+                {
+                    "category": "details",
+                    "title": "SSVC",
+                    "text": "SSVCv2/E:P/A:N/T:T/2025-04-16T19:03:28Z/"
+                }
+            ],
+            "title": "MSP360 Backup (for Windows) insecure filesystem permissions",
+            "product_status": {
+                "known_affected": [
+                    "CSAFPID-0003"
+                ],
+                "fixed": [
+                    "CSAFPID-0004"
+                ]
+            },
+            "references": [
+                {
+                    "category": "external",
+                    "summary": "help.msp360.com",
+                    "url": "https://help.msp360.com/cloudberry-backup/whats-new"
+                },
+                {
+                    "category": "external",
+                    "summary": "help.msp360.com",
+                    "url": "https://help.msp360.com/cloudberry-backup/security/admin-privileges"
+                },
+                {
+                    "category": "external",
+                    "summary": "CISA VA-25-119-01 CSAF",
+                    "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-119-01.json"
+                },
+                {
+                    "category": "external",
+                    "summary": "www.cve.org",
+                    "url": "https://www.cve.org/CVERecord?id=CVE-2025-43596"
+                }
+            ],
+            "scores": [
+                {
+                    "cvss_v3": {
+                        "baseScore": 7.8,
+                        "baseSeverity": "HIGH",
+                        "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                        "version": "3.1"
+                    },
+                    "products": [
+                        "CSAFPID-0003"
+                    ]
+                }
+            ],
+            "remediations": [
+                {
+                    "category": "vendor_fix",
+                    "details": "Upgrade to MSP360 Backup 8.1.1.19",
+                    "url": "https://help.msp360.com/cloudberry-backup/whats-new",
+                    "product_ids": [
+                        "CSAFPID-0003"
+                    ],
+                    "date": "2025-05-15T00:00:00Z"
+                },
+                {
+                    "category": "vendor_fix",
+                    "details": "Upgrade to MSP360 Backup 8.1.1.19",
+                    "url": "https://help.msp360.com/cloudberry-backup/whats-new",
+                    "product_ids": [
+                        "CSAFPID-0004"
+                    ],
+                    "date": "2025-05-15T00:00:00Z"
+                }
+            ],
+            "acknowledgments": [
+                {
+                    "names": [
+                        "Matthew Galligan"
+                    ]
+                }
+            ],
+            "release_date": "2025-05-19T00:00:00Z"
         }
     ]
 }
