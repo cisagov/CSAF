@@ -1,0 +1,176 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "ZKTeco BioTime multiple vulnerabilities",
+    "tracking": {
+      "current_release_date": "2025-05-28T15:28:55Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.9.0"
+        }
+      },
+      "id": "VA-25-148-01",
+      "initial_release_date": "2025-05-28T15:28:55Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2025-05-28T15:28:55Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "ZKTeco BioTime is a web-based time and attendance management software. A default password vulnerability was found that allows an attacker to log in to any user account that does not change their password. Attackers utilizing this obtain user credentials and can possibly perform actions as an administrative user if able to successfully log in as one. Users should change their passwords (located under the Attendance Settings tab as \"Self-Password\").",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "As of 2025-05-28, this issue is still not addressed. Encourage users to change their passwords (located under the Attendance Settings tab as \"Self-Password\").",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-148-01.json",
+        "summary": "Vulnerability Advisory VA-25-148-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "ZKTeco",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "BioTime",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "ZKTeco BioTime vers:all/*",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2024-13966",
+      "cwe": {
+        "id": "CWE-1393",
+        "name": "Use of Default Password"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "ZKTeco BioTime allows unauthenticated attackers to enumerate usernames and log in as any user with a password unchanged from the default value '123456'. Users should change their passwords (located under the Attendance Settings tab as \"Self-Password\").",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:Y/T:P/2025-05-27T18:35:12Z/"
+        }
+      ],
+      "title": "ZKTeco BioTime default password",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Fury of Fingers: BioTime RCE",
+          "url": "https://krashconsulting.com/fury-of-fingers-biotime-rce/"
+        },
+        {
+          "category": "external",
+          "summary": "ZKBio CVSecurity",
+          "url": "https://zkteco-store.ru/wp-content/uploads/2023/09/ZKBio-CVSecurity-6.0.0-User-Manual_EN-v1.0_20230616.pdf"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2024-13966",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2024-13966"
+        },
+        {
+          "category": "external",
+          "summary": "Vulnerability Advisory VA-25-148-01 CSAF",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-148-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.3,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "Change password in the Attendance Settings tab under \"Self-Password\".",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2023-08-02T00:00:00Z"
+        }
+      ],
+      "release_date": "2024-03-28T00:00:00Z"
+    }
+  ]
+}

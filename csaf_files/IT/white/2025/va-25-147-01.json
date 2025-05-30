@@ -1,0 +1,246 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "Craft CMS stores user-provided content session files",
+    "tracking": {
+      "current_release_date": "2025-05-28T20:57:43Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.9.0"
+        }
+      },
+      "id": "VA-25-147-01",
+      "initial_release_date": "2025-05-28T20:57:43Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2025-05-28T20:57:43Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "Craft CMS stores user-provided content in session files. A remote, unauthenticated attacker can introduce arbitrary content, including PHP code, into session files with known names and locations. If an attacker can access these files, possibly through another vulnerability such as CVE-2024-58136 (or CVE-2025-32432).\n\nFor context, Yii fixed CVE-2024-4990 then later re-introduced it as CVE-2024-58136. Craft CMS assigned CVE-2025-32432 to the Craft CMS inheritance of CVE-2024-58136.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Craft has released CMS versions 5.7.5 and 4.15.3 to address this issue.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-147-01.json",
+        "summary": "Vulnerability Advisory VA-25-147-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "Craft",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "CMS",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<5.7.5",
+                "product": {
+                  "name": "Craft CMS <5.7.5",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "5.7.5",
+                "product": {
+                  "name": "Craft CMS 5.7.5",
+                  "product_id": "CSAFPID-0002"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<4.15.3",
+                "product": {
+                  "name": "Craft CMS <4.15.3",
+                  "product_id": "CSAFPID-0003"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "4.15.3",
+                "product": {
+                  "name": "Craft CMS 4.15.3",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-35939",
+      "cwe": {
+        "id": "CWE-472",
+        "name": "External Control of Assumed-Immutable Web Parameter"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Craft CMS stores arbitrary content provided by unauthenticated users in session files. This content could be accessed and executed, possibly using an independent vulnerability. Craft CMS redirects requests that require authentication to the login page and generates a session file on the server at '/var/lib/php/sessions'. Such session files are named 'sess_[session_value]', where '[session_value]' is provided to the client in a 'Set-Cookie' response header. Craft CMS stores the return URL requested by the client without sanitizing parameters. Consequently, an unauthenticated client can introduce arbitrary values, such as PHP code, to a known local file location on the server. Craft CMS versions 5.7.5 and 4.15.3 have been released to address this issue.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:A/A:Y/T:P/2025-05-07T22:40:17Z/"
+        }
+      ],
+      "title": "Craft CMS stores user-provided content in session files",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003"
+        ],
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0004"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "github.com",
+          "url": "https://github.com/craftcms/cms/pull/17220"
+        },
+        {
+          "category": "external",
+          "summary": "github.com",
+          "url": "https://github.com/craftcms/cms/releases/tag/4.15.3"
+        },
+        {
+          "category": "external",
+          "summary": "github.com",
+          "url": "https://github.com/craftcms/cms/releases/tag/5.7.5"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-35939",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35939"
+        },
+        {
+          "category": "external",
+          "summary": "Vulnerability Advisory VA-25-147-01 CSAF",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-147-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 5.7.5.",
+          "url": "https://github.com/craftcms/cms/releases/tag/5.7.5",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2025-05-05T04:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 5.7.5.",
+          "url": "https://github.com/craftcms/cms/releases/tag/5.7.5",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2025-05-05T04:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 4.15.3.",
+          "url": "https://github.com/craftcms/cms/releases/tag/4.15.3",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "date": "2025-05-05T04:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 4.15.3.",
+          "url": "https://github.com/craftcms/cms/releases/tag/4.15.3",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "date": "2025-05-05T04:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "names": [
+            "Joel Land"
+          ]
+        }
+      ],
+      "release_date": "2025-05-05T00:00:00Z"
+    }
+  ]
+}
