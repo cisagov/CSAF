@@ -9,3 +9,6 @@ Please submit issues to the Issues Tracker of the CSAF repository with any comme
 
 ### CISA CSAF Trusted Provider
 For details of CISA's CSAF Trusted Provider Role, including Public PGP key, visit [CISA CSAF Provider Metadata](https://www.cisa.gov/sites/default/files/csaf/provider-metadata.json).
+
+### Republication Notice
+In addition to producing CSAFs from their own security advisories, CISA also republishes CSAFs from vendor partners. These republication CSAFs retain the dates and revision history of the original vendor CSAF.
