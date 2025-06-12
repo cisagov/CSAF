@@ -44,12 +44,12 @@
       },
       {
         "category": "other",
-        "text": "This CISA CSAF advisory was converted from Siemens ProductCERT's CSAF advisory.",
+        "text": "This ICSA is a verbatim republication of Siemens ProductCERT SSA-858251 from a direct conversion of their vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Siemens ProductCERT directly for any questions regarding this advisory.",
         "title": "Advisory Conversion Disclaimer"
       },
       {
         "category": "other",
-        "text": "Critical Manufacturing, Transportation Systems, Energy, Healthcare and Public Health, Financial Services, Government Services and Facilities",
+        "text": "Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems",
         "title": "Critical infrastructure sectors"
       },
       {
@@ -163,9 +163,9 @@
     ],
     "title": "Siemens OPC UA",
     "tracking": {
-      "current_release_date": "2025-03-11T00:00:00.000000Z",
+      "current_release_date": "2025-06-10T00:00:00.000000Z",
       "generator": {
-        "date": "2025-03-06T09:06:00.000000Z",
+        "date": "2025-06-12T16:06:21.423584Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
@@ -179,10 +179,16 @@
           "legacy_version": "1.0",
           "number": "1",
           "summary": "Publication Date"
+        },
+        {
+          "date": "2025-06-10T00:00:00.000000Z",
+          "legacy_version": "1.1",
+          "number": "2",
+          "summary": "Added fix for  SIMIT V11; Clarified that SIMATIC BRAUMAT and SIMATIC SISTAR are not affected by CVE-2024-42513"
         }
       ],
       "status": "final",
-      "version": "1"
+      "version": "2"
     }
   },
   "product_tree": {
@@ -207,7 +213,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": ">=V8.0_SP1_<V8.1",
+                "name": "vers:all/*",
                 "product": {
                   "name": "SIMATIC BRAUMAT",
                   "product_id": "CSAFPID-0002"
@@ -221,7 +227,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": ">=V7.5_<V7.5_Update_2",
+                "name": ">=V7.5_SP0_Update_0_<V7.5_SP0_Update_2",
                 "product": {
                   "name": "SIMATIC Energy Manager PRO",
                   "product_id": "CSAFPID-0003"
@@ -257,7 +263,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": ">=V8.0_SP1_<V8.1",
+                "name": "vers:all/*",
                 "product": {
                   "name": "SIMATIC SISTAR",
                   "product_id": "CSAFPID-0006"
@@ -313,7 +319,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "vers:all/*",
+                "name": "vers:all/<V11.3",
                 "product": {
                   "name": "SIMIT V11",
                   "product_id": "CSAFPID-0010"
@@ -355,13 +361,20 @@
           "category": "none_available",
           "details": "Currently no fix is available",
           "product_ids": [
-            "CSAFPID-0004",
-            "CSAFPID-0010"
+            "CSAFPID-0004"
           ]
         },
         {
           "category": "vendor_fix",
-          "details": "Update to V7.5 Update 2 or later version",
+          "details": "Update to V11.3 or later version",
+          "product_ids": [
+            "CSAFPID-0010"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109987184/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V7.5 SP0 Update 2 or later version",
           "product_ids": [
             "CSAFPID-0003"
           ],
@@ -373,7 +386,7 @@
           "cvss_v3": {
             "baseScore": 7.4,
             "baseSeverity": "HIGH",
-            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N/E:P/RL:W/RC:C",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
             "version": "3.1"
           },
           "products": [
@@ -391,6 +404,15 @@
         "id": "CWE-305",
         "name": "Authentication Bypass by Primary Weakness"
       },
+      "flags": [
+        {
+          "group_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0006"
+          ],
+          "label": "vulnerable_code_not_in_execute_path"
+        }
+      ],
       "notes": [
         {
           "category": "summary",
@@ -401,32 +423,19 @@
       "product_status": {
         "known_affected": [
           "CSAFPID-0001",
-          "CSAFPID-0002",
           "CSAFPID-0003",
           "CSAFPID-0004",
           "CSAFPID-0005",
-          "CSAFPID-0006",
           "CSAFPID-0007",
           "CSAFPID-0008",
           "CSAFPID-0009"
+        ],
+        "known_not_affected": [
+          "CSAFPID-0002",
+          "CSAFPID-0006"
         ]
       },
       "remediations": [
-        {
-          "category": "mitigation",
-          "details": "Please note that the affected functionality (HTTPS endpoint in OPC UA Server) is deactivated by default in Unified RT.\nSystems running with default configuration are therefore not affected by this vulnerability.",
-          "product_ids": [
-            "CSAFPID-0007",
-            "CSAFPID-0008"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "Please note that the affected functionality (HTTPS endpoint in OPC UA Server) is deactivated by default. Systems running with default configuration are therefore not affected by this vulnerability.",
-          "product_ids": [
-            "CSAFPID-0005"
-          ]
-        },
         {
           "category": "no_fix_planned",
           "details": "Currently no fix is planned",
@@ -448,11 +457,12 @@
           "details": "Update to V19 Update 4 or later version",
           "product_ids": [
             "CSAFPID-0008"
-          ]
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109925643/"
         },
         {
           "category": "vendor_fix",
-          "details": "Update to V7.5 Update 2 or later version",
+          "details": "Update to V7.5 SP0 Update 2 or later version",
           "product_ids": [
             "CSAFPID-0003"
           ],
@@ -463,16 +473,8 @@
           "details": "Update to V8.0 Update 3 or later version",
           "product_ids": [
             "CSAFPID-0009"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Update to V8.1 or later version",
-          "product_ids": [
-            "CSAFPID-0002",
-            "CSAFPID-0006"
           ],
-          "url": "https://support.industry.siemens.com/cs/ww/en/view/109816925/"
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109818723/"
         }
       ],
       "scores": [
@@ -480,16 +482,14 @@
           "cvss_v3": {
             "baseScore": 9.1,
             "baseSeverity": "CRITICAL",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N/E:P/RL:W/RC:C",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
             "version": "3.1"
           },
           "products": [
             "CSAFPID-0001",
-            "CSAFPID-0002",
             "CSAFPID-0003",
             "CSAFPID-0004",
             "CSAFPID-0005",
-            "CSAFPID-0006",
             "CSAFPID-0007",
             "CSAFPID-0008",
             "CSAFPID-0009"
