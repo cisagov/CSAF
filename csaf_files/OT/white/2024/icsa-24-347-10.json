@@ -2,7 +2,7 @@
   "document": {
     "acknowledgments": [
       {
-        "organization": "Siemens",
+        "organization": "Siemens ProductCERT",
         "summary": "reporting this vulnerability to CISA."
       }
     ],
@@ -19,7 +19,7 @@
     "notes": [
       {
         "category": "summary",
-        "text": "SENTRON Powercenter devices are affected by a denial of service vulnerability that can be triggered during BLE (Bluetooth Low Energy) pairing.\n\nSiemens is preparing fix versions and recommends specific countermeasures for products where fixes are not, or not yet available.",
+        "text": "SENTRON Powercenter devices are \nnot affected by a denial of service vulnerability that can be triggered during BLE (Bluetooth Low Energy) pairing.\nNote: Unlike stated in the initial version of this security advisory from 2024-12-10, detailed analysis has shown that SENTRON Powercenter devices are not affected by this vulnerability.",
         "title": "Summary"
       },
       {
@@ -44,7 +44,7 @@
       },
       {
         "category": "other",
-        "text": "This CISA CSAF advisory was converted from Siemens ProductCERT's CSAF advisory.",
+        "text": "This ICSA is a verbatim republication of Siemens ProductCERT SSA-620799 from a direct conversion of their vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Siemens ProductCERT directly for any questions regarding this advisory.",
         "title": "Advisory Conversion Disclaimer"
       },
       {
@@ -161,10 +161,11 @@
         "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
       }
     ],
-    "title": "Siemens SENTRON Powercenter 1000\u00a0",
+    "title": "Siemens SENTRON Powercenter 1000",
     "tracking": {
-      "current_release_date": "2024-12-10T00:00:00.000000Z",
+      "current_release_date": "2025-06-10T00:00:00.000000Z",
       "generator": {
+        "date": "2025-06-12T17:37:20.517730Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
@@ -178,10 +179,16 @@
           "legacy_version": "1.0",
           "number": "1",
           "summary": "Publication Date"
+        },
+        {
+          "date": "2025-06-10T00:00:00.000000Z",
+          "legacy_version": "1.1",
+          "number": "2",
+          "summary": "Clarified that SENTRON Powercenter devices are not affected by this vulnerability"
         }
       ],
       "status": "final",
-      "version": "1"
+      "version": "2"
     }
   },
   "product_tree": {
@@ -239,65 +246,28 @@
         "id": "CWE-821",
         "name": "Incorrect Synchronization"
       },
+      "flags": [
+        {
+          "group_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0001"
+          ],
+          "label": "component_not_present"
+        }
+      ],
       "notes": [
         {
           "category": "summary",
-          "text": "A denial of service condition can only be triggered during BLE pairing. This occurs only in a limited time window of three minutes after any device restart, which requires physical access.  A reset of the power supply is necessary to recover the device.",
+          "text": "A denial of service may be caused to a single peripheral device in a BLE network when multiple central devices continuously connect and disconnect to the peripheral. A hard reset is required to recover the peripheral device.",
           "title": "Summary"
         }
       ],
       "product_status": {
-        "known_affected": [
+        "known_not_affected": [
           "CSAFPID-0001",
           "CSAFPID-0002"
         ]
       },
-      "remediations": [
-        {
-          "category": "mitigation",
-          "details": "If BLE is needed: After any restart of the device or after turning on BLE via short button press, wait for more than three minutes to check the device's availability via Modbus TCP interface. If necessary, perform a restart by turning the power supply off and on again.",
-          "product_ids": [
-            "CSAFPID-0001",
-            "CSAFPID-0002"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "If BLE is not needed: After any restart, disable BLE by a short press on the button.",
-          "product_ids": [
-            "CSAFPID-0001",
-            "CSAFPID-0002"
-          ]
-        },
-        {
-          "category": "no_fix_planned",
-          "details": "Currently no fix is planned",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "none_available",
-          "details": "Currently no fix is available",
-          "product_ids": [
-            "CSAFPID-0002"
-          ]
-        }
-      ],
-      "scores": [
-        {
-          "cvss_v3": {
-            "baseScore": 5.3,
-            "baseSeverity": "MEDIUM",
-            "vectorString": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
-            "version": "3.1"
-          },
-          "products": [
-            "CSAFPID-0001",
-            "CSAFPID-0002"
-          ]
-        }
-      ],
       "title": "CVE-2024-6657"
     }
   ]

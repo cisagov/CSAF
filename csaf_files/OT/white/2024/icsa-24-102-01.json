@@ -44,12 +44,12 @@
       },
       {
         "category": "other",
-        "text": "This CISA CSAF advisory was converted from Siemens ProductCERT's CSAF advisory.",
+        "text": "This ICSA is a verbatim republication of Siemens ProductCERT SSA-265688 from a direct conversion of their vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Siemens ProductCERT directly for any questions regarding this advisory.",
         "title": "Advisory Conversion Disclaimer"
       },
       {
         "category": "other",
-        "text": "Critical Manufacturing, Transportation Systems, Energy, Healthcare and Public Health, Financial Services, Government Services and Facilities",
+        "text": "Critical Manufacturing",
         "title": "Critical infrastructure sectors"
       },
       {
@@ -163,9 +163,9 @@
     ],
     "title": "Siemens SIMATIC S7-1500",
     "tracking": {
-      "current_release_date": "2025-04-08T00:00:00.000000Z",
+      "current_release_date": "2025-06-10T00:00:00.000000Z",
       "generator": {
-        "date": "2025-04-10T19:35:54.973724Z",
+        "date": "2025-06-12T16:06:23.180103Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
@@ -209,10 +209,16 @@
           "legacy_version": "1.5",
           "number": "6",
           "summary": "Added CVE-2024-50302 (incl. product-specific impact description) and multiple other CVEs"
+        },
+        {
+          "date": "2025-06-10T00:00:00.000000Z",
+          "legacy_version": "1.6",
+          "number": "7",
+          "summary": "Added 63 CVEs"
         }
       ],
       "status": "final",
-      "version": "6"
+      "version": "7"
     }
   },
   "product_tree": {
@@ -2288,7 +2294,7 @@
           "cvss_v3": {
             "baseScore": 4.4,
             "baseSeverity": "MEDIUM",
-            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
             "version": "3.1"
           },
           "products": [
@@ -3268,7 +3274,7 @@
           "cvss_v3": {
             "baseScore": 4.7,
             "baseSeverity": "MEDIUM",
-            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
             "version": "3.1"
           },
           "products": [
@@ -4169,7 +4175,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "In the Linux kernel, the following vulnerability has been resolved: ipv6: fib6_rules: avoid possible NULL dereference in fib6_rule_action() syzbot is able to trigger the following crash [1], caused by unsafe ip6_dst_idev() use. Indeed ip6_dst_idev() can return NULL, and must always be checked. [1] Oops: general protection fault, probably for non-canonical address 0xdffffc0000000000: 0000 [#1] PREEMPT SMP KASAN PTI KASAN: null-ptr-deref in range [0x0000000000000000-0x0000000000000007] CPU: 0 PID: 31648 Comm: syz-executor.0 Not tainted 6.9.0-rc4-next-20240417-syzkaller #0 Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 03/27/2024 RIP: 0010:__fib6_rule_action net/ipv6/fib6_rules.c:237 [inline] RIP: 0010:fib6_rule_action+0x241/0x7b0 net/ipv6/fib6_rules.c:267 Code: 02 00 00 49 8d 9f d8 00 00 00 48 89 d8 48 c1 e8 03 42 80 3c 20 00 74 08 48 89 df e8 f9 32 bf f7 48 8b 1b 48 89 d8 48 c1 e8 03 <42> 80 3c 20 00 74 08 48 89 df e8 e0 32 bf f7 4c 8b 03 48 89 ef 4c RSP: 0018:ffffc9000fc1f2f0 EFLAGS: 00010246 RAX: 0000000000000000 RBX: 0000000000000000 RCX: 1a772f98c8186700 RDX: 0000000000000003 RSI: ffffffff8bcac4e0 RDI: ffffffff8c1f9760 RBP: ffff8880673fb980 R08: ffffffff8fac15ef R09: 1ffffffff1f582bd R10: dffffc0000000000 R11: fffffbfff1f582be R12: dffffc0000000000 R13: 0000000000000080 R14: ffff888076509000 R15: ffff88807a029a00 FS: 00007f55e82ca6c0(0000) GS:ffff8880b9400000(0000) knlGS:0000000000000000 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: 0000001b31d23000 CR3: 0000000022b66000 CR4: 00000000003506f0 DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000 DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400 Call Trace: <TASK> fib_rules_lookup+0x62c/0xdb0 net/core/fib_rules.c:317 fib6_rule_lookup+0x1fd/0x790 net/ipv6/fib6_rules.c:108 ip6_route_output_flags_noref net/ipv6/route.c:2637 [inline] ip6_route_output_flags+0x38e/0x610 net/ipv6/route.c:2649 ip6_route_output include/net/ip6_route.h:93 [inline] ip6_dst_lookup_tail+0x189/0x11a0 net/ipv6/ip6_output.c:1120 ip6_dst_lookup_flow+0xb9/0x180 net/ipv6/ip6_output.c:1250 sctp_v6_get_dst+0x792/0x1e20 net/sctp/ipv6.c:326 sctp_transport_route+0x12c/0x2e0 net/sctp/transport.c:455 sctp_assoc_add_peer+0x614/0x15c0 net/sctp/associola.c:662 sctp_connect_new_asoc+0x31d/0x6c0 net/sctp/socket.c:1099 __sctp_connect+0x66d/0xe30 net/sctp/socket.c:1197 sctp_connect net/sctp/socket.c:4819 [inline] sctp_inet_connect+0x149/0x1f0 net/sctp/socket.c:4834 __sys_connect_file net/socket.c:2048 [inline] __sys_connect+0x2df/0x310 net/socket.c:2065 __do_sys_connect net/socket.c:2075 [inline] __se_sys_connect net/socket.c:2072 [inline] __x64_sys_connect+0x7a/0x90 net/socket.c:2072 do_syscall_x64 arch/x86/entry/common.c:52 [inline] do_syscall_64+0xf5/0x240 arch/x86/entry/common.c:83 entry_SYSCALL_64_after_hwframe+0x77/0x7f",
+          "text": "Vulnerability in Linux kernel: ipv6: fib6_rules: avoid possible NULL dereference in fib6_rule_action() syzbot is able to trigger the following crash [1], caused by unsafe ip6_dst_idev() use. Indeed ip6_dst_idev() can return NULL, and must always be checked.",
           "title": "Summary"
         }
       ],
@@ -5927,8 +5933,8 @@
     {
       "cve": "CVE-2024-39503",
       "cwe": {
-        "id": "CWE-20",
-        "name": "Improper Input Validation"
+        "id": "CWE-416",
+        "name": "Use After Free"
       },
       "notes": [
         {
@@ -6270,8 +6276,8 @@
     {
       "cve": "CVE-2024-40945",
       "cwe": {
-        "id": "CWE-20",
-        "name": "Improper Input Validation"
+        "id": "CWE-393",
+        "name": "Return of Wrong Status Code"
       },
       "notes": [
         {
@@ -8269,9 +8275,9 @@
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 3.3,
-            "baseSeverity": "LOW",
-            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
             "version": "3.1"
           },
           "products": [
