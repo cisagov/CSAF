@@ -1,0 +1,209 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "ClamAV",
+    "tracking": {
+      "current_release_date": "2025-06-20T00:00:00Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.9.0"
+        }
+      },
+      "id": "VA-25-171-01",
+      "initial_release_date": "2025-06-20T00:00:00Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2025-06-20T00:00:00Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "ClamAV is an open source antivirus maintained by Cisco. A heap-based buffer overflow vulnerability in the PDF scanning process of ClamAV could allow an unauthenticated, remote attacker to cause a denial of service or possibly execute arbitrary code.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Update to version ClamAV 1.4.3 or 1.0.9.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-171-01.json",
+        "summary": "Vulnerability Advisory VA-25-171-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "Cisco",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "ClamAV",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<1.4.3",
+                "product": {
+                  "name": "Cisco ClamAV <1.4.3",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<1.0.9",
+                "product": {
+                  "name": "Cisco ClamAV <1.0.9",
+                  "product_id": "CSAFPID-0002"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.4.3",
+                "product": {
+                  "name": "Cisco ClamAV 1.4.3",
+                  "product_id": "CSAFPID-0003"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.0.9",
+                "product": {
+                  "name": "Cisco ClamAV 1.0.9",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-20260",
+      "cwe": {
+        "id": "CWE-122",
+        "name": "Heap-based Buffer Overflow"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A vulnerability in the PDF scanning processes of ClamAV could allow an unauthenticated, remote attacker to cause a buffer overflow condition, cause a denial of service (DoS) condition, or execute arbitrary code on an affected device.\n\nThis vulnerability exists because memory buffers are allocated incorrectly when PDF files are processed. An attacker could exploit this vulnerability by submitting a crafted PDF file to be scanned by ClamAV on an affected device. A successful exploit could allow the attacker to trigger a buffer overflow, likely resulting in the termination of the ClamAV scanning process and a DoS condition on the affected software. Although unproven, there is also a possibility that an attacker could leverage the buffer overflow to execute arbitrary code with the privileges of the ClamAV process.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:Y/T:T/2025-06-18T20:35:22Z/"
+        }
+      ],
+      "title": "ClamAV PDF Scanning Buffer Overflow Vulnerability",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002"
+        ],
+        "fixed": [
+          "CSAFPID-0003",
+          "CSAFPID-0004"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "blog.clamav.net",
+          "url": "https://blog.clamav.net/2025/06/clamav-143-and-109-security-patch.html"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to version 1.4.3 or 1.0.9.",
+          "url": "https://blog.clamav.net/2025/06/clamav-143-and-109-security-patch.html",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2025-06-18T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to version 1.4.3 or 1.0.9.",
+          "url": "https://blog.clamav.net/2025/06/clamav-143-and-109-security-patch.html",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2025-06-18T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "names": [
+            "Greg Walkup"
+          ],
+          "organization": "Sandia National Labs"
+        }
+      ],
+      "release_date": "2025-06-18T00:00:00Z"
+    }
+  ]
+}
