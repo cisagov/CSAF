@@ -15,9 +15,10 @@
       "current_release_date": "2025-06-16T00:00:00Z",
       "generator": {
         "engine": {
-          "name": "VINCE-NT",
-          "version": "1.9.0"
-        }
+          "name": "Secvisogram",
+          "version": "2.5.28"
+        },
+        "date": "2025-06-20T17:36:13.144Z"
       },
       "id": "VA-25-136-01",
       "initial_release_date": "2025-05-16T20:14:51Z",
@@ -25,14 +26,14 @@
       "version": "1.1.0",
       "revision_history": [
         {
-          "number": "1.1.0",
-          "summary": "Add acknowledgment",
-          "date": "2025-06-16T00:00:00Z"
-        },
-        {
           "number": "1.0.0",
           "summary": "Initial publication",
           "date": "2025-05-16T20:14:51Z"
+        },
+        {
+          "number": "1.1.0",
+          "summary": "Add acknowledgment",
+          "date": "2025-06-16T00:00:00Z"
         }
       ]
     },
@@ -58,12 +59,12 @@
         "category": "other"
       },
       {
-        "text": "IBM Security Guardium 11.5 is vulnerable to stored cross-site scripting (XSS). An attacker with administrative privileges could store arbitrary content or script in the administrative web interface that would be rendered or executed by users visiting modified parts of the web interface. The attacker could modify the web interface or obtain session tokens which could be used to log in as a different user.\n\n, which could allow a privileged user to disclose otherwise protected credentials. ",
+        "text": "IBM Security Guardium 11.5 before patch 11.0p565 is vulnerable to stored cross-site scripting (XSS). An attacker with administrative privileges could store arbitrary content or script in the administrative web interface that would be rendered or executed by users visiting modified parts of the web interface. The attacker may be able or obtain session tokens which could be used to log in as a different user.",
         "title": "Risk Evaluation",
         "category": "summary"
       },
       {
-        "text": "Apply Guardium Data Protection patch 11.0p565 for Guardium 11.5.",
+        "text": "Apply Guardium Data Protection patch 11.0p565 for Guardium version 11.5.",
         "title": "Recommended Practices",
         "category": "general"
       },
@@ -92,19 +93,27 @@
             "name": "Security Guardium",
             "branches": [
               {
-                "category": "product_version_range",
-                "name": "<11.5 11.0p565",
+                "category": "product_version",
+                "name": "11.5",
                 "product": {
-                  "name": "IBM Security Guardium <11.5 11.0p565",
-                  "product_id": "CSAFPID-0001"
+                  "name": "IBM Security Guardium 11.5",
+                  "product_id": "11.5"
                 }
               },
               {
-                "category": "product_version",
-                "name": "11.5 11.0p565",
+                "category": "patch_level",
+                "name": "<11.0p565",
+                "product": {
+                  "name": "IBM Security Guardium 11.5 <11.0p565",
+                  "product_id": "<11.0p565"
+                }
+              },
+              {
+                "name": "11.0p565",
+                "category": "patch_level",
                 "product": {
                   "name": "IBM Security Guardium 11.5 11.0p565",
-                  "product_id": "CSAFPID-0002"
+                  "product_id": "11.0p565"
                 }
               }
             ]
@@ -123,7 +132,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "IBM Security Guardium 11.5 is vulnerable to stored cross-site scripting. This vulnerability allows a privileged user to embed arbitrary JavaScript code in the Web UI thus altering the intended functionality potentially leading to credentials disclosure within a trusted session. \n\nTracked as IBM issue key GRD-97817 and PSIRT: PVR0631190.",
+          "text": "IBM Security Guardium 11.5 before patch 11.0p565 is vulnerable to stored cross-site scripting. This vulnerability allows a privileged user to embed arbitrary JavaScript code in the Web UI thus altering the intended functionality potentially leading to credentials disclosure within a trusted session. \n\nTracked as IBM issue key GRD-97817 and PSIRT: PVR0631190.",
           "title": "Description"
         },
         {
@@ -132,13 +141,13 @@
           "text": "SSVCv2/E:N/A:N/T:P/2025-05-18T16:39:08Z/"
         }
       ],
-      "title": "IBM Security Guardium cross-site scripting",
+      "title": "IBM Security Guardium stored cross-site scripting",
       "product_status": {
         "known_affected": [
-          "CSAFPID-0001"
+          "<11.0p565"
         ],
         "fixed": [
-          "CSAFPID-0002"
+          "11.0p565"
         ]
       },
       "references": [
@@ -167,26 +176,17 @@
             "version": "3.1"
           },
           "products": [
-            "CSAFPID-0001"
+            "<11.0p565"
           ]
         }
       ],
       "remediations": [
         {
           "category": "vendor_fix",
-          "details": "Fixed in patch 11.0p565.",
+          "details": "Apply Guardium Data Protection patch 11.0p565 for Guardium version 11.5.",
           "url": "https://www.ibm.com/support/pages/node/7230003",
           "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "date": "2025-05-14T00:00:00Z"
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Fixed in patch 11.0p565.",
-          "url": "https://www.ibm.com/support/pages/node/7230003",
-          "product_ids": [
-            "CSAFPID-0002"
+            "<11.0p565"
           ],
           "date": "2025-05-14T00:00:00Z"
         }
@@ -199,7 +199,17 @@
           "organization": "United States Department of Justice"
         }
       ],
-      "release_date": "2025-05-15T00:00:00Z"
+      "release_date": "2025-05-15T00:00:00Z",
+      "ids": [
+        {
+          "text": "GRD-97817",
+          "system_name": "IBM"
+        },
+        {
+          "text": "PVR0631190",
+          "system_name": "IBM PSIRT"
+        }
+      ]
     }
   ]
 }
