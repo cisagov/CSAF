@@ -1,0 +1,694 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Hitachi Energy PSIRT",
+        "summary": "reporting these vulnerabilities to CISA"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of these vulnerabilities could allow an attacker to tamper with the system file, overwrite files, create a denial-of-service condition, or leak file content. ",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolating them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also recommends users take the following measures to protect themselves from social engineering attacks:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Do not click web links or open attachments in unsolicited email messages.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-184-02 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-184-02.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICSA Advisory ICSA-25-184-02 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-184-02"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/sites/default/files/publications/emailscams0905.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ncas/tips/ST04-014"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Hitachi Energy MicroSCADA X SYS600",
+    "tracking": {
+      "current_release_date": "2025-07-03T06:00:00.000000Z",
+      "generator": {
+        "date": "2025-07-03T14:03:54.611592Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-184-02",
+      "initial_release_date": "2025-07-03T06:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-07-03T06:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial Publication"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">=10.0|<10.6",
+                "product": {
+                  "name": "Hitachi Energy Hitachi Energy MicroSCADA Pro/X SYS600: >=10.0|<10.6",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Hitachi Energy MicroSCADA Pro/X SYS600"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">=10.5|<10.6",
+                "product": {
+                  "name": "Hitachi Energy Hitachi Energy MicroSCADA Pro/X SYS600: >=10.5|<10.6",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Hitachi Energy MicroSCADA Pro/X SYS600"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">=10.3|<10.6",
+                "product": {
+                  "name": "Hitachi Energy Hitachi Energy MicroSCADA Pro/X SYS600: >=10.3|<10.6",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Hitachi Energy MicroSCADA Pro/X SYS600"
+          }
+        ],
+        "category": "vendor",
+        "name": "Hitachi Energy"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-39201",
+      "cwe": {
+        "id": "CWE-276",
+        "name": "Incorrect Default Permissions"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A vulnerability exists in the mailslot functionality of the MicroSCADA X SYS600 product. If exploited this could allow a local attacker to tamper the mailslot configuration file, making denial of mailslot a related service.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-39201"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:L"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Hitachi Energy has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2025-39201, CVE-2025-39202, CVE-2025-39204) Hitachi Energy MicroSCADA X SYS600 versions from 10.0 to 10.6: Update to version 10.7",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "The following product versions have been fixed:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "MicroSCADA X SYS600 10.7 is a fixed version for CVE-2025-39201",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information see the associated Hitachi Energy PSIRT security advisory 8DBD000218 Cybersecurity Advisory - Multiple vulnerabilities in Hitachi Energy MicroSCADA Pro/X SYS600 product.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://publisher.hitachienergy.com/preview?DocumentId=8DBD000218&languageCode=en&Preview=true"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.1,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-39202",
+      "cwe": {
+        "id": "CWE-73",
+        "name": "External Control of File Name or Path"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A vulnerability exists in Monitor Pro and Supervision log of MicroSCADA X SYS600 product. Local, authenticated low privilege user can see and overwrite files causing information leak and data corruption.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-39202"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:H/SC:N/SI:H/SA:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Hitachi Energy has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2025-39201, CVE-2025-39202, CVE-2025-39204) Hitachi Energy MicroSCADA X SYS600 versions from 10.0 to 10.6: Update to version 10.7",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "The following product versions have been fixed:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "MicroSCADA X SYS600 10.7 is a fixed version for CVE-2025-39202",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information see the associated Hitachi Energy PSIRT security advisory 8DBD000218 Cybersecurity Advisory - Multiple vulnerabilities in Hitachi Energy MicroSCADA Pro/X SYS600 product.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://publisher.hitachienergy.com/preview?DocumentId=8DBD000218&languageCode=en&Preview=true"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.3,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-39203",
+      "cwe": {
+        "id": "CWE-354",
+        "name": "Improper Validation of Integrity Check Value"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Crafted message content from IED or remote system can cause denial-of-service resulting in disconnection loop.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-39203"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Hitachi Energy has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2025-39203) Hitachi Energy MicroSCADA X SYS600 versions from 10.5 to 10.6: Update to version 10.7",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "The following product versions have been fixed:",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "MicroSCADA X SYS600 10.7 is a fixed version for CVE-2025-39203",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information see the associated Hitachi Energy PSIRT security advisory 8DBD000218 Cybersecurity Advisory - Multiple vulnerabilities in Hitachi Energy MicroSCADA Pro/X SYS600 product.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "url": "https://publisher.hitachienergy.com/preview?DocumentId=8DBD000218&languageCode=en&Preview=true"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0002"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-39204",
+      "cwe": {
+        "id": "CWE-202",
+        "name": "Exposure of Sensitive Information Through Data Queries"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Filtering query in MicroSCADA X SYS600 can be malformed, so returning data can leak any file content.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-39204"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:H/SI:H/SA:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Hitachi Energy has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2025-39201, CVE-2025-39202, CVE-2025-39204) Hitachi Energy MicroSCADA X SYS600 versions from 10.0 to 10.6: Update to version 10.7",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "The following product versions have been fixed:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "MicroSCADA X SYS600 10.7 is a fixed version for CVE-2025-39204",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information see the associated Hitachi Energy PSIRT security advisory 8DBD000218 Cybersecurity Advisory - Multiple vulnerabilities in Hitachi Energy MicroSCADA Pro/X SYS600 product.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://publisher.hitachienergy.com/preview?DocumentId=8DBD000218&languageCode=en&Preview=true"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-39205",
+      "cwe": {
+        "id": "CWE-295",
+        "name": "Improper Certificate Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A vulnerability exists in MicroSCADA X SYS600 certificate validation system. TLS protocol was allowing remote Man-in-the-Middle attack due to giving too many permissions.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-39205"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Hitachi Energy has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2025-39205) Hitachi Energy MicroSCADA X SYS600 versions from 10.3 to 10.6: Update to version 10.7",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "The following product versions have been fixed:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "MicroSCADA X SYS600 10.7 is a fixed version for CVE-2025-39205",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "For more information see the associated Hitachi Energy PSIRT security advisory 8DBD000218 Cybersecurity Advisory - Multiple vulnerabilities in Hitachi Energy MicroSCADA Pro/X SYS600 product.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003"
+          ],
+          "url": "https://publisher.hitachienergy.com/preview?DocumentId=8DBD000218&languageCode=en&Preview=true"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003"
+          ]
+        }
+      ]
+    }
+  ]
+}
