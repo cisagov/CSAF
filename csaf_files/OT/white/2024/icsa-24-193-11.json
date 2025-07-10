@@ -44,12 +44,12 @@
       },
       {
         "category": "other",
-        "text": "This CISA CSAF advisory was converted from Siemens ProductCERT's CSAF advisory.",
+        "text": "This ICSA is a verbatim republication of Siemens ProductCERT SSA-364175 from a direct conversion of their vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Siemens ProductCERT directly for any questions regarding this advisory.",
         "title": "Advisory Conversion Disclaimer"
       },
       {
         "category": "other",
-        "text": "Critical Manufacturing, Transportation Systems, Energy, Healthcare and Public Health, Financial Services, Government Services and Facilities",
+        "text": "Critical Manufacturing",
         "title": "Critical infrastructure sectors"
       },
       {
@@ -163,9 +163,9 @@
     ],
     "title": "Siemens RUGGEDCOM APE 1808",
     "tracking": {
-      "current_release_date": "2025-04-08T00:00:00.000000Z",
+      "current_release_date": "2025-07-08T00:00:00.000000Z",
       "generator": {
-        "date": "2025-04-10T19:35:55.718241Z",
+        "date": "2025-07-10T15:44:54.101181Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
@@ -209,10 +209,16 @@
           "legacy_version": "1.5",
           "number": "6",
           "summary": "Added newly published CVE-2025-0114"
+        },
+        {
+          "date": "2025-07-08T00:00:00.000000Z",
+          "legacy_version": "1.6",
+          "number": "7",
+          "summary": "Added newly published CVE-2025-4231"
         }
       ],
       "status": "final",
-      "version": "6"
+      "version": "7"
     }
   },
   "product_tree": {
@@ -696,6 +702,76 @@
         }
       ],
       "title": "CVE-2025-0114"
+    },
+    {
+      "cve": "CVE-2025-4231",
+      "cwe": {
+        "id": "CWE-77",
+        "name": "Improper Neutralization of Special Elements used in a Command ('Command Injection')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A command injection vulnerability in Palo Alto Networks PAN-OS\u00ae enables an authenticated administrative user to perform actions as the root user.\r\nThe attacker must have network access to the management web interface and successfully authenticate to exploit this issue.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0002"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Exposure can be reduced by limiting access to the management interface to trusted internal IP addresses as described in \nPalo Alto Networks' Security Advisory",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Customers can resolve this issue by configuring the in-use SSH profile to contain at least one cipher and at least one MAC algorithm, which removes support for CHACHA20-POLY1305 and all Encrypt-then-MAC algorithms available (ciphers with -etm in the name) in PAN-OS software. See Palo Alto Networks' upstream documentation https://security.paloaltonetworks.com/CVE-2023-48795 for additional guidance.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Restrict access to the networks where RADIUS messages are exchanged (e.g., send RADIUS traffic via management network or a dedicated VLAN)",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Con\ufb01gure the RADIUS server to require the presence of a Message-Authenticator attribute in all Access-Request packets from RADIUS client devices that support it",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Upgrade Palo Alto Networks Virtual NGFW V11.1.4-h1. Contact customer support to receive patch and update information",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.1,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "title": "CVE-2025-4231"
     }
   ]
 }
