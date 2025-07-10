@@ -163,9 +163,9 @@
     ],
     "title": "Siemens SIMATIC S7-1500",
     "tracking": {
-      "current_release_date": "2025-06-10T00:00:00.000000Z",
+      "current_release_date": "2025-07-08T00:00:00.000000Z",
       "generator": {
-        "date": "2025-06-12T16:06:23.180103Z",
+        "date": "2025-07-10T15:44:53.206821Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
@@ -215,10 +215,16 @@
           "legacy_version": "1.6",
           "number": "7",
           "summary": "Added 63 CVEs"
+        },
+        {
+          "date": "2025-07-08T00:00:00.000000Z",
+          "legacy_version": "1.7",
+          "number": "8",
+          "summary": "Added 71 CVEs"
         }
       ],
       "status": "final",
-      "version": "7"
+      "version": "8"
     }
   },
   "product_tree": {
@@ -2452,6 +2458,55 @@
       "title": "CVE-2024-26884"
     },
     {
+      "cve": "CVE-2024-26885",
+      "cwe": {
+        "id": "CWE-119",
+        "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nbpf: Fix DEVMAP_HASH overflow check on 32-bit arches\r\n\r\nThe devmap code allocates a number hash buckets equal to the next power\r\nof two of the max_entries value provided when creating the map. When\r\nrounding up to the next power of two, the 32-bit variable storing the\r\nnumber of buckets can overflow, and the code checks for overflow by\r\nchecking if the truncated 32-bit value is equal to 0. However, on 32-bit\r\narches the rounding up itself can overflow mid-way through, because it\r\nends up doing a left-shift of 32 bits on an unsigned long value. If the\r\nsize of an unsigned long is four bytes, this is undefined behaviour, so\r\nthere is no guarantee that we'll end up with a nice and tidy 0-value at\r\nthe end.\r\n\r\nSyzbot managed to turn this into a crash on arm32 by creating a\r\nDEVMAP_HASH with max_entries > 0x80000000 and then trying to update it.\r\nFix this by moving the overflow check to before the rounding up\r\noperation.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-26885"
+    },
+    {
       "cve": "CVE-2024-26889",
       "cwe": {
         "id": "CWE-20",
@@ -3285,6 +3340,55 @@
       "title": "CVE-2024-27065"
     },
     {
+      "cve": "CVE-2024-27072",
+      "cwe": {
+        "id": "CWE-667",
+        "name": "Improper Locking"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nmedia: usbtv: Remove useless locks in usbtv_video_free()\r\n\r\nRemove locks calls in usbtv_video_free() because\r\nare useless and may led to a deadlock as reported here:\r\nhttps://syzkaller.appspot.com/x/bisect.txt?x=166dc872180000\r\nAlso remove usbtv_stop() call since it will be called when\r\nunregistering the device.\r\n\r\nBefore 'c838530d230b' this issue would only be noticed if you\r\ndisconnect while streaming and now it is noticeable even when\r\ndisconnecting while not streaming.\r\n\r\n\r\n[hverkuil: fix minor spelling mistake in log message]",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-27072"
+    },
+    {
       "cve": "CVE-2024-27076",
       "cwe": {
         "id": "CWE-20",
@@ -3871,6 +3975,55 @@
         }
       ],
       "title": "CVE-2024-35902"
+    },
+    {
+      "cve": "CVE-2024-35965",
+      "cwe": {
+        "id": "CWE-120",
+        "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Bluetooth: L2CAP: Fix not validating setsockopt user input\r\n\r\nCheck user input length before copying data.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-35965"
     },
     {
       "cve": "CVE-2024-36270",
@@ -7009,6 +7162,55 @@
       "title": "CVE-2024-41006"
     },
     {
+      "cve": "CVE-2024-41016",
+      "cwe": {
+        "id": "CWE-119",
+        "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "ocfs2: strict bound check before memcmp in ocfs2_xattr_find_entry()\r\n\r\nxattr in ocfs2 maybe 'non-indexed', which saved with additional space requested. It's better to check if the memory is out of bound before memcmp, although this possibility mainly comes from crafted poisonous images.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-41016"
+    },
+    {
       "cve": "CVE-2024-42070",
       "cwe": {
         "id": "CWE-401",
@@ -7989,6 +8191,104 @@
       "title": "CVE-2024-46783"
     },
     {
+      "cve": "CVE-2024-46854",
+      "cwe": {
+        "id": "CWE-125",
+        "name": "Out-of-bounds Read"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnet: dpaa: Pad packets to ETH_ZLEN\r\n\r\nWhen sending packets under 60 bytes, up to three bytes of the buffer following the data may be leaked. Avoid this by extending all packets to ETH_ZLEN, ensuring nothing is leaked in the padding. This bug can be reproduced by running\r\n\r\n\t$ ping -s 11 destination",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-46854"
+    },
+    {
+      "cve": "CVE-2024-46865",
+      "cwe": {
+        "id": "CWE-908",
+        "name": "Use of Uninitialized Resource"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nfou: fix initialization of grc\r\nThe grc must be initialize first. There can be a condition where if fou is NULL, goto out will be executed and grc would be used uninitialized.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-46865"
+    },
+    {
       "cve": "CVE-2024-47660",
       "cwe": {
         "id": "CWE-413",
@@ -8036,6 +8336,1672 @@
         }
       ],
       "title": "CVE-2024-47660"
+    },
+    {
+      "cve": "CVE-2024-47672",
+      "cwe": {
+        "id": "CWE-754",
+        "name": "Improper Check for Unusual or Exceptional Conditions"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nwifi: iwlwifi: mvm: don't wait for tx queues if firmware is dead\r\n\r\nThere is a WARNING in iwl_trans_wait_tx_queues_empty() (that was recently converted from just a message), that can be hit if we wait for TX queues to become empty after firmware died. Clearly, we can't expect anything from the firmware after it's declared dead.\r\n\r\nDon't call iwl_trans_wait_tx_queues_empty() in this case. While it could be a good idea to stop the flow earlier, the flush functions do some maintenance work that is not related to the firmware, so keep that part of the code running even when the firmware is not running.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47672"
+    },
+    {
+      "cve": "CVE-2024-47684",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\ntcp: check skb is non-NULL in tcp_rto_delta_us()\r\n\r\nWe have some machines running stock Ubuntu 20.04.6 which is their 5.4.0-174-generic\r\nkernel that are running ceph and recently hit a null ptr dereference in\r\ntcp_rearm_rto(). Initially hitting it from the TLP path, but then later we also\r\nsaw it getting hit from the RACK case as well. Here are examples of the oops\r\nmessages we saw in each of those cases:\r\n\r\nJul 26 15:05:02 rx [11061395.780353] BUG: kernel NULL pointer dereference, address: 0000000000000020\r\nJul 26 15:05:02 rx [11061395.787572] #PF: supervisor read access in kernel mode\r\nJul 26 15:05:02 rx [11061395.792971] #PF: error_code(0x0000) - not-present page\r\nJul 26 15:05:02 rx [11061395.798362] PGD 0 P4D 0\r\nJul 26 15:05:02 rx [11061395.801164] Oops: 0000 [#1] SMP NOPTI\r\nJul 26 15:05:02 rx [11061395.805091] CPU: 0 PID: 9180 Comm: msgr-worker-1 Tainted: G W 5.4.0-174-generic #193-Ubuntu\r\nJul 26 15:05:02 rx [11061395.814996] Hardware name: Supermicro SMC 2x26 os-gen8 64C NVME-Y 256G/H12SSW-NTR, BIOS 2.5.V1.2U.NVMe.UEFI 05/09/2023\r\nJul 26 15:05:02 rx [11061395.825952] RIP: 0010:tcp_rearm_rto+0xe4/0x160\r\nJul 26 15:05:02 rx [11061395.830656] Code: 87 ca 04 00 00 00 5b 41 5c 41 5d 5d c3 c3 49 8b bc 24 40 06 00 00 eb 8d 48 bb cf f7 53 e3 a5 9b c4 20 4c 89 ef e8 0c fe 0e 00 <48> 8b 78 20 48 c1 ef 03 48 89 f8 41 8b bc 24 80 04 00 00 48 f7 e3\r\nJul 26 15:05:02 rx [11061395.849665] RSP: 0018:ffffb75d40003e08 EFLAGS: 00010246\r\nJul 26 15:05:02 rx [11061395.855149] RAX: 0000000000000000 RBX: 20c49ba5e353f7cf RCX: 0000000000000000\r\nJul 26 15:05:02 rx [11061395.862542] RDX: 0000000062177c30 RSI: 000000000000231c RDI: ffff9874ad283a60\r\nJul 26 15:05:02 rx [11061395.869933] RBP: ffffb75d40003e20 R08: 0000000000000000 R09: ffff987605e20aa8\r\nJul 26 15:05:02 rx [11061395.877318] R10: ffffb75d40003f00 R11: ffffb75d4460f740 R12: ffff9874ad283900\r\nJul 26 15:05:02 rx [11061395.884710] R13: ffff9874ad283a60 R14: ffff9874ad283980 R15: ffff9874ad283d30\r\nJul 26 15:05:02 rx [11061395.892095] FS: 00007f1ef4a2e700(0000) GS:ffff987605e00000(0000) knlGS:0000000000000000\r\nJul 26 15:05:02 rx [11061395.900438] CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033\r\nJul 26 15:05:02 rx [11061395.906435] CR2: 0000000000000020 CR3: 0000003e450ba003 CR4: 0000000000760ef0\r\nJul 26 15:05:02 rx [11061395.913822] PKRU: 55555554\r\nJul 26 15:05:02 rx [11061395.916786] Call Trace:\r\nJul 26 15:05:02 rx [11061395.919488]\r\nJul 26 15:05:02 rx [11061395.921765] ? show_regs.cold+0x1a/0x1f\r\nJul 26 15:05:02 rx [11061395.925859] ? __die+0x90/0xd9\r\nJul 26 15:05:02 rx [11061395.929169] ? no_context+0x196/0x380\r\nJul 26 15:05:02 rx [11061395.933088] ? ip6_protocol_deliver_rcu+0x4e0/0x4e0\r\nJul 26 15:05:02 rx [11061395.938216] ? ip6_sublist_rcv_finish+0x3d/0x50\r\nJul 26 15:05:02 rx [11061395.943000] ? __bad_area_nosemaphore+0x50/0x1a0\r\nJul 26 15:05:02 rx [11061395.947873] ? bad_area_nosemaphore+0x16/0x20\r\nJul 26 15:05:02 rx [11061395.952486] ? do_user_addr_fault+0x267/0x450\r\nJul 26 15:05:02 rx [11061395.957104] ? ipv6_list_rcv+0x112/0x140\r\nJul 26 15:05:02 rx [11061395.961279] ? __do_page_fault+0x58/0x90\r\nJul 26 15:05:02 rx [11061395.965458] ? do_page_fault+0x2c/0xe0\r\nJul 26 15:05:02 rx [11061395.969465] ? page_fault+0x34/0x40\r\nJul 26 15:05:02 rx [11061395.973217] ? tcp_rearm_rto+0xe4/0x160\r\nJul 26 15:05:02 rx [11061395.977313] ? tcp_rearm_rto+0xe4/0x160\r\nJul 26 15:05:02 rx [11061395.981408] tcp_send_loss_probe+0x10b/0x220\r\nJul 26 15:05:02 rx [11061395.985937] tcp_write_timer_handler+0x1b4/0x240\r\nJul 26 15:05:02 rx [11061395.990809] tcp_write_timer+0x9e/0xe0\r\nJul 26 15:05:02 rx [11061395.994814] ? tcp_write_timer_handler+0x240/0x240\r\nJul 26 15:05:02 rx [11061395.999866] call_timer_fn+0x32/0x130\r\nJul 26 15:05:02 rx [11061396.003782] __run_timers.part.0+0x180/0x280\r\nJul 26 15:05:02 rx [11061396.008309] ? recalibrate_cpu_khz+0x10/0x10\r\nJul 26 15:05:02 rx [11061396.012841] ? native_x2apic_icr_write+0x30/0x30\r\nJul 26 15:05:02 rx [11061396.017718] ? lapic_next_even\r\n---truncated---",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47684"
+    },
+    {
+      "cve": "CVE-2024-47685",
+      "cwe": {
+        "id": "CWE-908",
+        "name": "Use of Uninitialized Resource"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnetfilter: nf_reject_ipv6: fix nf_reject_ip6_tcphdr_put()\r\n\r\nsyzbot reported that nf_reject_ip6_tcphdr_put() was possibly sending garbage on the four reserved tcp bits (th->res1)\r\n\r\nUse skb_put_zero() to clear the whole TCP header, as done in nf_reject_ip_tcphdr_put()\r\n\r\nBUG: KMSAN: uninit-value in nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\r\n  nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\r\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\r\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\r\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\r\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\r\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\r\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\r\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\r\n  nf_hook include/linux/netfilter.h:269 [inline]\r\n  NF_HOOK include/linux/netfilter.h:312 [inline]\r\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\r\n  __netif_receive_skb_one_core net/core/dev.c:5661 [inline]\r\n  __netif_receive_skb+0x1da/0xa00 net/core/dev.c:5775\r\n  process_backlog+0x4ad/0xa50 net/core/dev.c:6108\r\n  __napi_poll+0xe7/0x980 net/core/dev.c:6772\r\n  napi_poll net/core/dev.c:6841 [inline]\r\n  net_rx_action+0xa5a/0x19b0 net/core/dev.c:6963\r\n  handle_softirqs+0x1ce/0x800 kernel/softirq.c:554\r\n  __do_softirq+0x14/0x1a kernel/softirq.c:588\r\n  do_softirq+0x9a/0x100 kernel/softirq.c:455\r\n  __local_bh_enable_ip+0x9f/0xb0 kernel/softirq.c:382\r\n  local_bh_enable include/linux/bottom_half.h:33 [inline]\r\n  rcu_read_unlock_bh include/linux/rcupdate.h:908 [inline]\r\n  __dev_queue_xmit+0x2692/0x5610 net/core/dev.c:4450\r\n  dev_queue_xmit include/linux/netdevice.h:3105 [inline]\r\n  neigh_resolve_output+0x9ca/0xae0 net/core/neighbour.c:1565\r\n  neigh_output include/net/neighbour.h:542 [inline]\r\n  ip6_finish_output2+0x2347/0x2ba0 net/ipv6/ip6_output.c:141\r\n  __ip6_finish_output net/ipv6/ip6_output.c:215 [inline]\r\n  ip6_finish_output+0xbb8/0x14b0 net/ipv6/ip6_output.c:226\r\n  NF_HOOK_COND include/linux/netfilter.h:303 [inline]\r\n  ip6_output+0x356/0x620 net/ipv6/ip6_output.c:247\r\n  dst_output include/net/dst.h:450 [inline]\r\n  NF_HOOK include/linux/netfilter.h:314 [inline]\r\n  ip6_xmit+0x1ba6/0x25d0 net/ipv6/ip6_output.c:366\r\n  inet6_csk_xmit+0x442/0x530 net/ipv6/inet6_connection_sock.c:135\r\n  __tcp_transmit_skb+0x3b07/0x4880 net/ipv4/tcp_output.c:1466\r\n  tcp_transmit_skb net/ipv4/tcp_output.c:1484 [inline]\r\n  tcp_connect+0x35b6/0x7130 net/ipv4/tcp_output.c:4143\r\n  tcp_v6_connect+0x1bcc/0x1e40 net/ipv6/tcp_ipv6.c:333\r\n  __inet_stream_connect+0x2ef/0x1730 net/ipv4/af_inet.c:679\r\n  inet_stream_connect+0x6a/0xd0 net/ipv4/af_inet.c:750\r\n  __sys_connect_file net/socket.c:2061 [inline]\r\n  __sys_connect+0x606/0x690 net/socket.c:2078\r\n  __do_sys_connect net/socket.c:2088 [inline]\r\n  __se_sys_connect net/socket.c:2085 [inline]\r\n  __x64_sys_connect+0x91/0xe0 net/socket.c:2085\r\n  x64_sys_call+0x27a5/0x3ba0 arch/x86/include/generated/asm/syscalls_64.h:43\r\n  do_syscall_x64 arch/x86/entry/common.c:52 [inline]\r\n  do_syscall_64+0xcd/0x1e0 arch/x86/entry/common.c:83\r\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\r\n\r\nUninit was stored to memory at:\r\n  nf_reject_ip6_tcphdr_put+0x60c/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:249\r\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\r\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\r\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\r\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\r\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\r\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\r\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\r\n  nf_hook include/linux/netfilter.h:269 [inline]\r\n  NF_HOOK include/linux/netfilter.h:312 [inline]\r\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\r\n  __netif_receive_skb_one_core\r\n---truncated---",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.1,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47685"
+    },
+    {
+      "cve": "CVE-2024-47692",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnfsd: return -EINVAL when namelen is 0\r\nWhen we have a corrupted main.sqlite in /var/lib/nfs/nfsdcld/, it may result in namelen being 0, which will cause memdup_user() to return ZERO_SIZE_PTR.\r\nWhen we access the name.data that has been assigned the value of ZERO_SIZE_PTR in nfs4_client_to_reclaim(), null pointer dereference is triggered.\r\n\r\n[ T1205] ==================================================================\r\n[ T1205] BUG: KASAN: null-ptr-deref in nfs4_client_to_reclaim+0xe9/0x260\r\n[ T1205] Read of size 1 at addr 0000000000000010 by task nfsdcld/1205\r\n[ T1205]\r\n[ T1205] CPU: 11 PID: 1205 Comm: nfsdcld Not tainted 5.10.0-00003-g2c1423731b8d #406\r\n[ T1205] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS ?-20190727_073836-buildvm-ppc64le-16.ppc.fedoraproject.org-3.fc31 04/01/2014\r\n[ T1205] Call Trace:\r\n[ T1205]  dump_stack+0x9a/0xd0\r\n[ T1205]  ? nfs4_client_to_reclaim+0xe9/0x260\r\n[ T1205]  __kasan_report.cold+0x34/0x84\r\n[ T1205]  ? nfs4_client_to_reclaim+0xe9/0x260\r\n[ T1205]  kasan_report+0x3a/0x50\r\n[ T1205]  nfs4_client_to_reclaim+0xe9/0x260\r\n[ T1205]  ? nfsd4_release_lockowner+0x410/0x410\r\n[ T1205]  cld_pipe_downcall+0x5ca/0x760\r\n[ T1205]  ? nfsd4_cld_tracking_exit+0x1d0/0x1d0\r\n[ T1205]  ? down_write_killable_nested+0x170/0x170\r\n[ T1205]  ? avc_policy_seqno+0x28/0x40\r\n[ T1205]  ? selinux_file_permission+0x1b4/0x1e0\r\n[ T1205]  rpc_pipe_write+0x84/0xb0\r\n[ T1205]  vfs_write+0x143/0x520\r\n[ T1205]  ksys_write+0xc9/0x170\r\n[ T1205]  ? __ia32_sys_read+0x50/0x50\r\n[ T1205]  ? ktime_get_coarse_real_ts64+0xfe/0x110\r\n[ T1205]  ? ktime_get_coarse_real_ts64+0xa2/0x110\r\n[ T1205]  do_syscall_64+0x33/0x40\r\n[ T1205]  entry_SYSCALL_64_after_hwframe+0x67/0xd1\r\n[ T1205] RIP: 0033:0x7fdbdb761bc7\r\n[ T1205] Code: 0f 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b7 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 514\r\n[ T1205] RSP: 002b:00007fff8c4b7248 EFLAGS: 00000246 ORIG_RAX: 0000000000000001\r\n[ T1205] RAX: ffffffffffffffda RBX: 000000000000042b RCX: 00007fdbdb761bc7\r\n[ T1205] RDX: 000000000000042b RSI: 00007fff8c4b75f0 RDI: 0000000000000008\r\n[ T1205] RBP: 00007fdbdb761bb0 R08: 0000000000000000 R09: 0000000000000001\r\n[ T1205] R10: 0000000000000000 R11: 0000000000000246 R12: 000000000000042b\r\n[ T1205] R13: 0000000000000008 R14: 00007fff8c4b75f0 R15: 0000000000000000\r\n[ T1205] ==================================================================",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47692"
+    },
+    {
+      "cve": "CVE-2024-47696",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nRDMA/iwcm: Fix WARNING:at_kernel/workqueue.c:#check_flush_dependency\r\n\r\nIn the commit aee2424246f9 (\"RDMA/iwcm: Fix a use-after-free related to destroying CM IDs\"), the function flush_workqueue is invoked to flush the work queue iwcm_wq.\r\n\r\nBut at that time, the work queue iwcm_wq was created via the function alloc_ordered_workqueue without the flag WQ_MEM_RECLAIM.\r\n\r\nBecause the current process is trying to flush the whole iwcm_wq, if iwcm_wq doesn't have the flag WQ_MEM_RECLAIM, verify that the current process is not reclaiming memory or running on a workqueue which doesn't have the flag WQ_MEM_RECLAIM as that can break forward-progress guarantee leading to a deadlock.\r\n\r\nThe call trace is as below:\r\n\r\n[  125.350876][ T1430] Call Trace:\r\n[  125.356281][ T1430]  <TASK>\r\n[ 125.361285][ T1430] ? __warn (kernel/panic.c:693)\r\n[ 125.367640][ T1430] ? check_flush_dependency (kernel/workqueue.c:3706 (discriminator 9))\r\n[ 125.375689][ T1430] ? report_bug (lib/bug.c:180 lib/bug.c:219)\r\n[ 125.382505][ T1430] ? handle_bug (arch/x86/kernel/traps.c:239)\r\n[ 125.388987][ T1430] ? exc_invalid_op (arch/x86/kernel/traps.c:260 (discriminator 1))\r\n[ 125.395831][ T1430] ? asm_exc_invalid_op (arch/x86/include/asm/idtentry.h:621)\r\n[ 125.403125][ T1430] ? check_flush_dependency (kernel/workqueue.c:3706 (discriminator 9))\r\n[ 125.410984][ T1430] ? check_flush_dependency (kernel/workqueue.c:3706 (discriminator 9))\r\n[ 125.418764][ T1430] __flush_workqueue (kernel/workqueue.c:3970)\r\n[ 125.426021][ T1430] ? __pfx___might_resched (kernel/sched/core.c:10151)\r\n[ 125.433431][ T1430] ? destroy_cm_id (drivers/infiniband/core/iwcm.c:375) iw_cm\r\n[ 125.441209][ T1430] ? __pfx___flush_workqueue (kernel/workqueue.c:3910)\r\n[ 125.473900][ T1430] ? _raw_spin_lock_irqsave (arch/x86/include/asm/atomic.h:107 include/linux/atomic/atomic-arch-fallback.h:2170 include/linux/atomic/atomic-instrumented.h:1302 include/asm-generic/qspinlock.h:111 include/linux/spinlock.h:187 include/linux/spinlock_api_smp.h:111 kernel/locking/spinlock.c:162)\r\n[ 125.473909][ T1430] ? __pfx__raw_spin_lock_irqsave (kernel/locking/spinlock.c:161)\r\n[ 125.482537][ T1430] _destroy_id (drivers/infiniband/core/cma.c:2044) rdma_cm\r\n[ 125.495072][ T1430] nvme_rdma_free_queue (drivers/nvme/host/rdma.c:656 drivers/nvme/host/rdma.c:650) nvme_rdma\r\n[ 125.505827][ T1430] nvme_rdma_reset_ctrl_work (drivers/nvme/host/rdma.c:2180) nvme_rdma\r\n[ 125.505831][ T1430] process_one_work (kernel/workqueue.c:3231)\r\n[ 125.515122][ T1430] worker_thread (kernel/workqueue.c:3306 kernel/workqueue.c:3393)\r\n[ 125.515127][ T1430] ? __pfx_worker_thread (kernel/workqueue.c:3339)\r\n[ 125.531837][ T1430] kthread (kernel/kthread.c:389)\r\n[ 125.539864][ T1430] ? __pfx_kthread (kernel/kthread.c:342)\r\n[ 125.550628][ T1430] ret_from_fork (arch/x86/kernel/process.c:147)\r\n[ 125.558840][ T1430] ? __pfx_kthread (kernel/kthread.c:342)\r\n[ 125.558844][ T1430] ret_from_fork_asm (arch/x86/entry/entry_64.S:257)\r\n[  125.566487][ T1430]  </TASK>\r\n[  125.566488][ T1430] ---[ end trace 0000000000000000 ]---",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47696"
+    },
+    {
+      "cve": "CVE-2024-47697",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\ndrivers: media: dvb-frontends/rtl2830: fix an out-of-bounds write error\r\n\r\nEnsure index in rtl2830_pid_filter does not exceed 31 to prevent out-of-bounds access.\r\n\r\ndev->filters is a 32-bit value, so set_bit and clear_bit functions should only operate on indices from 0 to 31. If index is 32, it will attempt to access a non-existent 33rd bit, leading to out-of-bounds access.\r\nChange the boundary check from index > 32 to index >= 32 to resolve this issue.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47697"
+    },
+    {
+      "cve": "CVE-2024-47699",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnilfs2: fix potential null-ptr-deref in nilfs_btree_insert()\r\n\r\nPatch series \"nilfs2: fix potential issues with empty b-tree nodes\".\r\n\r\nThis series addresses three potential issues with empty b-tree nodes that can occur with corrupted filesystem images, including one recently discovered by syzbot.\r\n\r\n\r\nThis patch (of 3):\r\n\r\nIf a b-tree is broken on the device, and the b-tree height is greater than 2 (the level of the root node is greater than 1) even if the number of child nodes of the b-tree root is 0, a NULL pointer dereference occurs in nilfs_btree_prepare_insert(), which is called from nilfs_btree_insert().\r\n\r\nThis is because, when the number of child nodes of the b-tree root is 0, nilfs_btree_do_lookup() does not set the block buffer head in any of path[x].bp_bh, leaving it as the initial value of NULL, but if the level of the b-tree root node is greater than 1, nilfs_btree_get_nonroot_node(), which accesses the buffer memory of path[x].bp_bh, is called.\r\n\r\nFix this issue by adding a check to nilfs_btree_root_broken(), which performs sanity checks when reading the root node from the device, to detect this inconsistency.\r\n\r\nThanks to Lizhi Xu for trying to solve the bug and clarifying the cause early on.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47699"
+    },
+    {
+      "cve": "CVE-2024-47701",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: ext4: avoid OOB when system.data xattr changes underneath the filesystem.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47701"
+    },
+    {
+      "cve": "CVE-2024-47705",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nblock: fix potential invalid pointer dereference in blk_add_partition\r\n\r\nThe blk_add_partition() function initially used a single if-condition (IS_ERR(part)) to check for errors when adding a partition. This was modified to handle the specific case of -ENXIO separately, allowing the function to proceed without logging the error in this case. However, this change unintentionally left a path where md_autodetect_dev() could be called without confirming that part is a valid pointer.\r\n\r\nThis commit separates the error handling logic by splitting the initial if-condition, improving code readability and handling specific error scenarios explicitly. The function now distinguishes the general error case from -ENXIO without altering the existing behavior of md_autodetect_dev() calls.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47705"
+    },
+    {
+      "cve": "CVE-2024-47706",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nblock, bfq: fix possible UAF for bfqq->bic with merge chain\r\n\r\nIn this case, IO from Process 1 will get bfqq2 from BIC1 first, and then\r\nget bfqq3 through merge chain, and finially handle IO by bfqq3.\r\nHowerver, current code will think bfqq2 is owned by BIC1, like initial\r\nstate, and set bfqq2->bic to BIC1.\r\n\r\nAllocated by task 20776:\r\n kasan_save_stack+0x20/0x40 mm/kasan/common.c:45\r\n kasan_set_track+0x25/0x30 mm/kasan/common.c:52\r\n __kasan_slab_alloc+0x87/0x90 mm/kasan/common.c:328\r\n kasan_slab_alloc include/linux/kasan.h:188 [inline]\r\n slab_post_alloc_hook mm/slab.h:763 [inline]\r\n slab_alloc_node mm/slub.c:3458 [inline]\r\n kmem_cache_alloc_node+0x1a4/0x6f0 mm/slub.c:3503\r\n ioc_create_icq block/blk-ioc.c:370 [inline]\r\n---truncated---",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47706"
+    },
+    {
+      "cve": "CVE-2024-47709",
+      "cwe": {
+        "id": "CWE-825",
+        "name": "Expired Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "can: bcm: A warning is triggered when connect() is issued again for a socket whose connect()ed device has been unregistered. However, if the socket is just close()d without the 2nd connect(), the remaining bo->bcm_proc_read triggers unnecessary remove_proc_entry() in bcm_release().",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47709"
+    },
+    {
+      "cve": "CVE-2024-47710",
+      "cwe": {
+        "id": "CWE-400",
+        "name": "Uncontrolled Resource Consumption"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "sock_map: vulnerability result of adding a cond_resched() in sock_hash_free() to prevent CPU soft lockups when destroying maps with a large number of buckets.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47710"
+    },
+    {
+      "cve": "CVE-2024-47713",
+      "cwe": {
+        "id": "CWE-664",
+        "name": "Improper Control of a Resource Through its Lifetime"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "wifi: mac80211: vulnerability caused by implementing a two-phase skb reclamation in ieee80211_do_stop() to avoid warnings and potential issues caused by calling __dev_queue_xmit() with interrupts disabled.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47713"
+    },
+    {
+      "cve": "CVE-2024-47718",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "wifi: rtw88: vulnerability may lead to a use-after-free (UAF) error if firmware loading is not properly synchronized during USB initialization and disconnection.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47718"
+    },
+    {
+      "cve": "CVE-2024-47723",
+      "cwe": {
+        "id": "CWE-125",
+        "name": "Out-of-bounds Read"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\njfs: fix out-of-bounds in dbNextAG() and diAlloc()\r\n\r\nIn dbNextAG() , there is no check for the case where bmp->db_numag is greater or same than MAXAG due to a polluted image, which causes an out-of-bounds. Therefore, a bounds check should be added in dbMount().\r\n\r\nAnd in dbNextAG(), a check for the case where agpref is greater than bmp->db_numag should be added, so an out-of-bounds exception should be prevented.\r\n\r\nAdditionally, a check for the case where agno is greater or same than MAXAG should be added in diAlloc() to prevent out-of-bounds.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47723"
+    },
+    {
+      "cve": "CVE-2024-47735",
+      "cwe": {
+        "id": "CWE-667",
+        "name": "Improper Locking"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "RDMA/hns: missuse of spin_lock_irq()/spin_unlock_irq() when spin_lock_irqsave()/spin_lock_irqrestore() was hold.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47735"
+    },
+    {
+      "cve": "CVE-2024-47737",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: nfsd: call cache_put if xdr_reserve_space returns NULL.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47737"
+    },
+    {
+      "cve": "CVE-2024-47747",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "net: seeq: Fix use after free vulnerability in ether3 Driver Due to Race Condition. In the ether3_probe function, a timer is initialized with a callback function ether3_ledoff, bound to &prev(dev)->timer. Once the timer is started, there is a risk of a race condition if the module or device is removed, triggering the ether3_remove function to perform cleanup.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-47747"
+    },
+    {
+      "cve": "CVE-2024-49851",
+      "cwe": {
+        "id": "CWE-459",
+        "name": "Incomplete Cleanup"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "tpm: Clean up TPM space after command failure tpm_dev_transmit prepares the TPM space before attempting command transmission. However if the command fails no rollback of this preparation is done. This can result in transient handles being leaked if the device is subsequently closed with no further commands performed.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49851"
+    },
+    {
+      "cve": "CVE-2024-49889",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\next4: avoid use-after-free in ext4_ext_show_leaf()\r\n\r\nIn ext4_find_extent(), path may be freed by error or be reallocated, so\r\nusing a previously saved *ppath may have been freed and thus may trigger\r\nuse-after-free, as follows:\r\n\r\next4_split_extent\r\n  path = *ppath;\r\n  ext4_split_extent_at(ppath)\r\n  path = ext4_find_extent(ppath)\r\n  ext4_split_extent_at(ppath)\r\n    // ext4_find_extent fails to free path\r\n    // but zeroout succeeds\r\n  ext4_ext_show_leaf(inode, path)\r\n    eh = path[depth].p_hdr\r\n    // path use-after-free !!!\r\n\r\nSimilar to ext4_split_extent_at(), we use *ppath directly as an input to\r\next4_ext_show_leaf(). Fix a spelling error by the way.\r\n\r\nSame problem in ext4_ext_handle_unwritten_extents(). Since 'path' is only\r\nused in ext4_ext_show_leaf(), remove 'path' and use *ppath directly.\r\n\r\nThis issue is triggered only when EXT_DEBUG is defined and therefore does\r\nnot affect functionality.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49889"
+    },
+    {
+      "cve": "CVE-2024-49890",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\ndrm/amd/pm: ensure the fw_info is not null before using it\r\n\r\nThis resolves the dereference null return value warning reported by Coverity.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49890"
+    },
+    {
+      "cve": "CVE-2024-49892",
+      "cwe": {
+        "id": "CWE-369",
+        "name": "Divide By Zero"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\ndrm/amd/display: Initialize get_bytes_per_element's default to 1\r\n\r\nVariables, used as denominators and maybe not assigned to other values, should not be 0. bytes_per_element_y & bytes_per_element_c are initialized by get_bytes_per_element() which should never return 0.\r\n\r\nThis fixes 10 DIVIDE_BY_ZERO issues reported by Coverity.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49892"
+    },
+    {
+      "cve": "CVE-2024-49894",
+      "cwe": {
+        "id": "CWE-129",
+        "name": "Improper Validation of Array Index"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\ndrm/amd/display: Fix index out of bounds in degamma hardware format translation\r\n\r\nFixes index out of bounds issue in\r\n`cm_helper_translate_curve_to_degamma_hw_format` function. The issue\r\ncould occur when the index 'i' exceeds the number of transfer function\r\npoints (TRANSFER_FUNC_POINTS).\r\n\r\nThe fix adds a check to ensure 'i' is within bounds before accessing the\r\ntransfer function points. If 'i' is out of bounds the function returns\r\nfalse to indicate an error.\r\n\r\nReported by smatch:\r\ndrivers/gpu/drm/amd/amdgpu/../display/dc/dcn10/dcn10_cm_common.c:594 cm_helper_translate_curve_to_degamma_hw_format() error: buffer overflow 'output_tf->tf_pts.red' 1025 <= s32max\r\ndrivers/gpu/drm/amd/amdgpu/../display/dc/dcn10/dcn10_cm_common.c:595 cm_helper_translate_curve_to_degamma_hw_format() error: buffer overflow 'output_tf->tf_pts.green' 1025 <= s32max\r\ndrivers/gpu/drm/amd/amdgpu/../display/dc/dcn10/dcn10_cm_common.c:596 cm_helper_translate_curve_to_degamma_hw_format() error: buffer overflow 'output_tf->tf_pts.blue' 1025 <= s32max",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49894"
+    },
+    {
+      "cve": "CVE-2024-49900",
+      "cwe": {
+        "id": "CWE-908",
+        "name": "Use of Uninitialized Resource"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\njfs: Fix uninit-value access of new_ea in ea_buffer\r\n\r\nsyzbot reports that lzo1x_1_do_compress is using uninit-value:\r\n\r\n=====================================================\r\nBUG: KMSAN: uninit-value in lzo1x_1_do_compress+0x19f9/0x2510 lib/lzo/lzo1x_compress.c:178\r\n\r\n...\r\n\r\nUninit was stored to memory at:\r\n ea_put fs/jfs/xattr.c:639 [inline]\r\n\r\n...\r\n\r\nLocal variable ea_buf created at:\r\n __jfs_setxattr+0x5d/0x1ae0 fs/jfs/xattr.c:662\r\n __jfs_xattr_set+0xe6/0x1f0 fs/jfs/xattr.c:934\r\n\r\n=====================================================\r\n\r\nThe reason is ea_buf->new_ea is not initialized properly.\r\n\r\nFix this by using memset to empty its content at the beginning\r\nin ea_get().",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49900"
+    },
+    {
+      "cve": "CVE-2024-49902",
+      "cwe": {
+        "id": "CWE-125",
+        "name": "Out-of-bounds Read"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "jfs: vulnerability caused by assigning msm_gpu->pdev earlier in the initialization process to prevent null pointer dereferences in msm_gpu_cleanup.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49902"
+    },
+    {
+      "cve": "CVE-2024-49903",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\njfs: Fix uaf in dbFreeBits\r\n\r\n[syzbot reported]\r\n==================================================================\r\nBUG: KASAN: slab-use-after-free in __mutex_lock_common kernel/locking/mutex.c:587 [inline]\r\nBUG: KASAN: slab-use-after-free in __mutex_lock+0xfe/0xd70 kernel/locking/mutex.c:752\r\nRead of size 8 at addr ffff8880229254b0 by task syz-executor357/5216\r\n\r\nCPU: 0 UID: 0 PID: 5216 Comm: syz-executor357 Not tainted 6.11.0-rc3-syzkaller-00156-gd7a5aa4b3c00 #0\r\nHardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 06/27/2024\r\nCall Trace:\r\n <TASK>\r\n __dump_stack lib/dump_stack.c:93 [inline]\r\n dump_stack_lvl+0x241/0x360 lib/dump_stack.c:119\r\n print_address_description mm/kasan/report.c:377 [inline]\r\n print_report+0x169/0x550 mm/kasan/report.c:488\r\n kasan_report+0x143/0x180 mm/kasan/report.c:601\r\n __mutex_lock_common kernel/locking/mutex.c:587 [inline]\r\n __mutex_lock+0xfe/0xd70 kernel/locking/mutex.c:752\r\n dbFreeBits+0x7ea/0xd90 fs/jfs/jfs_dmap.c:2390\r\n dbFreeDmap fs/jfs/jfs_dmap.c:2089 [inline]\r\n dbFree+0x35b/0x680 fs/jfs/jfs_dmap.c:409\r\n dbDiscardAG+0x8a9/0xa20 fs/jfs/jfs_dmap.c:1650\r\n jfs_ioc_trim+0x433/0x670 fs/jfs/jfs_discard.c:100\r\n jfs_ioctl+0x2d0/0x3e0 fs/jfs/ioctl.c:131\r\n vfs_ioctl fs/ioctl.c:51 [inline]\r\n __do_sys_ioctl fs/ioctl.c:907 [inline]\r\n __se_sys_ioctl+0xfc/0x170 fs/ioctl.c:893\r\n do_syscall_x64 arch/x86/entry/common.c:52 [inline]\r\n do_syscall_64+0xf3/0x230 arch/x86/entry/common.c:83\r\n\r\nFreed by task 5218:\r\n kasan_save_stack mm/kasan/common.c:47 [inline]\r\n kasan_save_track+0x3f/0x80 mm/kasan/common.c:68\r\n kasan_save_free_info+0x40/0x50 mm/kasan/generic.c:579\r\n poison_slab_object+0xe0/0x150 mm/kasan/common.c:240\r\n __kasan_slab_free+0x37/0x60 mm/kasan/common.c:256\r\n kasan_slab_free include/linux/kasan.h:184 [inline]\r\n slab_free_hook mm/slub.c:2252 [inline]\r\n slab_free mm/slub.c:4473 [inline]\r\n kfree+0x149/0x360 mm/slub.c:4594\r\n dbUnmount+0x11d/0x190 fs/jfs/jfs_dmap.c:278\r\n jfs_mount_rw+0x4ac/0x6a0 fs/jfs/jfs_mount.c:247\r\n jfs_remount+0x3d1/0x6b0 fs/jfs/super.c:454\r\n reconfigure_super+0x445/0x880 fs/super.c:1083\r\n vfs_cmd_reconfigure fs/fsopen.c:263 [inline]\r\n vfs_fsconfig_locked fs/fsopen.c:292 [inline]\r\n __do_sys_fsconfig fs/fsopen.c:473 [inline]\r\n __se_sys_fsconfig+0xb6e/0xf80 fs/fsopen.c:345\r\n do_syscall_x64 arch/x86/entry/common.c:52 [inline]\r\n do_syscall_64+0xf3/0x230 arch/x86/entry/common.c:83\r\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\r\n\r\n[Analysis]\r\nThere are two paths (dbUnmount and jfs_ioc_trim) that generate race condition when accessing bmap, which leads to the occurrence of uaf.\r\n\r\nUse the lock s_umount to synchronize them, in order to avoid uaf caused by race condition.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.0,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49903"
+    },
+    {
+      "cve": "CVE-2024-49930",
+      "cwe": {
+        "id": "CWE-125",
+        "name": "Out-of-bounds Read"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "wifi: ath11k: fix array out-of-bound access in SoC stats. Currently, the ath11k_soc_dp_stats::hal_reo_error array is defined with a maximum size of DP_REO_DST_RING_MAX. However, the ath11k_dp_process_rx() function access ath11k_soc_dp_stats::hal_reo_error using the REO destination SRNG ring ID, which is incorrect. SRNG ring ID differ from normal ring ID, and this usage leads to out-of-bounds array access.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.4,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49930"
+    },
+    {
+      "cve": "CVE-2024-49938",
+      "cwe": {
+        "id": "CWE-824",
+        "name": "Access of Uninitialized Pointer"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nwifi: ath9k_htc: Use __skb_set_length() for resetting urb before resubmit\r\n\r\nSyzbot points out that skb_trim() has a sanity check on the existing length of the skb, which can be uninitialised in some error paths. The intent here is clearly just to reset the length to zero before resubmitting, so switch to calling __skb_set_length(skb, 0) directly. In addition, __skb_set_length() already contains a call to skb_reset_tail_pointer(), so remove the redundant call.\r\n\r\nThe syzbot report came from ath9k_hif_usb_reg_in_cb(), but there's a similar usage of skb_trim() in ath9k_hif_usb_rx_cb(), change both while we're at it.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49938"
+    },
+    {
+      "cve": "CVE-2024-49944",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "sctp: set sk_state back to CLOSED if autobind fails in sctp_listen_start. In sctp_listen_start() invoked by sctp_inet_listen(), it should set the sk_state back to CLOSED if sctp_autobind() fails due to whatever reason. Otherwise, next time when calling sctp_inet_listen(), if sctp_sk(sk)->reuse is already set via setsockopt(SCTP_REUSE_PORT), sctp_sk(sk)->bind_hash will be dereferenced as sk_state is LISTENING, which causes a crash as bind_hash is NULL",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49944"
+    },
+    {
+      "cve": "CVE-2024-49948",
+      "cwe": {
+        "id": "CWE-124",
+        "name": "Buffer Underwrite ('Buffer Underflow')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: net: add more sanity checks to qdisc_pkt_len_init().",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49948"
+    },
+    {
+      "cve": "CVE-2024-49949",
+      "cwe": {
+        "id": "CWE-124",
+        "name": "Buffer Underwrite ('Buffer Underflow')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: net: avoid potential underflow in qdisc_pkt_len_init() with UFO.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49949"
+    },
+    {
+      "cve": "CVE-2024-49952",
+      "cwe": {
+        "id": "CWE-362",
+        "name": "Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: netfilter: nf_tables: prevent nf_skb_duplicated corruption.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49952"
+    },
+    {
+      "cve": "CVE-2024-49955",
+      "cwe": {
+        "id": "CWE-672",
+        "name": "Operation on a Resource after Expiration or Release"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nACPI: battery: Fix possible crash when unregistering a battery hook\r\n\r\nWhen a battery hook returns an error when adding a new battery, then the battery hook is automatically unregistered.\r\nHowever the battery hook provider cannot know that, so it will later call battery_hook_unregister() on the already unregistered battery hook, resulting in a crash.\r\n\r\nFix this by using the list head to mark already unregistered battery hooks as already being unregistered so that they can be ignored by battery_hook_unregister().",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49955"
+    },
+    {
+      "cve": "CVE-2024-49973",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "r8169: RTL8125 added fields to the tally counter, this change could cause the chip to perform Direct Memory Access on these new fields, potentially writing to unallocated memory.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49973"
     },
     {
       "cve": "CVE-2024-49977",
@@ -8087,6 +10053,741 @@
       "title": "CVE-2024-49977"
     },
     {
+      "cve": "CVE-2024-49997",
+      "cwe": {
+        "id": "CWE-226",
+        "name": "Sensitive Information in Resource Not Removed Before Reuse"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: net: ethernet: lantiq_etop: fix memory disclosure When applying padding, the buffer is not zeroed, which results in memory disclosure. The mentioned data is observed on the wire. This patch uses skb_put_padto() to pad Ethernet frames properly. The mentioned function zeroes the expanded buffer. In case the packet cannot be padded it is silently dropped. Statistics are also not incremented. This driver does not support statistics in the old 32-bit format or the new 64-bit format. These will be added in the future. In its current form, the patch should be easily backported to stable versions. Ethernet MACs on Amazon-SE and Danube cannot do padding of the packets in hardware, so software padding must be applied.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-49997"
+    },
+    {
+      "cve": "CVE-2024-50001",
+      "cwe": {
+        "id": "CWE-755",
+        "name": "Improper Handling of Exceptional Conditions"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnet/mlx5: Fix error path in multi-packet WQE transmit\r\n\r\nRemove the erroneous unmap in case no DMA mapping was established\r\n\r\nThe multi-packet WQE transmit code attempts to obtain a DMA mapping for the skb. This could fail, e.g. under memory pressure, when the IOMMU driver just can't allocate more memory for page tables. While the code tries to handle this in the path below the err_unmap label it erroneously unmaps one entry from the sq's FIFO list of active mappings. Since the current map attempt failed this unmap is removing some random DMA mapping that might still be required. If the PCI function now presents that IOVA, the IOMMU may assumes a rogue DMA access and e.g. on s390 puts the PCI function in error state.\r\n\r\nThe erroneous behavior was seen in a stress-test environment that created memory pressure.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50001"
+    },
+    {
+      "cve": "CVE-2024-50006",
+      "cwe": {
+        "id": "CWE-833",
+        "name": "Deadlock"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: ext4: fix i_data_sem unlock order in ext4_ind_migrate().",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50006"
+    },
+    {
+      "cve": "CVE-2024-50008",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "wifi: mwifiex: memcpy() field-spanning write warning in mwifiex_cmd_802_11_scan_ext() Replace one-element array with a flexible-array member in `struct host_cmd_ds_802_11_scan_ext`.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50008"
+    },
+    {
+      "cve": "CVE-2024-50010",
+      "cwe": {
+        "id": "CWE-362",
+        "name": "Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nexec: don't WARN for racy path_noexec check\r\n\r\nBoth i_mode and noexec checks wrapped in WARN_ON stem from an artifact\r\nof the previous implementation. They used to legitimately check for the\r\ncondition, but that got moved up in two commits:\r\n633fb6ac3980 (\"exec: move S_ISREG() check earlier\")\r\n0fd338b2d2cd (\"exec: move path_noexec() check earlier\")\r\n\r\nInstead of being removed said checks are WARN_ON'ed instead, which has some debug value.\r\n\r\nHowever, the spurious path_noexec check is racy, resulting in unwarranted warnings should someone race with setting the noexec flag.\r\n\r\nOne can note there is more to perm-checking whether execve is allowed and none of the conditions are guaranteed to still hold after they were tested for.\r\n\r\nAdditionally this does not validate whether the code path did any perm checking to begin with -- it will pass if the inode happens to be regular.\r\n\r\nKeep the redundant path_noexec() check even though it's mindless nonsense checking for guarantee that isn't given so drop the WARN.\r\n\r\nReword the commentary and do small tidy ups while here.\r\n\r\n[brauner: keep redundant path_noexec() check]",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.7,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50010"
+    },
+    {
+      "cve": "CVE-2024-50015",
+      "cwe": {
+        "id": "CWE-665",
+        "name": "Improper Initialization"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "ext4: dax: Overflowing extents beyond inode size when partially writing.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50015"
+    },
+    {
+      "cve": "CVE-2024-50033",
+      "cwe": {
+        "id": "CWE-908",
+        "name": "Use of Uninitialized Resource"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nslip: make slhc_remember() more robust against malicious packets\r\n\r\nsyzbot found that slhc_remember() was missing checks against\r\nmalicious packets [1].\r\n\r\nslhc_remember() only checked the size of the packet was at least 20,\r\nwhich is not good enough.\r\n\r\nWe need to make sure the packet includes the IPv4 and TCP header\r\nthat are supposed to be carried.\r\n\r\nAdd iph and th pointers to make the code more readable.\r\n\r\n[1]\r\n\r\nBUG: KMSAN: uninit-value in slhc_remember+0x2e8/0x7b0 drivers/net/slip/slhc.c:666\r\n  slhc_remember+0x2e8/0x7b0 drivers/net/slip/slhc.c:666\r\n  ppp_receive_nonmp_frame+0xe45/0x35e0 drivers/net/ppp/ppp_generic.c:2455\r\n  ppp_receive_frame drivers/net/ppp/ppp_generic.c:2372 [inline]\r\n  ppp_do_recv+0x65f/0x40d0 drivers/net/ppp/ppp_generic.c:2212\r\n  ppp_input+0x7dc/0xe60 drivers/net/ppp/ppp_generic.c:2327\r\n  pppoe_rcv_core+0x1d3/0x720 drivers/net/ppp/pppoe.c:379\r\n  sk_backlog_rcv+0x13b/0x420 include/net/sock.h:1113\r\n  __release_sock+0x1da/0x330 net/core/sock.c:3072\r\n  release_sock+0x6b/0x250 net/core/sock.c:3626\r\n  pppoe_sendmsg+0x2b8/0xb90 drivers/net/ppp/pppoe.c:903\r\n  sock_sendmsg_nosec net/socket.c:729 [inline]\r\n  __sock_sendmsg+0x30f/0x380 net/socket.c:744\r\n  ____sys_sendmsg+0x903/0xb60 net/socket.c:2602\r\n  ___sys_sendmsg+0x28d/0x3c0 net/socket.c:2656\r\n  __sys_sendmmsg+0x3c1/0x960 net/socket.c:2742\r\n  __do_sys_sendmmsg net/socket.c:2771 [inline]\r\n  __se_sys_sendmmsg net/socket.c:2768 [inline]\r\n  __x64_sys_sendmmsg+0xbc/0x120 net/socket.c:2768\r\n  x64_sys_call+0xb6e/0x3ba0 arch/x86/include/generated/asm/syscalls_64.h:308\r\n  do_syscall_x64 arch/x86/entry/common.c:52 [inline]\r\n  do_syscall_64+0xcd/0x1e0 arch/x86/entry/common.c:83\r\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\r\n\r\nUninit was created at:\r\n  slab_post_alloc_hook mm/slub.c:4091 [inline]\r\n  slab_alloc_node mm/slub.c:4134 [inline]\r\n  kmem_cache_alloc_node_noprof+0x6bf/0xb80 mm/slub.c:4186\r\n  kmalloc_reserve+0x13d/0x4a0 net/core/skbuff.c:587\r\n  __alloc_skb+0x363/0x7b0 net/core/skbuff.c:678\r\n  alloc_skb include/linux/skbuff.h:1322 [inline]\r\n  sock_wmalloc+0xfe/0x1a0 net/core/sock.c:2732\r\n  pppoe_sendmsg+0x3a7/0xb90 drivers/net/ppp/pppoe.c:867\r\n  sock_sendmsg_nosec net/socket.c:729 [inline]\r\n  __sock_sendmsg+0x30f/0x380 net/socket.c:744\r\n  ____sys_sendmsg+0x903/0xb60 net/socket.c:2602\r\n  ___sys_sendmsg+0x28d/0x3c0 net/socket.c:2656\r\n  __sys_sendmmsg+0x3c1/0x960 net/socket.c:2742\r\n  __do_sys_sendmmsg net/socket.c:2771 [inline]\r\n  __se_sys_sendmmsg net/socket.c:2768 [inline]\r\n  __x64_sys_sendmmsg+0xbc/0x120 net/socket.c:2768\r\n  x64_sys_call+0xb6e/0x3ba0 arch/x86/include/generated/asm/syscalls_64.h:308\r\n  do_syscall_x64 arch/x86/entry/common.c:52 [inline]\r\n  do_syscall_64+0xcd/0x1e0 arch/x86/entry/common.c:83\r\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\r\n\r\nCPU: 0 UID: 0 PID: 5460 Comm: syz.2.33 Not tainted 6.12.0-rc2-syzkaller-00006-g87d6aab2389e #0\r\nHardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 09/13/2024",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50033"
+    },
+    {
+      "cve": "CVE-2024-50035",
+      "cwe": {
+        "id": "CWE-908",
+        "name": "Use of Uninitialized Resource"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nppp: fix ppp_async_encode() illegal access\r\n\r\nsyzbot reported an issue in ppp_async_encode() [1]\r\n\r\nIn this case, pppoe_sendmsg() is called with a zero size.\r\nThen ppp_async_encode() is called with an empty skb.\r\n\r\nBUG: KMSAN: uninit-value in ppp_async_encode drivers/net/ppp/ppp_async.c:545 [inline]\r\n BUG: KMSAN: uninit-value in ppp_async_push+0xb4f/0x2660 drivers/net/ppp/ppp_async.c:675\r\n  ppp_async_encode drivers/net/ppp/ppp_async.c:545 [inline]\r\n  ppp_async_push+0xb4f/0x2660 drivers/net/ppp/ppp_async.c:675\r\n  ppp_async_send+0x130/0x1b0 drivers/net/ppp/ppp_async.c:634\r\n  ppp_channel_bridge_input drivers/net/ppp/ppp_generic.c:2280 [inline]\r\n  ppp_input+0x1f1/0xe60 drivers/net/ppp/ppp_generic.c:2304\r\n  pppoe_rcv_core+0x1d3/0x720 drivers/net/ppp/pppoe.c:379\r\n  sk_backlog_rcv+0x13b/0x420 include/net/sock.h:1113\r\n  __release_sock+0x1da/0x330 net/core/sock.c:3072\r\n  release_sock+0x6b/0x250 net/core/sock.c:3626\r\n  pppoe_sendmsg+0x2b8/0xb90 drivers/net/ppp/pppoe.c:903\r\n  sock_sendmsg_nosec net/socket.c:729 [inline]\r\n  __sock_sendmsg+0x30f/0x380 net/socket.c:744\r\n  ____sys_sendmsg+0x903/0xb60 net/socket.c:2602\r\n  ___sys_sendmsg+0x28d/0x3c0 net/socket.c:2656\r\n  __sys_sendmmsg+0x3c1/0x960 net/socket.c:2742\r\n  __do_sys_sendmmsg net/socket.c:2771 [inline]\r\n  __se_sys_sendmmsg net/socket.c:2768 [inline]\r\n  __x64_sys_sendmmsg+0xbc/0x120 net/socket.c:2768\r\n  x64_sys_call+0xb6e/0x3ba0 arch/x86/include/generated/asm/syscalls_64.h:308\r\n  do_syscall_x64 arch/x86/entry/common.c:52 [inline]\r\n  do_syscall_64+0xcd/0x1e0 arch/x86/entry/common.c:83\r\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\r\n\r\nUninit was created at:\r\n  slab_post_alloc_hook mm/slub.c:4092 [inline]\r\n  slab_alloc_node mm/slub.c:4135 [inline]\r\n  kmem_cache_alloc_node_noprof+0x6bf/0xb80 mm/slub.c:4187\r\n  kmalloc_reserve+0x13d/0x4a0 net/core/skbuff.c:587\r\n  __alloc_skb+0x363/0x7b0 net/core/skbuff.c:678\r\n  alloc_skb include/linux/skbuff.h:1322 [inline]\r\n  sock_wmalloc+0xfe/0x1a0 net/core/sock.c:2732\r\n  pppoe_sendmsg+0x3a7/0xb90 drivers/net/ppp/pppoe.c:867\r\n  sock_sendmsg_nosec net/socket.c:729 [inline]\r\n  __sock_sendmsg+0x30f/0x380 net/socket.c:744\r\n  ____sys_sendmsg+0x903/0xb60 net/socket.c:2602\r\n  ___sys_sendmsg+0x28d/0x3c0 net/socket.c:2656\r\n  __sys_sendmmsg+0x3c1/0x960 net/socket.c:2742\r\n  __do_sys_sendmmsg net/socket.c:2771 [inline]\r\n  __se_sys_sendmmsg net/socket.c:2768 [inline]\r\n  __x64_sys_sendmmsg+0xbc/0x120 net/socket.c:2768\r\n  x64_sys_call+0xb6e/0x3ba0 arch/x86/include/generated/asm/syscalls_64.h:308\r\n  do_syscall_x64 arch/x86/entry/common.c:52 [inline]\r\n  do_syscall_64+0xcd/0x1e0 arch/x86/entry/common.c:83\r\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\r\n\r\nCPU: 1 UID: 0 PID: 5411 Comm: syz.1.14 Not tainted 6.12.0-rc1-syzkaller-00165-g360c1f1f24c6 #0\r\nHardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 09/13/2024",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50035"
+    },
+    {
+      "cve": "CVE-2024-50039",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnet/sched: accept TCA_STAB only for root qdisc\r\n\r\nMost qdiscs maintain their backlog using qdisc_pkt_len(skb) on the assumption it is invariant between the enqueue() and dequeue() handlers.\r\n\r\nUnfortunately syzbot can crash a host rather easily using a TBF + SFQ combination, with an STAB on SFQ [1]\r\n\r\nWe can't support TCA_STAB on arbitrary level, this would require to maintain per-qdisc storage.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50039"
+    },
+    {
+      "cve": "CVE-2024-50040",
+      "cwe": {
+        "id": "CWE-390",
+        "name": "Detection of Error Condition Without Action"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: igb: Do not bring the device up after non-fatal error.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.2,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50040"
+    },
+    {
+      "cve": "CVE-2024-50044",
+      "cwe": {
+        "id": "CWE-667",
+        "name": "Improper Locking"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nBluetooth: RFCOMM: FIX possible deadlock in rfcomm_sk_state_change\r\n\r\nrfcomm_sk_state_change attempts to use sock_lock so it must never be called with it locked but rfcomm_sock_ioctl always attempt to lock it.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 3.3,
+            "baseSeverity": "LOW",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50044"
+    },
+    {
+      "cve": "CVE-2024-50045",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: netfilter: br_netfilter: fix panic with metadata_dst skb.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50045"
+    },
+    {
+      "cve": "CVE-2024-50046",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nNFSv4: Prevent NULL-pointer dereference in nfs42_complete_copies()\r\n\r\nOn the node of an NFS client, some files saved in the mountpoint of the NFS server were copied to another location of the same NFS server.\r\nAccidentally, the nfs42_complete_copies() got a NULL-pointer dereference crash.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50046"
+    },
+    {
+      "cve": "CVE-2024-50058",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nserial: protect uart_port_dtr_rts() in uart_shutdown() too\r\n\r\nCommit af224ca2df29 (serial: core: Prevent unsafe uart port access, part 3) added few uport == NULL checks. It added one to uart_shutdown(), so the commit assumes, uport can be NULL in there. But right after that protection, there is an unprotected \"uart_port_dtr_rts(uport, false);\" call. That is invoked only if HUPCL is set, so I assume that is the reason why we do not see lots of these reports.\r\n\r\nOr it cannot be NULL at this point at all for some reason :P.\r\n\r\nUntil the above is investigated, stay on the safe side and move this dereference to the if too.\r\n\r\nI got this inconsistency from Coverity under CID 1585130. Thanks.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50058"
+    },
+    {
+      "cve": "CVE-2024-50095",
+      "cwe": {
+        "id": "CWE-667",
+        "name": "Improper Locking"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nRDMA/mad: Improve handling of timed out WRs of mad agent\r\n\r\nCurrent timeout handler of mad agent acquires/releases mad_agent_priv lock for every timed out WRs. This causes heavy locking contention when higher no. of WRs are to be handled inside timeout handler.\r\n\r\nThis leads to softlockup with below trace in some use cases where rdma-cm path is used to establish connection between peer nodes\r\n\r\n\r\nSimplified timeout handler by creating local list of timed out WRs and invoke send handler post creating the list. The new method acquires/releases lock once to fetch the list and hence helps to reduce locking contetiong when processing higher no. of WRs",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50095"
+    },
+    {
       "cve": "CVE-2024-50121",
       "cwe": {
         "id": "CWE-416",
@@ -8134,6 +10835,643 @@
         }
       ],
       "title": "CVE-2024-50121"
+    },
+    {
+      "cve": "CVE-2024-50127",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnet: sched: fix use-after-free in taprio_change()\r\n\r\nIn 'taprio_change()', 'admin' pointer may become dangling due to sched switch / removal caused by 'advance_sched()', and critical section protected by 'q-current_entry_lock' is too small to prevent from such a scenario (which causes use-after-free detected by KASAN). Fix this by prefer 'rcu_replace_pointer()' ver 'rcu_assign_pointer()' to update 'admin' immediately before an attempt to schedule freeing.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50127"
+    },
+    {
+      "cve": "CVE-2024-50131",
+      "cwe": {
+        "id": "CWE-120",
+        "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\ntracing: Consider the NULL character when validating the event length\r\n\r\nstrlen() returns a string length excluding the null byte. If the string length equals to the maximum buffer length, the buffer will have no space for the NULL terminating character.\r\n\r\nThis commit checks this condition and returns failure for it.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50131"
+    },
+    {
+      "cve": "CVE-2024-50134",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\ndrm/vboxvideo: Replace fake VLA at end of vbva_mouse_pointer_shape with real VLA\r\n\r\nReplace the fake VLA at end of the vbva_mouse_pointer_shape shape with a real VLA to fix a \"memcpy: detected field-spanning write error\".\r\n\r\nNote as mentioned in the added comment it seems the original length calculation for the allocated and send hgsmi buffer is 4 bytes too large.\r\nChanging this is not the goal of this patch, so this behavior is kept.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50134"
+    },
+    {
+      "cve": "CVE-2024-50142",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nxfrm: validate new SA's prefixlen using SA family when sel.family is unset\r\n\r\nThis expands the validation introduced in commit 07bf7908950a (\"xfrm:Validate address prefix lengths in the xfrm selector.\")\r\n\r\nsyzbot created an SA with\r\n    usersa.sel.family = AF_UNSPEC\r\n    usersa.sel.prefixlen_s = 128\r\n    usersa.family = AF_INET\r\n\r\nBecause of the AF_UNSPEC selector, verify_newsa_info doesn't put limits on prefixlen_{s,d}. But then copy_from_user_state sets x->sel.family to usersa.family (AF_INET). Do the same conversion inverify_newsa_info before validating prefixlen_{s,d}, since that's howprefixlen is going to be used later on.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50142"
+    },
+    {
+      "cve": "CVE-2024-50148",
+      "cwe": {
+        "id": "CWE-459",
+        "name": "Incomplete Cleanup"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nBluetooth: bnep: fix wild-memory-access in proto_unregister\r\n\r\nAs bnep_init() ignore bnep_sock_init()'s return value, and bnep_sock_init() will cleanup all resource. Then when remove bnep module will call bnep_sock_cleanup() to cleanup sock's resource.\r\nTo solve above issue just return bnep_sock_init()'s return value in bnep_exit().",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50148"
+    },
+    {
+      "cve": "CVE-2024-50150",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nusb: typec: altmode should keep reference to parent\r\n\r\nThe altmode device release refers to its parent device, but without keeping\r\na reference to it.\r\n\r\nWhen registering the altmode, get a reference to the parent and put it in\r\nthe release function.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50150"
+    },
+    {
+      "cve": "CVE-2024-50151",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nsmb: client: fix OOBs when building SMB2_IOCTL request\r\n\r\nWhen using encryption, either enforced by the server or when using\r\n'seal' mount option, the client will squash all compound request buffers\r\ndown for encryption into a single iov in smb2_set_next_command().\r\n\r\nSMB2_ioctl_init() allocates a small buffer (448 bytes) to hold the\r\nSMB2_IOCTL request in the first iov, and if the user passes an input\r\nbuffer that is greater than 328 bytes, smb2_set_next_command() will\r\nend up writing off the end of @rqst->iov[0].iov_base as shown below:\r\n\r\n  mount.cifs //srv/share /mnt -o ...,seal\r\n  ln -s $(perl -e \"print('a')for 1..1024\") /mnt/link\r\n\r\n  BUG: KASAN: slab-out-of-bounds in\r\n  smb2_set_next_command.cold+0x1d6/0x24c [cifs]\r\n  Write of size 4116 at addr ffff8881148fcab8 by task ln/859",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50151"
+    },
+    {
+      "cve": "CVE-2024-50153",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nscsi: target: core: Fix null-ptr-deref in target_alloc_device()\r\n\r\nThere is a null-ptr-deref issue reported by KASAN:\r\n\r\nBUG: KASAN: null-ptr-deref in target_alloc_device+0xbc4/0xbe0 [target_core_mod]\r\n...\r\n kasan_report+0xb9/0xf0\r\n target_alloc_device+0xbc4/0xbe0 [target_core_mod]\r\n core_dev_setup_virtual_lun0+0xef/0x1f0 [target_core_mod]\r\n target_core_init_configfs+0x205/0x420 [target_core_mod]\r\n do_one_initcall+0xdd/0x4e0\r\n...\r\n entry_SYSCALL_64_after_hwframe+0x76/0x7e\r\n\r\nIn target_alloc_device(), if allocing memory for dev queues fails, then\r\ndev will be freed by dev->transport->free_device(), but dev->transport\r\nis not initialized at that time, which will lead to a null pointer\r\nreference problem.\r\n\r\nFixing this bug by freeing dev with hba->backend->ops->free_device().",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50153"
+    },
+    {
+      "cve": "CVE-2024-50188",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "net: phy: dp83869: fix memory corruption when enabling fiber. When configuring the fiber port, the DP83869 PHY driver incorrectly calls linkmode_set_bit() with a bit mask (1 &lt;&lt; 10) rather than a bit number (10). This corrupts some other memory location -- in case of arm64 the priv pointer in the same structure.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50188"
+    },
+    {
+      "cve": "CVE-2024-50205",
+      "cwe": {
+        "id": "CWE-369",
+        "name": "Divide By Zero"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nALSA: firewire-lib: Avoid division by zero in apply_constraint_to_size()\r\n\r\nThe step variable is initialized to zero. It is changed in the loop,\r\nbut if it's not changed it will remain zero. Add a variable check\r\nbefore the division.\r\n\r\nThe observed behavior was introduced by commit 826b5de90c0b\r\n(\"ALSA: firewire-lib: fix insufficient PCM rule for period/buffer size\"),\r\nand it is difficult to show that any of the interval parameters will\r\nsatisfy the snd_interval_test() condition with data from the\r\namdtp_rate_table[] table.\r\n\r\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50205"
+    },
+    {
+      "cve": "CVE-2024-50210",
+      "cwe": {
+        "id": "CWE-667",
+        "name": "Improper Locking"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nposix-clock: posix-clock: Fix unbalanced locking in pc_clock_settime()\r\n\r\nIf get_clock_desc() succeeds, it calls fget() for the clockid's fd,\r\nand get the clk->rwsem read lock, so the error path should release\r\nthe lock to make the lock balance and fput the clockid's fd to make\r\nthe refcount balance and release the fd related resource.\r\n\r\nHowever the below commit left the error path locked behind resulting in\r\nunbalanced locking. Check timespec64_valid_strict() before\r\nget_clock_desc() to fix it, because the \"ts\" is not changed\r\nafter that.\r\n\r\n[pabeni@redhat.com: fixed commit message typo]",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50210"
+    },
+    {
+      "cve": "CVE-2024-50251",
+      "cwe": {
+        "id": "CWE-131",
+        "name": "Incorrect Calculation of Buffer Size"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: netfilter: nft_payload: sanitize offset and length before calling skb_checksum() If access to offset + length is larger than the skbuff length, then skb_checksum() triggers BUG_ON(). skb_checksum() internally subtracts the length parameter while iterating over skbuff, BUG_ON(len) at the end of it checks that the expected length to be included in the checksum calculation is fully consumed.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50251"
+    },
+    {
+      "cve": "CVE-2024-50262",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: bpf: Fix out-of-bounds write in trie_get_next_key().",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50262"
     },
     {
       "cve": "CVE-2024-50299",
@@ -8275,6 +11613,153 @@
       "scores": [
         {
           "cvss_v3": {
+            "baseScore": 3.3,
+            "baseSeverity": "LOW",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-50302"
+    },
+    {
+      "cve": "CVE-2024-53042",
+      "cwe": {
+        "id": "CWE-662",
+        "name": "Improper Synchronization"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nipv4: ip_tunnel: Fix suspicious RCU usage warning in ip_tunnel_init_flow()\r\n\r\nThere are code paths from which the function is called without holding\r\nthe RCU read lock, resulting in a suspicious RCU usage warning [1].\r\n\r\nFix by using l3mdev_master_upper_ifindex_by_index() which will acquire\r\nthe RCU read lock before calling\r\nl3mdev_master_upper_ifindex_by_index_rcu().\r\n\r\n[1]\r\nWARNING: suspicious RCU usage\r\n6.12.0-rc3-custom-gac8f72681cf2 #141 Not tainted\r\n-----------------------------\r\nnet/core/dev.c:876 RCU-list traversed in non-reader section!!\r\n\r\nother info that might help us debug this:\r\n\r\nrcu_scheduler_active = 2, debug_locks = 1\r\n1 lock held by ip/361:\r\n #0: ffffffff86fc7cb0 (rtnl_mutex){+.+.}-{3:3}, at: rtnetlink_rcv_msg+0x377/0xf60",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-53042"
+    },
+    {
+      "cve": "CVE-2024-53057",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: net/sched: stop qdisc_tree_reduce_backlog on TC_H_ROOT.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2024-53057"
+    },
+    {
+      "cve": "CVE-2024-53059",
+      "cwe": {
+        "id": "CWE-460",
+        "name": "Improper Cleanup on Thrown Exception"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nwifi: iwlwifi: mvm: Fix response handling in iwl_mvm_send_recovery_cmd()\r\n\r\n1. The size of the response packet is not validated.\r\n2. The response buffer is not freed.\r\n\r\nResolve these issues by switching to iwl_mvm_send_cmd_status(), which handles both size validation and frees the buffer.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
             "baseScore": 7.8,
             "baseSeverity": "HIGH",
             "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -8285,7 +11770,7 @@
           ]
         }
       ],
-      "title": "CVE-2024-50302"
+      "title": "CVE-2024-53059"
     },
     {
       "cve": "CVE-2024-53101",
