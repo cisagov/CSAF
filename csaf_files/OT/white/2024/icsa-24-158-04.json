@@ -27,12 +27,12 @@
       },
       {
         "category": "summary",
-        "text": "Successful exploitation of this vulnerability may allow an attacker to perform a machine-in-the-middle attack to inject commands which change configuration or initiate manual door control commands.",
+        "text": "Successful exploitation of this vulnerability may allow an attacker to gain unauthorized access to the iSTAR Pro door controller.",
         "title": "Risk evaluation"
       },
       {
         "category": "other",
-        "text": "Critical Manufacturing",
+        "text": "Critical Manufacturing, Commercial Facilities, Government Services and Facilities, Transportation Systems, Energy",
         "title": "Critical infrastructure sectors"
       },
       {
@@ -134,10 +134,11 @@
         "url": "https://www.cisa.gov/uscert/ncas/tips/ST04-014"
       }
     ],
-    "title": "Johnson Controls Software House iStar Pro Door Controller",
+    "title": "Johnson Controls Software House iStar Door Controller (Update A)",
     "tracking": {
-      "current_release_date": "2024-06-06T06:00:00.000000Z",
+      "current_release_date": "2025-07-29T06:00:00.000000Z",
       "generator": {
+        "date": "2025-07-29T21:11:30.795717Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
@@ -151,10 +152,16 @@
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
+        },
+        {
+          "date": "2025-07-29T06:00:00.000000Z",
+          "legacy_version": "Update A",
+          "number": "2",
+          "summary": "Update A - Added iStar Pro, Edge, eX, Ultra and Ultra LT to affected products and mitigation sections."
         }
       ],
       "status": "final",
-      "version": "1"
+      "version": "2"
     }
   },
   "product_tree": {
@@ -167,13 +174,27 @@
                 "category": "product_version_range",
                 "name": "vers:all/*",
                 "product": {
-                  "name": "Johnson Controls Inc. Software House iStar Pro Door Controller: vers:all/*",
+                  "name": "Johnson Controls Inc. Software House iStar Pro, Edge and eX door controllers: vers:all/*",
                   "product_id": "CSAFPID-0001"
                 }
               }
             ],
             "category": "product_name",
-            "name": "Software House iStar Pro Door Controller"
+            "name": "Software House iStar Pro, Edge and eX door controllers"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<Firmware_6.6.B",
+                "product": {
+                  "name": "Johnson Controls Inc. Software House iStar Ultra and Ultra LT door controllers: <Firmware_6.6.B",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Software House iStar Ultra and Ultra LT door controllers"
           },
           {
             "branches": [
@@ -181,13 +202,13 @@
                 "category": "product_version_range",
                 "name": "vers:all/*",
                 "product": {
-                  "name": "Johnson Controls Inc. ICU: vers:all/*",
-                  "product_id": "CSAFPID-0002"
+                  "name": "Johnson Controls Inc. iSTAR Configuration Utility (ICU) Tool: vers:all/*",
+                  "product_id": "CSAFPID-0003"
                 }
               }
             ],
             "category": "product_name",
-            "name": "ICU"
+            "name": "iSTAR Configuration Utility (ICU) Tool"
           }
         ],
         "category": "vendor",
@@ -205,21 +226,22 @@
       "notes": [
         {
           "category": "summary",
-          "text": "Under certain circumstances, communication between the ICU tool and an iStar Pro door controller is susceptible to machine-in-the-middle attacks which could impact door control and configuration.",
+          "text": "iSTAR door controllers running firmware prior to version 6.6.B are vulnerable because their communication with the ICU does not support authentication.",
           "title": "Vulnerability Summary"
         }
       ],
       "product_status": {
         "known_affected": [
           "CSAFPID-0001",
-          "CSAFPID-0002"
+          "CSAFPID-0002",
+          "CSAFPID-0003"
         ]
       },
       "references": [
         {
           "category": "external",
-          "summary": "web.nvd.nist.gov",
-          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2024-32752"
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2024-32752"
         },
         {
           "category": "external",
@@ -234,18 +256,21 @@
       ],
       "remediations": [
         {
-          "category": "vendor_fix",
-          "details": "The iSTAR Pro controller has reached its end-of-support period and no further firmware updates will be provided. However, the iSTAR Pro has a physical dip switch located on its GCM board, labeled S4, that can be configured to block out communications to the ICU tool. Please consult the iSTAR Pro Installation and Configuration Guide for more details on how to set the dip switch to mitigate this vulnerability.",
+          "category": "mitigation",
+          "details": "Johnson Controls recommends users replace the iSTAR Pro, Edge, and eX door controllers with current generation iSTAR door controllers, such as iSTAR Ultra G2 and Edge G2, which support proper authentication and prevent the ICU from making configuration changes. Ensure that iSTAR Ultra and Ultra LT door controllers are running firmware version 6.6.B or later.",
           "product_ids": [
-            "CSAFPID-0002"
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ]
         },
         {
           "category": "mitigation",
-          "details": "For more detailed mitigation instructions, please see Johnson Controls Product Security Advisory JCI-PSA-2024-06 v1",
+          "details": "For more detailed mitigation instructions, please see Johnson Controls Product Security Advisory JCI-PSA-2024-06-v2",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ],
           "url": "https://www.johnsoncontrols.com/cyber-solutions/security-advisories"
         },
@@ -254,15 +279,8 @@
           "details": "Aligning with CISA recommendations, Johnson Controls recommends taking steps to minimize risks to all building automation systems.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "CISA provides a section for control systems security recommended practices on the ICS web page on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with defense-in-depth strategies.",
-          "product_ids": [
-            "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ]
         },
         {
@@ -270,7 +288,8 @@
           "details": "Further ICS security notices and product security guidance are located at Johnson Controls product security websiteOrganizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.",
           "product_ids": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ],
           "url": "https://www.johnsoncontrols.com/cyber-solutions/security-advisories"
         }
@@ -285,7 +304,8 @@
           },
           "products": [
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ]
         }
       ]
