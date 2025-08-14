@@ -1,0 +1,865 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Siemens ProductCERT",
+        "summary": "reporting this vulnerability to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "Affected products do not properly sanitize user-controllable input when parsing project files. This could allow an attacker to cause a type confusion and execute arbitrary code within the affected application.\n\nSiemens has released new versions for several affected products and recommends to update to the latest versions. Siemens is preparing further fix versions and recommends specific countermeasures for products where fixes are not, or not yet available.",
+        "title": "Summary"
+      },
+      {
+        "category": "general",
+        "text": "As a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for Industrial Security (Download: \nhttps://www.siemens.com/cert/operational-guidelines-industrial-security), and to follow the recommendations in the product manuals.\nAdditional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity",
+        "title": "General Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
+        "title": "Additional Resources"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The use of Siemens Security Advisories is subject to the terms and conditions listed on: https://www.siemens.com/productcert/terms-of-use.",
+        "title": "Terms of Use"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of Siemens ProductCERT SSA-493396 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Siemens ProductCERT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing, Transportation Systems, Energy, Healthcare and Public Health, Financial Services, Government Services and Facilities",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Germany",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of these vulnerabilities.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "SSA-493396: Deserialization Vulnerability in Siemens Engineering Platforms - CSAF Version",
+        "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-493396.json"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-493396: Deserialization Vulnerability in Siemens Engineering Platforms - HTML Version",
+        "url": "https://cert-portal.siemens.com/productcert/html/ssa-493396.html"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-226-11 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-226-11.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-226-11 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-226-11"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Siemens SIMATIC S7-PLCSIM",
+    "tracking": {
+      "current_release_date": "2025-08-12T00:00:00.000000Z",
+      "generator": {
+        "date": "2025-08-14T20:56:36.802157Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-226-11",
+      "initial_release_date": "2025-08-12T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-08-12T00:00:00.000000Z",
+          "legacy_version": "1.0",
+          "number": "1",
+          "summary": "Publication Date"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC S7-PLCSIM V17",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC S7-PLCSIM V17"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC STEP 7 V17",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC STEP 7 V17"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC STEP 7 V18",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC STEP 7 V18"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V19_Update_4",
+                "product": {
+                  "name": "SIMATIC STEP 7 V19",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC STEP 7 V19"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC STEP 7 V20",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC STEP 7 V20"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC WinCC V17",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinCC V17"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC WinCC V18",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinCC V18"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V19_Update_4",
+                "product": {
+                  "name": "SIMATIC WinCC V19",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinCC V19"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC WinCC V20",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC WinCC V20"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMOCODE ES V17",
+                  "product_id": "CSAFPID-0010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMOCODE ES V17"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMOCODE ES V18",
+                  "product_id": "CSAFPID-0011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMOCODE ES V18"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMOCODE ES V19",
+                  "product_id": "CSAFPID-0012"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMOCODE ES V19"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMOCODE ES V20",
+                  "product_id": "CSAFPID-0013"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMOCODE ES V20"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMOTION SCOUT TIA V5.4",
+                  "product_id": "CSAFPID-0014"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMOTION SCOUT TIA V5.4"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMOTION SCOUT TIA V5.5",
+                  "product_id": "CSAFPID-0015"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMOTION SCOUT TIA V5.5"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<V5.6_SP1_HF7",
+                "product": {
+                  "name": "SIMOTION SCOUT TIA V5.6",
+                  "product_id": "CSAFPID-0016"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMOTION SCOUT TIA V5.6"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMOTION SCOUT TIA V5.7",
+                  "product_id": "CSAFPID-0017"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMOTION SCOUT TIA V5.7"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SINAMICS Startdrive V17",
+                  "product_id": "CSAFPID-0018"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS Startdrive V17"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SINAMICS Startdrive V18",
+                  "product_id": "CSAFPID-0019"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS Startdrive V18"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SINAMICS Startdrive V19",
+                  "product_id": "CSAFPID-0020"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS Startdrive V19"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SINAMICS Startdrive V20",
+                  "product_id": "CSAFPID-0021"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SINAMICS Startdrive V20"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIRIUS Safety ES V17 (TIA Portal)",
+                  "product_id": "CSAFPID-0022"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIRIUS Safety ES V17 (TIA Portal)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIRIUS Safety ES V18 (TIA Portal)",
+                  "product_id": "CSAFPID-0023"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIRIUS Safety ES V18 (TIA Portal)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIRIUS Safety ES V19 (TIA Portal)",
+                  "product_id": "CSAFPID-0024"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIRIUS Safety ES V19 (TIA Portal)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIRIUS Safety ES V20 (TIA Portal)",
+                  "product_id": "CSAFPID-0025"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIRIUS Safety ES V20 (TIA Portal)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIRIUS Soft Starter ES V17 (TIA Portal)",
+                  "product_id": "CSAFPID-0026"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIRIUS Soft Starter ES V17 (TIA Portal)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIRIUS Soft Starter ES V18 (TIA Portal)",
+                  "product_id": "CSAFPID-0027"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIRIUS Soft Starter ES V18 (TIA Portal)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIRIUS Soft Starter ES V19 (TIA Portal)",
+                  "product_id": "CSAFPID-0028"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIRIUS Soft Starter ES V19 (TIA Portal)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIRIUS Soft Starter ES V20 (TIA Portal)",
+                  "product_id": "CSAFPID-0029"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIRIUS Soft Starter ES V20 (TIA Portal)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "TIA Portal Cloud V17",
+                  "product_id": "CSAFPID-0030"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "TIA Portal Cloud V17"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "TIA Portal Cloud V18",
+                  "product_id": "CSAFPID-0031"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "TIA Portal Cloud V18"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<5.2.1.1",
+                "product": {
+                  "name": "TIA Portal Cloud V19",
+                  "product_id": "CSAFPID-0032"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "TIA Portal Cloud V19"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "TIA Portal Cloud V20",
+                  "product_id": "CSAFPID-0033"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "TIA Portal Cloud V20"
+          }
+        ],
+        "category": "vendor",
+        "name": "Siemens"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-40759",
+      "cwe": {
+        "id": "CWE-502",
+        "name": "Deserialization of Untrusted Data"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Affected products do not properly sanitize stored security properties when parsing project files. This could allow an attacker to cause a type confusion and execute arbitrary code within the affected application.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0013",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0016",
+          "CSAFPID-0017",
+          "CSAFPID-0018",
+          "CSAFPID-0019",
+          "CSAFPID-0020",
+          "CSAFPID-0021",
+          "CSAFPID-0022",
+          "CSAFPID-0023",
+          "CSAFPID-0024",
+          "CSAFPID-0025",
+          "CSAFPID-0026",
+          "CSAFPID-0027",
+          "CSAFPID-0028",
+          "CSAFPID-0029",
+          "CSAFPID-0030",
+          "CSAFPID-0031",
+          "CSAFPID-0032",
+          "CSAFPID-0033"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Only open projects from trusted sources.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033"
+          ]
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Currently no fix is planned",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0033"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V19 Update 4 or later version",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0008"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109925643/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V5.6 SP1 HF7 or later version",
+          "product_ids": [
+            "CSAFPID-0016"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109989067/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "TIA Portal Cloud V5.2.1.1 or later version updated TIA Portal to V19 Update 4 or later version",
+          "product_ids": [
+            "CSAFPID-0032"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033"
+          ]
+        }
+      ],
+      "title": "CVE-2025-40759"
+    }
+  ]
+}
