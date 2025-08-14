@@ -4,15 +4,6 @@
       {
         "organization": "Siemens ProductCERT",
         "summary": "reporting this vulnerability to CISA."
-      },
-      {
-        "names": [
-          "Lian Aldrich",
-          "Robin Roodt",
-          "Christopher Panayi"
-        ],
-        "organization": "MWR CyberSec",
-        "summary": "reporting this vulnerability to Siemens."
       }
     ],
     "category": "csaf_security_advisory",
@@ -53,12 +44,12 @@
       },
       {
         "category": "other",
-        "text": "This CISA CSAF advisory was converted from Siemens ProductCERT's CSAF advisory.",
+        "text": "This ICSA is a verbatim republication of Siemens ProductCERT SSA-914892 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Siemens ProductCERT directly for any questions regarding this advisory.",
         "title": "Advisory Conversion Disclaimer"
       },
       {
         "category": "other",
-        "text": "Multiple",
+        "text": "Critical Manufacturing, Transportation Systems, Energy, Healthcare and Public Health, Financial Services, Government Services and Facilities",
         "title": "Critical infrastructure sectors"
       },
       {
@@ -172,8 +163,9 @@
     ],
     "title": "Siemens Mendix Runtime",
     "tracking": {
-      "current_release_date": "2025-05-06T06:00:00.000000Z",
+      "current_release_date": "2025-08-12T00:00:00.000000Z",
       "generator": {
+        "date": "2025-08-14T23:09:00.075439Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
@@ -189,10 +181,10 @@
           "summary": "Publication Date"
         },
         {
-          "date": "2025-05-06T06:00:00.000000Z",
-          "legacy_version": "Revision",
+          "date": "2025-08-12T00:00:00.000000Z",
+          "legacy_version": "1.1",
           "number": "2",
-          "summary": "Revision - Fixing typos"
+          "summary": "Added mitigation for published REST and web services and oData APIs"
         }
       ],
       "status": "final",
@@ -221,7 +213,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "<V9.24.29",
+                "name": "vers:intdot/<9.24.29",
                 "product": {
                   "name": "Mendix Runtime V9",
                   "product_id": "CSAFPID-0002"
@@ -235,7 +227,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "<V10.16.0",
+                "name": "vers:intdot/<10.16.0",
                 "product": {
                   "name": "Mendix Runtime V10",
                   "product_id": "CSAFPID-0003"
@@ -249,7 +241,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "<V10.6.15",
+                "name": "vers:intdot/<10.6.15",
                 "product": {
                   "name": "Mendix Runtime V10.6",
                   "product_id": "CSAFPID-0004"
@@ -263,7 +255,7 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "<V10.12.7",
+                "name": "vers:intdot/<10.12.7",
                 "product": {
                   "name": "Mendix Runtime V10.12",
                   "product_id": "CSAFPID-0005"
@@ -295,23 +287,34 @@
       ],
       "product_status": {
         "known_affected": [
-          "CSAFPID-0003",
-          "CSAFPID-0005",
-          "CSAFPID-0004",
           "CSAFPID-0001",
-          "CSAFPID-0002"
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
         ]
       },
       "remediations": [
         {
           "category": "mitigation",
-          "details": "Do not use basic authentication, but setup an alternative authentication module (e.g. SAML, MendixSSO), or your own Identity Provider (IDP)",
+          "details": "For app user login: Do not use basic authentication, but setup an alternative authentication module (e.g. OIDC SSO, Mendix SSO, or SAML >= V4.0.0), or your own Identity Provider (IDP).",
           "product_ids": [
-            "CSAFPID-0003",
-            "CSAFPID-0005",
-            "CSAFPID-0004",
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For published REST and web services and oData APIs: Do not use basic authentication, but use Custom or Active Session authentication methods.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
           ]
         },
         {
@@ -326,28 +329,32 @@
           "details": "Update to V10.12.7 or later version",
           "product_ids": [
             "CSAFPID-0005"
-          ]
+          ],
+          "url": "https://docs.mendix.com/releasenotes/studio-pro/10/"
         },
         {
           "category": "vendor_fix",
           "details": "Update to V10.16.0 or later version",
           "product_ids": [
             "CSAFPID-0003"
-          ]
+          ],
+          "url": "https://docs.mendix.com/releasenotes/studio-pro/10/"
         },
         {
           "category": "vendor_fix",
           "details": "Update to V10.6.15 or later version",
           "product_ids": [
             "CSAFPID-0004"
-          ]
+          ],
+          "url": "https://docs.mendix.com/releasenotes/studio-pro/10/"
         },
         {
           "category": "vendor_fix",
           "details": "Update to V9.24.29 or later version",
           "product_ids": [
             "CSAFPID-0002"
-          ]
+          ],
+          "url": "https://docs.mendix.com/releasenotes/studio-pro/9/"
         }
       ],
       "scores": [
@@ -359,11 +366,11 @@
             "version": "3.1"
           },
           "products": [
-            "CSAFPID-0003",
-            "CSAFPID-0005",
-            "CSAFPID-0004",
             "CSAFPID-0001",
-            "CSAFPID-0002"
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
           ]
         }
       ],
