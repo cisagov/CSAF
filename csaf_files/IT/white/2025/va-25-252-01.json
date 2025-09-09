@@ -1,0 +1,192 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "OPEXUS FOIAXpress Public Access Link (PAL) SQL injection",
+    "tracking": {
+      "current_release_date": "2025-09-09T20:48:26Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.10.0"
+        }
+      },
+      "id": "VA-25-252-01",
+      "initial_release_date": "2025-09-09T20:48:26Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2025-09-09T20:48:26Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "United States",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "Successful exploitation could allow a remote, unauthenticated attacker to read, write, or delete any content in the underlying database.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Upgrade to FOIAXpress PAL version 11.13.1.0.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-252-01.json",
+        "summary": "Vulnerability Advisory VA-25-252-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "OPEXUS",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "FOIAXpress Public Access Link (PAL)",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<11.13.1.0",
+                "product": {
+                  "name": "OPEXUS FOIAXpress Public Access Link (PAL) <11.13.1.0",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "11.13.1.0",
+                "product": {
+                  "name": "OPEXUS FOIAXpress Public Access Link (PAL) 11.13.1.0",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-58462",
+      "cwe": {
+        "id": "CWE-89",
+        "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "OPEXUS FOIAXpress Public Access Link (PAL) before version 11.13.1.0 allows SQL injection via SearchPopularDocs.aspx. A remote, unauthenticated attacker could read, write, or delete any content in the underlying database.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:Y/T:T/2025-09-09T16:22:24Z/"
+        }
+      ],
+      "title": "OPEXUS FOIAXpress PAL SQL injection",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Release Notes v11.13.1.0",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.1.0.pdf"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-58462",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-58462"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-252-01 CSAF",
+          "url": "https://github.com/cisagov/CSAF/blob/develop/csaf_files/IT/white/2025/va-25-252-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in version 11.13.1.0.",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.1.0.pdf",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2025-08-01T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in version 11.13.1.0.",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.1.0.pdf",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2025-08-01T00:00:00Z"
+        }
+      ],
+      "release_date": "2025-08-01T00:00:00Z"
+    }
+  ]
+}
