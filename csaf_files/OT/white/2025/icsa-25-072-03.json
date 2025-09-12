@@ -2,7 +2,7 @@
   "document": {
     "acknowledgments": [
       {
-        "organization": "Siemens",
+        "organization": "Siemens ProductCERT",
         "summary": "reporting these vulnerabilities to CISA."
       }
     ],
@@ -44,7 +44,7 @@
       },
       {
         "category": "other",
-        "text": "This CISA CSAF advisory was converted from Siemens ProductCERT's CSAF advisory.",
+        "text": "This ICSA is a verbatim republication of Siemens ProductCERT SSA-503939 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Siemens ProductCERT directly for any questions regarding this advisory.",
         "title": "Advisory Conversion Disclaimer"
       },
       {
@@ -163,9 +163,9 @@
     ],
     "title": "Siemens SIMATIC S7-1500 TM MFP",
     "tracking": {
-      "current_release_date": "2025-04-08T00:00:00.000000Z",
+      "current_release_date": "2025-09-09T00:00:00.000000Z",
       "generator": {
-        "date": "2025-04-10T19:35:57.090922Z",
+        "date": "2025-09-11T15:38:02.473174Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
@@ -185,10 +185,16 @@
           "legacy_version": "1.1",
           "number": "2",
           "summary": "Added CVE-2025-21826, CVE-2025-21806, CVE-2025-21776, CVE-2025-21762, CVE-2025-21703, CVE-2025-21678, CVE-2025-21653, CVE-2025-21647, CVE-2024-58005, CVE-2024-57981, CVE-2024-57940, CVE-2024-53124, CVE-2024-26982"
+        },
+        {
+          "date": "2025-09-09T00:00:00.000000Z",
+          "legacy_version": "1.2",
+          "number": "3",
+          "summary": "Added CVE-2025-8058"
         }
       ],
       "status": "final",
-      "version": "2"
+      "version": "3"
     }
   },
   "product_tree": {
@@ -707,6 +713,55 @@
       "title": "CVE-2024-58005"
     },
     {
+      "cve": "CVE-2025-8058",
+      "cwe": {
+        "id": "CWE-415",
+        "name": "Double Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The regcomp function in the GNU C library version from 2.4 to 2.41 is subject to a double free if some previous allocation fails. It can be accomplished either by a malloc failure or by using an interposed malloc that injects random malloc failures. The double free can allow buffer manipulation depending of how the regex is constructed. This issue affects all architectures and ABIs supported by the GNU C library.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "Only build and run applications from trusted sources",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.0,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2025-8058"
+    },
+    {
       "cve": "CVE-2025-21647",
       "cwe": {
         "id": "CWE-125",
@@ -813,7 +868,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "gtp: Destroy device along with udp socket's netns dismantle. gtp_newlink() links the device to a list in dev_net(dev) instead of src_net, where a udp tunnel socket is created. Even when src_net is removed, the device stays alive on dev_net(dev). Then, removing src_net triggers the splat below. [0] In this example, gtp0 is created in ns2, and the udp socket is created in ns1.",
+          "text": "gtp: Destroy device along with udp socket's netns dismantle",
           "title": "Summary"
         }
       ],
