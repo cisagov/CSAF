@@ -1,0 +1,767 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "CISA Thorium multiple vulnerabilities",
+    "tracking": {
+      "current_release_date": "2025-09-16T00:00:00Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.10.0"
+        }
+      },
+      "id": "VA-25-259-01",
+      "initial_release_date": "2025-09-16T00:00:00Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2025-09-16T00:00:00Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "CISA Thorium is a framework used for malware analysis. Multiple vulnerabilities were reported in Thorium. Impacts include denial of service, authenticated arbitrary file read, and failure to expire previously issued user tokens. ",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "These issues were addressed in 1.1.2 and on the main branch in commit 67ad9fc and 89101a6.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-259-01.json",
+        "summary": "Vulnerability Advisory VA-25-259-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "CISA",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "Thorium",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">=1.0.0|<1.1.1",
+                "product": {
+                  "name": "CISA Thorium >=1.0.0|<1.1.1",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.1.1",
+                "product": {
+                  "name": "CISA Thorium 1.1.1",
+                  "product_id": "CSAFPID-0002"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=1.0.0|<89101a6",
+                "product": {
+                  "name": "CISA Thorium >=1.0.0|<89101a6",
+                  "product_id": "CSAFPID-0003"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "89101a6",
+                "product": {
+                  "name": "CISA Thorium 89101a6",
+                  "product_id": "CSAFPID-0004"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=1.0.0|<1.1.2",
+                "product": {
+                  "name": "CISA Thorium >=1.0.0|<1.1.2",
+                  "product_id": "CSAFPID-0005"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.1.2",
+                "product": {
+                  "name": "CISA Thorium 1.1.2",
+                  "product_id": "CSAFPID-0006"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=1.0.0|<6a65a27",
+                "product": {
+                  "name": "CISA Thorium >=1.0.0|<6a65a27",
+                  "product_id": "CSAFPID-0007"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6a65a27",
+                "product": {
+                  "name": "CISA Thorium 6a65a27",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-35430",
+      "cwe": {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CISA Thorium does not adequately validate the paths of downloaded files via 'download_ephemeral' and 'download_children'. A remote, authenticated attacker could access arbitrary files subject to file system permissions. Fixed in 1.1.2.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:P/2025-09-02T16:01:06Z/"
+        }
+      ],
+      "title": "CISA Thorium insecure downloaded file path validation",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0005"
+        ],
+        "fixed": [
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Release Notes",
+          "url": "https://github.com/cisagov/thorium/releases/tag/1.1.2"
+        },
+        {
+          "category": "external",
+          "summary": "Commit",
+          "url": "https://github.com/cisagov/thorium/blob/main/api/src/utils/bounder.rs#L120-L158"
+        },
+        {
+          "category": "external",
+          "summary": "CVE Record",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35430"
+        },
+        {
+          "category": "external",
+          "summary": "CSAF VA-25-259-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-259-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.0,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:L/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.1.2.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "date": "2025-08-20T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.1.2.",
+          "url": "https://github.com/cisagov/thorium/commit/f200302cd46199e40bfbad23736600f9e886cb1a",
+          "product_ids": [
+            "CSAFPID-0006"
+          ],
+          "date": "2025-08-29T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "OpenAI Security Research"
+        }
+      ],
+      "release_date": "2025-08-29T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35431",
+      "cwe": {
+        "id": "CWE-90",
+        "name": "Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CISA Thorium does not escape user controlled strings used in LDAP queries. An authenticated remote attacker can modify LDAP authorization data such as group memberships. Fixed in 1.1.1.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-09-02T14:15:31Z/"
+        }
+      ],
+      "title": "CISA Thorium LDAP injection",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Release Notes",
+          "url": "https://github.com/cisagov/thorium/releases/tag/1.1.1"
+        },
+        {
+          "category": "external",
+          "summary": "Commit",
+          "url": "https://github.com/cisagov/thorium/commit/7c94a0b9bc2dc55e0c307360452f348bac06820c#diff-45e1e58dfb6faacf9efe778c31ead287d8e13ae07c5dad084c792bc4a0605a68R1007-R1008"
+        },
+        {
+          "category": "external",
+          "summary": "CVE Record",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35431"
+        },
+        {
+          "category": "external",
+          "summary": "CSAF VA-25-259-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-259-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.4,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.1.1.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2025-08-20T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.1.1.",
+          "url": "https://github.com/cisagov/thorium/commit/7c94a0b9bc2dc55e0c307360452f348bac06820c",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2025-08-20T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "OpenAI Security Research"
+        }
+      ],
+      "release_date": "2025-08-20T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35432",
+      "cwe": {
+        "id": "CWE-400",
+        "name": "Uncontrolled Resource Consumption"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CISA Thorium does not rate limit requests to send account verification email messages. A remote unauthenticated attacker can send unlimited messages to a user who is pending verification. Fixed in 1.1.1 by adding a rate limit set by default to 10 minutes.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:Y/T:P/2025-09-02T14:21:50Z/"
+        }
+      ],
+      "title": "CISA Thorium does not rate limit account verification email messages",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Release Notes",
+          "url": "https://github.com/cisagov/thorium/releases/tag/1.1.1"
+        },
+        {
+          "category": "external",
+          "summary": "Commit",
+          "url": "https://github.com/cisagov/thorium/commit/7c94a0b9bc2dc55e0c307360452f348bac06820c#diff-bf9baa11b76cd169902a976bd17a5a6ee95a4098b2d3d150ba7d8f85b7e21dc9R281-R334"
+        },
+        {
+          "category": "external",
+          "summary": "CVE Record",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35432"
+        },
+        {
+          "category": "external",
+          "summary": "CSAF VA-25-259-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-259-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.1.1.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2025-08-20T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.1.1.",
+          "url": "https://github.com/cisagov/thorium/commit/7c94a0b9bc2dc55e0c307360452f348bac06820c",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2025-08-20T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "OpenAI Security Research"
+        }
+      ],
+      "release_date": "2025-08-20T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35433",
+      "cwe": {
+        "id": "CWE-613",
+        "name": "Insufficient Session Expiration"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CISA Thorium does not properly invalidate previously used tokens when resetting passwords. An attacker that possesses a previously used token could still log in after a password reset. Fixed in 1.1.1.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-09-12T17:13:09Z/"
+        }
+      ],
+      "title": "CISA Thorium does not properly invalidate previously used tokens",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Release Notes",
+          "url": "https://github.com/cisagov/thorium/releases/tag/1.1.1"
+        },
+        {
+          "category": "external",
+          "summary": "Commit",
+          "url": "https://github.com/cisagov/thorium/commit/7c94a0b9bc2dc55e0c307360452f348bac06820c#diff-57a8b13962b268bcc3690df0f6c0d6ddeca7cbc7b05c3c20903cb07e659330eaR844-R849"
+        },
+        {
+          "category": "external",
+          "summary": "CVE Record",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35433"
+        },
+        {
+          "category": "external",
+          "summary": "CSAF VA-25-259-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-259-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.0,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.1.1.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2025-08-20T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.1.1.",
+          "url": "https://github.com/cisagov/thorium/commit/7c94a0b9bc2dc55e0c307360452f348bac06820c",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2025-08-20T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "OpenAI Security Research"
+        }
+      ],
+      "release_date": "2025-08-20T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35434",
+      "cwe": {
+        "id": "CWE-295",
+        "name": "Improper Certificate Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CISA Thorium does not validate TLS certificates when connecting to Elasticsearch. An unauthenticated attacker with access to a Thorium cluster could impersonate the Elasticsearch service. Fixed in 1.1.2.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:P/2025-09-02T14:36:27Z/"
+        }
+      ],
+      "title": "CISA Thorium does not validate TLS connections to Elasticsearch",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0005"
+        ],
+        "fixed": [
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Release Notes",
+          "url": "https://github.com/cisagov/thorium/releases/tag/1.1.2"
+        },
+        {
+          "category": "external",
+          "summary": "Commit",
+          "url": "https://github.com/cisagov/thorium/blob/main/api/src/models/backends/setup/elastic_setup.rs#L36-L43"
+        },
+        {
+          "category": "external",
+          "summary": "CVE Record",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35434"
+        },
+        {
+          "category": "external",
+          "summary": "CSAF VA-25-259-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-259-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.2,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.1.2.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "date": "2025-08-20T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.1.2.",
+          "url": "https://github.com/cisagov/thorium/commit/f200302cd46199e40bfbad23736600f9e886cb1a",
+          "product_ids": [
+            "CSAFPID-0006"
+          ],
+          "date": "2025-08-29T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "OpenAI Security Research"
+        }
+      ],
+      "release_date": "2025-08-29T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35435",
+      "cwe": {
+        "id": "CWE-369",
+        "name": "Divide By Zero"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CISA Thorium accepts a stream split size of zero then divides by this value. A remote, authenticated attacker could cause the service to crash. Fixed in commit 89101a6.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:P/2025-09-12T17:50:10Z/"
+        }
+      ],
+      "title": "CISA Thorium download stream divide by zero",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0003"
+        ],
+        "fixed": [
+          "CSAFPID-0004"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Commit",
+          "url": "https://github.com/cisagov/thorium/commit/7c94a0b9bc2dc55e0c307360452f348bac06820c"
+        },
+        {
+          "category": "external",
+          "summary": "CVE Record",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-CVE-2025-35435"
+        },
+        {
+          "category": "external",
+          "summary": "CSAF VA-25-259-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-259-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 89101a6.",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "date": "2025-09-16T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 89101a6.",
+          "url": "https://github.com/cisagov/thorium/commit/89101a62c721dbb58155bf46b7717c79ce81c443",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "date": "2025-09-16T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "OpenAI Security Research"
+        }
+      ],
+      "release_date": "2025-08-20T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35436",
+      "cwe": {
+        "id": "CWE-248",
+        "name": "Uncaught Exception"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CISA Thorium uses '.unwrap()' to handle errors related to account verification email messages. An unauthenticated remote attacker could cause a crash by providing a specially crafted email address or response. Fixed in commit 6a65a27.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:Y/T:P/2025-09-05T15:28:30Z/"
+        }
+      ],
+      "title": "CISA Thorium account verification email error handling",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0007"
+        ],
+        "fixed": [
+          "CSAFPID-0008"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Commit",
+          "url": "https://github.com/mjcarson/thorium/commit/6a65a2711fb2387e8c3eacebc774053741bf5aeb"
+        },
+        {
+          "category": "external",
+          "summary": "CVE Record",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35436"
+        },
+        {
+          "category": "external",
+          "summary": "CSAF VA-25-259-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-259-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0007"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 6a65a27.",
+          "product_ids": [
+            "CSAFPID-0007"
+          ],
+          "date": "2025-09-03T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 6a65a27.",
+          "url": "https://github.com/mjcarson/thorium/commit/6a65a2711fb2387e8c3eacebc774053741bf5aeb",
+          "product_ids": [
+            "CSAFPID-0008"
+          ],
+          "date": "2025-09-03T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "OpenAI Security Research"
+        }
+      ],
+      "release_date": "2025-09-03T00:00:00Z"
+    }
+  ]
+}
