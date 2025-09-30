@@ -1,0 +1,310 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "Microsoft Windows inconsistent driver blocking",
+    "tracking": {
+      "current_release_date": "2025-09-30T00:00:00Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.10.0"
+        }
+      },
+      "id": "VA-25-273-01",
+      "initial_release_date": "2025-09-30T00:00:00Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2025-09-30T00:00:00Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "Microsoft Windows Defender Application Control (WDAC) and the Microsoft vulnerable driver blocklist do not adequately block known-vulnerable drivers. These unexpected behaviors can confuse users about whether or not driver blocking is working and which drivers are being blocked.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Enable HVCI and maintain driver block lists using WDAC policies.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-273-01.json",
+        "summary": "Vulnerability Advisory VA-25-273-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "Microsoft",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "Windows",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Microsoft Windows vers:all/*",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ]
+          },
+          {
+            "category": "product_name",
+            "name": "Windows 10",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Microsoft Windows 10 vers:all/*",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ]
+          },
+          {
+            "category": "product_name",
+            "name": "Windows 11",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Microsoft Windows 11 vers:all/*",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ]
+          },
+          {
+            "category": "product_name",
+            "name": "Windows Server",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Microsoft Windows Server vers:all/*",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-59033",
+      "cwe": {
+        "id": "CWE-693",
+        "name": "Protection Mechanism Failure"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The Microsoft vulnerable driver block list is implemented as Windows Defender Application Control (WDAC) policy. Entries that specify only the to-be-signed (TBS) part of the code signer certificate are properly blocked, but entries that specify the signing certificate's TBS hash along with a 'FileAttribRef' qualifier (such as file name or version) may not be blocked, whether hypervisor-protected code integrity (HVCI) is enabled or not. NOTE: The vendor states that the driver blocklist is intended for use with HVCI, while systems without HVCI should use App Control, and any custom blocklist entries require a granular approach for proper enforcement.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:P/2025-08-14T16:11:16Z/"
+        }
+      ],
+      "title": "Microsoft WDAC with HVCI disabled does not adequately enforce driver blocklist",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "learn.microsoft.com",
+          "url": "https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/microsoft-recommended-driver-block-rules"
+        },
+        {
+          "category": "external",
+          "summary": "learn.microsoft.com",
+          "url": "https://learn.microsoft.com/en-us/windows/security/hardware-security/enable-virtualization-based-protection-of-code-integrity"
+        },
+        {
+          "category": "external",
+          "summary": "x.com",
+          "url": "https://x.com/JonnyJohnson_/status/1895103112924307727"
+        },
+        {
+          "category": "external",
+          "summary": "CVE Record",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-59033"
+        },
+        {
+          "category": "external",
+          "summary": "CSAF VA-25-273-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-273-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 2.3,
+            "baseSeverity": "LOW",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Enable HVCI. Some Windows systems may not support HVCI. HVCI is enabled by default in most Windows 11 systems.",
+          "product_ids": [
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Enable HVCI on Windows Server 2016 or later. Some Windows systems may not support HVCI.",
+          "product_ids": [
+            "CSAFPID-0004"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Enable HVCI. Some Windows systems may not support HVCI.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "release_date": "2025-02-27T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2022-50238",
+      "cwe": {
+        "id": "CWE-184",
+        "name": "Incomplete List of Disallowed Inputs"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The on-endpoint Microsoft vulnerable driver blocklist is not fully synchronized with the online Microsoft recommended driver block rules. Some entries present on the online list have been excluded from the on-endpoint blocklist longer than the expected periodic monthly Windows updates. It is possible to fully synchronize the driver blocklist using WDAC policies. NOTE: The vendor explains that Windows Update provides a smaller, compatibility-focused driver blocklist for general users, while the full XML list is available for advanced users and organizations to customize at the risk of usability issues.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:P/2025-08-14T16:35:54Z/"
+        }
+      ],
+      "title": "Microsoft vulnerable driver blocklist not fully synchronized",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "github.com",
+          "url": "https://github.com/wdormann/applywdac"
+        },
+        {
+          "category": "external",
+          "summary": "learn.microsoft.com",
+          "url": "https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/microsoft-recommended-driver-block-rules"
+        },
+        {
+          "category": "external",
+          "summary": "CVE Record",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2022-50238"
+        },
+        {
+          "category": "external",
+          "summary": "CSAF VA-25-273-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-273-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 2.3,
+            "baseSeverity": "LOW",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "workaround",
+          "details": "Fully synchronize the driver blocklist using WDAC policies.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "release_date": "2022-09-30T00:00:00Z"
+    }
+  ]
+}
