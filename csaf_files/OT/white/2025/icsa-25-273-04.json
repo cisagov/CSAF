@@ -1,0 +1,3656 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "CERT@VDE",
+        "summary": "coordinated and supported publication with Festo. Festo reported these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://us-cert.cisa.gov/tlp/"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in https://us-cert.cisa.gov/ics are provided \"as is\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see https://us-cert.cisa.gov/tlp/.",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "summary",
+        "text": "Successful exploitation of these vulnerabilities could allow an attacker to crash services, escalate privileges, bypass authentication, or gain unauthorized access to sensitive systems and data.",
+        "title": "Risk evaluation"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Germany",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolating them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also recommends users take the following measures to protect themselves from social engineering attacks:",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Do not click web links or open attachments in unsolicited email messages.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-273-04 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-273-04.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICSA Advisory ICSA-25-273-04 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-273-04"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/sites/default/files/publications/emailscams0905.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ncas/tips/ST04-014"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
+      }
+    ],
+    "title": "Festo Controller CECC-S,-LK,-D Family Firmware",
+    "tracking": {
+      "current_release_date": "2025-09-30T06:00:00.000000Z",
+      "generator": {
+        "date": "2025-09-30T14:46:20.875832Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-273-04",
+      "initial_release_date": "2025-09-30T06:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-09-30T06:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial Publication"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D (All versions): vers:all/*",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D (All versions)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK (All versions): vers:all/*",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK (All versions)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S (All versions): vers:all/*",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S (All versions)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK (All versions): vers:all/*",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK (All versions)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S (All versions): vers:all/*",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S (All versions)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-S (All versions): vers:all/*",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-S (All versions)"
+          }
+        ],
+        "category": "vendor",
+        "name": "Festo"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2022-22515",
+      "cwe": {
+        "id": "CWE-668",
+        "name": "Exposure of Resource to Wrong Sphere"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A remote, authenticated attacker could utilize the control program of the CODESYS Control runtime system to use the vulnerability in order to read and modify the configuration file(s) of the affected products.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2022-22515"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2022-22514",
+      "cwe": {
+        "id": "CWE-822",
+        "name": "Untrusted Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An authenticated, remote attacker can gain access to a dereferenced pointer contained in a request. The accesses can subsequently lead to local overwriting of memory in the CmpTraceMgr, whereby the attacker can neither gain the values read internally nor control the values to be written. If invalid memory is accessed, this results in a crash.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2022-22514"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2022-22513",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An authenticated remote attacker can cause a null pointer dereference in the CmpSettings component of the affected CODESYS products which leads to a crash.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2022-22513"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2021-36763",
+      "cwe": {
+        "id": "CWE-552",
+        "name": "Files or Directories Accessible to External Parties"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In CODESYS V3 web server before 3.5.17.10, files or directories are accessible to External Parties.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2021-36763"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2021-33485",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CODESYS Control Runtime system before 3.5.17.10 has a Heap-based Buffer Overflow.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2021-33485"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-10245",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CODESYS V3 web server before 3.5.15.40, as used in CODESYS Control runtime systems, has a buffer overflow.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2020-10245"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-9008",
+      "cwe": {
+        "id": "CWE-732",
+        "name": "Incorrect Permission Assignment for Critical Resource"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An issue was discovered in 3S-Smart CODESYS V3 through 3.5.12.30. A user with low privileges can take full control over the runtime.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2019-9008"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2019-9008, CVE-2019-18858, CVE-2019-13548, CVE-2019-13542, CVE-2019-9009, CVE-2019-9012, CVE-2020-7052, CVE-2019-13532, CVE-2018-20025, CVE-2018-10612, CVE-2017-3735) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): Update to version 2.4.2.0. This also fixes CODESYS Advisory 2017-01, CODESYS Advisory 2017-03, CODESYS Advisory 2017-06, CODESYS Advisory 2017-07, CODESYS Advisory 2017-09, CODESYS Advisory 2018-04, CODESYS Advisory 2018-05, CODESYS Advisory 2018-07, CODESYS Advisory 2018-11.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-D are fixed versions for CVE-2019-9008",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-LK are fixed versions for CVE-2019-9008",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-18858",
+      "cwe": {
+        "id": "CWE-120",
+        "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CODESYS 3 web server before 3.5.15.20, as distributed with CODESYS Control runtime systems, has a Buffer Overflow.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2019-18858"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2019-9008, CVE-2019-18858, CVE-2019-13548, CVE-2019-13542, CVE-2019-9009, CVE-2019-9012, CVE-2020-7052, CVE-2019-13532, CVE-2018-20025, CVE-2018-10612, CVE-2017-3735) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): Update to version 2.4.2.0. This also fixes CODESYS Advisory 2017-01, CODESYS Advisory 2017-03, CODESYS Advisory 2017-06, CODESYS Advisory 2017-07, CODESYS Advisory 2017-09, CODESYS Advisory 2018-04, CODESYS Advisory 2018-05, CODESYS Advisory 2018-07, CODESYS Advisory 2018-11.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-D are fixed versions for CVE-2019-18858",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-LK are fixed versions for CVE-2019-18858",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-13548",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CODESYS V3 web server, all versions prior to 3.5.14.10, allows an attacker to send specially crafted http or https requests which could cause a stack overflow and create a denial-of-service condition or allow remote code execution.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2019-13548"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2019-9008, CVE-2019-18858, CVE-2019-13548, CVE-2019-13542, CVE-2019-9009, CVE-2019-9012, CVE-2020-7052, CVE-2019-13532, CVE-2018-20025, CVE-2018-10612, CVE-2017-3735) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): Update to version 2.4.2.0. This also fixes CODESYS Advisory 2017-01, CODESYS Advisory 2017-03, CODESYS Advisory 2017-06, CODESYS Advisory 2017-07, CODESYS Advisory 2017-09, CODESYS Advisory 2018-04, CODESYS Advisory 2018-05, CODESYS Advisory 2018-07, CODESYS Advisory 2018-11.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-D are fixed versions for CVE-2019-13548",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-LK are fixed versions for CVE-2019-13548",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-13542",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "3S-Smart Software Solutions GmbH CODESYS V3 OPC UA Server, all versions 3.5.11.0 to 3.5.15.0, allows an attacker to send crafted requests from a trusted OPC UA client that cause a NULL pointer dereference, which may trigger a denial-of-service condition.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2019-13542"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2019-9008, CVE-2019-18858, CVE-2019-13548, CVE-2019-13542, CVE-2019-9009, CVE-2019-9012, CVE-2020-7052, CVE-2019-13532, CVE-2018-20025, CVE-2018-10612, CVE-2017-3735) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): Update to version 2.4.2.0. This also fixes CODESYS Advisory 2017-01, CODESYS Advisory 2017-03, CODESYS Advisory 2017-06, CODESYS Advisory 2017-07, CODESYS Advisory 2017-09, CODESYS Advisory 2018-04, CODESYS Advisory 2018-05, CODESYS Advisory 2018-07, CODESYS Advisory 2018-11.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-D are fixed versions for CVE-2019-13542",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-LK are fixed versions for CVE-2019-13542",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-15806",
+      "cwe": {
+        "id": "CWE-401",
+        "name": "Missing Release of Memory after Effective Lifetime"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CODESYS Control runtime system before 3.5.16.10 allows Uncontrolled Memory Allocation.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2020-15806"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-9009",
+      "cwe": {
+        "id": "CWE-755",
+        "name": "Improper Handling of Exceptional Conditions"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An issue was discovered in 3S-Smart CODESYS before 3.5.15.0 . Crafted network packets cause the Control Runtime to crash.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2019-9009"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2019-9008, CVE-2019-18858, CVE-2019-13548, CVE-2019-13542, CVE-2019-9009, CVE-2019-9012, CVE-2020-7052, CVE-2019-13532, CVE-2018-20025, CVE-2018-10612, CVE-2017-3735) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): Update to version 2.4.2.0. This also fixes CODESYS Advisory 2017-01, CODESYS Advisory 2017-03, CODESYS Advisory 2017-06, CODESYS Advisory 2017-07, CODESYS Advisory 2017-09, CODESYS Advisory 2018-04, CODESYS Advisory 2018-05, CODESYS Advisory 2018-07, CODESYS Advisory 2018-11.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-D are fixed versions for CVE-2019-9009",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-LK are fixed versions for CVE-2019-9009",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-9011",
+      "cwe": {
+        "id": "CWE-668",
+        "name": "Exposure of Resource to Wrong Sphere"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In Pilz PMC programming tool 3.x before 3.5.17 (based on CODESYS Development System), an attacker can identify valid usernames.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2019-9011"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-9013",
+      "cwe": {
+        "id": "CWE-327",
+        "name": "Use of a Broken or Risky Cryptographic Algorithm"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An issue was discovered in 3S-Smart CODESYS V3 products. The application may utilize non-TLS based encryption, which results in user credentials being insufficiently protected during transport. All variants of the following CODESYS V3 products in all versions containing the CmpUserMgr component are affected regardless of the CPU type or operating system: CODESYS Control for BeagleBone, CODESYS Control for emPC-A/iMX6, CODESYS Control for IOT2000, CODESYS Control for Linux, CODESYS Control for PFC100, CODESYS Control for PFC200, CODESYS Control for Raspberry Pi, CODESYS Control RTE V3, CODESYS Control RTE V3 (for Beckhoff CX), CODESYS Control Win V3 (also part of the CODESYS Development System setup), CODESYS V3 Simulation Runtime (part of the CODESYS Development System), CODESYS Control V3 Runtime System Toolkit, CODESYS HMI V3.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2019-9013"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-12067",
+      "cwe": {
+        "id": "CWE-640",
+        "name": "Weak Password Recovery Mechanism for Forgotten Password"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In Pilz PMC programming tool 3.x before 3.5.17 (based on CODESYS Development System), a user's password may be changed by an attacker without knowledge of the current password.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2020-12067"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-12069",
+      "cwe": {
+        "id": "CWE-916",
+        "name": "Use of Password Hash With Insufficient Computational Effort"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In CODESYS V3 products in all versions prior V3.5.16.0 containing the CmpUserMgr, the CODESYS Control runtime system stores the online communication passwords using a weak hashing algorithm. This can be used by a local attacker with low privileges to gain full control of the device.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2020-12069"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2021-36764",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In CODESYS Gateway V3 before 3.5.17.10, there is a NULL Pointer Dereference. Crafted communication requests may cause a Null pointer dereference in the affected CODESYS products and may result in a denial-of-service condition.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2021-36764"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-9012",
+      "cwe": {
+        "id": "CWE-770",
+        "name": "Allocation of Resources Without Limits or Throttling"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An issue was discovered in 3S-Smart CODESYS V3 products. A crafted communication request may cause uncontrolled memory allocations in the affected CODESYS products and may result in a denial-of-service condition. All variants of the following CODESYS V3 products in all versions prior to v3.5.14.20 that contain the CmpGateway component are affected, regardless of the CPU type or operating system: CODESYS Control for BeagleBone, CODESYS Control for emPC-A/iMX6, CODESYS Control for IOT2000, CODESYS Control for Linux, CODESYS Control for PFC100, CODESYS Control for PFC200, CODESYS Control for Raspberry Pi, CODESYS Control V3 Runtime System Toolkit, CODESYS Gateway V3, CODESYS V3 Development System.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2019-9012"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2019-9008, CVE-2019-18858, CVE-2019-13548, CVE-2019-13542, CVE-2019-9009, CVE-2019-9012, CVE-2020-7052, CVE-2019-13532, CVE-2018-20025, CVE-2018-10612, CVE-2017-3735) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): Update to version 2.4.2.0. This also fixes CODESYS Advisory 2017-01, CODESYS Advisory 2017-03, CODESYS Advisory 2017-06, CODESYS Advisory 2017-07, CODESYS Advisory 2017-09, CODESYS Advisory 2018-04, CODESYS Advisory 2018-05, CODESYS Advisory 2018-07, CODESYS Advisory 2018-11.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-D are fixed versions for CVE-2019-9012",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-LK are fixed versions for CVE-2019-9012",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2020-7052",
+      "cwe": {
+        "id": "CWE-770",
+        "name": "Allocation of Resources Without Limits or Throttling"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CODESYS Control V3, Gateway V3, and HMI V3 before 3.5.15.30 allow uncontrolled memory allocation which can result in a remote denial of service condition.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2020-7052"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2019-9008, CVE-2019-18858, CVE-2019-13548, CVE-2019-13542, CVE-2019-9009, CVE-2019-9012, CVE-2020-7052, CVE-2019-13532, CVE-2018-20025, CVE-2018-10612, CVE-2017-3735) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): Update to version 2.4.2.0. This also fixes CODESYS Advisory 2017-01, CODESYS Advisory 2017-03, CODESYS Advisory 2017-06, CODESYS Advisory 2017-07, CODESYS Advisory 2017-09, CODESYS Advisory 2018-04, CODESYS Advisory 2018-05, CODESYS Advisory 2018-07, CODESYS Advisory 2018-11.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-D are fixed versions for CVE-2020-7052",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-LK are fixed versions for CVE-2020-7052",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-5105",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An exploitable memory corruption vulnerability exists in the Name Service Client functionality of 3S-Smart Software Solutions CODESYS GatewayService. A specially crafted packet can cause a large memcpy, resulting in an access violation and termination of the process. An attacker can send a packet to a device running the GatewayService.exe to trigger this vulnerability. All variants of the CODESYS V3 products in all versions prior V3.5.16.10 containing the CmpRouter or CmpRouterEmbedded component are affected, regardless of the CPU type or operating system: CODESYS Control for BeagleBone, CODESYS Control for emPC-A/iMX6, CODESYS Control for IOT2000, CODESYS Control for Linux, CODESYS Control for PLCnext, CODESYS Control for PFC100, CODESYS Control for PFC200, CODESYS Control for Raspberry Pi, CODESYS Control RTE V3, CODESYS Control RTE V3 (for Beckhoff CX), CODESYS Control Win V3 (also part of the CODESYS Development System setup), CODESYS Control V3 Runtime System Toolkit, CODESYS V3 Embedded Target Visu Toolkit, CODESYS V3 Remote Target Visu Toolkit, CODESYS V3 Safety SIL2, CODESYS Edge Gateway V3, CODESYS Gateway V3, CODESYS HMI V3, CODESYS OPC Server V3, CODESYS PLCHandler SDK, CODESYS V3 Simulation Runtime (part of the CODESYS Development System).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2019-5105"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2021-29241",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CODESYS Gateway 3 before 3.5.16.70 has a NULL pointer dereference that may result in a denial of service (DoS).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2021-29241"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2021-29242",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CODESYS Control Runtime system before 3.5.17.0 has improper input validation. Attackers can send crafted communication packets to change the router's addressing scheme and may re-route, add, remove or change low level communication packages.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2021-29242"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.3,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2022-22519",
+      "cwe": {
+        "id": "CWE-126",
+        "name": "Buffer Over-read"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A remote, unauthenticated attacker can send a specific crafted HTTP or HTTPS requests causing a buffer over-read resulting in a crash of the webserver of the CODESYS Control runtime system.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2022-22519"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2022-22517",
+      "cwe": {
+        "id": "CWE-330",
+        "name": "Use of Insufficiently Random Values"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "An unauthenticated, remote attacker can disrupt existing communication channels between CODESYS products by guessing a valid channel ID and injecting packets. This results in the communication channel to be closed.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2022-22517"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2019-13532",
+      "cwe": {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "CODESYS V3 web server, all versions prior to 3.5.14.10, allows an attacker to send specially crafted http or https requests which may allow access to files outside the restricted working directory of the controller.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2019-13532"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2019-9008, CVE-2019-18858, CVE-2019-13548, CVE-2019-13542, CVE-2019-9009, CVE-2019-9012, CVE-2020-7052, CVE-2019-13532, CVE-2018-20025, CVE-2018-10612, CVE-2017-3735) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): Update to version 2.4.2.0. This also fixes CODESYS Advisory 2017-01, CODESYS Advisory 2017-03, CODESYS Advisory 2017-06, CODESYS Advisory 2017-07, CODESYS Advisory 2017-09, CODESYS Advisory 2018-04, CODESYS Advisory 2018-05, CODESYS Advisory 2018-07, CODESYS Advisory 2018-11.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-D are fixed versions for CVE-2019-13532",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-LK are fixed versions for CVE-2019-13532",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2018-20025",
+      "cwe": {
+        "id": "CWE-330",
+        "name": "Use of Insufficiently Random Values"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Use of Insufficiently Random Values exists in CODESYS V3 products versions prior V3.5.14.0.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2018-20025"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2019-9008, CVE-2019-18858, CVE-2019-13548, CVE-2019-13542, CVE-2019-9009, CVE-2019-9012, CVE-2020-7052, CVE-2019-13532, CVE-2018-20025, CVE-2018-10612, CVE-2017-3735) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): Update to version 2.4.2.0. This also fixes CODESYS Advisory 2017-01, CODESYS Advisory 2017-03, CODESYS Advisory 2017-06, CODESYS Advisory 2017-07, CODESYS Advisory 2017-09, CODESYS Advisory 2018-04, CODESYS Advisory 2018-05, CODESYS Advisory 2018-07, CODESYS Advisory 2018-11.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-D are fixed versions for CVE-2018-20025",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-LK are fixed versions for CVE-2018-20025",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2018-0739",
+      "cwe": {
+        "id": "CWE-674",
+        "name": "Uncontrolled Recursion"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Constructed ASN.1 types with a recursive definition (such as can be found in PKCS7) could eventually exceed the stack given malicious input with excessive recursion. This could result in a Denial Of Service attack. There are no such structures used within SSL/TLS that come from untrusted sources so this is considered safe. Fixed in OpenSSL 1.1.0h (Affected 1.1.0-1.1.0g). Fixed in OpenSSL 1.0.2o (Affected 1.0.2b-1.0.2n).",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2018-0739"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2022-22515, CVE-2022-22514, CVE-2022-22513, CVE-2021-36763, CVE-2021-33485, CVE-2020-10245, CVE-2020-15806, CVE-2019-9011, CVE-2019-9013, CVE-2020-12067, CVE-2020-12069, CVE-2021-36764, CVE-2019-5105, CVE-2021-29241, CVE-2021-29242, CVE-2022-22519, CVE-2022-22517, CVE-2018-0739) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): No fix planned. This issue will be handled with next hardware generation release.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-D are fixed versions for CVE-2018-0739",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-LK are fixed versions for CVE-2018-0739",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2018-10612",
+      "cwe": {
+        "id": "CWE-311",
+        "name": "Missing Encryption of Sensitive Data"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In 3S-Smart Software Solutions GmbH CODESYS Control V3 products prior to version 3.5.14.0, user access management and communication encryption is not enabled by default, which could allow an attacker access to the device and sensitive information, including user credentials.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2018-10612"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2019-9008, CVE-2019-18858, CVE-2019-13548, CVE-2019-13542, CVE-2019-9009, CVE-2019-9012, CVE-2020-7052, CVE-2019-13532, CVE-2018-20025, CVE-2018-10612, CVE-2017-3735) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): Update to version 2.4.2.0. This also fixes CODESYS Advisory 2017-01, CODESYS Advisory 2017-03, CODESYS Advisory 2017-06, CODESYS Advisory 2017-07, CODESYS Advisory 2017-09, CODESYS Advisory 2018-04, CODESYS Advisory 2018-05, CODESYS Advisory 2018-07, CODESYS Advisory 2018-11.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-D are fixed versions for CVE-2018-10612",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-LK are fixed versions for CVE-2018-10612",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2017-3735",
+      "cwe": {
+        "id": "CWE-119",
+        "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "While parsing an IPAddressFamily extension in an X.509 certificate, it is possible to do a one-byte overread. This would result in an incorrect text display of the certificate. This bug has been present since 2006 and is present in all versions of OpenSSL before 1.0.2m and 1.1.0g.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2017-3735"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Festo has identified the following specific workarounds and mitigations users can apply to reduce risk:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "(CVE-2019-9008, CVE-2019-18858, CVE-2019-13548, CVE-2019-13542, CVE-2019-9009, CVE-2019-9012, CVE-2020-7052, CVE-2019-13532, CVE-2018-20025, CVE-2018-10612, CVE-2017-3735) (Product Group: Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-D(All versions), Festo Firmware (R06 (11.10.2016) = 2.3.8.1) installed on Festo Hardware Controller CECC-LK(All versions), Festo Firmware (R05 (17.06.2016) = 2.3.8.0) installed on Festo Hardware Controller CECC-S(All versions)): Update to version 2.4.2.0. This also fixes CODESYS Advisory 2017-01, CODESYS Advisory 2017-03, CODESYS Advisory 2017-06, CODESYS Advisory 2017-07, CODESYS Advisory 2017-09, CODESYS Advisory 2018-04, CODESYS Advisory 2018-05, CODESYS Advisory 2018-07, CODESYS Advisory 2018-11.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-D are fixed versions for CVE-2017-3735",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Firmware 2.4.2.0 installed on Controller CECC-LK are fixed versions for CVE-2017-3735",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://certvde.com/en/advisories/VDE-2022-022/"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information see the associated Festo SE & Co. KG security advisory FSA-202202 FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - HTML, FSA-202202: Festo: Controller CECC-S,LK,D family <= 2.3.8.1 - multiple vulnerabilities in CODESYS V3 runtime system - CSAF.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ],
+          "url": "https://festo.csaf-tp.certvde.com/.well-known/csaf/white/2022/fsa-202202.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+            "version": "3.0"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ]
+    }
+  ]
+}
