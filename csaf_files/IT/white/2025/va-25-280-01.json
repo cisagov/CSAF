@@ -1,0 +1,485 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "OPEXUS FOIAXpress stored XSS",
+    "tracking": {
+      "current_release_date": "2025-10-07T22:50:29Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.10.0"
+        }
+      },
+      "id": "VA-25-280-01",
+      "initial_release_date": "2025-10-07T22:50:29Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2025-10-07T22:50:29Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "OPEXUS FOIAXpress before 11.13.3.0 contains multiple stored cross-site-scripting vulnerabilities. These vulnerabilities allow an authenticated administrative user to inject JavaScript or other content into various components of FOIAXpress. Successful exploitation allows the administrative user to perform actions on behalf of the target, including stealing session cookies, user credentials, or sensitive data.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Update to FOIAXpress 11.13.3.0 or later.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-280-01.json",
+        "summary": "Vulnerability Advisory VA-25-280-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "OPEXUS",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "FOIAXpress",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<11.13.3.0",
+                "product": {
+                  "name": "OPEXUS FOIAXpress <11.13.3.0",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "11.13.3.0",
+                "product": {
+                  "name": "OPEXUS FOIAXpress 11.13.3.0",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-61996",
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "OPEXUS FOIAXpress before 11.13.3.0 allows an administrative user to inject JavaScript or other content within the Annual Report Template. Injected content is executed in the context of other users when they generate an Annual Report. Successful exploitation allows the administrative user to perform actions on behalf of the target, including stealing session cookies, user credentials, or sensitive data.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-10-07T22:15:35Z/"
+        }
+      ],
+      "title": "OPEXUS FOIAXpress stored XSS via annual report template",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Release Notes",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.3.0.pdf"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-61996",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-61996"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-280-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-280-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 11.13.3.0.",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.3.0.pdf",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2025-09-15T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 11.13.3.0.",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.3.0.pdf",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2025-09-15T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "United States Department of Justice",
+          "names": [
+            "Aaron M. Ramirez"
+          ]
+        },
+        {
+          "organization": "United States Department of Justice",
+          "names": [
+            "Wesley Cuffee"
+          ]
+        }
+      ],
+      "release_date": "2025-10-07T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-61997",
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "OPEXUS FOIAXpress before 11.13.3.0 allows an administrative user to inject JavaScript or other content within the Annual Report Enterprise Banner image upload field. Injected content is executed in the context of other users when they generate an Annual Report. Successful exploitation allows the administrative user to perform actions on behalf of the target, including stealing session cookies, user credentials, or sensitive data.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-10-07T22:25:16Z/"
+        }
+      ],
+      "title": "OPEXUS FOIAXpress stored XSS via banner image",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Release Notes",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.3.0.pdf"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-280-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-280-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-61997",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-61997"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 11.13.3.0.",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.3.0.pdf",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2025-09-15T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 11.13.3.0.",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.3.0.pdf",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2025-09-15T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "United States Department of Justice",
+          "names": [
+            "Aaron M. Ramirez"
+          ]
+        },
+        {
+          "organization": "United States Department of Justice",
+          "names": [
+            "Wesley Cuffee"
+          ]
+        }
+      ],
+      "release_date": "2025-10-07T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-61998",
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "OPEXUS FOIAXpress before 11.13.3.0 allows an administrative user to inject JavaScript or other content as a URL within the Technical Support Hyperlink Manager. Injected content is executed in the context of other users when they click the malicious link. Successful exploitation allows the administrative user to perform actions on behalf of the target, including stealing session cookies, user credentials, or sensitive data.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-10-07T22:30:03Z/"
+        }
+      ],
+      "title": "OPEXUS FOIAXpress stored XSS via Hyperlink Manager",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Release Notes",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.3.0.pdf"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-61998",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-61998"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-280-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-280-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 11.13.3.0.",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.3.0.pdf",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2025-09-15T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 11.13.3.0.",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.3.0.pdf",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2025-09-15T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "United States Department of Justice",
+          "names": [
+            "Aaron M. Ramirez"
+          ]
+        },
+        {
+          "organization": "United States Department of Justice",
+          "names": [
+            "Wesley Cuffee"
+          ]
+        }
+      ],
+      "release_date": "2025-10-07T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-61999",
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "OPEXUS FOIAXpress before 11.13.3.0 allows an administrative user to upload JavaScript or other content embedded in an SVG image used as a logo. Injected content is executed in the context of other users when they view affected pages. Successful exploitation allows the administrative user to perform actions on behalf of the target, including stealing session cookies, user credentials, or sensitive data.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-10-07T22:40:56Z/"
+        }
+      ],
+      "title": "OPEXUS FOIAXpress stored XSS via logo image",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Release Notes",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.3.0.pdf"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-280-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-280-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-61999",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-61999"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 11.13.3.0.",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.3.0.pdf",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2025-09-15T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 11.13.3.0.",
+          "url": "https://docs.opexustech.com/docs/foiaxpress/11.13.0/FOIAXpress_Release_Notes_11.13.3.0.pdf",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2025-09-15T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "United States Department of Justice",
+          "names": [
+            "Aaron M. Ramirez"
+          ]
+        },
+        {
+          "organization": "United States Department of Justice",
+          "names": [
+            "Wesley Cuffee"
+          ]
+        }
+      ],
+      "release_date": "2025-10-07T00:00:00Z"
+    }
+  ]
+}
