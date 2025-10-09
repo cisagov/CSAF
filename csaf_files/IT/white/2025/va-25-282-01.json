@@ -1,0 +1,1286 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "Newforma Project Center multiple vulnerabilities",
+    "tracking": {
+      "current_release_date": "2025-10-09T19:50:00Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.10.0"
+        }
+      },
+      "id": "VA-25-282-01",
+      "initial_release_date": "2025-10-09T19:50:00Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2025-10-09T19:50:00Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "Newforma Project Center contains multiple vulnerabilities. In the worst case, successful exploitation could allow unauthenticated, remote code execution.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Follow updated hardening guides and upgrade to most recent version of Newforma Project Center.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json",
+        "summary": "Vulnerability Advisory VA-25-282-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "Newforma",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "Project Center",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<2023.2",
+                "product": {
+                  "name": "Newforma Project Center <2023.2",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2023.2",
+                "product": {
+                  "name": "Newforma Project Center 2023.2",
+                  "product_id": "CSAFPID-0002"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<2023.1",
+                "product": {
+                  "name": "Newforma Project Center <2023.1",
+                  "product_id": "CSAFPID-0003"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2023.1",
+                "product": {
+                  "name": "Newforma Project Center 2023.1",
+                  "product_id": "CSAFPID-0004"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Newforma Project Center vers:all/*",
+                  "product_id": "CSAFPID-0005"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2024.3",
+                "product": {
+                  "name": "Newforma Project Center 2024.3",
+                  "product_id": "CSAFPID-0006"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<2024.1",
+                "product": {
+                  "name": "Newforma Project Center <2024.1",
+                  "product_id": "CSAFPID-0007"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2024.1",
+                "product": {
+                  "name": "Newforma Project Center 2024.1",
+                  "product_id": "CSAFPID-0008"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<2024.3",
+                "product": {
+                  "name": "Newforma Project Center <2024.3",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-35050",
+      "cwe": {
+        "id": "CWE-502",
+        "name": "Deserialization of Untrusted Data"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Newforma Info Exchange (NIX) accepts serialized .NET data via the '/remoteweb/remote.rem' endpoint, allowing a remote, unauthenticated attacker to execute arbitrary code with 'NT AUTHORITY\\NetworkService' privileges. The vulnerable endpoint is used by Newforma Project Center Server (NPCS), so a compromised NIX system can be used to attack an associated NPCS system. To mitigate this vulnerability, restrict network access to the '/remoteweb/remote.rem' endpoint, for example using the IIS URL Rewrite Module.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:Y/T:T/2025-08-19T16:47:38Z/"
+        }
+      ],
+      "title": "Newforma Info Exchange (NIX) .NET unauthenticated deserialization",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Newforma Info Exchange Overview (File Transfer)",
+          "url": "https://projectcenter.help.newforma.com/overviews/info_exchange_overview/"
+        },
+        {
+          "category": "external",
+          "summary": "Using the URL Rewrite Module",
+          "url": "https://learn.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-282-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-35050",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35050"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "To mitigate this vulnerability, restrict network access to the '/remoteweb/remote.rem' endpoint, for example using the IIS URL Rewrite Module.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "To mitigate this vulnerability, restrict network access to the '/remoteweb/remote.rem' endpoint, for example using the IIS URL Rewrite Module.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Sandia National Laboratories Adversarial Modeling and Penetration Testing (AMPT)",
+          "names": [
+            "Shadron Gudmunson",
+            "Luke Rindels",
+            "Robert McCain",
+            "Asjha Stus",
+            "Adam Merrill",
+            "Ryan Kao",
+            "Brian Healy"
+          ]
+        }
+      ],
+      "release_date": "2025-10-09T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35051",
+      "cwe": {
+        "id": "CWE-502",
+        "name": "Deserialization of Untrusted Data"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Newforma Project Center Server (NPCS) accepts serialized .NET data via the '/ProjectCenter.rem' endpoint on 9003/tcp, allowing a remote, unauthenticated attacker to execute arbitrary code with 'NT AUTHORITY\\NetworkService' privileges. According to the recommended architecture, the vulnerable NPCS endpoint is only accessible on an internal network. To mitigate this vulnerability, restrict network access to NPCS.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:T/2025-08-15T18:11:09Z/"
+        }
+      ],
+      "title": "Newforma Project Center Server (NPCS) .NET unauthenticated deserialization",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Newforma Info Exchange Overview (File Transfer)",
+          "url": "https://projectcenter.help.newforma.com/overviews/info_exchange_overview/"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-282-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-35051",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35051"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "To mitigate this vulnerability, restrict network access to NPCS.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "To mitigate this vulnerability, restrict network access to NPCS.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Sandia National Laboratories Adversarial Modeling and Penetration Testing (AMPT)",
+          "names": [
+            "Shadron Gudmunson",
+            "Luke Rindels",
+            "Robert McCain",
+            "Asjha Stus",
+            "Adam Merrill",
+            "Ryan Kao",
+            "Brian Healy"
+          ]
+        }
+      ],
+      "release_date": "2025-10-09T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35052",
+      "cwe": {
+        "id": "CWE-321",
+        "name": "Use of Hard-coded Cryptographic Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Newforma Info Exchange (NIX) uses a hard-coded key to encrypt certain query parameters. Some encrypted parameter values can specify paths to download files, potentially bypassing authentication and authorization, for example, the 'qs' parameter used in '/DownloadWeb/download.aspx'. This key is shared across NIX installations. NIX 2023.3 and 2024.1 limit the use of hard-coded keys.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-08-15T18:12:25Z/"
+        }
+      ],
+      "title": "Newforma Info Exchange (NIX) shared hard-coded secret key",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "CVE-2025-35052",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35052"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-282-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "NIX 2023.3 and 2024.1 limit the use of hard-coded keys.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "NIX 2023.3 and 2024.1 limit the use of hard-coded keys.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Sandia National Laboratories Adversarial Modeling and Penetration Testing (AMPT)",
+          "names": [
+            "Shadron Gudmunson",
+            "Luke Rindels",
+            "Robert McCain",
+            "Asjha Stus",
+            "Adam Merrill",
+            "Ryan Kao",
+            "Brian Healy"
+          ]
+        }
+      ],
+      "release_date": "2025-10-09T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35053",
+      "cwe": {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Newforma Info Exchange (NIX) accepts requests to '/UserWeb/Common/MarkupServices.ashx' specifying the 'DownloadExportedPDF' command that allow an authenticated user to read and delete arbitrary files with 'NT AUTHORITY\\NetworkService' privileges.\n\nIn Newforma before 2023.1, anonymous access is enabled by default (CVE-2025-35062), allowing an otherwise unauthenticated attacker to effectively authenticate as 'anonymous' and exploit this file upload vulnerability.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-08-15T18:16:12Z/"
+        }
+      ],
+      "title": "Newforma Info Exchange (NIX) arbitrary file read and delete",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "CVE-2025-35062",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35062"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-282-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-35053",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35053"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.4,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "No fix available.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "No fix available.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Sandia National Laboratories Adversarial Modeling and Penetration Testing (AMPT)",
+          "names": [
+            "Shadron Gudmunson",
+            "Luke Rindels",
+            "Robert McCain",
+            "Asjha Stus",
+            "Adam Merrill",
+            "Ryan Kao",
+            "Brian Healy"
+          ]
+        }
+      ],
+      "release_date": "2025-10-09T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35054",
+      "cwe": {
+        "id": "CWE-922",
+        "name": "Insecure Storage of Sensitive Information"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Newforma Info Exchange (NIX) stores credentials  used to configure NPCS in 'HKLM\\Software\\WOW6432Node\\Newforma\\<version>\\Credentials'. The credentials are encrypted but the encryption key is stored in the same registry location. Authenticated users can access both the credentials and the encryption key. If these are Active Directory credentials, an attacker may be able to gain access to additional systems and resources.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-08-20T21:57:53Z/"
+        }
+      ],
+      "title": "Newforma Info Exchange (NIX) insufficiently protected credentials",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0005",
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "VA-25-282-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-35054",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35054"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0005",
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "No fix available.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "No fix available.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Sandia National Laboratories Adversarial Modeling and Penetration Testing (AMPT)",
+          "names": [
+            "Shadron Gudmunson",
+            "Luke Rindels",
+            "Robert McCain",
+            "Asjha Stus",
+            "Adam Merrill",
+            "Ryan Kao",
+            "Brian Healy"
+          ]
+        }
+      ],
+      "release_date": "2025-10-09T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35055",
+      "cwe": {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Newforma Info Exchange (NIX) '/UserWeb/Common/UploadBlueimp.ashx' allows an authenticated attacker to upload an arbitrary file to any location writable by the NIX application. An attacker can upload and run a web shell or other content executable by the web server. An attacker can also delete directories.  In Newforma before 2023.1, anonymous access is enabled by default (CVE-2025-35062), allowing an otherwise unauthenticated attacker to effectively authenticate as 'anonymous' and exploit this file upload vulnerability.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:T/2025-08-20T22:16:23Z/"
+        }
+      ],
+      "title": "Newforma Info Exchange (NIX) insecure file upload",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0003"
+        ],
+        "fixed": [
+          "CSAFPID-0004"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "CVE-2025-35062",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35062"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-35055",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35055"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-282-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before version 2023.1.",
+          "product_ids": [
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before version 2023.1.",
+          "product_ids": [
+            "CSAFPID-0004"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Sandia National Laboratories Adversarial Modeling and Penetration Testing (AMPT)",
+          "names": [
+            "Shadron Gudmunson",
+            "Luke Rindels",
+            "Robert McCain",
+            "Asjha Stus",
+            "Adam Merrill",
+            "Ryan Kao",
+            "Brian Healy"
+          ]
+        }
+      ],
+      "release_date": "2025-10-09T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35056",
+      "cwe": {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Newforma Info Exchange (NIX) '/UserWeb/Common/MarkupServices.ashx' 'StreamStampImage' accepts an encrypted file path and returns an image of the specified file. An authenticated attacker can read arbitrary files subject to the privileges of NIX, typically 'NT AUTHORITY\\NetworkService', and the ability of StreamStampImage to process the file. The encrypted file path can be generated using the shared, hard-coded secret key described in CVE-2025-35052. This vulnerability cannot be exploited as an 'anonymous' user as described in CVE-2025-35062.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-08-20T22:41:23Z/"
+        }
+      ],
+      "title": "Newforma Info Exchange (NIX) limited file read",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0007"
+        ],
+        "fixed": [
+          "CSAFPID-0008"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "CVE-2025-35062",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35062"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-35056",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35056"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-282-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.0,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0007"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before 2024.1.",
+          "product_ids": [
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before 2024.1.",
+          "product_ids": [
+            "CSAFPID-0008"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Sandia National Laboratories Adversarial Modeling and Penetration Testing (AMPT)",
+          "names": [
+            "Shadron Gudmunson",
+            "Luke Rindels",
+            "Robert McCain",
+            "Asjha Stus",
+            "Adam Merrill",
+            "Ryan Kao",
+            "Brian Healy"
+          ]
+        }
+      ],
+      "release_date": "2025-10-09T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35057",
+      "cwe": {
+        "id": "CWE-294",
+        "name": "Authentication Bypass by Capture-replay"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Newforma Info Exchange (NIX) '/RemoteWeb/IntegrationServices.ashx' allows a remote, unauthenticated attacker to cause NIX to make an SMB connection to an attacker-controlled system. The attacker can capture the NTLMv2 hash of the NIX service account.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-08-22T16:27:00Z/"
+        }
+      ],
+      "title": "Newforma Info Exchange (NIX) forced NTLMv2 authentication via /RemoteWeb/IntegrationServices.ashx",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0009"
+        ],
+        "fixed": [
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "VA-25-282-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-35057",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35057"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0009"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before 2024.3.",
+          "product_ids": [
+            "CSAFPID-0009"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before 2024.3.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Sandia National Laboratories Adversarial Modeling and Penetration Testing (AMPT)",
+          "names": [
+            "Shadron Gudmunson",
+            "Luke Rindels",
+            "Robert McCain",
+            "Asjha Stus",
+            "Adam Merrill",
+            "Ryan Kao",
+            "Brian Healy"
+          ]
+        }
+      ],
+      "release_date": "2025-10-09T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35058",
+      "cwe": {
+        "id": "CWE-294",
+        "name": "Authentication Bypass by Capture-replay"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Newforma Info Exchange (NIX) '/UserWeb/Common/MarkupServices.ashx' allows a remote, unauthenticated attacker to cause NIX to make an SMB connection to an attacker-controlled system. The attacker can capture the NTLMv2 hash of the customer-configured NIX service account.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-08-22T16:25:56Z/"
+        }
+      ],
+      "title": "Newforma Info Exchange (NIX) forced NTLMv2 authentication via /UserWeb/Common/MarkupServices.ashx",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "VA-25-282-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-35058",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35058"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.9,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before 2023.2.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before 2023.2.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Sandia National Laboratories Adversarial Modeling and Penetration Testing (AMPT)",
+          "names": [
+            "Shadron Gudmunson",
+            "Luke Rindels",
+            "Robert McCain",
+            "Asjha Stus",
+            "Adam Merrill",
+            "Ryan Kao",
+            "Brian Healy"
+          ]
+        }
+      ],
+      "release_date": "2025-10-09T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35059",
+      "cwe": {
+        "id": "CWE-601",
+        "name": "URL Redirection to Untrusted Site ('Open Redirect')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Newforma Info Exchange (NIX) '/DownloadWeb/hyperlinkredirect.aspx' provides an unauthenticated URL redirect via the 'nhl' parameter.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:Y/T:P/2025-08-22T16:37:22Z/"
+        }
+      ],
+      "title": "Newforma Info Exchange (NIX) open URL redirect via /DownloadWeb/hyperlinkredirect.aspx",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0007"
+        ],
+        "fixed": [
+          "CSAFPID-0008"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "VA-25-282-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-35059",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35059"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0007"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before 2024.1.",
+          "product_ids": [
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before 2024.1.",
+          "product_ids": [
+            "CSAFPID-0008"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Sandia National Laboratories Adversarial Modeling and Penetration Testing (AMPT)",
+          "names": [
+            "Shadron Gudmunson",
+            "Luke Rindels",
+            "Robert McCain",
+            "Asjha Stus",
+            "Adam Merrill",
+            "Ryan Kao",
+            "Brian Healy"
+          ]
+        }
+      ],
+      "release_date": "2025-10-09T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35060",
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Newforma Info Exchange (NIX) provides a 'Send a File Transfer' feature that allows a remote, authenticated attacker to upload SVG files that contain JavaScript or other content that may be executed or rendered by a web browser using a mobile user agent.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-08-22T16:53:18Z/"
+        }
+      ],
+      "title": "Newforma Info Exchange (NIX) stored XSS via SVG file upload",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0007"
+        ],
+        "fixed": [
+          "CSAFPID-0008"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "VA-25-282-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-35060",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35060"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0007"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before 2024.1.",
+          "product_ids": [
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before 2024.1.",
+          "product_ids": [
+            "CSAFPID-0008"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Sandia National Laboratories Adversarial Modeling and Penetration Testing (AMPT)",
+          "names": [
+            "Shadron Gudmunson",
+            "Luke Rindels",
+            "Robert McCain",
+            "Asjha Stus",
+            "Adam Merrill",
+            "Ryan Kao",
+            "Brian Healy"
+          ]
+        }
+      ],
+      "release_date": "2025-10-09T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35062",
+      "cwe": {
+        "id": "CWE-276",
+        "name": "Incorrect Default Permissions"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Newforma Info Exchange (NIX) before version 2023.1 by default allows anonymous authentication which allows an unauthenticated attacker to exploit additional vulnerabilities that require authentication.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:Y/T:P/2025-08-22T17:35:26Z/"
+        }
+      ],
+      "title": "Newforma Info Exchange (NIX) default anonymous access",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0003"
+        ],
+        "fixed": [
+          "CSAFPID-0004"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "VA-25-282-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-35062",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35062"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Anonymous access is no longer enabled by default as of version 2023.1.",
+          "product_ids": [
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Anonymous access is no longer enabled by default as of version 2023.1.",
+          "product_ids": [
+            "CSAFPID-0004"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Sandia National Laboratories Adversarial Modeling and Penetration Testing (AMPT)",
+          "names": [
+            "Shadron Gudmunson",
+            "Luke Rindels",
+            "Robert McCain",
+            "Asjha Stus",
+            "Adam Merrill",
+            "Ryan Kao",
+            "Brian Healy"
+          ]
+        }
+      ],
+      "release_date": "2025-10-09T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-35061",
+      "cwe": {
+        "id": "CWE-294",
+        "name": "Authentication Bypass by Capture-replay"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Newforma Info Exchange (NIX) '/NPCSRemoteWeb/LegacyIntegrationServices.asmx' allows a remote, unauthenticated attacker to cause NIX to make an SMB connection to an attacker-controlled system. The attacker can capture the NTLMv2 hash of the user-configured NIX service account.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-08-22T17:04:24Z/"
+        }
+      ],
+      "title": "Newforma Info Exchange (NIX) forced NTLMv2 authentication via /NPCSRemoteWeb/LegacyIntegrationServices.asmx",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "VA-25-282-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-282-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-35061",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-35061"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.9,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before 2023.2.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in or before 2023.2.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Sandia National Laboratories Adversarial Modeling and Penetration Testing (AMPT)",
+          "names": [
+            "Shadron Gudmunson",
+            "Luke Rindels",
+            "Robert McCain",
+            "Asjha Stus",
+            "Adam Merrill",
+            "Ryan Kao",
+            "Brian Healy"
+          ]
+        }
+      ],
+      "release_date": "2025-10-09T00:00:00Z"
+    }
+  ]
+}
