@@ -174,10 +174,11 @@
         "url": "https://www.cisa.gov/uscert/ics/tips/ICS-TIP-12-146-01B"
       }
     ],
-    "title": "Delta Electronics CNCSoft-G2 DOPSoft",
+    "title": "Delta Electronics CNCSoft-G2 DOPSoft (Update A)",
     "tracking": {
-      "current_release_date": "2024-04-30T06:00:00.000000Z",
+      "current_release_date": "2025-10-16T06:00:00.000000Z",
       "generator": {
+        "date": "2025-10-15T20:31:39.697987Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
@@ -191,10 +192,16 @@
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
+        },
+        {
+          "date": "2025-10-16T06:00:00.000000Z",
+          "legacy_version": "Update A",
+          "number": "2",
+          "summary": "Update A - Modified affected products, vulnerability overview, and mitigations"
         }
       ],
       "status": "final",
-      "version": "1"
+      "version": "2"
     }
   },
   "product_tree": {
@@ -209,6 +216,20 @@
                 "product": {
                   "name": "Delta Electronics CNCSoft-G2: <=2.0.0.5_with_DOPSoft_v5.0.0.93",
                   "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "CNCSoft-G2"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=2.1.0.27",
+                "product": {
+                  "name": "Delta Electronics CNCSoft-G2: <=2.1.0.27",
+                  "product_id": "CSAFPID-0002"
                 }
               }
             ],
@@ -243,8 +264,8 @@
       "references": [
         {
           "category": "external",
-          "summary": "web.nvd.nist.gov",
-          "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2024-4192"
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2024-4192"
         },
         {
           "category": "external",
@@ -260,11 +281,19 @@
       "remediations": [
         {
           "category": "vendor_fix",
-          "details": "Delta Electronics recommends users update to CNCSoft-G2 v2.1.0.4 or later.",
+          "details": "To mitigate CVE-2024-4192, Delta Electronics recommends users update to CNCSoft-G2 v2.1.0.4 or later.",
           "product_ids": [
             "CSAFPID-0001"
           ],
           "url": "https://downloadcenter.deltaww.com/en-US/DownloadCenter?v=1&q=CNCSoft&sort_expr=cdate&sort_dir=DESC"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information, visit Delta Electronics published advisory",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://filecenter.deltaww.com/news/download/doc/Delta-PCSA-2025-00017_CNCSoft-G2_File%20Parsing%20Stack-based%20Buffer%20Overflow%20Vulnerability.pdf"
         }
       ],
       "scores": [
@@ -277,6 +306,73 @@
           },
           "products": [
             "CSAFPID-0001"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2025-58319",
+      "cwe": {
+        "id": "CWE-121",
+        "name": "Stack-based Buffer Overflow"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Delta Electronics CNCSoft-G2 lacks proper validation of the user-supplied file. If a user opens a malicious file, an attacker can leverage this vulnerability to execute code in the context of the current process.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-58319"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "To mitigate CVE-2025-58319, Delta Electronics recommends users update to CNCSoft-G2 2.1.0.34 or later.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "url": "https://downloadcenter.deltaww.com/en-US/DownloadCenter?v=1&q=cncsoft-g2&sort_expr=cdate&sort_dir=DESC"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information, visit Delta Electronics published advisory",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "url": "https://filecenter.deltaww.com/news/download/doc/Delta-PCSA-2025-00017_CNCSoft-G2_File%20Parsing%20Stack-based%20Buffer%20Overflow%20Vulnerability.pdf"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0002"
           ]
         }
       ]
