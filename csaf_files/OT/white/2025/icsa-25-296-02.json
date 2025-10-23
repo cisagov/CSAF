@@ -2,7 +2,10 @@
   "document": {
     "acknowledgments": [
       {
-        "organization": "Rockwell Automation",
+        "names": [
+          "Souvik Kandar"
+        ],
+        "organization": "MicroSec (microsec.io)",
         "summary": "reporting this vulnerability to CISA"
       }
     ],
@@ -24,22 +27,22 @@
       },
       {
         "category": "summary",
-        "text": "Successful exploitation of this vulnerability could result in a denial-of-service.",
+        "text": "Successful exploitation of this vulnerability could allow an attacker to gain full control over the device.",
         "title": "Risk evaluation"
       },
       {
         "category": "other",
-        "text": "Critical Manufacturing",
+        "text": "Energy, Critical Manufacturing",
         "title": "Critical infrastructure sectors"
       },
       {
         "category": "other",
-        "text": "Worldwide",
+        "text": "Europe",
         "title": "Countries/areas deployed"
       },
       {
         "category": "other",
-        "text": "United States",
+        "text": "Austria",
         "title": "Company headquarters location"
       },
       {
@@ -102,13 +105,13 @@
     "references": [
       {
         "category": "self",
-        "summary": "ICS Advisory ICSA-25-294-02 JSON",
-        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-294-02.json"
+        "summary": "ICS Advisory ICSA-25-296-02 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-296-02.json"
       },
       {
         "category": "self",
-        "summary": "ICSA Advisory ICSA-25-294-02 - Web Version",
-        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-294-02"
+        "summary": "ICSA Advisory ICSA-25-296-02 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-296-02"
       },
       {
         "category": "external",
@@ -156,34 +159,28 @@
         "url": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks"
       }
     ],
-    "title": "Rockwell Automation Compact GuardLogix 5370",
+    "title": "ASKI Energy ALS-Mini-S8 and ALS-Mini-S4",
     "tracking": {
       "current_release_date": "2025-10-23T06:00:00.000000Z",
       "generator": {
-        "date": "2025-10-23T21:04:52.389318Z",
+        "date": "2025-10-23T18:55:17.691172Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
         }
       },
-      "id": "ICSA-25-294-02",
-      "initial_release_date": "2025-10-21T06:00:00.000000Z",
+      "id": "ICSA-25-296-02",
+      "initial_release_date": "2025-10-23T06:00:00.000000Z",
       "revision_history": [
         {
-          "date": "2025-10-21T06:00:00.000000Z",
+          "date": "2025-10-23T06:00:00.000000Z",
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
-        },
-        {
-          "date": "2025-10-23T06:00:00.000000Z",
-          "legacy_version": "Updated Affected Products",
-          "number": "2",
-          "summary": "Updated Affected Products"
         }
       ],
       "status": "final",
-      "version": "2"
+      "version": "1"
     }
   },
   "product_tree": {
@@ -194,86 +191,159 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "<=30.012",
+                "name": "vers:all/*",
                 "product": {
-                  "name": "Rockwell Automation Compact GuardLogix 5370: <=30.012",
+                  "name": "ASKI Energy ALS-mini-s4 IP (serial number from 2000 to 5166): vers:all/*",
                   "product_id": "CSAFPID-0001"
                 }
               }
             ],
             "category": "product_name",
-            "name": "Compact GuardLogix 5370"
+            "name": "ALS-mini-s4 IP (serial number from 2000 to 5166)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "ASKI Energy ALS-mini-s8 IP (serial number from 2000 to 5166): vers:all/*",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "ALS-mini-s8 IP (serial number from 2000 to 5166)"
           }
         ],
         "category": "vendor",
-        "name": "Rockwell Automation"
+        "name": "ASKI Energy"
       }
     ]
   },
   "vulnerabilities": [
     {
-      "cve": "CVE-2025-9124",
+      "cve": "CVE-2025-9574",
       "cwe": {
-        "id": "CWE-248",
-        "name": "Uncaught Exception"
+        "id": "CWE-306",
+        "name": "Missing Authentication for Critical Function"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "A denial-of-service security issue in the affected product. The security issue stems from a fault occurring when a crafted CIP unconnected explicit message is sent. This can result in a major non-recoverable fault.",
+          "text": "A critical severity missing authentication vulnerability exists in the embedded web server of the ALS-mini-S4/S8 IP controllers. There is a lack of authentication functionality. Specifically, an attacker can read and modify product configuration parameters without being authenticated.",
           "title": "Vulnerability Summary"
         }
       ],
       "product_status": {
         "known_affected": [
-          "CSAFPID-0001"
+          "CSAFPID-0001",
+          "CSAFPID-0002"
         ]
       },
       "references": [
         {
           "category": "external",
           "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-9124"
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-9574"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:H"
         }
       ],
       "remediations": [
         {
           "category": "mitigation",
-          "details": "Rockwell Automation recommends users upgrade their devices to 30.14 or later.",
+          "details": "ABB, the parent company of ASKI, reports that the affected products reached their end of life in 2022. As these products are no longer supported, there are no plans for a fix. ABB recommends the following mitigations:",
           "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "url": "https://compatibility.rockwellautomation.com/Pages/MultiProductFindDownloads.aspx?crumb=112&mode=3&refSoft=1&versions=63770"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
         },
         {
           "category": "mitigation",
-          "details": "Users of the affected software unable to upgrade to one of the correctedversions should follow Rockwell Automation's security best practices.",
+          "details": "Ensure the product is not exposed to the public internet.",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Within the control system, put the product behind firewall, to strictly control network traffic only from limited whitelisted IPs or alternatively, route the traffic through a secure proxy that enforces authentication and logging.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Monitor product access using firewall, IDS, or IPS, and configure alerts for any access attempts from non-whitelisted IPs.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Ensure surrounding systems are fully updated to reduce attack vectors.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Additionally ABB recommends the following work around:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Physically disconnect the ethernet port if embedded web server is not being used.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "The embedded web server and all its functionalities, incl. load monitoring, alarms, remote configuration, etc. will not be accessible. However, the product will continue functioning as normal based on configured control parameters.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information, please reference ABB's security advisory 4TZ00000006007.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ],
-          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1085012/loc/en_US#__highlight"
+          "url": "https://search.abb.com/library/Download.aspx?DocumentID=4TZ00000006007&LanguageCode=en&DocumentPartId=PDF&Action=Launch"
         }
       ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 7.5,
-            "baseSeverity": "HIGH",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "baseScore": 10.0,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
             "version": "3.1"
           },
           "products": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ]
         }
       ]
