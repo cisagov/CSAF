@@ -2,7 +2,10 @@
   "document": {
     "acknowledgments": [
       {
-        "organization": "Rockwell Automation",
+        "names": [
+          "Guillaume Orlando"
+        ],
+        "organization": "Trend Micro Zero Day Initiative",
         "summary": "reporting these vulnerabilities to CISA"
       }
     ],
@@ -24,7 +27,7 @@
       },
       {
         "category": "summary",
-        "text": "Successful exploitation of these vulnerabilities could result in a denial-of-service, data modification, or in an attacker obtaining sensitive information.",
+        "text": "Successful exploitation of these vulnerabilities could allow an attacker to write data outside of the allocated memory buffer.",
         "title": "Risk evaluation"
       },
       {
@@ -39,28 +42,8 @@
       },
       {
         "category": "other",
-        "text": "United States",
+        "text": "Taiwan",
         "title": "Company headquarters location"
-      },
-      {
-        "category": "general",
-        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:",
-        "title": "Recommended Practices"
-      },
-      {
-        "category": "general",
-        "text": "Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.",
-        "title": "Recommended Practices"
-      },
-      {
-        "category": "general",
-        "text": "Locate control system networks and remote devices behind firewalls and isolating them from business networks.",
-        "title": "Recommended Practices"
-      },
-      {
-        "category": "general",
-        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.",
-        "title": "Recommended Practices"
       },
       {
         "category": "general",
@@ -89,7 +72,7 @@
       },
       {
         "category": "general",
-        "text": "No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.",
+        "text": "No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities are not exploitable remotely.",
         "title": "Recommended Practices"
       }
     ],
@@ -102,18 +85,13 @@
     "references": [
       {
         "category": "self",
-        "summary": "ICS Advisory ICSA-25-294-01 JSON",
-        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-294-01.json"
+        "summary": "ICS Advisory ICSA-25-296-04 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-296-04.json"
       },
       {
         "category": "self",
-        "summary": "ICSA Advisory ICSA-25-294-01 - Web Version",
-        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-294-01"
-      },
-      {
-        "category": "external",
-        "summary": "Recommended Practices",
-        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+        "summary": "ICSA Advisory ICSA-25-296-04 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-296-04"
       },
       {
         "category": "external",
@@ -156,34 +134,28 @@
         "url": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks"
       }
     ],
-    "title": "Rockwell Automation 1783-NATR",
+    "title": "Delta Electronics ASDA-Soft",
     "tracking": {
       "current_release_date": "2025-10-23T06:00:00.000000Z",
       "generator": {
-        "date": "2025-10-23T21:04:52.057648Z",
+        "date": "2025-10-23T16:23:40.328726Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
         }
       },
-      "id": "ICSA-25-294-01",
-      "initial_release_date": "2025-10-21T06:00:00.000000Z",
+      "id": "ICSA-25-296-04",
+      "initial_release_date": "2025-10-23T06:00:00.000000Z",
       "revision_history": [
         {
-          "date": "2025-10-21T06:00:00.000000Z",
+          "date": "2025-10-23T06:00:00.000000Z",
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
-        },
-        {
-          "date": "2025-10-23T06:00:00.000000Z",
-          "legacy_version": "Updated Affected Products",
-          "number": "2",
-          "summary": "Updated Affected Products"
         }
       ],
       "status": "final",
-      "version": "2"
+      "version": "1"
     }
   },
   "product_tree": {
@@ -194,33 +166,33 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "<=1.006",
+                "name": "<=7.0.2.0",
                 "product": {
-                  "name": "Rockwell Automation 1783-NATR: <=1.006",
+                  "name": "Delta Electronics ASDA-Soft: <=7.0.2.0",
                   "product_id": "CSAFPID-0001"
                 }
               }
             ],
             "category": "product_name",
-            "name": "1783-NATR"
+            "name": "ASDA-Soft"
           }
         ],
         "category": "vendor",
-        "name": "Rockwell Automation"
+        "name": "Delta Electronics"
       }
     ]
   },
   "vulnerabilities": [
     {
-      "cve": "CVE-2025-7328",
+      "cve": "CVE-2025-62579",
       "cwe": {
-        "id": "CWE-306",
-        "name": "Missing Authentication for Critical Function"
+        "id": "CWE-121",
+        "name": "Stack-based Buffer Overflow"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "Multiple Broken Authentication security issues exist in the affected product. The security issues are due to missing authentication checks on critical functions. These could result in potential denial-of-service, admin account takeover, or NAT rule modifications. Devices would no longer be able to communicate through NATR as a result of denial-of-service or NAT rule modifications. NAT rule modification could also result in device communication to incorrect endpoints. Admin account takeover could allow modification of configuration and require physical access to restore.",
+          "text": "Delta Electronics ASDA-Soft can write data outside of the intended memory buffer when a valid user opens a maliciously crafted project file.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -233,43 +205,85 @@
         {
           "category": "external",
           "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-7328"
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-62579"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:H"
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
         }
       ],
       "remediations": [
         {
-          "category": "mitigation",
-          "details": "Rockwell Automation recommends users upgrade their devices to 1.007 or later.",
+          "category": "vendor_fix",
+          "details": "Delta Electronics has released an updated version of ASDA-Soft and recommends users install v7.1.1.0 or newer.",
           "product_ids": [
             "CSAFPID-0001"
-          ],
-          "url": "https://compatibility.rockwellautomation.com/Pages/MultiProductFindDownloads.aspx?crumb=112&mode=3&refSoft=1&versions=65161"
+          ]
         },
         {
           "category": "mitigation",
-          "details": "Users of the affected software unable to upgrade to one of the correctedversions should follow Rockwell Automation's security best practices.",
+          "details": "For more information, see Delta Electronics advisory Delta-PCSA-2025-00019.",
           "product_ids": [
             "CSAFPID-0001"
           ],
-          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1085012/loc/en_US#__highlight"
+          "url": "https://filecenter.deltaww.com/news/download/doc/Delta-PCSA-2025-00019_ASDA-Soft%20Stack-based%20Buffer%20Overflow%20Vulnerabilities.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Delta Electronics offers the following general recommendations:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Do not click on untrusted Internet links or open unsolicited attachments in emails.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Avoid exposing control systems and equipment to the Internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place systems and devices behind a firewall and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use a secure access method, such as a virtual private network (VPN).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Contact Delta Electronics via their portal page  for any product-related support concerns, information, or materials you may require.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.deltaww.com/en-US/Customer-Service"
         }
       ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 10.0,
-            "baseSeverity": "CRITICAL",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
             "version": "3.1"
           },
           "products": [
@@ -279,15 +293,15 @@
       ]
     },
     {
-      "cve": "CVE-2025-7329",
+      "cve": "CVE-2025-62580",
       "cwe": {
-        "id": "CWE-79",
-        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+        "id": "CWE-121",
+        "name": "Stack-based Buffer Overflow"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "A Stored Cross-Site Scripting security issue exists in the affected product that could potentially allow a malicious user to view and modify sensitive data or make the webpage unavailable. The vulnerability stems from missing special character filtering and encoding. Successful exploitation requires an attacker to be able to update configuration fields behind admin login.",
+          "text": "Delta Electronics ASDA-Soft can write data outside of the intended memory buffer when a valid user opens a maliciously crafted project file.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -300,110 +314,85 @@
         {
           "category": "external",
           "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-7329"
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-62580"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:H/I:H/A:H"
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
         }
       ],
       "remediations": [
         {
-          "category": "mitigation",
-          "details": "Rockwell Automation recommends users upgrade their devices to 1.007 or later.",
+          "category": "vendor_fix",
+          "details": "Delta Electronics has released an updated version of ASDA-Soft and recommends users install v7.1.1.0 or newer.",
           "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "url": "https://compatibility.rockwellautomation.com/Pages/MultiProductFindDownloads.aspx?crumb=112&mode=3&refSoft=1&versions=65161"
-        },
-        {
-          "category": "mitigation",
-          "details": "Users of the affected software unable to upgrade to one of the correctedversions should follow Rockwell Automation's security best practices.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1085012/loc/en_US#__highlight"
-        }
-      ],
-      "scores": [
-        {
-          "cvss_v3": {
-            "baseScore": 8.4,
-            "baseSeverity": "HIGH",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:H/I:H/A:H",
-            "version": "3.1"
-          },
-          "products": [
             "CSAFPID-0001"
           ]
-        }
-      ]
-    },
-    {
-      "cve": "CVE-2025-7330",
-      "cwe": {
-        "id": "CWE-352",
-        "name": "Cross-Site Request Forgery (CSRF)"
-      },
-      "notes": [
-        {
-          "category": "summary",
-          "text": "A cross-site request forgery security issue exists in the product and version listed. The vulnerability stems from missing CSRF checks on the impacted form. This allows for unintended configuration modification if an attacker can convince a logged in admin to visit a crafted link.",
-          "title": "Vulnerability Summary"
-        }
-      ],
-      "product_status": {
-        "known_affected": [
-          "CSAFPID-0001"
-        ]
-      },
-      "references": [
-        {
-          "category": "external",
-          "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-7330"
-        },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:N/I:H/A:H"
-        },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N"
-        }
-      ],
-      "remediations": [
-        {
-          "category": "mitigation",
-          "details": "Rockwell Automation recommends users upgrade their devices to 1.007 or later.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "url": "https://compatibility.rockwellautomation.com/Pages/MultiProductFindDownloads.aspx?crumb=112&mode=3&refSoft=1&versions=65161"
         },
         {
           "category": "mitigation",
-          "details": "Users of the affected software unable to upgrade to one of the correctedversions should follow Rockwell Automation's security best practices.",
+          "details": "For more information, see Delta Electronics advisory Delta-PCSA-2025-00019.",
           "product_ids": [
             "CSAFPID-0001"
           ],
-          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1085012/loc/en_US#__highlight"
+          "url": "https://filecenter.deltaww.com/news/download/doc/Delta-PCSA-2025-00019_ASDA-Soft%20Stack-based%20Buffer%20Overflow%20Vulnerabilities.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "Delta Electronics offers the following general recommendations:",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Do not click on untrusted Internet links or open unsolicited attachments in emails.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Avoid exposing control systems and equipment to the Internet.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Place systems and devices behind a firewall and isolate them from the business network.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "When remote access is required, use a secure access method, such as a virtual private network (VPN).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Contact Delta Electronics via their portal page  for any product-related support concerns, information, or materials you may require.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.deltaww.com/en-US/Customer-Service"
         }
       ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 8.0,
+            "baseScore": 7.8,
             "baseSeverity": "HIGH",
-            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:N/I:H/A:H",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
             "version": "3.1"
           },
           "products": [
