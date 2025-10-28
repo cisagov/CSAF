@@ -1,0 +1,345 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+          "names": [
+            "Jin Huang"
+          ],
+          "organization": "ADLab of Venustech",
+        "summary": "reporting this vulnerability to Schneider Electric."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "We strongly recommend the following industry cybersecurity best practices.\n\n* Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.\n* Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.\n* Place all controllers in locked cabinets and never leave them in the \u201cProgram\u201d mode.\n* Never connect programming software to any network other than the network intended for that device.\n* Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc. before use in the terminals or any node connected to these networks.\n* Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.\n* Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the Internet.\n* When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.\n\nFor more information refer to the Schneider Electric [Recommended Cybersecurity Best Practices](https://www.se.com/us/en/download/document/7EN52-0390/) document.",
+        "title": "General Security Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "This document provides an overview of the identified vulnerability or vulnerabilities and actions required to mitigate. For more details and assistance on how to protect your installation, contact your local Schneider Electric representative or Schneider Electric Industrial Cybersecurity Services: https://www.se.com/ww/en/work/solutions/cybersecurity/. These organizations will be fully aware of this situation and can support you through the process.\n\nFor further information related to cybersecurity in Schneider Electric's products, visit the company's cybersecurity support portal page: https://www.se.com/ww/en/work/support/cybersecurity/overview.jsp",
+        "title": "For More Information"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "THIS NOTIFICATION DOCUMENT, THE INFORMATION CONTAINED HEREIN, AND ANY MATERIALS LINKED FROM IT (COLLECTIVELY, THIS \u201cNOTIFICATION\u201d) ARE INTENDED TO HELP PROVIDE AN OVERVIEW OF THE IDENTIFIED SITUATION AND SUGGESTED MITIGATION ACTIONS, REMEDIATION, FIX, AND/OR GENERAL SECURITY RECOMMENDATIONS AND IS PROVIDED ON AN \u201cAS-IS\u201d BASIS WITHOUT WARRANTY OR GUARANTEE OF ANY KIND.  SCHNEIDER ELECTRIC DISCLAIMS ALL WARRANTIES RELATING TO THIS NOTIFICATION, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. SCHNEIDER ELECTRIC MAKES NO WARRANTY THAT THE NOTIFICATION WILL RESOLVE THE IDENTIFIED SITUATION. IN NO EVENT SHALL SCHNEIDER ELECTRIC BE LIABLE FOR ANY DAMAGES OR LOSSES WHATSOEVER IN CONNECTION WITH THIS NOTIFICATION, INCLUDING DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, LOSS OF BUSINESS PROFITS OR SPECIAL DAMAGES, EVEN IF SCHNEIDER ELECTRIC HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. YOUR USE OF THIS NOTIFICATION IS AT YOUR OWN RISK, AND YOU ARE SOLELY LIABLE FOR ANY DAMAGES TO YOUR SYSTEMS OR ASSETS OR OTHER LOSSES THAT MAY RESULT FROM YOUR USE OF THIS NOTIFICATION. SCHNEIDER ELECTRIC RESERVES THE RIGHT TO UPDATE OR CHANGE THIS NOTIFICATION AT ANY TIME AND IN ITS SOLE DISCRETION",
+        "title": "LEGAL DISCLAIMER"
+      },
+      {
+        "category": "general",
+        "text": "Schneider's purpose is to create impact by empowering all to make the most of our energy and resources, bridging progress and sustainability for all. We call this Life Is On.\n\nOur mission is to be the trusted partner in sustainability and efficiency.\n\nWe are a global industrial technology leader bringing world-leading expertise in electrification, automation and digitization to smart industries, resilient infrastructure, future-proof data centers, intelligent buildings, and intuitive homes. Anchored by our deep domain expertise, we provide integrated end-to-end lifecycle AI enabled industrial IoT solutions with connected products, automation, software and services, delivering digital twins to enable profitable growth for our customers.\n\nWe are a people company with an ecosystem of 150,000 colleagues and more than a million partners operating in over 100 countries to ensure proximity to our customers and stakeholders. We embrace diversity and inclusion in everything we do, guided by our meaningful purpose of a sustainable future for all. \n\n www.se.com",
+        "title": "About Schneider Electric"
+      },
+      {
+        "category": "summary",
+        "text": "Schneider Electric is aware of a vulnerability in its EcoStruxure OPC UA Server Expert product(s). \n\nThe [EcoStruxure OPC UA Server Expert product(s)](https://www.se.com/ww/en/product-country-selector/?pageType=product-range&sourceId=66388#overview) is a state-of-the-art OPC UA communication platform linking Modicon industrial equipment and PLCs to the Industrial Internet of Things (IIoT).\n\n[EcoStruxure Modicon Communication Server](https://www.se.com/ww/en/download/document/ES_MCS_2.01_SP2/) is a communication platform seamlessly linking Modicon PLCs to Aveva System Platform by using the OPC UA protocol with the help of OPC UA Server.\n\nFailure to apply the fix / mitigation provided below may risk denial of service of EcoStruxureTM OPCUA Server Expert, which could result in the loss of real-time process data from Modicon Controller.",
+        "title": "Overview"
+      },
+      {
+        "category": "other",
+        "text": "The severity of vulnerabilities was calculated using the CVSS Base metrics for 4.0 ([CVSS v4.0](https://www.first.org/cvss/calculator/4.0)). CVSS v3.1 will be still evaluated until the adoption of CVSS v4.0 by the industry. The severity was calculated without incorporating the Temporal and Environmental metrics. Schneider Electric recommends that customers score the CVSS Environmental metrics, which are specific to end-user organizations, and consider factors such as the presence of mitigations in that environment. Environmental metrics may refine the relative severity posed by the vulnerabilities described in this document within a customer's environment."
+      },
+      {
+        "category": "other",
+        "text": "Customers should use appropriate patching methodologies when applying these patches to their systems. We strongly recommend the use of back-ups and evaluating the impact of these patches in a Test and Development environment or on an offline infrastructure. Contact Schneider Electric's [Customer Care Center](https://www.se.com/us/en/work/support/contacts.jsp) if you need assistance removing a patch. "
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of Schneider Electric CPCERT SEVD-2025-287-01 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Schneider Electric CPCERT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Commercial Facilities, Critical Manufacturing, Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "France",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of these vulnerabilities.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "EcoStruxure OPC UA Server Expert and EcoStruxure Modicon Communication Server - SEVD-2025-287-01 CSAF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2025-287-01&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2025-287-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "EcoStruxure OPC UA Server Expert and EcoStruxure Modicon Communication Server - SEVD-2025-287-01 PDF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2025-287-01&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2025-287-01.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Cybersecurity Best Practices",
+        "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-301-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-301-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-301-01 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "Schneider Electric EcoStruxure",
+    "tracking": {
+      "current_release_date": "2025-10-14T07:00:00.000000Z",
+      "generator": {
+        "date": "2025-10-28T16:55:48.521475Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-301-01",
+      "initial_release_date": "2025-10-14T07:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-10-14T07:00:00.000000Z",
+          "number": "1.0.0",
+          "summary": "Original Release"
+        }
+      ],
+      "status": "final",
+      "version": "1.0.0"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<SV2.01_SP3",
+                "product": {
+                  "name": "EcoStruxure OPC UA Server Expert Versions prior to SV2.01 SP3",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "SV2.01_SP3",
+                "product": {
+                  "name": "EcoStruxure OPC UA Server Expert Version SV2.01 SP3",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure OPC UA Server Expert"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "EcoStruxure Modicon Communication Server All versions",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Modicon Communication Server"
+          }
+        ],
+        "category": "vendor",
+        "name": "Schneider Electric"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Jin Huang"
+          ],
+          "organization": "ADLab of Venustech"
+        }
+      ],
+      "cve": "CVE-2024-10085",
+      "cwe": {
+        "id": "CWE-770",
+        "name": "Allocation of Resources Without Limits or Throttling"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-770: Allocation of Resources Without Limits or Throttling vulnerability exists that could cause denial of service of EcoStruxure OPCUA Server Expert when a large number of OPC UA requests are sent to the server.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Version SV2.01 SP3 of EcoStruxure OPC UA Server Expert includes a fix for this vulnerability and is available for download here: https://www.se.com/ww/en/product-range/66388-ecostruxure-opc-ua-server-expert/#software-and-firmware",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "system"
+          },
+          "url": "https://www.se.com/ww/en/product-range/66388-ecostruxure-opc-ua-server-expert/#software-and-firmware"
+        },
+        {
+          "category": "mitigation",
+          "details": "If customers choose not to apply the remediation provided above, they should immediately apply the following mitigations to reduce the risk of exploit:\n\n* Set the \u201cSecurity Policy\u201d to Basic256-Sha256 (default value indicated by unchecked \u201cSecurity Policy\u201d setting) used for secure communication between OPC UA client & server based on OPC UA standard.\n\n* Ensure that the \u201cAnonymous user token\u201d setting remains unchecked (unchecked by default) to prevent anonymous authentication.\n\n* Set \u201cUser authentication\u201d setting (checked by default) used to authenticate & authorize OPC UA client.\n\n* Set \u201cX509 user token\u201d setting (checked by default) used to authenticate & authorize OPC UA client.\n\nFor more details, refer to \u201cEcoStruxure OPC UA Server Expert User Guide\u201d chapter \u201cSecurity Management\u201d: https://www.se.com/ww/en/download/document/MFR53158/ \n\n* Follow workstation, network and site-hardening guidelines in the \u201cRecommended Cybersecurity Best Practices\u201d: https://www.se.com/ww/en/download/document/7EN52-0390/",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/MFR53158/"
+        },
+        {
+          "category": "mitigation",
+          "details": "Schneider Electric is establishing a remediation plan for all future versions of EcoStruxure Modicon Communication Server that will include a fix for this vulnerability. We will update this document when the remediation is available. Until then, customers should immediately apply the following mitigations to reduce the risk of exploit:\n\n* Set the \u201cSecurity Policy\u201d to Basic256-Sha256 (default value indicated by unchecked \u201cSecurity Policy\u201d setting) used for secure communication between OPC UA client & server based on OPC UA standard.\n\n* Ensure that the \u201cAnonymous user token\u201d setting remains unchecked (unchecked by default) to prevent anonymous authentication.\n\n* Set \u201cUser authentication\u201d setting (checked by default) used to authenticate & authorize OPC UA client.\n\n* Set \u201cX509 user token\u201d setting (checked by default) used to authenticate & authorize OPC UA client.\n\nFor more details, refer to \u201cEcoStruxure Modicon Server User Guide\u201d chapter \u201cSecurity Settings\u201d: https://www.se.com/fr/fr/download/document/EIO0000004083/ \n\n* Follow workstation, network and site-hardening guidelines in the \u201cRecommended Cybersecurity Best Practices\u201d: https://www.se.com/ww/en/download/document/7EN52-0390/",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/fr/fr/download/document/EIO0000004083/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "title": "CVE-2024-10085"
+    }
+  ]
+}
