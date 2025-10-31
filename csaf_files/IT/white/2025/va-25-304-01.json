@@ -1,0 +1,374 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "ELOG multiple vulnerabilities",
+    "tracking": {
+      "current_release_date": "2025-10-31T16:57:24Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.10.0"
+        }
+      },
+      "id": "VA-25-304-01",
+      "initial_release_date": "2025-10-31T16:57:24Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2025-10-31T16:57:24Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "ELOG (the Electronic Logbook package) contains multiple vulnerabilities. Regardless of configuration, low-privileged attackers can modify user profiles, escalate privileges, and deny access to ELOG. If the execute facility is specifically enabled with the \"-x\" command line flag, attackers could execute OS commands on the host machine.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "CVE-2025-62618 is addressed in ELOG 3.1.5-20251014. Do not run ELOG with self-registration enabled or with the execute facility enabled.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-304-01.json",
+        "summary": "Vulnerability Advisory VA-25-304-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "ELOG",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "ELOG",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "ELOG ELOG vers:all/*",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<3.1.5-20251014",
+                "product": {
+                  "name": "ELOG ELOG <3.1.5-20251014",
+                  "product_id": "CSAFPID-0002"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "3.1.5-20251014",
+                "product": {
+                  "name": "ELOG ELOG 3.1.5-20251014",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-62618",
+      "cwe": {
+        "id": "CWE-434",
+        "name": "Unrestricted Upload of File with Dangerous Type"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "ELOG allows an authenticated user to upload arbitrary HTML files. The HTML content is executed in the context of other users when they open the file. Because ELOG includes usernames and password hashes in certain HTTP requests, an attacker can obtain the target's credentials and replay them or crack the password hash offline. In ELOG 3.1.5-20251014 release, HTML files are rendered as plain text.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:T/2025-10-24T19:27:08Z/"
+        }
+      ],
+      "title": "ELOG file upload stored XSS",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0002"
+        ],
+        "fixed": [
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Do not render HTML attachments uploaded by users to avoid XSS",
+          "url": "https://bitbucket.org/ritt/elog/commits/f81e5695c40997322fe2713bfdeba459d9de09dc"
+        },
+        {
+          "category": "external",
+          "summary": "RPMS",
+          "url": "https://elog.psi.ch/elog/download/RPMS/?C=M;O=D"
+        },
+        {
+          "category": "external",
+          "summary": "Release 3.1.6-1",
+          "url": "https://bitbucket.org/ritt/elog/commits/7092ff64f6eb9521f8cc8c52272a020bf3730946"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-304-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-304-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-62618",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-62618"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.0,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 3.1.5-20251014.",
+          "url": "https://elog.psi.ch/elog/download/RPMS/",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2025-10-14T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 3.1.5-20251014.",
+          "url": "https://elog.psi.ch/elog/download/RPMS/",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "date": "2025-10-14T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "CISA",
+          "names": [
+            "Karl Meister"
+          ]
+        }
+      ],
+      "release_date": "2025-10-31T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-64348",
+      "cwe": {
+        "id": "CWE-862",
+        "name": "Missing Authorization"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "ELOG allows an authenticated user to modify or overwrite the configuration file, resulting in denial of service. If the execute facility is specifically enabled with the \"-x\" command line flag, attackers could execute OS commands on the host machine. By default, ELOG is not configured to allow shell commands or self-registration.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2025-10-23T16:12:37Z/"
+        }
+      ],
+      "title": "ELOG configuration file authorization bypass",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Do not render HTML attachments uploaded by users to avoid XSS",
+          "url": "https://bitbucket.org/ritt/elog/commits/f81e5695c40997322fe2713bfdeba459d9de09dc"
+        },
+        {
+          "category": "external",
+          "summary": "Release 3.1.6-1",
+          "url": "https://bitbucket.org/ritt/elog/commits/7092ff64f6eb9521f8cc8c52272a020bf3730946"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-64348",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-64348"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-304-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-304-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "no_fix_planned",
+          "details": "No fix available.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "CISA",
+          "names": [
+            "Karl Meister"
+          ]
+        }
+      ],
+      "release_date": "2025-10-31T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2025-64349",
+      "cwe": {
+        "id": "CWE-862",
+        "name": "Missing Authorization"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "ELOG allows an authenticated user to modify another user's profile. An attacker can edit a target user's email address, then request a password reset, and take control of the target account. By default, ELOG is not configured to allow self-registration.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:T/2025-10-24T18:40:12Z/"
+        }
+      ],
+      "title": "ELOG user profile missing authorization",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "Release 3.1.6-1",
+          "url": "https://bitbucket.org/ritt/elog/commits/7092ff64f6eb9521f8cc8c52272a020bf3730946"
+        },
+        {
+          "category": "external",
+          "summary": "Do not render HTML attachments uploaded by users to avoid XSS",
+          "url": "https://bitbucket.org/ritt/elog/commits/f81e5695c40997322fe2713bfdeba459d9de09dc"
+        },
+        {
+          "category": "external",
+          "summary": "VA-25-304-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-25-304-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2025-64349",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-64349"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "no_fix_planned",
+          "details": "No fix available.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "CISA",
+          "names": [
+            "Karl Meister"
+          ]
+        }
+      ],
+      "release_date": "2025-10-31T00:00:00Z"
+    }
+  ]
+}
