@@ -1,0 +1,831 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Security Research Team - Thales Cybersecurity Services Australia",
+        "summary": "reporting these vulnerabilities to Siemens."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "LOGO! 8 BM (incl. SIPLUS variants) contains multiple vulnerabilities. These could allow an attacker to execute code remotely, put the device into a denial of service state, or change the behavior of the device.\n\nSiemens is preparing fix versions and recommends specific countermeasures for products where fixes are not, or not yet available.",
+        "title": "Summary"
+      },
+      {
+        "category": "general",
+        "text": "As a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for Industrial Security (Download: https://www.siemens.com/cert/operational-guidelines-industrial-security), and to follow the recommendations in the product manuals.\nAdditional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity",
+        "title": "General Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
+        "title": "Additional Resources"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The use of Siemens Security Advisories is subject to the terms and conditions listed on: https://www.siemens.com/productcert/terms-of-use.",
+        "title": "Terms of Use"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of Siemens ProductCERT SSA-267056 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Siemens ProductCERT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Commercial Facilities, Transportation Systems",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Germany",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "SSA-267056: Multiple Vulnerabilities in LOGO! 8 BM Devices - CSAF Version",
+        "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-267056.json"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-267056: Multiple Vulnerabilities in LOGO! 8 BM Devices - HTML Version",
+        "url": "https://cert-portal.siemens.com/productcert/html/ssa-267056.html"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-317-13 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-317-13.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-317-13 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-317-13"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "Siemens LOGO! 8 BM Devices",
+    "tracking": {
+      "current_release_date": "2025-11-11T00:00:00.000000Z",
+      "generator": {
+        "date": "2025-11-13T20:52:53.191285Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-317-13",
+      "initial_release_date": "2025-11-11T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-11-11T00:00:00.000000Z",
+          "legacy_version": "1.0",
+          "number": "1",
+          "summary": "Publication Date"
+        }
+      ],
+      "status": "final",
+      "version": "1"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "LOGO! 12/24RCE (6ED1052-1MD08-0BA2)",
+                  "product_id": "CSAFPID-0001",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ED1052-1MD08-0BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LOGO! 12/24RCE (6ED1052-1MD08-0BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "LOGO! 12/24RCEo (6ED1052-2MD08-0BA2)",
+                  "product_id": "CSAFPID-0002",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ED1052-2MD08-0BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LOGO! 12/24RCEo (6ED1052-2MD08-0BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "LOGO! 230RCE (6ED1052-1FB08-0BA2)",
+                  "product_id": "CSAFPID-0003",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ED1052-1FB08-0BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LOGO! 230RCE (6ED1052-1FB08-0BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "LOGO! 230RCEo (6ED1052-2FB08-0BA2)",
+                  "product_id": "CSAFPID-0004",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ED1052-2FB08-0BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LOGO! 230RCEo (6ED1052-2FB08-0BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "LOGO! 24CE (6ED1052-1CC08-0BA2)",
+                  "product_id": "CSAFPID-0005",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ED1052-1CC08-0BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LOGO! 24CE (6ED1052-1CC08-0BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "LOGO! 24CEo (6ED1052-2CC08-0BA2)",
+                  "product_id": "CSAFPID-0006",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ED1052-2CC08-0BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LOGO! 24CEo (6ED1052-2CC08-0BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "LOGO! 24RCE (6ED1052-1HB08-0BA2)",
+                  "product_id": "CSAFPID-0007",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ED1052-1HB08-0BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LOGO! 24RCE (6ED1052-1HB08-0BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "LOGO! 24RCEo (6ED1052-2HB08-0BA2)",
+                  "product_id": "CSAFPID-0008",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ED1052-2HB08-0BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "LOGO! 24RCEo (6ED1052-2HB08-0BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIPLUS LOGO! 12/24RCE (6AG1052-1MD08-7BA2)",
+                  "product_id": "CSAFPID-0009",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AG1052-1MD08-7BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPLUS LOGO! 12/24RCE (6AG1052-1MD08-7BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIPLUS LOGO! 12/24RCEo (6AG1052-2MD08-7BA2)",
+                  "product_id": "CSAFPID-0010",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AG1052-2MD08-7BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPLUS LOGO! 12/24RCEo (6AG1052-2MD08-7BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIPLUS LOGO! 230RCE (6AG1052-1FB08-7BA2)",
+                  "product_id": "CSAFPID-0011",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AG1052-1FB08-7BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPLUS LOGO! 230RCE (6AG1052-1FB08-7BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIPLUS LOGO! 230RCEo (6AG1052-2FB08-7BA2)",
+                  "product_id": "CSAFPID-0012",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AG1052-2FB08-7BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPLUS LOGO! 230RCEo (6AG1052-2FB08-7BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIPLUS LOGO! 24CE (6AG1052-1CC08-7BA2)",
+                  "product_id": "CSAFPID-0013",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AG1052-1CC08-7BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPLUS LOGO! 24CE (6AG1052-1CC08-7BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIPLUS LOGO! 24CEo (6AG1052-2CC08-7BA2)",
+                  "product_id": "CSAFPID-0014",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AG1052-2CC08-7BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPLUS LOGO! 24CEo (6AG1052-2CC08-7BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIPLUS LOGO! 24RCE (6AG1052-1HB08-7BA2)",
+                  "product_id": "CSAFPID-0015",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AG1052-1HB08-7BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPLUS LOGO! 24RCE (6AG1052-1HB08-7BA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIPLUS LOGO! 24RCEo (6AG1052-2HB08-7BA2)",
+                  "product_id": "CSAFPID-0016",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AG1052-2HB08-7BA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPLUS LOGO! 24RCEo (6AG1052-2HB08-7BA2)"
+          }
+        ],
+        "category": "vendor",
+        "name": "Siemens"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-40815",
+      "cwe": {
+        "id": "CWE-120",
+        "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Affected devices do not properly validate the structure of TCP packets in several methods. This could allow an attacker to cause buffer overflows, get control over the instruction counter and run custom code.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0013",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0016"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Protect the LSC access to the device with a strong password.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.2,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016"
+          ]
+        }
+      ],
+      "title": "CVE-2025-40815"
+    },
+    {
+      "cve": "CVE-2025-40816",
+      "cwe": {
+        "id": "CWE-306",
+        "name": "Missing Authentication for Critical Function"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Affected devices do not conduct certain validations when interacting with them. This could allow an unauthenticated remote attacker to manipulate the devices IP address, which means the device would not be reachable.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0013",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0016"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict network access to port 10006/udp to trusted IP addresses.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016"
+          ]
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Currently no fix is planned",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.6,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016"
+          ]
+        }
+      ],
+      "title": "CVE-2025-40816"
+    },
+    {
+      "cve": "CVE-2025-40817",
+      "cwe": {
+        "id": "CWE-306",
+        "name": "Missing Authentication for Critical Function"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Affected devices do not conduct certain validations when interacting with them. This could allow an unauthenticated remote attacker to change time of the device, which means the device could behave differently.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0013",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0016"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Restrict network access to port 10006/udp to trusted IP addresses.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016"
+          ]
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Currently no fix is planned",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016"
+          ]
+        }
+      ],
+      "title": "CVE-2025-40817"
+    }
+  ]
+}
