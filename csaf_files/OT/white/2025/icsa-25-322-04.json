@@ -1,0 +1,552 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Schneider Electric CPCERT",
+        "summary": "reporting these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "We strongly recommend the following industry cybersecurity best practices.\n\n* Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.\n* Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.\n* Place all controllers in locked cabinets and never leave them in the \u201cProgram\u201d mode.\n* Never connect programming software to any network other than the network intended for that device.\n* Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc. before use in the terminals or any node connected to these networks.\n* Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.\n* Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the Internet.\n* When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.\n\nFor more information refer to the Schneider Electric [Recommended Cybersecurity Best Practices](https://www.se.com/us/en/download/document/7EN52-0390/) document.",
+        "title": "General Security Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "This document provides an overview of the identified vulnerability or vulnerabilities and actions required to mitigate. For more details and assistance on how to protect your installation, contact your local Schneider Electric representative or Schneider Electric Industrial Cybersecurity Services: https://www.se.com/ww/en/work/solutions/cybersecurity/. These organizations will be fully aware of this situation and can support you through the process.\n\nFor further information related to cybersecurity in Schneider Electric's products, visit the company's cybersecurity support portal page: https://www.se.com/ww/en/work/support/cybersecurity/overview.jsp",
+        "title": "For More Information"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "THIS NOTIFICATION DOCUMENT, THE INFORMATION CONTAINED HEREIN, AND ANY MATERIALS LINKED FROM IT (COLLECTIVELY, THIS \u201cNOTIFICATION\u201d) ARE INTENDED TO HELP PROVIDE AN OVERVIEW OF THE IDENTIFIED SITUATION AND SUGGESTED MITIGATION ACTIONS, REMEDIATION, FIX, AND/OR GENERAL SECURITY RECOMMENDATIONS AND IS PROVIDED ON AN \u201cAS-IS\u201d BASIS WITHOUT WARRANTY OR GUARANTEE OF ANY KIND.  SCHNEIDER ELECTRIC DISCLAIMS ALL WARRANTIES RELATING TO THIS NOTIFICATION, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. SCHNEIDER ELECTRIC MAKES NO WARRANTY THAT THE NOTIFICATION WILL RESOLVE THE IDENTIFIED SITUATION. IN NO EVENT SHALL SCHNEIDER ELECTRIC BE LIABLE FOR ANY DAMAGES OR LOSSES WHATSOEVER IN CONNECTION WITH THIS NOTIFICATION, INCLUDING DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, LOSS OF BUSINESS PROFITS OR SPECIAL DAMAGES, EVEN IF SCHNEIDER ELECTRIC HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. YOUR USE OF THIS NOTIFICATION IS AT YOUR OWN RISK, AND YOU ARE SOLELY LIABLE FOR ANY DAMAGES TO YOUR SYSTEMS OR ASSETS OR OTHER LOSSES THAT MAY RESULT FROM YOUR USE OF THIS NOTIFICATION. SCHNEIDER ELECTRIC RESERVES THE RIGHT TO UPDATE OR CHANGE THIS NOTIFICATION AT ANY TIME AND IN ITS SOLE DISCRETION",
+        "title": "LEGAL DISCLAIMER"
+      },
+      {
+        "category": "general",
+        "text": "Schneider's purpose is to create Impact by empowering all to make the most of our energy and resources, bridging progress and\r\nsustainability for all. We call this Life Is On.\n\nOur mission is to be the trusted partner in Sustainability and Efficiency.\n\nWe are a global industrial technology leader bringing world-leading expertise in electrification, automation and digitization to smart\r\nindustries, resilient infrastructure, future-proof data centers, intelligent buildings, and intuitive homes. Anchored by our deep\r\ndomain expertise, we provide integrated end-to-end lifecycle AI enabled Industrial IoT solutions with connected products, automation,\r\nsoftware and services, delivering digital twins to enable profitable growth for our customers.\n\nWe are a people company with an ecosystem of 150,000 colleagues and more than a million partners operating in over 100 countries\r\nto ensure proximity to our customers and stakeholders. We embrace diversity and inclusion in everything we do, guided by our\r\nmeaningful purpose of a sustainable future for all. \n\n www.se.com",
+        "title": "About Schneider Electric"
+      },
+      {
+        "category": "summary",
+        "text": "Schneider Electric is aware of a vulnerability in its PowerChute\u2122 Serial Shutdown product. \r\nThe [PowerChute\u2122 Serial Shutdown](https://www.se.com/us/en/product-range/137943580-powerchute-serial-shutdown/#products) product is a UPS management software enabling graceful system \r\nshutdown and energy management capabilities for desktop, servers and workstations. \r\nFailure to apply the mitigations or remediations provided below may risk elevation of privileges or \r\nunauthenticated access which could result in disruption of operations and access to system data.",
+        "title": "Overview"
+      },
+      {
+        "category": "other",
+        "text": "The severity of vulnerabilities was calculated using the CVSS Base metrics for 4.0 ([CVSS v4.0](https://www.first.org/cvss/calculator/4.0)). CVSS v3.1 \nwill be still evaluated until the adoption of CVSS v4.0 by the industry. The severity was calculated without \nincorporating the Temporal and Environmental metrics. Schneider Electric recommends that customers score the CVSS Environmental metrics, which are specific to end-user organizations, and consider factors such as \nthe presence of mitigations in that environment. Environmental metrics may refine the relative severity posed by the vulnerabilities described in this document within a customer's environment."
+      },
+      {
+        "category": "other",
+        "text": "Customers should use appropriate patching methodologies when applying these patches to their systems. We strongly recommend the use of back-ups and evaluating the impact of these patches in a Test and Development environment or on an offline infrastructure. Contact Schneider Electric's [Customer Care Center](https://www.se.com/us/en/work/support/contacts.jsp) if you need assistance removing a patch. "
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of Schneider Electric CPCERT SEVD-2025-315-01 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Schneider Electric CPCERT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "France",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "PowerChute\u2122 Serial Shutdown - SEVD-2025-315-01 CSAF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2025-315-01&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2025-315-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "PowerChute\u2122 Serial Shutdown - SEVD-2025-315-01 PDF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2025-315-01&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2025-315-01.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Cybersecurity Best Practices",
+        "url": "https://www.se.com/us/en/download/document/7EN52-0390/"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-322-04 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-322-04.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-25-322-04 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-322-04"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "Schneider Electric PowerChute Serial Shutdown",
+    "tracking": {
+      "current_release_date": "2025-11-11T08:00:00.000000Z",
+      "generator": {
+        "date": "2025-11-18T21:09:57.034110Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-25-322-04",
+      "initial_release_date": "2025-11-11T08:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-11-11T08:00:00.000000Z",
+          "number": "1.0.0",
+          "summary": "Original Release"
+        }
+      ],
+      "status": "final",
+      "version": "1.0.0"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=1.3",
+                "product": {
+                  "name": "PowerChute\u2122 Serial Shutdown Versions v1.3 and prior",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.4",
+                "product": {
+                  "name": "PowerChute\u2122 Serial Shutdown Version v1.4",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PowerChute\u2122 Serial Shutdown"
+          }
+        ],
+        "category": "vendor",
+        "name": "Schneider Electric"
+      },
+      {
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "Windows",
+            "product": {
+              "name": "Microsoft Windows",
+              "product_id": "CSAFPID-0003"
+            }
+          }
+        ],
+        "category": "vendor",
+        "name": "Microsoft"
+      },
+      {
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "Enterprise Linux",
+            "product": {
+              "name": "Red Hat Enterprise Linux",
+              "product_id": "CSAFPID-0004"
+            }
+          }
+        ],
+        "category": "vendor",
+        "name": "Red Hat"
+      },
+      {
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "Linux",
+            "product": {
+              "name": "SuSE Linux",
+              "product_id": "CSAFPID-0005"
+            }
+          }
+        ],
+        "category": "vendor",
+        "name": "SuSE"
+      }
+    ],
+    "relationships": [
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "PowerChute\u2122 Serial Shutdown Version v1.4 installed on Microsoft Windows",
+          "product_id": "CSAFPID-0006"
+        },
+        "product_reference": "CSAFPID-0002",
+        "relates_to_product_reference": "CSAFPID-0003"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "PowerChute\u2122 Serial Shutdown Version v1.4 installed on Red Hat Enterprise Linux",
+          "product_id": "CSAFPID-0007"
+        },
+        "product_reference": "CSAFPID-0002",
+        "relates_to_product_reference": "CSAFPID-0004"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "PowerChute\u2122 Serial Shutdown Version v1.4 installed on SuSE Linux",
+          "product_id": "CSAFPID-0008"
+        },
+        "product_reference": "CSAFPID-0002",
+        "relates_to_product_reference": "CSAFPID-0005"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Aleksandar Djurdjevic"
+          ]
+        }
+      ],
+      "cve": "CVE-2025-11565",
+      "cwe": {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability exists that \r\ncould cause elevated system access when a Web Admin user on the local network tampers with the POST \r\n/REST/UpdateJRE request payload.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008"
+        ],
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Version v1.4 of PowerChute\u2122 Serial Shutdown includes a fix for this vulnerability \r\nand is available for download here: \r\n\u2022 Windows: https://www.se.com/ww/en/download/document/SPD\r\nPCSS_WIN_EN/",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/SPD-PCSS_WIN_EN/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Version v1.4 of PowerChute\u2122 Serial Shutdown includes a fix for this vulnerability and is available for download here: \r\nLinux: https://www.se.com/ww/en/download/document/SPD\r\nPCSS_LNX_EN/",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/SPD-PCSS_LNX_EN/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "HIGH",
+            "attackVector": "LOCAL",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2025-11565"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Aleksandar Djurdjevic"
+          ]
+        }
+      ],
+      "cve": "CVE-2025-11566",
+      "cwe": {
+        "id": "CWE-307",
+        "name": "Improper Restriction of Excessive Authentication Attempts"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-307: Improper Restriction of Excessive Authentication Attempts vulnerability exists that would allow an \r\nattacker on the local network to gain access to the user account by performing an arbitrary number of \r\nauthentication attempts with different credentials on the /REST/shutdownnow endpoint. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008"
+        ],
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Version v1.4 of PowerChute\u2122 Serial Shutdown includes a fix for this vulnerability \r\nand is available for download here: \r\n\u2022 Windows: https://www.se.com/ww/en/download/document/SPD\r\nPCSS_WIN_EN/",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/SPD-PCSS_WIN_EN/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Version v1.4 of PowerChute\u2122 Serial Shutdown includes a fix for this vulnerability and is available for download here: \r\nLinux: https://www.se.com/ww/en/download/document/SPD\r\nPCSS_LNX_EN/",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/SPD-PCSS_LNX_EN/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "LOW",
+            "baseScore": 7.3,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "LOW",
+            "integrityImpact": "LOW",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2025-11566"
+    },
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Aleksandar Djurdjevic"
+          ]
+        }
+      ],
+      "cve": "CVE-2025-11567",
+      "cwe": {
+        "id": "CWE-276",
+        "name": "Incorrect Default Permissions"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-276: Incorrect Default Permissions vulnerability exists that could cause elevated system access when \r\nthe target installation folder is not properly secured. ",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008"
+        ],
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Version v1.4 of PowerChute\u2122 Serial Shutdown includes a fix for this vulnerability \r\nand is available for download here: \r\n\u2022 Windows: https://www.se.com/ww/en/download/document/SPD\r\nPCSS_WIN_EN/",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/SPD-PCSS_WIN_EN/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Version v1.4 of PowerChute\u2122 Serial Shutdown includes a fix for this vulnerability and is available for download here: \r\nLinux: https://www.se.com/ww/en/download/document/SPD\r\nPCSS_LNX_EN/",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/ww/en/download/document/SPD-PCSS_LNX_EN/"
+        },
+        {
+          "category": "mitigation",
+          "details": "To ensure remediation of CVE-2025-11567, Customers should immediately apply the following steps.\r\nIf PowerChute is installed in a custom folder, ensure that the required permissions \r\nare set on the custom folder.  \r\nNOTE: It is recommended to set administrative permissions on the custom folder. \r\nSpecific instructions for these mitigations can be found in the [Security Handbook](https://download.schneider-electric.com/files?p_Doc_Ref=SPD_CCON-PCSSSH_EN).  ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SPD_CCON-PCSSSH_EN"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "LOCAL",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2025-11567"
+    }
+  ]
+}
