@@ -1,0 +1,295 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "OPEXUS eComplaint and eCasePortal IDOR",
+    "tracking": {
+      "current_release_date": "2026-01-07T16:35:11Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.11.0"
+        }
+      },
+      "id": "VA-26-008-02",
+      "initial_release_date": "2026-01-07T16:35:11Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2026-01-07T16:35:11Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "OPEXUS eCasePortal and eComplaint before version 9.0.45.0 allow an unauthenticated attacker to iterate through predictable URL parameters and download all available files. The eCasePortal vulnerability allows attackers to upload and delete files as well.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Fixed in eCasePortal and eComplaint version 9.0.45.0, released 2025-12-09.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-008-02.json",
+        "summary": "Vulnerability Advisory VA-26-008-02 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "OPEXUS",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "eCase Portal",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<9.0.45.0",
+                "product": {
+                  "name": "OPEXUS eCase Portal <9.0.45.0",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "9.0.45.0",
+                "product": {
+                  "name": "OPEXUS eCase Portal 9.0.45.0",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ]
+          },
+          {
+            "category": "product_name",
+            "name": "eComplaint",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<9.0.45.0",
+                "product": {
+                  "name": "OPEXUS eComplaint <9.0.45.0",
+                  "product_id": "CSAFPID-0003"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "9.0.45.0",
+                "product": {
+                  "name": "OPEXUS eComplaint 9.0.45.0",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2026-22234",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "OPEXUS eCasePortal before version 9.0.45.0 allows an unauthenticated attacker to navigate to the 'Attachments.aspx' endpoint, iterate through predictable values of 'formid', and download or delete all user-uploaded files, or upload new files.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:Y/T:P/2026-01-06T23:05:51Z/"
+        }
+      ],
+      "title": "OPEXUS eCasePortal unauthenticated IDOR",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-22234"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-008-02.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 9.0.45.0.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2025-12-09T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 9.0.45.0.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2025-12-09T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "CISA",
+          "names": [
+            "Zach Crosman"
+          ]
+        }
+      ],
+      "release_date": "2026-01-08T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2026-22235",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "OPEXUS eComplaint before version 9.0.45.0 allows an attacker to visit the the 'DocumentOpen.aspx' endpoint, iterate through predictable values of 'chargeNumber', and download any uploaded files.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:Y/T:P/2026-01-05T16:31:59Z/"
+        }
+      ],
+      "title": "OPEXUS eComplaint IDOR",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0003"
+        ],
+        "fixed": [
+          "CSAFPID-0004"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-008-02.json"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-22235"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 9.0.45.0.",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "date": "2025-12-09T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 9.0.45.0.",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "date": "2025-12-09T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "CISA",
+          "names": [
+            "Zach Crosman"
+          ]
+        }
+      ],
+      "release_date": "2026-01-08T00:00:00Z"
+    }
+  ]
+}
