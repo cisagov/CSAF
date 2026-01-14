@@ -1,0 +1,188 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "NSecKrnl driver terminates system processes with crafted IOCTL requests",
+    "tracking": {
+      "current_release_date": "2026-01-13T00:00:00Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.11.0"
+        }
+      },
+      "id": "VA-26-013-01",
+      "initial_release_date": "2026-01-13T00:00:00Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2026-01-13T00:00:00Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "NSecsoft 'NSecKrnl' is a Windows driver that allows a local, authenticated attacker to terminate processes owned by other users, including SYSTEM and Protected Processes by issuing crafted IOCTL requests to the driver.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Enable the Windows Vulnerable Driver Blocklist (and WDAC/HVCI where feasible). Monitor for driver and service installation activity that references non-default, user-writable paths.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "China",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-013-01.json",
+        "summary": "Vulnerability Advisory VA-26-013-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "NSecsoft",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "NSecKrnl",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<*",
+                "product": {
+                  "name": "NSecsoft NSecKrnl <*",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-68947",
+      "cwe": {
+        "id": "CWE-862",
+        "name": "Missing Authorization"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "NSecsoft 'NSecKrnl' is a Windows driver that allows a local, authenticated attacker to terminate processes owned by other users, including SYSTEM and Protected Processes by issuing crafted IOCTL requests to the driver.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:P/2026-01-07T20:42:49Z/"
+        }
+      ],
+      "title": "NSecsoft NSecKrnl process termination privilege escalation",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.virustotal.com",
+          "url": "https://www.virustotal.com/gui/file/206f27ae820783b7755bca89f83a0fe096dbb510018dd65b63fc80bd20c03261"
+        },
+        {
+          "category": "external",
+          "summary": "hexastrike.com",
+          "url": "https://hexastrike.com/resources/blog/threat-intelligence/valleyrat-exploiting-byovd-to-kill-endpoint-security/"
+        },
+        {
+          "category": "external",
+          "summary": "github.com",
+          "url": "https://github.com/ANYLNK/NSecSoftBYOVD"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-68947"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-013-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.7,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Enable the Windows Vulnerable Driver Blocklist (and WDAC/HVCI where feasible). Monitor for driver and service installation activity that references non-default, user-writable paths.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Hexastrike Cybersecurity",
+          "names": [
+            "Maurice Fielenbach"
+          ]
+        }
+      ],
+      "release_date": "2025-09-07T00:00:00Z"
+    }
+  ]
+}
