@@ -93,6 +93,38 @@
                   "name": "BullWall Ransomware Containment >4.6.0.0",
                   "product_id": "CSAFPID-0001"
                 }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=4.6.0.0|<4.6.1.14",
+                "product": {
+                  "name": "BullWall Ransomware Containment >=4.6.0.0|<4.6.1.14",
+                  "product_id": "CSAFPID-0002"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=4.6.0.0|<5.0.0.42",
+                "product": {
+                  "name": "BullWall Ransomware Containment >=4.6.0.0|<5.0.0.42",
+                  "product_id": "CSAFPID-0003"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "4.6.1.14",
+                "product": {
+                  "name": "BullWall Ransomware Containment 4.6.1.14",
+                  "product_id": "CSAFPID-0004"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "5.0.0.42",
+                "product": {
+                  "name": "BullWall Ransomware Containment 5.0.0.42",
+                  "product_id": "CSAFPID-0005"
+                }
               }
             ]
           },
@@ -105,7 +137,7 @@
                 "name": ">4.6.0.0",
                 "product": {
                   "name": "BullWall Server Intrusion Protection >4.6.0.0",
-                  "product_id": "CSAFPID-0002"
+                  "product_id": "CSAFPID-0006"
                 }
               }
             ]
@@ -124,7 +156,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "BullWall Ransomware Containment does not entirely inspect a file to determine if it is ransomware. An authenticated attacker could bypass detection by encrypting a file and leaving the first four bytes unaltered. Versions 4.6.0.0, 4.6.0.6, 4.6.0.7, and 4.6.1.4 were confirmed to be affected; other versions before and after may also be affected.",
+          "text": "BullWall Ransomware Containment may not always detect an encrypted file. This issue affects a specific file inspection method that evaluates file content based on header bytes. An authenticated attacker could encrypt files, preserving the first four bytes and preventing this particular method from triggering. The affected product implements additional integrity-based detection mechanisms capable of identifying file corruption or encryption for some common file extensions independent of header bytes. As a result, this vulnerability does not represent a complete bypass of ransomware detection, but a limitation of one detection method when evaluated independently. Versions 4.6.0.0, 4.6.0.6, 4.6.0.7, and 4.6.1.4 are affected. Other versions may also be affected. BullWall plans to improve detection method documentation.",
           "title": "Description"
         },
         {
@@ -166,8 +198,8 @@
       ],
       "remediations": [
         {
-          "category": "none_available",
-          "details": "No fix available.",
+          "category": "no_fix_planned",
+          "details": "BullWall plans to improve detection method documentation.",
           "product_ids": [
             "CSAFPID-0001"
           ]
@@ -191,7 +223,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "BullWall Ransomware Containment contains excluded file paths, such as '$recycle.bin' that are not monitored. An attacker with file write permissions could bypass detection by renaming a directory. Versions 4.6.0.0, 4.6.0.6, 4.6.0.7, and 4.6.1.4 were confirmed to be affected; other versions before and after may also be affected.",
+          "text": "BullWall Ransomware Containment supports configurable file and directory exclusions such as '$RECYCLE.BIN' to balance monitoring scope and performance. Certain exclusion patterns could allow an authenticated attacker to rename directories in a way that avoids monitoring. Fixed in 4.6.1.14 and 5.0.0.42, which remove hardcoded exclusion behavior and exposes exclusion handling as configurable settings.",
           "title": "Description"
         },
         {
@@ -203,7 +235,12 @@
       "title": "BullWall Ransomware Containment hard-coded folder exclusions",
       "product_status": {
         "known_affected": [
-          "CSAFPID-0001"
+          "CSAFPID-0002",
+          "CSAFPID-0003"
+        ],
+        "fixed": [
+          "CSAFPID-0004",
+          "CSAFPID-0005"
         ]
       },
       "references": [
@@ -227,16 +264,38 @@
             "version": "3.1"
           },
           "products": [
-            "CSAFPID-0001"
+            "CSAFPID-0002",
+            "CSAFPID-0003"
           ]
         }
       ],
       "remediations": [
         {
-          "category": "none_available",
-          "details": "No fix available.",
+          "category": "vendor_fix",
+          "details": "Fixed in 4.6.1.14 and 5.0.0.42.",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 4.6.1.14 and 5.0.0.42.",
+          "product_ids": [
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 4.6.1.14 and 5.0.0.42.",
+          "product_ids": [
+            "CSAFPID-0004"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 4.6.1.14 and 5.0.0.42.",
+          "product_ids": [
+            "CSAFPID-0005"
           ]
         }
       ],
@@ -258,7 +317,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "BullWall Ransomware Containment relies on the number of file modifications to trigger detection. An authenticated attacker could encrypt a single large file without triggering a detection alert. Versions 4.6.0.0, 4.6.0.6, 4.6.0.7, and 4.6.1.4 were confirmed to be affected; other versions before and after may also be affected.",
+          "text": "BullWall Ransomware Containment considers the number of files modified to trigger detection. An authenticated attacker could encrypt a single (possibly large) file without triggering detection if thresholds are configured to require multiple file changes. The number of files to trigger detection can be configured by the user. Versions 4.6.0.0, 4.6.0.6, 4.6.0.7, and 4.6.1.4 are affected. Other versions may also be affected.",
           "title": "Description"
         },
         {
@@ -267,7 +326,7 @@
           "text": "SSVCv2/E:P/A:Y/T:P/2025-10-06T19:36:16Z/"
         }
       ],
-      "title": "BullWall Ransomware Containment large file encryption",
+      "title": "BullWall Ransomware Containment file count detection bypass",
       "product_status": {
         "known_affected": [
           "CSAFPID-0001"
@@ -325,7 +384,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "BullWall Server Intrusion Protection has a noticeable delay before the MFA check when connecting via RDP. A remote authenticated attacker with administrative privileges can potentially bypass detection during this window. Versions 4.6.0.0, 4.6.0.6, 4.6.0.7, and 4.6.1.4 were confirmed to be affected; other versions before and after may also be affected.",
+          "text": "BullWall Server Intrusion Protection has a noticeable configuration-dependent delay before the MFA check for RDP connections. A remote, authenticated attacker can potentially bypass detection during this delay. Versions 4.6.0.0, 4.6.0.6, 4.6.0.7, and 4.6.1.4 are affected. Other versions may also be affected.",
           "title": "Description"
         },
         {
@@ -334,10 +393,10 @@
           "text": "SSVCv2/E:N/A:N/T:T/2025-12-18T19:50:28Z/"
         }
       ],
-      "title": "BullWall Server Intrusion Protection connection delay",
+      "title": "BullWall Server Intrusion Protection RDP MFA connection delay",
       "product_status": {
         "known_affected": [
-          "CSAFPID-0002"
+          "CSAFPID-0006"
         ]
       },
       "references": [
@@ -355,13 +414,13 @@
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 6.2,
-            "baseSeverity": "MEDIUM",
-            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
             "version": "3.1"
           },
           "products": [
-            "CSAFPID-0002"
+            "CSAFPID-0006"
           ]
         }
       ],
@@ -370,7 +429,7 @@
           "category": "none_available",
           "details": "No fix available.",
           "product_ids": [
-            "CSAFPID-0002"
+            "CSAFPID-0006"
           ]
         }
       ],
@@ -392,7 +451,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "BullWall Server Intrusion Protection services are initialized after login services. An authenticated attacker with administrative permissions can log in after boot and bypass MFA. SIP service does not retroactively enforce the challenge or disconnect unauthenticated sessions. Versions 4.6.0.0, 4.6.0.6, 4.6.0.7, and 4.6.1.4 were confirmed to be affected; other versions before and after may also be affected.",
+          "text": "BullWall Server Intrusion Protection (SIP) services are initialized after login services during system startup. A local, authenticated attacker can log in after boot and before SIP MFA is running. The SIP services do not retroactively enforce MFA or disconnect sessions that were not subject to SIP MFA. Versions 4.6.0.0, 4.6.0.6, 4.6.0.7, and 4.6.1.4 are affected. Other versions mayy also be affected. BullWall plans to improve detection method documentation.",
           "title": "Description"
         },
         {
@@ -401,10 +460,10 @@
           "text": "SSVCv2/E:N/A:N/T:T/2025-12-18T19:52:16Z/"
         }
       ],
-      "title": "BullWall Server Intrusion Protection initialization race condition",
+      "title": "BullWall Server Intrusion Protection (SIP) initialization race condition",
       "product_status": {
         "known_affected": [
-          "CSAFPID-0002"
+          "CSAFPID-0006"
         ]
       },
       "references": [
@@ -422,13 +481,13 @@
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 6.2,
-            "baseSeverity": "MEDIUM",
-            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
             "version": "3.1"
           },
           "products": [
-            "CSAFPID-0002"
+            "CSAFPID-0006"
           ]
         }
       ],
@@ -437,7 +496,7 @@
           "category": "none_available",
           "details": "No fix available.",
           "product_ids": [
-            "CSAFPID-0002"
+            "CSAFPID-0006"
           ]
         }
       ],
