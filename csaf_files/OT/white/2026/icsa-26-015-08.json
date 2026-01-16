@@ -1,0 +1,1768 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Siemens ProductCERT",
+        "summary": "reported this vulnerability to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "Siemens Industrial Edge Devices contain an authorization bypass vulnerability that could facilitate an unauthenticated remote attacker to circumvent authentication and impersonate a legitimate user.\n\nSiemens has released new versions for several affected products and recommends to update to the latest versions. Siemens is preparing further fix versions and recommends specific countermeasures for products where fixes are not, or not yet available.",
+        "title": "Summary"
+      },
+      {
+        "category": "general",
+        "text": "As a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for Industrial Security (Download: https://www.siemens.com/cert/operational-guidelines-industrial-security), and to follow the recommendations in the product manuals.\nAdditional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity",
+        "title": "General Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
+        "title": "Additional Resources"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The use of Siemens Security Advisories is subject to the terms and conditions listed on: https://www.siemens.com/productcert/terms-of-use.",
+        "title": "Terms of Use"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of Siemens ProductCERT SSA-001536 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Siemens ProductCERT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Germany",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of these vulnerabilities.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "SSA-001536: Authorization Bypass Vulnerability in Siemens Industrial Edge Devices - CSAF Version",
+        "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-001536.json"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-001536: Authorization Bypass Vulnerability in Siemens Industrial Edge Devices - HTML Version",
+        "url": "https://cert-portal.siemens.com/productcert/html/ssa-001536.html"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-015-08 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-015-08.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-015-08 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-015-08"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "Siemens Industrial Edge Devices",
+    "tracking": {
+      "current_release_date": "2026-01-14T23:03:52.355094Z",
+      "generator": {
+        "date": "2026-01-14T23:03:52.350344Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-015-08",
+      "initial_release_date": "2026-01-13T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2026-01-13T00:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Publication Date"
+        },
+        {
+          "date": "2026-01-14T23:03:52.355094Z",
+          "legacy_version": "CISA Republication",
+          "number": "2",
+          "summary": "Initial Republication of Siemens ProductCERT SSA-001536 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "2"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<1.24.2",
+                "product": {
+                  "name": "Industrial Edge Cloud Device (IECD)",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Industrial Edge Cloud Device (IECD)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<1.24.2",
+                "product": {
+                  "name": "Industrial Edge Own Device (IEOD)",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Industrial Edge Own Device (IEOD)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<1.24.2",
+                "product": {
+                  "name": "Industrial Edge Virtual Device (IEVD)",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Industrial Edge Virtual Device (IEVD)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<2.2",
+                "product": {
+                  "name": "SCALANCE LPE9413 (6GK5998-3GS01-2AC2)",
+                  "product_id": "CSAFPID-0004",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6GK5998-3GS01-2AC2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCALANCE LPE9413 (6GK5998-3GS01-2AC2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<2.2",
+                "product": {
+                  "name": "SCALANCE LPE9433 (6GK5998-3GS11-2AC2)",
+                  "product_id": "CSAFPID-0005",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6GK5998-3GS11-2AC2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCALANCE LPE9433 (6GK5998-3GS11-2AC2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC Automation Workstation 19\" (6AV7256-6CA01-0FP0)",
+                  "product_id": "CSAFPID-0006",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV7256-6CA01-0FP0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC Automation Workstation 19\" (6AV7256-6CA01-0FP0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIMATIC Automation Workstation 24\" (6AV7256-6CA00-0FP0)",
+                  "product_id": "CSAFPID-0007",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV7256-6CA00-0FP0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC Automation Workstation 24\" (6AV7256-6CA00-0FP0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1000 Unified Comfort Panel (6AV2128-3KB06-0AX1)",
+                  "product_id": "CSAFPID-0008",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3KB06-0AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1000 Unified Comfort Panel (6AV2128-3KB06-0AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1000 Unified Comfort Panel hygienic (6AV2128-3KB40-0AX0)",
+                  "product_id": "CSAFPID-0009",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3KB40-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1000 Unified Comfort Panel hygienic (6AV2128-3KB40-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1000 Unified Comfort Panel hygienic neutral design (6AV2128-3KB70-0AX0)",
+                  "product_id": "CSAFPID-0010",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3KB70-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1000 Unified Comfort Panel hygienic neutral design (6AV2128-3KB70-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1000, Unified Comfort Panel neutral (6AV2128-3KB36-0AX1)",
+                  "product_id": "CSAFPID-0011",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3KB36-0AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1000, Unified Comfort Panel neutral (6AV2128-3KB36-0AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1200 Comfort Pro for stand (expandable, flange at the bottom) (6AV2128-3MB27-1BX0)",
+                  "product_id": "CSAFPID-0012",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3MB27-1BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1200 Comfort Pro for stand (expandable, flange at the bottom) (6AV2128-3MB27-1BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1200 Comfort Pro for support arm (expandable, round tube) and extension unit (6AV2128-3MB27-0BX0)",
+                  "product_id": "CSAFPID-0013",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3MB27-0BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1200 Comfort Pro for support arm (expandable, round tube) and extension unit (6AV2128-3MB27-0BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1200 Comfort Pro for support arm (not extendable, flange on top) (6AV2128-3MB27-0AX0)",
+                  "product_id": "CSAFPID-0014",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3MB27-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1200 Comfort Pro for support arm (not extendable, flange on top) (6AV2128-3MB27-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1200 Comfort Pro neutral design for stand (expandable, flange at the bottom) (6AV2128-3MB57-1BX0)",
+                  "product_id": "CSAFPID-0015",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3MB57-1BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1200 Comfort Pro neutral design for stand (expandable, flange at the bottom) (6AV2128-3MB57-1BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1200 Comfort Pro neutral design for support arm (expandable, round tube) and extensio (6AV2128-3MB57-0BX0)",
+                  "product_id": "CSAFPID-0016",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3MB57-0BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1200 Comfort Pro neutral design for support arm (expandable, round tube) and extensio (6AV2128-3MB57-0BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1200 Comfort Pro neutral design for support arm (not extendable, flange on top) (6AV2128-3MB57-0AX0)",
+                  "product_id": "CSAFPID-0017",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3MB57-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1200 Comfort Pro neutral design for support arm (not extendable, flange on top) (6AV2128-3MB57-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1200 Unified Comfort Panel (6AV2128-3MB06-0AX1)",
+                  "product_id": "CSAFPID-0018",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3MB06-0AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1200 Unified Comfort Panel (6AV2128-3MB06-0AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1200 Unified Comfort Panel hygienic (6AV2128-3MB40-0AX0)",
+                  "product_id": "CSAFPID-0019",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3MB40-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1200 Unified Comfort Panel hygienic (6AV2128-3MB40-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1200 Unified Comfort Panel hygienic neutral design (6AV2128-3MB70-0AX0)",
+                  "product_id": "CSAFPID-0020",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3MB70-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1200 Unified Comfort Panel hygienic neutral design (6AV2128-3MB70-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1200 Unified Comfort Panel neutral design (6AV2128-3MB36-0AX1)",
+                  "product_id": "CSAFPID-0021",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3MB36-0AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1200 Unified Comfort Panel neutral design (6AV2128-3MB36-0AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1500 Comfort Pro for stand (expandable, flange at the bottom) (6AV2128-3QB27-1BX0)",
+                  "product_id": "CSAFPID-0022",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3QB27-1BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1500 Comfort Pro for stand (expandable, flange at the bottom) (6AV2128-3QB27-1BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1500 Comfort Pro for support arm (expandable, round tube) and extension unit (6AV2128-3QB27-0BX0)",
+                  "product_id": "CSAFPID-0023",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3QB27-0BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1500 Comfort Pro for support arm (expandable, round tube) and extension unit (6AV2128-3QB27-0BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1500 Comfort Pro for support arm (not extendable, flange on top) (6AV2128-3QB27-0AX0)",
+                  "product_id": "CSAFPID-0024",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3QB27-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1500 Comfort Pro for support arm (not extendable, flange on top) (6AV2128-3QB27-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1500 Comfort Pro neutral design for stand (expandable, flange at the bottom) (6AV2128-3QB57-1BX0)",
+                  "product_id": "CSAFPID-0025",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3QB57-1BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1500 Comfort Pro neutral design for stand (expandable, flange at the bottom) (6AV2128-3QB57-1BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1500 Comfort Pro neutral design for support arm (expandable, round tube) and extensio (6AV2128-3QB57-0BX0)",
+                  "product_id": "CSAFPID-0026",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3QB57-0BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1500 Comfort Pro neutral design for support arm (expandable, round tube) and extensio (6AV2128-3QB57-0BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1500 Comfort Pro neutral design for support arm (not extendable, flange on top) (6AV2128-3QB57-0AX0)",
+                  "product_id": "CSAFPID-0027",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3QB57-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1500 Comfort Pro neutral design for support arm (not extendable, flange on top) (6AV2128-3QB57-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1500 Unified Comfort Panel (6AV2128-3QB06-0AX1)",
+                  "product_id": "CSAFPID-0028",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3QB06-0AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1500 Unified Comfort Panel (6AV2128-3QB06-0AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1500 Unified Comfort Panel hygienic (6AV2128-3QB40-0AX0)",
+                  "product_id": "CSAFPID-0029",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3QB40-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1500 Unified Comfort Panel hygienic (6AV2128-3QB40-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1500 Unified Comfort Panel hygienic neutral design (6AV2128-3QB70-0AX0)",
+                  "product_id": "CSAFPID-0030",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3QB70-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1500 Unified Comfort Panel hygienic neutral design (6AV2128-3QB70-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1500 Unified Comfort Panel neutral design (6AV2128-3QB36-0AX1)",
+                  "product_id": "CSAFPID-0031",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3QB36-0AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1500 Unified Comfort Panel neutral design (6AV2128-3QB36-0AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1900 Comfort Pro for stand (expandable, flange at the bottom) (6AV2128-3UB27-1BX0)",
+                  "product_id": "CSAFPID-0032",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3UB27-1BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1900 Comfort Pro for stand (expandable, flange at the bottom) (6AV2128-3UB27-1BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1900 Comfort Pro for support arm (expandable, round tube) and extension unit (6AV2128-3UB27-0BX0)",
+                  "product_id": "CSAFPID-0033",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3UB27-0BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1900 Comfort Pro for support arm (expandable, round tube) and extension unit (6AV2128-3UB27-0BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1900 Comfort Pro for support arm (not extendable, flange on top) (6AV2128-3UB27-0AX0)",
+                  "product_id": "CSAFPID-0034",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3UB27-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1900 Comfort Pro for support arm (not extendable, flange on top) (6AV2128-3UB27-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1900 Comfort Pro neutral design for stand (expandable, flange at the bottom) (6AV2128-3UB57-1BX0)",
+                  "product_id": "CSAFPID-0035",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3UB57-1BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1900 Comfort Pro neutral design for stand (expandable, flange at the bottom) (6AV2128-3UB57-1BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1900 Comfort Pro neutral design for support arm (expandable, round tube) and extensio (6AV2128-3UB57-0BX0)",
+                  "product_id": "CSAFPID-0036",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3UB57-0BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1900 Comfort Pro neutral design for support arm (expandable, round tube) and extensio (6AV2128-3UB57-0BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1900 Comfort Pro neutral design for support arm (not extendable, flange on top) (6AV2128-3UB57-0AX0)",
+                  "product_id": "CSAFPID-0037",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3UB57-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1900 Comfort Pro neutral design for support arm (not extendable, flange on top) (6AV2128-3UB57-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1900 Unified Comfort Panel (6AV2128-3UB06-0AX1)",
+                  "product_id": "CSAFPID-0038",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3UB06-0AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1900 Unified Comfort Panel (6AV2128-3UB06-0AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1900 Unified Comfort Panel hygienic (6AV2128-3UB40-0AX0)",
+                  "product_id": "CSAFPID-0039",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3UB40-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1900 Unified Comfort Panel hygienic (6AV2128-3UB40-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1900 Unified Comfort Panel hygienic neutral design (6AV2128-3UB70-0AX0)",
+                  "product_id": "CSAFPID-0040",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3UB70-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1900 Unified Comfort Panel hygienic neutral design (6AV2128-3UB70-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP1900 Unified Comfort Panel neutral design (6AV2128-3UB36-0AX1)",
+                  "product_id": "CSAFPID-0041",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3UB36-0AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP1900 Unified Comfort Panel neutral design (6AV2128-3UB36-0AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP2200 Comfort Pro for stand (expandable, flange at the bottom) (6AV2128-3XB27-1BX0)",
+                  "product_id": "CSAFPID-0042",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3XB27-1BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP2200 Comfort Pro for stand (expandable, flange at the bottom) (6AV2128-3XB27-1BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP2200 Comfort Pro for support arm (expandable, round tube) and extension unit (6AV2128-3XB27-0BX0)",
+                  "product_id": "CSAFPID-0043",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3XB27-0BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP2200 Comfort Pro for support arm (expandable, round tube) and extension unit (6AV2128-3XB27-0BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP2200 Comfort Pro for support arm (not extendable, flange on top) (6AV2128-3XB27-0AX0)",
+                  "product_id": "CSAFPID-0044",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3XB27-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP2200 Comfort Pro for support arm (not extendable, flange on top) (6AV2128-3XB27-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP2200 Comfort Pro neutral design for stand (expandable, flange at the bottom) (6AV2128-3XB57-1BX0)",
+                  "product_id": "CSAFPID-0045",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3XB57-1BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP2200 Comfort Pro neutral design for stand (expandable, flange at the bottom) (6AV2128-3XB57-1BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP2200 Comfort Pro neutral design for support arm (expandable, round tube) and extensio (6AV2128-3XB57-0BX0)",
+                  "product_id": "CSAFPID-0046",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3XB57-0BX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP2200 Comfort Pro neutral design for support arm (expandable, round tube) and extensio (6AV2128-3XB57-0BX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP2200 Comfort Pro neutral design for support arm (not extendable, flange on top) (6AV2128-3XB57-0AX0)",
+                  "product_id": "CSAFPID-0047",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3XB57-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP2200 Comfort Pro neutral design for support arm (not extendable, flange on top) (6AV2128-3XB57-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP2200 Unified Comfort Hygienic (6AV2128-3XB40-0AX0)",
+                  "product_id": "CSAFPID-0048",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3XB40-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP2200 Unified Comfort Hygienic (6AV2128-3XB40-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP2200 Unified Comfort Hygienic neutral design (6AV2128-3XB70-0AX0)",
+                  "product_id": "CSAFPID-0049",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3XB70-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP2200 Unified Comfort Hygienic neutral design (6AV2128-3XB70-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP2200 Unified Comfort Panel (6AV2128-3XB06-0AX1)",
+                  "product_id": "CSAFPID-0050",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3XB06-0AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP2200 Unified Comfort Panel (6AV2128-3XB06-0AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP2200 Unified Comfort Panel neutral design (6AV2128-3XB36-0AX1)",
+                  "product_id": "CSAFPID-0051",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3XB36-0AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP2200 Unified Comfort Panel neutral design (6AV2128-3XB36-0AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP700\u00a0Unified Comfort Panel (6AV2128-3GB06-0AX1)",
+                  "product_id": "CSAFPID-0052",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3GB06-0AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP700\u00a0Unified Comfort Panel (6AV2128-3GB06-0AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP700 Unified Comfort Panel hygienic neutral design (6AV2128-3GB40-0AX0)",
+                  "product_id": "CSAFPID-0053",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3GB40-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP700 Unified Comfort Panel hygienic neutral design (6AV2128-3GB40-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP700 Unified Comfort Panel hygienic neutral design (6AV2128-3GB70-0AX0)",
+                  "product_id": "CSAFPID-0054",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3GB70-0AX0"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP700 Unified Comfort Panel hygienic neutral design (6AV2128-3GB70-0AX0)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIMATIC HMI MTP700, Unified Comfort Panel neutral design (6AV2128-3GB36-0AX1)",
+                  "product_id": "CSAFPID-0055",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AV2128-3GB36-0AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC HMI MTP700, Unified Comfort Panel neutral design (6AV2128-3GB36-0AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<1.25.1",
+                "product": {
+                  "name": "SIMATIC IOT2050 (6ES7647-0BA00-1YA2)",
+                  "product_id": "CSAFPID-0056",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6ES7647-0BA00-1YA2"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC IOT2050 (6ES7647-0BA00-1YA2)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<3.1",
+                "product": {
+                  "name": "SIMATIC IPC BX-39A Industrial Edge Device",
+                  "product_id": "CSAFPID-0057"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC IPC BX-39A Industrial Edge Device"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<3.1",
+                "product": {
+                  "name": "SIMATIC IPC BX-59A Industrial Edge Device",
+                  "product_id": "CSAFPID-0058"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC IPC BX-59A Industrial Edge Device"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<3.1",
+                "product": {
+                  "name": "SIMATIC IPC127E Industrial Edge Device",
+                  "product_id": "CSAFPID-0059"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC IPC127E Industrial Edge Device"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<3.1",
+                "product": {
+                  "name": "SIMATIC IPC227E Industrial Edge Device",
+                  "product_id": "CSAFPID-0060"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC IPC227E Industrial Edge Device"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<3.1",
+                "product": {
+                  "name": "SIMATIC IPC227G Industrial Edge Device",
+                  "product_id": "CSAFPID-0061"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC IPC227G Industrial Edge Device"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<3.1",
+                "product": {
+                  "name": "SIMATIC IPC427E Industrial Edge Device",
+                  "product_id": "CSAFPID-0062"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC IPC427E Industrial Edge Device"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<3.1",
+                "product": {
+                  "name": "SIMATIC IPC847E Industrial Edge Device",
+                  "product_id": "CSAFPID-0063"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIMATIC IPC847E Industrial Edge Device"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIPLUS HMI MTP1000 Unified Comfort (6AG1128-3KB06-4AX1)",
+                  "product_id": "CSAFPID-0064",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AG1128-3KB06-4AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPLUS HMI MTP1000 Unified Comfort (6AG1128-3KB06-4AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIPLUS HMI MTP1200 Unified Comfort (6AG1128-3MB06-4AX1)",
+                  "product_id": "CSAFPID-0065",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AG1128-3MB06-4AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPLUS HMI MTP1200 Unified Comfort (6AG1128-3MB06-4AX1)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<21",
+                "product": {
+                  "name": "SIPLUS HMI MTP700 Unified Comfort (6AG1128-3GB06-4AX1)",
+                  "product_id": "CSAFPID-0066",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "6AG1128-3GB06-4AX1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPLUS HMI MTP700 Unified Comfort (6AG1128-3GB06-4AX1)"
+          }
+        ],
+        "category": "vendor",
+        "name": "Siemens"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-40805",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Affected devices do not properly enforce user authentication on specific API endpoints. This could facilitate an unauthenticated remote attacker to circumvent authentication and impersonate a legitimate user. Successful exploitation requires that the attacker has learned the identity of a legitimate user.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0013",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0016",
+          "CSAFPID-0017",
+          "CSAFPID-0018",
+          "CSAFPID-0019",
+          "CSAFPID-0020",
+          "CSAFPID-0021",
+          "CSAFPID-0022",
+          "CSAFPID-0023",
+          "CSAFPID-0024",
+          "CSAFPID-0025",
+          "CSAFPID-0026",
+          "CSAFPID-0027",
+          "CSAFPID-0028",
+          "CSAFPID-0029",
+          "CSAFPID-0030",
+          "CSAFPID-0031",
+          "CSAFPID-0032",
+          "CSAFPID-0033",
+          "CSAFPID-0034",
+          "CSAFPID-0035",
+          "CSAFPID-0036",
+          "CSAFPID-0037",
+          "CSAFPID-0038",
+          "CSAFPID-0039",
+          "CSAFPID-0040",
+          "CSAFPID-0041",
+          "CSAFPID-0042",
+          "CSAFPID-0043",
+          "CSAFPID-0044",
+          "CSAFPID-0045",
+          "CSAFPID-0046",
+          "CSAFPID-0047",
+          "CSAFPID-0048",
+          "CSAFPID-0049",
+          "CSAFPID-0050",
+          "CSAFPID-0051",
+          "CSAFPID-0052",
+          "CSAFPID-0053",
+          "CSAFPID-0054",
+          "CSAFPID-0055",
+          "CSAFPID-0056",
+          "CSAFPID-0057",
+          "CSAFPID-0058",
+          "CSAFPID-0059",
+          "CSAFPID-0060",
+          "CSAFPID-0061",
+          "CSAFPID-0062",
+          "CSAFPID-0063",
+          "CSAFPID-0064",
+          "CSAFPID-0065",
+          "CSAFPID-0066"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Ensure network access to affected products is limited to trusted parties only",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063",
+            "CSAFPID-0064",
+            "CSAFPID-0065",
+            "CSAFPID-0066"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.24.2 or later version",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "url": "https://docs.industrial-operations-x.siemens.cloud/r/en-us/v1.24.2/industrial-edge-own-device/release-notes"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.24.2 or later version",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003"
+          ],
+          "url": "https://docs.industrial-operations-x.siemens.cloud/r/en-us/v1.24.2/industrial-edge-virtual/cloud-device/release-notes"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V1.25.1 or later version",
+          "product_ids": [
+            "CSAFPID-0056"
+          ],
+          "url": "https://docs.industrial-operations-x.siemens.cloud/r/en-us/v1.25/one-db-simatic-iot2050-industrial-edge-device/all-release-notes/release-notes-v1.25"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.2 or later version",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "url": "https://docs.eu1.edge.siemens.cloud/release_notes/device_release_notes/LPE9413.html"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2.2 or later version",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "url": "https://docs.eu1.edge.siemens.cloud/release_notes/device_release_notes/SCALANCELPE9433Integrated.html"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V21 or later version",
+          "product_ids": [
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0064",
+            "CSAFPID-0065",
+            "CSAFPID-0066"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109825605/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V3.1 or later version",
+          "product_ids": [
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063"
+          ],
+          "url": "https://docs.industrial-operations-x.siemens.cloud/r/en-us/v3.1/simatic-ipc-ied-os/release-notes"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 10.0,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063",
+            "CSAFPID-0064",
+            "CSAFPID-0065",
+            "CSAFPID-0066"
+          ]
+        }
+      ],
+      "title": "CVE-2025-40805"
+    }
+  ]
+}

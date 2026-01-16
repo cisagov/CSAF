@@ -1,0 +1,602 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Schneider Electric CPCERT",
+        "summary": "reported these vulnerabilities to CISA."
+      },
+      {
+        "names": [
+          "Rocco Calvi"
+        ],
+        "organization": "in collaboration with Trend Zero Day Initiative (ZDI)",
+        "summary": "independently reported these vulnerabilities to CISA."
+      },
+      {
+        "names": [
+          "Michael Heinzl"
+        ],
+        "summary": "independently reported these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "We strongly recommend the following industry cybersecurity best practices.\n\n* Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.\n* Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.\n* Place all controllers in locked cabinets and never leave them in the \u201cProgram\u201d mode.\n* Never connect programming software to any network other than the network intended for that device.\n* Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc. before use in the terminals or any node connected to these networks.\n* Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.\n* Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the Internet.\n* When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.\n\nFor more information refer to the Schneider Electric [Recommended Cybersecurity Best Practices](https://www.se.com/us/en/download/document/7EN52-0390/) document.",
+        "title": "General Security Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "This document provides an overview of the identified vulnerability or vulnerabilities and actions required to mitigate. For more details and assistance on how to protect your installation, contact your local Schneider Electric representative or Schneider Electric Industrial Cybersecurity Services: https://www.se.com/ww/en/work/solutions/cybersecurity/. These organizations will be fully aware of this situation and can support you through the process.\n\nFor further information related to cybersecurity in Schneider Electric's products, visit the company's cybersecurity support portal page: https://www.se.com/ww/en/work/support/cybersecurity/overview.jsp",
+        "title": "For More Information"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "THIS NOTIFICATION DOCUMENT, THE INFORMATION CONTAINED HEREIN, AND ANY MATERIALS LINKED FROM IT (COLLECTIVELY, THIS \u201cNOTIFICATION\u201d) ARE INTENDED TO HELP PROVIDE AN OVERVIEW OF THE IDENTIFIED SITUATION AND SUGGESTED MITIGATION ACTIONS, REMEDIATION, FIX, AND/OR GENERAL SECURITY RECOMMENDATIONS AND IS PROVIDED ON AN \u201cAS-IS\u201d BASIS WITHOUT WARRANTY OR GUARANTEE OF ANY KIND.  SCHNEIDER ELECTRIC DISCLAIMS ALL WARRANTIES RELATING TO THIS NOTIFICATION, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. SCHNEIDER ELECTRIC MAKES NO WARRANTY THAT THE NOTIFICATION WILL RESOLVE THE IDENTIFIED SITUATION. IN NO EVENT SHALL SCHNEIDER ELECTRIC BE LIABLE FOR ANY DAMAGES OR LOSSES WHATSOEVER IN CONNECTION WITH THIS NOTIFICATION, INCLUDING DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, LOSS OF BUSINESS PROFITS OR SPECIAL DAMAGES, EVEN IF SCHNEIDER ELECTRIC HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. YOUR USE OF THIS NOTIFICATION IS AT YOUR OWN RISK, AND YOU ARE SOLELY LIABLE FOR ANY DAMAGES TO YOUR SYSTEMS OR ASSETS OR OTHER LOSSES THAT MAY RESULT FROM YOUR USE OF THIS NOTIFICATION. SCHNEIDER ELECTRIC RESERVES THE RIGHT TO UPDATE OR CHANGE THIS NOTIFICATION AT ANY TIME AND IN ITS SOLE DISCRETION",
+        "title": "LEGAL DISCLAIMER"
+      },
+      {
+        "category": "general",
+        "text": "Schneider's purpose is to create Impact by empowering all to make the most of our energy and resources, bridging progress and\r\nsustainability for all. We call this Life Is On.\n\nOur mission is to be the trusted partner in Sustainability and Efficiency.\n\nWe are a global industrial technology leader bringing world-leading expertise in electrification, automation and digitization to smart\r\nindustries, resilient infrastructure, future-proof data centers, intelligent buildings, and intuitive homes. Anchored by our deep\r\ndomain expertise, we provide integrated end-to-end lifecycle AI enabled Industrial IoT solutions with connected products, automation,\r\nsoftware and services, delivering digital twins to enable profitable growth for our customers.\n\nWe are a people company with an ecosystem of 150,000 colleagues and more than a million partners operating in over 100 countries\r\nto ensure proximity to our customers and stakeholders. We embrace diversity and inclusion in everything we do, guided by our\r\nmeaningful purpose of a sustainable future for all. \n\n www.se.com",
+        "title": "About Schneider Electric"
+      },
+      {
+        "category": "summary",
+        "text": "Schneider Electric is aware of a vulnerability in its EcoStruxure Power Build Rapsody software. The [EcoStruxure Power Build Rapsody](https://www.se.com/ww/en/product-country-selector/?pageType=product-range&sourceId=2309) is used to enter or import the single line diagram, to get the extensive bill of material of your switchboard, including all devices, connection items, and mounting components. \n\nFailure to apply the mitigations/remediations provided below may risk memory corruption, heap-based buffer overflow, stack-based buffer overflow, which could result in local attackers being able to exploit these issues to potentially execute arbitrary code.",
+        "title": "Overview"
+      },
+      {
+        "category": "other",
+        "text": "The severity of vulnerabilities was calculated using the CVSS Base metrics for 4.0 ([CVSS v4.0](https://www.first.org/cvss/calculator/4.0)). CVSS v3.1 \nwill be still evaluated until the adoption of CVSS v4.0 by the industry. The severity was calculated without \nincorporating the Temporal and Environmental metrics. Schneider Electric recommends that customers score the CVSS Environmental metrics, which are specific to end-user organizations, and consider factors such as \nthe presence of mitigations in that environment. Environmental metrics may refine the relative severity posed by the vulnerabilities described in this document within a customer's environment."
+      },
+      {
+        "category": "other",
+        "text": "Customers should use appropriate patching methodologies when applying these patches to their systems. We strongly recommend the use of back-ups and evaluating the impact of these patches in a Test and Development environment or on an offline infrastructure. Contact Schneider Electric's [Customer Care Center](https://www.se.com/us/en/work/support/contacts.jsp) if you need assistance removing a patch. "
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of Schneider Electric CPCERT SEVD-2026-013-04 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Schneider Electric CPCERT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Energy, Critical Manufacturing, Commercial Facilities",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "France",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "Multiple Vulnerabilities on EcoStruxure Power Build Rapsody - SEVD-2026-013-04 CSAF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-013-04&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2026-013-04.json"
+      },
+      {
+        "category": "self",
+        "summary": "Multiple Vulnerabilities on EcoStruxure Power Build Rapsody - SEVD-2026-013-04 PDF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-013-04&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2026-013-04.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Cybersecurity Best Practices",
+        "url": "https://www.se.com/ww/en/download/document/7EN52-0390/"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-015-10 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-015-10.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-015-10 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-015-10"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "Schneider Electric EcoStruxure Power Build Rapsody",
+    "tracking": {
+      "current_release_date": "2026-01-14T22:35:43.622072Z",
+      "generator": {
+        "date": "2026-01-14T22:35:43.619556Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.0.0"
+        }
+      },
+      "id": "ICSA-26-015-10",
+      "initial_release_date": "2026-01-13T08:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2026-01-13T08:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Original Release"
+        },
+        {
+          "date": "2026-01-14T22:35:43.622072Z",
+          "legacy_version": "CISA Republication",
+          "number": "2",
+          "summary": "Initial Republication of Schneider Electric CPCERT SEVD-2026-013-04 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "2"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/<=2.8.1_FR",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software FR 2.8.1 and prior",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.8.1.0401_FR",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software Version FR 2.8.1.0401",
+                  "product_id": "CSAFPID-0002"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/<=2.8.6_INT",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software INT 2.8.6 and prior",
+                  "product_id": "CSAFPID-0003"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.8.6.200_INT",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software Version INT 2.8.6.200",
+                  "product_id": "CSAFPID-0004"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/<=2.8.5_ES",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software ES 2.8.5 and prior",
+                  "product_id": "CSAFPID-0005"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.8.5.0301_ES",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software Version ES 2.8.5.0301",
+                  "product_id": "CSAFPID-0006"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/<=2.8.3_BELNL",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software BEL(NL) 2.8.3 and prior",
+                  "product_id": "CSAFPID-0007"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.8.3.0201_BELNL",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software Version BEL(NL) 2.8.3.0201",
+                  "product_id": "CSAFPID-0008"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/<=2.8.8_BELFR",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software BEL(FR) 2.8.8 and prior",
+                  "product_id": "CSAFPID-0009"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.8.8.0201_BELFR",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software Version BEL(FR) 2.8.8.0201",
+                  "product_id": "CSAFPID-0010"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/<=2.8.1.0300_FR",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software FR 2.8.1.0300 and prior",
+                  "product_id": "CSAFPID-0011"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/<=2.8.5.0200_ES",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software ES 2.8.5.0200 and prior",
+                  "product_id": "CSAFPID-0012"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/<=2.8.7.0100_PT",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software PT 2.8.7.0100 and prior",
+                  "product_id": "CSAFPID-0013"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.8.7.0101_PT",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software Version PT 2.8.7.0101",
+                  "product_id": "CSAFPID-0014"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/<=2.8.8.0100_BELFR",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software BEL(FR) 2.8.8.0100 and prior",
+                  "product_id": "CSAFPID-0015"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/<=2.8.3.0100_BELEN",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software BEL(EN) 2.8.3.0100 and prior",
+                  "product_id": "CSAFPID-0016"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.8.3.0201_BELEN",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software Version BEL(EN) 2.8.3.0201",
+                  "product_id": "CSAFPID-0017"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/<=2.8.4.0300_INTEN",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software INT(EN) 2.8.4.0300 and prior",
+                  "product_id": "CSAFPID-0018"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.8.4.0401_INTEN",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software Version INT(EN) 2.8.4.0401",
+                  "product_id": "CSAFPID-0019"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/<=2.8.2.0000_NL",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software NL 2.8.2.0000 and prior",
+                  "product_id": "CSAFPID-0020"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.8.2.000_NL",
+                "product": {
+                  "name": "EcoStruxure Power Build Rapsody software Version NL 2.8.2.000",
+                  "product_id": "CSAFPID-0021"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Power Build Rapsody software"
+          }
+        ],
+        "category": "vendor",
+        "name": "Schneider Electric"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Michael Heinzl"
+          ]
+        }
+      ],
+      "cve": "CVE-2025-13844",
+      "cwe": {
+        "id": "CWE-415",
+        "name": "Double Free"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-415: Double Free vulnerability exists that could cause heap memory corruption when the end user \r\nimports a malicious project file (SSD file) shared by the attacker into Rapsody.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0008",
+          "CSAFPID-0010"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003",
+          "CSAFPID-0005",
+          "CSAFPID-0007",
+          "CSAFPID-0009"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Versions FR V2.8.1.0401, INT V2.8.6.200, ES V2.8.5.0301, BEL(NL) V2.8.3.0201, BEL(FR) V2.8.8.0201 of EcoStruxure Power Build Rapsody includes a fix for the CVE-2025-13844 vulnerability and is available for download here: https://www.se.com/ww/en/product-country-selector/?pageType=product-range&sourceId=2309  Please restart the service after installing the new version.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0005",
+            "CSAFPID-0007",
+            "CSAFPID-0009"
+          ],
+          "restart_required": {
+            "category": "service"
+          },
+          "url": "https://www.se.com/ww/en/product-country-selector/?pageType=product-range&sourceId=2309"
+        },
+        {
+          "category": "mitigation",
+          "details": "If customers choose not to apply the remediation provided above, they should immediately apply the following mitigations to reduce the risk of exploit: For CVE-2025-13844: - Only open projects from trusted sources - Ensure use of Malware scans before opening any externally created Project",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0005",
+            "CSAFPID-0007",
+            "CSAFPID-0009"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "LOCAL",
+            "availabilityImpact": "LOW",
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "LOW",
+            "integrityImpact": "LOW",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "REQUIRED",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0005",
+            "CSAFPID-0007",
+            "CSAFPID-0009"
+          ]
+        }
+      ],
+      "title": "CVE-2025-13844"
+    },
+    {
+      "cve": "CVE-2025-13845",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "CWE-416: Use After Free vulnerability exists that could cause remote code execution when the end user \r\nimports the malicious project file (SSD file) into Rapsody.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0006",
+          "CSAFPID-0014",
+          "CSAFPID-0010",
+          "CSAFPID-0017",
+          "CSAFPID-0019",
+          "CSAFPID-0021"
+        ],
+        "known_affected": [
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0013",
+          "CSAFPID-0015",
+          "CSAFPID-0016",
+          "CSAFPID-0018",
+          "CSAFPID-0020"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Versions FR V2.8.1.0401, ES V2.8.5.0301, PT V2.8.7.0101, BEL(FR) V2.8.8.0201, BEL(EN) V2.8.3.0201, INT(EN) V2.8.4.0401, NL V2.8.2.000 of EcoStruxure Power Build Rapsody includes a fix for the CVE-2025-13845 vulnerability and are available for download here: https://www.se.com/ww/en/product-country-selector/?pageType=product-range&sourceId=2309  Please restart the service after installing the new version.  ",
+          "product_ids": [
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0018",
+            "CSAFPID-0020"
+          ],
+          "restart_required": {
+            "category": "service"
+          },
+          "url": "https://www.se.com/ww/en/product-country-selector/?pageType=product-range&sourceId=2309"
+        },
+        {
+          "category": "mitigation",
+          "details": "For CVE-2025-13845: - Only open projects from trusted sources - Ensure use of Malware scans before opening any externally created Project",
+          "product_ids": [
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0018",
+            "CSAFPID-0020"
+          ],
+          "restart_required": {
+            "category": "none"
+          }
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "LOCAL",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "REQUIRED",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0018",
+            "CSAFPID-0020"
+          ]
+        }
+      ],
+      "title": "CVE-2025-13845"
+    }
+  ]
+}
