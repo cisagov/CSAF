@@ -3,9 +3,9 @@
     "acknowledgments": [
       {
         "names": [
-          "Alex Wiliams"
+          "Joel Aviad Ossi"
         ],
-        "organization": "Pellera Technologies",
+        "organization": "WebSec B.V",
         "summary": "reported these vulnerabilities to CISA"
       }
     ],
@@ -27,12 +27,12 @@
       },
       {
         "category": "summary",
-        "text": "Successful exploitation of these vulnerabilities could allow an authenticated attacker to read or modify a remote database.",
+        "text": "Successful exploitation of these vulnerabilities could allow a low-level user to alter privileges and gain full control to the device.",
         "title": "Risk evaluation"
       },
       {
         "category": "other",
-        "text": "Critical Manufacturing, Energy, Water and Wastewater",
+        "text": "Critical Manufacturing",
         "title": "Critical infrastructure sectors"
       },
       {
@@ -52,7 +52,7 @@
       },
       {
         "category": "general",
-        "text": "Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the Internet.",
+        "text": "Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.",
         "title": "Recommended Practices"
       },
       {
@@ -125,13 +125,13 @@
     "references": [
       {
         "category": "self",
-        "summary": "ICS Advisory ICSA-25-352-06 JSON",
-        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-352-06.json"
+        "summary": "ICS Advisory ICSA-26-022-05 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-022-05.json"
       },
       {
         "category": "self",
-        "summary": "ICSA Advisory ICSA-25-352-06 - Web Version",
-        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-352-06"
+        "summary": "ICSA Advisory ICSA-26-022-05 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-022-05"
       },
       {
         "category": "external",
@@ -189,21 +189,21 @@
         "url": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks"
       }
     ],
-    "title": "Advantech WebAccess/SCADA",
+    "title": "Weintek cMT X Series HMI EasyWeb Service",
     "tracking": {
-      "current_release_date": "2025-12-18T07:00:00.000000Z",
+      "current_release_date": "2026-01-22T07:00:00.000000Z",
       "generator": {
-        "date": "2025-12-17T22:48:36.556419Z",
+        "date": "2026-01-21T16:23:55.259499Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
         }
       },
-      "id": "ICSA-25-352-06",
-      "initial_release_date": "2025-12-18T07:00:00.000000Z",
+      "id": "ICSA-26-022-05",
+      "initial_release_date": "2026-01-22T07:00:00.000000Z",
       "revision_history": [
         {
-          "date": "2025-12-18T07:00:00.000000Z",
+          "date": "2026-01-22T07:00:00.000000Z",
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
@@ -220,111 +220,102 @@
           {
             "branches": [
               {
-                "category": "product_version",
-                "name": "9.2.1",
+                "category": "product_version_range",
+                "name": ">=20200630|<20241112",
                 "product": {
-                  "name": "Advantech WebAccess/SCADA: 9.2.1",
+                  "name": "Weintek cMT3072XH: >=20200630|<20241112",
                   "product_id": "CSAFPID-0001"
                 }
               }
             ],
             "category": "product_name",
-            "name": "WebAccess/SCADA"
+            "name": "cMT3072XH"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">=20200630|<20241112",
+                "product": {
+                  "name": "Weintek cMT3072XH(T): >=20200630|<20241112",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "cMT3072XH(T)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">=20220413|<20240919",
+                "product": {
+                  "name": "Weintek cMT-SVRX-820: >=20220413|<20240919",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "cMT-SVRX-820"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">=20230308|<20250827",
+                "product": {
+                  "name": "Weintek cMT-CTRL01: >=20230308|<20250827",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "cMT-CTRL01"
           }
         ],
         "category": "vendor",
-        "name": "Advantech"
+        "name": "Weintek"
       }
     ]
   },
   "vulnerabilities": [
     {
-      "cve": "CVE-2025-14850",
+      "cve": "CVE-2025-14750",
       "cwe": {
-        "id": "CWE-22",
-        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+        "id": "CWE-472",
+        "name": "External Control of Assumed-Immutable Web Parameter"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "The affected product is vulnerable to directory traversal, which may allow an attacker to delete arbitrary files.",
+          "text": "The web application does not sufficiently verify inputs that are assumed to be immutable but are actually externally controllable. A low-privileged user can modify the parameters and potentially manipulate account-level privileges. ",
           "title": "Vulnerability Summary"
         }
       ],
       "product_status": {
         "known_affected": [
-          "CSAFPID-0001"
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004"
         ]
       },
       "references": [
         {
           "category": "external",
-          "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-14850"
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/472.html"
         },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
-        },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N"
-        }
-      ],
-      "remediations": [
-        {
-          "category": "vendor_fix",
-          "details": "Advantech recommends users apply the following mitigations update to WebAccess/SCADA: Version 9.2.2.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "url": "https://www.advantech.com/en-us/support/details/installation?id=1-MS9MJV"
-        }
-      ],
-      "scores": [
-        {
-          "cvss_v3": {
-            "baseScore": 8.1,
-            "baseSeverity": "HIGH",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
-            "version": "3.1"
-          },
-          "products": [
-            "CSAFPID-0001"
-          ]
-        }
-      ]
-    },
-    {
-      "cve": "CVE-2025-14849",
-      "cwe": {
-        "id": "CWE-434",
-        "name": "Unrestricted Upload of File with Dangerous Type"
-      },
-      "notes": [
-        {
-          "category": "summary",
-          "text": "The affected product is vulnerable to unrestricted file upload, which may allow an attacker to remotely execute arbitrary code.",
-          "title": "Vulnerability Summary"
-        }
-      ],
-      "product_status": {
-        "known_affected": [
-          "CSAFPID-0001"
-        ]
-      },
-      "references": [
         {
           "category": "external",
           "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-14849"
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-14750"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
         },
         {
           "category": "external",
@@ -334,206 +325,179 @@
       ],
       "remediations": [
         {
+          "category": "mitigation",
+          "details": "Weintek recommends users implement the following mitigation techniques:",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004"
+          ]
+        },
+        {
           "category": "vendor_fix",
-          "details": "Advantech recommends users apply the following mitigations update to WebAccess/SCADA: Version 9.2.2.",
+          "details": "cMT3072XH: Version 20241112",
           "product_ids": [
             "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "cMT3072XH(T): Version 20241112",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "cMT-SVRX-820: Version 20240919",
+          "product_ids": [
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "cMT-CTRL01: Version 20250827",
+          "product_ids": [
+            "CSAFPID-0004"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information, see Weintek's planned notice: https://dl.weintek.com/public/Document/TEC/TEC25003E_cMT_EasyWeb_V2_Security_Issues.pdf",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004"
           ],
-          "url": "https://www.advantech.com/en-us/support/details/installation?id=1-MS9MJV"
+          "url": "https://dl.weintek.com/public/Document/TEC/TEC25003E_cMT_EasyWeb_V2_Security_Issues.pdf"
         }
       ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 8.8,
+            "baseScore": 8.3,
             "baseSeverity": "HIGH",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L",
             "version": "3.1"
           },
           "products": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004"
           ]
         }
       ]
     },
     {
-      "cve": "CVE-2025-14848",
+      "cve": "CVE-2025-14751",
       "cwe": {
-        "id": "CWE-36",
-        "name": "Absolute Path Traversal"
+        "id": "CWE-620",
+        "name": "Unverified Password Change"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "The affected product is vulnerable to absolute directory traversal, which may allow an attacker to determine the existence of arbitrary files.",
+          "text": "A low-privileged user can bypass account credentials without confirming the user's current authentication state, which may lead to unauthorized privilege escalation.",
           "title": "Vulnerability Summary"
         }
       ],
       "product_status": {
         "known_affected": [
-          "CSAFPID-0001"
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004"
         ]
       },
       "references": [
         {
           "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/620.html"
+        },
+        {
+          "category": "external",
           "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-14848"
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-14751"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
         }
       ],
       "remediations": [
         {
-          "category": "vendor_fix",
-          "details": "Advantech recommends users apply the following mitigations update to WebAccess/SCADA: Version 9.2.2.",
+          "category": "mitigation",
+          "details": "Weintek recommends users implement the following mitigation techniques:",
           "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "url": "https://www.advantech.com/en-us/support/details/installation?id=1-MS9MJV"
-        }
-      ],
-      "scores": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004"
+          ]
+        },
         {
-          "cvss_v3": {
-            "baseScore": 4.3,
-            "baseSeverity": "MEDIUM",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
-            "version": "3.1"
-          },
-          "products": [
+          "category": "vendor_fix",
+          "details": "cMT3072XH: Version 20241112",
+          "product_ids": [
             "CSAFPID-0001"
           ]
-        }
-      ]
-    },
-    {
-      "cve": "CVE-2025-46268",
-      "cwe": {
-        "id": "CWE-89",
-        "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
-      },
-      "notes": [
-        {
-          "category": "summary",
-          "text": "The affected product is vulnerable to SQL injection, which may allow an attacker to execute arbitrary SQL commands.",
-          "title": "Vulnerability Summary"
-        }
-      ],
-      "product_status": {
-        "known_affected": [
-          "CSAFPID-0001"
-        ]
-      },
-      "references": [
-        {
-          "category": "external",
-          "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-46268"
         },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
-        },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N"
-        }
-      ],
-      "remediations": [
         {
           "category": "vendor_fix",
-          "details": "Advantech recommends users apply the following mitigations update to WebAccess/SCADA: Version 9.2.2.",
+          "details": "cMT3072XH(T): Version 20241112",
           "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "url": "https://www.advantech.com/en-us/support/details/installation?id=1-MS9MJV"
-        }
-      ],
-      "scores": [
-        {
-          "cvss_v3": {
-            "baseScore": 6.3,
-            "baseSeverity": "MEDIUM",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
-            "version": "3.1"
-          },
-          "products": [
             "CSAFPID-0001"
           ]
-        }
-      ]
-    },
-    {
-      "cve": "CVE-2025-67653",
-      "cwe": {
-        "id": "CWE-22",
-        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
-      },
-      "notes": [
-        {
-          "category": "summary",
-          "text": "The affected product is vulnerable to directory traversal, which may allow an attacker to determine the existence of arbitrary files.",
-          "title": "Vulnerability Summary"
-        }
-      ],
-      "product_status": {
-        "known_affected": [
-          "CSAFPID-0001"
-        ]
-      },
-      "references": [
-        {
-          "category": "external",
-          "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-67653"
         },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
-        },
-        {
-          "category": "external",
-          "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=2025-67653"
-        },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
-        }
-      ],
-      "remediations": [
         {
           "category": "vendor_fix",
-          "details": "Advantech recommends users apply the following mitigations update to WebAccess/SCADA: Version 9.2.2.",
+          "details": "cMT-SVRX-820: Version 20240919",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0003"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "cMT-CTRL01: Version 20250827",
+          "product_ids": [
+            "CSAFPID-0004"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information, see Weintek's planned notice: https://dl.weintek.com/public/Document/TEC/TEC25003E_cMT_EasyWeb_V2_Security_Issues.pdf",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004"
           ],
-          "url": "https://www.advantech.com/en-us/support/details/installation?id=1-MS9MJV"
+          "url": "https://dl.weintek.com/public/Document/TEC/TEC25003E_cMT_EasyWeb_V2_Security_Issues.pdf"
         }
       ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 4.3,
-            "baseSeverity": "MEDIUM",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+            "baseScore": 8.3,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L",
             "version": "3.1"
           },
           "products": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004"
           ]
         }
       ]
