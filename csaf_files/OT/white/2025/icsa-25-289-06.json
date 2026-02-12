@@ -2,8 +2,11 @@
   "document": {
     "acknowledgments": [
       {
-        "organization": "Siemens",
-        "summary": "reporting these vulnerabilities to CISA."
+        "names": [
+          "Thomas Wache", "Yann Breut"
+        ],
+        "organization": "Airbus Defence and Space - Cyber Program",
+        "summary": "reporting to Siemens"
       }
     ],
     "category": "csaf_security_advisory",
@@ -19,7 +22,7 @@
     "notes": [
       {
         "category": "summary",
-        "text": "SiPass integrated before V3.0 contains multiple vulnerabilities that could allow an unauthenticated remote attacker to exploit user accounts, manipulate data, impersonate users, or achieve arbitrary code execution on the SiPass integrated server.\n\nSiemens has released a new version for SiPass integrated and recommends to update to the latest version.",
+        "text": "SiPass integrated contains multiple vulnerabilities that could allow an unauthenticated remote attacker to exploit user accounts, manipulate data, impersonate users, or achieve arbitrary code execution on the SiPass integrated server.\n\nSiemens has released a new version for SiPass integrated and recommends to update to the latest version.",
         "title": "Summary"
       },
       {
@@ -112,12 +115,12 @@
     "references": [
       {
         "category": "self",
-        "summary": "SSA-599451: Multiple Vulnerabilities in SiPass integrated Before V3.0 - CSAF Version",
+        "summary": "SSA-599451: Multiple Vulnerabilities in SiPass integrated - CSAF Version",
         "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-599451.json"
       },
       {
         "category": "self",
-        "summary": "SSA-599451: Multiple Vulnerabilities in SiPass integrated Before V3.0 - HTML Version",
+        "summary": "SSA-599451: Multiple Vulnerabilities in SiPass integrated - HTML Version",
         "url": "https://cert-portal.siemens.com/productcert/html/ssa-599451.html"
       },
       {
@@ -161,14 +164,14 @@
         "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
       }
     ],
-    "title": "Siemens SiPass",
+    "title": "Siemens SiPass Integrated",
     "tracking": {
-      "current_release_date": "2025-10-14T00:00:00.000000Z",
+      "current_release_date": "2026-02-12T07:00:00.000000Z",
       "generator": {
-        "date": "2025-10-15T20:12:07.711868Z",
+        "date": "2026-02-11T23:15:53.910733Z",
         "engine": {
           "name": "CISA CSAF Generator",
-          "version": "1.0.0"
+          "version": "1.5.0"
         }
       },
       "id": "ICSA-25-289-06",
@@ -176,13 +179,25 @@
       "revision_history": [
         {
           "date": "2025-10-14T00:00:00.000000Z",
-          "legacy_version": "1.0",
+          "legacy_version": "Initial",
           "number": "1",
           "summary": "Publication Date"
+        },
+        {
+          "date": "2026-02-10T00:00:00.000000Z",
+          "legacy_version": "Additional Release 1",
+          "number": "2",
+          "summary": "Added fix version V2.95 IR23 for CVE-2023-35002"
+        },
+        {
+          "date": "2026-02-12T07:00:00.000000Z",
+          "legacy_version": "Latest Updated CISA Republication",
+          "number": "3",
+          "summary": "CISA Republication update based on Siemens ProductCERT SSA-599451 advisory"
         }
       ],
       "status": "final",
-      "version": "1"
+      "version": "3"
     }
   },
   "product_tree": {
@@ -202,6 +217,20 @@
             ],
             "category": "product_name",
             "name": "SiPass integrated"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<2.95.3.23",
+                "product": {
+                  "name": "SiPass integrated V2.95",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SiPass integrated V2.95"
           }
         ],
         "category": "vendor",
@@ -219,37 +248,47 @@
       "notes": [
         {
           "category": "summary",
-          "text": "A heap-based buffer overflow vulnerability exists in the pictwread functionality of Accusoft ImageGear 20.1. A specially crafted malformed file can lead to arbitrary code execution. An attacker can provide a malicious file to trigger this vulnerability.",
+          "text": "A heap-based buffer overflow vulnerability exists in the pictwread functionality of Accusoft ImageGear 20.1. A specially crafted, malformed file can lead to arbitrary code execution. An attacker can provide a malicious file to trigger this vulnerability.",
           "title": "Summary"
         }
       ],
       "product_status": {
         "known_affected": [
-          "CSAFPID-0001"
+          "CSAFPID-0002"
         ]
       },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2023-35002"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/119.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
       "remediations": [
         {
           "category": "mitigation",
           "details": "Restrict access to authorized and trusted personal only",
           "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "Avoid uploading untrusted image files in affected applications",
-          "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0002"
           ]
         },
         {
           "category": "vendor_fix",
-          "details": "Update to V3.0 or later version",
+          "details": "Update to V2.95.3.23 or later version",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0002"
           ],
-          "url": "https://support.industry.siemens.com/cs/ww/en/view/109995331/"
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/109827049/"
         }
       ],
       "scores": [
@@ -261,7 +300,7 @@
             "version": "3.1"
           },
           "products": [
-            "CSAFPID-0001"
+            "CSAFPID-0002"
           ]
         }
       ],
@@ -276,7 +315,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "Affected server applications are vulnerable to stored Cross-Site Scripting (XSS), allowing an attacker to inject malicious code that can be executed by other users when they visit the affected page.\r\n\r\nSuccessful exploitation allows an attacker to impersonate other users within the application and steal their session data. This could enable unauthorized access to accounts and potentially lead to privilege escalation.",
+          "text": "Affected server applications are vulnerable to stored cross-site scripting (XSS), which allows an attacker to inject malicious code that can be executed by other users when they visit the affected page. Successful exploitation enables an attacker to impersonate other users within the application and steal their session data. This could enable unauthorized access to accounts and potentially lead to privilege escalation.",
           "title": "Summary"
         }
       ],
@@ -285,6 +324,23 @@
           "CSAFPID-0001"
         ]
       },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-40772"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/79.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+        }
+      ],
       "remediations": [
         {
           "category": "mitigation",
@@ -326,7 +382,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "Affected server applications contains a broken access control vulnerability. The authorization mechanism lacks sufficient server-side checks, allowing an attacker to execute a specific API request.\r\n\r\nSuccessful exploitation allows an attacker to potentially manipulate data belonging to other users.",
+          "text": "Affected server applications contain a broken access control vulnerability. The authorization mechanisms lack sufficient server-side checks, which allows an attacker to execute specific API requests. Successful exploitation may allow an attacker to manipulate data belonging to other users.",
           "title": "Summary"
         }
       ],
@@ -335,6 +391,23 @@
           "CSAFPID-0001"
         ]
       },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-40773"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/639.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+        }
+      ],
       "remediations": [
         {
           "category": "mitigation",
@@ -376,7 +449,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "Affected server applications store user passwords encrypted in its database. Decryption keys are accessible to users with administrative privileges, allowing them to recover passwords.\r\n\r\nSuccessful exploitation of this vulnerability allows an attacker to obtain and use valid user passwords. This can lead to unauthorized access to user accounts, data breaches, and potential system compromise.",
+          "text": "Affected server applications store user passwords in an encrypted format in their databases. Decryption keys are accessible to users with administrative privileges, which allows them to recover passwords. Successful exploitation of this vulnerability enables an attacker to obtain and use valid user passwords. This can lead to unauthorized access to user accounts, data breaches, and potential system compromise.",
           "title": "Summary"
         }
       ],
@@ -385,6 +458,23 @@
           "CSAFPID-0001"
         ]
       },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-40774"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/257.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+        }
+      ],
       "remediations": [
         {
           "category": "mitigation",
