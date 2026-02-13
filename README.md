@@ -14,4 +14,4 @@ For details of CISA's CSAF Trusted Provider Role, including Public PGP key, visi
 In addition to producing CSAFs from their own security advisories, CISA also republishes CSAFs from vendor partners. These republication CSAFs retain the dates and revision history of the original vendor CSAF.
 
 ### CSAF2MD Tool
-Check out [CSAF2MD](/tools/csaf2md), a tool that converts CSAF v2.0 JSON files into easily readable Markdown documents.
+Check out [CSAF2MD](/tools/csaf2md), a tool that converts CSAF v2.0 JSON files into human-readable Markdown documents.
