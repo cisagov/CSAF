@@ -12,7 +12,6 @@ import os
 import json
 import re
 import traceback
-import ast
 ##########################
 # MIT License
 ##########################
@@ -97,7 +96,6 @@ def processJson(in_csaf, out_md):
     try:
         with open(in_csaf, 'r', encoding="utf-8") as json_file:
             data = json.loads(json_file.read())
-            data = ast.literal_eval(str(data).replace('\\n',' ').replace('\\r',''))
             can_process, temp_errs = meets_minimum_requirements(data)
             has_bad_cwes = checkBadCWEs(data)
             stop_conversion = has_bad_cwes and BLOCK_BAD_CWES
