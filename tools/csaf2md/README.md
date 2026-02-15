@@ -6,28 +6,47 @@ Follow these steps to set up the CSAF2MD tool:
 
 1. Open a terminal or command prompt
 2. Navigate to the **csaf2md** directory in this repository
-3. (Optional but Recommended) Activate a Virtual Environment to isolate dependencies.
-    1. Create the virtual environment.
-    
-    ```python -m venv .venv```
-    
-    2. Activate the virtual environment. 
-      * On Windows:
+3. Install dependencies with **uv**:
 
-      ```.\.venv\Scripts\activate```
+```bash
+uv sync
+```
 
-      * On macOS/Linux:
+### Alternate Setup (pip + venv)
+If you prefer not to use uv:
 
-      ```source .venv/bin/activate```
-4. Install the tool's requirements.
+1. Create a virtual environment:
 
-```pip install -r requirements.txt```
+```bash
+python -m venv .venv
+```
+
+2. Activate it:
+* On Windows:
+
+```bash
+.\.venv\Scripts\activate
+```
+
+* On macOS/Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+3. Install requirements:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 
 * By default, CSAF2MD prevents the use of discouraged or prohibited CWEs. To allow these CWEs, set the **BLOCK_BAD_CWES** flag to **FALSE** in **lib/env.py**.
 * Place all CSAF JSON files to convert in the **input** directory.
-* Run the script: **csaf2md.py**.
+* Run the script:
+  * with uv: `uv run csaf2md.py`
+  * with pip/venv: `python csaf2md.py`
 * The resulting markdown advisory files are located in the **"output"** directory.
 * If any conversion fails, the tool generates **csaf_fail_list.txt** listing the files that could not be converted in the current run of the script, including all generated errors.
 * Any optional field considered standard for CISA's advisories but optional to Oasis-Open's standard are given the **INSERT_** tag in the resulting markdown file if not found in the CSAF.
