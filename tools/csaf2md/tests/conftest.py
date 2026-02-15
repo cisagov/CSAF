@@ -5,6 +5,7 @@ from typing import List, Tuple
 import pytest
 
 CSAF2MD_DIR = Path(__file__).resolve().parents[1]
+REPO_ROOT = Path(__file__).resolve().parents[3]
 RESOURCES_DIR = CSAF2MD_DIR / "tests" / "resources"
 INPUT_DIR = RESOURCES_DIR / "input"
 EXPECTED_DIR = RESOURCES_DIR / "expected"
@@ -38,19 +39,66 @@ def snapshot_cases() -> List[Tuple[str, Path, Path]]:
     return cases
 
 
+def smoke_cases() -> List[Tuple[str, Path]]:
+    # Cover all advisory files under year folders:
+    # csaf_files/<IT|OT>/white/<YYYY>/*.json
+    cases: List[Tuple[str, Path]] = []
+    for family in ("IT", "OT"):
+        base = REPO_ROOT / "csaf_files" / family / "white"
+        for input_path in sorted(base.glob("[0-9][0-9][0-9][0-9]/*.json")):
+            label = f"{family.lower()}_{input_path.stem}"
+            cases.append((label, input_path))
+    return cases
+
+
 def pytest_terminal_summary(terminalreporter, exitstatus, config):
-    cases = snapshot_cases()
-    total_cases = len(cases)
-    passed = 0
-    failed = 0
+    snap = snapshot_cases()
+    smoke = smoke_cases()
+    snapshot_passed = 0
+    snapshot_failed = 0
+    smoke_converted = 0
+    smoke_expected_reject = 0
+    smoke_unexpected_failure = 0
+    smoke_report_count = 0
+
+    def _smoke_outcome(report):
+        for key, value in getattr(report, "user_properties", []):
+            if key == "smoke_outcome":
+                return value
+        return None
+
     for report in terminalreporter.stats.get("passed", []):
         if "test_process_json_snapshot_resources" in report.nodeid:
-            passed += 1
+            snapshot_passed += 1
     for report in terminalreporter.stats.get("failed", []):
         if "test_process_json_snapshot_resources" in report.nodeid:
-            failed += 1
+            snapshot_failed += 1
+
+    smoke_reports = []
+    smoke_reports.extend(terminalreporter.stats.get("passed", []))
+    smoke_reports.extend(terminalreporter.stats.get("failed", []))
+    smoke_reports.extend(terminalreporter.stats.get("skipped", []))
+
+    for report in smoke_reports:
+        if getattr(report, "when", "call") != "call":
+            continue
+        if "test_process_json_smoke" not in report.nodeid:
+            continue
+        smoke_report_count += 1
+        outcome = _smoke_outcome(report)
+        if outcome == "converted":
+            smoke_converted += 1
+        elif outcome == "expected_reject":
+            smoke_expected_reject += 1
+        elif outcome == "unexpected_failure":
+            smoke_unexpected_failure += 1
 
     terminalreporter.write_sep("-", "csaf2md integration test summary")
-    terminalreporter.write_line(f"snapshot cases: {total_cases}")
-    terminalreporter.write_line(f"snapshot pass:  {passed}")
-    terminalreporter.write_line(f"snapshot fail:  {failed}")
+    terminalreporter.write_line(f"snapshot cases: {len(snap)}")
+    terminalreporter.write_line(f"snapshot pass:  {snapshot_passed}")
+    terminalreporter.write_line(f"snapshot fail:  {snapshot_failed}")
+    terminalreporter.write_line(f"smoke cases:    {len(smoke)}")
+    terminalreporter.write_line(f"smoke converted:          {smoke_converted}")
+    terminalreporter.write_line(f"smoke expected reject:    {smoke_expected_reject}")
+    terminalreporter.write_line(f"smoke unexpected failure: {smoke_unexpected_failure}")
+    terminalreporter.write_line(f"smoke reports seen:       {smoke_report_count}")
