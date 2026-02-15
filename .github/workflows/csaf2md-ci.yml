@@ -1,0 +1,82 @@
+name: csaf2md-ci
+
+on:
+  pull_request:
+    paths:
+      - "tools/csaf2md/**"
+      - "csaf_files/**"
+      - ".github/workflows/csaf2md-ci.yml"
+  push:
+    branches:
+      - develop
+    paths:
+      - "tools/csaf2md/**"
+      - "csaf_files/**"
+      - ".github/workflows/csaf2md-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  snapshot:
+    name: snapshot (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    defaults:
+      run:
+        working-directory: tools/csaf2md
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+
+      - name: Sync dependencies
+        run: uv sync --group dev
+
+      - name: Run snapshot tests
+        run: uv run pytest -q tests/test_snapshot.py
+
+  smoke:
+    name: smoke (${{ matrix.family }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        family: ["it", "ot"]
+    defaults:
+      run:
+        working-directory: tools/csaf2md
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+
+      - name: Sync dependencies
+        run: uv sync --group dev
+
+      - name: Run smoke tests (IT)
+        if: matrix.family == 'it'
+        run: uv run pytest -q tests/test_smoke.py -k "it_"
+
+      - name: Run smoke tests (OT)
+        if: matrix.family == 'ot'
+        run: uv run pytest -q tests/test_smoke.py -k "ot_"
