@@ -3,10 +3,10 @@
     "acknowledgments": [
       {
         "names": [
-          "Shorabh Karir",
-          "Deepak Singh"
+          "nisu"
         ],
-        "summary": "reported these vulnerabilities to CISA"
+        "organization": "Trend Research",
+        "summary": "reported this vulnerability to CISA"
       }
     ],
     "category": "csaf_security_advisory",
@@ -27,7 +27,7 @@
       },
       {
         "category": "summary",
-        "text": "Successful exploitation of these vulnerabilities could result in an attacker bypassing authentication, or resetting the device password.",
+        "text": "Successful exploitation of this vulnerability may allow an attacker to write arbitrary data beyond the bounds of a stack-allocated buffer, leading to the corruption of a structured exception handler (SEH).",
         "title": "Risk evaluation"
       },
       {
@@ -42,32 +42,12 @@
       },
       {
         "category": "other",
-        "text": "China",
+        "text": "Taiwan",
         "title": "Company headquarters location"
       },
       {
         "category": "general",
-        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:",
-        "title": "Recommended Practices"
-      },
-      {
-        "category": "general",
-        "text": "Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.",
-        "title": "Recommended Practices"
-      },
-      {
-        "category": "general",
-        "text": "Locate control system networks and remote devices behind firewalls and isolating them from business networks.",
-        "title": "Recommended Practices"
-      },
-      {
-        "category": "general",
-        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.",
-        "title": "Recommended Practices"
-      },
-      {
-        "category": "general",
-        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
         "title": "Recommended Practices"
       },
       {
@@ -92,7 +72,7 @@
       },
       {
         "category": "general",
-        "text": "No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.",
+        "text": "No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. This vulnerability is not exploitable remotely.",
         "title": "Recommended Practices"
       }
     ],
@@ -105,18 +85,13 @@
     "references": [
       {
         "category": "self",
-        "summary": "ICS Advisory ICSA-26-041-02 JSON",
-        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-041-02.json"
+        "summary": "ICS Advisory ICSA-26-048-02 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-048-02.json"
       },
       {
         "category": "self",
-        "summary": "ICSA Advisory ICSA-26-041-02 - Web Version",
-        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-041-02"
-      },
-      {
-        "category": "external",
-        "summary": "Recommended Practices",
-        "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01"
+        "summary": "ICSA Advisory ICSA-26-048-02 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-048-02"
       },
       {
         "category": "external",
@@ -159,21 +134,21 @@
         "url": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks"
       }
     ],
-    "title": "ZLAN Information Technology Co. ZLAN5143D",
+    "title": "Delta Electronics ASDA-Soft",
     "tracking": {
-      "current_release_date": "2026-02-10T07:00:00.000000Z",
+      "current_release_date": "2026-02-17T07:00:00.000000Z",
       "generator": {
-        "date": "2026-02-07T05:41:36.090816Z",
+        "date": "2026-02-16T22:23:43.606697Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
         }
       },
-      "id": "ICSA-26-041-02",
-      "initial_release_date": "2026-02-10T07:00:00.000000Z",
+      "id": "ICSA-26-048-02",
+      "initial_release_date": "2026-02-17T07:00:00.000000Z",
       "revision_history": [
         {
-          "date": "2026-02-10T07:00:00.000000Z",
+          "date": "2026-02-17T07:00:00.000000Z",
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
@@ -190,39 +165,39 @@
           {
             "branches": [
               {
-                "category": "product_version",
-                "name": "v1.600",
+                "category": "product_version_range",
+                "name": "<=7.2.0.0",
                 "product": {
-                  "name": "ZLAN Information Technology Co. ZLAN5143D: v1.600",
+                  "name": "Delta Electronics ASDA-Soft: <=7.2.0.0",
                   "product_id": "CSAFPID-0001"
                 }
               }
             ],
             "category": "product_name",
-            "name": "ZLAN5143D"
+            "name": "ASDA-Soft"
           }
         ],
         "category": "vendor",
-        "name": "ZLAN Information Technology Co."
+        "name": "Delta Electronics"
       }
     ]
   },
   "vulnerabilities": [
     {
-      "cve": "CVE-2026-25084",
+      "cve": "CVE-2026-1361",
       "cwe": {
-        "id": "CWE-306",
-        "name": "Missing Authentication for Critical Function"
+        "id": "CWE-121",
+        "name": "Stack-based Buffer Overflow"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "Authentication for the device can be bypassed by directly accessing internal URLs.",
+          "text": "A stack-based buffer overflow vulnerability exists in ASDA_Soft version 7.2.0.0 when parsing .par files.  The root cause is the improper validation of a user-controlled size parameter, which is checked incorrectly against the upper limits of the local buffer. This allows data to be written past the end of the buffer. ",
           "title": "Vulnerability Summary"
         },
         {
           "category": "details",
-          "text": "SSVCv2/E:N/A:Y/2026-02-06T07:00:00.000000Z",
+          "text": "SSVCv2/E:N/A:N/2026-02-16T07:00:00.000000Z",
           "title": "SSVC"
         }
       ],
@@ -235,109 +210,63 @@
         {
           "category": "external",
           "summary": "cwe.mitre.org",
-          "url": "https://cwe.mitre.org/data/definitions/306.html"
+          "url": "https://cwe.mitre.org/data/definitions/121.html"
         },
         {
           "category": "external",
           "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2026-25084"
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-1361"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
         }
       ],
       "remediations": [
         {
-          "category": "vendor_fix",
-          "details": "ZLAN Information Technology Co. did not respond to CISA's attempts at coordination. Users of ZLAN5143D devices are encouraged to contact ZLAN and keep their systems up to date. https://www.zlmcu.com/en/contatct_us.htm",
+          "category": "mitigation",
+          "details": "Delta has fixed this vulnerability and released a new version v7.2.2.0 at Delta Download Center (https://downloadcenter.deltaww.com/en-US/DownloadCenter?v=1&q=asda-soft&sort_expr=cdate&sort_dir=DESC).",
           "product_ids": [
             "CSAFPID-0001"
           ],
-          "url": "https://www.zlmcu.com/en/contatct_us.htm"
-        }
-      ],
-      "scores": [
+          "url": "https://downloadcenter.deltaww.com/en-US/DownloadCenter?v=1&q=asda-soft&sort_expr=cdate&sort_dir=DESC"
+        },
         {
-          "cvss_v3": {
-            "baseScore": 9.8,
-            "baseSeverity": "CRITICAL",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-            "version": "3.1"
-          },
-          "products": [
+          "category": "mitigation",
+          "details": "For more information, see Delta Electronics advisory Delta-PCSA-2026-00003 at https://www.deltaww.com/en-US/service-support/product-cybersecurity/advisory",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://www.deltaww.com/en-US/service-support/product-cybersecurity/advisory"
+        },
+        {
+          "category": "mitigation",
+          "details": "Delta Electronics provides the following general recommendations: Do not click on untrusted internet links or open unsolicited attachments in emails. Avoid exposing control systems and equipment to the Internet. Place control system networks and remote devices behind firewalls, and isolate them from the business network. When remote access is required, use a secure access method, such as a virtual private network (VPN).",
+          "product_ids": [
             "CSAFPID-0001"
           ]
-        }
-      ]
-    },
-    {
-      "cve": "CVE-2026-24789",
-      "cwe": {
-        "id": "CWE-306",
-        "name": "Missing Authentication for Critical Function"
-      },
-      "notes": [
-        {
-          "category": "summary",
-          "text": "An unprotected API endpoint allows an attacker to remotely change the device password without providing authentication.",
-          "title": "Vulnerability Summary"
         },
         {
-          "category": "details",
-          "text": "SSVCv2/E:N/A:Y/2026-02-06T07:00:00.000000Z",
-          "title": "SSVC"
-        }
-      ],
-      "product_status": {
-        "known_affected": [
-          "CSAFPID-0001"
-        ]
-      },
-      "references": [
-        {
-          "category": "external",
-          "summary": "cwe.mitre.org",
-          "url": "https://cwe.mitre.org/data/definitions/306.html"
-        },
-        {
-          "category": "external",
-          "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2026-24789"
-        },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
-        },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
-        }
-      ],
-      "remediations": [
-        {
-          "category": "vendor_fix",
-          "details": "ZLAN Information Technology Co. did not respond to CISA's attempts at coordination. Users of ZLAN5143D devices are encouraged to contact ZLAN and keep their systems up to date. https://www.zlmcu.com/en/contatct_us.htm",
+          "category": "mitigation",
+          "details": "If you have any product-related support concerns, contact Delta via the portal page(https://www.deltaww.com/en-US/service-support/contact-us?type=1) for any information or materials you may require.",
           "product_ids": [
             "CSAFPID-0001"
           ],
-          "url": "https://www.zlmcu.com/en/contatct_us.htm"
+          "url": "https://www.deltaww.com/en-US/service-support/contact-us?type=1"
         }
       ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 9.8,
-            "baseSeverity": "CRITICAL",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
             "version": "3.1"
           },
           "products": [
