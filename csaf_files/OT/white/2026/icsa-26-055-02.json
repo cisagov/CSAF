@@ -1,0 +1,619 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Pentest Limited",
+        "summary": "reported these vulnerabilities to Schneider Electric."
+      },
+      {
+        "names": [
+          "Robin Plugge"
+        ],
+        "summary": "reported these vulnerabilities to Schneider Electric."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "We strongly recommend the following industry cybersecurity best practices.\n\n* Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.\n* Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.\n* Place all controllers in locked cabinets and never leave them in the \u201cProgram\u201d mode.\n* Never connect programming software to any network other than the network intended for that device.\n* Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc. before use in the terminals or any node connected to these networks.\n* Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.\n* Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the Internet.\n* When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.\n\nFor more information refer to the Schneider Electric [Recommended Cybersecurity Best Practices](https://www.se.com/us/en/download/document/7EN52-0390/) document.",
+        "title": "General Security Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "This document provides an overview of the identified vulnerability or vulnerabilities and actions required to mitigate. For more details and assistance on how to protect your installation, contact your local Schneider Electric representative or Schneider Electric Industrial Cybersecurity Services: https://www.se.com/ww/en/work/solutions/cybersecurity/. These organizations will be fully aware of this situation and can support you through the process.\n\nFor further information related to cybersecurity in Schneider Electric's products, visit the company's cybersecurity support portal page: https://www.se.com/ww/en/work/support/cybersecurity/overview.jsp",
+        "title": "For More Information"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "THIS NOTIFICATION DOCUMENT, THE INFORMATION CONTAINED HEREIN, AND ANY MATERIALS LINKED FROM IT (COLLECTIVELY, THIS \u201cNOTIFICATION\u201d) ARE INTENDED TO HELP PROVIDE AN OVERVIEW OF THE IDENTIFIED SITUATION AND SUGGESTED MITIGATION ACTIONS, REMEDIATION, FIX, AND/OR GENERAL SECURITY RECOMMENDATIONS AND IS PROVIDED ON AN \u201cAS-IS\u201d BASIS WITHOUT WARRANTY OR GUARANTEE OF ANY KIND.  SCHNEIDER ELECTRIC DISCLAIMS ALL WARRANTIES RELATING TO THIS NOTIFICATION, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. SCHNEIDER ELECTRIC MAKES NO WARRANTY THAT THE NOTIFICATION WILL RESOLVE THE IDENTIFIED SITUATION. IN NO EVENT SHALL SCHNEIDER ELECTRIC BE LIABLE FOR ANY DAMAGES OR LOSSES WHATSOEVER IN CONNECTION WITH THIS NOTIFICATION, INCLUDING DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, LOSS OF BUSINESS PROFITS OR SPECIAL DAMAGES, EVEN IF SCHNEIDER ELECTRIC HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. YOUR USE OF THIS NOTIFICATION IS AT YOUR OWN RISK, AND YOU ARE SOLELY LIABLE FOR ANY DAMAGES TO YOUR SYSTEMS OR ASSETS OR OTHER LOSSES THAT MAY RESULT FROM YOUR USE OF THIS NOTIFICATION. SCHNEIDER ELECTRIC RESERVES THE RIGHT TO UPDATE OR CHANGE THIS NOTIFICATION AT ANY TIME AND IN ITS SOLE DISCRETION",
+        "title": "LEGAL DISCLAIMER"
+      },
+      {
+        "category": "general",
+        "text": "Schneider's purpose is to create Impact by empowering all to make the most of our energy and resources, bridging progress and sustainability for all. We call this Life Is On. Our mission is to be the trusted partner in sustainability and efficiency. We are a global industrial technology leader bringing world-leading expertise in electrification, automation and digitization to smart industries, resilient infrastructure, future-proof data centers, intelligent buildings, and intuitive homes. Anchored by our deep domain expertise, we provide integrated end-to-end lifecycle AI enabled Industrial IoT solutions with connected products, automation, software and services, delivering digital twins to enable profitable growth for our customers. We are a people company with an ecosystem of 150,000 colleagues and more than a million partners operating in over 100 countries to ensure proximity to our customers and stakeholders. We embrace diversity and inclusion in everything we do, guided by our meaningful purpose of a sustainable future for all. \n\n www.se.com",
+        "title": "About Schneider Electric"
+      },
+      {
+        "category": "summary",
+        "text": "Schneider Electric is aware of a vulnerability in EcoStruxure Building Operation Workstation and EcoStruxure Building Operation WebStation.\r\n[EcoStruxure Building Operation (EBO)](https://www.se.com/ww/en/product-range/62111-ecostruxure-building-operation-software/#overview) is an open and scalable software platform providing insight, control and management of multiple building systems and devices in one mobile-enabled convenient view. It delivers valuable data for decision-making to improve energy management and increase efficiency for better building performance and comfort, reduced carbon, and more sustainable building environments. Failure to apply the remediations below may risk exposure of local files or denial of service, which could result in data breaches, and operational disruptions.",
+        "title": "Overview"
+      },
+      {
+        "category": "other",
+        "text": "The severity of vulnerabilities was calculated using the CVSS Base metrics for 4.0 ([CVSS v4.0](https://www.first.org/cvss/calculator/4.0)). CVSS v3.1 \nwill be still evaluated until the adoption of CVSS v4.0 by the industry. The severity was calculated without incorporating the Temporal and Environmental metrics. Schneider Electric recommends that customers score the CVSS Environmental metrics, which are specific to end-user organizations, and consider factors such as the presence of mitigations in that environment. Environmental metrics may refine the relative severity posed by the vulnerabilities described in this document within a customer's environment."
+      },
+      {
+        "category": "other",
+        "text": "Customers should use appropriate patching methodologies when applying these patches to their systems. We strongly recommend the use of back-ups and evaluating the impact of these patches in a Test and Development environment or on an offline infrastructure. Contact Schneider Electric's [Customer Care Center](https://www.se.com/us/en/work/support/contacts.jsp) if you need assistance removing a patch. "
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of Schneider Electric SEVD-2026-041-02 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Schneider Electric directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "other",
+        "text": "Commercial Facilities, Energy, Government Services and Facilities, Healthcare and Public Health, Information Technology, Transportation Systems, Financial Services, Defense Industrial Base, Critical Manufacturing",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "France",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability:\n* Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.\n* Locate control system networks and remote devices behind firewalls and isolate them from business networks.\n* When remote access is required, use more secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. (https://us-cert.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf)",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies. (https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf)",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "Multiple Vulnerabilities on EcoStruxure Building Operation Workstation and EcoStruxure Building Operation Webstation - SEVD-2026-041-02 CSAF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-041-02&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2026-041-02.json"
+      },
+      {
+        "category": "self",
+        "summary": "Multiple Vulnerabilities on EcoStruxure Building Operation Workstation and EcoStruxure Building Operation Webstation - SEVD-2026-041-02 PDF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-041-02&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2026-041-02.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Cybersecurity Best Practices",
+        "url": "https://www.se.com/ww/en/download/document/7EN52-0390/"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-055-02 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-055-02.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-055-02 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-055-02"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "Schneider Electric EcoStruxure Building Operation Workstation",
+    "tracking": {
+      "current_release_date": "2026-02-24T07:00:00.000000Z",
+      "generator": {
+        "date": "2026-02-23T19:46:35.093860Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-055-02",
+      "initial_release_date": "2026-02-10T08:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2026-02-10T08:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Original Release"
+        },
+        {
+          "date": "2026-02-24T07:00:00.000000Z",
+          "legacy_version": "CISA Republication",
+          "number": "2",
+          "summary": "Initial CISA Republication of Schneider Electric SEVD-2026-041-02 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "2"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/>=7.0.x|<7.0.3.2000_(CP1)",
+                "product": {
+                  "name": "EcoStruxure Building Operation Workstation All 7.0.x versions prior to 7.0.3.2000 (CP1)",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "7.0.3.2000_CP1",
+                "product": {
+                  "name": "EcoStruxure Building Operation Workstation Version 7.0.3.2000 (CP1)",
+                  "product_id": "CSAFPID-0002"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/>=6.x|<6.0.4.14001_(CP10)",
+                "product": {
+                  "name": "EcoStruxure Building Operation Workstation All 6.x versions prior to 6.0.4.14001 (CP10)",
+                  "product_id": "CSAFPID-0003"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6.0.4.14001_CP10",
+                "product": {
+                  "name": "EcoStruxure Building Operation Workstation Version 6.0.4.14001 (CP10)",
+                  "product_id": "CSAFPID-0004"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/>=7.0.x|<7.0.2",
+                "product": {
+                  "name": "EcoStruxure Building Operation Workstation All 7.0.x versions prior to 7.0.2",
+                  "product_id": "CSAFPID-0005"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "7.0.2",
+                "product": {
+                  "name": "EcoStruxure Building Operation Workstation Version 7.0.2",
+                  "product_id": "CSAFPID-0006"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/>=6.0.x|<6.0.4.7000_(CP5)",
+                "product": {
+                  "name": "EcoStruxure Building Operation Workstation All 6.0.x versions prior to 6.0.4.7000 (CP5)",
+                  "product_id": "CSAFPID-0007"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6.0.4.7000_CP5",
+                "product": {
+                  "name": "EcoStruxure Building Operation Workstation Version 6.0.4.7000 (CP5)",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Building Operation Workstation"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/>=7.0.x|<7.0.3.2000_(CP1)",
+                "product": {
+                  "name": "EcoStruxure Building Operation WebStation All 7.0.x versions prior to 7.0.3.2000 (CP1)",
+                  "product_id": "CSAFPID-0009"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "7.0.3.2000_CP1",
+                "product": {
+                  "name": "EcoStruxure Building Operation WebStation Version 7.0.3.2000 (CP1)",
+                  "product_id": "CSAFPID-0010"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/>=6.x|<6.0.4.14001_(CP10)",
+                "product": {
+                  "name": "EcoStruxure Building Operation WebStation All 6.x versions prior to 6.0.4.14001 (CP10)",
+                  "product_id": "CSAFPID-0011"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6.0.4.14001_CP10",
+                "product": {
+                  "name": "EcoStruxure Building Operation WebStation Version 6.0.4.14001 (CP10)",
+                  "product_id": "CSAFPID-0012"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/>=7.0.x|<7.0.2",
+                "product": {
+                  "name": "EcoStruxure Building Operation Webstation All 7.0.x versions prior to 7.0.2",
+                  "product_id": "CSAFPID-0013"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "7.0.2",
+                "product": {
+                  "name": "EcoStruxure Building Operation Webstation Version 7.0.2",
+                  "product_id": "CSAFPID-0014"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:generic/>=6.0.x|<6.0.4.7000_(CP5)",
+                "product": {
+                  "name": "EcoStruxure Building Operation Webstation All 6.0.x versions prior to 6.0.4.7000 (CP5)",
+                  "product_id": "CSAFPID-0015"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6.0.4.7000_CP5",
+                "product": {
+                  "name": "EcoStruxure Building Operation Webstation Version 6.0.4.7000 (CP5)",
+                  "product_id": "CSAFPID-0016"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "EcoStruxure Building Operation WebStation"
+          }
+        ],
+        "category": "vendor",
+        "name": "Schneider Electric"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Robin Plugge"
+          ]
+        }
+      ],
+      "cve": "CVE-2026-1227",
+      "cwe": {
+        "id": "CWE-611",
+        "name": "Improper Restriction of XML External Entity Reference"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "An improper restriction of XML external entity reference vulnerability exists that could result in unauthorized disclosure of local files, unauthorized interaction with the EBO system, or denial-of-service conditions. This occurs when a local user uploads a maliciously crafted TGML graphics file to the EBO server from Workstation. ",
+          "title": "CVE Description"
+        },
+        {
+          "category": "details",
+          "text": "CVSS v4.0 Base Score 7.0 | High | [CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N](https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N)",
+          "title": "CVSS v4.0 Score"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0004",
+          "CSAFPID-0010",
+          "CSAFPID-0012"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003",
+          "CSAFPID-0009",
+          "CSAFPID-0011"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-1227"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/611.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The following versions of EcoStruxure Building Operation Workstation and EcoStruxure Building Operation WebStation include a fix for CVE-2026-1227: \r\n\u2022 7.0.3.2000 (CP1)\r\n\r\nStep 1: Navigate to this link:\r\nhttps://www.se.com/myschneider/documentsDownloadCenter/detail?id=EBO-Patch-v7-0\r\n\r\nStep 2: Download 'EcoStruxure Building Operation Patch v7.0'\r\nStep 3: Follow the installation instructions provided in the accompanying readme file.\r\nAdditionally, ensure you are following the [EBO hardening guidelines](https://ecostruxure-building-help.se.com/bms/Topics/show.castle?id=14923&productversion=7.1&locale=en-US).",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0009"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/myschneider/documentsDownloadCenter/detail?id=EBO-Patch-v7-0"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "The following versions of EcoStruxure Building Operation Workstation and EcoStruxure Building Operation WebStation includes a fix for CVE-2026-1227: \n\u2022 6.0.4.14001 (CP10)\n\r\nStep 1: Locate the appropriate version for your system here:  \nhttps://www.se.com/myschneider/documentsDownloadCenter/detail?id=EBO-Patch-v6-0\nStep 2: Download \u2018EcoStruxure Building Operation Patch v6.0\u2018 \nStep 3: Follow the installation instructions provided in the accompanying readme file. \nAdditionally, ensure you are following the [EBO hardening guidelines](https://ecostruxure-building-help.se.com/bms/Topics/show.castle?id=14923&productversion=7.1&locale=en-US).",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0011"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/myschneider/documentsDownloadCenter/detail?id=EBO-Patch-v6-0"
+        },
+        {
+          "category": "mitigation",
+          "details": "If customers choose not to apply the remediation provided above, they should immediately apply the following mitigations to reduce the risk of exploit:  \r\n\u2022 Implement strong access controls to limit system access to authorized personnel.\r\n\u2022 Use multi factor authentication if using EBO version 7.0 or later.\r\n\u2022 Use firewalls to segregate networks and protect the building management system.\r\n\u2022 Regularly monitor system activity.\r\n\u2022 Ensure you are following [EBO hardening guidelines](https://ecostruxure-building-help.se.com/bms/Topics/show.castle?id=14923&productversion=7.1&locale=en-US).",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0009",
+            "CSAFPID-0011"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://ecostruxure-building-help.se.com/bms/Topics/show.castle?id=14923&productversion=7.1&locale=en-US"
+        },
+		{
+          "category": "mitigation",
+          "details": "For more information see the associated Schneider Electric security advisory SEVD-2026-041-02, titled \u2018Multiple Vulnerabilities on EcoStruxure Building Operation Workstation and EcoStruxure Building Operation WebStation\u2018. \r\n\u2022 PDF Version: [https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-041-02&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2026-041-02.pdf](https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-041-02&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2026-041-02.pdf) \r\n\u2022 CSAF Version:  [https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-041-02&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2026-041-02.json](https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-041-02&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2026-041-02.json).",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0009",
+            "CSAFPID-0011"
+          ],
+          "url": "https://ecostruxure-building-help.se.com/bms/Topics/show.castle?id=14923&productversion=7.1&locale=en-US"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "LOCAL",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.3,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "userInteraction": "REQUIRED",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0009",
+            "CSAFPID-0011"
+          ]
+        }
+      ],
+      "title": "CVE-2026-1227"
+    },
+    {
+      "acknowledgments": [
+        {
+          "organization": "Pentest Limited"
+        }
+      ],
+      "cve": "CVE-2026-1226",
+      "cwe": {
+        "id": "CWE-94",
+        "name": "Improper Control of Generation of Code ('Code Injection')"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "An improper control of generation of code vulnerability exists that could result in the execution of untrusted or unintended code within the application. This occurs when maliciously crafted design content is processed through a TGML graphics file. ",
+          "title": "CVE Description"
+        },
+        {
+          "category": "details",
+          "text": "CVSS v4.0 Base Score 7.0 | High | [CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N](https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N)",
+          "title": "CVSS v4.0 Score"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0006",
+          "CSAFPID-0008",
+          "CSAFPID-0014",
+          "CSAFPID-0016"
+        ],
+        "known_affected": [
+          "CSAFPID-0005",
+          "CSAFPID-0007",
+          "CSAFPID-0013",
+          "CSAFPID-0015"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-1226"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/94.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The following versions of EcoStruxure Building Operation Workstation and EcoStruxure Building Operation WebStation include a fix for CVE-2026-1226:\u00a0 \n\u2022 7.0.2 \n\nStep 1: Navigate to this link: \nhttps://www.se.com/myschneider/documentsDownloadCenter/detail?id=EBO-Patch-v7-0\n\n\nStep 2: Download 'EcoStruxure Building Operation Patch v7.0' \nStep 3: Follow the installation instructions provided in the accompanying readme file. \n\nAdditionally, ensure you are following the [EBO hardening guidelines](https://ecostruxure-building-help.se.com/bms/Topics/show.castle?id=14923&productversion=7.1&locale=en-US).",
+          "product_ids": [
+            "CSAFPID-0005",
+            "CSAFPID-0013"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/myschneider/documentsDownloadCenter/detail?id=EBO-Patch-v7-0"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "The following versions of EcoStruxure Building Operation Workstation and EcoStruxure Building Operation WebStation includes a fix for CVE-2026-1226: \r\n\u2022 6.0.4.7000 (CP5)\r\nStep 1: Locate the appropriate version for your system here:  \r\nhttps://www.se.com/myschneider/documentsDownloadCenter/detail?id=EBO-Patch-v6-0\r\n\r\nStep 2: Download \u2018EcoStruxure Building Operation Patch v6.0\u2018 \r\nStep 3: Follow the installation instructions provided in the accompanying readme file. \r\nAdditionally, ensure you are following the [EBO hardening guidelines](https://ecostruxure-building-help.se.com/bms/Topics/show.castle?id=14923&productversion=7.1&locale=en-US).",
+          "product_ids": [
+            "CSAFPID-0007",
+            "CSAFPID-0015"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://www.se.com/myschneider/documentsDownloadCenter/detail?id=EBO-Patch-v6-0"
+        },
+        {
+          "category": "mitigation",
+          "details": "If customers choose not to apply the remediation provided above, they should immediately apply the following mitigations to reduce the risk of exploit:  \r\n\u2022 Implement strong access controls to limit system access to authorized personnel.\r\n\u2022 Use multi factor authentication if using EBO version 7.0 or later.\r\n\u2022 Use firewalls to segregate networks and protect the building management system.\r\n\u2022 Regularly monitor system activity.\r\n\u2022 Ensure you are following [EBO hardening guidelines](https://ecostruxure-building-help.se.com/bms/Topics/show.castle?id=14923&productversion=7.1&locale=en-US).",
+          "product_ids": [
+            "CSAFPID-0005",
+            "CSAFPID-0007",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ],
+          "restart_required": {
+            "category": "none"
+          },
+          "url": "https://ecostruxure-building-help.se.com/bms/Topics/show.castle?id=14923&productversion=7.1&locale=en-US"
+        },
+		{
+          "category": "mitigation",
+          "details": "For more information see the associated Schneider Electric security advisory SEVD-2026-041-02, titled \"Multiple Vulnerabilities on EcoStruxure Building Operation Workstation and EcoStruxure Building Operation WebStation\". \r\n\u2022 PDF Version: [https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-041-02&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2026-041-02.pdf](https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-041-02&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2026-041-02.pdf) \r\n\u2022 CSAF Version:  [https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-041-02&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2026-041-02.json](https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-041-02&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2026-041-02.json).",
+          "product_ids": [
+            "CSAFPID-0005",
+            "CSAFPID-0007",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+			],
+          "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-041-02&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2026-041-02.pdf"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "LOCAL",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.3,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "userInteraction": "REQUIRED",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0005",
+            "CSAFPID-0007",
+            "CSAFPID-0013",
+            "CSAFPID-0015"
+          ]
+        }
+      ],
+      "title": "CVE-2026-1226"
+    }
+  ]
+}
