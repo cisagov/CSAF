@@ -188,9 +188,9 @@
     ],
     "title": "iba Systems ibaPDA",
     "tracking": {
-      "current_release_date": "2026-01-27T07:00:00.000000Z",
+      "current_release_date": "2026-02-25T07:00:00.000000Z",
       "generator": {
-        "date": "2026-01-26T21:24:27.233937Z",
+        "date": "2026-02-24T23:55:07.772518Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
@@ -204,10 +204,16 @@
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
+        },
+        {
+          "date": "2026-02-25T07:00:00.000000Z",
+          "legacy_version": "Housekeeping",
+          "number": "2",
+          "summary": "Housekeeping - Consolidated mitigations section and added a link."
         }
       ],
       "status": "final",
-      "version": "1"
+      "version": "2"
     }
   },
   "product_tree": {
@@ -246,6 +252,11 @@
           "category": "summary",
           "text": "A security issue has been identified in ibaPDA that could allow unauthorized actions on the file system under certain conditions. This may impact the confidentiality, integrity, or availability of the system.",
           "title": "Vulnerability Summary"
+        },
+        {
+          "category": "details",
+          "text": "SSVCv2/E:N/A:Y/2026-02-24T07:00:00.000000Z",
+          "title": "SSVC"
         }
       ],
       "product_status": {
@@ -254,6 +265,11 @@
         ]
       },
       "references": [
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/732.html"
+        },
         {
           "category": "external",
           "summary": "www.cve.org",
@@ -280,59 +296,32 @@
         },
         {
           "category": "mitigation",
-          "details": "If Installing the update is not possible, iba Systems recommends users:",
+          "details": "If Installing the update is not possible, iba Systems recommends users: Enable User Management:To activate user management, navigate to User Management settings under the Configure option. Set a password for the admin user to enable user management.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Configure Server Access: To configure, open Server Access Manager (found under Configure in the ibaPDA Client). Set the configuration to restrict access. For example, only 127.0.0.1 (localhost) or specific system IP addresses to communicate with ibaPDA can connect to the ibaPDA Server. (In this example, only connections from localhost are permitted to access ibaPDA.)",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Restrict Connections to Localhost (if ibaPDA is only accessed from the system where it runs): 1) Go to I/O Manager, then General, and deactivate the option /\"Automatically open necessary ports in Windows Firewall./\" (If this option remains active, after a restart of ibaPDA or a restart for data acquisition, the firewall will be reconfigured automatically.) 2) Then, go to Advanced Windows Firewall settings and delete or deactivate all incoming rules for the ibaPDA Client and Server. 3) Manually create firewall rules for the connection used for ibaPDA and verify that the correct ports are configured. For assistance with identifying the ports used by the ibaPDA service can be found in the iba Help Center. 4) Note: After making the changes, verify that all ibaPDA services are operating as expected and that the data acquisition is functioning correctly.",
           "product_ids": [
             "CSAFPID-0001"
           ]
         },
         {
           "category": "mitigation",
-          "details": "Enable User Management:To activate user management, navigate to User Management settings under the Configure option. Set a password for the admin user to enable user management.",
+          "details": "For more information you can view iba Systems advisory at https://www.iba-ag.com/de/security/iba-2025-04",
           "product_ids": [
             "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Configure Server Access:To configure, open Server Access Manager (found under Configure in the ibaPDA Client). Set the configuration to restrict access. For example, only 127.0.0.1 (localhost) or specific system IP addresses to communicate with ibaPDA can connect to the ibaPDA Server. (In this example, only connections from localhost are permitted to access ibaPDA.)",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Restrict Connections to Localhost (if ibaPDA is only accessed from the system where it runs):",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Go to I/O Manager, then General, and deactivate the option \"Automatically open necessary ports in Windows Firewall.\" (If this option remains active, after a restart of ibaPDA or a restart for data acquisition, the firewall will be reconfigured automatically.)",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Then, go to Advanced Windows Firewall settings and delete or deactivate all incoming rules for the ibaPDA Client and Server.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Manually create firewall rules for the connection used for ibaPDA and verify that the correct ports are configured. For assistance with identifying the ports used by the ibaPDA service can be found in the iba Help Center.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Note: After making the changes, verify that all ibaPDA services are operating as expected and that the data acquisition is functioning correctly.",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
+          ],
+          "url": "https://www.iba-ag.com/de/security/iba-2025-04"
         }
       ],
       "scores": [
