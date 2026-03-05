@@ -7,7 +7,7 @@
           "Sultan Qasim Khan"
         ],
         "organization": "NCC Group",
-        "summary": "reporting these vulnerabilities to CISA"
+        "summary": "reported these vulnerabilities to CISA"
       }
     ],
     "category": "csaf_security_advisory",
@@ -113,7 +113,7 @@
       },
       {
         "category": "general",
-        "text": "No known public exploitation specifically targeting these vulnerabilities have been reported to CISA at this time.",
+        "text": "No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.",
         "title": "Recommended Practices"
       }
     ],
@@ -126,13 +126,13 @@
     "references": [
       {
         "category": "self",
-        "summary": "ICS Advisory ICSA-25-350-02 JSON",
-        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-350-02.json"
+        "summary": "ICS Advisory ICSA-25-340-02 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2025/icsa-25-340-02.json"
       },
       {
         "category": "self",
-        "summary": "ICSA Advisory ICSA-25-350-02 - Web Version",
-        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-350-02"
+        "summary": "ICSA Advisory ICSA-25-340-02 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-340-02"
       },
       {
         "category": "external",
@@ -190,17 +190,17 @@
         "url": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks"
       }
     ],
-    "title": "Johnson Controls PowerG, IQPanel and IQHub",
+    "title": "Johnson Controls PowerG, IQPanel and IQHub (Update A)",
     "tracking": {
-      "current_release_date": "2025-12-16T07:00:00.000000Z",
+      "current_release_date": "2026-03-05T07:00:00.000000Z",
       "generator": {
-        "date": "2025-12-15T19:51:03.505429Z",
+        "date": "2026-03-04T21:15:53.441194Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
         }
       },
-      "id": "ICSA-25-350-02",
+      "id": "ICSA-25-340-02",
       "initial_release_date": "2025-12-16T07:00:00.000000Z",
       "revision_history": [
         {
@@ -208,10 +208,16 @@
           "legacy_version": "Initial",
           "number": "1",
           "summary": "Initial Publication"
+        },
+        {
+          "date": "2026-03-05T07:00:00.000000Z",
+          "legacy_version": "Update A",
+          "number": "2",
+          "summary": "Update A - Updated vulnerability description 3.2.1, added additional mitigation details and updated vendor advisory link"
         }
       ],
       "status": "final",
-      "version": "1"
+      "version": "2"
     }
   },
   "product_tree": {
@@ -304,7 +310,7 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The affected product is vulnerable due to cleartext transmission of sensitive information. This may allow an attacker to capture the network key and read or write encrypted packets on the PowerG network.",
+          "text": "Under specific circumstances, the product becomes vulnerable due to cleartext transmission of sensitive information. In these situations, an attacker can capture the network key and read or write encrypted packets on the PowerG network.",
           "title": "Vulnerability Summary"
         }
       ],
@@ -318,6 +324,11 @@
         ]
       },
       "references": [
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/319.html"
+        },
         {
           "category": "external",
           "summary": "www.cve.org",
@@ -347,8 +358,19 @@
           ]
         },
         {
+          "category": "mitigation",
+          "details": "Ensure only trusted devices are on the wireless network",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
           "category": "vendor_fix",
-          "details": "Update IQPanel 4 to version 4.6.1/4.6.1i.",
+          "details": "Prior to enrolling any devices, it is strongly recommended to update IQPanel 4 to version 4.6.1/4.6.1i or later",
           "product_ids": [
             "CSAFPID-0005"
           ]
@@ -362,7 +384,7 @@
         },
         {
           "category": "mitigation",
-          "details": "During the installation or enrollment phase of setup, enter the PIN code in the PIN Code field on the sensor enrollment screen. For additional security, Johnson Controls recommends only authorized company personnel or integrators be present during the pairing process.",
+          "details": "During the installation or enrollment phase of setup, enter the PIN code in the PIN Code field on the sensor enrollment screen. For additional security, Johnson Controls recommends only authorized company personnel or integrators be present during the installation/pairing/enrollment process.",
           "product_ids": [
             "CSAFPID-0001",
             "CSAFPID-0002",
@@ -372,19 +394,15 @@
           ]
         },
         {
-          "category": "mitigation",
-          "details": "Replace all end-of-life products (IQ Panel 2, IQ Panel 2+, IQ Hub) with the latest IQ Panel 4 using firmware version 4.6.1 or greater.",
+          "category": "vendor_fix",
+          "details": "If replacing a PowerG device, consider replacing all end-of-life products (IQ Panel 2, IQ Panel 2+, IQ Hub) with the latest IQ Panel 4 using firmware version 4.6.1 or greater.",
           "product_ids": [
-            "CSAFPID-0001",
-            "CSAFPID-0002",
-            "CSAFPID-0003",
-            "CSAFPID-0004",
-            "CSAFPID-0005"
+            "CSAFPID-0001"
           ]
         },
         {
           "category": "mitigation",
-          "details": "For more detailed mitigation instructions, see Johnson Controls Product Security Advisory JCI-PSA-2025-01 at the Product Security Advisories page.",
+          "details": "For more detailed mitigation instructions, see Johnson Controls Product Security Advisory JCI-PSA-2025-01 v2 at the following location: https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories",
           "product_ids": [
             "CSAFPID-0001",
             "CSAFPID-0002",
@@ -392,7 +410,19 @@
             "CSAFPID-0004",
             "CSAFPID-0005"
           ],
-          "url": "https://www.johnsoncontrols.com/cyber-solutions/security-advisories"
+          "url": "https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories"
+        },
+        {
+          "category": "mitigation",
+          "details": "Further ICS security notices and product security guidance are located at Johnson Controls Trust Center website: https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ],
+          "url": "https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories"
         }
       ],
       "scores": [
@@ -438,6 +468,11 @@
       "references": [
         {
           "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/323.html"
+        },
+        {
+          "category": "external",
           "summary": "www.cve.org",
           "url": "https://www.cve.org/CVERecord?id=CVE-2025-61739"
         },
@@ -465,8 +500,19 @@
           ]
         },
         {
+          "category": "mitigation",
+          "details": "Ensure only trusted devices are on the wireless network",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
           "category": "vendor_fix",
-          "details": "Update IQPanel 4 to version 4.6.1/4.6.1i.",
+          "details": "Prior to enrolling any devices, it is strongly recommended to update IQPanel 4 to version 4.6.1/4.6.1i or later",
           "product_ids": [
             "CSAFPID-0005"
           ]
@@ -480,7 +526,7 @@
         },
         {
           "category": "mitigation",
-          "details": "During the installation or enrollment phase of setup, enter the PIN code in the PIN Code field on the sensor enrollment screen. For additional security, Johnson Controls recommends only authorized company personnel or integrators be present during the pairing process.",
+          "details": "During the installation or enrollment phase of setup, enter the PIN code in the PIN Code field on the sensor enrollment screen. For additional security, Johnson Controls recommends only authorized company personnel or integrators be present during the installation/pairing/enrollment process.",
           "product_ids": [
             "CSAFPID-0001",
             "CSAFPID-0002",
@@ -490,19 +536,15 @@
           ]
         },
         {
-          "category": "mitigation",
-          "details": "Replace all end-of-life products (IQ Panel 2, IQ Panel 2+, IQ Hub) with the latest IQ Panel 4 using firmware version 4.6.1 or greater.",
+          "category": "vendor_fix",
+          "details": "If replacing a PowerG device, consider replacing all end-of-life products (IQ Panel 2, IQ Panel 2+, IQ Hub) with the latest IQ Panel 4 using firmware version 4.6.1 or greater.",
           "product_ids": [
-            "CSAFPID-0001",
-            "CSAFPID-0002",
-            "CSAFPID-0003",
-            "CSAFPID-0004",
-            "CSAFPID-0005"
+            "CSAFPID-0001"
           ]
         },
         {
           "category": "mitigation",
-          "details": "For more detailed mitigation instructions, see Johnson Controls Product Security Advisory JCI-PSA-2025-01 at the Product Security Advisories page.",
+          "details": "For more detailed mitigation instructions, see Johnson Controls Product Security Advisory JCI-PSA-2025-01 v2 at the following location: https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories",
           "product_ids": [
             "CSAFPID-0001",
             "CSAFPID-0002",
@@ -510,7 +552,19 @@
             "CSAFPID-0004",
             "CSAFPID-0005"
           ],
-          "url": "https://www.johnsoncontrols.com/cyber-solutions/security-advisories"
+          "url": "https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories"
+        },
+        {
+          "category": "mitigation",
+          "details": "Further ICS security notices and product security guidance are located at Johnson Controls Trust Center website: https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ],
+          "url": "https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories"
         }
       ],
       "scores": [
@@ -556,6 +610,11 @@
       "references": [
         {
           "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/338.html"
+        },
+        {
+          "category": "external",
           "summary": "www.cve.org",
           "url": "https://www.cve.org/CVERecord?id=CVE-2025-26379"
         },
@@ -583,8 +642,19 @@
           ]
         },
         {
+          "category": "mitigation",
+          "details": "Ensure only trusted devices are on the wireless network",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
           "category": "vendor_fix",
-          "details": "Update IQPanel 4 to version 4.6.1/4.6.1i.",
+          "details": "Prior to enrolling any devices, it is strongly recommended to update IQPanel 4 to version 4.6.1/4.6.1i or later",
           "product_ids": [
             "CSAFPID-0005"
           ]
@@ -598,7 +668,7 @@
         },
         {
           "category": "mitigation",
-          "details": "During the installation or enrollment phase of setup, enter the PIN code in the PIN Code field on the sensor enrollment screen. For additional security, Johnson Controls recommends only authorized company personnel or integrators be present during the pairing process.",
+          "details": "During the installation or enrollment phase of setup, enter the PIN code in the PIN Code field on the sensor enrollment screen. For additional security, Johnson Controls recommends only authorized company personnel or integrators be present during the installation/pairing/enrollment process.",
           "product_ids": [
             "CSAFPID-0001",
             "CSAFPID-0002",
@@ -608,19 +678,15 @@
           ]
         },
         {
-          "category": "mitigation",
-          "details": "Replace all end-of-life products (IQ Panel 2, IQ Panel 2+, IQ Hub) with the latest IQ Panel 4 using firmware version 4.6.1 or greater.",
+          "category": "vendor_fix",
+          "details": "If replacing a PowerG device, consider replacing all end-of-life products (IQ Panel 2, IQ Panel 2+, IQ Hub) with the latest IQ Panel 4 using firmware version 4.6.1 or greater.",
           "product_ids": [
-            "CSAFPID-0001",
-            "CSAFPID-0002",
-            "CSAFPID-0003",
-            "CSAFPID-0004",
-            "CSAFPID-0005"
+            "CSAFPID-0001"
           ]
         },
         {
           "category": "mitigation",
-          "details": "For more detailed mitigation instructions, see Johnson Controls Product Security Advisory JCI-PSA-2025-01 at the Product Security Advisories page.",
+          "details": "For more detailed mitigation instructions, see Johnson Controls Product Security Advisory JCI-PSA-2025-01 v2 at the following location: https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories",
           "product_ids": [
             "CSAFPID-0001",
             "CSAFPID-0002",
@@ -628,7 +694,19 @@
             "CSAFPID-0004",
             "CSAFPID-0005"
           ],
-          "url": "https://www.johnsoncontrols.com/cyber-solutions/security-advisories"
+          "url": "https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories"
+        },
+        {
+          "category": "mitigation",
+          "details": "Further ICS security notices and product security guidance are located at Johnson Controls Trust Center website: https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ],
+          "url": "https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories"
         }
       ],
       "scores": [
@@ -674,6 +752,11 @@
       "references": [
         {
           "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/346.html"
+        },
+        {
+          "category": "external",
           "summary": "www.cve.org",
           "url": "https://www.cve.org/CVERecord?id=CVE-2025-61740"
         },
@@ -701,8 +784,19 @@
           ]
         },
         {
+          "category": "mitigation",
+          "details": "Ensure only trusted devices are on the wireless network",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        },
+        {
           "category": "vendor_fix",
-          "details": "Update IQPanel 4 to version 4.6.1/4.6.1i.",
+          "details": "Prior to enrolling any devices, it is strongly recommended to update IQPanel 4 to version 4.6.1/4.6.1i or later",
           "product_ids": [
             "CSAFPID-0005"
           ]
@@ -716,7 +810,7 @@
         },
         {
           "category": "mitigation",
-          "details": "During the installation or enrollment phase of setup, enter the PIN code in the PIN Code field on the sensor enrollment screen. For additional security, Johnson Controls recommends only authorized company personnel or integrators be present during the pairing process.",
+          "details": "During the installation or enrollment phase of setup, enter the PIN code in the PIN Code field on the sensor enrollment screen. For additional security, Johnson Controls recommends only authorized company personnel or integrators be present during the installation/pairing/enrollment process.",
           "product_ids": [
             "CSAFPID-0001",
             "CSAFPID-0002",
@@ -726,19 +820,15 @@
           ]
         },
         {
-          "category": "mitigation",
-          "details": "Replace all end-of-life products (IQ Panel 2, IQ Panel 2+, IQ Hub) with the latest IQ Panel 4 using firmware version 4.6.1 or greater.",
+          "category": "vendor_fix",
+          "details": "If replacing a PowerG device, consider replacing all end-of-life products (IQ Panel 2, IQ Panel 2+, IQ Hub) with the latest IQ Panel 4 using firmware version 4.6.1 or greater.",
           "product_ids": [
-            "CSAFPID-0001",
-            "CSAFPID-0002",
-            "CSAFPID-0003",
-            "CSAFPID-0004",
-            "CSAFPID-0005"
+            "CSAFPID-0001"
           ]
         },
         {
           "category": "mitigation",
-          "details": "For more detailed mitigation instructions, see Johnson Controls Product Security Advisory JCI-PSA-2025-01 at the Product Security Advisories page.",
+          "details": "For more detailed mitigation instructions, see Johnson Controls Product Security Advisory JCI-PSA-2025-01 v2 at the following location: https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories",
           "product_ids": [
             "CSAFPID-0001",
             "CSAFPID-0002",
@@ -746,7 +836,19 @@
             "CSAFPID-0004",
             "CSAFPID-0005"
           ],
-          "url": "https://www.johnsoncontrols.com/cyber-solutions/security-advisories"
+          "url": "https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories"
+        },
+        {
+          "category": "mitigation",
+          "details": "Further ICS security notices and product security guidance are located at Johnson Controls Trust Center website: https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ],
+          "url": "https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories"
         }
       ],
       "scores": [
