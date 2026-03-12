@@ -163,9 +163,9 @@
     ],
     "title": "Siemens SIMATIC S7-1500 CPU Family",
     "tracking": {
-      "current_release_date": "2026-02-12T07:00:00.000000Z",
+      "current_release_date": "2026-03-12T06:00:00.000000Z",
       "generator": {
-        "date": "2026-02-11T22:35:58.408932Z",
+        "date": "2026-03-11T21:23:48.004707Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.5.0"
@@ -196,7 +196,7 @@
           "date": "2026-01-14T22:00:07.322959Z",
           "legacy_version": "Additional Release 3",
           "number": "4",
-          "summary": "Initial Republication of Siemens ProductCERT SSA-082556 advisory"
+          "summary": "CISA Republication - Initial Republication of Siemens ProductCERT SSA-082556 advisory"
         },
         {
           "date": "2026-02-10T00:00:00.000000Z",
@@ -206,13 +206,25 @@
         },
         {
           "date": "2026-02-12T07:00:00.000000Z",
-          "legacy_version": "Latest Updated CISA Republication",
+          "legacy_version": "Additional Release 5",
           "number": "6",
+          "summary": "CISA Republication update based on Siemens ProductCERT SSA-082556 advisory"
+        },
+        {
+          "date": "2026-03-10T00:00:00.000000Z",
+          "legacy_version": "Additional Release 6",
+          "number": "7",
+          "summary": "Added 36 CVEs"
+        },
+        {
+          "date": "2026-03-12T06:00:00.000000Z",
+          "legacy_version": "Latest Updated CISA Republication",
+          "number": "8",
           "summary": "CISA Republication update based on Siemens ProductCERT SSA-082556 advisory"
         }
       ],
       "status": "final",
-      "version": "6"
+      "version": "8"
     }
   },
   "product_tree": {
@@ -6284,6 +6296,2562 @@
         }
       ],
       "title": "CVE-2025-32989"
+    },
+    {
+      "cve": "CVE-2025-38058",
+      "cwe": {
+        "id": "CWE-667",
+        "name": "Improper Locking"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: __legitimize_mnt(): check for MNT_SYNC_UMOUNT should be under mount_lock ... or we risk stealing final mntput from sync umount - raising mnt_count after umount(2) has verified that victim is not busy, but before it has set MNT_SYNC_UMOUNT; in that case __legitimize_mnt() doesn't see that it's safe to quietly undo mnt_count increment and leaves dropping the reference to caller, where it'll be a full-blown mntput(). Check under mount_lock is needed; leaving the current one done before taking that makes no sense - it's nowhere near common enough to bother with.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38058"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/667.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38058"
+    },
+    {
+      "cve": "CVE-2025-38063",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: dm: fix unconditional IO throttle caused by REQ_PREFLUSH When a bio with REQ_PREFLUSH is submitted to dm, __send_empty_flush() generates a flush_bio with REQ_OP_WRITE | REQ_PREFLUSH | REQ_SYNC, which causes the flush_bio to be throttled by wbt_wait()",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38063"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38063"
+    },
+    {
+      "cve": "CVE-2025-38067",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: rseq: Fix segfault on registration when rseq_cs is non-zero The rseq_cs field is documented as being set to 0 by user-space prior to registration, however this is not currently enforced by the kernel. This can result in a segfault on return to user-space if the value stored in the rseq_cs field doesn't point to a valid struct rseq_cs. The correct solution to this would be to fail the rseq registration when the rseq_cs field is non-zero. However, some older versions of glibc will reuse the rseq area of previous threads without clearing the rseq_cs field and will also terminate the process if the rseq registration fails in a secondary thread. This wasn't caught in testing because in this case the leftover rseq_cs does point to a valid struct rseq_cs. What we can do is clear the rseq_cs field on registration when it's non-zero which will prevent segfaults on registration and won't break the glibc versions that reuse rseq areas on thread creation.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38067"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38067"
+    },
+    {
+      "cve": "CVE-2025-38071",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: x86/mm: Check return value from memblock_phys_alloc_range() At least with CONFIG_PHYSICAL_START=0x100000, if there is < 4 MiB of contiguous free memory available at this point, the kernel will crash and burn because memblock_phys_alloc_range() returns 0 on failure, which leads memblock_phys_free() to throw the first 4 MiB of physical memory to the wolves. At a minimum it should fail gracefully with a meaningful diagnostic, but in fact everything seems to work fine without the weird reserve allocation",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38071"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38071"
+    },
+    {
+      "cve": "CVE-2025-38079",
+      "cwe": {
+        "id": "CWE-415",
+        "name": "Double Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: crypto: algif_hash - fix double free in hash_accept If accept(2) is called on socket type algif_hash with MSG_MORE flag set and crypto_ahash_import fails, sk2 is freed. However, it is also freed in af_alg_release, leading to slab-use-after-free error.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38079"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/415.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38079"
+    },
+    {
+      "cve": "CVE-2025-38083",
+      "cwe": {
+        "id": "CWE-362",
+        "name": "Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: net_sched: prio: fix a race in prio_tune() Gerrard Tai reported a race condition in PRIO, whenever SFQ perturb timer fires at the wrong time. The race is as follows: CPU 0 CPU 1 [1]: lock root [2]: qdisc_tree_flush_backlog() [3]: unlock root | | [5]: lock root | [6]: rehash | [7]: qdisc_tree_reduce_backlog() | [4]: qdisc_put() This can be abused to underflow a parent's qlen. Calling qdisc_purge_queue() instead of qdisc_tree_flush_backlog() should fix the race, because all packets will be purged from the qdisc before releasing the lock.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38083"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/362.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.7,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38083"
+    },
+    {
+      "cve": "CVE-2025-38100",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: x86/iopl: Cure TIF_IO_BITMAP inconsistencies io_bitmap_exit() is invoked from exit_thread() when a task exists or when a fork fails. In the latter case the exit_thread() cleans up resources which were allocated during fork(). io_bitmap_exit() invokes task_update_io_bitmap(), which in turn ends up in tss_update_io_bitmap(). tss_update_io_bitmap() operates on the current task. If current has TIF_IO_BITMAP set, but no bitmap installed, tss_update_io_bitmap() crashes with a NULL pointer dereference. There are two issues, which lead to that problem: 1) io_bitmap_exit() should not invoke task_update_io_bitmap() when the task, which is cleaned up, is not the current task. That's a clear indicator for a cleanup after a failed fork(). 2) A task should not have TIF_IO_BITMAP set and neither a bitmap installed nor IOPL emulation level 3 activated. This happens when a kernel thread is created in the context of a user space thread, which has TIF_IO_BITMAP set as the thread flags are copied and the IO bitmap pointer is cleared. Other than in the failed fork() case this has no impact because kernel threads including IO workers never return to user space and therefore never invoke tss_update_io_bitmap(). Cure this by adding the missing cleanups and checks: 1) Prevent io_bitmap_exit() to invoke task_update_io_bitmap() if the to be cleaned up task is not the current task. 2) Clear TIF_IO_BITMAP in copy_thread() unconditionally. For user space forks it is set later, when the IO bitmap is inherited in io_bitmap_share(). For paranoia sake, add a warning into tss_update_io_bitmap() to catch the case, when that code is invoked with inconsistent state",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38100"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/476.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38100"
+    },
+    {
+      "cve": "CVE-2025-38111",
+      "cwe": {
+        "id": "CWE-125",
+        "name": "Out-of-bounds Read"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: net/mdiobus: Fix potential out-of-bounds read/write access When using publicly available tools like 'mdio-tools' to read/write data from/to network interface and its PHY via mdiobus, there is no verification of parameters passed to the ioctl and it accepts any mdio address. Currently there is support for 32 addresses in kernel via PHY_MAX_ADDR define, but it is possible to pass higher value than that via ioctl. While read/write operation should generally fail in this case, mdiobus provides stats array, where wrong address may allow out-of-bounds read/write. Fix that by adding address verification before read/write operation. While this excludes this access from any statistics, it improves security of read/write operation",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38111"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/125.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38111"
+    },
+    {
+      "cve": "CVE-2025-38124",
+      "cwe": {
+        "id": "CWE-401",
+        "name": "Missing Release of Memory after Effective Lifetime"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: net: fix udp gso skb_segment after pull from frag_list Commit a1e40ac5b5e9 (\"net: gso: fix udp gso fraglist segmentation after pull from frag_list\") detected invalid geometry in frag_list skbs and redirects them from skb_segment_list to more robust skb_segment. But some packets with modified geometry can also hit bugs in that code",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38124"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/401.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38124"
+    },
+    {
+      "cve": "CVE-2025-38167",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: fs/ntfs3: handle hdr_first_de() return value The hdr_first_de() function returns a pointer to a struct NTFS_DE. This pointer may be NULL. To handle the NULL error effectively, it is important to implement an error handler. This will help manage potential errors consistently. Additionally, error handling for the return value already exists at other points where this function is called. Found by Linux Verification Center (linuxtesting.org) with SVACE",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38167"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/476.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38167"
+    },
+    {
+      "cve": "CVE-2025-38198",
+      "cwe": {
+        "id": "CWE-129",
+        "name": "Improper Validation of Array Index"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: fbcon: Make sure modelist not set on unregistered console It looks like attempting to write to the \"store_modes\" sysfs node will run afoul of unregistered consoles: UBSAN: array-index-out-of-bounds in drivers/video/fbdev/core/fbcon.c:122:28 index -1 is out of range for type 'fb_info *[32]' ... fbcon_info_from_console+0x192/0x1a0 drivers/video/fbdev/core/fbcon.c:122 fbcon_new_modelist+0xbf/0x2d0 drivers/video/fbdev/core/fbcon.c:3048 fb_new_modelist+0x328/0x440 drivers/video/fbdev/core/fbmem.c:673 store_modes+0x1c9/0x3e0 drivers/video/fbdev/core/fbsysfs.c:113 dev_attr_store+0x55/0x80 drivers/base/core.c:2439 static struct fb_info *fbcon_registered_fb[FB_MAX]; ... static signed char con2fb_map[MAX_NR_CONSOLES]; ... static struct fb_info *fbcon_info_from_console(int console) ... return fbcon_registered_fb[con2fb_map[console]]; If con2fb_map contains a -1 things go wrong here. Instead, return NULL, as callers of fbcon_info_from_console() are trying to compare against existing \"info\" pointers, so error handling should kick in correctly",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38198"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/129.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38198"
+    },
+    {
+      "cve": "CVE-2025-38212",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nipc: fix to protect IPCS lookups using RCU\r\n\r\nsyzbot reported that it discovered a use-after-free vulnerability, [0]\r\n\r\n[0]: https://lore.kernel.org/all/67af13f8.050a0220.21dd3.0038.GAE@google.com/\r\n\r\nidr_for_each() is protected by rwsem, but this is not enough.  If it is\r\nnot protected by RCU read-critical region, when idr_for_each() calls\r\nradix_tree_node_free() through call_rcu() to free the radix_tree_node\r\nstructure, the node will be freed immediately, and when reading the next\r\nnode in radix_tree_for_each_slot(), the already freed memory may be read.\r\n\r\nTherefore, we need to add code to make sure that idr_for_each() is\r\nprotected within the RCU read-critical region when we call it in\r\nshm_destroy_orphaned().",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38212"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/416.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38212"
+    },
+    {
+      "cve": "CVE-2025-38214",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nfbdev: Fix fb_set_var to prevent null-ptr-deref in fb_videomode_to_var\r\n\r\nIf fb_add_videomode() in fb_set_var() fails to allocate memory for\r\nfb_videomode, later it may lead to a null-ptr dereference in\r\nfb_videomode_to_var(), as the fb_info is registered while not having the\r\nmode in modelist that is expected to be there, i.e. the one that is\r\ndescribed in fb_info->var.\r\n\r\n================================================================\r\ngeneral protection fault, probably for non-canonical address 0xdffffc0000000001: 0000 [#1] PREEMPT SMP KASAN NOPTI\r\nKASAN: null-ptr-deref in range [0x0000000000000008-0x000000000000000f]\r\nCPU: 1 PID: 30371 Comm: syz-executor.1 Not tainted 5.10.226-syzkaller #0\r\nHardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.12.0-1 04/01/2014\r\nRIP: 0010:fb_videomode_to_var+0x24/0x610 drivers/video/fbdev/core/modedb.c:901\r\nCall Trace:\r\n display_to_var+0x3a/0x7c0 drivers/video/fbdev/core/fbcon.c:929\r\n fbcon_resize+0x3e2/0x8f0 drivers/video/fbdev/core/fbcon.c:2071\r\n resize_screen drivers/tty/vt/vt.c:1176 [inline]\r\n vc_do_resize+0x53a/0x1170 drivers/tty/vt/vt.c:1263\r\n fbcon_modechanged+0x3ac/0x6e0 drivers/video/fbdev/core/fbcon.c:2720\r\n fbcon_update_vcs+0x43/0x60 drivers/video/fbdev/core/fbcon.c:2776\r\n do_fb_ioctl+0x6d2/0x740 drivers/video/fbdev/core/fbmem.c:1128\r\n fb_ioctl+0xe7/0x150 drivers/video/fbdev/core/fbmem.c:1203\r\n vfs_ioctl fs/ioctl.c:48 [inline]\r\n __do_sys_ioctl fs/ioctl.c:753 [inline]\r\n __se_sys_ioctl fs/ioctl.c:739 [inline]\r\n __x64_sys_ioctl+0x19a/0x210 fs/ioctl.c:739\r\n do_syscall_64+0x33/0x40 arch/x86/entry/common.c:46\r\n entry_SYSCALL_64_after_hwframe+0x67/0xd1\r\n================================================================\r\n\r\nThe reason is that fb_info->var is being modified in fb_set_var(), and\r\nthen fb_videomode_to_var() is called. If it fails to add the mode to\r\nfb_info->modelist, fb_set_var() returns error, but does not restore the\r\nold value of fb_info->var. Restore fb_info->var on failure the same way\r\nit is done earlier in the function.\r\n\r\nFound by Linux Verification Center (linuxtesting.org) with Syzkaller.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38214"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/476.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38214"
+    },
+    {
+      "cve": "CVE-2025-38215",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nfbdev: Fix do_register_framebuffer to prevent null-ptr-deref in fb_videomode_to_var\r\n\r\nIf fb_add_videomode() in do_register_framebuffer() fails to allocate\r\nmemory for fb_videomode, it will later lead to a null-ptr dereference in\r\nfb_videomode_to_var(), as the fb_info is registered while not having the\r\nmode in modelist that is expected to be there, i.e. the one that is\r\ndescribed in fb_info->var.\r\n\r\n================================================================\r\ngeneral protection fault, probably for non-canonical address 0xdffffc0000000001: 0000 [#1] PREEMPT SMP KASAN NOPTI\r\nKASAN: null-ptr-deref in range [0x0000000000000008-0x000000000000000f]\r\nCPU: 1 PID: 30371 Comm: syz-executor.1 Not tainted 5.10.226-syzkaller #0\r\nHardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.12.0-1 04/01/2014\r\nRIP: 0010:fb_videomode_to_var+0x24/0x610 drivers/video/fbdev/core/modedb.c:901\r\nCall Trace:\r\n display_to_var+0x3a/0x7c0 drivers/video/fbdev/core/fbcon.c:929\r\n fbcon_resize+0x3e2/0x8f0 drivers/video/fbdev/core/fbcon.c:2071\r\n resize_screen drivers/tty/vt/vt.c:1176 [inline]\r\n vc_do_resize+0x53a/0x1170 drivers/tty/vt/vt.c:1263\r\n fbcon_modechanged+0x3ac/0x6e0 drivers/video/fbdev/core/fbcon.c:2720\r\n fbcon_update_vcs+0x43/0x60 drivers/video/fbdev/core/fbcon.c:2776\r\n do_fb_ioctl+0x6d2/0x740 drivers/video/fbdev/core/fbmem.c:1128\r\n fb_ioctl+0xe7/0x150 drivers/video/fbdev/core/fbmem.c:1203\r\n vfs_ioctl fs/ioctl.c:48 [inline]\r\n __do_sys_ioctl fs/ioctl.c:753 [inline]\r\n __se_sys_ioctl fs/ioctl.c:739 [inline]\r\n __x64_sys_ioctl+0x19a/0x210 fs/ioctl.c:739\r\n do_syscall_64+0x33/0x40 arch/x86/entry/common.c:46\r\n entry_SYSCALL_64_after_hwframe+0x67/0xd1\r\n================================================================\r\n\r\nEven though fbcon_init() checks beforehand if fb_match_mode() in\r\nvar_to_display() fails, it can not prevent the panic because fbcon_init()\r\ndoes not return error code. Considering this and the comment in the code\r\nabout fb_match_mode() returning NULL - \"This should not happen\" - it is\r\nbetter to prevent registering the fb_info if its mode was not set\r\nsuccessfully. Also move fb_add_videomode() closer to the beginning of\r\ndo_register_framebuffer() to avoid having to do the cleanup on fail.\r\n\r\nFound by Linux Verification Center (linuxtesting.org) with Syzkaller.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38215"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/476.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38215"
+    },
+    {
+      "cve": "CVE-2025-38222",
+      "cwe": {
+        "id": "CWE-190",
+        "name": "Integer Overflow or Wraparound"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\next4: inline: fix len overflow in ext4_prepare_inline_data\r\n\r\nWhen running the following code on an ext4 filesystem with inline_data\r\nfeature enabled, it will lead to the bug below.\r\n\r\n        fd = open(\"file1\", O_RDWR | O_CREAT | O_TRUNC, 0666);\r\n        ftruncate(fd, 30);\r\n        pwrite(fd, \"a\", 1, (1UL << 40) + 5UL);\r\n\r\nThat happens because write_begin will succeed as when\r\next4_generic_write_inline_data calls ext4_prepare_inline_data, pos + len\r\nwill be truncated, leading to ext4_prepare_inline_data parameter to be 6\r\ninstead of 0x10000000006.\r\n\r\nThen, later when write_end is called, we hit:\r\n\r\n        BUG_ON(pos + len > EXT4_I(inode)->i_inline_size);\r\n\r\nat ext4_write_inline_data.\r\n\r\nFix it by using a loff_t type for the len parameter in\r\next4_prepare_inline_data instead of an unsigned int.\r\n\r\n[   44.545164] ------------[ cut here ]------------\r\n[   44.545530] kernel BUG at fs/ext4/inline.c:240!\r\n[   44.545834] Oops: invalid opcode: 0000 [#1] SMP NOPTI\r\n[   44.546172] CPU: 3 UID: 0 PID: 343 Comm: test Not tainted 6.15.0-rc2-00003-g9080916f4863 #45 PREEMPT(full)  112853fcebfdb93254270a7959841d2c6aa2c8bb\r\n[   44.546523] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014\r\n[   44.546523] RIP: 0010:ext4_write_inline_data+0xfe/0x100\r\n[   44.546523] Code: 3c 0e 48 83 c7 48 48 89 de 5b 41 5c 41 5d 41 5e 41 5f 5d e9 e4 fa 43 01 5b 41 5c 41 5d 41 5e 41 5f 5d c3 cc cc cc cc cc 0f 0b <0f> 0b 0f 1f 44 00 00 55 41 57 41 56 41 55 41 54 53 48 83 ec 20 49\r\n[   44.546523] RSP: 0018:ffffb342008b79a8 EFLAGS: 00010216\r\n[   44.546523] RAX: 0000000000000001 RBX: ffff9329c579c000 RCX: 0000010000000006\r\n[   44.546523] RDX: 000000000000003c RSI: ffffb342008b79f0 RDI: ffff9329c158e738\r\n[   44.546523] RBP: 0000000000000001 R08: 0000000000000001 R09: 0000000000000000\r\n[   44.546523] R10: 00007ffffffff000 R11: ffffffff9bd0d910 R12: 0000006210000000\r\n[   44.546523] R13: fffffc7e4015e700 R14: 0000010000000005 R15: ffff9329c158e738\r\n[   44.546523] FS:  00007f4299934740(0000) GS:ffff932a60179000(0000) knlGS:0000000000000000\r\n[   44.546523] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033\r\n[   44.546523] CR2: 00007f4299a1ec90 CR3: 0000000002886002 CR4: 0000000000770eb0\r\n[   44.546523] PKRU: 55555554\r\n[   44.546523] Call Trace:\r\n[   44.546523]  <TASK>\r\n[   44.546523]  ext4_write_inline_data_end+0x126/0x2d0\r\n[   44.546523]  generic_perform_write+0x17e/0x270\r\n[   44.546523]  ext4_buffered_write_iter+0xc8/0x170\r\n[   44.546523]  vfs_write+0x2be/0x3e0\r\n[   44.546523]  __x64_sys_pwrite64+0x6d/0xc0\r\n[   44.546523]  do_syscall_64+0x6a/0xf0\r\n[   44.546523]  ? __wake_up+0x89/0xb0\r\n[   44.546523]  ? xas_find+0x72/0x1c0\r\n[   44.546523]  ? next_uptodate_folio+0x317/0x330\r\n[   44.546523]  ? set_pte_range+0x1a6/0x270\r\n[   44.546523]  ? filemap_map_pages+0x6ee/0x840\r\n[   44.546523]  ? ext4_setattr+0x2fa/0x750\r\n[   44.546523]  ? do_pte_missing+0x128/0xf70\r\n[   44.546523]  ? security_inode_post_setattr+0x3e/0xd0\r\n[   44.546523]  ? ___pte_offset_map+0x19/0x100\r\n[   44.546523]  ? handle_mm_fault+0x721/0xa10\r\n[   44.546523]  ? do_user_addr_fault+0x197/0x730\r\n[   44.546523]  ? do_syscall_64+0x76/0xf0\r\n[   44.546523]  ? arch_exit_to_user_mode_prepare+0x1e/0x60\r\n[   44.546523]  ? irqentry_exit_to_user_mode+0x79/0x90\r\n[   44.546523]  entry_SYSCALL_64_after_hwframe+0x55/0x5d\r\n[   44.546523] RIP: 0033:0x7f42999c6687\r\n[   44.546523] Code: 48 89 fa 4c 89 df e8 58 b3 00 00 8b 93 08 03 00 00 59 5e 48 83 f8 fc 74 1a 5b c3 0f 1f 84 00 00 00 00 00 48 8b 44 24 10 0f 05 <5b> c3 0f 1f 80 00 00 00 00 83 e2 39 83 fa 08 75 de e8 23 ff ff ff\r\n[   44.546523] RSP: 002b:00007ffeae4a7930 EFLAGS: 00000202 ORIG_RAX: 0000000000000012\r\n[   44.546523] RAX: ffffffffffffffda RBX: 00007f4299934740 RCX: 00007f42999c6687\r\n[   44.546523] RDX: 0000000000000001 RSI: 000055ea6149200f RDI: 0000000000000003\r\n[   44.546523] RBP: 00007ffeae4a79a0 R08: 0000000000000000 R09: 0000000000000000\r\n[   44.546523] R10: 0000010000000005 R11: 0000000000000202 R12: 0000\r\n---truncated---",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38222"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/190.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38222"
+    },
+    {
+      "cve": "CVE-2025-38231",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnfsd: Initialize ssc before laundromat_work to prevent NULL dereference\r\n\r\nIn nfs4_state_start_net(), laundromat_work may access nfsd_ssc through\r\nnfs4_laundromat -> nfsd4_ssc_expire_umount. If nfsd_ssc isn't initialized,\r\nthis can cause NULL pointer dereference.\r\n\r\nNormally the delayed start of laundromat_work allows sufficient time for\r\nnfsd_ssc initialization to complete. However, when the kernel waits too\r\nlong for userspace responses (e.g. in nfs4_state_start_net ->\r\nnfsd4_end_grace -> nfsd4_record_grace_done -> nfsd4_cld_grace_done ->\r\ncld_pipe_upcall -> __cld_pipe_upcall -> wait_for_completion path), the\r\ndelayed work may start before nfsd_ssc initialization finishes.\r\n\r\nFix this by moving nfsd_ssc initialization before starting laundromat_work.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38231"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/476.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38231"
+    },
+    {
+      "cve": "CVE-2025-38236",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\naf_unix: Don't leave consecutive consumed OOB skbs.\r\n\r\nJann Horn reported a use-after-free in unix_stream_read_generic().\r\n\r\nThe following sequences reproduce the issue:\r\n\r\n  $ python3\r\n  from socket import *\r\n  s1, s2 = socketpair(AF_UNIX, SOCK_STREAM)\r\n  s1.send(b'x', MSG_OOB)\r\n  s2.recv(1, MSG_OOB)     # leave a consumed OOB skb\r\n  s1.send(b'y', MSG_OOB)\r\n  s2.recv(1, MSG_OOB)     # leave a consumed OOB skb\r\n  s1.send(b'z', MSG_OOB)\r\n  s2.recv(1)              # recv 'z' illegally\r\n  s2.recv(1, MSG_OOB)     # access 'z' skb (use-after-free)\r\n\r\nEven though a user reads OOB data, the skb holding the data stays on\r\nthe recv queue to mark the OOB boundary and break the next recv().\r\n\r\nAfter the last send() in the scenario above, the sk2's recv queue has\r\n2 leading consumed OOB skbs and 1 real OOB skb.\r\n\r\nThen, the following happens during the next recv() without MSG_OOB\r\n\r\n  1. unix_stream_read_generic() peeks the first consumed OOB skb\r\n  2. manage_oob() returns the next consumed OOB skb\r\n  3. unix_stream_read_generic() fetches the next not-yet-consumed OOB skb\r\n  4. unix_stream_read_generic() reads and frees the OOB skb\r\n\r\n, and the last recv(MSG_OOB) triggers KASAN splat.\r\n\r\nThe 3. above occurs because of the SO_PEEK_OFF code, which does not\r\nexpect unix_skb_len(skb) to be 0, but this is true for such consumed\r\nOOB skbs.\r\n\r\n  while (skip >= unix_skb_len(skb)) {\r\n    skip -= unix_skb_len(skb);\r\n    skb = skb_peek_next(skb, &sk->sk_receive_queue);\r\n    ...\r\n  }\r\n\r\nIn addition to this use-after-free, there is another issue that\r\nioctl(SIOCATMARK) does not function properly with consecutive consumed\r\nOOB skbs.\r\n\r\nSo, nothing good comes out of such a situation.\r\n\r\nInstead of complicating manage_oob(), ioctl() handling, and the next\r\nECONNRESET fix by introducing a loop for consecutive consumed OOB skbs,\r\nlet's not leave such consecutive OOB unnecessarily.\r\n\r\nNow, while receiving an OOB skb in unix_stream_recv_urg(), if its\r\nprevious skb is a consumed OOB skb, it is freed.\r\n\r\n[0]:\r\nBUG: KASAN: slab-use-after-free in unix_stream_read_actor (net/unix/af_unix.c:3027)\r\nRead of size 4 at addr ffff888106ef2904 by task python3/315\r\n\r\nCPU: 2 UID: 0 PID: 315 Comm: python3 Not tainted 6.16.0-rc1-00407-gec315832f6f9 #8 PREEMPT(voluntary)\r\nHardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-4.fc42 04/01/2014\r\nCall Trace:\r\n <TASK>\r\n dump_stack_lvl (lib/dump_stack.c:122)\r\n print_report (mm/kasan/report.c:409 mm/kasan/report.c:521)\r\n kasan_report (mm/kasan/report.c:636)\r\n unix_stream_read_actor (net/unix/af_unix.c:3027)\r\n unix_stream_read_generic (net/unix/af_unix.c:2708 net/unix/af_unix.c:2847)\r\n unix_stream_recvmsg (net/unix/af_unix.c:3048)\r\n sock_recvmsg (net/socket.c:1063 (discriminator 20) net/socket.c:1085 (discriminator 20))\r\n __sys_recvfrom (net/socket.c:2278)\r\n __x64_sys_recvfrom (net/socket.c:2291 (discriminator 1) net/socket.c:2287 (discriminator 1) net/socket.c:2287 (discriminator 1))\r\n do_syscall_64 (arch/x86/entry/syscall_64.c:63 (discriminator 1) arch/x86/entry/syscall_64.c:94 (discriminator 1))\r\n entry_SYSCALL_64_after_hwframe (arch/x86/entry/entry_64.S:130)\r\nRIP: 0033:0x7f8911fcea06\r\nCode: 5d e8 41 8b 93 08 03 00 00 59 5e 48 83 f8 fc 75 19 83 e2 39 83 fa 08 75 11 e8 26 ff ff ff 66 0f 1f 44 00 00 48 8b 45 10 0f 05 <48> 8b 5d f8 c9 c3 0f 1f 40 00 f3 0f 1e fa 55 48 89 e5 48 83 ec 08\r\nRSP: 002b:00007fffdb0dccb0 EFLAGS: 00000202 ORIG_RAX: 000000000000002d\r\nRAX: ffffffffffffffda RBX: 00007fffdb0dcdc8 RCX: 00007f8911fcea06\r\nRDX: 0000000000000001 RSI: 00007f8911a5e060 RDI: 0000000000000006\r\nRBP: 00007fffdb0dccd0 R08: 0000000000000000 R09: 0000000000000000\r\nR10: 0000000000000001 R11: 0000000000000202 R12: 00007f89119a7d20\r\nR13: ffffffffc4653600 R14: 0000000000000000 R15: 0000000000000000\r\n </TASK>\r\n\r\nAllocated by task 315:\r\n kasan_save_stack (mm/kasan/common.c:48)\r\n kasan_save_track (mm/kasan/common.c:60 (discriminator 1) mm/kasan/common.c:69 (discriminator 1))\r\n __kasan_slab_alloc (mm/kasan/common.c:348)\r\n kmem_cache_alloc_\r\n---truncated---",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38236"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/416.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38236"
+    },
+    {
+      "cve": "CVE-2025-38280",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nbpf: Avoid __bpf_prog_ret0_warn when jit fails\r\n\r\nsyzkaller reported an issue:\r\n\r\nWARNING: CPU: 3 PID: 217 at kernel/bpf/core.c:2357 __bpf_prog_ret0_warn+0xa/0x20 kernel/bpf/core.c:2357\r\nModules linked in:\r\nCPU: 3 UID: 0 PID: 217 Comm: kworker/u32:6 Not tainted 6.15.0-rc4-syzkaller-00040-g8bac8898fe39\r\nRIP: 0010:__bpf_prog_ret0_warn+0xa/0x20 kernel/bpf/core.c:2357\r\nCall Trace:\r\n <TASK>\r\n bpf_dispatcher_nop_func include/linux/bpf.h:1316 [inline]\r\n __bpf_prog_run include/linux/filter.h:718 [inline]\r\n bpf_prog_run include/linux/filter.h:725 [inline]\r\n cls_bpf_classify+0x74a/0x1110 net/sched/cls_bpf.c:105\r\n ...\r\n\r\nWhen creating bpf program, 'fp->jit_requested' depends on bpf_jit_enable.\r\nThis issue is triggered because of CONFIG_BPF_JIT_ALWAYS_ON is not set\r\nand bpf_jit_enable is set to 1, causing the arch to attempt JIT the prog,\r\nbut jit failed due to FAULT_INJECTION. As a result, incorrectly\r\ntreats the program as valid, when the program runs it calls\r\n`__bpf_prog_ret0_warn` and triggers the WARN_ON_ONCE(1).",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38280"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38280"
+    },
+    {
+      "cve": "CVE-2025-38285",
+      "cwe": {
+        "id": "CWE-617",
+        "name": "Reachable Assertion"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nbpf: Fix WARN() in get_bpf_raw_tp_regs\r\n\r\nsyzkaller reported an issue:\r\n\r\nWARNING: CPU: 3 PID: 5971 at kernel/trace/bpf_trace.c:1861 get_bpf_raw_tp_regs+0xa4/0x100 kernel/trace/bpf_trace.c:1861\r\nModules linked in:\r\nCPU: 3 UID: 0 PID: 5971 Comm: syz-executor205 Not tainted 6.15.0-rc5-syzkaller-00038-g707df3375124 #0 PREEMPT(full)\r\nHardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.16.3-debian-1.16.3-2~bpo12+1 04/01/2014\r\nRIP: 0010:get_bpf_raw_tp_regs+0xa4/0x100 kernel/trace/bpf_trace.c:1861\r\nRSP: 0018:ffffc90003636fa8 EFLAGS: 00010293\r\nRAX: 0000000000000000 RBX: 0000000000000003 RCX: ffffffff81c6bc4c\r\nRDX: ffff888032efc880 RSI: ffffffff81c6bc83 RDI: 0000000000000005\r\nRBP: ffff88806a730860 R08: 0000000000000005 R09: 0000000000000003\r\nR10: 0000000000000004 R11: 0000000000000000 R12: 0000000000000004\r\nR13: 0000000000000001 R14: ffffc90003637008 R15: 0000000000000900\r\nFS:  0000000000000000(0000) GS:ffff8880d6cdf000(0000) knlGS:0000000000000000\r\nCS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033\r\nCR2: 00007f7baee09130 CR3: 0000000029f5a000 CR4: 0000000000352ef0\r\nDR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000\r\nDR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400\r\nCall Trace:\r\n <TASK>\r\n ____bpf_get_stack_raw_tp kernel/trace/bpf_trace.c:1934 [inline]\r\n bpf_get_stack_raw_tp+0x24/0x160 kernel/trace/bpf_trace.c:1931\r\n bpf_prog_ec3b2eefa702d8d3+0x43/0x47\r\n bpf_dispatcher_nop_func include/linux/bpf.h:1316 [inline]\r\n __bpf_prog_run include/linux/filter.h:718 [inline]\r\n bpf_prog_run include/linux/filter.h:725 [inline]\r\n __bpf_trace_run kernel/trace/bpf_trace.c:2363 [inline]\r\n bpf_trace_run3+0x23f/0x5a0 kernel/trace/bpf_trace.c:2405\r\n __bpf_trace_mmap_lock_acquire_returned+0xfc/0x140 include/trace/events/mmap_lock.h:47\r\n __traceiter_mmap_lock_acquire_returned+0x79/0xc0 include/trace/events/mmap_lock.h:47\r\n __do_trace_mmap_lock_acquire_returned include/trace/events/mmap_lock.h:47 [inline]\r\n trace_mmap_lock_acquire_returned include/trace/events/mmap_lock.h:47 [inline]\r\n __mmap_lock_do_trace_acquire_returned+0x138/0x1f0 mm/mmap_lock.c:35\r\n __mmap_lock_trace_acquire_returned include/linux/mmap_lock.h:36 [inline]\r\n mmap_read_trylock include/linux/mmap_lock.h:204 [inline]\r\n stack_map_get_build_id_offset+0x535/0x6f0 kernel/bpf/stackmap.c:157\r\n __bpf_get_stack+0x307/0xa10 kernel/bpf/stackmap.c:483\r\n ____bpf_get_stack kernel/bpf/stackmap.c:499 [inline]\r\n bpf_get_stack+0x32/0x40 kernel/bpf/stackmap.c:496\r\n ____bpf_get_stack_raw_tp kernel/trace/bpf_trace.c:1941 [inline]\r\n bpf_get_stack_raw_tp+0x124/0x160 kernel/trace/bpf_trace.c:1931\r\n bpf_prog_ec3b2eefa702d8d3+0x43/0x47\r\n\r\nTracepoint like trace_mmap_lock_acquire_returned may cause nested call\r\nas the corner case show above, which will be resolved with more general\r\nmethod in the future. As a result, WARN_ON_ONCE will be triggered. As\r\nAlexei suggested, remove the WARN_ON_ONCE first.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38285"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/617.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38285"
+    },
+    {
+      "cve": "CVE-2025-38312",
+      "cwe": {
+        "id": "CWE-369",
+        "name": "Divide By Zero"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nfbdev: core: fbcvt: avoid division by 0 in fb_cvt_hperiod()\r\n\r\nIn fb_find_mode_cvt(), iff mode->refresh somehow happens to be 0x80000000,\r\ncvt.f_refresh will become 0 when multiplying it by 2 due to overflow. It's\r\nthen passed to fb_cvt_hperiod(), where it's used as a divider -- division\r\nby 0 will result in kernel oops. Add a sanity check for cvt.f_refresh to\r\navoid such overflow...\r\n\r\nFound by Linux Verification Center (linuxtesting.org) with the Svace static\r\nanalysis tool.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38312"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/369.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38312"
+    },
+    {
+      "cve": "CVE-2025-38342",
+      "cwe": {
+        "id": "CWE-125",
+        "name": "Out-of-bounds Read"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nsoftware node: Correct a OOB check in software_node_get_reference_args()\r\n\r\nsoftware_node_get_reference_args() wants to get @index-th element, so\r\nthe property value requires at least '(index + 1) * sizeof(*ref)' bytes\r\nbut that can not be guaranteed by current OOB check, and may cause OOB\r\nfor malformed property.\r\n\r\nFix by using as OOB check '((index + 1) * sizeof(*ref) > prop->length)'.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38342"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/125.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38342"
+    },
+    {
+      "cve": "CVE-2025-38350",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: Always pass notifications when child class becomes empty\n\nCertain classful qdiscs may invoke their classes' dequeue handler on an\nenqueue operation. This may unexpectedly empty the child qdisc and thus\nmake an in-flight class passive via qlen_notify(). Most qdiscs do not\nexpect such behaviour at this point in time and may re-activate the\nclass eventually anyways which will lead to a use-after-free.\n\nThe referenced fix commit attempted to fix this behavior for the HFSC\ncase by moving the backlog accounting around, though this turned out to\nbe incomplete since the parent's parent may run into the issue too.\nThe following reproducer demonstrates this use-after-free:\n\n    tc qdisc add dev lo root handle 1: drr\n    tc filter add dev lo parent 1: basic classid 1:1\n    tc class add dev lo parent 1: classid 1:1 drr\n    tc qdisc add dev lo parent 1:1 handle 2: hfsc def 1\n    tc class add dev lo parent 2: classid 2:1 hfsc rt m1 8 d 1 m2 0\n    tc qdisc add dev lo parent 2:1 handle 3: netem\n    tc qdisc add dev lo parent 3:1 handle 4: blackhole\n\n    echo 1 | socat -u STDIN UDP4-DATAGRAM:127.0.0.1:8888\n    tc class delete dev lo classid 1:1\n    echo 1 | socat -u STDIN UDP4-DATAGRAM:127.0.0.1:8888\n\nSince backlog accounting issues leading to a use-after-frees on stale\nclass pointers is a recurring pattern at this point, this patch takes\na different approach. Instead of trying to fix the accounting, the patch\nensures that qdisc_tree_reduce_backlog always calls qlen_notify when\nthe child qdisc is empty. This solves the problem because deletion of\nqdiscs always involves a call to qdisc_reset() and / or\nqdisc_purge_queue() which ultimately resets its qlen to 0 thus causing\nthe following qdisc_tree_reduce_backlog() to report to the parent. Note\nthat this may call qlen_notify on passive classes multiple times. This\nis not a problem after the recent patch series that made all the\nclassful qdiscs qlen_notify() handlers idempotent.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38350"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38350"
+    },
+    {
+      "cve": "CVE-2025-38364",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nmaple_tree: fix MA_STATE_PREALLOC flag in mas_preallocate()\r\n\r\nTemporarily clear the preallocation flag when explicitly requesting\r\nallocations.  Pre-existing allocations are already counted against the\r\nrequest through mas_node_count_gfp(), but the allocations will not happen\r\nif the MA_STATE_PREALLOC flag is set.  This flag is meant to avoid\r\nre-allocating in bulk allocation mode, and to detect issues with\r\npreallocation calculations.\r\n\r\nThe MA_STATE_PREALLOC flag should also always be set on zero allocations\r\nso that detection of underflow allocations will print a WARN_ON() during\r\nconsumption.\r\n\r\nUser visible effect of this flaw is a WARN_ON() followed by a null pointer\r\ndereference when subsequent requests for larger number of nodes is\r\nignored, such as the vma merge retry in mmap_region() caused by drivers\r\naltering the vma flags (which happens in v6.6, at least)",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38364"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/476.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38364"
+    },
+    {
+      "cve": "CVE-2025-38393",
+      "cwe": {
+        "id": "CWE-362",
+        "name": "Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nNFSv4/pNFS: Fix a race to wake on NFS_LAYOUT_DRAIN\r\n\r\nWe found a few different systems hung up in writeback waiting on the same\r\npage lock, and one task waiting on the NFS_LAYOUT_DRAIN bit in\r\npnfs_update_layout(), however the pnfs_layout_hdr's plh_outstanding count\r\nwas zero.\r\n\r\nIt seems most likely that this is another race between the waiter and waker\r\nsimilar to commit ed0172af5d6f (\"SUNRPC: Fix a race to wake a sync task\").\r\nFix it up by applying the advised barrier.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38393"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/362.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.7,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38393"
+    },
+    {
+      "cve": "CVE-2025-38400",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnfs: Clean up /proc/net/rpc/nfs when nfs_fs_proc_net_init() fails.\r\n\r\nsyzbot reported a warning below [1] following a fault injection in\r\nnfs_fs_proc_net_init(). [0]\r\n\r\nWhen nfs_fs_proc_net_init() fails, /proc/net/rpc/nfs is not removed.\r\n\r\nLater, rpc_proc_exit() tries to remove /proc/net/rpc, and the warning\r\nis logged as the directory is not empty.\r\n\r\nLet's handle the error of nfs_fs_proc_net_init() properly.\r\n\r\n[0]:\r\nFAULT_INJECTION: forcing a failure.\r\nname failslab, interval 1, probability 0, space 0, times 0\r\nCPU: 1 UID: 0 PID: 6120 Comm: syz.2.27 Not tainted 6.16.0-rc1-syzkaller-00010-g2c4a1f3fe03e #0 PREEMPT(full)\r\nHardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 05/07/2025\r\nCall Trace:\r\n <TASK>\r\n  dump_stack_lvl (lib/dump_stack.c:123)\r\n should_fail_ex (lib/fault-inject.c:73 lib/fault-inject.c:174)\r\n should_failslab (mm/failslab.c:46)\r\n kmem_cache_alloc_noprof (mm/slub.c:4178 mm/slub.c:4204)\r\n __proc_create (fs/proc/generic.c:427)\r\n proc_create_reg (fs/proc/generic.c:554)\r\n proc_create_net_data (fs/proc/proc_net.c:120)\r\n nfs_fs_proc_net_init (fs/nfs/client.c:1409)\r\n nfs_net_init (fs/nfs/inode.c:2600)\r\n ops_init (net/core/net_namespace.c:138)\r\n setup_net (net/core/net_namespace.c:443)\r\n copy_net_ns (net/core/net_namespace.c:576)\r\n create_new_namespaces (kernel/nsproxy.c:110)\r\n unshare_nsproxy_namespaces (kernel/nsproxy.c:218 (discriminator 4))\r\n ksys_unshare (kernel/fork.c:3123)\r\n __x64_sys_unshare (kernel/fork.c:3190)\r\n do_syscall_64 (arch/x86/entry/syscall_64.c:63 arch/x86/entry/syscall_64.c:94)\r\n entry_SYSCALL_64_after_hwframe (arch/x86/entry/entry_64.S:130)\r\n </TASK>\r\n\r\n[1]:\r\nremove_proc_entry: removing non-empty directory 'net/rpc', leaking at least 'nfs'\r\n WARNING: CPU: 1 PID: 6120 at fs/proc/generic.c:727 remove_proc_entry+0x45e/0x530 fs/proc/generic.c:727\r\nModules linked in:\r\nCPU: 1 UID: 0 PID: 6120 Comm: syz.2.27 Not tainted 6.16.0-rc1-syzkaller-00010-g2c4a1f3fe03e #0 PREEMPT(full)\r\nHardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 05/07/2025\r\n RIP: 0010:remove_proc_entry+0x45e/0x530 fs/proc/generic.c:727\r\nCode: 3c 02 00 0f 85 85 00 00 00 48 8b 93 d8 00 00 00 4d 89 f0 4c 89 e9 48 c7 c6 40 ba a2 8b 48 c7 c7 60 b9 a2 8b e8 33 81 1d ff 90 <0f> 0b 90 90 e9 5f fe ff ff e8 04 69 5e ff 90 48 b8 00 00 00 00 00\r\nRSP: 0018:ffffc90003637b08 EFLAGS: 00010282\r\nRAX: 0000000000000000 RBX: ffff88805f534140 RCX: ffffffff817a92c8\r\nRDX: ffff88807da99e00 RSI: ffffffff817a92d5 RDI: 0000000000000001\r\nRBP: ffff888033431ac0 R08: 0000000000000001 R09: 0000000000000000\r\nR10: 0000000000000001 R11: 0000000000000001 R12: ffff888033431a00\r\nR13: ffff888033431ae4 R14: ffff888033184724 R15: dffffc0000000000\r\nFS:  0000555580328500(0000) GS:ffff888124a62000(0000) knlGS:0000000000000000\r\nCS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033\r\nCR2: 00007f71733743e0 CR3: 000000007f618000 CR4: 00000000003526f0\r\nDR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000\r\nDR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400\r\nCall Trace:\r\n <TASK>\r\n  sunrpc_exit_net+0x46/0x90 net/sunrpc/sunrpc_syms.c:76\r\n  ops_exit_list net/core/net_namespace.c:200 [inline]\r\n  ops_undo_list+0x2eb/0xab0 net/core/net_namespace.c:253\r\n  setup_net+0x2e1/0x510 net/core/net_namespace.c:457\r\n  copy_net_ns+0x2a6/0x5f0 net/core/net_namespace.c:574\r\n  create_new_namespaces+0x3ea/0xa90 kernel/nsproxy.c:110\r\n  unshare_nsproxy_namespaces+0xc0/0x1f0 kernel/nsproxy.c:218\r\n  ksys_unshare+0x45b/0xa40 kernel/fork.c:3121\r\n  __do_sys_unshare kernel/fork.c:3192 [inline]\r\n  __se_sys_unshare kernel/fork.c:3190 [inline]\r\n  __x64_sys_unshare+0x31/0x40 kernel/fork.c:3190\r\n  do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]\r\n  do_syscall_64+0xcd/0x490 arch/x86/entry/syscall_64.c:94\r\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\r\nRIP: 0033:0x7fa1a6b8e929\r\nCode: ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c\r\n---truncated---",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38400"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38400"
+    },
+    {
+      "cve": "CVE-2025-38430",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnfsd: nfsd4_spo_must_allow() must check this is a v4 compound request\r\n\r\nIf the request being processed is not a v4 compound request, then\r\nexamining the cstate can have undefined results.\r\n\r\nThis patch adds a check that the rpc procedure being executed\r\n(rq_procinfo) is the NFSPROC4_COMPOUND procedure.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38430"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38430"
+    },
+    {
+      "cve": "CVE-2025-38451",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nmd/md-bitmap: fix GPF in bitmap_get_stats()\r\n\r\nThe commit message of commit 6ec1f0239485 (\"md/md-bitmap: fix stats\r\ncollection for external bitmaps\") states:\r\n\r\n    Remove the external bitmap check as the statistics should be\r\n    available regardless of bitmap storage location.\r\n\r\n    Return -EINVAL only for invalid bitmap with no storage (neither in\r\n    superblock nor in external file).\r\n\r\nBut, the code does not adhere to the above, as it does only check for\r\na valid super-block for \"internal\" bitmaps. Hence, we observe:\r\n\r\nOops: GPF, probably for non-canonical address 0x1cd66f1f40000028\r\nRIP: 0010:bitmap_get_stats+0x45/0xd0\r\nCall Trace:\r\n\r\n seq_read_iter+0x2b9/0x46a\r\n seq_read+0x12f/0x180\r\n proc_reg_read+0x57/0xb0\r\n vfs_read+0xf6/0x380\r\n ksys_read+0x6d/0xf0\r\n do_syscall_64+0x8c/0x1b0\r\n entry_SYSCALL_64_after_hwframe+0x76/0x7e\r\n\r\nWe fix this by checking the existence of a super-block for both the\r\ninternal and external case.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38451"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38451"
+    },
+    {
+      "cve": "CVE-2025-38457",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnet/sched: Abort __tc_modify_qdisc if parent class does not exist\r\n\r\nLion's patch [1] revealed an ancient bug in the qdisc API.\r\nWhenever a user creates/modifies a qdisc specifying as a parent another\r\nqdisc, the qdisc API will, during grafting, detect that the user is\r\nnot trying to attach to a class and reject. However grafting is\r\nperformed after qdisc_create (and thus the qdiscs' init callback) is\r\nexecuted. In qdiscs that eventually call qdisc_tree_reduce_backlog\r\nduring init or change (such as fq, hhf, choke, etc), an issue\r\narises. For example, executing the following commands:\r\n\r\nsudo tc qdisc add dev lo root handle a: htb default 2\r\nsudo tc qdisc add dev lo parent a: handle beef fq\r\n\r\nQdiscs such as fq, hhf, choke, etc unconditionally invoke\r\nqdisc_tree_reduce_backlog() in their control path init() or change() which\r\nthen causes a failure to find the child class; however, that does not stop\r\nthe unconditional invocation of the assumed child qdisc's qlen_notify with\r\na null class. All these qdiscs make the assumption that class is non-null.\r\n\r\nThe solution is ensure that qdisc_leaf() which looks up the parent\r\nclass, and is invoked prior to qdisc_create(), should return failure on\r\nnot finding the class.\r\nIn this patch, we leverage qdisc_leaf to return ERR_PTRs whenever the\r\nparentid doesn't correspond to a class, so that we can detect it\r\nearlier on and abort before qdisc_create is called.\r\n\r\n[1] https://lore.kernel.org/netdev/d912cbd7-193b-4269-9857-525bee8bbb6a@gmail.com/",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38457"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38457"
+    },
+    {
+      "cve": "CVE-2025-38465",
+      "cwe": {
+        "id": "CWE-401",
+        "name": "Missing Release of Memory after Effective Lifetime"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnetlink: Fix wraparounds of sk->sk_rmem_alloc.\r\n\r\nNetlink has this pattern in some places\r\n\r\n  if (atomic_read(&sk->sk_rmem_alloc) > sk->sk_rcvbuf)\r\n  \tatomic_add(skb->truesize, &sk->sk_rmem_alloc);\r\n\r\n, which has the same problem fixed by commit 5a465a0da13e (\"udp:\r\nFix multiple wraparounds of sk->sk_rmem_alloc.\").\r\n\r\nFor example, if we set INT_MAX to SO_RCVBUFFORCE, the condition\r\nis always false as the two operands are of int.\r\n\r\nThen, a single socket can eat as many skb as possible until OOM\r\nhappens, and we can see multiple wraparounds of sk->sk_rmem_alloc.\r\n\r\nLet's fix it by using atomic_add_return() and comparing the two\r\nvariables as unsigned int.\r\n\r\nBefore:\r\n  [root@fedora ~]# ss -f netlink\r\n  Recv-Q      Send-Q Local Address:Port                Peer Address:Port\r\n  -1668710080 0               rtnl:nl_wraparound/293               *\r\n\r\nAfter:\r\n  [root@fedora ~]# ss -f netlink\r\n  Recv-Q     Send-Q Local Address:Port                Peer Address:Port\r\n  2147483072 0               rtnl:nl_wraparound/290               *\r\n  ^\r\n  `--- INT_MAX - 576",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38465"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/401.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38465"
+    },
+    {
+      "cve": "CVE-2025-38466",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nperf: Revert to requiring CAP_SYS_ADMIN for uprobes\r\n\r\nJann reports that uprobes can be used destructively when used in the\r\nmiddle of an instruction. The kernel only verifies there is a valid\r\ninstruction at the requested offset, but due to variable instruction\r\nlength cannot determine if this is an instruction as seen by the\r\nintended execution stream.\r\n\r\nAdditionally, Mark Rutland notes that on architectures that mix data\r\nin the text segment (like arm64), a similar things can be done if the\r\ndata word is 'mistaken' for an instruction.\r\n\r\nAs such, require CAP_SYS_ADMIN for uprobes.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38466"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38466"
+    },
+    {
+      "cve": "CVE-2025-38468",
+      "cwe": {
+        "id": "CWE-476",
+        "name": "NULL Pointer Dereference"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnet/sched: Return NULL when htb_lookup_leaf encounters an empty rbtree\r\n\r\nhtb_lookup_leaf has a BUG_ON that can trigger with the following:\r\n\r\ntc qdisc del dev lo root\r\ntc qdisc add dev lo root handle 1: htb default 1\r\ntc class add dev lo parent 1: classid 1:1 htb rate 64bit\r\ntc qdisc add dev lo parent 1:1 handle 2: netem\r\ntc qdisc add dev lo parent 2:1 handle 3: blackhole\r\nping -I lo -c1 -W0.001 127.0.0.1\r\n\r\nThe root cause is the following:\r\n\r\n1. htb_dequeue calls htb_dequeue_tree which calls the dequeue handler on\r\n   the selected leaf qdisc\r\n2. netem_dequeue calls enqueue on the child qdisc\r\n3. blackhole_enqueue drops the packet and returns a value that is not\r\n   just NET_XMIT_SUCCESS\r\n4. Because of this, netem_dequeue calls qdisc_tree_reduce_backlog, and\r\n   since qlen is now 0, it calls htb_qlen_notify -> htb_deactivate ->\r\n   htb_deactiviate_prios -> htb_remove_class_from_row -> htb_safe_rb_erase\r\n5. As this is the only class in the selected hprio rbtree,\r\n   __rb_change_child in __rb_erase_augmented sets the rb_root pointer to\r\n   NULL\r\n6. Because blackhole_dequeue returns NULL, netem_dequeue returns NULL,\r\n   which causes htb_dequeue_tree to call htb_lookup_leaf with the same\r\n   hprio rbtree, and fail the BUG_ON\r\n\r\nThe function graph for this scenario is shown here:\r\n 0)               |  htb_enqueue() {\r\n 0) + 13.635 us   |    netem_enqueue();\r\n 0)   4.719 us    |    htb_activate_prios();\r\n 0) # 2249.199 us |  }\r\n 0)               |  htb_dequeue() {\r\n 0)   2.355 us    |    htb_lookup_leaf();\r\n 0)               |    netem_dequeue() {\r\n 0) + 11.061 us   |      blackhole_enqueue();\r\n 0)               |      qdisc_tree_reduce_backlog() {\r\n 0)               |        qdisc_lookup_rcu() {\r\n 0)   1.873 us    |          qdisc_match_from_root();\r\n 0)   6.292 us    |        }\r\n 0)   1.894 us    |        htb_search();\r\n 0)               |        htb_qlen_notify() {\r\n 0)   2.655 us    |          htb_deactivate_prios();\r\n 0)   6.933 us    |        }\r\n 0) + 25.227 us   |      }\r\n 0)   1.983 us    |      blackhole_dequeue();\r\n 0) + 86.553 us   |    }\r\n 0) # 2932.761 us |    qdisc_warn_nonwc();\r\n 0)               |    htb_lookup_leaf() {\r\n 0)               |      BUG_ON();\r\n ------------------------------------------\r\n\r\nThe full original bug report can be seen here [1].\r\n\r\nWe can fix this just by returning NULL instead of the BUG_ON,\r\nas htb_dequeue_tree returns NULL when htb_lookup_leaf returns\r\nNULL.\r\n\r\n[1] https://lore.kernel.org/netdev/pF5XOOIim0IuEfhI-SOxTgRvNoDwuux7UHKnE_Y5-zVd4wmGvNk2ceHjKb8ORnzw0cGwfmVu42g9dL7XyJLf1NEzaztboTWcm0Ogxuojoeo=@willsroot.io/",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38468"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/476.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38468"
+    },
+    {
+      "cve": "CVE-2025-38470",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnet: vlan: fix VLAN 0 refcount imbalance of toggling filtering during runtime\r\n\r\nAssuming the \"rx-vlan-filter\" feature is enabled on a net device, the\r\n8021q module will automatically add or remove VLAN 0 when the net device\r\nis put administratively up or down, respectively. There are a couple of\r\nproblems with the above scheme.\r\n\r\nThe first problem is a memory leak that can happen if the \"rx-vlan-filter\"\r\nfeature is disabled while the device is running:\r\n\r\n # ip link add bond1 up type bond mode 0\r\n # ethtool -K bond1 rx-vlan-filter off\r\n # ip link del dev bond1\r\n\r\nWhen the device is put administratively down the \"rx-vlan-filter\"\r\nfeature is disabled, so the 8021q module will not remove VLAN 0 and the\r\nmemory will be leaked [1].\r\n\r\nAnother problem that can happen is that the kernel can automatically\r\ndelete VLAN 0 when the device is put administratively down despite not\r\nadding it when the device was put administratively up since during that\r\ntime the \"rx-vlan-filter\" feature was disabled. null-ptr-unref or\r\nbug_on[2] will be triggered by unregister_vlan_dev() for refcount\r\nimbalance if toggling filtering during runtime:\r\n\r\n$ ip link add bond0 type bond mode 0\r\n$ ip link add link bond0 name vlan0 type vlan id 0 protocol 802.1q\r\n$ ethtool -K bond0 rx-vlan-filter off\r\n$ ifconfig bond0 up\r\n$ ethtool -K bond0 rx-vlan-filter on\r\n$ ifconfig bond0 down\r\n$ ip link del vlan0\r\n\r\nRoot cause is as below:\r\nstep1: add vlan0 for real_dev, such as bond, team.\r\nregister_vlan_dev\r\n    vlan_vid_add(real_dev,htons(ETH_P_8021Q),0) //refcnt=1\r\nstep2: disable vlan filter feature and enable real_dev\r\nstep3: change filter from 0 to 1\r\nvlan_device_event\r\n    vlan_filter_push_vids\r\n        ndo_vlan_rx_add_vid //No refcnt added to real_dev vlan0\r\nstep4: real_dev down\r\nvlan_device_event\r\n    vlan_vid_del(dev, htons(ETH_P_8021Q), 0); //refcnt=0\r\n        vlan_info_rcu_free //free vlan0\r\nstep5: delete vlan0\r\nunregister_vlan_dev\r\n    BUG_ON(!vlan_info); //vlan_info is null\r\n\r\nFix both problems by noting in the VLAN info whether VLAN 0 was\r\nautomatically added upon NETDEV_UP and based on that decide whether it\r\nshould be deleted upon NETDEV_DOWN, regardless of the state of the\r\n\"rx-vlan-filter\" feature.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38470"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38470"
+    },
+    {
+      "cve": "CVE-2025-38471",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\ntls: always refresh the queue when reading sock\r\n\r\nAfter recent changes in net-next TCP compacts skbs much more\r\naggressively. This unearthed a bug in TLS where we may try\r\nto operate on an old skb when checking if all skbs in the\r\nqueue have matching decrypt state and geometry.\r\n\r\n    BUG: KASAN: slab-use-after-free in tls_strp_check_rcv+0x898/0x9a0 [tls]\r\n    (net/tls/tls_strp.c:436 net/tls/tls_strp.c:530 net/tls/tls_strp.c:544)\r\n    Read of size 4 at addr ffff888013085750 by task tls/13529\r\n\r\n    CPU: 2 UID: 0 PID: 13529 Comm: tls Not tainted 6.16.0-rc5-virtme\r\n    Call Trace:\r\n     kasan_report+0xca/0x100\r\n     tls_strp_check_rcv+0x898/0x9a0 [tls]\r\n     tls_rx_rec_wait+0x2c9/0x8d0 [tls]\r\n     tls_sw_recvmsg+0x40f/0x1aa0 [tls]\r\n     inet_recvmsg+0x1c3/0x1f0\r\n\r\nAlways reload the queue, fast path is to have the record in the queue\r\nwhen we wake, anyway (IOW the path going down \"if !strp->stm.full_len\").",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38471"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/416.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38471"
+    },
+    {
+      "cve": "CVE-2025-38477",
+      "cwe": {
+        "id": "CWE-362",
+        "name": "Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nnet/sched: sch_qfq: Fix race condition on qfq_aggregate\r\n\r\nA race condition can occur when 'agg' is modified in qfq_change_agg\r\n(called during qfq_enqueue) while other threads access it\r\nconcurrently. For example, qfq_dump_class may trigger a NULL\r\ndereference, and qfq_delete_class may cause a use-after-free.\r\n\r\nThis patch addresses the issue by:\r\n\r\n1. Moved qfq_destroy_class into the critical section.\r\n\r\n2. Added sch_tree_lock protection to qfq_dump_class and\r\nqfq_dump_class_stats.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38477"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/362.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.7,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38477"
+    },
+    {
+      "cve": "CVE-2025-38498",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\n\ndo_change_type(): refuse to operate on unmounted/not ours mounts\n\nEnsure that propagation settings can only be changed for mounts located\nin the caller's mount namespace. This change aligns permission checking\nwith the rest of mount(2).",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38498"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:N/I:L/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.3,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:N/I:L/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38498"
+    },
+    {
+      "cve": "CVE-2025-38499",
+      "cwe": {
+        "id": "CWE-20",
+        "name": "Improper Input Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "In the Linux kernel, the following vulnerability has been resolved:\r\n\r\nclone_private_mnt(): make sure that caller has CAP_SYS_ADMIN in the right userns\r\n\r\nWhat we want is to verify there is that clone won't expose something\r\nhidden by a mount we wouldn't be able to undo.  \"Wouldn't be able to undo\"\r\nmay be a result of MNT_LOCKED on a child, but it may also come from\r\nlacking admin rights in the userns of the namespace mount belongs to.\r\n\r\nclone_private_mnt() checks the former, but not the latter.\r\n\r\nThere's a number of rather confusing CAP_SYS_ADMIN checks in various\r\nuserns during the mount, especially with the new mount API; they serve\r\ndifferent purposes and in case of clone_private_mnt() they usually,\r\nbut not always end up covering the missing check mentioned above.",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-38499"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005"
+          ]
+        }
+      ],
+      "title": "CVE-2025-38499"
     },
     {
       "cve": "CVE-2025-38614",
