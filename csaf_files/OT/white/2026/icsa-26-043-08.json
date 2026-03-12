@@ -3,7 +3,7 @@
     "acknowledgments": [
       {
         "organization": "Siemens ProductCERT",
-        "summary": "reported these vulnerabilities to CISA."
+        "summary": "reported this vulnerability to CISA."
       },
       {
         "names": [
@@ -25,7 +25,7 @@
     "notes": [
       {
         "category": "summary",
-        "text": "Siemens NX is affected by multiple file parsing vulnerabilities that could be triggered when the application reads files in CGM format. If a user is tricked to open a malicious file with any of the affected products, this could lead the application to crash or potentially lead to arbitrary code execution.\n\nSiemens has released a new version for NX and recommends to update to the latest version.",
+        "text": "Siemens NX is affected by missing data validation vulnerability that could allow an attacker with local access on a compromised system to interfere with internal data during the PDF export process that could potentially lead to arbitrary code execution. \n\nSiemens has released a new version of NX which resolves the data tampering vulnerability.",
         "title": "Summary"
       },
       {
@@ -70,7 +70,7 @@
       },
       {
         "category": "general",
-        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of these vulnerabilities.",
         "title": "Recommended Practices"
       },
       {
@@ -118,12 +118,12 @@
     "references": [
       {
         "category": "self",
-        "summary": "SSA-535115: Multiple File Parsing Vulnerabilities in NX Before V2512 - CSAF Version",
+        "summary": "SSA-535115: Data Validation Vulnerability in NX Before V2512 - CSAF Version",
         "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-535115.json"
       },
       {
         "category": "self",
-        "summary": "SSA-535115: Multiple File Parsing Vulnerabilities in NX Before V2512 - HTML Version",
+        "summary": "SSA-535115: Data Validation Vulnerability in NX Before V2512 - HTML Version",
         "url": "https://cert-portal.siemens.com/productcert/html/ssa-535115.html"
       },
       {
@@ -169,9 +169,9 @@
     ],
     "title": "Siemens NX",
     "tracking": {
-      "current_release_date": "2026-02-12T07:00:00.000000Z",
+      "current_release_date": "2026-03-12T06:00:00.000000Z",
       "generator": {
-        "date": "2026-02-11T22:36:05.329987Z",
+        "date": "2026-03-11T21:23:48.798500Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.5.0"
@@ -188,13 +188,25 @@
         },
         {
           "date": "2026-02-12T07:00:00.000000Z",
-          "legacy_version": "CISA Republication",
+          "legacy_version": "Additional Release 1",
           "number": "2",
-          "summary": "Initial CISA Republication of Siemens ProductCERT SSA-535115 advisory"
+          "summary": "CISA Republication - Initial CISA Republication of Siemens ProductCERT SSA-535115 advisory"
+        },
+        {
+          "date": "2026-03-10T00:00:00.000000Z",
+          "legacy_version": "Additional Release 2",
+          "number": "3",
+          "summary": "Added product-specific CVSS for NX with managed mode"
+        },
+        {
+          "date": "2026-03-12T06:00:00.000000Z",
+          "legacy_version": "Latest Updated CISA Republication",
+          "number": "4",
+          "summary": "CISA Republication update based on Siemens ProductCERT SSA-535115 advisory"
         }
       ],
       "status": "final",
-      "version": "2"
+      "version": "4"
     }
   },
   "product_tree": {
@@ -214,6 +226,20 @@
             ],
             "category": "product_name",
             "name": "NX"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<2512",
+                "product": {
+                  "name": "NX (Managed Mode)",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "NX (Managed Mode)"
           }
         ],
         "category": "vendor",
@@ -231,13 +257,19 @@
       "notes": [
         {
           "category": "summary",
-          "text": "The affected application contains a stack-based buffer overflow vulnerability that could be triggered while parsing specially crafted CGM files. This could allow an attacker to execute code in the context of the current process.",
+          "text": "The affected application contains a data validation vulnerability that could allow an attacker with local access to interfere with internal data during the PDF export process that could potentially lead to arbitrary code execution.",
           "title": "Summary"
+        },
+        {
+          "category": "summary",
+          "text": "An attacker would need privileged access to the application running in managed mode in order to exploit",
+          "title": "For NX (Managed Mode)"
         }
       ],
       "product_status": {
         "known_affected": [
-          "CSAFPID-0001"
+          "CSAFPID-0001",
+          "CSAFPID-0002"
         ]
       },
       "references": [
@@ -255,21 +287,28 @@
           "category": "external",
           "summary": "www.first.org",
           "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H"
         }
       ],
       "remediations": [
         {
           "category": "mitigation",
-          "details": "Do not open untrusted CGM files in affected applications",
+          "details": "Prioritize strong overall system hygiene to prevent initial system infection which includes maintaining fully patched systems, robust endpoint security, and continuous monitoring for signs of compromise",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ]
         },
         {
           "category": "vendor_fix",
           "details": "Update to V2512 or later version",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ],
           "url": "https://support.sw.siemens.com/product/209349590/"
         }
@@ -284,144 +323,21 @@
           },
           "products": [
             "CSAFPID-0001"
+          ]
+        },
+        {
+          "cvss_v3": {
+            "baseScore": 6.7,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0002"
           ]
         }
       ],
       "title": "CVE-2026-22923"
-    },
-    {
-      "cve": "CVE-2026-22924",
-      "cwe": {
-        "id": "CWE-125",
-        "name": "Out-of-bounds Read"
-      },
-      "notes": [
-        {
-          "category": "summary",
-          "text": "The affected applications contains an out of bounds read vulnerability while parsing specially crafted CGM files. This could allow an attacker to execute code in the context of the current process.",
-          "title": "Summary"
-        }
-      ],
-      "product_status": {
-        "known_affected": [
-          "CSAFPID-0001"
-        ]
-      },
-      "references": [
-        {
-          "category": "external",
-          "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2026-22924"
-        },
-        {
-          "category": "external",
-          "summary": "cwe.mitre.org",
-          "url": "https://cwe.mitre.org/data/definitions/125.html"
-        },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
-        }
-      ],
-      "remediations": [
-        {
-          "category": "mitigation",
-          "details": "Do not open untrusted CGM files in affected applications",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Update to V2512 or later version",
-          "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "url": "https://support.sw.siemens.com/product/209349590/"
-        }
-      ],
-      "scores": [
-        {
-          "cvss_v3": {
-            "baseScore": 7.8,
-            "baseSeverity": "HIGH",
-            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-            "version": "3.1"
-          },
-          "products": [
-            "CSAFPID-0001"
-          ]
-        }
-      ],
-      "title": "CVE-2026-22924"
-    },
-    {
-      "cve": "CVE-2026-22925",
-      "cwe": {
-        "id": "CWE-125",
-        "name": "Out-of-bounds Read"
-      },
-      "notes": [
-        {
-          "category": "summary",
-          "text": "The affected applications contains an out of bounds read vulnerability while parsing specially crafted CGM files. This could allow an attacker to execute code in the context of the current process.",
-          "title": "Summary"
-        }
-      ],
-      "product_status": {
-        "known_affected": [
-          "CSAFPID-0001"
-        ]
-      },
-      "references": [
-        {
-          "category": "external",
-          "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2026-22925"
-        },
-        {
-          "category": "external",
-          "summary": "cwe.mitre.org",
-          "url": "https://cwe.mitre.org/data/definitions/125.html"
-        },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
-        }
-      ],
-      "remediations": [
-        {
-          "category": "mitigation",
-          "details": "Do not open untrusted CGM files in affected applications",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Update to V2512 or later version",
-          "product_ids": [
-            "CSAFPID-0001"
-          ],
-          "url": "https://support.sw.siemens.com/product/209349590/"
-        }
-      ],
-      "scores": [
-        {
-          "cvss_v3": {
-            "baseScore": 7.8,
-            "baseSeverity": "HIGH",
-            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-            "version": "3.1"
-          },
-          "products": [
-            "CSAFPID-0001"
-          ]
-        }
-      ],
-      "title": "CVE-2026-22925"
     }
   ]
 }
