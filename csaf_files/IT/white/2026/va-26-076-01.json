@@ -1,0 +1,935 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "Multiple IP-KVM Vulnerabilities",
+    "tracking": {
+      "current_release_date": "2026-03-17T17:02:32Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.13.0"
+        }
+      },
+      "id": "VA-26-076-01",
+      "initial_release_date": "2026-03-17T17:02:32Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2026-03-17T17:02:32Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "Multiple KVM products (GL-iNet GL-RM1, Angeet ES3 KVM, Sipeed NanoKVM, and JetKVM) are affected by multiple vulnerabilities. The most severe of these vulnerabilities could allow a remote, unauthenticated attacker to take complete control of a vulnerable product.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Update to fixed versions of firmware when possible.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "International",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-076-01.json",
+        "summary": "Vulnerability Advisory VA-26-076-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "GL-iNet",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "Comet KVM",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<*",
+                "product": {
+                  "name": "GL-iNet Comet KVM <*",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<1.7.2",
+                "product": {
+                  "name": "GL-iNet Comet KVM <1.7.2",
+                  "product_id": "CSAFPID-0002"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.7.2",
+                "product": {
+                  "name": "GL-iNet Comet KVM 1.7.2",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "vendor",
+        "name": "Sipeed",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "NanoKVM",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<2.3.1",
+                "product": {
+                  "name": "Sipeed NanoKVM <2.3.1",
+                  "product_id": "CSAFPID-0004"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.3.1",
+                "product": {
+                  "name": "Sipeed NanoKVM 2.3.1",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "vendor",
+        "name": "ANGEET",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "ES3 KVM",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<*",
+                "product": {
+                  "name": "ANGEET ES3 KVM <*",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "vendor",
+        "name": "JetKVM",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "JetKVM",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<0.5.4",
+                "product": {
+                  "name": "JetKVM JetKVM <0.5.4",
+                  "product_id": "CSAFPID-0007"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "0.5.4",
+                "product": {
+                  "name": "JetKVM JetKVM 0.5.4",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2026-32290",
+      "cwe": {
+        "id": "CWE-345",
+        "name": "Insufficient Verification of Data Authenticity"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The GL-iNet Comet (GL-RM1) KVM does not sufficiently verify the authenticity of uploaded firmware files. An attacker-in-the-middle or a compromised update server could modify the firmware and the corresponding MD5 hash to pass verification.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:T/2026-03-13T18:19:33Z/"
+        }
+      ],
+      "title": "GL-iNet Comet (GL-RM1) KVM insufficient firmware verification",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "eclypsium.com",
+          "url": "https://eclypsium.com/blog/your-kvm-is-the-weak-link-how-30-dollar-devices-can-own-your-entire-network/"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-076-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-32290"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.7,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Fix expected in coming firmware version as of March 17th, 2026.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Eclypsium",
+          "names": [
+            "Reynaldo Vasquez Garcia"
+          ]
+        }
+      ],
+      "release_date": "2026-03-17T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2026-32291",
+      "cwe": {
+        "id": "CWE-306",
+        "name": "Missing Authentication for Critical Function"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The GL-iNet Comet (GL-RM1) KVM does not require authentication on the UART serial console. This attack requires physically opening the device and connecting to the UART pins.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:T/2026-03-10T17:28:38Z/"
+        }
+      ],
+      "title": "GL-iNet Comet (GL-RM1) KVM unauthenticated root access via UART serial console",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "eclypsium.com",
+          "url": "https://eclypsium.com/blog/your-kvm-is-the-weak-link-how-30-dollar-devices-can-own-your-entire-network/"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-32291"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-076-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.8,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "Fix expected in coming firmware version as of March 17th, 2026.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Eclypsium",
+          "names": [
+            "Reynaldo Vasquez Garcia"
+          ]
+        }
+      ],
+      "release_date": "2026-03-17T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2026-32292",
+      "cwe": {
+        "id": "CWE-307",
+        "name": "Improper Restriction of Excessive Authentication Attempts"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The GL-iNet Comet (GL-RM1) KVM web interface does not limit login requests, enabling brute-force attempts to guess credentials.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:Y/T:T/2026-03-13T18:47:55Z/"
+        }
+      ],
+      "title": "GL-iNet Comet (GL-RM1) KVM insufficient login rate-limiting",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0002"
+        ],
+        "fixed": [
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "eclypsium.com",
+          "url": "https://eclypsium.com/blog/your-kvm-is-the-weak-link-how-30-dollar-devices-can-own-your-entire-network/"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-076-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-32292"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.7.2.",
+          "url": "https://dl.gl-inet.com/release/kvm/release/RM1/1.7.2",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.7.2 and firmware v1.8.1.",
+          "url": "https://dl.gl-inet.com/release/kvm/release/RM1/1.7.2",
+          "product_ids": [
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Eclypsium",
+          "names": [
+            "Reynaldo Vasquez Garcia"
+          ]
+        }
+      ],
+      "release_date": "2026-03-17T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2026-32293",
+      "cwe": {
+        "id": "CWE-295",
+        "name": "Improper Certificate Validation"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The GL-iNet Comet (GL-RM1) KVM connects to a GL-iNet site during boot-up to provision client and CA certificates. The GL-RM1 does not verify certificates used for this connection, allowing an attacker-in-the-middle to serve invalid client and CA certificates. The GL-RM1 will attempt to use the invalid certificates and fail to connect to the legitimate GL-iNet KVM cloud service.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2026-03-10T18:41:00Z/"
+        }
+      ],
+      "title": "GL-iNet Comet (GL-RM1) KVM insufficient certificate validation",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0002"
+        ],
+        "fixed": [
+          "CSAFPID-0003"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "eclypsium.com",
+          "url": "https://eclypsium.com/blog/your-kvm-is-the-weak-link-how-30-dollar-devices-can-own-your-entire-network/"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-32293"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-076-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 3.7,
+            "baseSeverity": "LOW",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0002"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.7.2.",
+          "url": "https://dl.gl-inet.com/release/kvm/release/RM1/1.7.2",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.7.2 and firmware v1.8.1.",
+          "url": "https://dl.gl-inet.com/release/kvm/release/RM1/1.7.2",
+          "product_ids": [
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Eclypsium",
+          "names": [
+            "Reynaldo Vasquez Garcia"
+          ]
+        }
+      ],
+      "release_date": "2026-03-17T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2026-32294",
+      "cwe": {
+        "id": "CWE-345",
+        "name": "Insufficient Verification of Data Authenticity"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "JetKVM prior to 0.5.4 does not verify the authenticity of downloaded firmware files. An attacker-in-the-middle or a compromised update server could modify the firmware and the corresponding SHA256 hash to pass verification.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:T/2026-03-11T17:25:54Z/"
+        }
+      ],
+      "title": "JetKVM insufficient firmware verification",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0007"
+        ],
+        "fixed": [
+          "CSAFPID-0008"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "github.com",
+          "url": "https://github.com/jetkvm/kvm/releases/tag/release%2F0.5.4"
+        },
+        {
+          "category": "external",
+          "summary": "eclypsium.com",
+          "url": "https://eclypsium.com/blog/kvm-devices-the-keys-to-your-kingdom-are-hanging-on-the-network/"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-076-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-32294"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.7,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0007"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 0.5.4.",
+          "url": "https://github.com/jetkvm/kvm/releases/tag/release%2F0.5.4",
+          "product_ids": [
+            "CSAFPID-0007"
+          ],
+          "date": "2026-03-09T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 0.5.4.",
+          "url": "https://github.com/jetkvm/kvm/releases/tag/release%2F0.5.4",
+          "product_ids": [
+            "CSAFPID-0008"
+          ],
+          "date": "2026-03-09T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Eclypsium",
+          "names": [
+            "Paul Asadoorian"
+          ]
+        }
+      ],
+      "release_date": "2026-03-17T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2026-32295",
+      "cwe": {
+        "id": "CWE-307",
+        "name": "Improper Restriction of Excessive Authentication Attempts"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "JetKVM before 0.5.4 does not rate limit login requests, enabling brute-force attempts to guess credentials.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:Y/T:P/2026-03-11T17:33:10Z/"
+        }
+      ],
+      "title": "JetKVM insufficient login rate limiting",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0007"
+        ],
+        "fixed": [
+          "CSAFPID-0008"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "eclypsium.com",
+          "url": "https://eclypsium.com/blog/kvm-devices-the-keys-to-your-kingdom-are-hanging-on-the-network/"
+        },
+        {
+          "category": "external",
+          "summary": "github.com",
+          "url": "https://github.com/jetkvm/kvm/releases/tag/release%2F0.5.4"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-32295"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-076-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0007"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 0.5.4.",
+          "url": "https://github.com/jetkvm/kvm/releases/tag/release%2F0.5.4",
+          "product_ids": [
+            "CSAFPID-0007"
+          ],
+          "date": "2026-03-09T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 0.5.4.",
+          "url": "https://github.com/jetkvm/kvm/releases/tag/release%2F0.5.4",
+          "product_ids": [
+            "CSAFPID-0008"
+          ],
+          "date": "2026-03-09T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Eclypsium",
+          "names": [
+            "Paul Asadoorian"
+          ]
+        }
+      ],
+      "release_date": "2026-03-17T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2026-32296",
+      "cwe": {
+        "id": "CWE-306",
+        "name": "Missing Authentication for Critical Function"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Sipeed NanoKVM before 2.3.1 exposes a Wi-Fi configuration endpoint without proper security checks, allowing an unauthenticated attacker with network access to change the saved configured Wi-Fi network to one of the attacker's choosing, or craft a request to exhaust the system memory and terminate the KVM process.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:Y/T:P/2026-03-16T19:28:53Z/"
+        }
+      ],
+      "title": "Sipeed NanoKVM unauthenticated Wi-Fi configuration endpoint",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0004"
+        ],
+        "fixed": [
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "github.com",
+          "url": "https://github.com/sipeed/NanoKVM/blob/main/CHANGELOG.md#231-2025-12-26"
+        },
+        {
+          "category": "external",
+          "summary": "eclypsium.com",
+          "url": "https://eclypsium.com/blog/kvm-devices-the-keys-to-your-kingdom-are-hanging-on-the-network/"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-076-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-32296"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.2,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0004"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fix available in 2.3.1.",
+          "url": "https://github.com/sipeed/NanoKVM/blob/main/CHANGELOG.md#231-2025-12-26",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "date": "2025-12-26T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fix available in 2.3.1.",
+          "url": "https://github.com/sipeed/NanoKVM/blob/main/CHANGELOG.md#231-2025-12-26",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "date": "2025-12-26T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Eclypsium",
+          "names": [
+            "Reynaldo Vasquez Garcia"
+          ]
+        }
+      ],
+      "release_date": "2026-03-17T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2026-32297",
+      "cwe": {
+        "id": "CWE-306",
+        "name": "Missing Authentication for Critical Function"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The Angeet ES3 KVM allows a remote, unauthenticated attacker to write arbitrary files, including configuration files or system binaries. Modified configuration files or system binaries could allow an attacker to take complete control of a vulnerable system.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:Y/T:T/2026-03-16T20:02:22Z/"
+        }
+      ],
+      "title": "Angeet ES3 KVM unauthenticated arbitrary file write",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "eclypsium.com",
+          "url": "https://eclypsium.com/blog/kvm-devices-the-keys-to-your-kingdom-are-hanging-on-the-network/"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-32297"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-076-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "No fix available.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Eclypsium",
+          "names": [
+            "Reynaldo Vasquez Garcia"
+          ]
+        }
+      ],
+      "release_date": "2026-03-17T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2026-32298",
+      "cwe": {
+        "id": "CWE-78",
+        "name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The Angeet ES3 KVM does not properly sanitize user-supplied variables parsed by the 'cfg.lua' script, allowing an authenticated attacker to execute OS-level commands.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:T/2026-03-11T17:42:19Z/"
+        }
+      ],
+      "title": "Angeet ES3 KVM OS command injection",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0006"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "eclypsium.com",
+          "url": "https://eclypsium.com/blog/kvm-devices-the-keys-to-your-kingdom-are-hanging-on-the-network/"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-076-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-32291"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.1,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "none_available",
+          "details": "No fix available.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Eclypsium",
+          "names": [
+            "Reynaldo Vasquez Garcia"
+          ]
+        }
+      ],
+      "release_date": "2026-03-17T00:00:00Z"
+    }
+  ]
+}
