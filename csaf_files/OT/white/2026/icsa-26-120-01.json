@@ -1,0 +1,846 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Hitachi Energy",
+        "summary": "sharing the information affecting a commonly used software component."
+      },
+      {
+        "organization": "ABB Global",
+        "summary": "Original publisher",
+        "urls": [
+          "https://search.abb.com/library/Download.aspx?DocumentID=7PAA020125&LanguageCode=en&DocumentPartId=&Action=Launch"
+        ]
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "This vulnerability was privately reported relating to ABB\u2019s implementation of the IEC 61850 communication stack for MMS client applications used in some Automation control system products. \n\nNote: IEC 61850 communication typically supports MMS and GOOSE protocols. Some ABB products support both, others only MMS (e.g. S+ Operations and PM 877). In any case, GOOSE communication is not impacted by this reported vulnerability.\n\nIf an attacker gains access to a site\u2019s IEC 61850 network, then exploiting this vulnerability will result in a device fault (PM 877, CI850 and CI868 modules) and will require a manual restart.\n\nIf this attack is directed at a S+ Operations node running IEC 61850 connectivity, this will result in a crash in the IEC 61850 communication driver which, if continued a repeating basis, will also result in a denial-of-service situation. Note that this does not have an impact on the overall availability and functionality of the S+ Operations node, only the IEC 61850 communication function. \n\nThe System 800xA IEC61850 Connect is not affected.\n",
+        "title": "Summary"
+      },
+      {
+        "category": "other",
+        "text": "For additional instructions and support please contact your local ABB service organization. For contact information, see www.abb.com/contactcenters.\n\nInformation about ABB\u2019s cyber security program and capabilities can be found at www.abb.com/cybersecurity.",
+        "title": "Support"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The information in this document is subject to change without notice, and should not be construed as a commitment by ABB.\n\nABB provides no warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, for the information contained in this document, and assumes no responsibility for any errors that may appear in this document. In no event shall ABB or any of its suppliers be liable for direct, indirect, special, incidental or consequential damages of any nature or kind arising from the use of this document, or from the use of any hardware or software described in this document, even if ABB or its suppliers have been advised of the possibility of such damages.\n\nThis document and parts hereof must not be reproduced or copied without written permission from ABB, and the contents hereof must not be imparted to a third party nor used for any unauthorized purpose.\n\nAll rights to registrations and trademarks reside with their respective owners.\n",
+        "title": "Notice"
+      },
+      {
+        "category": "other",
+        "text": "Control systems and the control network are exposed to cyber threats. In order to minimize these risks, the protective measures and best practices listed below are available in addition to other measures. ABB strongly recommends system integrators and asset owners to implement the measures they consider appropriate for their control system environment:\n\n- Place control systems in a dedicated control network containing control systems only.\n- Locate control networks and systems behind firewalls and separate them from any other networks like business networks and the Internet.\n- Block any inbound Internet traffic destined for the control networks/systems. Place remote access systems used for remote control system access outside the control network.\n- Limit outbound Internet traffic originating from control systems/networks as much as possible. If control systems must talk to the Internet, tailor firewall rules to required resources - allow only source IPs, destination IPs and services/destination ports which control systems definitely need to use for normal control operation.\n- If Internet access is required on occasion only, disable relevant firewall rules and enable them during the time window of required Internet access only. If supported by your firewall, define an expiry date and time for such rules \u2013 after the expiry date and time, the firewall will disable the rule automatically.\n- Limit exposure of control networks/systems to internal systems. Tailor firewall rules allowing traffic from internal systems to control networks/systems to allow only source IPs, destination IPs and ser-vices/destination ports which are definitely required for normal control operation.\n- Create strict firewall rules to filter malicious network traffic targeting control system vulnerabilities (\"exploit traffic\"). Exploit traffic may use network communication features like source routing, IP fragmentation and/or IP tunneling. If such features are not required for normal control operation, block them on your firewall.\n- If supported by your firewall, apply additional filters to allowed traffic which provide protection for control networks/systems. Such filters are provided by advanced firewall features like Application Control and Anti-Virus.\n- Use Intrusion Detection Systems (IDS) or Intrusion Preventions Systems (IPS) to detect/block control system-specific exploit traffic. Consider using IPS rules protecting against control system exploits.\n- When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Please ensure that VPN solutions are updated to the most current version available.\n- In case you want to filter internal control network traffic, consider using solutions supporting Intra-LAN traffic control like VLAN access control lists.\n- Harden your control systems by enabling only the ports, services and software required for normal control operation. Disable all other ports and disable/uninstall all other services and software.\n- If possible, limit the permissions of user accounts, software processes and devices to the permissions required for normal control operation.\n- Use trusted, patched software and malware protection solutions. Interact with trusted web sites and trusted email attachments only.\n- Ensure all nodes are always up to date in terms of installed software, operating system and firmware patches as well as anti-virus and firewall.\n- Protect control systems from physical access by unauthorized personnel e.g. by placing them in locked switch cabinets.\n\nFor more information on recommended practices, please refer to the following documents listed in the reference section:\n- 2VAA003700\n- 8VZZ001882\n- 9ARD171385-611\n- 8VZZ001006T0001\n- 2PAA121027\n- 8VZZ000602\n- 7PAA018617",
+        "title": "General security recommendations"
+      },
+      {
+        "category": "other",
+        "text": "ABB has a rigorous internal cyber security continuous improvement process which involves regular testing with industry leading tools and periodic assessments to identify potential product issues. Occasionally an issue is determined to be a design or coding flaw with implications that may impact product cyber security.\n\nWhen a potential product vulnerability is identified or reported, ABB immediately initiates our vulnerability handling process. This entails validating if the issue is in fact a product issue, identifying root causes, determining what related products may be impacted, developing a remediation, and notifying end users and governmental organizations (e.g. ICS-CERT).\n\nThe resulting Cyber Security Advisory intends to notify customers of the vulnerability and provide details on which products are impacted, how to mitigate the vulnerability or explain workarounds that minimize the potential risk as much as possible. The release of a Cyber Security Advisory should not be misconstrued as an affirmation or indication of an active threat or ongoing campaign targeting the products mentioned here. If ABB is aware of any specific threats, it will be clearly mentioned in the communication.\n\nThe publication of this Cyber Security Advisory is an example of ABB\u2019s commitment to the user community in support of this critical topic. Responsible disclosure is an important element in the chain of trust we work to maintain with our many customers. The release of an Advisory provides timely information which is essential to help ensure our customers are fully informed.",
+        "title": "Purpose"
+      },
+      {
+        "category": "faq",
+        "text": "What is the scope of the vulnerability?\n- An attacker having access to the IEC 61850 network can force the ABB hardware devices to go to \u2018fault\u2019 state by sending a specially crafted 61850 packet. This will result in a denial-of-service situation affecting the primary functionality of the listed devices and requiring a manual reset. In the same way this vulnerability can cause the unavailability of the S+ Operations 61850 connectivity, if continued on a repeating basis (but not the whole S+ Operations node). The System 800xA IEC61850 Connect is not affected.  \n\nWhat causes the vulnerability?\n- The vulnerability is caused by a weakness in the message processing in the IEC 61850 communication stack.\n\nWhat is CI868?\n- CI868 is a module used in AC800M product line (System 800xA) for IEC 61850 communication.\n\nWhat is CI850?\n- CI868 is a module used in Symphony Plus SD Series product line for IEC 61850 communication.\n\nWhat is PM 877?\n- PM 877 is a controller used in Symphony Plus MR (Melody Rack) product line for IEC 61850 communication.\n\nWhat is S+ Operations?\n- S+ Operations is the Human Machine Interface for supervision and control of Symphony based control or SCADA systems. It is a module used in AC800M product line (System 800xA) for IEC 61850 communication.\n\nWhat might an attacker use the vulnerability to do?\n- An attacker with access to IEC 61850 networks could exploit the vulnerability by sending a specially crafted 61850 packet to the S+ products, forcing the Communication Interfaces to fault modes or causing unavailability of the S+ Operations 61850 connectivity, resulting in a denial-of-service situation.\n\nHow could an attacker exploit the vulnerability?\n- An attacker could try to exploit the vulnerability by creating a specially crafted message and sending the message to an affected system node. This would require that the attacker has access to the system network, by connecting to the network either directly or through a wrongly configured or penetrated firewall, or that he installs malicious software on a system node or otherwise infects the net-work with malicious software. Recommended practices help mitigate such attacks, see section Mitigating Factors.\n\nCould the vulnerability be exploited remotely? \n- Yes, an attacker who has network access to an affected system node could exploit this vulnerability. Recommended practices include that process control systems are physically protected, have no direct connections to the Internet, and are separated from other networks by means of a firewall system that has a minimal number of ports exposed.\n\nCan functional safety be affected by an exploit of this vulnerability?\n- Functional safety systems are not affected by these vulnerabilities.\n\nWhat does the update do?\n- The update removes the vulnerability by modifying the way that the IEC 61850 stack, used by the ABB Process Automation Products described above, manages 61850 incoming messages.\n\nWhen this security advisory was issued, had this vulnerability been publicly disclosed?\n- No, ABB received information about this vulnerability through responsible disclosure.\n\nWhen this security advisory was issued, had ABB received any reports that this vulnerability was being exploited?\n- No, ABB had not received any information indicating that this vulnerability had been exploited when this security advisory was originally issued.\n",
+        "title": "Frequently Asked Questions"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of ABB PSIRT 7PAA020125 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact ABB PSIRT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of these vulnerabilities.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "Chemical, Critical Manufacturing, Energy, Water and Wastewater, Water and Wastewater",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ABB CYBERSECURITY ADVISORY - CSAF Version ",
+        "url": "https://psirt.abb.com/csaf/2026/7paa020125.json"
+      },
+      {
+        "category": "self",
+        "summary": "ABB CYBERSECURITY ADVISORY - PDF Version ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=7PAA020125&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "2VAA003700 : S+ I/O: SD Series I/O: CI850 IEC 61850 Communication Module and Hardware Operation User Manual ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=2VAA003700&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "8VZZ001882 : S+ Control SPC600/700/800 SD Series controllers user manual ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=8VZZ001882T0002&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "9ARD171385-611 : System 800xA 6.1.1 AC 800M - IEC 61850 Configuration for CI868 ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=9ARD171385-611&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "8VZZ001006T0001 : Symphony Plus Secure deployment guide for Windows 10 and Server 2016/2019 User manual ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=8VZZ001006T0001&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "2PAA121027 : Distributed Control Systems Trellix ePO with Endpoint Security and Application Control - Configuration Manual ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=2PAA121027&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "8VZZ000602 : Symphony Plus Security Updates Validation Status ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=8VZZ000602T0001&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "7PAA018617 : Symphony Plus Daily Validation of Anti-Malware Definition Updates ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=7PAA018617&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "2PAA122516 : System 800xA, Symphony Plus and Freelance - System Hardening - End user manual ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=2PAA122516&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "8VZZ000368D0066 : ABB ICS Cyber Security Reference Architecture - Document ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=8VZZ000368D0066&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-120-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/ICSA-26-120-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-120-01 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/ICSA-26-120-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "ABB System 800xA, Symphony Plus IEC 61850",
+    "tracking": {
+      "current_release_date": "2026-04-30T06:00:00.000000Z",
+      "generator": {
+        "date": "2026-04-28T17:41:43.835788Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-120-01",
+      "initial_release_date": "2026-04-13T00:30:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2026-04-13T00:30:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial version."
+        },
+        {
+          "date": "2026-04-30T06:00:00.000000Z",
+          "legacy_version": "CISA Republication",
+          "number": "2",
+          "summary": "Initial CISA Republication of ABB PSIRT 7PAA020125 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "2"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_name",
+                "name": "CI868",
+                "product": {
+                  "name": "ABB AC800M Product line (System 800xA) CI868 for IEC 61850 communication",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_family",
+            "name": "AC800M Product line (System 800xA)"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_name",
+                "name": "CI850",
+                "product": {
+                  "name": "ABB Symphony Plus SD Series CI850 for IEC 61850 communication",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_family",
+            "name": "Symphony Plus SD Series"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_name",
+                "name": "PM 877",
+                "product": {
+                  "name": "ABB Symphony Plus MR (Melody Rack)  PM 877 for IEC 61850 communication",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_family",
+            "name": "Symphony Plus MR (Melody Rack) "
+          },
+          {
+            "category": "product_name",
+            "name": "S+ Operations",
+            "product": {
+              "name": "ABB S+ Operations using IEC 61850 connectivity",
+              "product_id": "CSAFPID-0004"
+            }
+          },
+          {
+            "branches": [
+              {
+                "category": "product_name",
+                "name": "<=6.0.0303.0",
+                "product": {
+                  "name": "ABB Firmware <=6.0.0303.0 (AC800M version 6.0.0-x)",
+                  "product_id": "CSAFPID-0005"
+                }
+              },
+              {
+                "category": "product_name",
+                "name": "<=6.1.0031.0 ",
+                "product": {
+                  "name": "ABB Firmware <=1.0031.0 (AC800M version 6.1.0-x)",
+                  "product_id": "CSAFPID-0006"
+                }
+              },
+              {
+                "category": "product_name",
+                "name": "<=6.1.1004.0 ",
+                "product": {
+                  "name": "ABB Firmware <=6.1.1004.0 AC800M version 6.1.1-0 and 6.1.1-1)",
+                  "product_id": "CSAFPID-0007"
+                }
+              },
+              {
+                "category": "product_name",
+                "name": "<=6.1.1202.0 ",
+                "product": {
+                  "name": "ABB Firmware <=6.1.1202.0 (AC800M version 6.1.1-2)",
+                  "product_id": "CSAFPID-0008"
+                }
+              },
+              {
+                "category": "product_name",
+                "name": "<=6.2.0006.0 ",
+                "product": {
+                  "name": "ABB Firmware <=6.2.0006.0 (AC800M version 6.2.0-0)",
+                  "product_id": "CSAFPID-0009"
+                }
+              },
+              {
+                "category": "product_name",
+                "name": "6.1.1-3",
+                "product": {
+                  "name": "ABB Firmware 6.1.1-3 planned for Q2 2027",
+                  "product_id": "CSAFPID-0010"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "7.0",
+                "product": {
+                  "name": "ABB Firmware 7.0 released in Dec 2025",
+                  "product_id": "CSAFPID-0011"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "A_0",
+                "product": {
+                  "name": "ABB Firmware A_0",
+                  "product_id": "CSAFPID-0012"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "A_1",
+                "product": {
+                  "name": "ABB Firmware A_1",
+                  "product_id": "CSAFPID-0013"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "A_2.003",
+                "product": {
+                  "name": "ABB Firmware A_2.003",
+                  "product_id": "CSAFPID-0014"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "A_3.005",
+                "product": {
+                  "name": "ABB Firmware A_3.005",
+                  "product_id": "CSAFPID-0015"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "A_4.001",
+                "product": {
+                  "name": "ABB Firmware A_4.001",
+                  "product_id": "CSAFPID-0016"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "B_0.005",
+                "product": {
+                  "name": "ABB Firmware B_0.005",
+                  "product_id": "CSAFPID-0017"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "C_0",
+                "product": {
+                  "name": "ABB Firmware C_0 planned Q2 2026",
+                  "product_id": "CSAFPID-0018"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": ">=3.10|<=3.52",
+                "product": {
+                  "name": "ABB Firmware >=3.10|<=3.52",
+                  "product_id": "CSAFPID-0019"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "3.53",
+                "product": {
+                  "name": "ABB Firmware 3.53 (planned Q1 2026)",
+                  "product_id": "CSAFPID-0020"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "3.3",
+                "product": {
+                  "name": "ABB Firmware 3.3 and related service packs",
+                  "product_id": "CSAFPID-0021"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.3",
+                "product": {
+                  "name": "ABB Firmware 2.3",
+                  "product_id": "CSAFPID-0022"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.2",
+                "product": {
+                  "name": "ABB Firmware 2.2 and related service packs",
+                  "product_id": "CSAFPID-0023"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.1",
+                "product": {
+                  "name": "ABB Firmware 2.1 and related service packs",
+                  "product_id": "CSAFPID-0024"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "3.4",
+                "product": {
+                  "name": "ABB Firmware 3.4 (released in January 2026)",
+                  "product_id": "CSAFPID-0025"
+                }
+              }
+            ],
+            "category": "product_family",
+            "name": "Firmware"
+          }
+        ],
+        "category": "vendor",
+        "name": "ABB"
+      }
+    ],
+    "relationships": [
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware <=6.0.0303.0 (AC800M version 6.0.0-x) installed on ABB AC800M Product line (System 800xA) CI868 for IEC 61850 communication",
+          "product_id": "CSAFPID-0026"
+        },
+        "product_reference": "CSAFPID-0005",
+        "relates_to_product_reference": "CSAFPID-0001"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware <=1.0031.0 (AC800M version 6.1.0-x) installed on ABB AC800M Product line (System 800xA) CI868 for IEC 61850 communication",
+          "product_id": "CSAFPID-0027"
+        },
+        "product_reference": "CSAFPID-0006",
+        "relates_to_product_reference": "CSAFPID-0001"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware <=6.1.1004.0 AC800M version 6.1.1-0 and 6.1.1-1) installed on ABB AC800M Product line (System 800xA) CI868 for IEC 61850 communication",
+          "product_id": "CSAFPID-0028"
+        },
+        "product_reference": "CSAFPID-0007",
+        "relates_to_product_reference": "CSAFPID-0001"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware <=6.1.1202.0 (AC800M version 6.1.1-2) installed on ABB AC800M Product line (System 800xA) CI868 for IEC 61850 communication",
+          "product_id": "CSAFPID-0029"
+        },
+        "product_reference": "CSAFPID-0008",
+        "relates_to_product_reference": "CSAFPID-0001"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware <=6.2.0006.0 (AC800M version 6.2.0-0) installed on ABB AC800M Product line (System 800xA) CI868 for IEC 61850 communication",
+          "product_id": "CSAFPID-0030"
+        },
+        "product_reference": "CSAFPID-0009",
+        "relates_to_product_reference": "CSAFPID-0001"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware A_0 installed on ABB Symphony Plus SD Series CI850 for IEC 61850 communication",
+          "product_id": "CSAFPID-0031"
+        },
+        "product_reference": "CSAFPID-0012",
+        "relates_to_product_reference": "CSAFPID-0002"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware A_1 installed on ABB Symphony Plus SD Series CI850 for IEC 61850 communication",
+          "product_id": "CSAFPID-0032"
+        },
+        "product_reference": "CSAFPID-0013",
+        "relates_to_product_reference": "CSAFPID-0002"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware A_2.003 installed on ABB Symphony Plus SD Series CI850 for IEC 61850 communication",
+          "product_id": "CSAFPID-0033"
+        },
+        "product_reference": "CSAFPID-0014",
+        "relates_to_product_reference": "CSAFPID-0002"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware A_3.005 installed on ABB Symphony Plus SD Series CI850 for IEC 61850 communication",
+          "product_id": "CSAFPID-0034"
+        },
+        "product_reference": "CSAFPID-0015",
+        "relates_to_product_reference": "CSAFPID-0002"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware A_4.001 installed on ABB Symphony Plus SD Series CI850 for IEC 61850 communication",
+          "product_id": "CSAFPID-0035"
+        },
+        "product_reference": "CSAFPID-0016",
+        "relates_to_product_reference": "CSAFPID-0002"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware B_0.005 installed on ABB Symphony Plus SD Series CI850 for IEC 61850 communication",
+          "product_id": "CSAFPID-0036"
+        },
+        "product_reference": "CSAFPID-0017",
+        "relates_to_product_reference": "CSAFPID-0002"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware >=3.10|<=3.52 installed on ABB Symphony Plus MR (Melody Rack)  PM 877 for IEC 61850 communication",
+          "product_id": "CSAFPID-0037"
+        },
+        "product_reference": "CSAFPID-0019",
+        "relates_to_product_reference": "CSAFPID-0003"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware 3.3 and related service packs installed on ABB S+ Operations using IEC 61850 connectivity",
+          "product_id": "CSAFPID-0038"
+        },
+        "product_reference": "CSAFPID-0021",
+        "relates_to_product_reference": "CSAFPID-0004"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware 2.3 installed on ABB S+ Operations using IEC 61850 connectivity",
+          "product_id": "CSAFPID-0039"
+        },
+        "product_reference": "CSAFPID-0022",
+        "relates_to_product_reference": "CSAFPID-0004"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware 2.2 and related service packs installed on ABB S+ Operations using IEC 61850 connectivity",
+          "product_id": "CSAFPID-0040"
+        },
+        "product_reference": "CSAFPID-0023",
+        "relates_to_product_reference": "CSAFPID-0004"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware 2.1 and related service packs installed on ABB S+ Operations using IEC 61850 connectivity",
+          "product_id": "CSAFPID-0041"
+        },
+        "product_reference": "CSAFPID-0024",
+        "relates_to_product_reference": "CSAFPID-0004"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware 6.1.1-3 planned for Q2 2027 installed on ABB AC800M Product line (System 800xA) CI868 for IEC 61850 communication",
+          "product_id": "CSAFPID-0042"
+        },
+        "product_reference": "CSAFPID-0010",
+        "relates_to_product_reference": "CSAFPID-0001"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware 7.0 released in Dec 2025 installed on ABB AC800M Product line (System 800xA) CI868 for IEC 61850 communication",
+          "product_id": "CSAFPID-0043"
+        },
+        "product_reference": "CSAFPID-0011",
+        "relates_to_product_reference": "CSAFPID-0001"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware C_0 planned Q2 2026 installed on ABB Symphony Plus SD Series CI850 for IEC 61850 communication",
+          "product_id": "CSAFPID-0044"
+        },
+        "product_reference": "CSAFPID-0018",
+        "relates_to_product_reference": "CSAFPID-0002"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware 3.53 (planned Q1 2026) installed on ABB Symphony Plus MR (Melody Rack)  PM 877 for IEC 61850 communication",
+          "product_id": "CSAFPID-0045"
+        },
+        "product_reference": "CSAFPID-0020",
+        "relates_to_product_reference": "CSAFPID-0003"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB Firmware 3.4 (released in January 2026) installed on ABB S+ Operations using IEC 61850 connectivity",
+          "product_id": "CSAFPID-0046"
+        },
+        "product_reference": "CSAFPID-0025",
+        "relates_to_product_reference": "CSAFPID-0004"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-3756",
+      "cwe": {
+        "id": "CWE-1284",
+        "name": "Improper Validation of Specified Quantity in Input"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A vulnerability exists in the command handling of the IEC 61850 communication stack included in the product revisions listed above. An attacker with access to IEC 61850 networks could exploit the vulnerability by using a specially crafted 61850 packet, forcing the communication interfaces of the PM 877, CI850 and CI868 modules into fault mode or causing unavailability of the S+ Operations 61850 connectivity, resulting in a denial-of-service situation. The System 800xA IEC61850 Connect is not affected.\n\nNote: This vulnerability does not impact on the overall availability and functionality of the S+ Operations node, only the 61850 communication function.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0042",
+          "CSAFPID-0043",
+          "CSAFPID-0044",
+          "CSAFPID-0045",
+          "CSAFPID-0046"
+        ],
+        "known_affected": [
+          "CSAFPID-0026",
+          "CSAFPID-0027",
+          "CSAFPID-0028",
+          "CSAFPID-0029",
+          "CSAFPID-0030",
+          "CSAFPID-0031",
+          "CSAFPID-0032",
+          "CSAFPID-0033",
+          "CSAFPID-0034",
+          "CSAFPID-0035",
+          "CSAFPID-0036",
+          "CSAFPID-0037",
+          "CSAFPID-0038",
+          "CSAFPID-0039",
+          "CSAFPID-0040",
+          "CSAFPID-0041"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2025-3756",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-3756"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-3756"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/1284.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "ABB advises all customers to review their installations to determine if they are using an impacted product as listed above, no further analysis or tools are needed to make this determination. \n\nThe recommended immediate actions per product are listed below:\n- CI868 (for AC 800M)\n   Devices with firmware versions reported in Affected products are vulnerable. All the vulnerabilities will be corrected in 6.1.1  and 7.0 tracks for 800xA. AC 800M 6.1.1-3 is planned for Q2 2027, AC 800M 7.0 has been released in December 2025.\n- CI850 (for Symphony Plus SD Series)\n   Devices with firmware versions reported in Affected products are vulnerable. All the vulnerabilities will be corrected in version C_0 or later (planned Q2 2026). \n- PM 877 (Symphony Plus MR) \n   Devices with firmware versions reported in Affected products are vulnerable. All the vulnerabilities will be corrected with firmware version 3.53 or later (planned Q1 2026). \n- S+ Operations\n   Versions reported in Affected products are vulnerable. All the vulnerabilities will be corrected in version 3.4 or later (released in January 2026).\n\nABB recommends customers apply updates, as they become available, at their earliest convenience.  It is also advisable to review the Mitigating Factors, Workarounds and General security recommendations sections for additional actions which may help reduce overall risk.\n",
+          "product_ids": [
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "The vulnerabilities announced in this Advisory for ABB Process Automation products require that an attacker has access to the system network and hosts which are generally expected to be protected.\n\nProcess Control and IEC 61850 networks are NOT recommended to be exposed directly to Internet connections. If these networks are not properly isolated, then connected components may be remotely exploitable as described in this advisory.\n\nTo exploit the vulnerability, an attacker with remote network access can send a specially crafted packet to the PM 877, CI850 and CI868 modules which causes the fault of these devices. \n\nS+ Operations only implements 61850 client services and therefore are not intended to listen to in-coming connection requests. However, if a specially crafted message is sent anyway, it can still cause the 61850-communication driver to crash. \n\nThe usage of a perimeter firewall to allow legitimate client communications is an effective mitigation.\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure.",
+          "product_ids": [
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "No workarounds are available. Assess the installation specific risk based on this advisory. Use the recommendations described under \u201cMitigating factors\u201d or \u201cRecommended immediate actions\u201d.",
+          "product_ids": [
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "ADJACENT_NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.5,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.5,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041"
+          ]
+        }
+      ],
+      "title": "CVE-2025-3756"
+    }
+  ]
+}
