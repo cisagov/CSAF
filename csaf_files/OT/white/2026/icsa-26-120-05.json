@@ -1,0 +1,686 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "names": [
+          "Fred Alvarez"
+        ],
+        "summary": "responsibly disclosing the vulnerabilities and providing valuable input on product improvements."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "ABB became aware of vulnerability in the products versions listed as affected in the advisory. An update is available that resolves the reported vulnerabilities.\n\nAWIN gateways are not intended to be internet-facing.\n\nAn attacker who successfully exploited this vulnerability could take remote control of the product and reboot the device, potentially causing a denial of service. It can also reveal system specific configuration.\n\nABB requires, as noted in the User Manual, that AWIN gateways should not be exposed to the internet or any other insecure network.\n\nNote. To exploit this vulnerability the attacker needs access to the AWIN gateways. These gateways are installed on sites which often have perimeter security, and the gateways are installed behind firewalls.",
+        "title": "Summary"
+      },
+      {
+        "category": "other",
+        "text": "For additional instructions and support please contact your local ABB service organization. For contact information, see www.abb.com/contactcenters.\n\nInformation about ABB\u2019s cyber security program and capabilities can be found at www.abb.com/cybersecurity.",
+        "title": "Support"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The information in this document is subject to change without notice, and should not be construed as a commitment by ABB.\n\nABB provides no warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, for the information contained in this document, and assumes no responsibility for any errors that may appear in this document. In no event shall ABB or any of its suppliers be liable for direct, indirect, special, incidental or consequential damages of any nature or kind arising from the use of this document, or from the use of any hardware or software described in this document, even if ABB or its suppliers have been advised of the possibility of such damages.\n\nThis document and parts hereof must not be reproduced or copied without written permission from ABB, and the contents hereof must not be imparted to a third party nor used for any unauthorized purpose.\n\nAll rights to registrations and trademarks reside with their respective owners.\n",
+        "title": "Notice"
+      },
+      {
+        "category": "other",
+        "text": "For any installation of software-related ABB products we strongly recommend the following (non-exhaustive) list of cyber security practices:\n\n- Isolate special purpose networks (e.g. for automation systems) and remote devices behind firewalls and separate them from any general-purpose network (e.g. office or home networks).\n- Install physical controls so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n- Never connect programming software or computers containing programing software to any network other than the network for the devices that it is intended for.\n- Scan all data imported into your environment before use to detect potential malware infections.\n- Minimize network exposure for all applications and endpoints to ensure that they are not accessible from the Internet unless they are designed for such exposure and the intended use requires such.\n- Ensure all nodes are always up to date in terms of installed software, operating system, and firmware patches as well as anti-virus and firewall.\n- When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.\n\nMore information on recommended practices can be found in the documents listed in the References section.",
+        "title": "General security recommendations"
+      },
+      {
+        "category": "other",
+        "text": "ABB has a rigorous internal cyber security continuous improvement process which involves regular testing with industry leading tools and periodic assessments to identify potential product issues. Occasionally an issue is determined to be a design or coding flaw with implications that may impact product cyber security.\n\nWhen a potential product vulnerability is identified or reported, ABB immediately initiates our vulnerability handling process. This entails validating if the issue is in fact a product issue, identifying root causes, determining what related products may be impacted, developing a remediation, and notifying end users and governmental organizations.\n\nThe resulting Cyber Security Advisory intends to notify customers of the vulnerability and provide details on which products are impacted, how to mitigate the vulnerability or explain workarounds that minimize the potential risk as much as possible. The release of a Cyber Security Advisory should not be misconstrued as an affirmation or indication of an active threat or ongoing campaign targeting the products mentioned here. If ABB is aware of any specific threats, it will be clearly mentioned in the communication.\n\nThe publication of this Cyber Security Advisory is an example of ABB\u2019s commitment to the user community in support of this critical topic. Responsible disclosure is an important element in the chain of trust we work to maintain with our many customers. The release of an Advisory provides timely information which is essential to help ensure our customers are fully informed.",
+        "title": "Purpose"
+      },
+      {
+        "category": "faq",
+        "text": "What causes vulnerability?\n- Authentication Bypass due to Improper Session Validation.\n\nWhat are AWIN Gateways?\n- They are WirelessHART gateways. They are intended to be located between level 0 (process) and level 1 (basic control) hierarchy of the IEC 62443 reference model. They collect sensor data and provide this information to the host systems.\n\nWhat might an attacker use the vulnerability to do?\n- An attacker who successfully exploited this vulnerability can render the WirelessHART network unavailable.\n\nHow could an attacker exploit the vulnerability?\n- An attacker will have to first connect to the same local network where the gateway is present. This vulnerability can be exploited by sending a crafted HTTP GET request using a previously observed or valid time parameter value, regardless of the password used during the initial login attempt.\n\nCould the vulnerability be exploited remotely?\n- No. Remote access is disabled in the gateways.\n\nCan functional safety be affected by an exploit of this vulnerability?\n- This product is not intended to be used in functional safety applications.\n\nWhat does the update do?\n- It enforces HTTPS access. Unauthenticated requests are explicitly denied. Configuration data is not exposed anymore.\n\nWhen this security advisory was issued, had this vulnerability been publicly disclosed?\n- No, ABB received information about this vulnerability through responsible disclosure.\n\nWhen this security advisory was issued, had ABB received any reports that this vulnerability was being exploited?\n- No, ABB had not received any information indicating that this vulnerability had been exploited when this security advisory was originally issued.",
+        "title": "Frequently Asked Questions"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of ABB PSIRT 4JNO000329 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact ABB PSIRT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ABB CYBERSECURITY ADVISORY - CSAF Version ",
+        "url": "https://psirt.abb.com/csaf/2026/4jno000329.json"
+      },
+      {
+        "category": "self",
+        "summary": "ABB CYBERSECURITY ADVISORY - PDF Version ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=4JNO000329&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "3BNP102992 : AWIN GW100 User Manual ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=3BNP102992&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "summary": "4JNO000308 : AWIN GW120 User Manual ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=4JNO000308&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-120-05 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-120-05.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-120-05 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-120-05"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "ABB AWIN Gateways",
+    "tracking": {
+      "current_release_date": "2026-04-30T06:00:00.000000Z",
+      "generator": {
+        "date": "2026-04-29T18:51:46.242771Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-120-05",
+      "initial_release_date": "2026-03-13T00:30:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2026-03-13T00:30:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial version."
+        },
+        {
+          "date": "2026-04-30T06:00:00.000000Z",
+          "legacy_version": "CISA Republication",
+          "number": "2",
+          "summary": "Initial CISA Republication of ABB PSIRT 4JNO000329 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "2"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_name",
+                "name": "GW100 rev. 2",
+                "product": {
+                  "name": "ABB AWIN GW100 rev. 2  Product ID: 3BNP102988R1",
+                  "product_id": "CSAFPID-0001",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "3BNP102988R1"
+                    ]
+                  }
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "GW120",
+                "product": {
+                  "name": "ABB AWIN GW120 Product ID 3BNP103003R1",
+                  "product_id": "CSAFPID-0002",
+                  "product_identification_helper": {
+                    "model_numbers": [
+                      "3BNP103003R1"
+                    ]
+                  }
+                }
+              }
+            ],
+            "category": "product_family",
+            "name": "AWIN"
+          },
+          {
+            "branches": [
+              {
+                "branches": [
+                  {
+                    "category": "product_version",
+                    "name": "2.0-0",
+                    "product": {
+                      "name": "ABB AWIN Firmware  2.0-0",
+                      "product_id": "CSAFPID-0003"
+                    }
+                  },
+                  {
+                    "category": "product_version",
+                    "name": "2.0-1",
+                    "product": {
+                      "name": "ABB AWIN Firmware  2.0-1",
+                      "product_id": "CSAFPID-0004"
+                    }
+                  },
+                  {
+                    "category": "product_version",
+                    "name": "2.1-0",
+                    "product": {
+                      "name": "ABB AWIN Firmware 2.1-0",
+                      "product_id": "CSAFPID-0005"
+                    }
+                  }
+                ],
+                "category": "product_name",
+                "name": "GW100 rev.2"
+              },
+              {
+                "branches": [
+                  {
+                    "category": "product_version",
+                    "name": "1.2-0",
+                    "product": {
+                      "name": "ABB AWIN Firmware 1.2-0",
+                      "product_id": "CSAFPID-0006"
+                    }
+                  },
+                  {
+                    "category": "product_version",
+                    "name": "1.2-1",
+                    "product": {
+                      "name": "ABB AWIN Firmware 1.2-1",
+                      "product_id": "CSAFPID-0007"
+                    }
+                  },
+                  {
+                    "category": "product_version",
+                    "name": "2.0-0",
+                    "product": {
+                      "name": "ABB AWIN Firmware  2.0-0",
+                      "product_id": "CSAFPID-0008"
+                    }
+                  }
+                ],
+                "category": "product_name",
+                "name": "GW120"
+              }
+            ],
+            "category": "product_name",
+            "name": "AWIN Firmware"
+          }
+        ],
+        "category": "vendor",
+        "name": "ABB"
+      }
+    ],
+    "relationships": [
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB AWIN Firmware  2.0-0 installed on ABB AWIN GW100 rev. 2  Product ID: 3BNP102988R1",
+          "product_id": "CSAFPID-0009"
+        },
+        "product_reference": "CSAFPID-0003",
+        "relates_to_product_reference": "CSAFPID-0001"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB AWIN Firmware  2.0-1 installed on ABB AWIN GW100 rev. 2  Product ID: 3BNP102988R1",
+          "product_id": "CSAFPID-0010"
+        },
+        "product_reference": "CSAFPID-0004",
+        "relates_to_product_reference": "CSAFPID-0001"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB AWIN Firmware 1.2-0 installed on ABB AWIN GW120 Product ID 3BNP103003R1",
+          "product_id": "CSAFPID-0011"
+        },
+        "product_reference": "CSAFPID-0006",
+        "relates_to_product_reference": "CSAFPID-0002"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB AWIN Firmware 1.2-1 installed on ABB AWIN GW120 Product ID 3BNP103003R1",
+          "product_id": "CSAFPID-0012"
+        },
+        "product_reference": "CSAFPID-0007",
+        "relates_to_product_reference": "CSAFPID-0002"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB AWIN Firmware 2.1-0 installed on ABB AWIN GW100 rev. 2  Product ID: 3BNP102988R1",
+          "product_id": "CSAFPID-0013"
+        },
+        "product_reference": "CSAFPID-0005",
+        "relates_to_product_reference": "CSAFPID-0001"
+      },
+      {
+        "category": "installed_on",
+        "full_product_name": {
+          "name": "ABB AWIN Firmware  2.0-0 installed on ABB AWIN GW120 Product ID 3BNP103003R1",
+          "product_id": "CSAFPID-0014"
+        },
+        "product_reference": "CSAFPID-0008",
+        "relates_to_product_reference": "CSAFPID-0002"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-13777",
+      "cwe": {
+        "id": "CWE-294",
+        "name": "Authentication Bypass by Capture-replay"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "An unauthenticated query reveals data. Authentication Bypass due to Improper Session Validation.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0013",
+          "CSAFPID-0014"
+        ],
+        "known_affected": [
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2025-13777",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13777"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-13777"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/294.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H/E:F/RL:U/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Do the following actions:\n- Stop and disconnect any AWIN gateways that are exposed directly to the Internet.\n- Ensure that physical controls are in place, so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n- Ensure that all AWIN gateways are upgraded to the latest firmware version. Please find the latest version of firmware on the respective product Release Notes.\n- When remote access is required, only use secure methods.\n\nThe problem is corrected in the following product versions:\n- AWIN GW100 rev2: v2.1-0\n- AWIN GW120: v2.0-0\n\nABB recommends that customers contact ABB to obtain the updated firmware as soon as possible. ABB Service Support engineer shall apply the firmware update at earliest convenience.",
+          "product_ids": [
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "AWIN gateways are NOT internet facing devices and should be installed behind firewalls.\n\nThese gateways are intended to be located between level 0 (process) and level 1 (basic control) hierarchy of the IEC 62443 reference model.\n\nEnsure that physical controls are in place, so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n\nUpdate the firmware on the gateways with the newer versions with the fix.\n\nAt the time of writing the following versions are latest:\n- AWIN GW100 rev2: v2.1-0\n- AWIN GW120: v2.0-0\n\nRefer to the Release Notes and Product Bulletins for up-to-date information on the latest firmware re-leases.",
+          "product_ids": [
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "ADJACENT_NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8.3,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 8.1,
+            "environmentalSeverity": "HIGH",
+            "exploitCodeMaturity": "FUNCTIONAL",
+            "integrityImpact": "LOW",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "UNAVAILABLE",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 8.1,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H/E:F/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012"
+          ]
+        }
+      ],
+      "title": "CVE-2025-13777"
+    },
+    {
+      "cve": "CVE-2025-13778",
+      "cwe": {
+        "id": "CWE-306",
+        "name": "Missing Authentication for Critical Function"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "An unauthenticated query allows an attacker to remotely reboot the device, potentially causing a denial of service.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0013",
+          "CSAFPID-0014"
+        ],
+        "known_affected": [
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2025-13778",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13778"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-13778"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/306.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:F/RL:U/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Do the following actions:\n- Stop and disconnect any AWIN gateways that are exposed directly to the Internet.\n- Ensure that physical controls are in place, so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n- Ensure that all AWIN gateways are upgraded to the latest firmware version. Please find the latest version of firmware on the respective product Release Notes.\n- When remote access is required, only use secure methods.\n\nThe problem is corrected in the following product versions:\n- AWIN GW100 rev2: v2.1-0\n- AWIN GW120: v2.0-0\n\nABB recommends that customers contact ABB to obtain the updated firmware as soon as possible. ABB Service Support engineer shall apply the firmware update at earliest convenience.",
+          "product_ids": [
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "AWIN gateways are NOT internet facing devices and should be installed behind firewalls.\n\nThese gateways are intended to be located between level 0 (process) and level 1 (basic control) hierarchy of the IEC 62443 reference model.\n\nEnsure that physical controls are in place, so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n\nUpdate the firmware on the gateways with the newer versions with the fix.\n\nAt the time of writing the following versions are latest:\n- AWIN GW100 rev2: v2.1-0\n- AWIN GW120: v2.0-0\n\nRefer to the Release Notes and Product Bulletins for up-to-date information on the latest firmware re-leases.",
+          "product_ids": [
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "ADJACENT_NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.4,
+            "environmentalSeverity": "MEDIUM",
+            "exploitCodeMaturity": "FUNCTIONAL",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "UNAVAILABLE",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.4,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:F/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012"
+          ]
+        }
+      ],
+      "title": "CVE-2025-13778"
+    },
+    {
+      "cve": "CVE-2025-13779",
+      "cwe": {
+        "id": "CWE-306",
+        "name": "Missing Authentication for Critical Function"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "An unauthenticated query reveals the system configuration, including sensitive details.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0013",
+          "CSAFPID-0014"
+        ],
+        "known_affected": [
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2025-13779",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13779"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-13779"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/306.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H/E:F/RL:U/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Do the following actions:\n- Stop and disconnect any AWIN gateways that are exposed directly to the Internet.\n- Ensure that physical controls are in place, so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n- Ensure that all AWIN gateways are upgraded to the latest firmware version. Please find the latest version of firmware on the respective product Release Notes.\n- When remote access is required, only use secure methods.\n\nThe problem is corrected in the following product versions:\n- AWIN GW100 rev2: v2.1-0\n- AWIN GW120: v2.0-0\n\nABB recommends that customers contact ABB to obtain the updated firmware as soon as possible. ABB Service Support engineer shall apply the firmware update at earliest convenience.",
+          "product_ids": [
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "AWIN gateways are NOT internet facing devices and should be installed behind firewalls.\n\nThese gateways are intended to be located between level 0 (process) and level 1 (basic control) hierarchy of the IEC 62443 reference model.\n\nEnsure that physical controls are in place, so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n\nUpdate the firmware on the gateways with the newer versions with the fix.\n\nAt the time of writing the following versions are latest:\n- AWIN GW100 rev2: v2.1-0\n- AWIN GW120: v2.0-0\n\nRefer to the Release Notes and Product Bulletins for up-to-date information on the latest firmware re-leases.",
+          "product_ids": [
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "ADJACENT_NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8.3,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 8.1,
+            "environmentalSeverity": "HIGH",
+            "exploitCodeMaturity": "FUNCTIONAL",
+            "integrityImpact": "LOW",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "UNAVAILABLE",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 8.1,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H/E:F/RL:U/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012"
+          ]
+        }
+      ],
+      "title": "CVE-2025-13779"
+    }
+  ]
+}
