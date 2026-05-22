@@ -1,0 +1,1625 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "ABB PSIRT",
+        "summary": "reported these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "ABB became aware of vulnerability in the product versions listed as affected in the advisory. An update is now available that addresses and remediates the vulnerability.\n\nA network attacker could exploit the vulnerabilities to execute remote code, initiate DoS attacks, conduct DNS cache poisoning, or extract sensitive information. ",
+        "title": "Summary"
+      },
+      {
+        "category": "other",
+        "text": "For additional instructions and support please contact your local B&R service organization. For contact information, see https://www.br-automation.com/en/about-us/locations/.\n\nInformation about ABB\u2019s cyber security program and capabilities can be found at www.abb.com/cybersecurity.\n\n",
+        "title": "Support"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The information in this document is subject to change without notice, and should not be construed as a commitment by B&R.\n\nB&R provides no warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, for the information contained in this document, and assumes no responsibility for any errors that may appear in this document. In no event shall B&R or any of its suppliers be liable for direct, indirect, special, incidental or consequential damages of any nature or kind arising from the use of this document, or from the use of any hardware or software described in this document, even if B&R or its suppliers have been advised of the possibility of such damages.\n\nThis document and parts hereof must not be reproduced or copied without written permission from B&R, and the contents hereof must not be imparted to a third party nor used for any unauthorized purpose.\n\nAll rights to registrations and trademarks reside with their respective owners.",
+        "title": "Notice"
+      },
+      {
+        "category": "other",
+        "text": "For any installation of software related ABB products we strongly recommend the following (non-exhaustive) list of cyber security practices:\n\n\u2013 Isolate special purpose networks (e.g. for automation systems) and remote devices behind firewalls\nand separate them from any general purpose network (e.g. office or home networks).\n\n\u2013 Install physical controls so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n\n\u2013 Never connect programming software or computers containing programing software to any network other than the network for the devices that it is intended for.\n\n\u2013 Scan all data imported into your environment before use to detect potential malware infections.\n\n\u2013 Minimize network exposure for all applications and endpoints to ensure that they are not accessible\nfrom the Internet unless they are designed for such exposure and the intended use requires such.\n\n\u2013 Ensure all nodes are always up to date in terms of installed software, operating system, and firmware\npatches as well as anti-virus and firewall.\n\n\u2013 When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.",
+        "title": "General security recommendations"
+      },
+      {
+        "category": "other",
+        "text": "B&R has a rigorous internal cyber security continuous improvement process which involves regular testing with industry leading tools and periodic assessments to identify potential product issues. Occasionally an issue is determined to be a design or coding flaw with implications that may impact product cyber security.\n\nWhen a potential product vulnerability is identified or reported, B&R immediately initiates our vulnerability handling process. This entails validating if the issue is in fact a product issue, identifying root causes, determining what related products may be impacted, developing a remediation, and notifying end users and governmental organizations.\n\nThe resulting Cyber Security Advisory intends to notify customers of the vulnerability and provide details on which products are impacted, how to mitigate the vulnerability or explain workarounds that minimize the potential risk as much as possible. The release of a Cyber Security Advisory should not be misconstrued as an affirmation or indication of an active threat or ongoing campaign targeting the products mentioned here. If B&R is aware of any specific threats, it will be clearly mentioned in the communication.\n\nThe publication of this Cyber Security Advisory is an example of B&R\u2019s commitment to the user community in support of this critical topic. Responsible disclosure is an important element in the chain of trust we work to maintain with our many customers. The release of an Advisory provides timely information which is essential to help ensure our customers are fully informed.",
+        "title": "Purpose"
+      },
+      {
+        "category": "faq",
+        "text": "What is the scope of the vulnerabilities? \n- A network attacker who successfully exploited these vulnerabilities to execute remote code, initiate DoS attacks, conduct DNS cache poisoning, or extract sensitive information. In worst case, these vulnerabilities can be exploited by an attacker to gain unauthorized access and potentially lead to a loss of Confidentiality, Integrity and/or Availability. \n\nWhat causes the vulnerabilities? \n- The vulnerabilities are caused by usage of vulnerable UEFI firmware in some B&R xPCs. \n\nWhat is a B&R xPC? \n- A B&R xPC is an industrial PC (IPC) designed for use in industrial environments and is built to handle more demanding conditions than a standard PC. They often feature robust construction, resistance to dust and moisture, extended temperature ranges, and other specifications suited for industrial applications. \n\nWhat might an attacker use the vulnerabilities to do? \n- A network attacker who successfully exploited the vulnerabilities could execute remote code, initiate DoS attacks, conduct DNS cache poisoning, or extract sensitive information. \n\nHow could an attacker exploit the vulnerabilities? \n- An attacker could try to exploit the vulnerabilities by creating a specially crafted message and sending the message to an affected system node. This would require that the attacker has access to the system network, by connecting to the network either directly or through a wrongly configured or penetrated firewall, or that he installs malicious software on a system node or otherwise infects the network with malicious software. Recommended practices help mitigate such attacks, see section Mitigating Factors above. \n\nCould the vulnerabilities be exploited remotely?  \n- Yes, an attacker who has network access to an affected system node could exploit this vulnerability. Recommended practices include that process control systems are physically protected, have no direct connections to the Internet, and are separated from other networks by means of a firewall system that has a minimal number of ports exposed. \n\nWhat does the update do? \n- The update removes the vulnerabilities in the TCP/IP stack used by the UEFI firmware. \n\nWhen this security advisory was issued, had these vulnerabilities been publicly disclosed? \n- Yes, these vulnerabilities have been publicly disclosed. \n\nWhen this security advisory was issued, had B&R received any reports that this vulnerability was being exploited on B&R products? \n- No, B&R had not received any information indicating that this vulnerability had been exploited on B&R products when this security advisory was originally issued. ",
+        "title": "Frequently Asked Questions"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of ABB PSIRT SA24P003 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact ABB PSIRT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ABB CYBERSECURITY ADVISORY - CSAF Version ",
+        "url": "https://psirt.abb.com/csaf/2026/sa24p003.json"
+      },
+      {
+        "category": "self",
+        "summary": "ABB CYBERSECURITY ADVISORY - PDF Version ",
+        "url": "https://www.br-automation.com/fileadmin/SA24P003-bb9ea116.pdf"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-141-02 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-141-02.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-141-02 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-141-02"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "ABB B&R PCs",
+    "tracking": {
+      "current_release_date": "2026-05-21T06:00:00.000000Z",
+      "generator": {
+        "date": "2026-05-19T15:18:28.047733Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-141-02",
+      "initial_release_date": "2026-01-29T00:30:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2026-01-29T00:30:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial version."
+        },
+        {
+          "date": "2026-05-21T06:00:00.000000Z",
+          "legacy_version": "CISA Republication",
+          "number": "2",
+          "summary": "Initial CISA Republication of ABB PSIRT SA24P003 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "2"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<1.09",
+                "product": {
+                  "name": "ABB APC4100 <1.09",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.09",
+                "product": {
+                  "name": "ABB APC4100 1.09",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "APC4100"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=1.25",
+                "product": {
+                  "name": "ABB APC910 <=1.25",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "APC910"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<1.14",
+                "product": {
+                  "name": "ABB C80 <1.14",
+                  "product_id": "CSAFPID-0004"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.14",
+                "product": {
+                  "name": "ABB C80 1.14",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "C80"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<1.24",
+                "product": {
+                  "name": "ABB MPC3100 <1.24",
+                  "product_id": "CSAFPID-0006"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.24",
+                "product": {
+                  "name": "ABB MPC3100 1.24",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "MPC3100"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<1.14",
+                "product": {
+                  "name": "ABB PPC1200 <1.14",
+                  "product_id": "CSAFPID-0008"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.14",
+                "product": {
+                  "name": "ABB PPC1200 1.14",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PPC1200"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<2.16",
+                "product": {
+                  "name": "ABB PPC900 <2.16",
+                  "product_id": "CSAFPID-0010"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2.16",
+                "product": {
+                  "name": "ABB PPC900 2.16",
+                  "product_id": "CSAFPID-0011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PPC900"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<1.35",
+                "product": {
+                  "name": "ABB APC2200 <1.35",
+                  "product_id": "CSAFPID-0012"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.35",
+                "product": {
+                  "name": "ABB APC2200 1.35",
+                  "product_id": "CSAFPID-0013"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "APC2200"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<1.35",
+                "product": {
+                  "name": "ABB PPC2200 <1.35",
+                  "product_id": "CSAFPID-0014"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.35",
+                "product": {
+                  "name": "ABB PPC2200 1.35",
+                  "product_id": "CSAFPID-0015"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PPC2200"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<1.45",
+                "product": {
+                  "name": "ABB APC3100 <1.45",
+                  "product_id": "CSAFPID-0016"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.45",
+                "product": {
+                  "name": "ABB APC3100 1.45",
+                  "product_id": "CSAFPID-0017"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "APC3100"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<1.45",
+                "product": {
+                  "name": "ABB PPC3100 <1.45",
+                  "product_id": "CSAFPID-0018"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.45",
+                "product": {
+                  "name": "ABB PPC3100 1.45",
+                  "product_id": "CSAFPID-0019"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PPC3100"
+          }
+        ],
+        "category": "vendor",
+        "name": "ABB"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2023-45229",
+      "cwe": {
+        "id": "CWE-125",
+        "name": "Out-of-bounds Read"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "EDK2's Network Package is susceptible to an out-of-bounds read vulnerability when processing the IA_NA or IA_TA option in a DHCPv6 Advertise message. This vulnerability can be exploited by an attacker to gain unauthorized access and potentially lead to a loss of Confidentiality. ",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0007",
+          "CSAFPID-0009",
+          "CSAFPID-0011",
+          "CSAFPID-0013",
+          "CSAFPID-0015",
+          "CSAFPID-0017",
+          "CSAFPID-0019"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0008",
+          "CSAFPID-0010",
+          "CSAFPID-0012",
+          "CSAFPID-0014",
+          "CSAFPID-0016",
+          "CSAFPID-0018"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-45229",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-45229"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2023-45229"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/125.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N/E:P/RL:O/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The problems are corrected in the following product versions: \n\n- APC4100 1.09 \n- APC910 No patch will be released (Please refer to the mitigation measures specified in this advisory). \n- C80 1.14 \n- MPC3100 1.24 \n- PPC1200 1.14 \n- PPC900 2.16 \n- APC2200 1.35 \n- PPC2200 1.35 \n- APC3100 1.45 \n- PPC3100 1.45\n\nB&R recommends that customers apply the update at earliest convenience. \n\nThe process to install updates is described in the user manual. The step to identify the installed product version is described in the user manual. ",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Deactivate the vulnerable component \n- The vulnerabilities exist in the Preboot eXecution Environment (PXE) of the UEFI firmware. If this functionality is not needed, it is recommended to disable it in the UEFI settings, thus making the vulnerabilities not exploitable. \n\nLimit accessibility \n- If PXE functionality is required, users should tightly restrict network traffic to legitimate users and block illegitimate PXE traffic, specifically related to IPv6. For instance, by blocking IPv6 network traffic on the control network firewall. \n\nhttps://help.br-automation.com/#/en/6/cyber-security/defense-in-depth-for-br-products/reference_architecture.html\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure. \n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "ADJACENT_NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 5.9,
+            "environmentalSeverity": "MEDIUM",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "OFFICIAL_FIX",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 5.9,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "title": "CVE-2023-45229"
+    },
+    {
+      "cve": "CVE-2023-45230",
+      "cwe": {
+        "id": "CWE-119",
+        "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "EDK2's Network Package is susceptible to a buffer overflow vulnerability via a long server ID option in DHCPv6 client. This vulnerability can be exploited by an attacker to gain unauthorized access and potentially lead to a loss of Confidentiality, Integrity and/or Availability.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0007",
+          "CSAFPID-0009",
+          "CSAFPID-0011",
+          "CSAFPID-0013",
+          "CSAFPID-0015",
+          "CSAFPID-0017",
+          "CSAFPID-0019"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0008",
+          "CSAFPID-0010",
+          "CSAFPID-0012",
+          "CSAFPID-0014",
+          "CSAFPID-0016",
+          "CSAFPID-0018"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - 2023-45230",
+          "url": "https://nvd.nist.gov/vuln/detail/2023-45230"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2023-45230"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/119.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H/E:P/RL:O/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The problems are corrected in the following product versions: \n\n- APC4100 1.09 \n- APC910 No patch will be released (Please refer to the mitigation measures specified in this advisory). \n- C80 1.14 \n- MPC3100 1.24 \n- PPC1200 1.14 \n- PPC900 2.16 \n- APC2200 1.35 \n- PPC2200 1.35 \n- APC3100 1.45 \n- PPC3100 1.45\n\nB&R recommends that customers apply the update at earliest convenience. \n\nThe process to install updates is described in the user manual. The step to identify the installed product version is described in the user manual. ",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Deactivate the vulnerable component \n- The vulnerabilities exist in the Preboot eXecution Environment (PXE) of the UEFI firmware. If this functionality is not needed, it is recommended to disable it in the UEFI settings, thus making the vulnerabilities not exploitable. \n\nLimit accessibility \n- If PXE functionality is required, users should tightly restrict network traffic to legitimate users and block illegitimate PXE traffic, specifically related to IPv6. For instance, by blocking IPv6 network traffic on the control network firewall. \n\nhttps://help.br-automation.com/#/en/6/cyber-security/defense-in-depth-for-br-products/reference_architecture.html\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure. \n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "ADJACENT_NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8.3,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 7.5,
+            "environmentalSeverity": "HIGH",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "LOW",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "OFFICIAL_FIX",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 7.5,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "title": "CVE-2023-45230"
+    },
+    {
+      "cve": "CVE-2023-45231",
+      "cwe": {
+        "id": "CWE-125",
+        "name": "Out-of-bounds Read"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "EDK2's Network Package is susceptible to an out-of-bounds read vulnerability when processing Neighbor Discovery Redirect message. This vulnerability can be exploited by an attacker to gain unauthorized access and potentially lead to a loss of Confidentiality. ",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0007",
+          "CSAFPID-0009",
+          "CSAFPID-0011",
+          "CSAFPID-0013",
+          "CSAFPID-0015",
+          "CSAFPID-0017",
+          "CSAFPID-0019"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0008",
+          "CSAFPID-0010",
+          "CSAFPID-0012",
+          "CSAFPID-0014",
+          "CSAFPID-0016",
+          "CSAFPID-0018"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-45231",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-45231"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2023-45231"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/125.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N/E:P/RL:O/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The problems are corrected in the following product versions: \n\n- APC4100 1.09 \n- APC910 No patch will be released (Please refer to the mitigation measures specified in this advisory). \n- C80 1.14 \n- MPC3100 1.24 \n- PPC1200 1.14 \n- PPC900 2.16 \n- APC2200 1.35 \n- PPC2200 1.35 \n- APC3100 1.45 \n- PPC3100 1.45\n\nB&R recommends that customers apply the update at earliest convenience. \n\nThe process to install updates is described in the user manual. The step to identify the installed product version is described in the user manual. ",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Deactivate the vulnerable component \n- The vulnerabilities exist in the Preboot eXecution Environment (PXE) of the UEFI firmware. If this functionality is not needed, it is recommended to disable it in the UEFI settings, thus making the vulnerabilities not exploitable. \n\nLimit accessibility \n- If PXE functionality is required, users should tightly restrict network traffic to legitimate users and block illegitimate PXE traffic, specifically related to IPv6. For instance, by blocking IPv6 network traffic on the control network firewall. \n\nhttps://help.br-automation.com/#/en/6/cyber-security/defense-in-depth-for-br-products/reference_architecture.html\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure. \n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "ADJACENT_NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 5.9,
+            "environmentalSeverity": "MEDIUM",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "OFFICIAL_FIX",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 5.9,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "title": "CVE-2023-45231"
+    },
+    {
+      "cve": "CVE-2023-45232",
+      "cwe": {
+        "id": "CWE-835",
+        "name": "Loop with Unreachable Exit Condition ('Infinite Loop')"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "EDK2's Network Package is susceptible to an infinite loop vulnerability when parsing unknown options in the Destination Options header of IPv6. This vulnerability can be exploited by an attacker to gain unauthorized access and potentially lead to a loss of Availability.  ",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0007",
+          "CSAFPID-0009",
+          "CSAFPID-0011",
+          "CSAFPID-0013",
+          "CSAFPID-0015",
+          "CSAFPID-0017",
+          "CSAFPID-0019"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0008",
+          "CSAFPID-0010",
+          "CSAFPID-0012",
+          "CSAFPID-0014",
+          "CSAFPID-0016",
+          "CSAFPID-0018"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-45232",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-45232"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2023-45232"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/835.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The problems are corrected in the following product versions: \n\n- APC4100 1.09 \n- APC910 No patch will be released (Please refer to the mitigation measures specified in this advisory). \n- C80 1.14 \n- MPC3100 1.24 \n- PPC1200 1.14 \n- PPC900 2.16 \n- APC2200 1.35 \n- PPC2200 1.35 \n- APC3100 1.45 \n- PPC3100 1.45\n\nB&R recommends that customers apply the update at earliest convenience. \n\nThe process to install updates is described in the user manual. The step to identify the installed product version is described in the user manual. ",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Deactivate the vulnerable component \n- The vulnerabilities exist in the Preboot eXecution Environment (PXE) of the UEFI firmware. If this functionality is not needed, it is recommended to disable it in the UEFI settings, thus making the vulnerabilities not exploitable. \n\nLimit accessibility \n- If PXE functionality is required, users should tightly restrict network traffic to legitimate users and block illegitimate PXE traffic, specifically related to IPv6. For instance, by blocking IPv6 network traffic on the control network firewall. \n\nhttps://help.br-automation.com/#/en/6/cyber-security/defense-in-depth-for-br-products/reference_architecture.html\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure. \n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.7,
+            "environmentalSeverity": "MEDIUM",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "OFFICIAL_FIX",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.7,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "title": "CVE-2023-45232"
+    },
+    {
+      "cve": "CVE-2023-45233",
+      "cwe": {
+        "id": "CWE-835",
+        "name": "Loop with Unreachable Exit Condition ('Infinite Loop')"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "EDK2's Network Package is susceptible to an infinite loop vulnerability when parsing a PadN option in the Destination Options header of IPv6. This vulnerability can be exploited by an attacker to gain unauthorized access and potentially lead to a loss of Availability.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0007",
+          "CSAFPID-0009",
+          "CSAFPID-0011",
+          "CSAFPID-0013",
+          "CSAFPID-0015",
+          "CSAFPID-0017",
+          "CSAFPID-0019"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0008",
+          "CSAFPID-0010",
+          "CSAFPID-0012",
+          "CSAFPID-0014",
+          "CSAFPID-0016",
+          "CSAFPID-0018"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-45233",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-45233"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2023-45233"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/835.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The problems are corrected in the following product versions: \n\n- APC4100 1.09 \n- APC910 No patch will be released (Please refer to the mitigation measures specified in this advisory). \n- C80 1.14 \n- MPC3100 1.24 \n- PPC1200 1.14 \n- PPC900 2.16 \n- APC2200 1.35 \n- PPC2200 1.35 \n- APC3100 1.45 \n- PPC3100 1.45\n\nB&R recommends that customers apply the update at earliest convenience. \n\nThe process to install updates is described in the user manual. The step to identify the installed product version is described in the user manual. ",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Deactivate the vulnerable component \n- The vulnerabilities exist in the Preboot eXecution Environment (PXE) of the UEFI firmware. If this functionality is not needed, it is recommended to disable it in the UEFI settings, thus making the vulnerabilities not exploitable. \n\nLimit accessibility \n- If PXE functionality is required, users should tightly restrict network traffic to legitimate users and block illegitimate PXE traffic, specifically related to IPv6. For instance, by blocking IPv6 network traffic on the control network firewall. \n\nhttps://help.br-automation.com/#/en/6/cyber-security/defense-in-depth-for-br-products/reference_architecture.html\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure. \n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 6.7,
+            "environmentalSeverity": "MEDIUM",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "OFFICIAL_FIX",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 6.7,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "title": "CVE-2023-45233"
+    },
+    {
+      "cve": "CVE-2023-45234",
+      "cwe": {
+        "id": "CWE-119",
+        "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "EDK2's Network Package is susceptible to a buffer overflow vulnerability when processing DNS Servers option from a DHCPv6 Advertise message. This vulnerability can be exploited by an attacker to gain unauthorized access and potentially lead to a loss of Confidentiality, Integrity and/or Availability.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0007",
+          "CSAFPID-0009",
+          "CSAFPID-0011",
+          "CSAFPID-0013",
+          "CSAFPID-0015",
+          "CSAFPID-0017",
+          "CSAFPID-0019"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0008",
+          "CSAFPID-0010",
+          "CSAFPID-0012",
+          "CSAFPID-0014",
+          "CSAFPID-0016",
+          "CSAFPID-0018"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-45234",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-45234"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2023-45234"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/119.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H/E:P/RL:O/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The problems are corrected in the following product versions: \n\n- APC4100 1.09 \n- APC910 No patch will be released (Please refer to the mitigation measures specified in this advisory). \n- C80 1.14 \n- MPC3100 1.24 \n- PPC1200 1.14 \n- PPC900 2.16 \n- APC2200 1.35 \n- PPC2200 1.35 \n- APC3100 1.45 \n- PPC3100 1.45\n\n B&R recommends that customers apply the update at earliest convenience. \n\nThe process to install updates is described in the user manual. The step to identify the installed product version is described in the user manual. ",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Deactivate the vulnerable component \n- The vulnerabilities exist in the Preboot eXecution Environment (PXE) of the UEFI firmware. If this functionality is not needed, it is recommended to disable it in the UEFI settings, thus making the vulnerabilities not exploitable. \n\nLimit accessibility \n- If PXE functionality is required, users should tightly restrict network traffic to legitimate users and block illegitimate PXE traffic, specifically related to IPv6. For instance, by blocking IPv6 network traffic on the control network firewall. \n\nhttps://help.br-automation.com/#/en/6/cyber-security/defense-in-depth-for-br-products/reference_architecture.html\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure. \n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "ADJACENT_NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8.3,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 7.5,
+            "environmentalSeverity": "HIGH",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "LOW",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "OFFICIAL_FIX",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 7.5,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "title": "CVE-2023-45234"
+    },
+    {
+      "cve": "CVE-2023-45235",
+      "cwe": {
+        "id": "CWE-119",
+        "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "EDK2's Network Package is susceptible to a buffer overflow vulnerability when handling Server ID option from a DHCPv6 proxy Advertise message. This vulnerability can be exploited by an attacker to gain unauthorized access and potentially lead to a loss of Confidentiality, Integrity and/or Availability. ",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0007",
+          "CSAFPID-0009",
+          "CSAFPID-0011",
+          "CSAFPID-0013",
+          "CSAFPID-0015",
+          "CSAFPID-0017",
+          "CSAFPID-0019"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0008",
+          "CSAFPID-0010",
+          "CSAFPID-0012",
+          "CSAFPID-0014",
+          "CSAFPID-0016",
+          "CSAFPID-0018"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-45235",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-45235"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2023-45235"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/119.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H/E:P/RL:O/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The problems are corrected in the following product versions: \n\n- APC4100 1.09 \n- APC910 No patch will be released (Please refer to the mitigation measures specified in this advisory). \n- C80 1.14 \n- MPC3100 1.24 \n- PPC1200 1.14 \n- PPC900 2.16 \n- APC2200 1.35 \n- PPC2200 1.35 \n- APC3100 1.45 \n- PPC3100 1.45\n\nB&R recommends that customers apply the update at earliest convenience. \n\nThe process to install updates is described in the user manual. The step to identify the installed product version is described in the user manual. ",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Deactivate the vulnerable component \n- The vulnerabilities exist in the Preboot eXecution Environment (PXE) of the UEFI firmware. If this functionality is not needed, it is recommended to disable it in the UEFI settings, thus making the vulnerabilities not exploitable. \n\nLimit accessibility \n- If PXE functionality is required, users should tightly restrict network traffic to legitimate users and block illegitimate PXE traffic, specifically related to IPv6. For instance, by blocking IPv6 network traffic on the control network firewall. \n\nhttps://help.br-automation.com/#/en/6/cyber-security/defense-in-depth-for-br-products/reference_architecture.html\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure. \n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "ADJACENT_NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8.3,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 7.5,
+            "environmentalSeverity": "HIGH",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "LOW",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "OFFICIAL_FIX",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 7.5,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "title": "CVE-2023-45235"
+    },
+    {
+      "cve": "CVE-2023-45236",
+      "cwe": {
+        "id": "CWE-338",
+        "name": "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "EDK2's Network Package is susceptible to a predictable TCP Initial Sequence Number. This vulnerability can be exploited by an attacker to gain unauthorized access and potentially lead to a loss of Confidentiality.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0007",
+          "CSAFPID-0009",
+          "CSAFPID-0011",
+          "CSAFPID-0013",
+          "CSAFPID-0015",
+          "CSAFPID-0017",
+          "CSAFPID-0019"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0008",
+          "CSAFPID-0010",
+          "CSAFPID-0012",
+          "CSAFPID-0014",
+          "CSAFPID-0016",
+          "CSAFPID-0018"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-45236",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-45236"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2023-45236"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/338.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N/E:P/RL:O/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The problems are corrected in the following product versions: \n\n- APC4100 1.09 \n- APC910 No patch will be released (Please refer to the mitigation measures specified in this advisory). \n- C80 1.14 \n- MPC3100 1.24 \n- PPC1200 1.14 \n- PPC900 2.16 \n- APC2200 1.35 \n- PPC2200 1.35 \n- APC3100 1.45 \n- PPC3100 1.45\n\nB&R recommends that customers apply the update at earliest convenience. \n\nThe process to install updates is described in the user manual. The step to identify the installed product version is described in the user manual. ",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Deactivate the vulnerable component \n- The vulnerabilities exist in the Preboot eXecution Environment (PXE) of the UEFI firmware. If this functionality is not needed, it is recommended to disable it in the UEFI settings, thus making the vulnerabilities not exploitable. \n\nLimit accessibility \n- If PXE functionality is required, users should tightly restrict network traffic to legitimate users and block illegitimate PXE traffic, specifically related to IPv6. For instance, by blocking IPv6 network traffic on the control network firewall. \n\nhttps://help.br-automation.com/#/en/6/cyber-security/defense-in-depth-for-br-products/reference_architecture.html\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure. \n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 5.8,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "LOW",
+            "environmentalScore": 5.2,
+            "environmentalSeverity": "MEDIUM",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "OFFICIAL_FIX",
+            "reportConfidence": "CONFIRMED",
+            "scope": "CHANGED",
+            "temporalScore": 5.2,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "title": "CVE-2023-45236"
+    },
+    {
+      "cve": "CVE-2023-45237",
+      "cwe": {
+        "id": "CWE-338",
+        "name": "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "EDK2's Network Package is susceptible to a predictable TCP Initial Sequence Number. This vulnerability can be exploited by an attacker to gain unauthorized access and potentially lead to a loss of Confidentiality.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0005",
+          "CSAFPID-0007",
+          "CSAFPID-0009",
+          "CSAFPID-0011",
+          "CSAFPID-0013",
+          "CSAFPID-0015",
+          "CSAFPID-0017",
+          "CSAFPID-0019"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0006",
+          "CSAFPID-0008",
+          "CSAFPID-0010",
+          "CSAFPID-0012",
+          "CSAFPID-0014",
+          "CSAFPID-0016",
+          "CSAFPID-0018"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2023-45237",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-45237"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2023-45237"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/338.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N/E:P/RL:O/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The problems are corrected in the following product versions: \n\n- APC4100 1.09 \n- APC910 No patch will be released (Please refer to the mitigation measures specified in this advisory). \n- C80 1.14 \n- MPC3100 1.24 \n- PPC1200 1.14 \n- PPC900 2.16 \n- APC2200 1.35 \n- PPC2200 1.35 \n- APC3100 1.45 \n- PPC3100 1.45\n\nB&R recommends that customers apply the update at earliest convenience. \n\nThe process to install updates is described in the user manual. The step to identify the installed product version is described in the user manual. ",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Deactivate the vulnerable component \n- The vulnerabilities exist in the Preboot eXecution Environment (PXE) of the UEFI firmware. If this functionality is not needed, it is recommended to disable it in the UEFI settings, thus making the vulnerabilities not exploitable. \n\nLimit accessibility \n- If PXE functionality is required, users should tightly restrict network traffic to legitimate users and block illegitimate PXE traffic, specifically related to IPv6. For instance, by blocking IPv6 network traffic on the control network firewall. \n\nhttps://help.br-automation.com/#/en/6/cyber-security/defense-in-depth-for-br-products/reference_architecture.html\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure. \n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 5.3,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "LOW",
+            "environmentalScore": 4.8,
+            "environmentalSeverity": "MEDIUM",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "OFFICIAL_FIX",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 4.8,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N/E:P/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0006",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0012",
+            "CSAFPID-0014",
+            "CSAFPID-0016",
+            "CSAFPID-0018"
+          ]
+        }
+      ],
+      "title": "CVE-2023-45237"
+    }
+  ]
+}

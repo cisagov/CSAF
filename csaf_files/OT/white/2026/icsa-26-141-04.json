@@ -1,0 +1,498 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "ABB PSIRT",
+        "summary": "reported these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "An update is available that resolves a vulnerability identified by B&Rs internal security analysis in the product versions listed as affected in this advisory.\n\nAn attacker who successfully exploited these vulnerabilities could take over a remote session or execute code in the context of the user\u2019s browser session.",
+        "title": "Summary"
+      },
+      {
+        "category": "other",
+        "text": "For any installation of software-related B&R products we strongly recommend the following (non-exhaustive) list of cyber security practices:\n\u2013\tIsolate special purpose networks (e.g. for automation systems) and remote devices behind firewalls and separate them from any general-purpose network (e.g. office or home networks).\n\u2013\tInstall physical controls so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n\u2013\tNever connect programming software or computers containing programing software to any net-work other than the network for the devices that it is intended for.\n\u2013\tScan all data imported into your environment before use to detect potential malware infections.\n\u2013\tMinimize network exposure for all applications and endpoints to ensure that they are not accessi-ble from the Internet unless they are designed for such exposure and the intended use requires such.\n\u2013\tEnsure all nodes are always up to date in terms of installed software, operating system, and firm-ware patches as well as anti-virus and firewall.\n\u2013\tWhen remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.\n\nMore information on recommended practices can be found in the following documents:\n\nDefense in Depth for B&R products",
+        "title": "General security recommendations"
+      },
+      {
+        "category": "other",
+        "text": "For additional instructions and support please contact your local B&R service organization. For contact information, see https://www.br-automation.com/en/about-us/locations/.\n\nInformation about ABB\u2019s cyber security program and capabilities can be found at www.abb.com/cybersecurity.\n",
+        "title": "Support"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The information in this document is subject to change without notice, and should not be construed as a commitment by B&R.\n\nB&R provides no warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, for the information contained in this document, and assumes no responsibility for any errors that may appear in this document. In no event shall B&R or any of its suppliers be liable for direct, indirect, special, incidental or consequential damages of any nature or kind arising from the use of this document, or from the use of any hardware or software described in this document, even if B&R or its suppliers have been advised of the possibility of such damages.\n\nThis document and parts hereof must not be reproduced or copied without written permission from B&R, and the contents hereof must not be imparted to a third party nor used for any unauthorized purpose.\n\nAll rights to registrations and trademarks reside with their respective owners.\n\n",
+        "title": "Notice"
+      },
+      {
+        "category": "general",
+        "text": "Do not enable the System Diagnostics Manager when it is not required.\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure.\n",
+        "title": "Mitigating factors"
+      },
+      {
+        "category": "general",
+        "text": "Do not use Hyperlinks provided by untrusted 3rd party to access the SDM. Hyperlinks may be provided via: \n\u2022\tEmails from unknown users \n\u2022\tSocial media channels \n\u2022\tMessaging services \n\u2022\tWebpages with comment functionality\n\u2022\tQR Codes \nThe use of external Web Application Firewalls (WAF) can mitigate attacks using reflected cross-site scripting.",
+        "title": "Workarounds"
+      },
+      {
+        "category": "other",
+        "text": "B&R has a rigorous internal cyber security continuous improvement process which involves regular testing with industry leading tools and periodic assessments to identify potential product issues. Occasionally an issue is determined to be a design or coding flaw with implications that may impact product cyber security.\n\nWhen a potential product vulnerability is identified or reported, B&R immediately initiates our vulnerability handling process. This entails validating if the issue is in fact a product issue, identifying root causes, determining what related products may be impacted, developing a remediation, and notifying end users and governmental organizations.\n\nThe resulting Cyber Security Advisory intends to notify customers of the vulnerability and provide details on which products are impacted, how to mitigate the vulnerability or explain workarounds that minimize the potential risk as much as possible. The release of a Cyber Security Advisory should not be misconstrued as an affirmation or indication of an active threat or ongoing campaign targeting the products mentioned here. If B&R is aware of any specific threats, it will be clearly mentioned in the communication.\n\nThe publication of this Cyber Security Advisory is an example of B&R\u2019s commitment to the user community in support of this critical topic. Responsible disclosure is an important element in the chain of trust we work to maintain with our many customers. The release of an Advisory provides timely information which is essential to help ensure our customers are fully informed",
+        "title": "Purpose"
+      },
+      {
+        "category": "faq",
+        "text": "What causes the vulnerabilities?\n\nThe vulnerabilities are caused by insufficient input sanitization and generation of predictable numbers.\n\nWhat is System Diagnostics Manager (SDM)?\n\nSystem Diagnostics Manager (SDM) is a webpage available over the Automation Runtime Webserver, showing key diagnostic information of the running controller.\n\nWhat is Automation Runtime (AR)?\n\nB&R Automation Runtime is a middleware system enabling customers to run applications on B&R target \nsystems.\n\nWhat might an attacker use the vulnerabilities to do?\n\nAn attacker who successfully exploited these vulnerabilities could cause to run arbitrary code in the context of the user\u2019s browser session or take over the user\u2019s session. Since the SDM currently does not process any session-specific data and also does not implement authentication mechanisms at the session level, B&R is not aware of any advantages an attacker could gain by taking over the session ID\n\nHow could an attacker exploit the vulnerabilities?\n\nTo exploit the XSS vulnerability CVE-2025-3448, an attacker could try to create a hyperlink including malicious script code. This hyperlink must be opened by the user to launch the attack. \n\nTo exploit vulnerability CVE-2025-3449, an attacker would need to guess a user's session ID.\n\nCould the vulnerabilities be exploited remotely? \n\nYes, an attacker who has network access to an affected system node could exploit this vulnerability. Recommended practices include that process control systems are physically protected, have no direct connections to the Internet, and are separated from other networks by means of a firewall system that has a minimal number of ports exposed. \n\nWhen this security advisory was issued, had this vulnerability been publicly disclosed?\n\nNo, B&R discovered the vulnerabilities through its own security analysis.\n\nWhen this security advisory was issued, had B&R received any reports that this vulnerability was being exploited?\n\nNo, B&R had not received any information indicating that this vulnerability had been exploited when this security advisory was originally issued.",
+        "title": "Frequently asked questions"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of ABB PSIRT SA25P003 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact ABB PSIRT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "B&R CYBERSECURITY ADVISORY - CSAF Version",
+        "url": "https://psirt.abb.com/csaf/2025/sa25p003.json"
+      },
+      {
+        "category": "self",
+        "summary": "B&R Advisory Link",
+        "url": "https://www.br-automation.com/fileadmin/SA25P003-178b6a20.pdf"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-141-04 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-141-04.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-141-04 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-141-04"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "ABB B&R Automation Runtime",
+    "tracking": {
+      "current_release_date": "2026-05-21T06:00:00.000000Z",
+      "generator": {
+        "date": "2026-05-19T15:18:28.382029Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-141-04",
+      "initial_release_date": "2025-10-07T00:30:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-10-07T00:30:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial version."
+        },
+        {
+          "date": "2025-10-14T00:30:00.000000Z",
+          "legacy_version": "Additional Release 1",
+          "number": "2",
+          "summary": "Added information about CVE-2025-11498"
+        },
+        {
+          "date": "2026-05-21T06:00:00.000000Z",
+          "legacy_version": "CISA Republication",
+          "number": "3",
+          "summary": "Initial CISA Republication of ABB PSIRT SA25P003 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "3"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<6.4",
+                "product": {
+                  "name": "Automation Runtime <6.4",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6.4",
+                "product": {
+                  "name": "Automation Runtime 6.4",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Automation Runtime"
+          }
+        ],
+        "category": "vendor",
+        "name": "B&R"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-3449",
+      "cwe": {
+        "id": "CWE-340",
+        "name": "Generation of Predictable Numbers or Identifiers"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "A Generation of Predictable Numbers or Identifiers vulnerability in the SDM component of B&R Automation Runtime versions before 6.4 may allow an unauthenticated network-based attacker to take over already established sessions.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002"
+        ],
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2025-3449",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-3449"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-3449"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/340.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N/E:F/RL:O/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The problem is corrected in Automation Runtime 6.4.\n\nThe System Diagnostic Manager (SDM) is disabled by default in Automation Runtime 6 and is not intended be enabled on active systems located outside properly secured production networks or in facilities lacking adequate physical and logical access controls to prevent any form of unauthorized interaction. For customers who use SDM on their systems, B&R recommends applying the update based on risk assessment at the earliest convenience.\n\nThe process to install updates is described in the user manual. The step to identify the installed product version is described in the user manual.\n",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "HIGH",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 4.2,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "LOW",
+            "environmentalScore": 3.9,
+            "environmentalSeverity": "LOW",
+            "exploitCodeMaturity": "FUNCTIONAL",
+            "integrityImpact": "LOW",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "OFFICIAL_FIX",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 3.9,
+            "temporalSeverity": "LOW",
+            "userInteraction": "REQUIRED",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N/E:F/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2025-3449"
+    },
+    {
+      "cve": "CVE-2025-3448",
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "Reflected cross-site scripting (XSS) vulnerabilities exist in System Diagnostics Manager (SDM) of B&R Automation Runtime versions before 6.4 that enables a remote attacker to execute arbitrary JavaScript code in the context of the attacked user\u2019s browser session",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002"
+        ],
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2025-3448",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-3448"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-3448"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/79.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:F/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The problem is corrected in Automation Runtime 6.4.\n\nThe System Diagnostic Manager (SDM) is disabled by default in Automation Runtime 6 and is not intended be enabled on active systems located outside properly secured production networks or in facilities lacking adequate physical and logical access controls to prevent any form of unauthorized interaction. For customers who use SDM on their systems, B&R recommends applying the update based on risk assessment at the earliest convenience.\n\nThe process to install updates is described in the user manual. The step to identify the installed product version is described in the user manual.\n",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 6.1,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "LOW",
+            "environmentalScore": 6,
+            "environmentalSeverity": "MEDIUM",
+            "exploitCodeMaturity": "FUNCTIONAL",
+            "integrityImpact": "LOW",
+            "privilegesRequired": "NONE",
+            "reportConfidence": "CONFIRMED",
+            "scope": "CHANGED",
+            "temporalScore": 6,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "REQUIRED",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:F/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2025-3448"
+    },
+    {
+      "cve": "CVE-2025-11498",
+      "cwe": {
+        "id": "CWE-1236",
+        "name": "Improper Neutralization of Formula Elements in a CSV File"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "An Improper Neutralization of Formula Elements in a CSV File vulnerability exists in System Diagnostics Manager (SDM) of B&R Automation Runtime versions before 6.4 enabling a remote attacker to inject formula data into a generated CSV file. The exploitation of this vulnerability requires the attack-er to create a malicious link. The user would need to click on this link, after which the resulting CSV file additionally needs to be manually opened.",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002"
+        ],
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2025-11498",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11498"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-11498"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/1236.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/RL:O/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The problem is corrected in Automation Runtime 6.4.\n\nThe System Diagnostic Manager (SDM) is disabled by default in Automation Runtime 6 and is not intended be enabled on active systems located outside properly secured production networks or in facilities lacking adequate physical and logical access controls to prevent any form of unauthorized interaction. For customers who use SDM on their systems, B&R recommends applying the update based on risk assessment at the earliest convenience.\n\nThe process to install updates is described in the user manual. The step to identify the installed product version is described in the user manual.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 6.1,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "LOW",
+            "environmentalScore": 5.8,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "LOW",
+            "privilegesRequired": "NONE",
+            "remediationLevel": "OFFICIAL_FIX",
+            "reportConfidence": "CONFIRMED",
+            "scope": "CHANGED",
+            "temporalScore": 5.8,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "REQUIRED",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/RL:O/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2025-11498"
+    }
+  ]
+}
