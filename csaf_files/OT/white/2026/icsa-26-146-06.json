@@ -1,0 +1,334 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "ABB PSIRT",
+        "summary": "reported this vulnerability to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "ABB became aware of an internally discovered vulnerability in the MConfig product versions listed as affected in the advisory. \n\nAn attacker with access to local networks who successfully exploits vulnerability could have access to application\u2019s sensitive information.\n\nABB strongly advises customers to update MConfig with latest software version.",
+        "title": "Summary"
+      },
+      {
+        "category": "other",
+        "text": "For any installation of software-related ABB products we strongly recommend the following (non-exhaustive) list of cyber security practices:\n- Isolate special purpose networks (e.g. for automation systems) and remote devices behind firewalls and separate them from any general-purpose network (e.g. office or home networks).\n- Install physical controls so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n- Never connect programming software or computers containing programming software to any \nnetwork other than the network for the devices that it is intended for.\n- Scan all data imported into your environment before use to detect potential malware infections.\n- Minimize network exposure for all applications and endpoints to ensure that they are not accessible from the Internet unless they are designed for such exposure and the intended use requires \nsuch.\n- Ensure all nodes are always up to date in terms of installed software, operating system, and \nfirmware patches as well as anti-virus and firewall.\n- When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). \nRecognize that VPNs may have vulnerabilities and should be updated to the most current version \navailable. Also, understand that VPNs are only as secure as the connected devices.\n",
+        "title": "General security recommendations"
+      },
+      {
+        "category": "other",
+        "text": "For additional instructions and support please contact your local ABB service organization. For contact information, see www.abb.com/contactcenters.\n\nInformation about ABB\u2019s cyber security program and capabilities can be found at www.abb.com/cybersecurity",
+        "title": "Support"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The information in this document is subject to change without notice, and should not be construed as a commitment by ABB.\n\nABB provides no warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, for the information contained in this document, and assumes no responsibility for any errors that may appear in this document. In no event shall ABB or any of its suppliers be liable for direct, indirect, special, incidental or consequential damages of any nature or kind arising from the use of this document, or from the use of any hardware or software described in this document, even if ABB or its suppliers have been advised of the possibility of such damages.\n\nThis document and parts hereof must not be reproduced or copied without written permission from ABB, and the contents hereof must not be imparted to a third-party nor used for any unauthorized purpose.\n\nAll rights to registrations and trademarks reside with their respective owners.\n",
+        "title": "Notice"
+      },
+      {
+        "category": "general",
+        "text": "Mitigating factors describe conditions and circumstances that make an attack that exploits the vulnerability difficult or less likely to succeed. \n\nIn case customer cannot upgrade the firmware or it is not feasible then please immediately apply mitigating factors mentioned in \u201cGeneral security recommendations\u201d.",
+        "title": "Mitigating factors"
+      },
+      {
+        "category": "other",
+        "text": "ABB has a rigorous internal cyber security continuous improvement process which involves regular testing with industry leading tools and periodic assessments to identify potential product issues. Occasionally an issue is determined to be a design or coding flaw with implications that may impact product cyber security.\n\nWhen a potential product vulnerability is identified or reported, ABB immediately initiates our vulnerability handling process. This entails validating if the issue is in fact a product issue, identifying root causes, determining what related products may be impacted, developing a remediation, and notifying end users and governmental organizations.\n\nThe resulting Cyber Security Advisory intends to notify customers of the vulnerability and provide details on which products are impacted, how to mitigate the vulnerability or explain workarounds that minimize the potential risk as much as possible. The release of a Cyber Security Advisory should not be misconstrued as an affirmation or indication of an active threat or ongoing campaign targeting the products mentioned here. If ABB is aware of any specific threats, it will be clearly mentioned in the communication.\n\nThe publication of this Cyber Security Advisory is an example of ABB\u2019s commitment to the user community in support of this critical topic. Responsible disclosure is an important element in the chain of trust we work to maintain with our many customers. The release of an Advisory provides timely information which is essential to help ensure our customers are fully informed.",
+        "title": "Purpose"
+      },
+      {
+        "category": "faq",
+        "text": "What causes the vulnerability?\n\nThe vulnerability is caused by code defect allowing the attacker to extract the sensitive information such as user credentials from memory dump of the application. Please refer to Vulnerability severity and details for further details.\n\nWhat is MConfig ?\n\nMConfig is the parameterizing software for ABB LV switchgear components such as motor and feeder controller, operation panel, temperature monitoring solutions and protocol converter. The components are physically installed in a low voltage switchgear located in switch rooms that require authority to access.\nTo run this software on a host machine (computer), the operating system should be Win11 or later version.\n\nWhat might an attacker use the vulnerability to do?\n\nIf the mentioned vulnerability has been successfully exploited by an attacker, this could allow the attacker to extract sensitive information such as user credentials.\n\nWith user credentials and access to a host machine with MConfig installed, and access to the switch room with components installed in a switchgear, the attacker can modify the setting of the components potentially compromising its correct operation.\n\nHow could an attacker exploit vulnerability?\n\nAn attacker with host machine physical access could, after a user log into MConfig, exploit a vulnerability by exporting a memory dump during runtime, potentially exposing the user's password.\n\nCould vulnerability be exploited remotely? \n\nThe vulnerability can only be exploited if an attacker has physical access to the host machine with MConfig software.\n\nWhat does the update do?\n\nMConfig version V1.4.9.22 update has fix for the vulnerability mentioned in Vulnerability severity and details section.\n\nThe measures below were implemented to fix the vulnerability:\n\n\u2022 Clear any authentication-related memory data after a successful login.\n\n\u2022 Hash the passwords in SHA256",
+        "title": "Frequently asked questions"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of ABB PSIRT 4TZ00000006008 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact ABB PSIRT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of these vulnerabilities.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "Chemical, Critical Manufacturing, Energy, Food and Agriculture, Transportation Systems, Water and Wastewater",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ABB CYBERSECURITY ADVISORY - CSAF version. ",
+        "url": "https://psirt.abb.com/csaf/2025/4tz00000006008.json"
+      },
+      {
+        "category": "self",
+        "summary": "ABB CYBERSECURITY ADVISORY - PDF version. \n",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=4TZ00000006008&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-146-06 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-146-06.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-146-06 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-146-06"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "ABB LVS MConfig",
+    "tracking": {
+      "current_release_date": "2026-05-26T06:00:00.000000Z",
+      "generator": {
+        "date": "2026-05-26T13:10:32.389715Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-146-06",
+      "initial_release_date": "2025-10-08T00:30:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2025-10-08T00:30:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial version. "
+        },
+        {
+          "date": "2026-05-26T06:00:00.000000Z",
+          "legacy_version": "CISA Republication",
+          "number": "2",
+          "summary": "Initial CISA Republication of ABB PSIRT 4TZ00000006008 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "2"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "branches": [
+                  {
+                    "category": "product_version_range",
+                    "name": "<=1.4.9.21",
+                    "product": {
+                      "name": "MConfig Version <=1.4.9.21",
+                      "product_id": "CSAFPID-0001"
+                    }
+                  },
+                  {
+                    "category": "product_version",
+                    "name": "1.4.9.22",
+                    "product": {
+                      "name": "MConfig Version 1.4.9.22",
+                      "product_id": "CSAFPID-0002"
+                    }
+                  }
+                ],
+                "category": "product_name",
+                "name": "MConfig"
+              }
+            ],
+            "category": "product_family",
+            "name": "LVS"
+          }
+        ],
+        "category": "vendor",
+        "name": "ABB"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-9970",
+      "cwe": {
+        "id": "CWE-316",
+        "name": "Cleartext Storage of Sensitive Information in Memory"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "During the runtime of the MConfig Software application, an attacker can export the memory dump file into the operating system. If passwords are stored in plain text in memory, they will be included in these dump files. If such dump files are mishandled, attackers could obtain them and extract the passwords.\n",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002"
+        ],
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD -CVE-2025-9970",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-9970"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-9970"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/316.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:C/C:L/I:H/A:H/E:P/RL:O/RC:C/CR:L/IR:L/AR:L"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "The vulnerability is resolved in the following product versions:\n\nMConfig version 1.4.9.22\n\nABB advises users to update their devices to the latest software version.\n\nAdditionally, ABB recommends implementing defensive measures to reduce the risk of vulnerability exploitation, as outlined in the product instruction manual. Please refer to the section \u201cMitigation factors\u201d for more information",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "HIGH",
+            "attackVector": "LOCAL",
+            "availabilityImpact": "HIGH",
+            "availabilityRequirement": "LOW",
+            "baseScore": 7.4,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "LOW",
+            "confidentialityRequirement": "LOW",
+            "environmentalScore": 4.6,
+            "environmentalSeverity": "MEDIUM",
+            "exploitCodeMaturity": "PROOF_OF_CONCEPT",
+            "integrityImpact": "HIGH",
+            "integrityRequirement": "LOW",
+            "privilegesRequired": "LOW",
+            "remediationLevel": "OFFICIAL_FIX",
+            "reportConfidence": "CONFIRMED",
+            "scope": "CHANGED",
+            "temporalScore": 6.7,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "REQUIRED",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:C/C:L/I:H/A:H/E:P/RL:O/RC:C/CR:L/IR:L/AR:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2025-9970"
+    }
+  ]
+}
