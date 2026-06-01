@@ -1,0 +1,198 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "DeepAI.org CSRF",
+    "tracking": {
+      "current_release_date": "2026-06-01T19:57:37Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.14.0+build.80"
+        }
+      },
+      "id": "VA-26-152-01",
+      "initial_release_date": "2026-06-01T19:57:37Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2026-06-01T19:57:37Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "The DeepAI.org endpoint `https://api.deepai.org/change_user_email` accepts POST requests without any CSRF protection. If a logged-in user is tricked into visiting a malicious HTML page, an attacker can change the user's email address to their own and take over the account via password reset.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Fixed May 20, 2026.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-152-01.json",
+        "summary": "Vulnerability Advisory VA-26-152-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "DeepAI",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "api.deepai.org",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<2026-05-20",
+                "product": {
+                  "name": "DeepAI api.deepai.org <2026-05-20",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "2026-05-20",
+                "product": {
+                  "name": "DeepAI api.deepai.org 2026-05-20",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2026-49433",
+      "cwe": {
+        "id": "CWE-352",
+        "name": "Cross-Site Request Forgery (CSRF)"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The DeepAI endpoint 'https://api.deepai.org/change_user_email' accepts POST requests without any CSRF protection. If an attacker can trick a logged-in user into clicking a malicious link, the attacker can change the user's email address and take over their account. Fixed on 2026-05-20.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:P/2026-05-29T21:18:59Z/"
+        }
+      ],
+      "title": "DeepAI api.deepai.org/change_user_email CSRF",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "deepai.org",
+          "url": "https://deepai.org/"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-152-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-49433"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 5.0,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed 2026-05-20.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2026-05-20T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed 2026-05-20.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2026-05-20T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "CookieHanHoan",
+          "names": [
+            "Deflask13"
+          ]
+        }
+      ],
+      "release_date": "2026-06-01T00:00:00Z"
+    }
+  ]
+}
