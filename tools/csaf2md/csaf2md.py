@@ -1,7 +1,7 @@
 ####################################################################
 # Title: CSAF to Markdown - CISA Markdown Creator
 # Author: Matthew Stradling, Israel Bentley
-# Org: Idaho National Laboratory on behalf of 
+# Org: Idaho National Laboratory on behalf of
 #       Cybersecurity and Infrastructure Security Agency (CISA)
 ####################################################################
 ##########################
@@ -28,12 +28,15 @@ from lib.list_helper import flatten
 from lib.product_helper import *
 from lib.rem_helper import *
 from lib.score_helper import getScores
-from lib.requirements import meets_minimum_requirements
+from lib.requirements import __meets_minimum_requirements, meets_suggested_recommendations
+from lib.cwe_helper import checkBadCWEs
 
 # Styling for output
 CGREEN = '\033[92m'
 CRED = '\033[91m'
 CEND = '\033[0m'
+CWARN = '\033[96m'
+CERR = '\033[93m'
 
 # Read files in from directory
 workingdir = os.path.dirname(os.path.abspath(__file__))
@@ -45,48 +48,13 @@ statuspath = workingdir + os.sep + 'lib' + os.sep + 'cwe_status.json'
 with open(statuspath) as infile:
     cwe_status = json.load(infile)
 
-def checkBadCWEs(csaf):
-    '''Check for Bad CWEs in the CSAF
-    Process the contents of a CSAF to and check for bad CWEs.
-
-    Args:
-        csaf:dict 
-    Returns:
-        foundBadCWEs:bool
-    '''
-    foundBadCWEs = False
-    def checkCWEStatus(cwe_id:str, adv_id:str, identifier:str):
-        for cwe_item in cwe_status['status'].keys():
-            if cwe_id == cwe_item:
-                if cwe_status['status'][cwe_item].lower() == 'prohibited' or cwe_status['status'][cwe_item].lower() == 'discouraged':
-                    print(CRED+f"{adv_id}: {cwe_id} in vulnerability {identifier} is {cwe_status['status'][cwe_item].upper()}!!!!!"+CEND)
-                    return True
-        return False
-    adv_id = csaf['document']['tracking']['id']
-    for v_id, vuln in enumerate(csaf.get('vulnerabilities',[])):
-        identifier = vuln.get("cve","")
-        if not identifier:
-            identifier = vuln.get("title","")
-        if not identifier:
-            identifier = f"[{v_id}]"
-        # Check CWEs
-        if csaf['document']['csaf_version'] == "2.0":
-            cwe_id = vuln.get('cwe',{}).get('id',"")
-            if checkCWEStatus(cwe_id,adv_id,identifier):
-                foundBadCWEs = True
-        else:
-            for cwe in vuln.get("cwes",[]):
-                cwe_id = cwe.get('id',"")
-                if checkCWEStatus(cwe_id,adv_id,identifier):
-                    foundBadCWEs = True
-    return foundBadCWEs
-def processJson(in_csaf, out_md): 
+def processJson(in_csaf, out_md)->None:
     '''Process JSON
     Process the contents of a CSAF to generate a Markdown representation
     of the information.
 
     Args:
-        in_csaf:str, out_md:str 
+        in_csaf:str, out_md:str
     Returns:
         None
     '''
@@ -98,10 +66,17 @@ def processJson(in_csaf, out_md):
         with open(in_csaf, 'r', encoding="utf-8") as json_file:
             data = json.loads(json_file.read())
             data = ast.literal_eval(str(data).replace('\\n',' ').replace('\\r',''))
-            can_process, temp_errs = meets_minimum_requirements(data)
-            has_bad_cwes = checkBadCWEs(data)
+            can_process, temp_errs = __meets_minimum_requirements(data)
+            if SHOW_CISA_RECOMMENDATIONS:
+                as_recommended, recommendations = meets_suggested_recommendations(data)
+            has_bad_cwes = checkBadCWEs(data,cwe_status)
             stop_conversion = has_bad_cwes and BLOCK_BAD_CWES
             if can_process and not stop_conversion:
+                # If valid, show any recommendations
+                if SHOW_CISA_RECOMMENDATIONS and not as_recommended:
+                    print(CERR+"Optional recommendations for this CSAF include:"+CEND)
+                    for recommendation in recommendations:
+                        print(CWARN+recommendation+CEND)
                 # Affected Pids will grab relationships, branches, and fpns that are marked as first/last/known affected.
                 affected_pid_list, gap_err = getAffectedPIDs(data["vulnerabilities"])
                 affected_pid_list = sorted(affected_pid_list)
@@ -122,7 +97,7 @@ def processJson(in_csaf, out_md):
                 if self_refs:
                     mdFile.new_line(f"**[View Source]({self_refs[0]['url']})**")
                 mdFile.new_line()
-                
+
                 # 1. Executive Summary
                 mdFile.new_header(level=2, title='1. EXECUTIVE SUMMARY', add_table_of_contents="n")
                 score, score_vers = getHighestCVSS(data)
@@ -158,7 +133,7 @@ def processJson(in_csaf, out_md):
                         "* **Equipment**: " + equip,
                         "* **" + es_v_head + "**: " + es_vulns]
                 mdFile.new_list(es_list)
-                
+
                 # 2. Risk Evaluation
                 mdFile.new_header(level=2, title='2. RISK EVALUATION', add_table_of_contents="n")
 
@@ -166,11 +141,11 @@ def processJson(in_csaf, out_md):
                 mdFile.new_line(riskEval+"\n")
                 if risk_errs:
                     errors.append(risk_errs)
-                
+
                 # 3. Technical Details
                 mdFile.new_header(level=2, title='3. TECHNICAL DETAILS', add_table_of_contents="n")
                 mdFile.new_header(level=3, title='3.1 AFFECTED PRODUCTS', add_table_of_contents="n")
-                
+
                 # 3.1 Products
                 prods, prod_mapper, p_errors = getProducts(data, affected_pid_list)
                 if p_errors:
@@ -178,7 +153,7 @@ def processJson(in_csaf, out_md):
                 mdFile.new_line(vendors + " reports that the following products are affected:")
                 mdFile.new_line()
                 mdFile.new_list(prods)
-                
+
                 # 3.2 Vulnerabilities
                 mdFile.new_header(level=3, title='3.2 VULNERABILITY OVERVIEW', add_table_of_contents="n")
 
@@ -237,8 +212,8 @@ def processJson(in_csaf, out_md):
                         "4":[]
                     }
 
-                    # Generic Scores affect the highest number of the vuln's affected products
-                    def organizeGenScores(gs:dict,cvss_index:str,cvss_key:str,high:dict,gens:dict):
+                    def organizeGenScores(gs:dict,cvss_index:str,cvss_key:str,high:dict,gens:dict)->tuple[dict,dict]:
+                        '''Generic Scores affect the highest number of the vuln's affected products'''
                         gens[cvss_index].append(gs)
                         if not high[cvss_index]:
                             high[cvss_index] = gs.copy()
@@ -256,7 +231,8 @@ def processJson(in_csaf, out_md):
                     # Write Score Paragraphs for the Vuln Section for the highest, generic score
                     gen_index = 0
                     printed_score = 0
-                    def writeScoreParagraph(gen_index,version,high,cve):
+                    def writeScoreParagraph(gen_index,version,high,cve)->str:
+                        '''Generate the paragraph describing CVSS scores for a vulnerability.'''
                         if version == "2" or version == "3":
                             re_pattern = "(^.*?(A:.|$))"
                         else: # CVSS v4
@@ -294,7 +270,7 @@ def processJson(in_csaf, out_md):
                         if gens["4"]:
                             scoring = writeScoreParagraph(gen_index,"4",high,vuln["cve"])
                             gen_index += 1
-                            printed_score += 1                   
+                            printed_score += 1
                             if printed_score <= 3:
                                 mdFile.new_paragraph(scoring)
                         else:
@@ -303,18 +279,18 @@ def processJson(in_csaf, out_md):
                     except:
                         errors.append(f"\"vulnerabilities\"[{vuln_index}] \"scores\" are not properly formatted.")
                     mdFile.new_line()
-                    
+
                     gen_prod_specific = False
                     # Put the remaining scores in Product Specific Section
-                    if (len(gens["2"]) > 1 or 
+                    if (len(gens["2"]) > 1 or
                         len(gens["3"]) > 1 or
                         len(gens["4"]) > 1):
                         gen_prod_specific = True
-                    
+
                     # Setting up for Optional Section to include additional CVSS scores.
                     if has_prod_impact or gen_prod_specific:
                         impacts[vuln["cve"]] = {}
-                        
+
                         # Collect scores that specify fewer products than the general scores.
                         for s in cvss_scores:
                             key = " ".join(s["products"])
@@ -354,14 +330,15 @@ def processJson(in_csaf, out_md):
                             next_str = "\t* ("
                             for imp in imp_prods:
                                 try:
-                                    next_str = (next_str + 
+                                    next_str = (next_str +
                                                 prod_mapper[imp]["impact_id"])
                                 except:
                                     errors.append(f"Product PID {imp} has a CVSS score but is NOT among {imp_cve}'s affected products (\"known_affected\", \"first_affected\", or \"last_affected\").")
                             next_str = next_str[:-2] + "): "
 
                             # Write Product Impact Paragraphs
-                            def writeImpactParagraph(impacts:dict,cve:str,score_key:str,prefix:str):
+                            def writeImpactParagraph(impacts:dict,cve:str,score_key:str,prefix:str)->dict:
+                                '''Generate an object to describe CVSS scores affecting a subset of products'''
                                 paragraph = {}
                                 for key in impacts[cve][score_key].keys():
                                     substr = ""
@@ -396,7 +373,7 @@ def processJson(in_csaf, out_md):
 
                     mdFile.new_line()
                     mdFile.new_header(level=3, title="3.4 BACKGROUND", add_table_of_contents="n")
-                
+
                 sectors = ""
                 deployed = ""
                 headquarters = ""
@@ -424,7 +401,7 @@ def processJson(in_csaf, out_md):
                     mdFile.new_header(level=3, title="3.4 RESEARCHER", add_table_of_contents="n")
                 else:
                     mdFile.new_header(level=3, title="3.5 RESEARCHER", add_table_of_contents="n")
-                
+
                 if len(data["vulnerabilities"]) > 1:
                     v_fill = "these vulnerabilities"
                 else:
@@ -438,7 +415,8 @@ def processJson(in_csaf, out_md):
                 if not acks_found:
                     mdFile.new_line("(INSERT_ACKNOWLEDGMENT) "+data["document"]["publisher"]["name"]+" reported "+v_fill+".")
                 else:
-                    def writeAcknowledgment(ack:dict):
+                    def writeAcknowledgment(ack:dict)->str:
+                        '''Write out the acknowledgment sentence'''
                         summary = False
                         single_ack = ""
                         if "names" in ack.keys():
@@ -504,7 +482,8 @@ def processJson(in_csaf, out_md):
                     mdFile.new_line(miti_head)
                     mdFile.new_line()
                     # Vendor Mitigations affecting all affected products
-                    def writeMitigationWithURL(ven:dict,product_key = ""):
+                    def writeMitigationWithURL(ven:dict,product_key = "")->str:
+                        '''Write out the mitigation (with URL) as a sentence.'''
                         last = ven["text"].split()[-2:]
                         max = ven["text"].rsplit(' ', 2)[0:1]
 
@@ -563,7 +542,7 @@ def processJson(in_csaf, out_md):
                         ref_string += '['+ref['summary']+']('+ref['url']+')'
                     ref_string = ref_string.strip()
                     mdFile.new_line("For more information see the associated "+pub_name.strip()+" security advisory "+ssa+" "+ref_string+".")
-                    
+
                 ben2 = ""
                 ben3 = ""
 
@@ -594,7 +573,8 @@ def processJson(in_csaf, out_md):
                 # 5. Update History
                 mdFile.new_header(level=2, title="5. UPDATE HISTORY", add_table_of_contents="n")
 
-                def generateUpdateIndex(rev_number:int,index:str):
+                def generateUpdateIndex(rev_number:int,index:str)->str:
+                    '''Generate Update Index A-Z and so on.'''
                     rev_number, mod = divmod(rev_number, 26)
                     index = chr(65 + mod) + index
                     if rev_number == 0:
@@ -646,15 +626,11 @@ def processJson(in_csaf, out_md):
                     for err in errors:
                         print(CRED+"* "+CEND+err)
                     print(CRED+("#"*(len(csaf_name)+len(error_header)+len(error_tail*2)))+CEND)
-                    with open(workingdir+os.sep+'csaf_fail_list.txt', 'a+') as failed:
-                        failed.write(f"######## {csaf_name} ########\n")
-                        for err in errors:
-                            failed.write(err+"\n")
                 else:
                     # Save
                     mdFile.create_md_file()
                     # Cleanup
-                    with open(out_md, 'r') as mdres:
+                    with open(out_md, 'r', encoding="utf-8") as mdres:
                         mdstr = mdres.read()
                         mdstr = mdstr[mdstr.find(f"## {data['document']['tracking']['id'].upper()}"):]
                         mdstr = mdstr.replace('## 3. TECHNICAL DETAILS\n\n### 3.1 AFFECTED PRODUCTS','## 3. TECHNICAL DETAILS\n### 3.1 AFFECTED PRODUCTS')
@@ -681,14 +657,12 @@ def processJson(in_csaf, out_md):
                         errors.append(data["document"]["tracking"]["id"]+": "+err)
                     for err in errors:
                         print(CRED+"* "+CEND+err)
-                        failed.write(f"######## {csaf_name} ########\n")
-                        failed.write(err+"\n")
                     print(CRED+("#"*(len(csaf_name)+len(error_header)+len(error_tail*2)))+CEND)
 
     except Exception as e:
         print(CRED+"ERROR: " + str(e)+CEND)
         traceback.print_exc()
-def main():
+def main()->None:
     '''Main
     Entry function of the program. Reads in CSAF files from input folder.
 

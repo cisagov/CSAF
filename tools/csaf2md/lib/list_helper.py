@@ -1,16 +1,16 @@
-def flatten(list_of_lists:list):
+def flatten(list_of_lists:list)->list:
     '''Flatten
     Condenses a list of lists into a single dimensional list.
 
     Args:
-        list_of_lists:list 
+        list_of_lists:list
     Returns:
         condense:list
     '''
     condense = []
     for i in list_of_lists:
-        if isinstance(i,list): 
+        if isinstance(i,list):
             condense.extend(flatten(i))
-        else: 
+        else:
             condense.append(i)
     return condense
