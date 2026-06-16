@@ -1,5 +1,5 @@
 from lib.product_helper import getAffectedPIDs, findNameOfPID
-def getHighestCVSS(csaf:dict):
+def getHighestCVSS(csaf:dict)->tuple[float,int]:
     '''Get Highest CVSS Score
     Grab all the scores from the CSAF and keep the highest severity.
 
@@ -11,7 +11,7 @@ def getHighestCVSS(csaf:dict):
     known_versions = ["2", "3", "4"]
     known_versions.sort(reverse=True)
     scores = {}
-    
+
     # Prepare score object and csaf score property name.
     for ver in known_versions:
         scores[ver] = []
@@ -19,7 +19,7 @@ def getHighestCVSS(csaf:dict):
         prop_name = "scores"
     else:
         prop_name = "metrics"
-    
+
     # Loop through the vulnerabilities to grab the scores.
     for vuln in csaf["vulnerabilities"]:
         for metric in vuln.get(prop_name, []):
@@ -53,7 +53,7 @@ def getHighestCVSS(csaf:dict):
             return highest["3"], 3 # CVSS 3 is highest version of scoring available
     else:
         return highest["4"], 4 # Highest score of CVSS 4 within the CSAF
-def getAttention(csaf):
+def getAttention(csaf:dict)->tuple[str,list[str]]:
     '''Get Attention
     Generates correct string for Attention section of Executive Summary
 
@@ -61,6 +61,7 @@ def getAttention(csaf):
         csaf:dict
     Returns:
         att:str
+        errors:list[str]
     '''
     attention_string = ""
     atten_flags = {
@@ -79,7 +80,8 @@ def getAttention(csaf):
 
     errors = []
 
-    def checkFlags(index:int,score:dict):
+    def checkFlags(index:int,score:dict)->tuple[str,dict]:
+        '''Check the highest vector metrics for CVSS strings.'''
         error = ""
         flags = {
             "remote":False,
@@ -123,7 +125,7 @@ def getAttention(csaf):
                     t_err,t_flags = checkFlags(vuln_index,score)
                 else:
                     t_err,t_flags = checkFlags(vuln_index,score['content'])
-                
+
                 if t_err:
                     errors.append(t_err)
 
@@ -158,7 +160,7 @@ def getAttention(csaf):
         else:
             errors.append("Some CVSS \"metrics\" are missing Attack Vectors in the \"vectorString\".")
     return attention_string, errors
-def getVendor(csaf):
+def getVendor(csaf:dict)->str:
     '''Get Vendor List
     Get list of all vendors in the CSAF product tree branches
 
@@ -172,7 +174,8 @@ def getVendor(csaf):
     vendor_list_dedup = []
 
     # Recursive Vendor Branch Lookup
-    def collectVendors(branch_head,ven_list):
+    def collectVendors(branch_head,ven_list)->None:
+        '''Collect a list of all vendors within the CSAF's Product Tree'''
         if branch_head["category"] == "vendor":
             ven_list.append(branch_head["name"].strip())
         if "branches" in branch_head.keys():
@@ -181,7 +184,7 @@ def getVendor(csaf):
 
     for vendor_branch in csaf.get("product_tree",{}).get("branches",[]):
         collectVendors(vendor_branch,vendor_list)
-    
+
     # Dedup the vendor list
     vendor_list_dedup = list(set(vendor_list))
 
@@ -189,7 +192,16 @@ def getVendor(csaf):
     vendors = ', '.join(vendor_list_dedup) if vendor_list_dedup else "INSERT_VENDOR"
 
     return vendors.strip()
-def getEquipment(csaf:dict):
+def getEquipment(csaf:dict)->tuple[list[str],list[str]]:
+    '''Get Equipment
+    Grab affected product names from the advisory to list in the Equipment section.
+
+    Args:
+        csaf:dict
+    Returns:
+        names:list[str]
+        errors:list[str]
+    '''
     pid_list, aff_errs = getAffectedPIDs(csaf.get("vulnerabilities",[]))
     names = []
     errors = []
@@ -199,7 +211,7 @@ def getEquipment(csaf:dict):
         names.append(findNameOfPID(pid, csaf.get("product_tree",{}),errors,False,False))
     names = list(set(names))
     return names, errors
-def getVulnNames(csaf):
+def getVulnNames(csaf:dict)->tuple[str,list[str]]:
     '''Get Vulnerability Names
     Grab all names of the vulnerability CWEs.
 
@@ -233,12 +245,12 @@ def getVulnNames(csaf):
             except:
                 errors.append(f"\"vulnerabilities\"[{vuln_index}]: is missing a CWE \"name\".")
     return vuln_list, errors
-def getRiskEvaluation(csaf):
+def getRiskEvaluation(csaf:dict)->tuple[str,list[str]]:
     '''Get Risk Evaluation
     Generate a Risk Evaluation statement based on CSAF notes.
     This function looks for specific language. If the specific
     language is not found, then Vulnerability Notes are concatenated
-    together for the end user to see all together to easily 
+    together for the end user to see all together to easily
     summarize into a single statement.
 
     Args:
@@ -253,7 +265,12 @@ def getRiskEvaluation(csaf):
     specific_note_found = False
 
     for note in csaf['document'].get('notes',[]):
-        if note.get("title","").lower() == "risk evaluation":
+        if (note.get("title","").lower().strip() == "advisory summary" and
+            note.get("category","") == "summary"):
+            re_text = note.get("text","")
+            if re_text:
+                return re_text,[]
+        if note.get("title","").lower() == "risk evaluation" or note.get("title","").lower() == "advisory summary":
             specific_note_found = True
             risk_evaluation += note["text"] + "\n"
         elif note.get('title',"") == "Summary":

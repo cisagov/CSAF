@@ -1,5 +1,5 @@
-from lib.product_helper import findNameOfPID
-def getVendorMitigations(csaf, pid_list):
+from lib.product_helper import findNameOfPID, collectFullnameForPID, fpdBuilderForPID
+def getVendorMitigations(csaf:dict, pid_list:list)->tuple[dict,list[str]]:
     '''Get Vendor Mitigations
     Build an object of vendor mitigations.
 
@@ -7,6 +7,7 @@ def getVendorMitigations(csaf, pid_list):
         csaf:dict, pid_list:list
     Returns:
         remediations:dict
+        errors:list
     '''
     errors = []
     mitigations = [] #all
@@ -18,30 +19,14 @@ def getVendorMitigations(csaf, pid_list):
     for vuln in vulns:
         cves.append(vuln["cve"])
 
-    ### Recursion ###
-    def getFullnameForPID(branch_head, pid, ret_details={}): # Saves the FPN name of the desired leaf node in tree branches
-        found = False
-        if "product" in branch_head.keys():
-            if pid == branch_head["product"]["product_id"]:
-                found = True
-            else:
-                found = False
-        if not found:
-            if "branches" in branch_head.keys():
-                for branch in branch_head["branches"]:
-                    found = getFullnameForPID(branch, pid, ret_details)
-
-                    if found:
-                        return found
-        else:
-            ret_details[pid]=branch_head["product"]["name"]
-        return found
-    def buildMiti(rem, pid_list, csaf): # Build mitigation string
+    def buildMiti(rem:dict, pid_list:list, csaf:dict)->tuple[dict,list[str]]:
+        '''Build Mitigation Object'''
         errors = []
         # Grab the sections of the product tree
         branches = csaf["product_tree"].get("branches", [])
         fpns = csaf["product_tree"].get("full_product_names", [])
         rels = csaf['product_tree'].get('relationships', [])
+        ppaths = csaf['product_tree'].get('product_paths', [])
         groups = csaf['product_tree'].get('product_groups',[])
 
         # Setup mitigation object
@@ -51,7 +36,7 @@ def getVendorMitigations(csaf, pid_list):
         # Grab remediations's pids and gids
         prods = rem.get("product_ids",[])
         gids = rem.get('group_ids', [])
-        
+
         # Build Product Group Names to include product names under group
         group_name_string = ""
         if gids:
@@ -72,12 +57,13 @@ def getVendorMitigations(csaf, pid_list):
                                 break
             except:
                 errors.append("\"product_tree\"->\"product_groups\" are not formatted correctly.")
-        def buildRemDetails(pid:str,tree_branches:list,full_product_names:list,relationships:list,tree:dict,details:dict):
+        def buildRemDetails(pid:str,tree_branches:list,full_product_names:list,relationships:list,product_paths:list,tree:dict,details:dict)->list[str]:
+            '''Builds the details of the Mitigation Object'''
             brd_errors = []
             if tree_branches: # FIRST CHECK Branches
                 for branch_index, branch in enumerate(tree_branches):
                     try:
-                        getFullnameForPID(branch,pid,details)
+                        collectFullnameForPID(branch,pid,details)
                     except:
                         brd_errors.append(f"\"product_tree\"->\"branches\"[{branch_index}] is not formatted correctly.")
             if full_product_names: # SECOND CHECK FPNs
@@ -88,7 +74,7 @@ def getVendorMitigations(csaf, pid_list):
                             break
                     except:
                         brd_errors.append(f"\"product_tree\"->\"full_product_names\"[{fpn_index}] is not formatted correctly.")
-            if relationships: # THIRD CHECK Relationships
+            if relationships: # THIRD CHECK (v2.0 only) Relationships
                 for rel_index, rel in enumerate(relationships):
                     try:
                         if rel['full_product_name']['product_id'] == pid:
@@ -96,12 +82,20 @@ def getVendorMitigations(csaf, pid_list):
                             break
                     except:
                         brd_errors.append(f"\"product_tree\"->\"relationships\"[{rel_index}]->\"full_product_name\" is not formatted correctly.")
+            if product_paths: # FOURTH CHECK (v2.1 only) Product Paths
+                for pp_index, ppath in enumerate(product_paths):
+                    try:
+                        if ppath['full_product_name']['product_id'] == pid:
+                            details[pid]=findNameOfPID(pid,tree,brd_errors,include_versions=True,include_prefix=False)
+                            break
+                    except:
+                        brd_errors.append(f"\"product_tree\"->\"product_paths\"[{pp_index}]->\"full_product_name\" is not formatted correctly.")
             return brd_errors
 
         if len(prods) == len(pid_list): # Remediation affects all affected products to the vulnerability
             if len(prods) == 1:
                 prod_1_details = {}
-                errors.extend(buildRemDetails(prods[0],branches,fpns,rels,csaf['product_tree'],prod_1_details))
+                errors.extend(buildRemDetails(prods[0],branches,fpns,rels,ppaths,csaf['product_tree'],prod_1_details))
 
                 if prods[0] in prod_1_details.keys():
                     miti["text"] = prod_1_details[prods[0]]+": "+rem["details"]
@@ -112,7 +106,7 @@ def getVendorMitigations(csaf, pid_list):
         else: # Remediation affects a subset of the vulnerability's affected products
             for pid in prods:
                 prod_dets = {}
-                errors.extend(buildRemDetails(pid,branches,fpns,rels,csaf['product_tree'],prod_dets))
+                errors.extend(buildRemDetails(pid,branches,fpns,rels,ppaths,csaf['product_tree'],prod_dets))
 
                 if pid in prod_dets.keys():
                     if not prod_dets[pid] in group_name_string: # Don't add in a duplicate name
@@ -126,7 +120,7 @@ def getVendorMitigations(csaf, pid_list):
                 miti["text"] = miti["text"] + ": " + rem["details"]
             else:
                 miti["text"] = rem["details"]
-        
+
         if group_name_string:
             if miti['text'].strip() == rem['details']:
                 miti['text'] = group_name_string+': '+miti['text']
@@ -137,7 +131,8 @@ def getVendorMitigations(csaf, pid_list):
             miti["url"] = rem["url"]
         return miti,errors
     #################
-    def isDuplicateMiti(miti:dict, mitigations:list): # Checks if mitigation is a duplicate
+    def isDuplicateMiti(miti:dict, mitigations:list)->bool:
+        '''Checks if mitigation is a duplicate'''
         seen = set()
         duplicate = False
 
@@ -184,7 +179,7 @@ def getVendorMitigations(csaf, pid_list):
             remediations[key].append(miti)
 
     return remediations, errors
-def getFullProductDictionary(pid, tree, fpd={}):
+def getFullProductDictionary(pid:str, tree:dict, fpd:dict={})->tuple[dict,list[str]]:
     '''Get Full Product Dictionary
     Builds a dictionary of just the Full Product Name Details of a pid.
 
@@ -192,35 +187,12 @@ def getFullProductDictionary(pid, tree, fpd={}):
         pid:str, tree:dict, fpd:dict
     Returns:
         fpd:dict
+        errors:list
     '''
     found_pid_in_branches = False
     errors = []
     # Search Branches in Product_Tree
-    def searchBranchesForPID(pid, tree,fpd={}):
-        pid_found = False
-        def searchBranch(branch_head, pid, fpd):
-            found = False
-            if branch_head.get("product",{}).get("product_id","") == pid:
-                fpd[branch_head['category']] = branch_head['name']
-                fpd['full_product_name'] = branch_head['product']['name']
-                return True, fpd
-            else:
-                fpd[branch_head['category']] = branch_head['name']
-                for branch in branch_head.get('branches',[]):
-                    found, fpd = searchBranch(branch, pid, fpd)
-                    if found:
-                        return found, fpd
-            return found, fpd
-        error = ""
-        try:
-            for branch in tree.get("branches",[]):
-                pid_found, fpd = searchBranch(branch, pid, fpd)
-                if pid_found:
-                    break
-        except:
-            error = "\"product_tree\"->\"branches\" are not formatted correctly."
-        return fpd, pid_found, error
-    fpd, found_pid_in_branches, fpd_err = searchBranchesForPID(pid, tree, fpd)
+    fpd, found_pid_in_branches, fpd_err = fpdBuilderForPID(pid, tree, fpd)
     if fpd_err:
         errors.append(fpd_err)
     if fpd == {} or not found_pid_in_branches:
@@ -232,15 +204,21 @@ def getFullProductDictionary(pid, tree, fpd={}):
                     fpd["full_product_name"]=fpn['name']
             except:
                 errors.append(f"\"product_tree\"->\"full_product_names\"[{fpn_index}] is not formatted correctly.")
-        # Search Relationships in Product_Tree
+        # Search Relationships/Product_Paths in Product_Tree
         for rel_index, rel in enumerate(tree.get('relationships',[])):
             try:
                 if pid == rel['full_product_name']['product_id']:
                     fpd['full_product_name']=rel['full_product_name']['name']
             except:
                 errors.append(f"\"product_tree\"->\"relationships\"[{rel_index}]->\"full_product_name\" is not formatted correctly.")
+        for pp_index, ppath in enumerate(tree.get('product_paths',[])):
+            try:
+                if pid == ppath['full_product_name']['product_id']:
+                    fpd['full_product_name']=ppath['full_product_name']['name']
+            except:
+                errors.append(f"\"product_tree\"->\"product_paths\"[{pp_index}]->\"full_product_name\" is not formatted correctly.")
     return fpd, errors
-def getFixedMitigations(csaf):
+def getFixedMitigations(csaf:dict)->tuple[list[str],list[str]]:
     '''Get Fixed Mitigations
     Grabs product names of those marked as "fixed" for each CVE.
 
@@ -248,6 +226,7 @@ def getFixedMitigations(csaf):
         csaf:dict
     Returns:
         fixed:list
+        errors:list
     '''
     fixed = []
     errors = []

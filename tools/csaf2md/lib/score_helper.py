@@ -1,12 +1,12 @@
 from lib.list_helper import flatten
-def getScores(vuln, csaf_version):
+def getScores(vuln:dict, csaf_version:str)->tuple[dict,list[dict],list[dict],list[str]]:
     '''Get Scores
     Grabs the CVSS scores for the given vulnerability.
 
     Args:
         vuln:dict, csaf_version:str
     Returns:
-        highest_score_obj:dict, generic_scores:list, scores_objs:list
+        highest_score_obj:dict, generic_scores:list, scores_objs:list, errors:list
     '''
     errors = []
     # Grab Affected Products
@@ -27,12 +27,12 @@ def getScores(vuln, csaf_version):
     total_prods = len(all_prods)
     largest_size = 0
     high_score = 0.0
-    
+
     # Prep Returns
     highest_score_obj = {}
     generic_scores = []
     scores_objs = []
-    
+
     if csaf_version == "2.0": # CSAF 2.0
         scores = vuln["scores"]
         is_old_version = True
