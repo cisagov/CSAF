@@ -1,0 +1,773 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "ABB PSIRT",
+        "summary": "reported these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "B&R is aware of publicly reported vulnerabilities affecting the Linux kernel versions shipped with the products listed as affected in the advisory.\n\nSuccessful local exploitation of these vulnerabilities could allow an attacker to escalate privileges on the affected system. Public proof-of-concept exploits are available for the vulnerabilities described herein. At the time of publication of this advisory, B&R had no evidence of active exploitation targeting B&R products.",
+        "title": "Summary"
+      },
+      {
+        "category": "other",
+        "text": "For additional instructions and support please contact your local B&R service organization. For contact information, see https://www.br-automation.com/en/about-us/locations/.\n\nInformation about ABB\u2019s cyber security program and capabilities can be found at www.abb.com/cybersecurity.\n\n\n",
+        "title": "Support"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The information in this document is subject to change without notice, and should not be construed as a commitment by B&R.\n\nB&R provides no warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, for the information contained in this document, and assumes no responsibility for any errors that may appear in this document. In no event shall B&R or any of its suppliers be liable for direct, indirect, special, incidental or consequential damages of any nature or kind arising from the use of this document, or from the use of any hardware or software described in this document, even if B&R or its suppliers have been advised of the possibility of such damages.\n\nThis document and parts hereof must not be reproduced or copied without written permission from B&R, and the contents hereof must not be imparted to a third party nor used for any unauthorized purpose.\n\nAll rights to registrations and trademarks reside with their respective owners.",
+        "title": "Notice"
+      },
+      {
+        "category": "other",
+        "text": "For any installation of software related ABB products we strongly recommend the following (non-exhaustive) list of cyber security practices:\n\n- Isolate special purpose networks (e.g. for automation systems) and remote devices behind firewalls and separate them from any general purpose network (e.g. office or home networks).\n\n- Install physical controls so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n\n- Never connect programming software or computers containing programing software to any network other than the network for the devices that it is intended for.\n\n- Scan all data imported into your environment before use to detect potential malware infections.\n\n- Minimize network exposure for all applications and endpoints to ensure that they are not accessible from the Internet unless they are designed for such exposure and the intended use requires such.\n\n- Ensure all nodes are always up to date in terms of installed software, operating system, and firmware patches as well as anti-virus and firewall.\n\n- When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.\n\nFor more information on recommended practices, please refer to the following documents listed in the reference section:\n\n- Defense in Depth for B&R products\n",
+        "title": "General security recommendations"
+      },
+      {
+        "category": "other",
+        "text": "B&R has a rigorous internal cyber security continuous improvement process which involves regular testing with industry leading tools and periodic assessments to identify potential product issues. Occasionally an issue is determined to be a design or coding flaw with implications that may impact product cyber security.\n\nWhen a potential product vulnerability is identified or reported, B&R immediately initiates our vulnerability handling process. This entails validating if the issue is in fact a product issue, identifying root causes, determining what related products may be impacted, developing a remediation, and notifying end users and governmental organizations.\n\nThe resulting Cyber Security Advisory intends to notify customers of the vulnerability and provide details on which products are impacted, how to mitigate the vulnerability or explain workarounds that minimize the potential risk as much as possible. The release of a Cyber Security Advisory should not be misconstrued as an affirmation or indication of an active threat or ongoing campaign targeting the products mentioned here. If B&R is aware of any specific threats, it will be clearly mentioned in the communication.\n\nThe publication of this Cyber Security Advisory is an example of B&R\u2019s commitment to the user community in support of this critical topic. Responsible disclosure is an important element in the chain of trust we work to maintain with our many customers. The release of an Advisory provides timely information which is essential to help ensure our customers are fully informed.",
+        "title": "Purpose"
+      },
+      {
+        "category": "faq",
+        "text": "What causes the vulnerabilities?\n- The vulnerabilities are caused by a vulnerable Linux Kernel component.\n\nWhat might an attacker use the vulnerability to do?\n- An authenticated attacker with low privileges may elevate privileges to root.\n\nCould the vulnerabilities be exploited remotely? \n- Yes, an attacker with privileges to login in a vulnerable system node could exploit these vulnerabilities. Recommended practices include that process control systems are physically protected, have no direct connections to the Internet, and are separated from other networks by means of a firewall system that has a minimal number of ports exposed. \n\nWhen this security advisory was issued, had B&R received any reports that these vulnerabilities were being exploited?\n- B&R is aware of reports indicating that these vulnerabilities had been exploited at the time this security advisory was originally issued; however, no exploitation has been observed in B&R products.",
+        "title": "Frequently asked questions"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of ABB PSIRT SA26P010 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact ABB PSIRT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "B&R CYBERSECURITY ADVISORY - CSAF Version ",
+        "url": "https://psirt.abb.com/csaf/2026/sa26p010.json"
+      },
+      {
+        "category": "self",
+        "summary": "B&R CYBERSECURITY ADVISORY - PDF Version ",
+        "url": "https://br-cws-assets.de-fra-1.linodeobjects.com/SA26P010-0ea64434.pdf"
+      },
+      {
+        "summary": "Defense in Depth for B&R products",
+        "url": "https://www.br-automation.com/fileadmin/Cyber_Security_-_Defense_in_Depth_for_BR_Products-bdd37e82.pdf"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-174-06 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-174-06.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-174-06 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-174-06"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "Impact of Linux Kernel vulnerabilities on B&R products",
+    "tracking": {
+      "current_release_date": "2026-06-23T06:00:00.000000Z",
+      "generator": {
+        "date": "2026-06-18T13:26:13.151541Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-174-06",
+      "initial_release_date": "2026-06-11T00:30:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2026-06-11T00:30:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial version."
+        },
+        {
+          "date": "2026-06-18T00:30:00.000000Z",
+          "legacy_version": "Additional Release 1",
+          "number": "2",
+          "summary": "Updating the CWE classification for CVE-2026-43494."
+        },
+        {
+          "date": "2026-06-23T06:00:00.000000Z",
+          "legacy_version": "CISA Republication",
+          "number": "3",
+          "summary": "Initial CISA Republication of ABB PSIRT SA26P010 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "3"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=12",
+                "product": {
+                  "name": "B&R Industrial Automation GmbH Linux for B&R <=12",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Linux for B&R"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<APROL-AutoYaST-DVD-_V4.4-010.10.260602",
+                "product": {
+                  "name": "B&R Industrial Automation GmbH APROL <APROL-AutoYaST-DVD- V4.4-010.10.260602",
+                  "product_id": "CSAFPID-0002"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "APROL-AutoYaST-DVD-_V4.4-010.10.260602",
+                "product": {
+                  "name": "B&R Industrial Automation GmbH APROL APROL-AutoYaST-DVD- V4.4-010.10.260602",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "APROL"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "/all",
+                "product": {
+                  "name": "B&R Industrial Automation GmbH X20EDS410 /all",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "X20EDS410"
+          }
+        ],
+        "category": "vendor",
+        "name": "B&R Industrial Automation GmbH"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2026-31431",
+      "cwe": {
+        "id": "CWE-669",
+        "name": "Incorrect Resource Transfer Between Spheres"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: crypto: algif_aead - Revert to operating out-of-place This mostly reverts commit 72548b093ee3 except for the copying of the associated data. There is no benefit in operating in-place in algif_aead since the source and destination come from different mappings. Get rid of all the complexity added for in-place operation and just copy the AD directly.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0004"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2026-31431",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31431"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-31431"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/669.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H/E:H/RC:C"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "For affected products, software updates should be installed upon availability.\n\n     Product\t         Patch version\n- APROL\t          :   APROL-AutoYaST-DVD- V4.4-010.10.260602\n\nUntil remediated software versions are available, customers are required to conduct a risk assessment of their affected systems and to implement the mitigation measures and workarounds specified in this advisory.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Successful exploitation of the vulnerabilities described in this advisory requires local access to the affected system with low-privileged user credentials. Customers are strongly advised to enforce strict access control policies on all Linux-based systems, ensuring that interactive access is exclusively granted to authorized and trusted personnel. This includes reviewing and hardening user account permissions and disabling unused accounts.\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure.\n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0004"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "Security researchers have identified and validated the following workarounds to reduce exposure to the vulnerabilities described in this advisory. These measures do not remediate the underlying vulnerabilities but effectively block known attack vectors until patched software versions are deployed.\n\nImportant: Customers are advised to thoroughly test their systems after applying any of the listed workarounds. B&R has no visibility into customer-specific applications running on the underlying Linux system. It is the customer's responsibility to assess whether the applied workarounds interfere with existing application workloads prior to deployment in production environments.\n\nFor Debian-based systems within an active support lifecycle, kernel patches addressing CVE-2026-31431 are already available via the official package repositories. Customers are strongly encouraged to apply these updates immediately by executing the following command:\nsudo apt update && sudo apt upgrade\nA system reboot is required after the upgrade for the updated kernel to take effect.\n\nTemporary Mitigation: If an immediate system update is not feasible, the affected kernel module (algif_aead) can be disabled persistently. Security researchers have confirmed this measure effectively prevents exploitation of CVE-2026-31431.\nExecute the following commands as root:\n\necho \"install algif_aead /bin/false\" > /etc/modprobe.d/disable-algif.conf\nrmmod algif_aead 2>/dev/null || true\n\nImpact assessment: Disabling the algif_aead module removes the AEAD socket interface from the kernel cryp-to API. This does not affect dm-crypt/LUKS, kTLS, IPsec/XFRM, OpenSSL, GnuTLS, NSS, or SSH. Applications explicitly configured to use the afalg engine or that directly bind aead, skcipher, or hash sockets via AF_ALG may be affected. To assess exposure prior to applying this workaround, run:\n\nlsof | grep AF_ALG",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0004"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "LOCAL",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 7.8,
+            "environmentalSeverity": "HIGH",
+            "exploitCodeMaturity": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "reportConfidence": "CONFIRMED",
+            "scope": "UNCHANGED",
+            "temporalScore": 7.8,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H/E:H/RC:C",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0004"
+          ]
+        }
+      ],
+      "title": "CVE-2026-31431"
+    },
+    {
+      "cve": "CVE-2026-43284",
+      "cwe": {
+        "id": "CWE-123",
+        "name": "Write-what-where Condition"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: xfrm: esp: avoid in-place decrypt on shared skb frags MSG_SPLICE_PAGES can attach pages from a pipe directly to an skb. TCP marks such skbs with SKBFL_SHARED_FRAG after skb_splice_from_iter(), so later paths that may modify packet data can first make a private copy. The IPv4/IPv6 datagram append paths did not set this flag when splicing pages into UDP skbs. That leaves an ESP-in-UDP packet made from shared pipe pages looking like an ordinary uncloned nonlinear skb. ESP input then takes the no-COW fast path for uncloned skbs without a frag_list and decrypts in place over data that is not owned privately by the skb. Mark IPv4/IPv6 datagram splice frags with SKBFL_SHARED_FRAG, matching TCP. Also make ESP input fall back to skb_cow_data() when the flag is present, so ESP does not decrypt external-ly backed frags in place. Private nonlinear skb frags still use the existing fast path. This intentionally does not change ESP output. In esp_output_head(), the path that appends the ESP trailer to existing skb tailroom without calling skb_cow_data() is not reachable for nonlinear skbs: skb_tailroom() returns zero when skb->data_len is nonzero, while ESP tailen is positive. Thus ESP output will either use the separate destination-frag path or fall back to skb_cow_data().",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0004"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2026-43284",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43284"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-43284"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/123.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "For affected products, software updates should be installed upon availability.\n\n     Product\t         Patch version\n- APROL\t          :   APROL-AutoYaST-DVD- V4.4-010.10.260602\n\nUntil remediated software versions are available, customers are required to conduct a risk assessment of their affected systems and to implement the mitigation measures and workarounds specified in this advisory.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Successful exploitation of the vulnerabilities described in this advisory requires local access to the affected system with low-privileged user credentials. Customers are strongly advised to enforce strict access control policies on all Linux-based systems, ensuring that interactive access is exclusively granted to authorized and trusted personnel. This includes reviewing and hardening user account permissions and disabling unused accounts.\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure.\n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0004"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "Security researchers have identified and validated the following workarounds to reduce exposure to the vulnerabilities described in this advisory. These measures do not remediate the underlying vulnerabilities but effectively block known attack vectors until patched software versions are deployed.\n\nImportant: Customers are advised to thoroughly test their systems after applying any of the listed workarounds. B&R has no visibility into customer-specific applications running on the underlying Linux system. It is the customer's responsibility to assess whether the applied workarounds interfere with existing application workloads prior to deployment in production environments.\n\nFor Debian-based systems within an active support lifecycle, kernel patches addressing CVE-2026-31431 are already available via the official package repositories. Customers are strongly encouraged to apply these updates immediately by executing the following command:\nsudo apt update && sudo apt upgrade\nA system reboot is required after the upgrade for the updated kernel to take effect.\n\nTemporary Mitigation: If an immediate system update is not feasible, the affected kernel module (algif_aead) can be disabled persistently. Security researchers have confirmed this measure effectively prevents exploitation of CVE-2026-31431.\nExecute the following commands as root:\n\necho \"install algif_aead /bin/false\" > /etc/modprobe.d/disable-algif.conf\nrmmod algif_aead 2>/dev/null || true\n\nImpact assessment: Disabling the algif_aead module removes the AEAD socket interface from the kernel cryp-to API. This does not affect dm-crypt/LUKS, kTLS, IPsec/XFRM, OpenSSL, GnuTLS, NSS, or SSH. Applications explicitly configured to use the afalg engine or that directly bind aead, skcipher, or hash sockets via AF_ALG may be affected. To assess exposure prior to applying this workaround, run:\n\nlsof | grep AF_ALG",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0004"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "HIGH",
+            "attackVector": "LOCAL",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 7.9,
+            "environmentalSeverity": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "CHANGED",
+            "temporalScore": 7.8,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0004"
+          ]
+        }
+      ],
+      "title": "CVE-2026-43284"
+    },
+    {
+      "cve": "CVE-2026-46333",
+      "cwe": {
+        "id": "CWE-269",
+        "name": "Improper Privilege Management"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: ptrace: slightly saner 'get_dumpable()' logic The 'dumpability' of a task is fundamentally about the memory image of the task - the concept comes from whether it can core dump or not - and makes no sense when you don't have an associated mm. And almost all users do in fact use it only for the case where the task has a mm pointer. But we have one odd special case: ptrace_may_access() uses 'dumpable' to check various other things entirely independently of the MM (typically explicitly using flags like PTRACE_MODE_READ_FSCREDS). Including for threads that no longer have a VM (and maybe never did, like most kernel threads). It's not what this flag was designed for, but it is what it is. The ptrace code does check that the uid/gid matches, so you do have to be uid-0 to see kernel thread details, but this means that the traditional \"drop capabilities\" model doesn't make any difference for this all. Make it all make a *bit* more sense by saying that if you don't have a MM pointer, we'll use a cached \"last dumpability\" flag if the thread ever had a MM (it will be zero for kernel threads since it is never set), and require a proper CAP_SYS_PTRACE capability to override.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0004"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2026-46333",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46333"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-46333"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/269.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "For affected products, software updates should be installed upon availability.\n\n     Product\t         Patch version\n- APROL\t          :   APROL-AutoYaST-DVD- V4.4-010.10.260602\n\nUntil remediated software versions are available, customers are required to conduct a risk assessment of their affected systems and to implement the mitigation measures and workarounds specified in this advisory.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Successful exploitation of the vulnerabilities described in this advisory requires local access to the affected system with low-privileged user credentials. Customers are strongly advised to enforce strict access control policies on all Linux-based systems, ensuring that interactive access is exclusively granted to authorized and trusted personnel. This includes reviewing and hardening user account permissions and disabling unused accounts.\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure.\n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0004"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "Security researchers have identified and validated the following workarounds to reduce exposure to the vulnerabilities described in this advisory. These measures do not remediate the underlying vulnerabilities but effectively block known attack vectors until patched software versions are deployed.\n\nImportant: Customers are advised to thoroughly test their systems after applying any of the listed workarounds. B&R has no visibility into customer-specific applications running on the underlying Linux system. It is the customer's responsibility to assess whether the applied workarounds interfere with existing application workloads prior to deployment in production environments.\n\nFor Debian-based systems within an active support lifecycle, kernel patches addressing CVE-2026-31431 are already available via the official package repositories. Customers are strongly encouraged to apply these updates immediately by executing the following command:\nsudo apt update && sudo apt upgrade\nA system reboot is required after the upgrade for the updated kernel to take effect.\n\nTemporary Mitigation: If an immediate system update is not feasible, the affected kernel module (algif_aead) can be disabled persistently. Security researchers have confirmed this measure effectively prevents exploitation of CVE-2026-31431.\nExecute the following commands as root:\n\necho \"install algif_aead /bin/false\" > /etc/modprobe.d/disable-algif.conf\nrmmod algif_aead 2>/dev/null || true\n\nImpact assessment: Disabling the algif_aead module removes the AEAD socket interface from the kernel cryp-to API. This does not affect dm-crypt/LUKS, kTLS, IPsec/XFRM, OpenSSL, GnuTLS, NSS, or SSH. Applications explicitly configured to use the afalg engine or that directly bind aead, skcipher, or hash sockets via AF_ALG may be affected. To assess exposure prior to applying this workaround, run:\n\nlsof | grep AF_ALG",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0004"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "LOCAL",
+            "availabilityImpact": "NONE",
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 7.1,
+            "environmentalSeverity": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 7.1,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0004"
+          ]
+        }
+      ],
+      "title": "CVE-2026-46333"
+    },
+    {
+      "cve": "CVE-2026-46300",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: net: skbuff: preserve shared-frag marker during coalescing skb_try_coalesce() can attach paged frags from @from to @to. If @from has SKBFL_SHARED_FRAG set, the resulting @to skb can contain the same externally-owned or page-cache-backed frags, but the shared-frag marker is currently lost. That breaks the invariant relied on by later in-place writers. In particular, ESP input checks skb_has_shared_frag() before deciding whether an uncloned nonlinear skb can skip skb_cow_data(). If TCP receive coalescing has moved shared frags into an unmarked skb, ESP can see skb_has_shared_frag() as false and decrypt in place over page-cache backed frags. Propagate SKBFL_SHARED_FRAG when skb_try_coalesce() transfers paged frags. The tailroom copy path does not need the marker because it copies bytes into @to's linear data rather than transferring frag descriptors..",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0004"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2026-46300 ",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46300"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-46300"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/787.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "For affected products, software updates should be installed upon availability.\n\n     Product\t         Patch version\n- APROL\t          :   APROL-AutoYaST-DVD- V4.4-010.10.260602\n\nUntil remediated software versions are available, customers are required to conduct a risk assessment of their affected systems and to implement the mitigation measures and workarounds specified in this advisory.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Successful exploitation of the vulnerabilities described in this advisory requires local access to the affected system with low-privileged user credentials. Customers are strongly advised to enforce strict access control policies on all Linux-based systems, ensuring that interactive access is exclusively granted to authorized and trusted personnel. This includes reviewing and hardening user account permissions and disabling unused accounts.\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure.\n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0004"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "Security researchers have identified and validated the following workarounds to reduce exposure to the vulnerabilities described in this advisory. These measures do not remediate the underlying vulnerabilities but effectively block known attack vectors until patched software versions are deployed.\n\nImportant: Customers are advised to thoroughly test their systems after applying any of the listed workarounds. B&R has no visibility into customer-specific applications running on the underlying Linux system. It is the customer's responsibility to assess whether the applied workarounds interfere with existing application workloads prior to deployment in production environments.\n\nFor Debian-based systems within an active support lifecycle, kernel patches addressing CVE-2026-31431 are already available via the official package repositories. Customers are strongly encouraged to apply these updates immediately by executing the following command:\nsudo apt update && sudo apt upgrade\nA system reboot is required after the upgrade for the updated kernel to take effect.\n\nTemporary Mitigation: If an immediate system update is not feasible, the affected kernel module (algif_aead) can be disabled persistently. Security researchers have confirmed this measure effectively prevents exploitation of CVE-2026-31431.\nExecute the following commands as root:\n\necho \"install algif_aead /bin/false\" > /etc/modprobe.d/disable-algif.conf\nrmmod algif_aead 2>/dev/null || true\n\nImpact assessment: Disabling the algif_aead module removes the AEAD socket interface from the kernel cryp-to API. This does not affect dm-crypt/LUKS, kTLS, IPsec/XFRM, OpenSSL, GnuTLS, NSS, or SSH. Applications explicitly configured to use the afalg engine or that directly bind aead, skcipher, or hash sockets via AF_ALG may be affected. To assess exposure prior to applying this workaround, run:\n\nlsof | grep AF_ALG",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0004"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "LOCAL",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 7.8,
+            "environmentalSeverity": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 7.8,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0004"
+          ]
+        }
+      ],
+      "title": "CVE-2026-46300"
+    },
+    {
+      "cve": "CVE-2026-43494",
+      "cwe": {
+        "id": "CWE-1341",
+        "name": "Multiple Releases of Same Resource or Handle"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "In the Linux kernel, the following vulnerability has been resolved: net/rds: reset op_nents when zerocopy page pin fails When iov_iter_get_pages2() fails in rds_message_zcopy_from_user(), the pinned pages are released with put_page(), and rm->data.op_mmp_znotifier is cleared. But we fail to properly clear rm->data.op_nents. Later when rds_message_purge() is called from rds_sendmsg() the cleanup loop iterates over the incorrectly non zero number of op_nents and frees them again. Fix this by properly resetting op_nents when it should be in rds_message_zcopy_from_user().",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0003"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0004"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2026-43494",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43494"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-43494"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/1341.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "For affected products, software updates should be installed upon availability.\n\n     Product\t         Patch version\n- APROL\t          :   APROL-AutoYaST-DVD- V4.4-010.10.260602\n\nUntil remediated software versions are available, customers are required to conduct a risk assessment of their affected systems and to implement the mitigation measures and workarounds specified in this advisory.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Successful exploitation of the vulnerabilities described in this advisory requires local access to the affected system with low-privileged user credentials. Customers are strongly advised to enforce strict access control policies on all Linux-based systems, ensuring that interactive access is exclusively granted to authorized and trusted personnel. This includes reviewing and hardening user account permissions and disabling unused accounts.\n\nRefer to section \u201cGeneral security recommendations\u201d for further advise on how to keep your system secure.\n",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0004"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "Security researchers have identified and validated the following workarounds to reduce exposure to the vulnerabilities described in this advisory. These measures do not remediate the underlying vulnerabilities but effectively block known attack vectors until patched software versions are deployed.\n\nImportant: Customers are advised to thoroughly test their systems after applying any of the listed workarounds. B&R has no visibility into customer-specific applications running on the underlying Linux system. It is the customer's responsibility to assess whether the applied workarounds interfere with existing application workloads prior to deployment in production environments.\n\nFor Debian-based systems within an active support lifecycle, kernel patches addressing CVE-2026-31431 are already available via the official package repositories. Customers are strongly encouraged to apply these updates immediately by executing the following command:\nsudo apt update && sudo apt upgrade\nA system reboot is required after the upgrade for the updated kernel to take effect.\n\nTemporary Mitigation: If an immediate system update is not feasible, the affected kernel module (algif_aead) can be disabled persistently. Security researchers have confirmed this measure effectively prevents exploitation of CVE-2026-31431.\nExecute the following commands as root:\n\necho \"install algif_aead /bin/false\" > /etc/modprobe.d/disable-algif.conf\nrmmod algif_aead 2>/dev/null || true\n\nImpact assessment: Disabling the algif_aead module removes the AEAD socket interface from the kernel cryp-to API. This does not affect dm-crypt/LUKS, kTLS, IPsec/XFRM, OpenSSL, GnuTLS, NSS, or SSH. Applications explicitly configured to use the afalg engine or that directly bind aead, skcipher, or hash sockets via AF_ALG may be affected. To assess exposure prior to applying this workaround, run:\n\nlsof | grep AF_ALG",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0004"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "LOCAL",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 7.8,
+            "environmentalSeverity": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 7.8,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0004"
+          ]
+        }
+      ],
+      "title": "CVE-2026-43494"
+    }
+  ]
+}
