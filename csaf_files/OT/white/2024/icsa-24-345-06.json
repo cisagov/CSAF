@@ -35,7 +35,7 @@
       {
         "category": "summary",
         "text": "Successful exploitation of these vulnerabilities could result in execution of arbitrary code.",
-        "title": "Risk evaluation"
+        "title": "Advisory Summary"
       },
       {
         "category": "other",
@@ -54,7 +54,7 @@
       },
       {
         "category": "general",
-        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities.",
         "title": "Recommended Practices"
       },
       {
@@ -196,11 +196,11 @@
         "url": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks"
       }
     ],
-    "title": "Rockwell Automation Arena (Update B)",
+    "title": "Rockwell Automation Arena (Update C)",
     "tracking": {
-      "current_release_date": "2026-02-03T07:00:00.000000Z",
+      "current_release_date": "2026-06-23T06:00:00.000000Z",
       "generator": {
-        "date": "2026-02-02T21:14:52.807788Z",
+        "date": "2026-06-22T21:23:33.184965Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
@@ -226,10 +226,16 @@
           "legacy_version": "Update B",
           "number": "3",
           "summary": "Update B - Added CVE-2025-6376, CVE-2025-6377, updated affected products and mitigations."
+        },
+        {
+          "date": "2026-06-23T06:00:00.000000Z",
+          "legacy_version": "Update C",
+          "number": "4",
+          "summary": "Update C - Added CVE-2026-6071"
         }
       ],
       "status": "final",
-      "version": "3"
+      "version": "4"
     }
   },
   "product_tree": {
@@ -1399,6 +1405,114 @@
             "baseScore": 7.0,
             "baseSeverity": "HIGH",
             "vectorString": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0005"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2026-6071",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A remote code execution security issue exists in the affected products when parsing DOE files that could allow a remote attacker to write past the end of an allocated object and execute code within the context of the current process. To exploit this vulnerability, a legitimate user must visit a malicious page or open a malicious file.",
+          "title": "Vulnerability Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/787.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-6071"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Rockwell Automation recommends users upgrade to V16.20.09 or later.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Rockwell Automation encourages users of the affected software to apply the following risk mitigations, if possible.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Do not load untrusted Arena model files.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Hold the control key down when loading files to help prevent the VBA file stream from loading.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For information on how to mitigate security risks on industrial automation control systems, Rockwell Automation encourages users to implement their suggested security best practices (login required) to minimize the risk of the vulnerability.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1085012/loc/en_US#__highlight"
+        },
+        {
+          "category": "mitigation",
+          "details": "Stakeholder-Specific Vulnerability Categorization can be used to generate more environment-specific prioritization.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "url": "https://www.cisa.gov/stakeholder-specific-vulnerability-categorization-ssvc"
+        },
+        {
+          "category": "mitigation",
+          "details": "For more information about these issues, please see the Rockwell Automation security advisory.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "url": "https://www.rockwellautomation.com/en-us/trust-center/security-advisories/advisory.SD1713.html"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
             "version": "3.1"
           },
           "products": [
