@@ -1,0 +1,219 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "Cloudflare Universal SSL CAA record override",
+    "tracking": {
+      "current_release_date": "2026-07-02T17:50:36Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.15.0+build.89"
+        }
+      },
+      "id": "VA-26-183-01",
+      "initial_release_date": "2026-07-02T17:50:36Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2026-07-02T17:50:36Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "Cloudflare customers requiring strict RFC 8657 enforcement need to disable Universal SSL on the affected zone. Universal SSL's automatic CAA management and customer-set RFC 8657 accounturi and validationmethods enforcement are mutually exclusive by the nature of the issue, so there is no in-product workaround that preserves both. ",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Certificate Transparency monitoring is recommended for all Cloudflare customers as a general detection control.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-183-01.json",
+        "summary": "Vulnerability Advisory VA-26-183-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "Cloudflare",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "Universal SSL",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<*",
+                "product": {
+                  "name": "Cloudflare Universal SSL <*",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2026-14440",
+      "cwe": {
+        "id": "CWE-693",
+        "name": "Protection Mechanism Failure"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Cloudflare Universal SSL adds Certification Authority Authorization (CAA) DNS records that override user-configured CAA records. The Universal SSL CAA records may be more permissive than user-configured records, for example, overriding the RFC 8657 'accounturi' parameter. An attacker with appropriate network access may be able to spoof domain validation and obtain a certificate for the target domain.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:T/2026-05-18T17:12:47Z/"
+        }
+      ],
+      "title": "Cloudflare Universal SSL CAA record override",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "developers.cloudflare.com",
+          "url": "https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/"
+        },
+        {
+          "category": "external",
+          "summary": "www.rfc-editor.org",
+          "url": "https://www.rfc-editor.org/rfc/rfc8657.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.rfc-editor.org",
+          "url": "https://www.rfc-editor.org/rfc/rfc8659.html"
+        },
+        {
+          "category": "external",
+          "summary": "david-osipov.vision",
+          "url": "https://david-osipov.vision/en/blog/cybersecurity/cloudflare-ssl-mitm-flaw-2026/"
+        },
+        {
+          "category": "external",
+          "summary": "community.cloudflare.com",
+          "url": "https://community.cloudflare.com/t/critical-security-gap-cloudflare-must-fully-support-rfc-8657-caa/799999/10"
+        },
+        {
+          "category": "external",
+          "summary": "community.cloudflare.com",
+          "url": "https://community.cloudflare.com/t/universal-ssl-exposes-domains-to-bgp-leaks-re-venezuela-analysis/879930"
+        },
+        {
+          "category": "external",
+          "summary": "zenodo.org",
+          "url": "https://zenodo.org/records/18330221"
+        },
+        {
+          "category": "external",
+          "summary": "developers.cloudflare.com",
+          "url": "https://developers.cloudflare.com/ssl/edge-certificates/caa-records/"
+        },
+        {
+          "category": "external",
+          "summary": "developers.cloudflare.com",
+          "url": "https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2026-14440",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-14440"
+        },
+        {
+          "category": "external",
+          "summary": "VA-26-183-01",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-183-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.8,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Certificate Transparency monitoring is recommended for all customers as a general detection control.",
+          "url": "https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2026-07-01T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "names": [
+            "David Osipov"
+          ]
+        }
+      ],
+      "release_date": "2025-05-20T00:00:00Z"
+    }
+  ]
+}
