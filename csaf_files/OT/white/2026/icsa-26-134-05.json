@@ -2,8 +2,8 @@
   "document": {
     "acknowledgments": [
       {
-        "organization": "TrendAI Zero Day Initiative",
-        "summary": "reported this vulnerability"
+        "organization": "Siemens ProductCERT",
+        "summary": "reported these vulnerabilities to CISA."
       }
     ],
     "category": "csaf_security_advisory",
@@ -19,7 +19,7 @@
     "notes": [
       {
         "category": "summary",
-        "text": "Simcenter Femap is affected by heap based buffer overflow vulnerability in Datakit library that could be triggered when the application reads files in IPT format. If a user is tricked to open a malicious file with the affected application, an attacker could leverage the vulnerability to perform remote code execution in the context of the current process.\n\nSiemens has released a new version for Simcenter Femap and recommends to update to the latest version.",
+        "text": "Simcenter Femap is affected by file parsing vulnerabilities in Datakit library and Parasolid Translator Component that could be triggered when the application reads files in IPT or IGS format. If a user is tricked to open a malicious file with the affected application, an attacker could leverage the vulnerability to perform remote code execution in the context of the current process.\n\nSiemens has released a new version for Simcenter Femap and recommends to update to the latest version.",
         "title": "Summary"
       },
       {
@@ -49,7 +49,7 @@
       },
       {
         "category": "general",
-        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of these vulnerabilities.",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
         "title": "Recommended Practices"
       },
       {
@@ -112,12 +112,12 @@
     "references": [
       {
         "category": "self",
-        "summary": "SSA-870926: Datakit Vulnerability in Simcenter Femap - CSAF Version",
+        "summary": "SSA-870926: Datakit and Parasolid Vulnerabilities in Simcenter Femap - CSAF Version",
         "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-870926.json"
       },
       {
         "category": "self",
-        "summary": "SSA-870926: Datakit Vulnerability in Simcenter Femap - HTML Version",
+        "summary": "SSA-870926: Datakit and Parasolid Vulnerabilities in Simcenter Femap - HTML Version",
         "url": "https://cert-portal.siemens.com/productcert/html/ssa-870926.html"
       },
       {
@@ -163,9 +163,9 @@
     ],
     "title": "Siemens Simcenter Femap",
     "tracking": {
-      "current_release_date": "2026-05-14T06:00:00.000000Z",
+      "current_release_date": "2026-07-02T06:00:00.000000Z",
       "generator": {
-        "date": "2026-05-13T16:53:58.871172Z",
+        "date": "2026-07-01T19:47:27.203700Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.5.0"
@@ -182,13 +182,25 @@
         },
         {
           "date": "2026-05-14T06:00:00.000000Z",
-          "legacy_version": "CISA Republication",
+          "legacy_version": "Additional Release 1",
           "number": "2",
-          "summary": "Initial CISA Republication of Siemens ProductCERT SSA-870926 advisory"
+          "summary": "CISA Republication - Initial CISA Republication of Siemens ProductCERT SSA-870926 advisory"
+        },
+        {
+          "date": "2026-06-09T00:00:00.000000Z",
+          "legacy_version": "Additional Release 2",
+          "number": "3",
+          "summary": "Added CVE-2025-40936"
+        },
+        {
+          "date": "2026-07-02T06:00:00.000000Z",
+          "legacy_version": "Latest Updated CISA Republication",
+          "number": "4",
+          "summary": "CISA Republication update based on Siemens ProductCERT SSA-870926 advisory"
         }
       ],
       "status": "final",
-      "version": "2"
+      "version": "4"
     }
   },
   "product_tree": {
@@ -275,6 +287,66 @@
         }
       ],
       "title": "CVE-2025-12659"
+    },
+    {
+      "cve": "CVE-2025-40936",
+      "cwe": {
+        "id": "CWE-125",
+        "name": "Out-of-bounds Read"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The affected applications contains an out of bounds read vulnerability while parsing specially crafted IGS files. This could allow an attacker to crash the application or execute code in the context of the current process. (ZDI-CAN-26755)",
+          "title": "Summary"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-40936"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/125.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Update to V2512.0003 or later version",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://support.sw.siemens.com/product/275652363/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.8,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2025-40936"
     }
   ]
 }
