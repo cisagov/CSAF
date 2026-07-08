@@ -53,12 +53,12 @@
         "category": "other"
       },
       {
-        "text": "Cloudflare customers requiring strict RFC 8657 enforcement need to disable Universal SSL on the affected zone. Universal SSL's automatic CAA management and customer-set RFC 8657 accounturi and validationmethods enforcement are mutually exclusive by the nature of the issue, so there is no in-product workaround that preserves both. ",
+        "text": "Cloudflare Universal SSL automatically manages the CAA RRset for customer zones in order to issue and renew TLS certificates. In affected Universal SSL configurations, Cloudflare authoritative DNS can serve an auto-managed CAA RRset at query time that supersedes customer-configured CAA records. As a result, Certificate Authorities may not observe customer-configured RFC 8657 accounturi or validationmethods parameters when evaluating CAA under RFC 8659. Customers may therefore believe strict certificate-issuance controls are enforced, while those controls are not preserved end-to-end for Universal SSL zones. Successful exploitation is non-trivial and requires a strong network position plus successful domain validation, but misissuance could result in a browser-trusted TLS certificate and enable MITM against the affected domain.",
         "title": "Risk Evaluation",
         "category": "summary"
       },
       {
-        "text": "Certificate Transparency monitoring is recommended for all Cloudflare customers as a general detection control.",
+        "text": "Certificate Transparency monitoring is recommended as a detection control for misissued browser-trusted certificates. It does not prevent certificate issuance and should not be treated as a preventive mitigation for strict RFC 8657 enforcement.",
         "title": "Recommended Practices",
         "category": "general"
       },
@@ -198,8 +198,8 @@
       "remediations": [
         {
           "category": "mitigation",
-          "details": "Certificate Transparency monitoring is recommended for all customers as a general detection control.",
-          "url": "https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/",
+          "details": "Customers requiring strict RFC 8657 accounturi or validationmethods enforcement should disable Universal SSL on the affected zone only after ensuring that another valid Cloudflare edge certificate is active, such as an Advanced Certificate or uploaded Custom Certificate. Without an alternative active edge certificate, disabling Universal SSL can break HTTPS for new connections.",
+          "url": "https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/",
           "product_ids": [
             "CSAFPID-0001"
           ],

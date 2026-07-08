@@ -1,0 +1,203 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "FluxInk Color Management Driver local privilege escalation",
+    "tracking": {
+      "current_release_date": "2026-07-07T00:00:00Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.15.0+build.89"
+        }
+      },
+      "id": "VA-26-188-01",
+      "initial_release_date": "2026-07-07T00:00:00Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2026-07-07T00:00:00Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "An attacker with a standard user account on a device could escalate their privileges via arbitrary physical memory mapping at \\Device\\PhysicalMemory.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Fixed in version 1.0.7.6. The fixed driver is currently available in the Windows 11 25H2 HLK (Hardware Lab Kit). The fixed driver may be available through Windows Update or from Lenovo directly.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-188-01.json",
+        "summary": "Vulnerability Advisory VA-26-188-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "FluxInk",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "Color Management Driver",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<1.0.7.6",
+                "product": {
+                  "name": "FluxInk Color Management Driver <1.0.7.6",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.0.7.6",
+                "product": {
+                  "name": "FluxInk Color Management Driver 1.0.7.6",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2026-58583",
+      "cwe": {
+        "id": "CWE-269",
+        "name": "Improper Privilege Management"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "FluxInk (formerly Sunia SPB Peripheral) Color Management Driver (TcnPeripheral64.sys) 1.0.7.2 allows local privilege escalation for a standard user account via arbitrary physical memory mapping at \\Device\\PhysicalMemory. Fixed in version 1.0.7.6. The fixed driver is currently available in the Windows 11 25H2 HLK (Hardware Lab Kit). The fixed driver may be available through Windows Update or from Lenovo directly.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:T/2026-07-01T15:52:01Z/"
+        }
+      ],
+      "title": "FluxInk Color Management Driver local privilege escalation",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "github.com",
+          "url": "https://github.com/b3s3da/TcnPeripheral64_PoC/security/advisories/GHSA-x4rw-h4v2-v83h"
+        },
+        {
+          "category": "external",
+          "summary": "github.com",
+          "url": "https://github.com/b3s3da/TcnPeripheral64_PoC"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2026-58583",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-58583"
+        },
+        {
+          "category": "external",
+          "summary": "VA-26-188-01 CSAF",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-188-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in version 1.0.7.6. The fixed driver currently available in the Windows 11 25H2 HLK (Hardware Lab Kit). The fixed driver may be available through Windows Update or from Lenovo directly.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2026-06-11T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in version 1.0.7.6. The fixed driver currently available in the Windows 11 25H2 HLK (Hardware Lab Kit). The fixed driver may be available through Windows Update or from Lenovo directly.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2026-06-11T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Atos Threat Research Center",
+          "names": [
+            "Julian Horoszkiewicz"
+          ]
+        }
+      ],
+      "release_date": "2026-01-21T00:00:00Z"
+    }
+  ]
+}
