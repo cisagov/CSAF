@@ -2,7 +2,44 @@
   "document": {
     "category": "csaf_vex",
     "csaf_version": "2.0",
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
     "lang": "en-US",
+    "notes": [
+      {
+        "category": "legal_disclaimer",
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed"
+      },
+      {
+        "category": "other",
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors"
+      },
+      {
+        "category": "summary",
+        "text": "Cloudflare Universal SSL automatically manages the CAA RRset for customer zones in order to issue and renew TLS certificates. In affected Universal SSL configurations, Cloudflare authoritative DNS can serve an auto-managed CAA RRset at query time that supersedes customer-configured CAA records. As a result, Certificate Authorities may not observe customer-configured RFC 8657 accounturi or validationmethods parameters when evaluating CAA under RFC 8659. Customers may therefore believe strict certificate-issuance controls are enforced, while those controls are not preserved end-to-end for Universal SSL zones. Successful exploitation is non-trivial and requires a strong network position plus successful domain validation, but misissuance could result in a browser-trusted TLS certificate and enable MITM against the affected domain.",
+        "title": "Risk Evaluation"
+      },
+      {
+        "category": "general",
+        "text": "Certificate Transparency monitoring is recommended as a detection control for misissued browser-trusted certificates. It does not prevent certificate issuance and should not be treated as a preventive mitigation for strict RFC 8657 enforcement.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "United States",
+        "title": "Company Headquarters Location"
+      }
+    ],
     "publisher": {
       "category": "coordinator",
       "contact_details": "https://www.cisa.gov/report",
@@ -10,9 +47,16 @@
       "name": "CISA",
       "namespace": "https://www.cisa.gov/"
     },
+    "references": [
+      {
+        "category": "self",
+        "summary": "Vulnerability Advisory VA-26-183-01 CSAF",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-183-01.json"
+      }
+    ],
     "title": "Cloudflare Universal SSL CAA record override",
     "tracking": {
-      "current_release_date": "2026-07-02T17:50:36Z",
+      "current_release_date": "2026-07-14T17:33:00Z",
       "generator": {
         "engine": {
           "name": "VINCE-NT",
@@ -21,60 +65,21 @@
       },
       "id": "VA-26-183-01",
       "initial_release_date": "2026-07-02T17:50:36Z",
-      "status": "final",
-      "version": "1.0.0",
       "revision_history": [
         {
+          "date": "2026-07-02T17:50:36Z",
           "number": "1.0.0",
-          "summary": "Initial publication",
-          "date": "2026-07-02T17:50:36Z"
+          "summary": "Initial publication"
+        },
+        {
+          "date": "2026-07-14T17:33:00Z",
+          "number": "2.0.0",
+          "summary": "Major revision (product tree changed): standardized the version range to vers:all/*, added product- and vulnerability-identification helpers (including Wikidata items), added cross-system vulnerability IDs (GHSA, NotCVE, EUVD, Positive Technologies DB, CERT/CC VINCE), added acknowledgment metadata and a multi-party involvements timeline, added exploit-status and impact threat statements, added a disclosure timeline and direct CAA verification guidance, reclassified the disable-Universal-SSL action as a workaround, added the Cloudflare CNA CVSS v4.0 vector as a note, and added references. Removed the unsupported blanket known_not_affected assertion for Advanced Certificate Manager / Custom Certificates."
         }
-      ]
-    },
-    "distribution": {
-      "tlp": {
-        "label": "WHITE"
-      }
-    },
-    "notes": [
-      {
-        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
-        "title": "Legal Notice",
-        "category": "legal_disclaimer"
-      },
-      {
-        "text": "Worldwide",
-        "title": "Countries and Areas Deployed",
-        "category": "other"
-      },
-      {
-        "text": "Information Technology",
-        "title": "Critical Infrastructure Sectors",
-        "category": "other"
-      },
-      {
-        "text": "Cloudflare Universal SSL automatically manages the CAA RRset for customer zones in order to issue and renew TLS certificates. In affected Universal SSL configurations, Cloudflare authoritative DNS can serve an auto-managed CAA RRset at query time that supersedes customer-configured CAA records. As a result, Certificate Authorities may not observe customer-configured RFC 8657 accounturi or validationmethods parameters when evaluating CAA under RFC 8659. Customers may therefore believe strict certificate-issuance controls are enforced, while those controls are not preserved end-to-end for Universal SSL zones. Successful exploitation is non-trivial and requires a strong network position plus successful domain validation, but misissuance could result in a browser-trusted TLS certificate and enable MITM against the affected domain.",
-        "title": "Risk Evaluation",
-        "category": "summary"
-      },
-      {
-        "text": "Certificate Transparency monitoring is recommended as a detection control for misissued browser-trusted certificates. It does not prevent certificate issuance and should not be treated as a preventive mitigation for strict RFC 8657 enforcement.",
-        "title": "Recommended Practices",
-        "category": "general"
-      },
-      {
-        "text": "United States",
-        "title": "Company Headquarters Location",
-        "category": "other"
-      }
-    ],
-    "references": [
-      {
-        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-183-01.json",
-        "summary": "Vulnerability Advisory VA-26-183-01 CSAF",
-        "category": "self"
-      }
-    ]
+      ],
+      "status": "final",
+      "version": "2.0.0"
+    }
   },
   "product_tree": {
     "branches": [
@@ -88,10 +93,22 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "<*",
+                "name": "vers:all/*",
                 "product": {
-                  "name": "Cloudflare Universal SSL <*",
-                  "product_id": "CSAFPID-0001"
+                  "name": "Cloudflare Universal SSL (all versions)",
+                  "product_id": "CSAFPID-0001",
+                  "product_identification_helper": {
+                    "x_generic_uris": [
+                      {
+                        "namespace": "https://developers.cloudflare.com/",
+                        "uri": "https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/"
+                      },
+                      {
+                        "namespace": "https://www.wikidata.org/",
+                        "uri": "http://www.wikidata.org/entity/Q140459847"
+                      }
+                    ]
+                  }
                 }
               }
             ]
@@ -102,11 +119,130 @@
   },
   "vulnerabilities": [
     {
+      "acknowledgments": [
+        {
+          "names": [
+            "David Osipov"
+          ],
+          "summary": "Finder and reporter of this vulnerability; credited as the independent researcher in the CVE record.",
+          "urls": [
+            "https://david-osipov.vision/en/about/",
+            "https://www.linkedin.com/in/david-osipov/",
+            "https://github.com/DavidOsipov",
+            "https://orcid.org/0009-0005-2713-9242",
+            "https://isni.org/isni/000000051802960X",
+            "http://www.wikidata.org/entity/Q130604188",
+            "https://hosted.oidplus.com/viathinksoft/?goto=oid%3A1.3.6.1.4.1.37476.9000.211",
+            "https://scholar.google.com/citations?user=ZCoKxAQAAAAJ",
+            "https://www.researchgate.net/profile/David-Osipov"
+          ]
+        }
+      ],
       "cve": "CVE-2026-14440",
       "cwe": {
         "id": "CWE-693",
         "name": "Protection Mechanism Failure"
       },
+      "ids": [
+        {
+          "system_name": "GHSA",
+          "text": "GHSA-vrv9-rjp4-w93c"
+        },
+        {
+          "system_name": "NotCVE",
+          "text": "NotCVE-2026-0001"
+        },
+        {
+          "system_name": "Wikidata",
+          "text": "Q140402353"
+        },
+        {
+          "system_name": "EUVD",
+          "text": "EUVD-2026-41207"
+        },
+        {
+          "system_name": "Positive Technologies DB",
+          "text": "PT-2026-54701"
+        },
+        {
+          "system_name": "CERT/CC VINCE",
+          "text": "VU#840183"
+        }
+      ],
+      "involvements": [
+        {
+          "date": "2025-05-20T00:00:00Z",
+          "party": "discoverer",
+          "status": "in_progress",
+          "summary": "First public report of the Universal SSL CAA override behavior via the Cloudflare Community Security forum (thread 799999)."
+        },
+        {
+          "date": "2025-05-20T00:00:00Z",
+          "party": "vendor",
+          "status": "disputed",
+          "summary": "In the same Community forum thread, a Cloudflare team member acknowledged the behavior but disputed the need for remediation, citing pending RFC 8657 support despite the RFC having been finalized in 2019, and closed the thread."
+        },
+        {
+          "date": "2025-06-15T00:00:00Z",
+          "party": "discoverer",
+          "status": "completed",
+          "summary": "Published a technical write-up on Habr to broaden awareness; it became the top post of the week, indicating community recognition of the issue."
+        },
+        {
+          "date": "2026-01-15T00:00:00Z",
+          "party": "discoverer",
+          "status": "completed",
+          "summary": "Opened a second Cloudflare Community inquiry (thread 879930) requesting re-evaluation, prompted by the January 2026 Venezuela BGP leak and Cloudflare's own BGP route-leak blog post; no technical response was received."
+        },
+        {
+          "date": "2026-01-17T09:38:00Z",
+          "party": "discoverer",
+          "status": "completed",
+          "summary": "Submitted a formal vulnerability report to CISA / CERT-CC through VINCE."
+        },
+        {
+          "date": "2026-01-17T09:38:00Z",
+          "party": "coordinator",
+          "status": "in_progress",
+          "summary": "CISA Vulnerability Response and Coordination received the report via VINCE and opened case VU#840183. Coordinator triage began 2026-01-28; the initial expected public date was 2026-03-09."
+        },
+        {
+          "date": "2026-01-19T00:00:00Z",
+          "party": "other",
+          "status": "completed",
+          "summary": "Independently tracked and published as NotCVE-2026-0001, including an independent CVSS/SSVC assessment, preserving the pre-CVE research and disclosure trail."
+        },
+        {
+          "date": "2026-06-13T00:00:00Z",
+          "party": "vendor",
+          "status": "in_progress",
+          "summary": "Cloudflare confirmed via VINCE that the issue was on its radar and that its response was in final internal review, committing to a full response by 2026-06-19."
+        },
+        {
+          "date": "2026-06-19T00:00:00Z",
+          "party": "vendor",
+          "status": "in_progress",
+          "summary": "Cloudflare provided its full technical response during coordinated disclosure, agreed with CERT/CC's CVSS v3.1 vector (6.8), and proposed a corresponding CVSS v4.0 vector (7.6)."
+        },
+        {
+          "date": "2026-07-01T00:00:00Z",
+          "party": "vendor",
+          "status": "completed",
+          "summary": "Cloudflare published CVE-2026-14440 under its CNA scope and documented a workaround. No code fix is planned, as the behavior is inherent to Universal SSL's automatic CAA management design."
+        },
+        {
+          "date": "2026-07-02T17:50:36Z",
+          "party": "coordinator",
+          "status": "completed",
+          "summary": "CISA published VA-26-183-01 following coordinated disclosure through VINCE."
+        },
+        {
+          "date": "2026-07-02T17:50:36Z",
+          "party": "discoverer",
+          "status": "completed",
+          "summary": "Coordinated disclosure concluded with the public advisory and the assignment of CVE-2026-14440."
+        }
+      ],
       "notes": [
         {
           "category": "summary",
@@ -115,11 +251,35 @@
         },
         {
           "category": "details",
-          "title": "SSVC",
-          "text": "SSVCv2/E:P/A:N/T:T/2026-05-18T17:12:47Z/"
+          "text": "SSVCv2/E:P/A:N/T:T/2026-05-18T17:12:47Z/",
+          "title": "SSVC (CISA-ADP published)"
+        },
+        {
+          "category": "general",
+          "text": "The SSVC vector above reproduces the CISA-ADP assessment published on NVD: Exploitation = proof-of-concept (poc), Automatable = no, Technical Impact = total. Total is consistent with the agreed CVSS v3.1 confidentiality/integrity impact (C:H/I:H): successful exploitation yields a browser-trusted certificate enabling full interception and modification of the affected domain's TLS traffic. During coordinated disclosure the finder argued for Technical Impact = partial, on the basis that exploitation does not compromise Cloudflare or origin systems and results in certificate misissuance only within a specific active-attack chain; this minority view is recorded here for transparency and does not change the resulting CISA SSVC action (Track).",
+          "title": "SSVC assessment note"
+        },
+        {
+          "category": "general",
+          "text": "The affected behavior is Universal SSL's automatic management of the zone's CAA RRset. Per Cloudflare documentation, Cloudflare also automatically adds CAA records when a zone uses Advanced Certificate Manager (Cloudflare-issued) certificates; only uploaded Custom Certificates are not issued by Cloudflare and are therefore not subject to this automatic CAA management. Because a single zone can combine certificate types, no certificate configuration should be assumed unaffected without verifying the effective served CAA RRset directly (see the Verification note). For this reason, this advisory does not assert a blanket not-affected status for Advanced Certificate Manager or Custom Certificate configurations.",
+          "title": "Scope"
+        },
+        {
+          "category": "general",
+          "text": "Customers should verify the effective CAA RRset returned by Cloudflare authoritative DNS, for example by querying the records directly with `dig CAA <zone>`, rather than relying only on the records visible in the Cloudflare dashboard. Cloudflare documents that automatically added CAA records do not appear in the dashboard but are returned in live DNS responses and are what a Certificate Authority observes at validation time. This is a detection and verification step, not a remediation.",
+          "title": "Verification"
+        },
+        {
+          "category": "general",
+          "text": "2025-05-20: First public report via Cloudflare Community Security forum (thread 799999); Cloudflare cited pending RFC 8657 support despite the RFC being finalized in 2019. 2026-01-15: Second Cloudflare Community inquiry (thread 879930) requesting re-evaluation, prompted by Cloudflare's own BGP route-leak blog post; no technical response. 2026-01-17 09:38 UTC: Report submitted to CISA Vulnerability Response and Coordination via VINCE, opening case VU#840183 (initial expected public date 2026-03-09). 2026-01-19: Reserved and published as NotCVE-2026-0001, including an initial independent SSVC assessment. 2026-02-03: EPSS score last updated (under 1% 30-day probability, per FIRST.org). 2026-06-19: Cloudflare provided its full technical response during coordinated disclosure. 2026-07-01: CVE-2026-14440 published by Cloudflare. 2026-07-02: CISA published VA-26-183-01. No date is on record for exploitation in the wild against Cloudflare Universal SSL, and the vulnerability is not in the CISA KEV catalog as of this revision. The original report's reference to prior exploitation is to the 2023 jabber.ru XMPP MITM incident, which demonstrated the same underlying attack class on different infrastructure; it is not confirmed exploitation of Cloudflare Universal SSL or CVE-2026-14440.",
+          "title": "Disclosure Timeline"
+        },
+        {
+          "category": "details",
+          "text": "Cloudflare CNA CVSS v4.0 base score: 7.6 (HIGH); vector: CVSS:4.0/AV:A/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N. CSAF 2.0 has no native CVSS v4.0 score object, so the machine-readable scores array retains the CISA-ADP / CERT-CC CVSS v3.1 assessment (6.8, MEDIUM). Both vectors were agreed during coordinated disclosure.",
+          "title": "CVSS v4.0"
         }
       ],
-      "title": "Cloudflare Universal SSL CAA record override",
       "product_status": {
         "known_affected": [
           "CSAFPID-0001"
@@ -128,58 +288,125 @@
       "references": [
         {
           "category": "external",
-          "summary": "developers.cloudflare.com",
+          "summary": "Cloudflare Universal SSL documentation",
           "url": "https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/"
         },
         {
           "category": "external",
-          "summary": "www.rfc-editor.org",
-          "url": "https://www.rfc-editor.org/rfc/rfc8657.html"
-        },
-        {
-          "category": "external",
-          "summary": "www.rfc-editor.org",
-          "url": "https://www.rfc-editor.org/rfc/rfc8659.html"
-        },
-        {
-          "category": "external",
-          "summary": "david-osipov.vision",
-          "url": "https://david-osipov.vision/en/blog/cybersecurity/cloudflare-ssl-mitm-flaw-2026/"
-        },
-        {
-          "category": "external",
-          "summary": "community.cloudflare.com",
-          "url": "https://community.cloudflare.com/t/critical-security-gap-cloudflare-must-fully-support-rfc-8657-caa/799999/10"
-        },
-        {
-          "category": "external",
-          "summary": "community.cloudflare.com",
-          "url": "https://community.cloudflare.com/t/universal-ssl-exposes-domains-to-bgp-leaks-re-venezuela-analysis/879930"
-        },
-        {
-          "category": "external",
-          "summary": "zenodo.org",
-          "url": "https://zenodo.org/records/18330221"
-        },
-        {
-          "category": "external",
-          "summary": "developers.cloudflare.com",
+          "summary": "Cloudflare documentation: CAA records added automatically by Cloudflare (Universal SSL and Advanced Certificate Manager) and direct DNS verification with dig",
           "url": "https://developers.cloudflare.com/ssl/edge-certificates/caa-records/"
         },
         {
           "category": "external",
-          "summary": "developers.cloudflare.com",
+          "summary": "Cloudflare documentation: disabling Universal SSL (requires a prerequisite replacement edge certificate)",
+          "url": "https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/"
+        },
+        {
+          "category": "external",
+          "summary": "Cloudflare Universal SSL limitations documentation",
           "url": "https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/"
         },
         {
           "category": "external",
-          "summary": "CVE-2026-14440",
+          "summary": "RFC 8657: CAA Record Extensions for Account URI and ACME Method Binding",
+          "url": "https://www.rfc-editor.org/rfc/rfc8657.html"
+        },
+        {
+          "category": "external",
+          "summary": "RFC 8659: DNS Certification Authority Authorization (CAA) Resource Record",
+          "url": "https://www.rfc-editor.org/rfc/rfc8659.html"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2026-14440 record (CVE.org)",
           "url": "https://www.cve.org/CVERecord?id=CVE-2026-14440"
         },
         {
           "category": "external",
-          "summary": "VA-26-183-01",
-          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-183-01.json"
+          "summary": "NVD record and CISA-ADP enrichment (SSVC exploitation = poc; CVSS v3.1 6.8) for CVE-2026-14440",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14440"
+        },
+        {
+          "category": "external",
+          "summary": "GitHub Advisory Database record GHSA-vrv9-rjp4-w93c",
+          "url": "https://github.com/advisories/GHSA-vrv9-rjp4-w93c"
+        },
+        {
+          "category": "external",
+          "summary": "CERT/CC Vulnerability Note VU#840183",
+          "url": "https://www.kb.cert.org/vuls/id/840183"
+        },
+        {
+          "category": "external",
+          "summary": "Wikidata item for CVE-2026-14440",
+          "url": "https://www.wikidata.org/wiki/Q140402353"
+        },
+        {
+          "category": "external",
+          "summary": "NotCVE historical tracking record NotCVE-2026-0001",
+          "url": "https://notcve.org/view.php?id=NotCVE-2026-0001"
+        },
+        {
+          "category": "external",
+          "summary": "EUVD record EUVD-2026-41207",
+          "url": "https://euvd.enisa.europa.eu/vulnerability/EUVD-2026-41207"
+        },
+        {
+          "category": "external",
+          "summary": "Positive Technologies vulnerability database record PT-2026-54701",
+          "url": "https://dbugs.ptsecurity.com/vulnerability/PT-2026-54701"
+        },
+        {
+          "category": "external",
+          "summary": "David Osipov: independent technical analysis of CVE-2026-14440 (Cloudflare Universal SSL, CAA, RFC 8657, and the 2023 jabber.ru lesson)",
+          "url": "https://david-osipov.vision/en/blog/cybersecurity/cloudflare-ssl-mitm-flaw-2026/"
+        },
+        {
+          "category": "external",
+          "summary": "Zenodo: archived research record for CVE-2026-14440",
+          "url": "https://zenodo.org/records/18330221"
+        },
+        {
+          "category": "external",
+          "summary": "Cloudflare Community: initial public report (thread 799999)",
+          "url": "https://community.cloudflare.com/t/critical-security-gap-cloudflare-must-fully-support-rfc-8657-caa/799999"
+        },
+        {
+          "category": "external",
+          "summary": "Cloudflare Community: Universal SSL and BGP-route-leak follow-up (thread 879930)",
+          "url": "https://community.cloudflare.com/t/universal-ssl-exposes-domains-to-bgp-leaks-re-venezuela-analysis/879930"
+        },
+        {
+          "category": "external",
+          "summary": "ValdikSS: technical write-up of the 2023 jabber.ru XMPP MITM incident (BGP hijack + Let's Encrypt HTTP-01 validation), the historical precedent motivating this research",
+          "url": "https://notes.valdikss.org.ru/jabber.ru-mitm/"
+        },
+        {
+          "category": "external",
+          "summary": "CA/Browser Forum Ballot SC-067v3: require domain validation and CAA checks from multiple Network Perspectives (MPIC phase-in)",
+          "url": "https://cabforum.org/2025/02/19/ballot-sc067v3-require-domain-validation-and-caa-checks-to-be-performed-from-multiple-network-perspectives-mpic/"
+        },
+        {
+          "category": "external",
+          "summary": "Cimaszewski, Birge-Lee, Wang, Rexford, Mittal, 'How Effective is Multiple-Vantage-Point Domain Control Validation?' (USENIX Security 2023), arXiv:2302.08000",
+          "url": "https://arxiv.org/abs/2302.08000"
+        },
+        {
+          "category": "external",
+          "summary": "Birge-Lee et al., 'A Framework to Evaluate MPIC Security using Real-World BGP Announcements' (2025), doi:10.1145/3730567.3764495",
+          "url": "https://doi.org/10.1145/3730567.3764495"
+        }
+      ],
+      "release_date": "2025-05-20T00:00:00Z",
+      "remediations": [
+        {
+          "category": "workaround",
+          "date": "2026-07-01T00:00:00Z",
+          "details": "Customers requiring strict RFC 8657 accounturi or validationmethods enforcement should first activate another valid Cloudflare edge certificate and only then disable Universal SSL on the affected zone; without an alternative active edge certificate, disabling Universal SSL can break HTTPS for new connections. Note that Cloudflare also automatically manages CAA records for Advanced Certificate Manager (Cloudflare-issued) certificates, so an uploaded Custom Certificate is the configuration least subject to Cloudflare's automatic CAA management. After the change, verify the effective served CAA RRset directly (see the Verification note).",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "url": "https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/"
         }
       ],
       "scores": [
@@ -195,25 +422,20 @@
           ]
         }
       ],
-      "remediations": [
+      "threats": [
         {
-          "category": "mitigation",
-          "details": "Customers requiring strict RFC 8657 accounturi or validationmethods enforcement should disable Universal SSL on the affected zone only after ensuring that another valid Cloudflare edge certificate is active, such as an Advanced Certificate or uploaded Custom Certificate. Without an alternative active edge certificate, disabling Universal SSL can break HTTPS for new connections.",
-          "url": "https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/",
+          "category": "exploit_status",
+          "details": "CISA-ADP's NVD enrichment classifies the SSVC exploitation value as proof-of-concept (poc). Two further signals are distinct and do not, by themselves, corroborate that classification: (1) the vulnerability is not listed in the CISA Known Exploited Vulnerabilities (KEV) catalog, which tracks confirmed exploitation in the wild; and (2) EPSS (FIRST.org) estimated the 30-day exploitation probability at under 1% as of 2026-02-03, which is a short-term probability estimate rather than evidence of a proof-of-concept. No public source confirms exploitation in the wild against Cloudflare Universal SSL, and this advisory does not describe a Cloudflare breach. The 2023 jabber.ru XMPP MITM incident is a real-world precedent for the same underlying attack class (network-position/BGP-hijack-enabled domain-validation bypass) on different, unrelated infrastructure, not confirmed exploitation of CVE-2026-14440."
+        },
+        {
+          "category": "impact",
+          "details": "Successful exploitation requires a sophisticated network-level adversary that holds a valid ACME account at one of the CAs in the served CAA RRset and can satisfy domain-control validation across the multiple geographically distinct Network Perspectives used for Multi-Perspective Issuance Corroboration (MPIC). The CA/Browser Forum's Ballot SC-067v3 phases in MPIC: at least 2 remote Network Perspectives with quorum enforcement from 2025-09-15, 3 from 2026-03-15, 4 from 2026-06-15, and 5 from 2026-12-15. MPIC and Cloudflare anycast materially raise attack complexity but do not restore RFC 8657 accounturi or validationmethods binding when those parameters are absent from the effective served CAA RRset. Independent measurement quantifies MPIC's partial protection: a 2023 Princeton/USENIX study (arXiv:2302.08000) reported approximately 88% median resilience for the evaluated Let's Encrypt multi-vantage deployment versus about 76% for single-vantage validation, and a 2025 Princeton study of real-world BGP announcements (doi:10.1145/3730567.3764495) found that optimal MPIC deployments prevented misissuance for over 87% of evaluated hijacks. Residual risk depends on the CA's MPIC deployment, perspective placement, quorum policy, DNS path, and RPKI adoption.",
           "product_ids": [
             "CSAFPID-0001"
-          ],
-          "date": "2026-07-01T00:00:00Z"
-        }
-      ],
-      "acknowledgments": [
-        {
-          "names": [
-            "David Osipov"
           ]
         }
       ],
-      "release_date": "2025-05-20T00:00:00Z"
+      "title": "Cloudflare Universal SSL CAA record override"
     }
   ]
 }
