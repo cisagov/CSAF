@@ -1,0 +1,436 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "ABB PSIRT",
+        "summary": "reported this vulnerability to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "ABB became aware of vulnerability in the products versions listed as affected in the advisory, where an incorrect version of Online Builder (ONB) was included in the media.\n\nAn update is available that resolves the vulnerability, see details in Recommended immediate actions. ",
+        "title": "Summary"
+      },
+      {
+        "category": "other",
+        "text": "Information about ABB\u2019s cyber security program and capabilities can be found at www.abb.com/cybersecurity.\n\nFor additional instructions and support please contact your local ABB service organization. For contact information, see www.abb.com/contactcenters.",
+        "title": "Support"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The information in this document is subject to change without notice, and should not be construed as a commitment by ABB.\n\nABB provides no warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, for the information contained in this document, and assumes no responsibility for any errors that may appear in this document. In no event shall ABB or any of its suppliers be liable for direct, indirect, special, incidental or consequential damages of any nature or kind arising from the use of this document, or from the use of any hardware or software described in this document, even if ABB or its suppliers have been advised of the possibility of such damages.\n\nThis document and parts hereof must not be reproduced or copied without written permission from ABB, and the contents hereof must not be imparted to a third party nor used for any unauthorized purpose.\n\nAll rights to registrations and trademarks reside with their respective owners.\n",
+        "title": "Notice"
+      },
+      {
+        "category": "other",
+        "text": "Control systems and the control network are exposed to cyber threats. In order to minimize these risks, the protective measures and best practices listed below are available in addition to other measures. ABB strongly recommends system integrators and asset owners to implement the measures they consider appropriate for their control system environment:\n\n- Place control systems in a dedicated control network containing control systems only.\n- Locate control networks and systems behind firewalls and separate them from any other networks like business networks and the Internet.\n- Block any inbound Internet traffic destined for the control networks/systems. Place remote access systems used for remote control system access outside the control network.\n- Limit outbound Internet traffic originating from control systems/networks as much as possible. If control systems must talk to the Internet, tailor firewall rules to required resources - allow only source IPs, destination IPs and services/destination ports which control systems definitely need to use for nor-mal control operation.\n- If Internet access is required on occasion only, disable relevant firewall rules and enable them during the time window of required Internet access only. If supported by your firewall, define an expiry date and time for such rules \u2013 after the expiry date and time, the firewall will disable the rule automatically.\n- Limit exposure of control networks/systems to internal systems. Tailor firewall rules allowing traffic from internal systems to control networks/systems to allow only source IPs, destination IPs and services/destination ports which are definitely required for normal control operation.\n- Create strict firewall rules to filter malicious network traffic targeting control system vulnerabilities (\"exploit traffic\"). Exploit traffic may use network communication features like source routing, IP fragmentation and/or IP tunneling. If such features are not required for normal control operation, block them on your firewall.\n- If supported by your firewall, apply additional filters to allowed traffic which provide protection for control networks/systems. Such filters are provided by advanced firewall features like Application Control and Anti-Virus.\n- Use Intrusion Detection Systems (IDS) or Intrusion Preventions Systems (IPS) to detect/block control system-specific exploit traffic. Consider using IPS rules protecting against control system exploits.\n- When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Please ensure that VPN solutions are updated to the most current version available.\n- In case you want to filter internal control network traffic, consider using solutions supporting Intra-LAN traffic control like VLAN access control lists.\n- Harden your control systems by enabling only the ports, services and software required for normal control operation. Disable all other ports and disable/uninstall all other services and software.\n- If possible, limit the permissions of user accounts, software processes and devices to the permissions required for normal control operation.\n- Use trusted, patched software and malware protection solutions. Interact with trusted web sites and trusted email attachments only.\n- Ensure all nodes are always up to date in terms of installed software, operating system and firmware patches as well as anti-virus and firewall.\n- Protect control systems from physical access by unauthorized personnel e.g. by placing them in locked switch cabinets.",
+        "title": "General security recommendations"
+      },
+      {
+        "category": "other",
+        "text": "ABB has a rigorous internal cyber security continuous improvement process which involves regular testing with industry leading tools and periodic assessments to identify potential product issues. Occasionally an issue is determined to be a design or coding flaw with implications that may impact product cyber security.\n\nWhen a potential product vulnerability is identified or reported, ABB immediately initiates our vulnerability handling process. This entails validating if the issue is in fact a product issue, identifying root causes, determining what related products may be impacted, developing a remediation, and notifying end users and governmental organizations (e.g. ICS-CERT).\n\nThe resulting Cyber Security Advisory intends to notify customers of the vulnerability and provide details on which products are impacted, how to mitigate the vulnerability or explain workarounds that minimize the potential risk as much as possible. The release of a Cyber Security Advisory should not be misconstrued as an affirmation or indication of an active threat or ongoing campaign targeting the products mentioned here. If ABB is aware of any specific threats, it will be clearly mentioned in the communication.\n\nThe publication of this Cyber Security Advisory is an example of ABB\u2019s commitment to the user community in support of this critical topic. Responsible disclosure is an important element in the chain of trust we work to maintain with our many customers. The release of an Advisory provides timely information which is essential to help ensure our customers are fully informed.",
+        "title": "Purpose"
+      },
+      {
+        "category": "faq",
+        "text": "What is the scope of vulnerability?\n- An attacker who successfully exploited this vulnerability could insert and run arbitrary code in an affected system node.\n\nWhat causes the vulnerability?\n- The vulnerability is caused by not having restricted permission on an application directory where DLL files are stored.\n\nWhat is Advant Master Online Builder?\n- Online Builder is part of Control Builder A, being a set of applications for configuration and programming of Advant Master controllers. Online Builder is also part of 800xA for Advant Master, an extension package to System 800xA connecting to Advant Master controllers.\n\nWhat might an attacker use the vulnerability to do?\n- An attacker who successfully exploited this vulnerability can run arbitrary code in an affected node.\n\nHow could an attacker exploit the vulnerability?\n- An attacker who obtains the necessary access could exploit vulnerability by placing malicious DLL\u00b4s in the unrestricted application directory, leading to unauthorized code execution and compromising system integrity.\n\nCould the vulnerability be exploited remotely?\n- No, to exploit this vulnerability an attacker would need to have physical access to an affected system node.\n\nCan functional safety be affected by an exploit of this vulnerability?\n- No.\n\nWhat does the update do?\n- The update of the Online Builder (ONB) resolves the vulnerability by adding restrictions to the application folder, requiring authentication.\n\nWhen this security advisory was issued, had this vulnerability been publicly disclosed?\n- No, ABB identified this vulnerability through its internal security assessment and verification processes.\n\nWhen this security advisory was issued, had ABB received any reports that this vulnerability was being exploited?\n- No, ABB had not received any information indicating that this vulnerability had been exploited when this security advisory was originally issued.",
+        "title": "Frequently Asked Questions"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of ABB PSIRT 7PAA020047 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact ABB PSIRT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of these vulnerabilities.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ABB CYBERSECURITY ADVISORY - CSAF Version ",
+        "url": "https://psirt.abb.com/csaf/2026/7paa020047.json"
+      },
+      {
+        "category": "self",
+        "summary": "ABB CYBERSECURITY ADVISORY - PDF Version ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=7PAA020047&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-195-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-195-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-195-01 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-195-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "ABB Advant Master Online Builder",
+    "tracking": {
+      "current_release_date": "2026-07-14T06:00:00.000000Z",
+      "generator": {
+        "date": "2026-07-08T14:54:44.351495Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-195-01",
+      "initial_release_date": "2026-06-23T00:30:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2026-06-23T00:30:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial version."
+        },
+        {
+          "date": "2026-07-14T06:00:00.000000Z",
+          "legacy_version": "CISA Republication",
+          "number": "2",
+          "summary": "Initial CISA Republication of ABB PSIRT 7PAA020047 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "2"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=1.4/4",
+                "product": {
+                  "name": "ABB Control Builder A <=1.4/4",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.4/5",
+                "product": {
+                  "name": "ABB Control Builder A 1.4/5",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Control Builder A"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=6.0.3-1",
+                "product": {
+                  "name": "ABB 800xA for Advant Master <=6.0.3-1",
+                  "product_id": "CSAFPID-0003"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<=6.1.1-1",
+                "product": {
+                  "name": "ABB 800xA for Advant Master <=6.1.1-1",
+                  "product_id": "CSAFPID-0004"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6.1.1-3",
+                "product": {
+                  "name": "ABB 800xA for Advant Master 6.1.1-3",
+                  "product_id": "CSAFPID-0005"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6.1.1-5",
+                "product": {
+                  "name": "ABB 800xA for Advant Master 6.1.1-5",
+                  "product_id": "CSAFPID-0006"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6.2.0-1",
+                "product": {
+                  "name": "ABB 800xA for Advant Master 6.2.0-1",
+                  "product_id": "CSAFPID-0007"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6.2.0-3",
+                "product": {
+                  "name": "ABB 800xA for Advant Master 6.2.0-3",
+                  "product_id": "CSAFPID-0008"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6.1.1-2",
+                "product": {
+                  "name": "ABB 800xA for Advant Master 6.1.1-2",
+                  "product_id": "CSAFPID-0009"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6.1.1-4",
+                "product": {
+                  "name": "ABB 800xA for Advant Master 6.1.1-4",
+                  "product_id": "CSAFPID-0010"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6.2.0-2",
+                "product": {
+                  "name": "ABB 800xA for Advant Master 6.2.0-2",
+                  "product_id": "CSAFPID-0011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "800xA for Advant Master"
+          }
+        ],
+        "category": "vendor",
+        "name": "ABB"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-13162",
+      "cwe": {
+        "id": "CWE-427",
+        "name": "Uncontrolled Search Path Element"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "The application improperly handles the search path for loading DLL\u00b4s, potentially allowing unauthorized libraries from untrusted directories. An attacker who obtains the necessary access could exploit the vulnerability leading to unauthorized code execution and compromising system integrity.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0006",
+          "CSAFPID-0008"
+        ],
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0007"
+        ],
+        "known_not_affected": [
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2025-13162",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13162"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-13162"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/427.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:H/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "ABB has investigated the vulnerability and remediated it in the newly released versions. The vulnerability has been resolved in the product versions listed as fixed in the advisory.\n\n- Version 6.1.1-2 does not contain this vulnerability and therefore no update is required. The vulnerability was again introduced in 6.1.1-3 when an older ONB version was included in the release media.\n\n- Version 6.1.1-4 do not contain this vulnerability but present version 6.1.1-3 by 800xA System Installer and System Configuration Console (SCC). Version 6.1.1-4 is therefore withdrawn.\n\n- Version 6.2.0-2 do not contain this vulnerability but present version 6.2.0-1 by 800xA System Installer and System Configuration Console (SCC). Version 6.2.0-2 is therefore withdrawn.\n\nABB recommends that customers apply the update at their earliest convenience.\n\n- Control Builder A: It is recommended to update Control Builder A to version 1.4/5 or later.\n- 800xA for Advant Master:\n   - Versions 6.0.3-1 and earlier,\n   - Versions 6.1.1-1 and earlier,\n   - Versions 6.1.1-2, 6.1.1-3, and 6.1.1-4\n   should be updated to version 6.1.1-5 or later.\n- 800xA for Advant Master:\n  - Versions 6.2.0-1 and 6.2.0-2\nshould be updated to version 6.2.0-3 or later.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Since it is required that the attacker has access to the system, it is important that all users that have access to the system are managed as recommended by ABB guidelines.\n- Allow only authorized users to log on to the system and enforce strong passwords that are changed regularly.\n- Restrict temporary connection of portable computers, USB memory devices and other removable data carriers. Computers that can be physically accessed by regular users should have ports for removable data carriers disabled or at least managed to only allow intended device types.\n\nFor more information on recommended practices, see [1].",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0007"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "The recommendation is to upgrade to a version where the vulnerability is corrected. If an upgrade Is not possible and a workaround is needed, contact ABB Support.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0007"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "HIGH",
+            "attackVector": "LOCAL",
+            "availabilityImpact": "NONE",
+            "baseScore": 4.4,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 4.4,
+            "environmentalSeverity": "MEDIUM",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 4.4,
+            "temporalSeverity": "MEDIUM",
+            "userInteraction": "REQUIRED",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:H/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0007"
+          ]
+        }
+      ],
+      "title": "CVE-2025-13162"
+    }
+  ]
+}

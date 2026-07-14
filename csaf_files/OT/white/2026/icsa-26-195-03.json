@@ -1,0 +1,613 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "names": [
+          "Angelo Catalani"
+        ],
+        "organization": "Italian National Cybersecurity Agency (ACN)",
+        "summary": "responsibly disclosing the vulnerabilities and providing valuable input on product improvements."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "ABB became aware of vulnerability in the products versions listed as affected in the advisory. An update is available that resolves the reported vulnerabilities. \n\nAn attacker who successfully exploited any of these vulnerabilities could potentially compromise the system in different ways.\n",
+        "title": "Summary"
+      },
+      {
+        "category": "other",
+        "text": "For additional instructions and support please contact your local ABB service organization. For contact information, see www.abb.com/contactcenters.\n\nInformation about ABB\u2019s cyber security program and capabilities can be found at www.abb.com/cybersecurity.",
+        "title": "Support"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The information in this document is subject to change without notice, and should not be construed as a commitment by ABB.\n\nABB provides no warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, for the information contained in this document, and assumes no responsibility for any errors that may appear in this document. In no event shall ABB or any of its suppliers be liable for direct, indirect, special, incidental or consequential damages of any nature or kind arising from the use of this document, or from the use of any hardware or software described in this document, even if ABB or its suppliers have been advised of the possibility of such damages.\n\nThis document and parts hereof must not be reproduced or copied without written permission from ABB, and the contents hereof must not be imparted to a third party nor used for any unauthorized purpose.\n\nAll rights to registrations and trademarks reside with their respective owners.\n",
+        "title": "Notice"
+      },
+      {
+        "category": "other",
+        "text": "For any installation of software-related ABB products we strongly recommend the following (non-exhaustive) list of cyber security practices:\n- Isolate special purpose networks (e.g. for automation systems) and remote devices behind firewalls and separate them from any general-purpose network (e.g. office or home networks).\n- Install physical controls so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.\n- Never connect programming software or computers containing programing software to any net-work other than the network for the devices that it is intended for.\n- Scan all data imported into your environment before use to detect potential malware infections.\n- Minimize network exposure for all applications and endpoints to ensure that they are not accessible from the Internet unless they are designed for such exposure and the intended use requires such.\n- Ensure all nodes are always up to date in terms of installed software, operating system, and firmware patches as well as anti-virus and firewall.\n- When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.\n",
+        "title": "General security recommendations"
+      },
+      {
+        "category": "other",
+        "text": "ABB has a rigorous internal cyber security continuous improvement process which involves regular testing with industry leading tools and periodic assessments to identify potential product issues. Occasionally an issue is determined to be a design or coding flaw with implications that may impact product cyber security.\n\nWhen a potential product vulnerability is identified or reported, ABB immediately initiates our vulnerability handling process. This entails validating if the issue is in fact a product issue, identifying root causes, determining what related products may be impacted, developing a remediation, and notifying end users and governmental organizations.\n\nThe resulting Cyber Security Advisory intends to notify customers of the vulnerability and provide details on which products are impacted, how to mitigate the vulnerability or explain workarounds that minimize the potential risk as much as possible. The release of a Cyber Security Advisory should not be misconstrued as an affirmation or indication of an active threat or ongoing campaign targeting the products mentioned here. If ABB is aware of any specific threats, it will be clearly mentioned in the communication.\n\nThe publication of this Cyber Security Advisory is an example of ABB\u2019s commitment to the user community in support of this critical topic. Responsible disclosure is an important element in the chain of trust we work to maintain with our many customers. The release of an Advisory provides timely information which is essential to help ensure our customers are fully informed.",
+        "title": "Purpose"
+      },
+      {
+        "category": "faq",
+        "text": "What causes the vulnerability?\n- The vulnerabilities are caused by:\n   - Wrong configuration in T-MAC Plus IIS Server.\n   - Wrong configuration of privileges of users.\n   - Lack of encryption in communication protocol.\n\nWhat is T-MAC Plus?\n- T-MAC Plus is a Terminal Management System (TMS) that handles the different operations (receipt and dispatch product, access control, product movement in the tank farm, \u2026) in a terminal. It is applicable to different type of products such as chemical and petroleum terminals, pipeline or refinery tankage, bulk plants or hydrogen terminals. \n\n  The following components are affected: \n   - TMAC Plus Web application\n   - Communication protocol with Card Readers\n\nWhat might an attacker use the vulnerability to do?\n- An attacker who successfully exploited this vulnerability could cause the affected system node to stop or become inaccessible and allow the attacker to insert and run arbitrary code.\n\nHow could an attacker exploit the vulnerability?\n- An attacker could try to exploit the vulnerability by creating a specially crafted message and sending the message to an affected system node. This would require that the attacker has access to the system network, by connecting to the network directly. Recommended practices help mitigate such attacks, see section Mitigating Factors.\n\nCould the vulnerability be exploited remotely? \n- No, to exploit this vulnerability an attacker would need to have physical access to an affected system node.\n\nCan functional safety be affected by an exploit of this vulnerability?\n- While these vulnerabilities primarily impact confidentiality, integrity, and availability, they do not directly affect functional safety in the traditional sense\n\nWhat does the update do?\n- The update removes the vulnerability by modifying the way that the T-MAC Plus web application and the communication protocol are configured.\n\nWhen this security advisory was issued, had this vulnerability been publicly disclosed?\n- No, ABB received information about this vulnerability through responsible disclosure.\n\nWhen this security advisory was issued, had ABB received any reports that this vulnerability was being exploited?\n- No, ABB had not received any information indicating that this vulnerability had been exploited when this security advisory was originally.\n",
+        "title": "Frequently Asked Questions"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of ABB PSIRT 9AKK108472A7840 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact ABB PSIRT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Switzerland",
+        "title": "Company headquarters location"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ABB CYBERSECURITY ADVISORY - CSAF Version ",
+        "url": "https://psirt.abb.com/csaf/2026/9akk108472a7840.json"
+      },
+      {
+        "category": "self",
+        "summary": "ABB CYBERSECURITY ADVISORY - PDF Version ",
+        "url": "https://search.abb.com/library/Download.aspx?DocumentID=9AKK108472A7840&LanguageCode=en&DocumentPartId=&Action=Launch"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-195-03 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-195-03.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-195-03 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-195-03"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "ABB T-MAC Plus",
+    "tracking": {
+      "current_release_date": "2026-07-14T06:00:00.000000Z",
+      "generator": {
+        "date": "2026-07-08T14:54:44.089396Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-195-03",
+      "initial_release_date": "2026-06-03T00:30:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2026-06-03T00:30:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial version."
+        },
+        {
+          "date": "2026-07-14T06:00:00.000000Z",
+          "legacy_version": "CISA Republication",
+          "number": "2",
+          "summary": "Initial CISA Republication of ABB PSIRT 9AKK108472A7840 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "2"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "4.0-24",
+                "product": {
+                  "name": "ABB T-MAC Plus 4.0-24",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "4.0-25",
+                "product": {
+                  "name": "ABB T-MAC Plus 4.0-25",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "T-MAC Plus"
+          }
+        ],
+        "category": "vendor",
+        "name": "ABB"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2025-14771",
+      "cwe": {
+        "id": "CWE-552",
+        "name": "Files or Directories Accessible to External Parties"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "File Disclosure in ABB T-MAC Plus web application allows authenticated users to exfiltrate files containing sensitive information via crafted HTTP GET request.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002"
+        ],
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2025-14771",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14771"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-14771"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/552.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "ABB has investigated these vulnerabilities to provide adequate protection to customers. The problem is corrected in the following product versions:\n\nT-MAC Plus version 4.0-25\n\nABB recommends that customers apply the update at earliest convenience.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "The misconfigurations on the IIS server, which were reported to security auditing, have been corrected. File Browsing Feature was enabled on that IIS server. That feature along with the default IIS site has been removed.\n",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "Workarounds are specific measures that a user can take to help block an attack, for example, temporarily disabling the vulnerable feature may remove the exposure with well-known impact on functionality. ABB has tested the following workarounds. Although these workarounds will not correct the underlying vulnerability, they can help block known attack vectors. When a workaround reduces functionality, this is identified below as \u201cImpact of workaround\u201d.  ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 9.9,
+            "baseSeverity": "CRITICAL",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 10,
+            "environmentalSeverity": "CRITICAL",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "CHANGED",
+            "temporalScore": 9.9,
+            "temporalSeverity": "CRITICAL",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2025-14771"
+    },
+    {
+      "cve": "CVE-2025-14772",
+      "cwe": {
+        "id": "CWE-639",
+        "name": "Authorization Bypass Through User-Controlled Key"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "Broken access controls in ABB T-MAC Plus web application allows unprivileged users to performs administrative operations",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002"
+        ],
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2025-14772",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14772"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-14772"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/639.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "ABB has investigated these vulnerabilities to provide adequate protection to customers. The problem is corrected in the following product versions:\n\nT-MAC Plus version 4.0-25\n\nABB recommends that customers apply the update at earliest convenience.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "ABB T-MAC Plus web application supports several classes of users (e.g., Admin, Customer, Operator, etc.) with different roles. An authenticated user with low privileges (e.g., Customer) can execute administrative operations. The privileges associated to the different users have been revised and applied correctly.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "Workarounds are specific measures that a user can take to help block an attack, for example, temporarily disabling the vulnerable feature may remove the exposure with well-known impact on functionality. ABB has tested the following workarounds. Although these workarounds will not correct the underlying vulnerability, they can help block known attack vectors. When a workaround reduces functionality, this is identified below as \u201cImpact of workaround\u201d.  ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8.8,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 8.8,
+            "environmentalSeverity": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 8.8,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2025-14772"
+    },
+    {
+      "cve": "CVE-2025-14773",
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "Stored Cross-Site Scripting (XSS) in ABB T-MAC Plus web application allows authenticated users to execute arbitrary HTML or JavaScript code on victims browser.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002"
+        ],
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2025-14773",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14773"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-14773"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/79.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "ABB has investigated these vulnerabilities to provide adequate protection to customers. The problem is corrected in the following product versions:\n\nT-MAC Plus version 4.0-25\n\nABB recommends that customers apply the update at earliest convenience.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "A DOM-based XSS vulnerability is present. If a malicious actor gains access to the operations network and can create or edit an existing entity, they could insert malicious JavaScript code to be executed in the web forms. New T-MAC Plus version 4.0-25 will correct the vulnerability.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "Workarounds are specific measures that a user can take to help block an attack, for example, temporarily disabling the vulnerable feature may remove the exposure with well-known impact on functionality. ABB has tested the following workarounds. Although these workarounds will not correct the underlying vulnerability, they can help block known attack vectors. When a workaround reduces functionality, this is identified below as \u201cImpact of workaround\u201d.  ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 8,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "HIGH",
+            "environmentalScore": 8,
+            "environmentalSeverity": "HIGH",
+            "integrityImpact": "HIGH",
+            "privilegesRequired": "LOW",
+            "scope": "UNCHANGED",
+            "temporalScore": 8,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "REQUIRED",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2025-14773"
+    },
+    {
+      "cve": "CVE-2025-14774",
+      "cwe": {
+        "id": "CWE-863",
+        "name": "Incorrect Authorization"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "Insecure network protocol in ABB T-MAC Plus allows unauthenticated attackers to perform a denial-of-service (DoS) of the Card Reader service.",
+          "title": "CVE description"
+        }
+      ],
+      "product_status": {
+        "fixed": [
+          "CSAFPID-0002"
+        ],
+        "known_affected": [
+          "CSAFPID-0001"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "NVD - CVE-2025-14774",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14774"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-14774"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/863.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "ABB has investigated these vulnerabilities to provide adequate protection to customers. The problem is corrected in the following product versions:\n\nT-MAC Plus version 4.0-25\n\nABB recommends that customers apply the update at earliest convenience.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "If a malicious actor gains physical access to a serial device, disables it, connects a malicious device with same IP address, and sends a specially crafted message, the service responsible for communicating with the device will be blocked until a manual restart is performed. New T-MAC Plus version 4.0-25 will correct the vulnerability.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        },
+        {
+          "category": "workaround",
+          "details": "Workarounds are specific measures that a user can take to help block an attack, for example, temporarily disabling the vulnerable feature may remove the exposure with well-known impact on functionality. ABB has tested the following workarounds. Although these workarounds will not correct the underlying vulnerability, they can help block known attack vectors. When a workaround reduces functionality, this is identified below as \u201cImpact of workaround\u201d.  ",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "ADJACENT_NETWORK",
+            "availabilityImpact": "HIGH",
+            "baseScore": 7.4,
+            "baseSeverity": "HIGH",
+            "confidentialityImpact": "NONE",
+            "environmentalScore": 7.4,
+            "environmentalSeverity": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "CHANGED",
+            "temporalScore": 7.4,
+            "temporalSeverity": "HIGH",
+            "userInteraction": "NONE",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "title": "CVE-2025-14774"
+    }
+  ]
+}
