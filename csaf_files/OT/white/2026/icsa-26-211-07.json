@@ -1,0 +1,2576 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "names": [
+          "Alessandro Di Pinto",
+          "Giovanni Dini Gentilini",
+          "Luca Cremona",
+          "Gabriele Quagliarella"
+        ],
+        "organization": "Nozomi Networks, Inc.",
+        "summary": "reported this vulnerability to Mitsubishi Electric"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "Successful exploitation of this vulnerability could allow an attacker with access to the same network segment to tamper with communication data in the affected product by sending specially crafted packets under specific timing conditions. This could allow the attacker to cause a denial-of-service (DoS) condition in the affected product by interfering with its control function or causing it to operate incorrectly.",
+        "title": "Advisory Summary"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Japan",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of Mitsubishi Electric 2026-005 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Mitsubishi Electric directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of these vulnerabilities.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-211-07 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-211-07.json"
+      },
+      {
+        "category": "self",
+        "summary": "Mitsubishi Electric Advisory 2026-005",
+        "url": "https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-005_en.pdf"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-211-07 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-211-07"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "Mitsubishi Electric CC-Link IE TSN Communication Protocol",
+    "tracking": {
+      "current_release_date": "2026-07-30T06:00:00.000000Z",
+      "generator": {
+        "date": "2026-07-29T18:21:10.298028Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-211-07",
+      "initial_release_date": "2026-07-30T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2026-07-30T00:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial Publication"
+        },
+        {
+          "date": "2026-07-30T06:00:00.000000Z",
+          "legacy_version": "CISA Republication",
+          "number": "2",
+          "summary": "Initial CISA Republication of Mitsubishi Electric 2026-005 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "2"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric MELSEC MX Controller MX-R model MXR300-16: vers:all/*",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric MELSEC MX Controller MX-R model MXR300-16"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric MELSEC MX Controller MX-R model MXR300-32: vers:all/*",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric MELSEC MX Controller MX-R model MXR300-32"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric MELSEC MX Controller MX-R model MXR300-64: vers:all/*",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric MELSEC MX Controller MX-R model MXR300-64"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric MELSEC MX Controller MX-R model MXR500-128: vers:all/*",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric MELSEC MX Controller MX-R model MXR500-128"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric MELSEC MX Controller MX-R model MXR500-256: vers:all/*",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric MELSEC MX Controller MX-R model MXR500-256"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric MELSEC MX Controller MX-F model MXF100-8-N32: vers:all/*",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric MELSEC MX Controller MX-F model MXF100-8-N32"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric MELSEC MX Controller MX-F model MXF100-8-P32: vers:all/*",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric MELSEC MX Controller MX-F model MXF100-8-P32"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric MELSEC MX Controller MX-F model MXF100-16-N32: vers:all/*",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric MELSEC MX Controller MX-F model MXF100-16-N32"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric MELSEC MX Controller MX-F model MXF100-16-P32: vers:all/*",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric MELSEC MX Controller MX-F model MXF100-16-P32"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Master/local module RJ71GN11-T2: vers:all/*",
+                  "product_id": "CSAFPID-0010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Master/local module RJ71GN11-T2"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Master/local module RJ71GN11-SX: vers:all/*",
+                  "product_id": "CSAFPID-0011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Master/local module RJ71GN11-SX"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Master/local module RJ71GN11-EIP: vers:all/*",
+                  "product_id": "CSAFPID-0012"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Master/local module RJ71GN11-EIP"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Master/local module FX5-CCLGN-MS: vers:all/*",
+                  "product_id": "CSAFPID-0013"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Master/local module FX5-CCLGN-MS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric CC-Link IE TSN interface board NZ81GN11-SX: vers:all/*",
+                  "product_id": "CSAFPID-0014"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric CC-Link IE TSN interface board NZ81GN11-SX"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric CC-Link IE TSN interface board NZ81GN11-T2: vers:all/*",
+                  "product_id": "CSAFPID-0015"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric CC-Link IE TSN interface board NZ81GN11-T2"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Motion module RD78G4: vers:all/*",
+                  "product_id": "CSAFPID-0016"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Motion module RD78G4"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Motion module RD78G8: vers:all/*",
+                  "product_id": "CSAFPID-0017"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Motion module RD78G8"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Motion module RD78G16: vers:all/*",
+                  "product_id": "CSAFPID-0018"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Motion module RD78G16"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Motion module RD78G64: vers:all/*",
+                  "product_id": "CSAFPID-0019"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Motion module RD78G64"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Motion module RD78GHV: vers:all/*",
+                  "product_id": "CSAFPID-0020"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Motion module RD78GHV"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Motion module RD78GHW: vers:all/*",
+                  "product_id": "CSAFPID-0021"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Motion module RD78GHW"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Motion module FX5-40SSC-G: vers:all/*",
+                  "product_id": "CSAFPID-0022"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Motion module FX5-40SSC-G"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Motion module FX5-80SSC-G: vers:all/*",
+                  "product_id": "CSAFPID-0023"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Motion module FX5-80SSC-G"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Motion Control Board MR-EM441G: vers:all/*",
+                  "product_id": "CSAFPID-0024"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Motion Control Board MR-EM441G"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-32D: vers:all/*",
+                  "product_id": "CSAFPID-0025"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-32D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-32T: vers:all/*",
+                  "product_id": "CSAFPID-0026"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-32T"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-32TE: vers:all/*",
+                  "product_id": "CSAFPID-0027"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-32TE"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-32DT: vers:all/*",
+                  "product_id": "CSAFPID-0028"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-32DT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-32DTE: vers:all/*",
+                  "product_id": "CSAFPID-0029"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-32DTE"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-32D: vers:all/*",
+                  "product_id": "CSAFPID-0030"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-32D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-32T: vers:all/*",
+                  "product_id": "CSAFPID-0031"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-32T"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-32TE: vers:all/*",
+                  "product_id": "CSAFPID-0032"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-32TE"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-32DT: vers:all/*",
+                  "product_id": "CSAFPID-0033"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-32DT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-32DTE: vers:all/*",
+                  "product_id": "CSAFPID-0034"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-32DTE"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GNCF1-32D: vers:all/*",
+                  "product_id": "CSAFPID-0035"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GNCF1-32D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GNCF1-32T: vers:all/*",
+                  "product_id": "CSAFPID-0036"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GNCF1-32T"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GNCE3-32D: vers:all/*",
+                  "product_id": "CSAFPID-0037"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GNCE3-32D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GNCE3-32DT: vers:all/*",
+                  "product_id": "CSAFPID-0038"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GNCE3-32DT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN12A4-16D: vers:all/*",
+                  "product_id": "CSAFPID-0039"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN12A4-16D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN12A4-16DE: vers:all/*",
+                  "product_id": "CSAFPID-0040"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN12A4-16DE"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN12A2-16T: vers:all/*",
+                  "product_id": "CSAFPID-0041"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN12A2-16T"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN12A2-16TE: vers:all/*",
+                  "product_id": "CSAFPID-0042"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN12A2-16TE"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN12A42-16DT: vers:all/*",
+                  "product_id": "CSAFPID-0043"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN12A42-16DT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN12A42-16DTE: vers:all/*",
+                  "product_id": "CSAFPID-0044"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN12A42-16DTE"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-16D: vers:all/*",
+                  "product_id": "CSAFPID-0045"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-16D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-16T: vers:all/*",
+                  "product_id": "CSAFPID-0046"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-16T"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-16TE: vers:all/*",
+                  "product_id": "CSAFPID-0047"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2S1-16TE"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-16D: vers:all/*",
+                  "product_id": "CSAFPID-0048"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-16D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-16T: vers:all/*",
+                  "product_id": "CSAFPID-0049"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-16T"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-16TE: vers:all/*",
+                  "product_id": "CSAFPID-0050"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module NZ2GN2B1-16TE"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNSS2-8D: vers:all/*",
+                  "product_id": "CSAFPID-0051"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNSS2-8D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNSS2-8D-K: vers:all/*",
+                  "product_id": "CSAFPID-0052"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNSS2-8D-K"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNSS2-8TE: vers:all/*",
+                  "product_id": "CSAFPID-0053"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNSS2-8TE"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNSS2-8TE-K: vers:all/*",
+                  "product_id": "CSAFPID-0054"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNSS2-8TE-K"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNSS2-16DTE: vers:all/*",
+                  "product_id": "CSAFPID-0055"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNSS2-16DTE"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNSS2-16DTE-K: vers:all/*",
+                  "product_id": "CSAFPID-0056"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNSS2-16DTE-K"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNS12A2-14DT: vers:all/*",
+                  "product_id": "CSAFPID-0057"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNS12A2-14DT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNS12A2-16DTE: vers:all/*",
+                  "product_id": "CSAFPID-0058"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Block-type remote module with safety functions NZ2GNS12A2-16DTE"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Analog-Digital converter module NZ2GN2S-60AD4: vers:all/*",
+                  "product_id": "CSAFPID-0059"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Analog-Digital converter module NZ2GN2S-60AD4"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Analog-Digital converter module NZ2GN2B-60AD4: vers:all/*",
+                  "product_id": "CSAFPID-0060"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Analog-Digital converter module NZ2GN2B-60AD4"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Digital-Analog converter module NZ2GN2S-60DA4: vers:all/*",
+                  "product_id": "CSAFPID-0061"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Digital-Analog converter module NZ2GN2S-60DA4"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Digital-Analog converter module NZ2GN2B-60DA4: vers:all/*",
+                  "product_id": "CSAFPID-0062"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Digital-Analog converter module NZ2GN2B-60DA4"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric CC-Link IE TSN compatible coupler NZ2FT-GN: vers:all/*",
+                  "product_id": "CSAFPID-0063"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric CC-Link IE TSN compatible coupler NZ2FT-GN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric FPGA module NZ2GN2S-D41P01: vers:all/*",
+                  "product_id": "CSAFPID-0064"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric FPGA module NZ2GN2S-D41P01"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric FPGA module NZ2GN2S-D41D01: vers:all/*",
+                  "product_id": "CSAFPID-0065"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric FPGA module NZ2GN2S-D41D01"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric FPGA module NZ2GN2S-D41PD02: vers:all/*",
+                  "product_id": "CSAFPID-0066"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric FPGA module NZ2GN2S-D41PD02"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Tension meter LM7-1LG: vers:all/*",
+                  "product_id": "CSAFPID-0067"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Tension meter LM7-1LG"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Tension meter LM7-2LG: vers:all/*",
+                  "product_id": "CSAFPID-0068"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Tension meter LM7-2LG"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-J5-G: vers:all/*",
+                  "product_id": "CSAFPID-0069"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-J5-G"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-J5W-G: vers:all/*",
+                  "product_id": "CSAFPID-0070"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-J5W-G"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-J5-G-HS: vers:all/*",
+                  "product_id": "CSAFPID-0071"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-J5-G-HS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-J5-G-RJ: vers:all/*",
+                  "product_id": "CSAFPID-0072"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-J5-G-RJ"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-J5-G-LL: vers:all/*",
+                  "product_id": "CSAFPID-0073"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-J5-G-LL"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-J5D-G4 : vers:all/*",
+                  "product_id": "CSAFPID-0074"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-J5D-G4 "
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-MD333G: vers:all/*",
+                  "product_id": "CSAFPID-0075"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric AC Servo MELSERVO-J5 MR-MD333G"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric AC Servo MELSERVO-JET MR-JET-G: vers:all/*",
+                  "product_id": "CSAFPID-0076"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric AC Servo MELSERVO-JET MR-JET-G"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric AC Servo MELSERVO-JET MR-JET-G4-HS: vers:all/*",
+                  "product_id": "CSAFPID-0077"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric AC Servo MELSERVO-JET MR-JET-G4-HS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Inverter FR-A800/F800/E800 Series FR-A8NCG: vers:all/*",
+                  "product_id": "CSAFPID-0078"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Inverter FR-A800/F800/E800 Series FR-A8NCG"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Inverter FR-A800/F800/E800 Series FR-A8NCG-S: vers:all/*",
+                  "product_id": "CSAFPID-0079"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Inverter FR-A800/F800/E800 Series FR-A8NCG-S"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Inverter FR-A800/F800/E800 Series FR-A800-GN: vers:all/*",
+                  "product_id": "CSAFPID-0080"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Inverter FR-A800/F800/E800 Series FR-A800-GN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Inverter FR-A800/F800/E800 Series FR-E800-E: vers:all/*",
+                  "product_id": "CSAFPID-0081"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Inverter FR-A800/F800/E800 Series FR-E800-E"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Inverter FR-A800/F800/E800 Series FR-E800-SCE: vers:all/*",
+                  "product_id": "CSAFPID-0082"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Inverter FR-A800/F800/E800 Series FR-E800-SCE"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Industrial Robot CR800-D series controller Network Base Card 2F-DQ535-TSN: vers:all/*",
+                  "product_id": "CSAFPID-0083"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Industrial Robot CR800-D series controller Network Base Card 2F-DQ535-TSN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric CC-Link IE TSN expansion unit FCU8-EX569: vers:all/*",
+                  "product_id": "CSAFPID-0084"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric CC-Link IE TSN expansion unit FCU8-EX569"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric CC-Link IE TSN-CC-Link IE Field Network bridge module NZ2GN-GFB: vers:all/*",
+                  "product_id": "CSAFPID-0085"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric CC-Link IE TSN-CC-Link IE Field Network bridge module NZ2GN-GFB"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric CC-Link IE TSN-AnyWireASLINK bridge module NZ2AW1GNAL: vers:all/*",
+                  "product_id": "CSAFPID-0086"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric CC-Link IE TSN-AnyWireASLINK bridge module NZ2AW1GNAL"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Energy Measuring Unit CC-Link IE TSN Communication Unit EMU4-CM-TSN: vers:all/*",
+                  "product_id": "CSAFPID-0087"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Energy Measuring Unit CC-Link IE TSN Communication Unit EMU4-CM-TSN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Industrial Computer MELIPC series MI2532-W: vers:all/*",
+                  "product_id": "CSAFPID-0088"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Industrial Computer MELIPC series MI2532-W"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Industrial Computer MELIPC series MI2332-W: vers:all/*",
+                  "product_id": "CSAFPID-0089"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Industrial Computer MELIPC series MI2332-W"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric GOT3000 Series GT3715-FHCBD: vers:all/*",
+                  "product_id": "CSAFPID-0090"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GOT3000 Series GT3715-FHCBD"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric GOT3000 Series GT3712-WXCBD: vers:all/*",
+                  "product_id": "CSAFPID-0091"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GOT3000 Series GT3712-WXCBD"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric GOT3000 Series GT3715-XRBA: vers:all/*",
+                  "product_id": "CSAFPID-0092"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GOT3000 Series GT3715-XRBA"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric GOT3000 Series GT3715-XRBD: vers:all/*",
+                  "product_id": "CSAFPID-0093"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GOT3000 Series GT3715-XRBD"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric GOT3000 Series GT3712-XRBA: vers:all/*",
+                  "product_id": "CSAFPID-0094"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GOT3000 Series GT3712-XRBA"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric GOT3000 Series GT3712-XRBD: vers:all/*",
+                  "product_id": "CSAFPID-0095"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GOT3000 Series GT3712-XRBD"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric GOT3000 Series GT3710-XRBA: vers:all/*",
+                  "product_id": "CSAFPID-0096"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GOT3000 Series GT3710-XRBA"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric GOT3000 Series GT3710-XRBD: vers:all/*",
+                  "product_id": "CSAFPID-0097"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GOT3000 Series GT3710-XRBD"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric GOT3000 Series GT3708-XRBA: vers:all/*",
+                  "product_id": "CSAFPID-0098"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GOT3000 Series GT3708-XRBA"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric GOT3000 Series GT3708-XRBD: vers:all/*",
+                  "product_id": "CSAFPID-0099"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GOT3000 Series GT3708-XRBD"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric CC-Link IE TSN Communication Unit GT25-J71GN13-T2: vers:all/*",
+                  "product_id": "CSAFPID-0100"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric CC-Link IE TSN Communication Unit GT25-J71GN13-T2"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Motion Control Software SWM-G: vers:all/*",
+                  "product_id": "CSAFPID-0101"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Motion Control Software SWM-G"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Motion Control Software SWM-G-N1: vers:all/*",
+                  "product_id": "CSAFPID-0102"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Motion Control Software SWM-G-N1"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric CC-Link IE TSN Communication Software for Windows SW1DND-CCIETCT-M: vers:all/*",
+                  "product_id": "CSAFPID-0103"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric CC-Link IE TSN Communication Software for Windows SW1DND-CCIETCT-M"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Master/Local module Designated communication LSI DeviceKit NZ2KT-NPETNG51: vers:all/*",
+                  "product_id": "CSAFPID-0104"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Master/Local module Designated communication LSI DeviceKit NZ2KT-NPETNG51"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Master/Local module Designated communication LSI NZ2GACP610-60: vers:all/*",
+                  "product_id": "CSAFPID-0105"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Master/Local module Designated communication LSI NZ2GACP610-60"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Remote Station Communication LSI with GbE-PHY NZ2GACP620-60: vers:all/*",
+                  "product_id": "CSAFPID-0106"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Remote Station Communication LSI with GbE-PHY NZ2GACP620-60"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Remote Station Communication LSI with GbE-PHY NZ2GACP620-300: vers:all/*",
+                  "product_id": "CSAFPID-0107"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Remote Station Communication LSI with GbE-PHY NZ2GACP620-300"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Remote Station Communication LSI with GbE-PHY NZ2GACP621-90: vers:all/*",
+                  "product_id": "CSAFPID-0108"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Remote Station Communication LSI with GbE-PHY NZ2GACP621-90"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Remote Station Communication LSI with GbE-PHY NZ2GACP621-720: vers:all/*",
+                  "product_id": "CSAFPID-0109"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Remote Station Communication LSI with GbE-PHY NZ2GACP621-720"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric CC-Link IE TSN Master/Local module Designated communication LSI SDK SW1DNN-GN610SRC-M: vers:all/*",
+                  "product_id": "CSAFPID-0110"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric CC-Link IE TSN Master/Local module Designated communication LSI SDK SW1DNN-GN610SRC-M"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Remote station software development kit SW1DNC-GNSDK1S-M: vers:all/*",
+                  "product_id": "CSAFPID-0111"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Remote station software development kit SW1DNC-GNSDK1S-M"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Remote station software development kit SW1DNC-GNSDK2S-M: vers:all/*",
+                  "product_id": "CSAFPID-0112"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Remote station software development kit SW1DNC-GNSDK2S-M"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Liner Track System MTR-S series Linear track control module MTR-SCU00-4G: vers:all/*",
+                  "product_id": "CSAFPID-0113"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Liner Track System MTR-S series Linear track control module MTR-SCU00-4G"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Liner Track System MTR-S series Linear track control module MTR-SCU00-PG: vers:all/*",
+                  "product_id": "CSAFPID-0114"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Liner Track System MTR-S series Linear track control module MTR-SCU00-PG"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Analysis Support Software MELSOFT VIMA SW1DNN-VIMA-M: vers:all/*",
+                  "product_id": "CSAFPID-0115"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Analysis Support Software MELSOFT VIMA SW1DNN-VIMA-M"
+          }
+        ],
+        "category": "vendor",
+        "name": "Mitsubishi Electric"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2026-13584",
+      "cwe": {
+        "id": "CWE-924",
+        "name": "Improper Enforcement of Message Integrity During Transmission in a Communication Channel"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Improper Enforcement of Message Integrity During Transmission in a Communication Channel (CWE-924) vulnerability exists in the CC-Link IE TSN communication protocol. This vulnerability could allow an attacker with access to the same network segment to tamper with communication data, such as control input and output values, by sending specially crafted packets under specific timing conditions. This could allow the attacker to cause a denial-of-service (DoS) condition in the affected product by interfering with its control function or causing it to operate incorrectly.",
+          "title": "Vulnerability Summary"
+        },
+        {
+          "category": "details",
+          "text": "SSVCv2/E:N/A:Y/T:P/2026-07-30T00:00:00Z/",
+          "title": "SSVC"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0013",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0016",
+          "CSAFPID-0017",
+          "CSAFPID-0018",
+          "CSAFPID-0019",
+          "CSAFPID-0020",
+          "CSAFPID-0021",
+          "CSAFPID-0022",
+          "CSAFPID-0023",
+          "CSAFPID-0024",
+          "CSAFPID-0025",
+          "CSAFPID-0026",
+          "CSAFPID-0027",
+          "CSAFPID-0028",
+          "CSAFPID-0029",
+          "CSAFPID-0030",
+          "CSAFPID-0031",
+          "CSAFPID-0032",
+          "CSAFPID-0033",
+          "CSAFPID-0034",
+          "CSAFPID-0035",
+          "CSAFPID-0036",
+          "CSAFPID-0037",
+          "CSAFPID-0038",
+          "CSAFPID-0039",
+          "CSAFPID-0040",
+          "CSAFPID-0041",
+          "CSAFPID-0042",
+          "CSAFPID-0043",
+          "CSAFPID-0044",
+          "CSAFPID-0045",
+          "CSAFPID-0046",
+          "CSAFPID-0047",
+          "CSAFPID-0048",
+          "CSAFPID-0049",
+          "CSAFPID-0050",
+          "CSAFPID-0051",
+          "CSAFPID-0052",
+          "CSAFPID-0053",
+          "CSAFPID-0054",
+          "CSAFPID-0055",
+          "CSAFPID-0056",
+          "CSAFPID-0057",
+          "CSAFPID-0058",
+          "CSAFPID-0059",
+          "CSAFPID-0060",
+          "CSAFPID-0061",
+          "CSAFPID-0062",
+          "CSAFPID-0063",
+          "CSAFPID-0064",
+          "CSAFPID-0065",
+          "CSAFPID-0066",
+          "CSAFPID-0067",
+          "CSAFPID-0068",
+          "CSAFPID-0069",
+          "CSAFPID-0070",
+          "CSAFPID-0071",
+          "CSAFPID-0072",
+          "CSAFPID-0073",
+          "CSAFPID-0074",
+          "CSAFPID-0075",
+          "CSAFPID-0076",
+          "CSAFPID-0077",
+          "CSAFPID-0078",
+          "CSAFPID-0079",
+          "CSAFPID-0080",
+          "CSAFPID-0081",
+          "CSAFPID-0082",
+          "CSAFPID-0083",
+          "CSAFPID-0084",
+          "CSAFPID-0085",
+          "CSAFPID-0086",
+          "CSAFPID-0087",
+          "CSAFPID-0088",
+          "CSAFPID-0089",
+          "CSAFPID-0090",
+          "CSAFPID-0091",
+          "CSAFPID-0092",
+          "CSAFPID-0093",
+          "CSAFPID-0094",
+          "CSAFPID-0095",
+          "CSAFPID-0096",
+          "CSAFPID-0097",
+          "CSAFPID-0098",
+          "CSAFPID-0099",
+          "CSAFPID-0100",
+          "CSAFPID-0101",
+          "CSAFPID-0102",
+          "CSAFPID-0103",
+          "CSAFPID-0104",
+          "CSAFPID-0105",
+          "CSAFPID-0106",
+          "CSAFPID-0107",
+          "CSAFPID-0108",
+          "CSAFPID-0109",
+          "CSAFPID-0110",
+          "CSAFPID-0111",
+          "CSAFPID-0112",
+          "CSAFPID-0113",
+          "CSAFPID-0114",
+          "CSAFPID-0115"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-13584"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:L"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/924.html"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "no_fix_planned",
+          "details": "For customers using the affected products, please refer to Mitsubishi Electric's security advisory, \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-005_en.pdf\" and take the measures described there.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063",
+            "CSAFPID-0064",
+            "CSAFPID-0065",
+            "CSAFPID-0066",
+            "CSAFPID-0067",
+            "CSAFPID-0068",
+            "CSAFPID-0069",
+            "CSAFPID-0070",
+            "CSAFPID-0071",
+            "CSAFPID-0072",
+            "CSAFPID-0073",
+            "CSAFPID-0074",
+            "CSAFPID-0075",
+            "CSAFPID-0076",
+            "CSAFPID-0077",
+            "CSAFPID-0078",
+            "CSAFPID-0079",
+            "CSAFPID-0080",
+            "CSAFPID-0081",
+            "CSAFPID-0082",
+            "CSAFPID-0083",
+            "CSAFPID-0084",
+            "CSAFPID-0085",
+            "CSAFPID-0086",
+            "CSAFPID-0087",
+            "CSAFPID-0088",
+            "CSAFPID-0089",
+            "CSAFPID-0090",
+            "CSAFPID-0091",
+            "CSAFPID-0092",
+            "CSAFPID-0093",
+            "CSAFPID-0094",
+            "CSAFPID-0095",
+            "CSAFPID-0096",
+            "CSAFPID-0097",
+            "CSAFPID-0098",
+            "CSAFPID-0099",
+            "CSAFPID-0100",
+            "CSAFPID-0101",
+            "CSAFPID-0102",
+            "CSAFPID-0103",
+            "CSAFPID-0104",
+            "CSAFPID-0105",
+            "CSAFPID-0106",
+            "CSAFPID-0107",
+            "CSAFPID-0108",
+            "CSAFPID-0109",
+            "CSAFPID-0110",
+            "CSAFPID-0111",
+            "CSAFPID-0112",
+            "CSAFPID-0113",
+            "CSAFPID-0114",
+            "CSAFPID-0115"
+          ],
+          "url": "https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-005_en.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of the affected products, Mitsubishi Electric recommends restricting physical access to the affected products and the CC-Link IE TSN network to which the affected products are connected by taking measures such as the following: (a) managing access to and from the site where the affected products are installed, (b) locking the control panel in which the affected products and/or the network devices are installed, and (c) locking the Ethernet ports such as with port lock accessories, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063",
+            "CSAFPID-0064",
+            "CSAFPID-0065",
+            "CSAFPID-0066",
+            "CSAFPID-0067",
+            "CSAFPID-0068",
+            "CSAFPID-0069",
+            "CSAFPID-0070",
+            "CSAFPID-0071",
+            "CSAFPID-0072",
+            "CSAFPID-0073",
+            "CSAFPID-0074",
+            "CSAFPID-0075",
+            "CSAFPID-0076",
+            "CSAFPID-0077",
+            "CSAFPID-0078",
+            "CSAFPID-0079",
+            "CSAFPID-0080",
+            "CSAFPID-0081",
+            "CSAFPID-0082",
+            "CSAFPID-0083",
+            "CSAFPID-0084",
+            "CSAFPID-0085",
+            "CSAFPID-0086",
+            "CSAFPID-0087",
+            "CSAFPID-0088",
+            "CSAFPID-0089",
+            "CSAFPID-0090",
+            "CSAFPID-0091",
+            "CSAFPID-0092",
+            "CSAFPID-0093",
+            "CSAFPID-0094",
+            "CSAFPID-0095",
+            "CSAFPID-0096",
+            "CSAFPID-0097",
+            "CSAFPID-0098",
+            "CSAFPID-0099",
+            "CSAFPID-0100",
+            "CSAFPID-0101",
+            "CSAFPID-0102",
+            "CSAFPID-0103",
+            "CSAFPID-0104",
+            "CSAFPID-0105",
+            "CSAFPID-0106",
+            "CSAFPID-0107",
+            "CSAFPID-0108",
+            "CSAFPID-0109",
+            "CSAFPID-0110",
+            "CSAFPID-0111",
+            "CSAFPID-0112",
+            "CSAFPID-0113",
+            "CSAFPID-0114",
+            "CSAFPID-0115"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of the affected products, Mitsubishi Electric recommends using the affected products within a trusted network where communication with untrusted networks and hosts is blocked by a firewall or similar measures, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063",
+            "CSAFPID-0064",
+            "CSAFPID-0065",
+            "CSAFPID-0066",
+            "CSAFPID-0067",
+            "CSAFPID-0068",
+            "CSAFPID-0069",
+            "CSAFPID-0070",
+            "CSAFPID-0071",
+            "CSAFPID-0072",
+            "CSAFPID-0073",
+            "CSAFPID-0074",
+            "CSAFPID-0075",
+            "CSAFPID-0076",
+            "CSAFPID-0077",
+            "CSAFPID-0078",
+            "CSAFPID-0079",
+            "CSAFPID-0080",
+            "CSAFPID-0081",
+            "CSAFPID-0082",
+            "CSAFPID-0083",
+            "CSAFPID-0084",
+            "CSAFPID-0085",
+            "CSAFPID-0086",
+            "CSAFPID-0087",
+            "CSAFPID-0088",
+            "CSAFPID-0089",
+            "CSAFPID-0090",
+            "CSAFPID-0091",
+            "CSAFPID-0092",
+            "CSAFPID-0093",
+            "CSAFPID-0094",
+            "CSAFPID-0095",
+            "CSAFPID-0096",
+            "CSAFPID-0097",
+            "CSAFPID-0098",
+            "CSAFPID-0099",
+            "CSAFPID-0100",
+            "CSAFPID-0101",
+            "CSAFPID-0102",
+            "CSAFPID-0103",
+            "CSAFPID-0104",
+            "CSAFPID-0105",
+            "CSAFPID-0106",
+            "CSAFPID-0107",
+            "CSAFPID-0108",
+            "CSAFPID-0109",
+            "CSAFPID-0110",
+            "CSAFPID-0111",
+            "CSAFPID-0112",
+            "CSAFPID-0113",
+            "CSAFPID-0114",
+            "CSAFPID-0115"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of the affected products, Mitsubishi Electric recommends appropriately configuring credentials and access privileges for network devices installed at the boundary between trusted networks and external networks, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063",
+            "CSAFPID-0064",
+            "CSAFPID-0065",
+            "CSAFPID-0066",
+            "CSAFPID-0067",
+            "CSAFPID-0068",
+            "CSAFPID-0069",
+            "CSAFPID-0070",
+            "CSAFPID-0071",
+            "CSAFPID-0072",
+            "CSAFPID-0073",
+            "CSAFPID-0074",
+            "CSAFPID-0075",
+            "CSAFPID-0076",
+            "CSAFPID-0077",
+            "CSAFPID-0078",
+            "CSAFPID-0079",
+            "CSAFPID-0080",
+            "CSAFPID-0081",
+            "CSAFPID-0082",
+            "CSAFPID-0083",
+            "CSAFPID-0084",
+            "CSAFPID-0085",
+            "CSAFPID-0086",
+            "CSAFPID-0087",
+            "CSAFPID-0088",
+            "CSAFPID-0089",
+            "CSAFPID-0090",
+            "CSAFPID-0091",
+            "CSAFPID-0092",
+            "CSAFPID-0093",
+            "CSAFPID-0094",
+            "CSAFPID-0095",
+            "CSAFPID-0096",
+            "CSAFPID-0097",
+            "CSAFPID-0098",
+            "CSAFPID-0099",
+            "CSAFPID-0100",
+            "CSAFPID-0101",
+            "CSAFPID-0102",
+            "CSAFPID-0103",
+            "CSAFPID-0104",
+            "CSAFPID-0105",
+            "CSAFPID-0106",
+            "CSAFPID-0107",
+            "CSAFPID-0108",
+            "CSAFPID-0109",
+            "CSAFPID-0110",
+            "CSAFPID-0111",
+            "CSAFPID-0112",
+            "CSAFPID-0113",
+            "CSAFPID-0114",
+            "CSAFPID-0115"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 7.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:L",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013",
+            "CSAFPID-0014",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0025",
+            "CSAFPID-0026",
+            "CSAFPID-0027",
+            "CSAFPID-0028",
+            "CSAFPID-0029",
+            "CSAFPID-0030",
+            "CSAFPID-0031",
+            "CSAFPID-0032",
+            "CSAFPID-0033",
+            "CSAFPID-0034",
+            "CSAFPID-0035",
+            "CSAFPID-0036",
+            "CSAFPID-0037",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0040",
+            "CSAFPID-0041",
+            "CSAFPID-0042",
+            "CSAFPID-0043",
+            "CSAFPID-0044",
+            "CSAFPID-0045",
+            "CSAFPID-0046",
+            "CSAFPID-0047",
+            "CSAFPID-0048",
+            "CSAFPID-0049",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055",
+            "CSAFPID-0056",
+            "CSAFPID-0057",
+            "CSAFPID-0058",
+            "CSAFPID-0059",
+            "CSAFPID-0060",
+            "CSAFPID-0061",
+            "CSAFPID-0062",
+            "CSAFPID-0063",
+            "CSAFPID-0064",
+            "CSAFPID-0065",
+            "CSAFPID-0066",
+            "CSAFPID-0067",
+            "CSAFPID-0068",
+            "CSAFPID-0069",
+            "CSAFPID-0070",
+            "CSAFPID-0071",
+            "CSAFPID-0072",
+            "CSAFPID-0073",
+            "CSAFPID-0074",
+            "CSAFPID-0075",
+            "CSAFPID-0076",
+            "CSAFPID-0077",
+            "CSAFPID-0078",
+            "CSAFPID-0079",
+            "CSAFPID-0080",
+            "CSAFPID-0081",
+            "CSAFPID-0082",
+            "CSAFPID-0083",
+            "CSAFPID-0084",
+            "CSAFPID-0085",
+            "CSAFPID-0086",
+            "CSAFPID-0087",
+            "CSAFPID-0088",
+            "CSAFPID-0089",
+            "CSAFPID-0090",
+            "CSAFPID-0091",
+            "CSAFPID-0092",
+            "CSAFPID-0093",
+            "CSAFPID-0094",
+            "CSAFPID-0095",
+            "CSAFPID-0096",
+            "CSAFPID-0097",
+            "CSAFPID-0098",
+            "CSAFPID-0099",
+            "CSAFPID-0100",
+            "CSAFPID-0101",
+            "CSAFPID-0102",
+            "CSAFPID-0103",
+            "CSAFPID-0104",
+            "CSAFPID-0105",
+            "CSAFPID-0106",
+            "CSAFPID-0107",
+            "CSAFPID-0108",
+            "CSAFPID-0109",
+            "CSAFPID-0110",
+            "CSAFPID-0111",
+            "CSAFPID-0112",
+            "CSAFPID-0113",
+            "CSAFPID-0114",
+            "CSAFPID-0115"
+          ]
+        }
+      ]
+    }
+  ]
+}
