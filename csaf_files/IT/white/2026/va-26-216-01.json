@@ -1,0 +1,596 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "IxChariot Endpoint buffer overflow",
+    "tracking": {
+      "current_release_date": "2026-08-04T17:00:43Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.15.0+build.101"
+        }
+      },
+      "id": "VA-26-216-01",
+      "initial_release_date": "2026-08-04T17:00:43Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2026-08-04T17:00:43Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "Keysight IxChariot Endpoint, Hawkeye, IxTap, IxByPass, and IxProbe contain one or more buffer overflow vulnerabilities. In the worst case, a remote unauthenticated attacker could execute arbitrary code.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Upgrade to latest versions.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-216-01.json",
+        "summary": "Vulnerability Advisory VA-26-216-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "Keysight",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "Hawkeye",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<6.0.7",
+                "product": {
+                  "name": "Keysight Hawkeye <6.0.7",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "6.0.7",
+                "product": {
+                  "name": "Keysight Hawkeye 6.0.7",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ]
+          },
+          {
+            "category": "product_name",
+            "name": "IxByPass",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<3.13.0.69",
+                "product": {
+                  "name": "Keysight IxByPass <3.13.0.69",
+                  "product_id": "CSAFPID-0003"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "3.13.0.69",
+                "product": {
+                  "name": "Keysight IxByPass 3.13.0.69",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ]
+          },
+          {
+            "category": "product_name",
+            "name": "IxChariot",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "9.5.102",
+                "product": {
+                  "name": "Keysight IxChariot 9.5.102",
+                  "product_id": "CSAFPID-0005"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<9.5.102",
+                "product": {
+                  "name": "Keysight IxChariot <9.5.102",
+                  "product_id": "CSAFPID-0006"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "10.0.254",
+                "product": {
+                  "name": "Keysight IxChariot 10.0.254",
+                  "product_id": "CSAFPID-0007"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<10.0.254",
+                "product": {
+                  "name": "Keysight IxChariot <10.0.254",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ]
+          },
+          {
+            "category": "product_name",
+            "name": "IxChariot",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "9.5.102",
+                "product": {
+                  "name": "Keysight IxChariot 9.5.102",
+                  "product_id": "CSAFPID-0009"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<9.5.102",
+                "product": {
+                  "name": "Keysight IxChariot <9.5.102",
+                  "product_id": "CSAFPID-0010"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "10.0.254",
+                "product": {
+                  "name": "Keysight IxChariot 10.0.254",
+                  "product_id": "CSAFPID-0011"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<10.0.254",
+                "product": {
+                  "name": "Keysight IxChariot <10.0.254",
+                  "product_id": "CSAFPID-0012"
+                }
+              }
+            ]
+          },
+          {
+            "category": "product_name",
+            "name": "IxChariot",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "9.5.102",
+                "product": {
+                  "name": "Keysight IxChariot 9.5.102",
+                  "product_id": "CSAFPID-0013"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<9.5.102",
+                "product": {
+                  "name": "Keysight IxChariot <9.5.102",
+                  "product_id": "CSAFPID-0014"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "10.0.254",
+                "product": {
+                  "name": "Keysight IxChariot 10.0.254",
+                  "product_id": "CSAFPID-0015"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "<10.0.254",
+                "product": {
+                  "name": "Keysight IxChariot <10.0.254",
+                  "product_id": "CSAFPID-0016"
+                }
+              }
+            ]
+          },
+          {
+            "category": "product_name",
+            "name": "IxProbe",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<3.13.0",
+                "product": {
+                  "name": "Keysight IxProbe <3.13.0",
+                  "product_id": "CSAFPID-0017"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "3.13.0",
+                "product": {
+                  "name": "Keysight IxProbe 3.13.0",
+                  "product_id": "CSAFPID-0018"
+                }
+              }
+            ]
+          },
+          {
+            "category": "product_name",
+            "name": "IxTap",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<3.13.0",
+                "product": {
+                  "name": "Keysight IxTap <3.13.0",
+                  "product_id": "CSAFPID-0019"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "3.13.0",
+                "product": {
+                  "name": "Keysight IxTap 3.13.0",
+                  "product_id": "CSAFPID-0020"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2017-20241",
+      "cwe": {
+        "id": "CWE-122",
+        "name": "Heap-based Buffer Overflow"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Keysight IxChariot Endpoint before 9.5.102 contains a heap-based buffer overflow. An unauthenticated remote attacker can send a specially crafted packet to crash the endpoint or potentially execute arbitrary code.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:T/2026-05-29T21:50:18Z/"
+        }
+      ],
+      "title": "Keysight IxChariot Endpoint heap-based buffer overflow",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0006"
+        ],
+        "fixed": [
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.keysight.com",
+          "url": "https://www.keysight.com/us/en/about/quality-and-security/security/product-and-solution-cyber-security/security-advisory-archive/security-advisory--ixchariot-vulnerability.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": " https://www.cve.org/CVERecord?id=CVE-2017-20241"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": " https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-216-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 9.5.102, released August 11, 2017.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "date": "2017-08-11T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 9.5.102, released August 11, 2017.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ],
+          "date": "2017-08-11T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "ANSSI",
+          "names": [
+            "Sébastien Charbonnier"
+          ]
+        }
+      ],
+      "release_date": "2017-08-11T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2017-20242",
+      "cwe": {
+        "id": "CWE-121",
+        "name": "Stack-based Buffer Overflow"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Keysight IxChariot Endpoint before 9.5.102 contains a stack-based buffer overflow. An unauthenticated remote attacker can send a specially crafted packet to crash the endpoint or potentially execute arbitrary code.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:T/2026-05-29T21:49:54Z/"
+        }
+      ],
+      "title": "Keysight IxChariot Endpoint stack-based buffer overflow",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0006"
+        ],
+        "fixed": [
+          "CSAFPID-0005"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-216-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2017-20242"
+        },
+        {
+          "category": "external",
+          "summary": "www.keysight.com",
+          "url": "https://www.keysight.com/us/en/about/quality-and-security/security/product-and-solution-cyber-security/security-advisory-archive/security-advisory--ixchariot-vulnerability.html"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0006"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 9.5.102, released August 11, 2017.",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "date": "2017-08-11T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 9.5.102, released August 11, 2017.",
+          "product_ids": [
+            "CSAFPID-0006"
+          ],
+          "date": "2017-08-11T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "ANSSI",
+          "names": [
+            "Sébastien Charbonnier"
+          ]
+        }
+      ],
+      "release_date": "2017-08-11T00:00:00Z"
+    },
+    {
+      "cve": "CVE-2026-49435",
+      "cwe": {
+        "id": "CWE-121",
+        "name": "Stack-based Buffer Overflow"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Keysight IxChariot Endpoint and associated products contain a stack-based buffer overflow. An unauthenticated remote attacker can send a specially crafted packet and execute arbitrary code with administrative privileges.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:T/2026-05-29T17:58:14Z/"
+        }
+      ],
+      "title": "Keysight IxChariot-related products stack-based buffer overflow",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0008",
+          "CSAFPID-0019",
+          "CSAFPID-0017",
+          "CSAFPID-0003"
+        ],
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0007",
+          "CSAFPID-0020",
+          "CSAFPID-0018",
+          "CSAFPID-0004"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.keysight.com",
+          "url": "https://www.keysight.com/us/en/lib/software-detail/computer-software/hawkeye.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.keysight.com",
+          "url": "https://www.keysight.com/us/en/about/quality-and-security/security/product-and-solution-cyber-security/security-advisory-archive/security-advisory--ixchariot-vulnerability.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.keysight.com",
+          "url": "https://www.keysight.com/us/en/lib/software-detail/computer-software/ixchariot.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.keysight.com",
+          "url": "https://www.keysight.com/us/en/lib/software-detail/instrument-firmware-software/ixprobe.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.keysight.com",
+          "url": "https://www.keysight.com/us/en/product/IXTP-CU3-T/copper-taps---ixtp-cu3-t.html"
+        },
+        {
+          "category": "external",
+          "summary": "raw.githubusercontent.com",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-216-01.json"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-49435"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0008",
+            "CSAFPID-0019",
+            "CSAFPID-0017",
+            "CSAFPID-0003"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 6.0.7.",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2026-06-26T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 6.0.7.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2026-06-26T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 10.0.254.",
+          "product_ids": [
+            "CSAFPID-0007"
+          ],
+          "date": "2026-04-30T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 10.0.254.",
+          "product_ids": [
+            "CSAFPID-0008"
+          ],
+          "date": "2026-04-30T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "ANSSI",
+          "names": [
+            "Sébastien Charbonnier"
+          ]
+        }
+      ],
+      "release_date": "2026-04-30T00:00:00Z"
+    }
+  ]
+}
