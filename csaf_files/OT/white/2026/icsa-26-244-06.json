@@ -3,7 +3,7 @@
     "acknowledgments": [
       {
         "organization": "Rockwell Automation",
-        "summary": "reported this vulnerability to CISA"
+        "summary": "reported these vulnerabilities to CISA"
       }
     ],
     "category": "csaf_security_advisory",
@@ -24,12 +24,12 @@
       },
       {
         "category": "summary",
-        "text": "Successful exploitation of this vulnerability could allow for an attacker to cause a denial-of-service condition on the product.",
+        "text": "Successful exploitation of these vulnerabilities could crash the device being accessed; an out-of-bounds write condition may allow remote code execution.",
         "title": "Advisory Summary"
       },
       {
         "category": "other",
-        "text": "Critical Manufacturing",
+        "text": "Chemical, Critical Manufacturing, Food and Agriculture, Healthcare and Public Health, Water and Wastewater Systems",
         "title": "Critical infrastructure sectors"
       },
       {
@@ -44,7 +44,7 @@
       },
       {
         "category": "general",
-        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability.",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities.",
         "title": "Recommended Practices"
       },
       {
@@ -109,7 +109,7 @@
       },
       {
         "category": "general",
-        "text": "No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. This vulnerability has a high attack complexity.",
+        "text": "No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.",
         "title": "Recommended Practices"
       }
     ],
@@ -122,13 +122,13 @@
     "references": [
       {
         "category": "self",
-        "summary": "ICS Advisory ICSA-26-202-09 JSON",
-        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-202-09.json"
+        "summary": "ICS Advisory ICSA-26-244-06 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-244-06.json"
       },
       {
         "category": "self",
-        "summary": "ICSA Advisory ICSA-26-202-09 - Web Version",
-        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-202-09"
+        "summary": "ICSA Advisory ICSA-26-244-06 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-244-06"
       },
       {
         "category": "external",
@@ -186,34 +186,28 @@
         "url": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks"
       }
     ],
-    "title": "Rockwell Automation 1734 POINT I/O (Update A)",
+    "title": "Rockwell Automation Historian ME",
     "tracking": {
       "current_release_date": "2026-09-01T06:00:00.000000Z",
       "generator": {
-        "date": "2026-08-28T19:30:48.741228Z",
+        "date": "2026-08-27T14:57:57.270750Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
         }
       },
-      "id": "ICSA-26-202-09",
-      "initial_release_date": "2026-07-21T06:00:00.000000Z",
+      "id": "ICSA-26-244-06",
+      "initial_release_date": "2026-09-01T06:00:00.000000Z",
       "revision_history": [
         {
-          "date": "2026-07-21T06:00:00.000000Z",
+          "date": "2026-09-01T06:00:00.000000Z",
           "legacy_version": "Initial",
           "number": "1",
-          "summary": "Initial Republication of Rockwell Automation Security Advisory"
-        },
-        {
-          "date": "2026-09-01T06:00:00.000000Z",
-          "legacy_version": "Update A",
-          "number": "2",
-          "summary": "Update A - Updated impact statement and CVSS scores."
+          "summary": "Initial Publication"
         }
       ],
       "status": "final",
-      "version": "2"
+      "version": "1"
     }
   },
   "product_tree": {
@@ -224,15 +218,29 @@
             "branches": [
               {
                 "category": "product_version",
-                "name": "3.023",
+                "name": "5.202",
                 "product": {
-                  "name": "Rockwell Automation 1734 POINT I/O: 3.023",
+                  "name": "Rockwell Automation Series B: 5.202",
                   "product_id": "CSAFPID-0001"
                 }
               }
             ],
             "category": "product_name",
-            "name": "1734 POINT I/O"
+            "name": "Series B"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "7.101",
+                "product": {
+                  "name": "Rockwell Automation Series C: 7.101",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Series C"
           }
         ],
         "category": "vendor",
@@ -242,80 +250,181 @@
   },
   "vulnerabilities": [
     {
-      "cve": "CVE-2026-10573",
+      "cve": "CVE-2025-12768",
       "cwe": {
-        "id": "CWE-770",
-        "name": "Allocation of Resources Without Limits or Throttling"
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "A denial-of-service security issue exists in 1734 POINT I/O module. The security issue stems from improper handling of crafted CIP messages, which can cause the module to enter a faulted state. When there is only a single IO module is attached, a restart is required to recover. When more than one I/O module is physically attached, the connection automatically recovers within ~5– 7 seconds.",
+          "text": "A security issue exists within FactoryTalk® Historian Machine Edition. An attacker with low-level authentication could exploit this vulnerability to achieveremote code execution on the affected device.",
           "title": "Vulnerability Summary"
+        },
+        {
+          "category": "details",
+          "text": "SSVCv2/E:N/A:Y/2026-08-27T06:00:00.000000Z",
+          "title": "SSVC"
         }
       ],
       "product_status": {
         "known_affected": [
-          "CSAFPID-0001"
+          "CSAFPID-0001",
+          "CSAFPID-0002"
         ]
       },
       "references": [
         {
           "category": "external",
           "summary": "cwe.mitre.org",
-          "url": "https://cwe.mitre.org/data/definitions/770.html"
+          "url": "https://cwe.mitre.org/data/definitions/787.html"
         },
         {
           "category": "external",
           "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2026-10573"
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-12768"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:A/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
         }
       ],
       "remediations": [
         {
           "category": "mitigation",
-          "details": "Rockwell Automation recommends users are to migrate to 5034-OB8.",
+          "details": "Customers using the affected software, who are not able to upgrade to one of the corrected versions, should use Rockwell Automations security best practices found at https://support.rockwellautomation.com/app/answers/answer_view/a_id/1085012/loc/en_US#__highlight.",
           "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "mitigation",
-          "details": "Customers using the affected software, who are not able to upgrade to one of the corrected versions, should use Rockwell Automation's security best practices (https://support.rockwellautomation.com/app/answers/answer_view/a_id/1085012/loc/en_US#__highlight).",
-          "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ],
           "url": "https://support.rockwellautomation.com/app/answers/answer_view/a_id/1085012/loc/en_US#__highlight"
         },
         {
           "category": "mitigation",
-          "details": "For more information, see Rockwell Automation Security Advisories: https://www.rockwellautomation.com/en-us/trust-center/security-advisories.html.",
+          "details": "If you have any questions regarding the security issue(s) above and how to mitigate them, contact TechConnect for help. More information can be found at https://www.rockwellautomation.com/en-us/company/about-us/contact-us.html.",
           "product_ids": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ],
-          "url": "https://www.rockwellautomation.com/en-us/trust-center/security-advisories.html"
+          "url": "https://www.rockwellautomation.com/en-us/company/about-us/contact-us.html"
+        },
+        {
+          "category": "mitigation",
+          "details": "If you have any questions regarding this disclosure, please contact PSIRT Email: rasecure@ra.rockwell.com",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "url": "mailto:rasecure@ra.rockwell.com"
         }
       ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 3.7,
-            "baseSeverity": "LOW",
-            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+            "baseScore": 8.0,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
             "version": "3.1"
           },
           "products": [
-            "CSAFPID-0001"
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2026-12661",
+      "cwe": {
+        "id": "CWE-121",
+        "name": "Stack-based Buffer Overflow"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "A denial-of-service security issue exists within FactoryTalk® Historian Machine Edition. A network adjacent attacker who is authenticated could send craftedrequests to the web interface, resulting in buffer overflow conditions that may cause the device to crash and become unresponsive.",
+          "title": "Vulnerability Summary"
+        },
+        {
+          "category": "details",
+          "text": "SSVCv2/E:N/A:Y/2026-08-27T06:00:00.000000Z",
+          "title": "SSVC"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/121.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-12661"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:A/AC:L/AT:N/PR:H/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Customers using the affected software, who are not able to upgrade to one of the corrected versions, should use Rockwell Automations security best practices found at https://support.rockwellautomation.com/app/answers/answer_view/a_id/1085012/loc/en_US#__highlight.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "url": "https://support.rockwellautomation.com/app/answers/answer_view/a_id/1085012/loc/en_US#__highlight"
+        },
+        {
+          "category": "mitigation",
+          "details": "If you have any questions regarding the security issue(s) above and how to mitigate them, contact TechConnect for help. More information can be found at https://www.rockwellautomation.com/en-us/company/about-us/contact-us.html.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "url": "https://www.rockwellautomation.com/en-us/company/about-us/contact-us.html"
+        },
+        {
+          "category": "mitigation",
+          "details": "If you have any questions regarding this disclosure, please contact PSIRT Email: rasecure@ra.rockwell.com",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "url": "mailto:rasecure@ra.rockwell.com"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.5,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
           ]
         }
       ]
