@@ -2,10 +2,8 @@
   "document": {
     "acknowledgments": [
       {
-        "names": [
-          "Abdiwelli Guled"
-        ],
-        "summary": "reported these vulnerabilities to CISA"
+        "organization": "Rockwell Automation",
+        "summary": "reported these vulnerabilities to CISA."
       }
     ],
     "category": "csaf_security_advisory",
@@ -26,7 +24,7 @@
       },
       {
         "category": "summary",
-        "text": "Successful exploitation of these vulnerabilities could result in an attacker accessing sensitive credentials, disrupting connected infrastructure, or manipulating physical equipment, which could present a physical safety risk.",
+        "text": "Successful exploitation of these vulnerabilities could result in a loss of webserver availability or allow an attacker to inject malicious scripts that will be executed when other users access the affected page.",
         "title": "Advisory Summary"
       },
       {
@@ -46,22 +44,7 @@
       },
       {
         "category": "general",
-        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities.",
-        "title": "Recommended Practices"
-      },
-      {
-        "category": "general",
-        "text": "Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.",
-        "title": "Recommended Practices"
-      },
-      {
-        "category": "general",
-        "text": "Locate control system networks and remote devices behind firewalls and isolating them from business networks.",
-        "title": "Recommended Practices"
-      },
-      {
-        "category": "general",
-        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.",
+        "text": "CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet. Locate control system networks and remote devices behind firewalls and isolating them from business networks. When remote access is required, use more secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.",
         "title": "Recommended Practices"
       },
       {
@@ -104,13 +87,13 @@
     "references": [
       {
         "category": "self",
-        "summary": "ICS Advisory ICSA-26-202-01 JSON",
-        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-202-01.json"
+        "summary": "ICS Advisory ICSA-26-246-04 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-246-04.json"
       },
       {
         "category": "self",
-        "summary": "ICSA Advisory ICSA-26-202-01 - Web Version",
-        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-202-01"
+        "summary": "ICSA Advisory ICSA-26-246-04 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-246-04"
       },
       {
         "category": "external",
@@ -156,41 +139,30 @@
         "category": "external",
         "summary": "Recommended Practices",
         "url": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks"
-      },
-      {
-        "category": "external",
-        "summary": "Tycon Systems Security Contact",
-        "url": "mailto:security@tyconsystems.com"
       }
     ],
-    "title": "Tycon Systems TPDIN-Monitor-WEB2 (Update A)",
+    "title": "Rockwell Automation ArmorStart LT",
     "tracking": {
-      "current_release_date": "2026-09-03T00:00:00.000000Z",
+      "current_release_date": "2026-09-03T06:00:00.000000Z",
       "generator": {
-        "date": "2026-09-03T00:00:00.000000Z",
+        "date": "2026-09-01T15:24:16.281867Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.0.0"
         }
       },
-      "id": "ICSA-26-202-01",
-      "initial_release_date": "2026-07-21T06:00:00.000000Z",
+      "id": "ICSA-26-246-04",
+      "initial_release_date": "2026-09-03T06:00:00.000000Z",
       "revision_history": [
         {
-          "date": "2026-07-21T06:00:00.000000Z",
+          "date": "2026-09-03T06:00:00.000000Z",
           "legacy_version": "Initial",
           "number": "1",
-          "summary": "Initial Publication"
-        },
-        {
-          "date": "2026-09-03T00:00:00.000000Z",
-          "legacy_version": "Update A",
-          "number": "2",
-          "summary": "Updated affected version range and vulnerability details based on vendor input."
+          "summary": "Initial Republication of Rockwell Automation security advisory."
         }
       ],
       "status": "final",
-      "version": "2"
+      "version": "1"
     }
   },
   "product_tree": {
@@ -201,38 +173,38 @@
             "branches": [
               {
                 "category": "product_version_range",
-                "name": "<2.4.5",
+                "name": "<=v2.001",
                 "product": {
-                  "name": "Tycon Systems TPDIN-Monitor-WEB2: <2.4.5",
+                  "name": "Rockwell Automation ArmorStart LT: <=v2.001",
                   "product_id": "CSAFPID-0001"
                 }
               }
             ],
             "category": "product_name",
-            "name": "TPDIN-Monitor-WEB2"
+            "name": "ArmorStart LT"
           }
         ],
         "category": "vendor",
-        "name": "Tycon Systems"
+        "name": "Rockwell Automation"
       }
     ]
   },
   "vulnerabilities": [
     {
-      "cve": "CVE-2026-61884",
+      "cve": "CVE-2026-19471",
       "cwe": {
-        "id": "CWE-306",
-        "name": "Missing Authentication for Critical Function"
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "The device ships without HTTP credentials configured, intended for an installer to set them on first use. On firmware 2.4.4 and earlier, a unit left in this unconfigured state serves the web management interface without requiring any login. An attacker with network access to such a unit can reach full device controls, including power relay management, device reboot, remote access service configuration, and network settings, which could allow disruption of connected infrastructure or physical damage to equipment.",
+          "text": "Multiple stored cross-site scripting security issues exist within ArmorStart LT. Stored XSS occurs when user input is not properly sanitized and is stored on the server, allowing an attacker to inject malicious scripts that will be executed when other users access the affected page.",
           "title": "Vulnerability Summary"
         },
         {
           "category": "details",
-          "text": "SSVCv2/E:N/A:Y/2026-07-20T06:00:00.000000Z",
+          "text": "SSVCv2/E:N/A:Y/2026-09-01T06:00:00.000000Z",
           "title": "SSVC"
         }
       ],
@@ -245,53 +217,55 @@
         {
           "category": "external",
           "summary": "cwe.mitre.org",
-          "url": "https://cwe.mitre.org/data/definitions/306.html"
+          "url": "https://cwe.mitre.org/data/definitions/79.html"
         },
         {
           "category": "external",
           "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2026-61884"
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-19471"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N"
         }
       ],
       "remediations": [
         {
-          "category": "vendor_fix",
-          "details": "Tycon Systems has released firmware 2.4.5, which resolves this vulnerability by requiring an administrator username and password to be set before the web interface is served. Further inquiries can be directed to security@tyconsystems.com.",
+          "category": "mitigation",
+          "details": "Rockwell Automation has corrected this issue in firmware version v2.002, and encourages all users to update to the newest version.",
           "product_ids": [
             "CSAFPID-0001"
           ]
         },
         {
           "category": "mitigation",
-          "details": "Tycon Systems recommends setting an administrative username and strong password on the Network Configuration page and confirming in a private browser window that a login is required, for units still running firmware 2.4.4 or earlier. Repeat this after any factory reset.",
+          "details": "Users of the affected software who are not able to upgrade to one of the corrected versions should follow Rockwell Automation's security best practices.",
           "product_ids": [
             "CSAFPID-0001"
-          ]
+          ],
+          "url": "https://support.rockwellautomation.com/app/answers/answer_view/a_id/1085012/loc/en_US#__highlight"
         },
         {
           "category": "mitigation",
-          "details": "Tycon Systems recommends not exposing the web interface to the Internet, as it is HTTP only. The unit should be kept on a private network, behind a firewall or VPN.",
+          "details": "For more information on this issue, see the Rockwell Automation security advisory at: https://www.rockwellautomation.com/en-us/trust-center/security-advisories.html",
           "product_ids": [
             "CSAFPID-0001"
-          ]
+          ],
+          "url": "https://www.rockwellautomation.com/en-us/trust-center/security-advisories.html"
         }
       ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 9.8,
-            "baseSeverity": "CRITICAL",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "baseScore": 7.3,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
             "version": "3.1"
           },
           "products": [
@@ -301,20 +275,20 @@
       ]
     },
     {
-      "cve": "CVE-2026-55985",
+      "cve": "CVE-2026-19472",
       "cwe": {
-        "id": "CWE-312",
-        "name": "Cleartext Storage of Sensitive Information"
+        "id": "CWE-770",
+        "name": "Allocation of Resources Without Limits or Throttling"
       },
       "notes": [
         {
           "category": "summary",
-          "text": "The device's web management interface stores and displays system credentials in cleartext on a certain configuration page accessible to authenticated users. Any party with access to the administrative dashboard can immediately read these credentials, which may be used to compromise other systems on the local network.",
+          "text": "A denial-of-service security issue exists within ArmorStart LT. The security issue stems from improper handling of a crafted HTTP PUT request sent to the embedded web server. This can result in a loss of web server availability.",
           "title": "Vulnerability Summary"
         },
         {
           "category": "details",
-          "text": "SSVCv2/E:N/A:Y/2026-07-20T06:00:00.000000Z",
+          "text": "SSVCv2/E:N/A:Y/2026-09-01T06:00:00.000000Z",
           "title": "SSVC"
         }
       ],
@@ -327,53 +301,55 @@
         {
           "category": "external",
           "summary": "cwe.mitre.org",
-          "url": "https://cwe.mitre.org/data/definitions/312.html"
+          "url": "https://cwe.mitre.org/data/definitions/770.html"
         },
         {
           "category": "external",
           "summary": "www.cve.org",
-          "url": "https://www.cve.org/CVERecord?id=CVE-2026-55985"
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-19472"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
         },
         {
           "category": "external",
           "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
         }
       ],
       "remediations": [
         {
-          "category": "vendor_fix",
-          "details": "Tycon Systems has released firmware 2.4.5, which resolves this vulnerability by removing cleartext credentials from the web interface response. Further inquiries can be directed to security@tyconsystems.com.",
+          "category": "mitigation",
+          "details": "Rockwell Automation has corrected this issue in firmware version v2.002, and encourages all users to update to the newest version.",
           "product_ids": [
             "CSAFPID-0001"
           ]
         },
         {
           "category": "mitigation",
-          "details": "Tycon Systems recommends changing any factory-default SNMP community strings and the Telnet password if they were left at shipped values. Leave Telnet disabled unless required.",
+          "details": "Users of the affected software who are not able to upgrade to one of the corrected versions should follow Rockwell Automation's security best practices.",
           "product_ids": [
             "CSAFPID-0001"
-          ]
+          ],
+          "url": "https://support.rockwellautomation.com/app/answers/answer_view/a_id/1085012/loc/en_US#__highlight"
         },
         {
           "category": "mitigation",
-          "details": "Tycon Systems recommends using a dedicated mail account for device alerts, rather than an account also used for other sensitive purposes, to limit exposure if credentials are compromised.",
+          "details": "For more information on this issue, see the Rockwell Automation security advisory at: https://www.rockwellautomation.com/en-us/trust-center/security-advisories.html",
           "product_ids": [
             "CSAFPID-0001"
-          ]
+          ],
+          "url": "https://www.rockwellautomation.com/en-us/trust-center/security-advisories.html"
         }
       ],
       "scores": [
         {
           "cvss_v3": {
-            "baseScore": 4.3,
-            "baseSeverity": "MEDIUM",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+            "baseScore": 7.5,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
             "version": "3.1"
           },
           "products": [
