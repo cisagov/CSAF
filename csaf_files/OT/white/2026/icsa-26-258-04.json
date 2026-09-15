@@ -1,0 +1,410 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "names": [
+          "Abhinav Agarwal"
+        ],
+        "summary": "reported this vulnerability to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "general",
+        "text": "We strongly recommend the following industry cybersecurity best practices.\n\n* Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.\n* Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.\n* Place all controllers in locked cabinets and never leave them in the \u201cProgram\u201d mode.\n* Never connect programming software to any network other than the network intended for that device.\n* Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc. before use in the terminals or any node connected to these networks.\n* Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.\n* Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the Internet.\n* When remote access is required, use secure methods, such as virtual private networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.\n\nFor more information refer to the Schneider Electric [Recommended Cybersecurity Best Practices](https://www.se.com/us/en/download/document/7EN52-0390/) document.",
+        "title": "General Security Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "This document provides an overview of the identified vulnerability or vulnerabilities and actions required to mitigate. For more details and assistance on how to protect your installation, contact your local Schneider Electric representative or Schneider Electric Industrial Cybersecurity Services: https://www.se.com/ww/en/work/solutions/cybersecurity/. These organizations will be fully aware of this situation and can support you through the process.\n\nFor further information related to cybersecurity in Schneider Electric's products, visit the company's cybersecurity support portal page: https://www.se.com/ww/en/work/support/cybersecurity/overview.jsp",
+        "title": "For More Information"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "THIS NOTIFICATION DOCUMENT, THE INFORMATION CONTAINED HEREIN, AND ANY MATERIALS LINKED FROM IT (COLLECTIVELY, THIS \u201cNOTIFICATION\u201d) ARE INTENDED TO HELP PROVIDE AN OVERVIEW OF THE IDENTIFIED SITUATION AND SUGGESTED MITIGATION ACTIONS, REMEDIATION, FIX, AND/OR GENERAL SECURITY RECOMMENDATIONS AND IS PROVIDED ON AN \u201cAS-IS\u201d BASIS WITHOUT WARRANTY OR GUARANTEE OF ANY KIND.  SCHNEIDER ELECTRIC DISCLAIMS ALL WARRANTIES RELATING TO THIS NOTIFICATION, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. SCHNEIDER ELECTRIC MAKES NO WARRANTY THAT THE NOTIFICATION WILL RESOLVE THE IDENTIFIED SITUATION. IN NO EVENT SHALL SCHNEIDER ELECTRIC BE LIABLE FOR ANY DAMAGES OR LOSSES WHATSOEVER IN CONNECTION WITH THIS NOTIFICATION, INCLUDING DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, LOSS OF BUSINESS PROFITS OR SPECIAL DAMAGES, EVEN IF SCHNEIDER ELECTRIC HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. YOUR USE OF THIS NOTIFICATION IS AT YOUR OWN RISK, AND YOU ARE SOLELY LIABLE FOR ANY DAMAGES TO YOUR SYSTEMS OR ASSETS OR OTHER LOSSES THAT MAY RESULT FROM YOUR USE OF THIS NOTIFICATION. SCHNEIDER ELECTRIC RESERVES THE RIGHT TO UPDATE OR CHANGE THIS NOTIFICATION AT ANY TIME AND IN ITS SOLE DISCRETION",
+        "title": "LEGAL DISCLAIMER"
+      },
+      {
+        "category": "general",
+        "text": "Schneider's purpose is to create Impact by empowering all to make the most of our energy and resources, bridging progress and sustainability for all. We call this Life Is On.\n\nOur mission is to be the trusted partner in Sustainability and Efficiency.\n\nWe are a global industrial technology leader bringing world-leading expertise in electrification, automation and digitization to smart industries, resilient infrastructure, future-proof data centers, intelligent buildings, and intuitive homes. Anchored by our deep domain expertise, we provide integrated end-to-end lifecycle AI enabled Industrial IoT solutions with connected products, automation, software and services, delivering digital twins to enable profitable growth for our customers.\n\nWe are a people company with an ecosystem of 150,000 colleagues and more than a million partners operating in over 100 countries to ensure proximity to our customers and stakeholders. We embrace diversity and inclusion in everything we do, guided by our meaningful purpose of a sustainable future for all. \n\n www.se.com",
+        "title": "About Schneider Electric"
+      },
+      {
+        "category": "summary",
+        "text": "Schneider Electric is aware of a vulnerability in its SCADAPack x70 products. The SCADAPack 47x, SCADAPack 47xi, SCADAPack 47xd, SCADAPack 470R and SCADAPack 57x products are Remote Terminal Units that provide communication capabilities for remote monitoring and control. Failure to apply the mitigations provided below may increase the risk of unauthorized access to RTU configuration through the Secure Lock functionality, potentially resulting in a loss of confidentiality. ",
+        "title": "Overview"
+      },
+      {
+        "category": "other",
+        "text": "The severity of vulnerabilities was calculated using the CVSS Base metrics for 4.0 ([CVSS v4.0](https://www.first.org/cvss/calculator/4.0)). CVSS v3.1 will be still evaluated until the adoption of CVSS v4.0 by the industry. The severity was calculated without incorporating the Temporal and Environmental metrics. Schneider Electric recommends that customers score the CVSS Environmental metrics, which are specific to end-user organizations, and consider factors such as the presence of mitigations in that environment. Environmental metrics may refine the relative severity posed by the vulnerabilities described in this document within a customer's environment."
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of Schneider Electric CPCERT SEVD-2026-251-03 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Schneider Electric CPCERT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of these vulnerabilities. Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet. Locate control system networks and remote devices behind firewalls and isolate them from business networks. When remote access is required, use more secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing, Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "France",
+        "title": "Company headquarters location"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "Insufficiently Protected Credentials vulnerability on SCADAPack x70 Products - SEVD-2026-251-03 CSAF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-251-03&p_enDocType=Security+and+Safety+Notice&p_File_Name=sevd-2026-251-03.json"
+      },
+      {
+        "category": "self",
+        "summary": "Insufficiently Protected Credentials vulnerability on SCADAPack x70 Products - SEVD-2026-251-03 PDF Version",
+        "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-251-03&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2026-251-03.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Cybersecurity Best Practices",
+        "url": "https://www.se.com/ww/en/download/document/7EN52-0390/"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-258-04 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-258-04.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-258-04 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-04"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "Schneider Electric SCADAPack x70 Products",
+    "tracking": {
+      "current_release_date": "2026-09-15T06:00:00.000000Z",
+      "generator": {
+        "date": "2026-09-08T22:38:25.360559Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-258-04",
+      "initial_release_date": "2026-09-08T07:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2026-09-08T07:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Original Release"
+        },
+        {
+          "date": "2026-09-15T06:00:00.000000Z",
+          "legacy_version": "CISA Republication",
+          "number": "2",
+          "summary": "Initial CISA Republication of Schneider Electric SEVD-2026-251-03 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "2"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SCADAPack 47x",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCADAPack 47x"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SCADAPack 47xi",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCADAPack 47xi"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SCADAPack 47xd",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCADAPack 47xd"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SCADAPack 470R",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCADAPack 470R"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SCADAPack 57x",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCADAPack 57x"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SCADAPack 3xx",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCADAPack 3xx"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SCADAPack 32",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SCADAPack 32"
+          }
+        ],
+        "category": "vendor",
+        "name": "Schneider Electric"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "acknowledgments": [
+        {
+          "names": [
+            "Abhinav Agarwal"
+          ]
+        }
+      ],
+      "cve": "CVE-2026-81861",
+      "cwe": {
+        "id": "CWE-522",
+        "name": "Insufficiently Protected Credentials"
+      },
+      "notes": [
+        {
+          "category": "description",
+          "text": "There is an insufficiently protected credentials vulnerability that could result in exposure of authentication information and unauthorized access to RTU functionality.",
+          "title": "CVE Description"
+        },
+        {
+          "category": "details",
+          "text": "CVSS v4.0 Base Score 5.9 | Medium | [CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N](https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N)",
+          "title": "CVSS v4.0 Score"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-81861"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/522.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "mitigation",
+          "details": "Implement the Role-Based Access Control (RBAC) feature and follow the SCADAPack documentation sections Security Guidelines for Administrators and Working with Role-Based Access Control. RBAC is the recommended access control mechanism for SCADAPack 47x devices and should be used in place of the Secure Lock feature. The Secure Lock feature is legacy functionality retained for backward compatibility with existing deployments and should only be used where required to support legacy system requirements. Consult the SCADAPack Cybersecurity Guide, including the SCADAPack Hardening and Secured Communication sections.   In addition, apply the following standard practices to reduce the risk of exploitation: \u2022 Configure network segmentation to restrict access between trusted and untrusted networks. \u2022 Enable and implement the RTU firewall service to restrict unauthorized access to device services and reduce the attack surface. \n\n Documentation available in  \r\n [RemoteConnect and SCADAPack x70 Utilities | Schneider Electric](https://www.se.com/ww/en/download/document/RemoteConnect/)",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004"
+          ],
+          "url": "https://www.se.com/ww/en/download/document/RemoteConnect/"
+        },
+        {
+          "category": "mitigation",
+          "details": "Ensure setup of network segmentation to restrict access between trusted and untrusted networks and implementation of the RTU Firewall Service to restrict unauthorized access to services. Consult the SCADAPack Cybersecurity Guide, including the SCADAPack Hardening and Secured Communication sections.  In addition, implement all best practices referenced in the SCADAPack Cybersecurity Guide.  Documentation available in \r\n[RemoteConnect and SCADAPack x70 Utilities | Schneider Electric](https://www.se.com/ww/en/download/document/RemoteConnect/)",
+          "product_ids": [
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ],
+          "url": "https://www.se.com/ww/en/download/document/RemoteConnect/"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "attackComplexity": "LOW",
+            "attackVector": "NETWORK",
+            "availabilityImpact": "NONE",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "privilegesRequired": "NONE",
+            "scope": "UNCHANGED",
+            "userInteraction": "REQUIRED",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007"
+          ]
+        }
+      ],
+      "title": "CVE-2026-81861"
+    }
+  ]
+}
