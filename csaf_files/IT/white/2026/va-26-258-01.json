@@ -1,0 +1,195 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "Newell Brands DYMO Connect Desktop improper file path validation",
+    "tracking": {
+      "current_release_date": "2026-09-15T18:08:29Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.15.0+build.129"
+        }
+      },
+      "id": "VA-26-258-01",
+      "initial_release_date": "2026-09-15T18:08:29Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2026-09-15T18:08:29Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "The LoadImageAsPngBase64 endpoint of the Newell Brands DYMO Connect Desktop local web service accepts a file path parameter without adequate validation, allowing a crafted path to read arbitrary image files from the host filesystem outside the intended scope.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Fixed in 1.6.2. The fix limits access by file extension only, not by directory - arbitrary-location reads of files with an allowed image extension remain possible by design (accepted residual risk).",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-258-01.json",
+        "summary": "Vulnerability Advisory VA-26-258-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "Newell Brands",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "DYMO Connect Desktop",
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<1.6.2",
+                "product": {
+                  "name": "Newell Brands DYMO Connect Desktop <1.6.2",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "1.6.2",
+                "product": {
+                  "name": "Newell Brands DYMO Connect Desktop 1.6.2",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2026-76796",
+      "cwe": {
+        "id": "CWE-73",
+        "name": "External Control of File Name or Path"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "The LoadImageAsPngBase64 endpoint of the Newell Brands DYMO Connect Desktop local web service accepts a file path parameter without adequate validation, allowing a crafted path to read arbitrary image files from the host filesystem outside the intended scope. Fixed in 1.6.2. The fix limits access by file extension only, not by directory - arbitrary-location reads of files with an allowed image extension remain possible by design (accepted residual risk).",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:P/A:N/T:P/2026-08-19T18:47:42Z/"
+        }
+      ],
+      "title": "Newell Brands DYMO Connect Desktop improper file path validation",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001"
+        ],
+        "fixed": [
+          "CSAFPID-0002"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "mediaserver.newellrubbermaid.com",
+          "url": "https://mediaserver.newellrubbermaid.com/dls/DCDesktop/win/en/Content/WhatsNew.htm"
+        },
+        {
+          "category": "external",
+          "summary": "www.dymo.com",
+          "url": "https://www.dymo.com/support?cfid=online-support"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2026-76796",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-76796"
+        },
+        {
+          "category": "external",
+          "summary": "VA-26-258-01 CSAF",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-258-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 4.0,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 1.6.2.",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2026-09-15T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Rechtspraak (Netherlands Judiciary)",
+          "names": [
+            "René de Sain"
+          ]
+        }
+      ],
+      "release_date": "2026-09-15T00:00:00Z"
+    }
+  ]
+}
