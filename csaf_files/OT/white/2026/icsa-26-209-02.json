@@ -19,7 +19,7 @@
     "notes": [
       {
         "category": "summary",
-        "text": "Mendix documentation for access rules does not adequately describe the special behavior of the System.User entity, leaving developers without sufficient guidance to configure access rules securely. This documentation gap may lead application developers to unknowingly apply overly permissive access rules to System.User, resulting in unintended exposure of sensitive user data or privilege escalation within deployed Mendix applications.\n\nA common misconfiguration identified is with the anonymous user role with a System.User entity to gain access to all stored records, even though no access rights are explicitly configured on that role.\n\nSiemens recommends Mendix developers to review their access rules based on updated documentation.",
+        "text": "This advisory is revoked. Re-investigation confirmed the reported behavior is expected platform configuration and does not expose the protected attribute.",
         "title": "Summary"
       },
       {
@@ -112,12 +112,12 @@
     "references": [
       {
         "category": "self",
-        "summary": "SSA-814963: Insecure Inherited Permission in Mendix - CSAF Version",
+        "summary": "SSA-814963: Insecure Inherited Permission in Mendix (Revoked) - CSAF Version",
         "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-814963.json"
       },
       {
         "category": "self",
-        "summary": "SSA-814963: Insecure Inherited Permission in Mendix - HTML Version",
+        "summary": "SSA-814963: Insecure Inherited Permission in Mendix (Revoked) - HTML Version",
         "url": "https://cert-portal.siemens.com/productcert/html/ssa-814963.html"
       },
       {
@@ -163,9 +163,9 @@
     ],
     "title": "Siemens Mendix Runtime",
     "tracking": {
-      "current_release_date": "2026-07-28T06:00:00.000000Z",
+      "current_release_date": "2026-09-24T06:00:00.000000Z",
       "generator": {
-        "date": "2026-07-22T13:46:32.919176Z",
+        "date": "2026-09-22T19:32:07.914460Z",
         "engine": {
           "name": "CISA CSAF Generator",
           "version": "1.5.0"
@@ -182,13 +182,25 @@
         },
         {
           "date": "2026-07-28T06:00:00.000000Z",
-          "legacy_version": "CISA Republication",
+          "legacy_version": "Additional Release 1",
           "number": "2",
-          "summary": "Initial CISA Republication of Siemens ProductCERT SSA-814963 advisory"
+          "summary": "CISA Republication - Initial CISA Republication of Siemens ProductCERT SSA-814963 advisory"
+        },
+        {
+          "date": "2026-09-22T00:00:00.000000Z",
+          "legacy_version": "Additional Release 2",
+          "number": "3",
+          "summary": "Revoked advisory as the CVE is rejected"
+        },
+        {
+          "date": "2026-09-24T06:00:00.000000Z",
+          "legacy_version": "Latest Updated CISA Republication",
+          "number": "4",
+          "summary": "CISA Republication update based on Siemens ProductCERT SSA-814963 advisory"
         }
       ],
       "status": "final",
-      "version": "2"
+      "version": "4"
     }
   },
   "product_tree": {
@@ -222,15 +234,23 @@
         "id": "CWE-277",
         "name": "Insecure Inherited Permissions"
       },
+      "flags": [
+        {
+          "label": "vulnerable_code_not_present",
+          "product_ids": [
+            "CSAFPID-0001"
+          ]
+        }
+      ],
       "notes": [
         {
           "category": "description",
-          "text": "Mendix documentation for access rules does not adequately describe the special behavior of the System.User entity, leaving developers without sufficient guidance to configure access rules securely. This documentation gap may lead application developers to unknowingly apply overly permissive access rules to System.User, resulting in unintended exposure of sensitive user data or privilege escalation within deployed Mendix applications.",
+          "text": "This CVE has been retracted. Re-investigation confirmed the reported behavior is expected platform configuration and does not expose the protected application-specific attribute.",
           "title": "CVE Description"
         }
       ],
       "product_status": {
-        "known_affected": [
+        "known_not_affected": [
           "CSAFPID-0001"
         ]
       },
@@ -244,38 +264,13 @@
           "category": "external",
           "summary": "cwe.mitre.org",
           "url": "https://cwe.mitre.org/data/definitions/277.html"
-        },
-        {
-          "category": "external",
-          "summary": "www.first.org",
-          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
         }
       ],
-      "remediations": [
+      "threats": [
         {
-          "category": "mitigation",
-          "details": "Any security model relying solely on XPath constraints on a System.User specialization to restrict access should be revised to enforce restrictions at the App Security role-management configuration level instead.",
+          "category": "impact",
+          "details": "Vulnerability is rejected as re-investigation confirmed the reported behavior is expected platform configuration and does not expose the protected application-specific attribute",
           "product_ids": [
-            "CSAFPID-0001"
-          ]
-        },
-        {
-          "category": "vendor_fix",
-          "details": "Review mendix access rules knowing that System.User has built-in platform-enforced access rules that cannot be overridden or restricted by access rules defined on a specialization. Check updated documentation for further details",
-          "product_ids": [
-            "CSAFPID-0001"
-          ]
-        }
-      ],
-      "scores": [
-        {
-          "cvss_v3": {
-            "baseScore": 9.1,
-            "baseSeverity": "CRITICAL",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-            "version": "3.1"
-          },
-          "products": [
             "CSAFPID-0001"
           ]
         }
