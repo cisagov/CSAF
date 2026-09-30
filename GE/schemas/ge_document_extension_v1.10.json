@@ -1,0 +1,80 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Gold Eagle Submission CSAF Extension Schema for Document level metadata",
+    "description": "Schema extension document to explain the metadata, fields, and types that are used as an API intake form as part of a complete CSAF 2.1 document, using the \"csaf_vrf\" CSAF profile.",
+    "type": "object",
+    "$defs": {
+        "sector_t": {
+            "title": "Critical Infrastructure Sector",
+            "type": "string",
+            "enum": [
+                "Chemical",
+                "Commercial Facilities",
+                "Communications",
+                "Critical Manufacturing",
+                "Dams",
+                "Defense Industrial Base",
+                "Emergency Services",
+                "Energy",
+                "Financial Services",
+                "Food and Agriculture",
+                "Government Services and Facilities",
+                "Healthcare and Public Health",
+                "Information Technology",
+                "Nuclear Reactors, Materials, and Waste",
+                "Transportation Systems",
+                "Water and Wastewater",
+                "UNKNOWN",
+                "None"
+            ]
+        }
+    },
+    "required": [
+        "company_headquarters",
+        "countries_deployed",
+        "schema_version"
+    ],
+    "properties": {
+        "company_headquarters": {
+            "title": "Company Headquarters",
+            "description": "The headquarters country where the affected vendor resides.",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "United States",
+                "United Kingdom",
+                "Czech Republic",
+                "Germany"
+            ]
+        },
+        "countries_deployed": {
+            "title": "Countries Deployed",
+            "description": "Countries where the affected vendor's product is sold.",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "Worldwide",
+                "United States",
+                "United Kingdom, Czech Republic, Germany"
+            ]
+        },
+        "critical_infrastructure_sectors": {
+            "title": "Critical Infrastructure Sectors",
+            "description": "Concatenated string list of sectors that apply to affected products.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "$ref": "#/$defs/sector_t"
+            }
+        },
+        "schema_version": {
+            "title": "Version of the Schema being used for this document.",
+            "type": "string",
+            "enum": [
+                "1.10"
+            ]
+        }
+    },
+    "additionalProperties": false
+}
