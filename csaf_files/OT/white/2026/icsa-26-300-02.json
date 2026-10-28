@@ -1,0 +1,1609 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Mitsubishi Electric",
+        "summary": "discovering these vulnerabilities"
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en-US",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "Successful exploitation of these vulnerabilities could allow an attacker to execute arbitrary code (CVE-2023-4863), bypass authentication (CVE-2026-16436 and CVE-2026-16437), or perform arbitrary operations (CVE-2026-16438), resulting in information disclosure, tampering with, destruction, or deletion of information, and a denial-of-service (DoS) condition of the system.",
+        "title": "Advisory Summary"
+      },
+      {
+        "category": "other",
+        "text": "Critical Manufacturing",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Japan",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "other",
+        "text": "United States",
+        "title": "Company headquarters location"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of Mitsubishi Electric 2026-006 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Mitsubishi Electric directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of this vulnerability.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-300-02 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-300-02.json"
+      },
+      {
+        "category": "self",
+        "summary": "Mitsubishi Electric Advisory 2026-006",
+        "url": "https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-300-02 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-300-02"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "Mitsubishi Electric GENESIS, GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, MobileHMI, IoTWorX, MC Works64, GENESIS32 and BizViz",
+    "tracking": {
+      "current_release_date": "2026-10-27T06:00:00.000000Z",
+      "generator": {
+        "date": "2026-10-14T20:33:28.172836Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-300-02",
+      "initial_release_date": "2026-10-15T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2026-10-15T00:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Initial Publication"
+        },
+        {
+          "date": "2026-10-27T06:00:00.000000Z",
+          "legacy_version": "CISA Republication",
+          "number": "2",
+          "summary": "Initial CISA Republication of Mitsubishi Electric 2026-006 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "2"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">=10.97|<=10.97.2",
+                "product": {
+                  "name": "Mitsubishi Electric GENESIS64: >=10.97|<=10.97.2",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GENESIS64"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">=10.97|<=10.97.2",
+                "product": {
+                  "name": "Mitsubishi Electric ICONICS Suite: >=10.97|<=10.97.2",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric ICONICS Suite"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=11.03",
+                "product": {
+                  "name": "Mitsubishi Electric GENESIS: <=11.03",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GENESIS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=10.97.3",
+                "product": {
+                  "name": "Mitsubishi Electric GENESIS64: <=10.97.3",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GENESIS64"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=10.97.3",
+                "product": {
+                  "name": "Mitsubishi Electric ICONICS Suite: <=10.97.3",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric ICONICS Suite"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=10.97.3",
+                "product": {
+                  "name": "Mitsubishi Electric Hyper Historian: <=10.97.3",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Hyper Historian"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=10.97.3",
+                "product": {
+                  "name": "Mitsubishi Electric AnalytiX: <=10.97.3",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric AnalytiX"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=10.97.3",
+                "product": {
+                  "name": "Mitsubishi Electric MobileHMI: <=10.97.3",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric MobileHMI"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=10.97.3",
+                "product": {
+                  "name": "Mitsubishi Electric IoTWorX: <=10.97.3",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric IoTWorX"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric MC Works64: vers:all/*",
+                  "product_id": "CSAFPID-0010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric MC Works64"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric GENESIS32: vers:all/*",
+                  "product_id": "CSAFPID-0011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric GENESIS32"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric BizViz: vers:all/*",
+                  "product_id": "CSAFPID-0012"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric BizViz"
+          }
+        ],
+        "category": "vendor",
+        "name": "Mitsubishi Electric"
+      },
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">=10.97|<=10.97.2",
+                "product": {
+                  "name": "Mitsubishi Electric Iconics Digital Solutions GENESIS64: >=10.97|<=10.97.2",
+                  "product_id": "CSAFPID-0013"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Iconics Digital Solutions GENESIS64"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": ">=10.97|<=10.97.2",
+                "product": {
+                  "name": "Mitsubishi Electric Iconics Digital Solutions ICONICS Suite: >=10.97|<=10.97.2",
+                  "product_id": "CSAFPID-0014"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Iconics Digital Solutions ICONICS Suite"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=11.03",
+                "product": {
+                  "name": "Mitsubishi Electric Iconics Digital Solutions GENESIS: <=11.03",
+                  "product_id": "CSAFPID-0015"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Iconics Digital Solutions GENESIS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=10.97.3",
+                "product": {
+                  "name": "Mitsubishi Electric Iconics Digital Solutions GENESIS64: <=10.97.3",
+                  "product_id": "CSAFPID-0016"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Iconics Digital Solutions GENESIS64"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=10.97.3",
+                "product": {
+                  "name": "Mitsubishi Electric Iconics Digital Solutions ICONICS Suite: <=10.97.3",
+                  "product_id": "CSAFPID-0017"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Iconics Digital Solutions ICONICS Suite"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=10.97.3",
+                "product": {
+                  "name": "Mitsubishi Electric Iconics Digital Solutions Hyper Historian: <=10.97.3",
+                  "product_id": "CSAFPID-0018"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Iconics Digital Solutions Hyper Historian"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=10.97.3",
+                "product": {
+                  "name": "Mitsubishi Electric Iconics Digital Solutions AnalytiX: <=10.97.3",
+                  "product_id": "CSAFPID-0019"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Iconics Digital Solutions AnalytiX"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=10.97.3",
+                "product": {
+                  "name": "Mitsubishi Electric Iconics Digital Solutions MobileHMI: <=10.97.3",
+                  "product_id": "CSAFPID-0020"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Iconics Digital Solutions MobileHMI"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "<=10.97.3",
+                "product": {
+                  "name": "Mitsubishi Electric Iconics Digital Solutions IoTWorX: <=10.97.3",
+                  "product_id": "CSAFPID-0021"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Iconics Digital Solutions IoTWorX"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Iconics Digital Solutions GENESIS32: vers:all/*",
+                  "product_id": "CSAFPID-0022"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Iconics Digital Solutions GENESIS32"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Mitsubishi Electric Iconics Digital Solutions BizViz: vers:all/*",
+                  "product_id": "CSAFPID-0023"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Mitsubishi Electric Iconics Digital Solutions BizViz"
+          }
+        ],
+        "category": "vendor",
+        "name": "Mitsubishi Electric Iconics Digital Solutions"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2023-4863",
+      "cwe": {
+        "id": "CWE-787",
+        "name": "Out-of-bounds Write"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Out-of-bounds Write (CWE-787) vulnerability caused by libwebp, an internal component in GENESIS64 and ICONICS Suite could allow an authenticated local attacker to cause a heap-based buffer overflow and execute arbitrary code by importing a crafted file as an administrator for the affected product. As a result, the attacker may disclose internal information, tamper with, destroy, or delete internal information, or cause the affected system to enter a denial-of-service (DoS) condition.",
+          "title": "Vulnerability Summary"
+        },
+        {
+          "category": "details",
+          "text": "SSVCv2/E:N/A:N/T:T/2026-10-15T00:00:00Z/",
+          "title": "SSVC"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0013",
+          "CSAFPID-0014"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2023-4863"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:L/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/787.html"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric is releasing fixed version 10.97.3 or later for GENESIS64 and ICONICS Suite. Please download the fixed version from the link below and install it: \"https://iconicsinc.my.site.com/community/s/resource-center/product-downloads\". (Note: GENESIS64 is included in the ICONICS Suite installation.) For more information on the fixed version, please refer to the Mitsubishi Electric security advisory at \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf\".",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002"
+          ],
+          "url": "https://iconicsinc.my.site.com/community/s/resource-center/product-downloads"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric Iconics Digital Solutions is releasing fixed version 10.97.3 or later for GENESIS64 and ICONICS Suite. Please download the fixed version from the link below and install it: \"https://iconicsinc.my.site.com/community/s/resource-center/product-downloads\". Note: GENESIS64 is included in the ICONICS Suite installation. For more information on the fixed version, please refer to the Mitsubishi Electric Iconics Digital Solutions whitepaper on security vulnerabilities, which can be found at \"https://iconics.com/about/security/cert\".",
+          "product_ids": [
+            "CSAFPID-0013",
+            "CSAFPID-0014"
+          ],
+          "url": "https://iconicsinc.my.site.com/community/s/resource-center/product-downloads"
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers using the affected product who cannot immediately update it, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend configuring the PCs with the affected product installed so that only an administrator can log in, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0013",
+            "CSAFPID-0014"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers using the affected product who cannot immediately update it, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend using the PCs with the affected product installed in the LAN and blocking remote login from untrusted networks and hosts, and from non-administrator users, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0013",
+            "CSAFPID-0014"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers using the affected product who cannot immediately update it, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend blocking unauthorized access by using a firewall, virtual private network (VPN), etc. and allowing remote login only to administrator when internet access is required, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0013",
+            "CSAFPID-0014"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers using the affected product who cannot immediately update it, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend restricting physical access to the PC with the affected product installed and the network to which the PC is connected, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0013",
+            "CSAFPID-0014"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers using the affected product who cannot immediately update it, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend preventing the user from clicking on web links in emails from untrusted sources, or from opening attachments in untrusted emails, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0013",
+            "CSAFPID-0014"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers using the affected product who cannot immediately update it, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend installing anti-virus software on the PC with the affected product installed, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0013",
+            "CSAFPID-0014"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.2,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0013",
+            "CSAFPID-0014"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2026-16436",
+      "cwe": {
+        "id": "CWE-640",
+        "name": "Weak Password Recovery Mechanism for Forgotten Password"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Weak Password Recovery Mechanism for Forgotten Password (CWE-640) vulnerability in GENESIS, GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, MobileHMI, IoTWorX, MC Works64, GENESIS32, and BizViz could allow a remote attacker to unlock the system by obtaining the challenge response by some means. The challenge response used to unlock the system is common to all users and fixed. As a result, the attacker may disclose, tamper with, destroy, or delete internal information, or cause the affected system to enter a denial-of-service (DoS) condition.",
+          "title": "Vulnerability Summary"
+        },
+        {
+          "category": "details",
+          "text": "SSVCv2/E:N/A:Y/T:T/2026-10-15T00:00:00Z/",
+          "title": "SSVC"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0015",
+          "CSAFPID-0016",
+          "CSAFPID-0017",
+          "CSAFPID-0018",
+          "CSAFPID-0019",
+          "CSAFPID-0020",
+          "CSAFPID-0021",
+          "CSAFPID-0022",
+          "CSAFPID-0023"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-16436"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/640.html"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric is releasing fixed version 11.04 or later for GENESIS. Please download the fixed version from the link below and install it: \"https://iconicsinc.my.site.com/community/s/resource-center/product-downloads\". For more information on the fixed version, please refer to the Mitsubishi Electric security advisory at \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf\".",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://iconicsinc.my.site.com/community/s/resource-center/product-downloads"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric Iconics Digital Solutions is releasing fixed version 11.04 or later for GENESIS. Please download the fixed version from the link below and install it: \"https://iconicsinc.my.site.com/community/s/resource-center/product-downloads\". For more information on the fixed version, please refer to the Mitsubishi Electric Iconics Digital Solutions whitepaper on security vulnerabilities, which can be found at \"https://iconics.com/about/security/cert\".",
+          "product_ids": [
+            "CSAFPID-0015"
+          ],
+          "url": "https://iconicsinc.my.site.com/community/s/resource-center/product-downloads"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric is releasing fixed version 10.98 or later for GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, and MobileHMI. Please download the fixed version from the link below and install it: \"https://iconicsinc.my.site.com/community/s/resource-center/product-downloads\". (Note: GENESIS64, Hyper Historian, AnalytiX, and MobileHMI are included in the ICONICS Suite installation.) For more information on the fixed version, please refer to the Mitsubishi Electric security advisory at \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf\".",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ],
+          "url": "https://iconicsinc.my.site.com/community/s/resource-center/product-downloads"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric Iconics Digital Solutions is releasing fixed version 10.98 or later for GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, and MobileHMI. Please download the fixed version from the link below and install it: \"https://iconicsinc.my.site.com/community/s/resource-center/product-downloads\". (Note: GENESIS64, Hyper Historian, AnalytiX, and MobileHMI are included in the ICONICS Suite installation.) For more information on the fixed version, please refer to the Mitsubishi Electric Iconics Digital Solutions whitepaper on security vulnerabilities, which can be found at \"https://iconics.com/about/security/cert\".",
+          "product_ids": [
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ],
+          "url": "https://iconicsinc.my.site.com/community/s/resource-center/product-downloads"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric is releasing fixed version 10.98 or later for IoTWorX. Please download the fixed version from the link below and install it: \"https://hub.docker.com/r/iconics/iotworx\". For more information on the fixed version, please refer to the Mitsubishi Electric security advisory at \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf\".",
+          "product_ids": [
+            "CSAFPID-0009"
+          ],
+          "url": "https://hub.docker.com/r/iconics/iotworx"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric Iconics Digital Solutions is releasing fixed version 10.98 or later for IoTWorX. Please download the fixed version from the link below and install it: \"https://hub.docker.com/r/iconics/iotworx\". For more information on the fixed version, please refer to the Mitsubishi Electric Iconics Digital Solutions whitepaper on security vulnerabilities, which can be found at \"https://iconics.com/about/security/cert\".",
+          "product_ids": [
+            "CSAFPID-0021"
+          ],
+          "url": "https://hub.docker.com/r/iconics/iotworx"
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Mitsubishi Electric has no plans to release a fixed version of MC Works64. For customers using MC Works64, Mitsubishi Electric recommends taking the mitigations described in the Mitsubishi Electric's security advisory at \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf\". Alternatively, customers should consider replacing MC Works64 with GENESIS64 or GENESIS. For information on how to replace it, please refer to the following document: \"GENESIS64 ? How to Replace MC Works64 with GENESIS64\" (Japanese only): \"https://www.mitsubishielectric.co.jp/dl/fa/members/document/manual/scada/bcn-p5999-1459/bcnp59991459a.pdf\". Note: This document is published on Mitsubishi Electric FA website, and membership registration and login are required to view it.",
+          "product_ids": [
+            "CSAFPID-0010"
+          ],
+          "url": "https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf"
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Mitsubishi Electric has no plans to release fixed versions for GENESIS32 or BizViz. For customers using GENESIS32 or BizViz, Mitsubishi Electric recommends taking the mitigations described in the Mitsubishi Electric's security advisory at \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf\". Alternatively, customers should consider replacing GENESIS32 or BizViz with GENESIS64 or GENESIS.",
+          "product_ids": [
+            "CSAFPID-0011",
+            "CSAFPID-0012"
+          ],
+          "url": "https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf"
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Mitsubishi Electric Iconics Digital Solutions has no plans to release fixed versions for GENESIS32 or BizViz. For customers using GENESIS32 or BizViz, Mitsubishi Electric Iconics Digital Solutions recommends taking the mitigations described in the Mitsubishi Electric Iconics Digital Solutions' whitepaper which can be found at \"https://iconics.com/about/security/cert\". Alternatively, customers should consider replacing GENESIS32 or BizViz with GENESIS64 or GENESIS.",
+          "product_ids": [
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ],
+          "url": "https://iconics.com/about/security/cert"
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend configuring the PCs with the affected product installed so that only an administrator can log in, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend using the PCs with the affected product installed in the LAN and blocking remote login from untrusted networks and hosts, and from non-administrator users, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend blocking unauthorized access by using a firewall, virtual private network (VPN), etc. and allowing remote login only to administrator when internet access is required, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend restricting physical access to the PC with the affected product installed and the network to which the PC is connected, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend preventing the user from clicking on web links in emails from untrusted sources, or from opening attachments in untrusted emails, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend installing anti-virus software on the PC with the affected product installed, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend performing the following steps for GENESIS, GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, MobileHMI and MC Works64, to minimize the risk of exploitation of this vulnerability. (1) Delete the .dat file at the location specified below. This file name and location is different depending on the product version. (Version 10: C:\\Program Files\\ICONICS\\GENESIS64\\Components\\ClientChallengeTable.dat; Version 11: C:\\ProgramData\\ICONICS\\11\\SecurityChallenges.dat) (2) Create a blank file with the same name and location. (3) Restrict the file system write and delete access to this file to a unique administrator account, different than the GENESIS administrator account.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2026-16437",
+      "cwe": {
+        "id": "CWE-640",
+        "name": "Weak Password Recovery Mechanism for Forgotten Password"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Weak Password Recovery Mechanism for Forgotten Password (CWE-640) vulnerability in GENESIS, GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, MobileHMI, IoTWorX, MC Works64, GENESIS32, and BizViz could allow an authenticated local user with administrative privileges to unlock the system by tampering with the management file that stores the challenge response. Administrators are able to read and write the management file. But the management file is protected by Windows. As a result, the attacker may disclose, tamper with, destroy, or delete internal information, or cause the affected system to enter a denial-of-service (DoS) condition.",
+          "title": "Vulnerability Summary"
+        },
+        {
+          "category": "details",
+          "text": "SSVCv2/E:N/A:N/T:T/2026-10-15T00:00:00Z/",
+          "title": "SSVC"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0015",
+          "CSAFPID-0016",
+          "CSAFPID-0017",
+          "CSAFPID-0018",
+          "CSAFPID-0019",
+          "CSAFPID-0020",
+          "CSAFPID-0021",
+          "CSAFPID-0022",
+          "CSAFPID-0023"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-16437"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:L/AC:H/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+        },
+        {
+          "category": "external",
+          "summary": "www.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/640.html"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric is releasing fixed version 11.04 or later for GENESIS. Please download the fixed version from the link below and install it: \"https://iconicsinc.my.site.com/community/s/resource-center/product-downloads\". For more information on the fixed version, please refer to the Mitsubishi Electric security advisory at \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf\".",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "url": "https://iconicsinc.my.site.com/community/s/resource-center/product-downloads"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric Iconics Digital Solutions is releasing fixed version 11.04 or later for GENESIS. Please download the fixed version from the link below and install it: \"https://iconicsinc.my.site.com/community/s/resource-center/product-downloads\". For more information on the fixed version, please refer to the Mitsubishi Electric Iconics Digital Solutions whitepaper on security vulnerabilities, which can be found at \"https://iconics.com/about/security/cert\".",
+          "product_ids": [
+            "CSAFPID-0015"
+          ],
+          "url": "https://iconicsinc.my.site.com/community/s/resource-center/product-downloads"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric is releasing fixed version 10.98 or later for GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, and MobileHMI. Please download the fixed version from the link below and install it: \"https://iconicsinc.my.site.com/community/s/resource-center/product-downloads\". (Note: GENESIS64, Hyper Historian, AnalytiX, and MobileHMI are included in the ICONICS Suite installation.) For more information on the fixed version, please refer to the Mitsubishi Electric security advisory at \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf\".",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ],
+          "url": "https://iconicsinc.my.site.com/community/s/resource-center/product-downloads"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric Iconics Digital Solutions is releasing fixed version 10.98 or later for GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, and MobileHMI. Please download the fixed version from the link below and install it: \"https://iconicsinc.my.site.com/community/s/resource-center/product-downloads\". (Note: GENESIS64, Hyper Historian, AnalytiX, and MobileHMI are included in the ICONICS Suite installation.) For more information on the fixed version, please refer to the Mitsubishi Electric Iconics Digital Solutions whitepaper on security vulnerabilities, which can be found at \"https://iconics.com/about/security/cert\".",
+          "product_ids": [
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ],
+          "url": "https://iconicsinc.my.site.com/community/s/resource-center/product-downloads"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric is releasing fixed version 10.98 or later for IoTWorX. Please download the fixed version from the link below and install it: \"https://hub.docker.com/r/iconics/iotworx\". For more information on the fixed version, please refer to the Mitsubishi Electric security advisory at \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf\".",
+          "product_ids": [
+            "CSAFPID-0009"
+          ],
+          "url": "https://hub.docker.com/r/iconics/iotworx"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric Iconics Digital Solutions is releasing fixed version 10.98 or later for IoTWorX. Please download the fixed version from the link below and install it: \"https://hub.docker.com/r/iconics/iotworx\". For more information on the fixed version, please refer to the Mitsubishi Electric Iconics Digital Solutions whitepaper on security vulnerabilities, which can be found at \"https://iconics.com/about/security/cert\".",
+          "product_ids": [
+            "CSAFPID-0021"
+          ],
+          "url": "https://hub.docker.com/r/iconics/iotworx"
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Mitsubishi Electric has no plans to release a fixed version of MC Works64. For customers using MC Works64, Mitsubishi Electric recommends taking the mitigations described in the Mitsubishi Electric's security advisory at \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf\". Alternatively, customers should consider replacing MC Works64 with GENESIS64 or GENESIS. For information on how to replace it, please refer to the following document: \"GENESIS64 ? How to Replace MC Works64 with GENESIS64\" (Japanese only): \"https://www.mitsubishielectric.co.jp/dl/fa/members/document/manual/scada/bcn-p5999-1459/bcnp59991459a.pdf\". Note: This document is published on Mitsubishi Electric FA website, and membership registration and login are required to view it.",
+          "product_ids": [
+            "CSAFPID-0010"
+          ],
+          "url": "https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf"
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Mitsubishi Electric has no plans to release fixed versions for GENESIS32 or BizViz. For customers using GENESIS32 or BizViz, Mitsubishi Electric recommends taking the mitigations described in the Mitsubishi Electric's security advisory at \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf\". Alternatively, customers should consider replacing GENESIS32 or BizViz with GENESIS64 or GENESIS.",
+          "product_ids": [
+            "CSAFPID-0011",
+            "CSAFPID-0012"
+          ],
+          "url": "https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf"
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Mitsubishi Electric Iconics Digital Solutions has no plans to release fixed versions for GENESIS32 or BizViz. For customers using GENESIS32 or BizViz, Mitsubishi Electric Iconics Digital Solutions recommends taking the mitigations described in the Mitsubishi Electric Iconics Digital Solutions' whitepaper which can be found at \"https://iconics.com/about/security/cert\". Alternatively, customers should consider replacing GENESIS32 or BizViz with GENESIS64 or GENESIS.",
+          "product_ids": [
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ],
+          "url": "https://iconics.com/about/security/cert"
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend configuring the PCs with the affected product installed so that only an administrator can log in, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend using the PCs with the affected product installed in the LAN and blocking remote login from untrusted networks and hosts, and from non-administrator users, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend blocking unauthorized access by using a firewall, virtual private network (VPN), etc. and allowing remote login only to administrator when internet access is required, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend restricting physical access to the PC with the affected product installed and the network to which the PC is connected, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend preventing the user from clicking on web links in emails from untrusted sources, or from opening attachments in untrusted emails, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend installing anti-virus software on the PC with the affected product installed, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend performing the following steps for GENESIS, GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, MobileHMI and MC Works64, to minimize the risk of exploitation of this vulnerability. (1) Delete the .dat file at the location specified below. This file name and location is different depending on the product version. (Version 10: C:\\Program Files\\ICONICS\\GENESIS64\\Components\\ClientChallengeTable.dat; Version 11: C:\\ProgramData\\ICONICS\\11\\SecurityChallenges.dat) (2) Create a blank file with the same name and location. (3) Restrict the file system write and delete access to this file to a unique administrator account, different than the GENESIS administrator account.",
+          "product_ids": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 6.4,
+            "baseSeverity": "MEDIUM",
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0015",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0023"
+          ]
+        }
+      ]
+    },
+    {
+      "cve": "CVE-2026-16438",
+      "cwe": {
+        "id": "CWE-266",
+        "name": "Incorrect Privilege Assignment"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "Incorrect Privilege Assignment (CWE-266) vulnerability in GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, MobileHMI, and MC Works64 could allow an attacker who can log in using the same administrator account for the affected products to launch and operate DCOM objects locally or remotely. During installation, the installers of the affected products unnecessarily grant default DCOM permissions to the administrator account of the affected products. As a result, the attacker may disclose, tamper with, destroy, or delete internal information, or cause the affected system to enter a denial-of-service (DoS) condition.",
+          "title": "Vulnerability Summary"
+        },
+        {
+          "category": "details",
+          "text": "SSVCv2/E:N/A:Y/T:T/2026-10-15T00:00:00Z/",
+          "title": "SSVC"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0010",
+          "CSAFPID-0016",
+          "CSAFPID-0017",
+          "CSAFPID-0018",
+          "CSAFPID-0019",
+          "CSAFPID-0020"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-16438"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H"
+        },
+        {
+          "category": "external",
+          "summary": "www.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/266.html"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric is releasing fixed version 10.98 or later for GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, and MobileHMI. Please download the fixed version from the link below and install it: \"https://iconicsinc.my.site.com/community/s/resource-center/product-downloads\". (Note: GENESIS64, Hyper Historian, AnalytiX, and MobileHMI are included in the ICONICS Suite installation.) For more information on the fixed version, please refer to the Mitsubishi Electric security advisory at \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf\".",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008"
+          ],
+          "url": "https://iconicsinc.my.site.com/community/s/resource-center/product-downloads"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Mitsubishi Electric Iconics Digital Solutions is releasing fixed version 10.98 or later for GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, and MobileHMI. Please download the fixed version from the link below and install it: \"https://iconicsinc.my.site.com/community/s/resource-center/product-downloads\". (Note: GENESIS64, Hyper Historian, AnalytiX, and MobileHMI are included in the ICONICS Suite installation.) For more information on the fixed version, please refer to the Mitsubishi Electric Iconics Digital Solutions whitepaper on security vulnerabilities, which can be found at \"https://iconics.com/about/security/cert\".",
+          "product_ids": [
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ],
+          "url": "https://iconicsinc.my.site.com/community/s/resource-center/product-downloads"
+        },
+        {
+          "category": "no_fix_planned",
+          "details": "Mitsubishi Electric has no plans to release a fixed version of MC Works64. For customers using MC Works64, Mitsubishi Electric recommends taking the mitigations described in the Mitsubishi Electric's security advisory at \"https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf\". Alternatively, customers should consider replacing MC Works64 with GENESIS64 or GENESIS. For information on how to replace it, please refer to the following document: \"GENESIS64 ? How to Replace MC Works64 with GENESIS64\" (Japanese only): \"https://www.mitsubishielectric.co.jp/dl/fa/members/document/manual/scada/bcn-p5999-1459/bcnp59991459a.pdf\". Note: This document is published on Mitsubishi Electric FA website, and membership registration and login are required to view it.",
+          "product_ids": [
+            "CSAFPID-0010"
+          ],
+          "url": "https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-006_en.pdf"
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend configuring the PCs with the affected product installed so that only an administrator can log in, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend using the PCs with the affected product installed in the LAN and blocking remote login from untrusted networks and hosts, and from non-administrator users, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend blocking unauthorized access by using a firewall, virtual private network (VPN), etc. and allowing remote login only to administrator when internet access is required, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend restricting physical access to the PC with the affected product installed and the network to which the PC is connected, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend preventing the user from clicking on web links in emails from untrusted sources, or from opening attachments in untrusted emails, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend using the PCs with the affected product installed in the LAN and blocking access from untrusted networks and hosts through firewalls, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend blocking unauthorized access by using a firewall, virtual private network (VPN), etc. when internet access is required, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "For customers of products that do not have a fixed version or who cannot immediately update the product, Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions recommend installing anti-virus software on the PC with the affected product installed, as well as on any PCs that can access it, to minimize the risk of exploitation of this vulnerability.",
+          "product_ids": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.1,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0006",
+            "CSAFPID-0007",
+            "CSAFPID-0008",
+            "CSAFPID-0010",
+            "CSAFPID-0016",
+            "CSAFPID-0017",
+            "CSAFPID-0018",
+            "CSAFPID-0019",
+            "CSAFPID-0020"
+          ]
+        }
+      ]
+    }
+  ]
+}
