@@ -1,0 +1,173 @@
+{
+  "$schema": "https://docs.oasis-open.org/csaf/csaf/v2.1/schema/extension-metaschema.json",
+  "$id": "https://raw.githubusercontent.com/cisagov/CSAF/refs/heads/develop/Gold%20Eagle/schemas/ge_document_extension_1.11.0.json",
+  "title": "Gold Eagle Submission CSAF Extension Schema for Document level metadata",
+  "description": "Schema extension containing the metadata, fields, and types that are used as an API intake form as part of a complete CSAF 2.1 document, using the \"csaf_vulnerability_report\" CSAF profile.",
+  "type": "object",
+  "$defs": {
+    "sector_t": {
+      "title": "Critical infrastructure sector",
+      "type": "string",
+      "enum": [
+        "Chemical",
+        "Commercial Facilities",
+        "Communications",
+        "Critical Manufacturing",
+        "Dams",
+        "Defense Industrial Base",
+        "Emergency Services",
+        "Energy",
+        "Financial Services",
+        "Food and Agriculture",
+        "Government Services and Facilities",
+        "Healthcare and Public Health",
+        "Information Technology",
+        "Nuclear Reactors, Materials, and Waste",
+        "Transportation Systems",
+        "Water and Wastewater",
+        "UNKNOWN",
+        "None"
+      ]
+    }
+  },
+  "required": [
+    "$schema",
+    "category",
+    "critical",
+    "content"
+  ],
+  "properties": {
+    "$schema": {
+      "title": "CSAF extension schema",
+      "description": "Immutable identity of this Gold Eagle document extension.",
+      "type": "string",
+      "format": "uri",
+      "const": "https://raw.githubusercontent.com/cisagov/CSAF/refs/heads/develop/Gold%20Eagle/schemas/ge_document_extension_1.11.0.json"
+    },
+    "category": {
+      "title": "Extension category",
+      "description": "Gold Eagle requires this document extension for product scopes while CSAF treats it as supplementary.",
+      "type": "string",
+      "enum": [
+        "supplementary"
+      ]
+    },
+    "critical": {
+      "title": "Critical flag",
+      "description": "Gold Eagle enforces this extension independently of CSAF criticality.",
+      "type": "boolean",
+      "const": false
+    },
+    "content": {
+      "title": "Gold Eagle document metadata",
+      "description": "GE document metadata including product scope for each affected product, explicit full-product-name identity, and optional business metadata.",
+      "type": "object",
+      "minProperties": 1,
+      "required": [
+        "schema_version",
+        "product_scopes"
+      ],
+      "properties": {
+        "schema_version": {
+          "title": "Gold Eagle schema version",
+          "type": "string",
+          "const": "1.11"
+        },
+        "product_scopes": {
+          "title": "Affected product scopes",
+          "description": "All applicable GE environment classifications for each known-affected CSAF product ID.",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000,
+          "items": {
+            "type": "object",
+            "required": [
+              "product_id",
+              "scopes"
+            ],
+            "properties": {
+              "product_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scopes": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 4,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "ICS/OT",
+                    "IoT",
+                    "IT",
+                    "Medical"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "product_identities": {
+          "title": "Identities for affected full_product_names",
+          "description": "Required by Gold Eagle for each affected full_product_names product without a vendor/product/version branch path. Values are reporter assertions, not inferred from a display name or PURL.",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000,
+          "items": {
+            "type": "object",
+            "required": [
+              "product_id",
+              "vendor_name",
+              "product_name",
+              "version_name"
+            ],
+            "properties": {
+              "product_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "vendor_name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "product_name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "version_name": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "company_headquarters": {
+          "title": "Company headquarters",
+          "description": "Headquarters country of the affected vendor when known.",
+          "type": "string",
+          "minLength": 1
+        },
+        "countries_deployed": {
+          "title": "Countries deployed",
+          "description": "Countries where the affected product is deployed when known.",
+          "type": "string",
+          "minLength": 1
+        },
+        "critical_infrastructure_sectors": {
+          "title": "Critical infrastructure sectors",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/sector_t"
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "additionalProperties": false
+}
