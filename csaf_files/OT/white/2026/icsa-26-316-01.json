@@ -1,0 +1,1623 @@
+{
+  "document": {
+    "acknowledgments": [
+      {
+        "organization": "Siemens ProductCERT",
+        "summary": "reported these vulnerabilities to CISA."
+      }
+    ],
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "Disclosure is not limited",
+      "tlp": {
+        "label": "WHITE",
+        "url": "https://www.cisa.gov/news-events/news/traffic-light-protocol-tlp-definitions-and-usage"
+      }
+    },
+    "lang": "en",
+    "notes": [
+      {
+        "category": "summary",
+        "text": "On October 21, 2026, the PHP project and security researchers disclosed two critical, unauthenticated remote code execution vulnerabilities in the core PHP language runtime known as \"php2shell\" (tracked as CVE-2026-109618 and CVE-2026-109619). This advisory covers the status of impact of various Siemens software products.\n\nAs a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines, and to follow the recommendations in the product manuals.\n\nSiemens is actively monitoring the situation and assessing the implications of these vulnerabilities on our portfolio. Because this evaluation is ongoing, our findings are subject to change as new technical details and vendor updates emerge. We will publish updated findings, guidance, and remediation recommendations as soon as they become available.\n\nSiemens has released new versions for several affected products and recommends to update to the latest versions. Siemens is preparing further fixes and recommends mitigations for products where fixes are not or not yet available.",
+        "title": "Summary"
+      },
+      {
+        "category": "general",
+        "text": "Operators of critical power systems (e.g. TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can thus be minimized by virtue of the grid design.\nSiemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment. \nAs a general security measure Siemens strongly recommends to protect network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised to configure the environment according to our operational guidelines in order to run the devices in a protected IT environment.\n\nRecommended security guidelines can be found at:\nhttps://www.siemens.com/gridsecurity",
+        "title": "General Recommendations"
+      },
+      {
+        "category": "general",
+        "text": "For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories",
+        "title": "Additional Resources"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "The use of Siemens Security Advisories is subject to the terms and conditions listed on: https://www.siemens.com/productcert/terms-of-use.",
+        "title": "Terms of Use"
+      },
+      {
+        "category": "legal_disclaimer",
+        "text": "This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).",
+        "title": "Legal Notice and Terms of Use"
+      },
+      {
+        "category": "other",
+        "text": "This ICSA is a verbatim republication of Siemens ProductCERT SSA-166980 from a direct conversion of the vendor's Common Security Advisory Framework (CSAF) advisory. This is republished to CISA's website as a means of increasing visibility and is provided \"as-is\" for informational purposes only. CISA is not responsible for the editorial or technical accuracy of republished advisories and provides no warranties of any kind regarding any information contained within this advisory.  Further, CISA does not endorse any commercial product or service.  Please contact Siemens ProductCERT directly for any questions regarding this advisory.",
+        "title": "Advisory Conversion Disclaimer"
+      },
+      {
+        "category": "general",
+        "text": "CISA recommends users take defensive measures to minimize the exploitation risk of these vulnerabilities.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Locate control system networks and remote devices behind firewalls and isolate them from business networks.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most recent version available. Also recognize VPN is only as secure as its connected devices.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets. Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "general",
+        "text": "Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.",
+        "title": "Recommended Practices"
+      },
+      {
+        "category": "other",
+        "text": "Energy",
+        "title": "Critical infrastructure sectors"
+      },
+      {
+        "category": "other",
+        "text": "Worldwide",
+        "title": "Countries/areas deployed"
+      },
+      {
+        "category": "other",
+        "text": "Germany",
+        "title": "Company headquarters location"
+      }
+    ],
+    "publisher": {
+      "category": "other",
+      "contact_details": "central@cisa.dhs.gov",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "references": [
+      {
+        "category": "self",
+        "summary": "SSA-166980: PHP2Shell Vulnerabilities in Siemens Products - CSAF Version",
+        "url": "https://cert-portal.siemens.com/productcert/csaf/ssa-166980.json"
+      },
+      {
+        "category": "self",
+        "summary": "SSA-166980: PHP2Shell Vulnerabilities in Siemens Products - HTML Version",
+        "url": "https://cert-portal.siemens.com/productcert/html/ssa-166980.html"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-316-01 JSON",
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-316-01.json"
+      },
+      {
+        "category": "self",
+        "summary": "ICS Advisory ICSA-26-316-01 - Web Version",
+        "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/ics-alerts/ics-alert-10-301-01"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/sites/default/files/publications/Cybersecurity_Best_Practices_for_Industrial_Control_Systems.pdf"
+      },
+      {
+        "category": "external",
+        "summary": "Recommended Practices",
+        "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b"
+      }
+    ],
+    "title": "Siemens Building Automation and Energy Products",
+    "tracking": {
+      "current_release_date": "2026-11-12T07:00:00.000000Z",
+      "generator": {
+        "date": "2026-11-10T20:27:26.172857Z",
+        "engine": {
+          "name": "CISA CSAF Generator",
+          "version": "1.5.0"
+        }
+      },
+      "id": "ICSA-26-316-01",
+      "initial_release_date": "2026-10-26T00:00:00.000000Z",
+      "revision_history": [
+        {
+          "date": "2026-10-26T00:00:00.000000Z",
+          "legacy_version": "Initial",
+          "number": "1",
+          "summary": "Publication Date"
+        },
+        {
+          "date": "2026-10-27T00:00:00.000000Z",
+          "legacy_version": "Additional Release 1",
+          "number": "2",
+          "summary": "Updated the Known not affected list"
+        },
+        {
+          "date": "2026-10-29T00:00:00.000000Z",
+          "legacy_version": "Additional Release 2",
+          "number": "3",
+          "summary": "Added AMIS TS, Energy Engage V2.0SP9, Energy Engage V3.1SP1, Spectrum Power 3, Spectrum Power 4, Spectrum Power 7 and Spectrum Power TG to Affected Products and updated the list of known not affected"
+        },
+        {
+          "date": "2026-11-05T00:00:00.000000Z",
+          "legacy_version": "Additional Release 3",
+          "number": "4",
+          "summary": "Updated Known Not Affected and Known Affected Products list"
+        },
+        {
+          "date": "2026-11-12T07:00:00.000000Z",
+          "legacy_version": "CISA Republication",
+          "number": "5",
+          "summary": "Initial CISA Republication of Siemens ProductCERT SSA-166980 advisory"
+        }
+      ],
+      "status": "final",
+      "version": "5"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "branches": [
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "AMIS TS",
+                  "product_id": "CSAFPID-0001"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "AMIS TS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "blueplanet 360 NX3 M6 WM OD IISX",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "blueplanet 360 NX3 M6 WM OD IISX"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "blueplanet 360 NX3 M6 WM OD IISX - S",
+                  "product_id": "CSAFPID-0003"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "blueplanet 360 NX3 M6 WM OD IISX - S"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Building X",
+                  "product_id": "CSAFPID-0004"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Building X"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Call stations",
+                  "product_id": "CSAFPID-0005"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Call stations"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Chargesight",
+                  "product_id": "CSAFPID-0006"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Chargesight"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Climatix Cloud IC",
+                  "product_id": "CSAFPID-0007"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Climatix Cloud IC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Climatix Devices",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Climatix Devices"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Connect Insights",
+                  "product_id": "CSAFPID-0009"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Connect Insights"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Connect X200",
+                  "product_id": "CSAFPID-0010"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Connect X200"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Connect X300",
+                  "product_id": "CSAFPID-0011"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Connect X300"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Connect X500",
+                  "product_id": "CSAFPID-0012"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Connect X500"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "cRSP",
+                  "product_id": "CSAFPID-0013"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "cRSP"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Depotfinity",
+                  "product_id": "CSAFPID-0014"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Depotfinity"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Desigo CC",
+                  "product_id": "CSAFPID-0015"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Desigo CC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Desigo DXR2",
+                  "product_id": "CSAFPID-0016"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Desigo DXR2"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Desigo DXR3",
+                  "product_id": "CSAFPID-0017"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Desigo DXR3"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Desigo Optic",
+                  "product_id": "CSAFPID-0018"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Desigo Optic"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Desigo PXC3",
+                  "product_id": "CSAFPID-0019"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Desigo PXC3"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Desigo PXC4",
+                  "product_id": "CSAFPID-0020"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Desigo PXC4"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Desigo PXC5",
+                  "product_id": "CSAFPID-0021"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Desigo PXC5"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Desigo PXC7",
+                  "product_id": "CSAFPID-0022"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Desigo PXC7"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Energy Engage V2.0SP9",
+                  "product_id": "CSAFPID-0023"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Energy Engage V2.0SP9"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Energy Engage V3.1SP1",
+                  "product_id": "CSAFPID-0024"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Energy Engage V3.1SP1"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Energy Management System",
+                  "product_id": "CSAFPID-0025"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Energy Management System"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Enlighted RTLS",
+                  "product_id": "CSAFPID-0026"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Enlighted RTLS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Enlighted Space",
+                  "product_id": "CSAFPID-0027"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Enlighted Space"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Heliox Flex Pro",
+                  "product_id": "CSAFPID-0028"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Heliox Flex Pro"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Heliox H60",
+                  "product_id": "CSAFPID-0029"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Heliox H60"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Heliox Rapid",
+                  "product_id": "CSAFPID-0030"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Heliox Rapid"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:intdot/<20261103",
+                "product": {
+                  "name": "Local Monitoring bt-monitoring-vm < V20261103",
+                  "product_id": "CSAFPID-0031"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Local Monitoring bt-monitoring-vm"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Navigator E&S",
+                  "product_id": "CSAFPID-0032"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Navigator E&S"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Novigo VANSYS",
+                  "product_id": "CSAFPID-0033"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Novigo VANSYS"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Novigo VANSYS core",
+                  "product_id": "CSAFPID-0034"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Novigo VANSYS core"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "PACE-Design",
+                  "product_id": "CSAFPID-0035"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "PACE-Design"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Sicharge D",
+                  "product_id": "CSAFPID-0036"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sicharge D"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Sicharge D Configuration Backend",
+                  "product_id": "CSAFPID-0037"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sicharge D Configuration Backend"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SICHARGE FLEX",
+                  "product_id": "CSAFPID-0038"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SICHARGE FLEX"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SICHARGE UC",
+                  "product_id": "CSAFPID-0039"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SICHARGE UC"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Sifinity Control",
+                  "product_id": "CSAFPID-0040"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sifinity Control"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Sifinity Go",
+                  "product_id": "CSAFPID-0041"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sifinity Go"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Sifinity Setup",
+                  "product_id": "CSAFPID-0042"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sifinity Setup"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Sinteso FS20 EN",
+                  "product_id": "CSAFPID-0043"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Sinteso FS20 EN"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SiPass integrated",
+                  "product_id": "CSAFPID-0044"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SiPass integrated"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "SIPORT",
+                  "product_id": "CSAFPID-0045"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "SIPORT"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Siveillance Control",
+                  "product_id": "CSAFPID-0046"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Siveillance Control"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Siveillance Control Pro",
+                  "product_id": "CSAFPID-0047"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Siveillance Control Pro"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Siveillance Intrusion",
+                  "product_id": "CSAFPID-0048"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Siveillance Intrusion"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Siveillance Video",
+                  "product_id": "CSAFPID-0049"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Siveillance Video"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Spectrum Power 3 using IHM (NagiosXI) running on Red Hat Enterprise Linux version (RHEL) 7",
+                  "product_id": "CSAFPID-0050"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Spectrum Power 3"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Spectrum Power 4 using Nagios or Zabbix",
+                  "product_id": "CSAFPID-0051"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Spectrum Power 4 with Web Office Portal V3.0, V3.1 and V3.2",
+                  "product_id": "CSAFPID-0052"
+                }
+              },
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Spectrum Power 4 with HISViews V1.0",
+                  "product_id": "CSAFPID-0053"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Spectrum Power 4"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Spectrum Power 7 using IHM (NagiosXI)",
+                  "product_id": "CSAFPID-0054"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Spectrum Power 7"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Spectrum Power TG which are based on Microsoft Windows using the WebConsole and WebQuery components",
+                  "product_id": "CSAFPID-0055"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Spectrum Power TG"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Verischarge",
+                  "product_id": "CSAFPID-0056"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Verischarge"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "VersiCloudHeliox Dual Port 60kW",
+                  "product_id": "CSAFPID-0057"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "VersiCloudHeliox Dual Port 60kW"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Voice alarm panels",
+                  "product_id": "CSAFPID-0058"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Voice alarm panels"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Voice alarm systems and audio matrices",
+                  "product_id": "CSAFPID-0059"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Voice alarm systems and audio matrices"
+          },
+          {
+            "branches": [
+              {
+                "category": "product_version_range",
+                "name": "vers:all/*",
+                "product": {
+                  "name": "Workplace Experience",
+                  "product_id": "CSAFPID-0060"
+                }
+              }
+            ],
+            "category": "product_name",
+            "name": "Workplace Experience"
+          }
+        ],
+        "category": "vendor",
+        "name": "Siemens"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2026-109618",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "flags": [
+        {
+          "label": "component_not_present",
+          "product_ids": [
+            "CSAFPID-0048",
+            "CSAFPID-0045",
+            "CSAFPID-0028",
+            "CSAFPID-0032",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0030",
+            "CSAFPID-0049",
+            "CSAFPID-0057",
+            "CSAFPID-0014",
+            "CSAFPID-0034",
+            "CSAFPID-0056",
+            "CSAFPID-0059",
+            "CSAFPID-0020",
+            "CSAFPID-0035",
+            "CSAFPID-0015",
+            "CSAFPID-0005",
+            "CSAFPID-0021",
+            "CSAFPID-0060",
+            "CSAFPID-0008",
+            "CSAFPID-0022",
+            "CSAFPID-0029",
+            "CSAFPID-0047",
+            "CSAFPID-0026",
+            "CSAFPID-0011",
+            "CSAFPID-0036",
+            "CSAFPID-0018",
+            "CSAFPID-0037",
+            "CSAFPID-0044",
+            "CSAFPID-0025",
+            "CSAFPID-0010",
+            "CSAFPID-0041",
+            "CSAFPID-0027",
+            "CSAFPID-0012",
+            "CSAFPID-0043",
+            "CSAFPID-0009",
+            "CSAFPID-0019",
+            "CSAFPID-0007",
+            "CSAFPID-0046",
+            "CSAFPID-0006",
+            "CSAFPID-0058",
+            "CSAFPID-0013",
+            "CSAFPID-0004",
+            "CSAFPID-0033",
+            "CSAFPID-0040",
+            "CSAFPID-0042",
+            "CSAFPID-0016",
+            "CSAFPID-0017"
+          ]
+        }
+      ],
+      "notes": [
+        {
+          "category": "description",
+          "text": "PHP uses longjmp() for out-of-memory (OOM) errors to exit the current context and abort handling of the request. Some contexts may not properly account for this scenario and leave request memory in an uninitialized state before performing an allocation. The subsequent request cleanup procedure may read or branch on this memory. Multiple OOM strategies can consistently trigger this condition and lead to remote code execution (RCE).",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0023",
+          "CSAFPID-0024",
+          "CSAFPID-0003",
+          "CSAFPID-0031",
+          "CSAFPID-0051",
+          "CSAFPID-0052",
+          "CSAFPID-0053",
+          "CSAFPID-0054",
+          "CSAFPID-0055"
+        ],
+        "known_not_affected": [
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0013",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0016",
+          "CSAFPID-0017",
+          "CSAFPID-0018",
+          "CSAFPID-0019",
+          "CSAFPID-0020",
+          "CSAFPID-0021",
+          "CSAFPID-0022",
+          "CSAFPID-0025",
+          "CSAFPID-0026",
+          "CSAFPID-0027",
+          "CSAFPID-0028",
+          "CSAFPID-0029",
+          "CSAFPID-0030",
+          "CSAFPID-0032",
+          "CSAFPID-0033",
+          "CSAFPID-0034",
+          "CSAFPID-0035",
+          "CSAFPID-0036",
+          "CSAFPID-0037",
+          "CSAFPID-0038",
+          "CSAFPID-0039",
+          "CSAFPID-0004",
+          "CSAFPID-0040",
+          "CSAFPID-0041",
+          "CSAFPID-0042",
+          "CSAFPID-0043",
+          "CSAFPID-0044",
+          "CSAFPID-0045",
+          "CSAFPID-0046",
+          "CSAFPID-0047",
+          "CSAFPID-0048",
+          "CSAFPID-0049",
+          "CSAFPID-0005",
+          "CSAFPID-0056",
+          "CSAFPID-0057",
+          "CSAFPID-0058",
+          "CSAFPID-0059",
+          "CSAFPID-0006",
+          "CSAFPID-0060",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-109618"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/416.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "no_fix_planned",
+          "details": "Currently no fix is planned",
+          "product_ids": [
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V20261103 or later version",
+          "product_ids": [
+            "CSAFPID-0031"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/110007932/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Red Hat released a PHP security patch for RHEL 8 and 9",
+          "product_ids": [
+            "CSAFPID-0054"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Upgrade PHP version to V8.5.12",
+          "product_ids": [
+            "CSAFPID-0055"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Upgrade PHP version to V8.1.34 release 6",
+          "product_ids": [
+            "CSAFPID-0024"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 9.8,
+            "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0003",
+            "CSAFPID-0031",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055"
+          ]
+        }
+      ],
+      "threats": [
+        {
+          "category": "impact",
+          "details": "PHP is not present in this product",
+          "product_ids": [
+            "CSAFPID-0048",
+            "CSAFPID-0045",
+            "CSAFPID-0028",
+            "CSAFPID-0032",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0030",
+            "CSAFPID-0049",
+            "CSAFPID-0057",
+            "CSAFPID-0014",
+            "CSAFPID-0034",
+            "CSAFPID-0056",
+            "CSAFPID-0059",
+            "CSAFPID-0020",
+            "CSAFPID-0035",
+            "CSAFPID-0015",
+            "CSAFPID-0005",
+            "CSAFPID-0021",
+            "CSAFPID-0060",
+            "CSAFPID-0008",
+            "CSAFPID-0022",
+            "CSAFPID-0029",
+            "CSAFPID-0047",
+            "CSAFPID-0026",
+            "CSAFPID-0011",
+            "CSAFPID-0036",
+            "CSAFPID-0018",
+            "CSAFPID-0037",
+            "CSAFPID-0044",
+            "CSAFPID-0025",
+            "CSAFPID-0010",
+            "CSAFPID-0041",
+            "CSAFPID-0027",
+            "CSAFPID-0012",
+            "CSAFPID-0043",
+            "CSAFPID-0009",
+            "CSAFPID-0019",
+            "CSAFPID-0007",
+            "CSAFPID-0046",
+            "CSAFPID-0006",
+            "CSAFPID-0058",
+            "CSAFPID-0013",
+            "CSAFPID-0004",
+            "CSAFPID-0033",
+            "CSAFPID-0040",
+            "CSAFPID-0042",
+            "CSAFPID-0016",
+            "CSAFPID-0017"
+          ]
+        }
+      ],
+      "title": "CVE-2026-109618"
+    },
+    {
+      "cve": "CVE-2026-109619",
+      "cwe": {
+        "id": "CWE-416",
+        "name": "Use After Free"
+      },
+      "flags": [
+        {
+          "label": "component_not_present",
+          "product_ids": [
+            "CSAFPID-0048",
+            "CSAFPID-0045",
+            "CSAFPID-0028",
+            "CSAFPID-0032",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0030",
+            "CSAFPID-0049",
+            "CSAFPID-0057",
+            "CSAFPID-0014",
+            "CSAFPID-0034",
+            "CSAFPID-0056",
+            "CSAFPID-0059",
+            "CSAFPID-0020",
+            "CSAFPID-0035",
+            "CSAFPID-0015",
+            "CSAFPID-0005",
+            "CSAFPID-0021",
+            "CSAFPID-0060",
+            "CSAFPID-0008",
+            "CSAFPID-0022",
+            "CSAFPID-0029",
+            "CSAFPID-0047",
+            "CSAFPID-0026",
+            "CSAFPID-0011",
+            "CSAFPID-0036",
+            "CSAFPID-0018",
+            "CSAFPID-0037",
+            "CSAFPID-0044",
+            "CSAFPID-0025",
+            "CSAFPID-0010",
+            "CSAFPID-0041",
+            "CSAFPID-0027",
+            "CSAFPID-0012",
+            "CSAFPID-0043",
+            "CSAFPID-0009",
+            "CSAFPID-0019",
+            "CSAFPID-0007",
+            "CSAFPID-0046",
+            "CSAFPID-0006",
+            "CSAFPID-0058",
+            "CSAFPID-0013",
+            "CSAFPID-0004",
+            "CSAFPID-0033",
+            "CSAFPID-0040",
+            "CSAFPID-0042",
+            "CSAFPID-0016",
+            "CSAFPID-0017"
+          ]
+        }
+      ],
+      "notes": [
+        {
+          "category": "description",
+          "text": "PHP has various global state that temporarily points into request memory. In some scenarios, global state may not be correctly reset, or may be repopulated after being reset. The global state may then refer to request memory even after it has been freed. Subsequent requests may read or branch on this stale state before it is fully initialized. Multiple strategies can trigger this condition and produce remote code execution (RCE).",
+          "title": "CVE Description"
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0002",
+          "CSAFPID-0023",
+          "CSAFPID-0024",
+          "CSAFPID-0003",
+          "CSAFPID-0031",
+          "CSAFPID-0050",
+          "CSAFPID-0051",
+          "CSAFPID-0052",
+          "CSAFPID-0053",
+          "CSAFPID-0054",
+          "CSAFPID-0055"
+        ],
+        "known_not_affected": [
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0013",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0016",
+          "CSAFPID-0017",
+          "CSAFPID-0018",
+          "CSAFPID-0019",
+          "CSAFPID-0020",
+          "CSAFPID-0021",
+          "CSAFPID-0022",
+          "CSAFPID-0025",
+          "CSAFPID-0026",
+          "CSAFPID-0027",
+          "CSAFPID-0028",
+          "CSAFPID-0029",
+          "CSAFPID-0030",
+          "CSAFPID-0032",
+          "CSAFPID-0033",
+          "CSAFPID-0034",
+          "CSAFPID-0035",
+          "CSAFPID-0036",
+          "CSAFPID-0037",
+          "CSAFPID-0038",
+          "CSAFPID-0039",
+          "CSAFPID-0004",
+          "CSAFPID-0040",
+          "CSAFPID-0041",
+          "CSAFPID-0042",
+          "CSAFPID-0043",
+          "CSAFPID-0044",
+          "CSAFPID-0045",
+          "CSAFPID-0046",
+          "CSAFPID-0047",
+          "CSAFPID-0048",
+          "CSAFPID-0049",
+          "CSAFPID-0005",
+          "CSAFPID-0056",
+          "CSAFPID-0057",
+          "CSAFPID-0058",
+          "CSAFPID-0059",
+          "CSAFPID-0006",
+          "CSAFPID-0060",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0009"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.cve.org",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-109619"
+        },
+        {
+          "category": "external",
+          "summary": "cwe.mitre.org",
+          "url": "https://cwe.mitre.org/data/definitions/416.html"
+        },
+        {
+          "category": "external",
+          "summary": "www.first.org",
+          "url": "https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "remediations": [
+        {
+          "category": "no_fix_planned",
+          "details": "Currently no fix is planned",
+          "product_ids": [
+            "CSAFPID-0023"
+          ]
+        },
+        {
+          "category": "none_available",
+          "details": "Currently no fix is available",
+          "product_ids": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0003",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Update to V20261103 or later version",
+          "product_ids": [
+            "CSAFPID-0031"
+          ],
+          "url": "https://support.industry.siemens.com/cs/ww/en/view/110007932/"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Red Hat released a PHP security patch for RHEL 8 and 9",
+          "product_ids": [
+            "CSAFPID-0054"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Red Hat released a PHP security patch for RHEL 7",
+          "product_ids": [
+            "CSAFPID-0050"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Upgrade PHP version to V8.5.12",
+          "product_ids": [
+            "CSAFPID-0055"
+          ]
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Upgrade PHP version to V8.1.34 release 6",
+          "product_ids": [
+            "CSAFPID-0024"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0002",
+            "CSAFPID-0023",
+            "CSAFPID-0024",
+            "CSAFPID-0003",
+            "CSAFPID-0031",
+            "CSAFPID-0050",
+            "CSAFPID-0051",
+            "CSAFPID-0052",
+            "CSAFPID-0053",
+            "CSAFPID-0054",
+            "CSAFPID-0055"
+          ]
+        }
+      ],
+      "threats": [
+        {
+          "category": "impact",
+          "details": "PHP is not present in this product",
+          "product_ids": [
+            "CSAFPID-0048",
+            "CSAFPID-0045",
+            "CSAFPID-0028",
+            "CSAFPID-0032",
+            "CSAFPID-0038",
+            "CSAFPID-0039",
+            "CSAFPID-0030",
+            "CSAFPID-0049",
+            "CSAFPID-0057",
+            "CSAFPID-0014",
+            "CSAFPID-0034",
+            "CSAFPID-0056",
+            "CSAFPID-0059",
+            "CSAFPID-0020",
+            "CSAFPID-0035",
+            "CSAFPID-0015",
+            "CSAFPID-0005",
+            "CSAFPID-0021",
+            "CSAFPID-0060",
+            "CSAFPID-0008",
+            "CSAFPID-0022",
+            "CSAFPID-0029",
+            "CSAFPID-0047",
+            "CSAFPID-0026",
+            "CSAFPID-0011",
+            "CSAFPID-0036",
+            "CSAFPID-0018",
+            "CSAFPID-0037",
+            "CSAFPID-0044",
+            "CSAFPID-0025",
+            "CSAFPID-0010",
+            "CSAFPID-0041",
+            "CSAFPID-0027",
+            "CSAFPID-0012",
+            "CSAFPID-0043",
+            "CSAFPID-0009",
+            "CSAFPID-0019",
+            "CSAFPID-0007",
+            "CSAFPID-0046",
+            "CSAFPID-0006",
+            "CSAFPID-0058",
+            "CSAFPID-0013",
+            "CSAFPID-0004",
+            "CSAFPID-0033",
+            "CSAFPID-0040",
+            "CSAFPID-0042",
+            "CSAFPID-0016",
+            "CSAFPID-0017"
+          ]
+        }
+      ],
+      "title": "CVE-2026-109619"
+    }
+  ]
+}
