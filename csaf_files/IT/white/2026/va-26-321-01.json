@@ -1,0 +1,683 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "lang": "en-US",
+    "publisher": {
+      "category": "coordinator",
+      "contact_details": "https://www.cisa.gov/report",
+      "issuing_authority": "CISA",
+      "name": "CISA",
+      "namespace": "https://www.cisa.gov/"
+    },
+    "title": "OpenJDK Base64 decoding heap corruption with AVX-512 enabled",
+    "tracking": {
+      "current_release_date": "2026-11-19T17:30:46Z",
+      "generator": {
+        "engine": {
+          "name": "VINCE-NT",
+          "version": "1.15.4+build.175"
+        }
+      },
+      "id": "VA-26-321-01",
+      "initial_release_date": "2026-11-19T17:30:46Z",
+      "status": "final",
+      "version": "1.0.0",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "summary": "Initial publication",
+          "date": "2026-11-19T17:30:46Z"
+        }
+      ]
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      }
+    },
+    "notes": [
+      {
+        "text": "All information products included in [https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white](https://github.com/cisagov/CSAF/tree/develop/csaf_files/IT/white) are provided \\\"as is\\\" for informational purposes only. The Department of Homeland Security (DHS) does not provide any warranties of any kind regarding any information contained within. DHS does not endorse any commercial product or service, referenced in this product or otherwise. Further dissemination of this product is governed by the Traffic Light Protocol (TLP) marking in the header. For more information about TLP, see [https://us-cert.cisa.gov/tlp/](https://us-cert.cisa.gov/tlp/).",
+        "title": "Legal Notice",
+        "category": "legal_disclaimer"
+      },
+      {
+        "text": "Worldwide",
+        "title": "Countries and Areas Deployed",
+        "category": "other"
+      },
+      {
+        "text": "Information Technology",
+        "title": "Critical Infrastructure Sectors",
+        "category": "other"
+      },
+      {
+        "text": "OpenJDK and many downstream Java implementations do not securely decode Base64 data when x86 or x64 CPU AVX-512 extensions are enabled. An attacker with the ability to control Base64 input may be able to manipulate heap memory to cause a Java process to crash or execute arbitrary code. In many cases attacks can be attempted remotely and without authentication. Oracle Java SE, Oracle GraalVM for JDK, and Oracle GraalVM Enterprise Edition are affected.",
+        "title": "Risk Evaluation",
+        "category": "summary"
+      },
+      {
+        "text": "Fixed in OpenJDK and Oracle Java SE 17.0.21.1, 21.0.13.1, 25.0.5.1, and 27.0.1.1, Oracle Java SE 8u513-perf (Java SE 17.0.21.1), Oracle GraalVM for JDK 17.0.21.1 and 21.0.13.1, and Oracle GraalVM Enterprise Edition 21.3.20.1.",
+        "title": "Recommended Practices",
+        "category": "general"
+      },
+      {
+        "text": "United States",
+        "title": "Company Headquarters Location",
+        "category": "other"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-321-01.json",
+        "summary": "Vulnerability Advisory VA-26-321-01 CSAF",
+        "category": "self"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "Oracle",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "Oracle GraalVM Enterprise Edition",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "21.3.20.0.3",
+                "product": {
+                  "name": "Oracle Oracle GraalVM Enterprise Edition 21.3.20.0.3",
+                  "product_id": "CSAFPID-0001"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "21.3.20.1",
+                "product": {
+                  "name": "Oracle Oracle GraalVM Enterprise Edition 21.3.20.1",
+                  "product_id": "CSAFPID-0002"
+                }
+              }
+            ]
+          },
+          {
+            "category": "product_name",
+            "name": "Oracle GraalVM for JDK",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "17.0.21.0.3",
+                "product": {
+                  "name": "Oracle Oracle GraalVM for JDK 17.0.21.0.3",
+                  "product_id": "CSAFPID-0003"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "21.0.13.0.3",
+                "product": {
+                  "name": "Oracle Oracle GraalVM for JDK 21.0.13.0.3",
+                  "product_id": "CSAFPID-0004"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "25.0.5.0.3",
+                "product": {
+                  "name": "Oracle Oracle GraalVM for JDK 25.0.5.0.3",
+                  "product_id": "CSAFPID-0005"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "17.0.21.1",
+                "product": {
+                  "name": "Oracle Oracle GraalVM for JDK 17.0.21.1",
+                  "product_id": "CSAFPID-0006"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "21.0.13.1",
+                "product": {
+                  "name": "Oracle Oracle GraalVM for JDK 21.0.13.1",
+                  "product_id": "CSAFPID-0007"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "25.0.5.1",
+                "product": {
+                  "name": "Oracle Oracle GraalVM for JDK 25.0.5.1",
+                  "product_id": "CSAFPID-0008"
+                }
+              }
+            ]
+          },
+          {
+            "category": "product_name",
+            "name": "Oracle Java SE",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "8u511b33-perf",
+                "product": {
+                  "name": "Oracle Oracle Java SE 8u511b33-perf",
+                  "product_id": "CSAFPID-0009"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "17.0.21.0.3",
+                "product": {
+                  "name": "Oracle Oracle Java SE 17.0.21.0.3",
+                  "product_id": "CSAFPID-0010"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "21.0.13.0.3",
+                "product": {
+                  "name": "Oracle Oracle Java SE 21.0.13.0.3",
+                  "product_id": "CSAFPID-0011"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "25.0.5.0.3",
+                "product": {
+                  "name": "Oracle Oracle Java SE 25.0.5.0.3",
+                  "product_id": "CSAFPID-0012"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "27.0.1.0.3",
+                "product": {
+                  "name": "Oracle Oracle Java SE 27.0.1.0.3",
+                  "product_id": "CSAFPID-0013"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "17.0.21.1",
+                "product": {
+                  "name": "Oracle Oracle Java SE 17.0.21.1",
+                  "product_id": "CSAFPID-0014"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "21.0.13.1",
+                "product": {
+                  "name": "Oracle Oracle Java SE 21.0.13.1",
+                  "product_id": "CSAFPID-0015"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "25.0.5.1",
+                "product": {
+                  "name": "Oracle Oracle Java SE 25.0.5.1",
+                  "product_id": "CSAFPID-0016"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "27.0.1.1",
+                "product": {
+                  "name": "Oracle Oracle Java SE 27.0.1.1",
+                  "product_id": "CSAFPID-0017"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "8u513-perf",
+                "product": {
+                  "name": "Oracle Oracle Java SE 8u513-perf",
+                  "product_id": "CSAFPID-0018"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "vendor",
+        "name": "OpenJDK",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "JDK",
+            "branches": [
+              {
+                "category": "product_version",
+                "name": "17.0.21.0.3",
+                "product": {
+                  "name": "OpenJDK JDK 17.0.21.0.3",
+                  "product_id": "CSAFPID-0019"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "21.0.13.0.3",
+                "product": {
+                  "name": "OpenJDK JDK 21.0.13.0.3",
+                  "product_id": "CSAFPID-0020"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "25.0.5.0.3",
+                "product": {
+                  "name": "OpenJDK JDK 25.0.5.0.3",
+                  "product_id": "CSAFPID-0021"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "27.0.1.0.3",
+                "product": {
+                  "name": "OpenJDK JDK 27.0.1.0.3",
+                  "product_id": "CSAFPID-0022"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "17.0.21.1",
+                "product": {
+                  "name": "OpenJDK JDK 17.0.21.1",
+                  "product_id": "CSAFPID-0023"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "21.0.13.1",
+                "product": {
+                  "name": "OpenJDK JDK 21.0.13.1",
+                  "product_id": "CSAFPID-0024"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "25.0.5.1",
+                "product": {
+                  "name": "OpenJDK JDK 25.0.5.1",
+                  "product_id": "CSAFPID-0025"
+                }
+              },
+              {
+                "category": "product_version",
+                "name": "27.0.1.1",
+                "product": {
+                  "name": "OpenJDK JDK 27.0.1.1",
+                  "product_id": "CSAFPID-0026"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2026-114938",
+      "cwe": {
+        "id": "CWE-122",
+        "name": "Heap-based Buffer Overflow"
+      },
+      "notes": [
+        {
+          "category": "summary",
+          "text": "OpenJDK and many downstream Java implementations do not securely decode Base64 data when x86 or x64 CPU AVX-512 extensions are enabled. An attacker with the ability to control Base64 input may be able to manipulate heap memory to cause a Java process to crash or execute arbitrary code. In many cases attacks can be attempted remotely and without authentication. Oracle Java SE, Oracle GraalVM for JDK, and Oracle GraalVM Enterprise Edition are affected. Fixed in OpenJDK and Oracle Java SE 17.0.21.1, 21.0.13.1, 25.0.5.1, and 27.0.1.1, Oracle Java SE 8u513-perf (Java SE 17.0.21.1), Oracle GraalVM for JDK 17.0.21.1 and 21.0.13.1, and Oracle GraalVM Enterprise Edition 21.3.20.1.",
+          "title": "Description"
+        },
+        {
+          "category": "details",
+          "title": "SSVC",
+          "text": "SSVCv2/E:N/A:N/T:T/2026-11-18T21:39:52Z/"
+        }
+      ],
+      "title": "OpenJDK Base64 decoding heap corruption with AVX-512 enabled",
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-0001",
+          "CSAFPID-0019",
+          "CSAFPID-0020",
+          "CSAFPID-0021",
+          "CSAFPID-0022",
+          "CSAFPID-0003",
+          "CSAFPID-0004",
+          "CSAFPID-0005",
+          "CSAFPID-0009",
+          "CSAFPID-0010",
+          "CSAFPID-0011",
+          "CSAFPID-0012",
+          "CSAFPID-0013"
+        ],
+        "fixed": [
+          "CSAFPID-0002",
+          "CSAFPID-0023",
+          "CSAFPID-0024",
+          "CSAFPID-0025",
+          "CSAFPID-0026",
+          "CSAFPID-0006",
+          "CSAFPID-0007",
+          "CSAFPID-0008",
+          "CSAFPID-0014",
+          "CSAFPID-0015",
+          "CSAFPID-0016",
+          "CSAFPID-0017",
+          "CSAFPID-0018"
+        ]
+      },
+      "references": [
+        {
+          "category": "external",
+          "summary": "www.oracle.com",
+          "url": "https://www.oracle.com/security-alerts/cspunov2026.html"
+        },
+        {
+          "category": "external",
+          "summary": "calif.io",
+          "url": "https://calif.io/java4shell"
+        },
+        {
+          "category": "external",
+          "summary": "openjdk.org",
+          "url": "https://openjdk.org/groups/vulnerability/advisories/2026-11-17"
+        },
+        {
+          "category": "external",
+          "summary": "CVE-2026-114938",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-114938"
+        },
+        {
+          "category": "external",
+          "summary": "VA-26-321-01 CSAF",
+          "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-321-01.json"
+        }
+      ],
+      "scores": [
+        {
+          "cvss_v3": {
+            "baseScore": 8.1,
+            "baseSeverity": "HIGH",
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "version": "3.1"
+          },
+          "products": [
+            "CSAFPID-0001",
+            "CSAFPID-0019",
+            "CSAFPID-0020",
+            "CSAFPID-0021",
+            "CSAFPID-0022",
+            "CSAFPID-0003",
+            "CSAFPID-0004",
+            "CSAFPID-0005",
+            "CSAFPID-0009",
+            "CSAFPID-0010",
+            "CSAFPID-0011",
+            "CSAFPID-0012",
+            "CSAFPID-0013"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 21.3.20.1.",
+          "url": "https://docs.oracle.com/en/graalvm/enterprise/21/docs/release-notes/#oracle-graalvm-enterprise-edition-213201",
+          "product_ids": [
+            "CSAFPID-0001"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 21.3.20.1.",
+          "url": "https://docs.oracle.com/en/graalvm/enterprise/21/docs/release-notes/#oracle-graalvm-enterprise-edition-213201",
+          "product_ids": [
+            "CSAFPID-0002"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 17.0.21.1.",
+          "url": "https://openjdk.org/groups/vulnerability/advisories/2026-11-17",
+          "product_ids": [
+            "CSAFPID-0019"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 21.0.13.1.",
+          "url": "https://openjdk.org/groups/vulnerability/advisories/2026-11-17",
+          "product_ids": [
+            "CSAFPID-0020"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 25.0.5.1.",
+          "url": "https://openjdk.org/groups/vulnerability/advisories/2026-11-17",
+          "product_ids": [
+            "CSAFPID-0021"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 27.0.1.1.",
+          "url": "https://openjdk.org/groups/vulnerability/advisories/2026-11-17",
+          "product_ids": [
+            "CSAFPID-0022"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 17.0.21.1.",
+          "url": "https://openjdk.org/groups/vulnerability/advisories/2026-11-17",
+          "product_ids": [
+            "CSAFPID-0023"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 21.0.13.1.",
+          "url": "https://openjdk.org/groups/vulnerability/advisories/2026-11-17",
+          "product_ids": [
+            "CSAFPID-0024"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 25.0.5.1.",
+          "url": "https://openjdk.org/groups/vulnerability/advisories/2026-11-17",
+          "product_ids": [
+            "CSAFPID-0025"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 27.0.1.1.",
+          "url": "https://openjdk.org/groups/vulnerability/advisories/2026-11-17",
+          "product_ids": [
+            "CSAFPID-0026"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 17.0.21.1.",
+          "url": "https://docs.oracle.com/en/graalvm/jdk/17/docs/release-notes/#oracle-graalvm-for-jdk-170211",
+          "product_ids": [
+            "CSAFPID-0003"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 21.0.13.1.",
+          "url": "https://docs.oracle.com/en/graalvm/jdk/21/docs/release-notes/#oracle-graalvm-for-jdk-210131",
+          "product_ids": [
+            "CSAFPID-0004"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 25.0.5.1.",
+          "url": "https://docs.oracle.com/en/graalvm/jdk/25/docs/release-notes/",
+          "product_ids": [
+            "CSAFPID-0005"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 17.0.21.1.",
+          "url": "https://docs.oracle.com/en/graalvm/jdk/17/docs/release-notes/#oracle-graalvm-for-jdk-170211",
+          "product_ids": [
+            "CSAFPID-0006"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 21.0.13.1.",
+          "url": "https://docs.oracle.com/en/graalvm/jdk/21/docs/release-notes/#oracle-graalvm-for-jdk-210131",
+          "product_ids": [
+            "CSAFPID-0007"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 25.0.5.1.",
+          "url": "https://docs.oracle.com/en/graalvm/jdk/25/docs/release-notes/",
+          "product_ids": [
+            "CSAFPID-0008"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 8u513-perf.",
+          "url": "https://www.oracle.com/java/technologies/javase/8u513-perf-relnotes.html",
+          "product_ids": [
+            "CSAFPID-0009"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 17.0.21.1.",
+          "url": "https://www.oracle.com/java/technologies/javase/17-0-21-1-relnotes.html",
+          "product_ids": [
+            "CSAFPID-0010"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 21.0.13.1.",
+          "url": "https://www.oracle.com/java/technologies/javase/21-0-13-1-relnotes.html",
+          "product_ids": [
+            "CSAFPID-0011"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 25.0.5.1.",
+          "url": "https://www.oracle.com/java/technologies/javase/25-0-5-1-relnotes.html",
+          "product_ids": [
+            "CSAFPID-0012"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 27.0.1.1.",
+          "url": "https://www.oracle.com/java/technologies/javase/27-0-1-1-relnotes.html",
+          "product_ids": [
+            "CSAFPID-0013"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 17.0.21.1.",
+          "url": "https://www.oracle.com/java/technologies/javase/17-0-21-1-relnotes.html",
+          "product_ids": [
+            "CSAFPID-0014"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 21.0.13.1.",
+          "url": "https://www.oracle.com/java/technologies/javase/21-0-13-1-relnotes.html",
+          "product_ids": [
+            "CSAFPID-0015"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 25.0.5.1.",
+          "url": "https://www.oracle.com/java/technologies/javase/25-0-5-1-relnotes.html",
+          "product_ids": [
+            "CSAFPID-0016"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 27.0.1.1.",
+          "url": "https://www.oracle.com/java/technologies/javase/27-0-1-1-relnotes.html",
+          "product_ids": [
+            "CSAFPID-0017"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        },
+        {
+          "category": "vendor_fix",
+          "details": "Fixed in 8u513-perf.",
+          "url": "https://www.oracle.com/java/technologies/javase/8u513-perf-relnotes.html",
+          "product_ids": [
+            "CSAFPID-0018"
+          ],
+          "date": "2026-11-17T00:00:00Z"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "names": [
+            "Albert Yang"
+          ]
+        },
+        {
+          "organization": "Calif.io",
+          "names": [
+            "Quang Luong"
+          ]
+        }
+      ],
+      "release_date": "2026-11-17T00:00:00Z"
+    }
+  ]
+}
